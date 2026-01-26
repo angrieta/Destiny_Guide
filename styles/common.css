@@ -12,8 +12,8 @@ header .inner{
     position: relative;
     justify-content: space-between; align-items: center;
 }
-.discord{width: 30px; height: 30px;border-radius: 6px; background-image: url(/images/header/discord.png); background-size: cover;}
-.discord:hover{width: 30px; height: 30px;border-radius: 6px; background-image: url(/images/header/discord_black.png); background-size: cover;}
+.discord{width: 30px; height: 30px;border-radius: 6px; background-image: url(./images/header/discord.png); background-size: cover;}
+.discord:hover{width: 30px; height: 30px;border-radius: 6px; background-image: url(./images/header/discord_black.png); background-size: cover;}
 
 .drop_table{}
 .drop_table a{background-color: #222; padding: 5px 10px; color: #fff; border-radius: 6px; margin-left: 10px;}

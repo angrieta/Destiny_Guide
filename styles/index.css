@@ -111,7 +111,7 @@ main .content_area .new_area {
 main .content_area .new_area h3 {
     position: relative;
     padding-top: 50px;
-    font-size: 26px;
+    font-size: 40px;
     font-weight: 700;
     padding-bottom: 15px;
 }
@@ -695,6 +695,9 @@ main .content_area .Character_info .right_contents .best_slide a .text_ani {
     text-align: center;
     align-content: center;
 }
+main .right_contents {
+    width: 100%;  max-height: 610px; padding:0 20px;
+}
 
 main .content_area .Character_info .right_contents .best_slide a .character_info {
     display: flex;
@@ -740,270 +743,17 @@ main .right_contents .best_slide .event-scrollbar {
 
 }
 
-/* best 종료 */
-/* 카테고리 시작 */
-main .content_area .category_area {
-    text-align: center;
-    position: relative;
-    padding-bottom: 100px;
+/* character 종료 */
+
+
+
+
+/*Beginner's Guide 시작*/
+.beginner_guide{}
+.beginner_guide .beginner_inner{}
+.beginner_guide .beginner_inner h3{
+    font-size: 40px; font-weight: 700;
 }
-
-main .content_area .category_area h3 {
-    padding-top: 200px;
-    font-size: 2.5rem;
-    font-weight: 700;
-    padding-bottom: 15px;
-}
-
-main .content_area .category_area p {
-    letter-spacing: -0.02em;
-    padding-bottom: 76px;
-}
-
-main .content_area .category_area .category_btn {
-    margin-bottom: 76px;
-}
-
-main .content_area .category_area .category_btn a:last-child {
-    margin-right: 0;
-}
-
-main .content_area .category_area .category_btn a {
-    font-weight: 500;
-    padding: 10px 20px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    margin-right: 10px;
-}
-
-main .content_area .category_area .category_btn .active {
-    background-color: #000;
-    color: #fff;
-}
-
-main .content_area .category_area .swiper {
-    width: 90%;
-    margin: 0 auto;
-}
-
-main .content_area .category_area .swiper .swiper-slide {}
-
-main .content_area .category_area .swiper .swiper-slide .category_text {}
-
-main .content_area .category_area .swiper .swiper-slide .category_text img {
-    width: 100%
-}
-
-main .content_area .category_area .category_arrow {
-    position: relative;
-    bottom: 200px;
-}
-
-main .content_area .category_area .swiper-button-prev {
-    color: #000;
-}
-
-main .content_area .category_area .swiper-button-next {
-    color: #000;
-}
-
-main .content_area .category_area .swiper-slide a {
-    text-align: start;
-}
-
-main .content_area .category_area .swiper-slide a .category_text span {
-    margin-top: 20px;
-    margin: 0 10px;
-}
-
-main .content_area .category_area .swiper-slide a .category_text del {
-    display: inline-block;
-    padding: 10px 0;
-    margin: 0 10px;
-}
-
-main .content_area .category_area .swiper-slide a .price_text {}
-
-main .content_area .category_area .swiper-slide a .price_text em {
-    font-weight: 700;
-    color: #ff3131;
-    margin: 0 10px;
-}
-
-main .content_area .category_area .swiper-slide a .price_text .total_price {
-    font-weight: 500;
-}
-
-main .content_area .category_area .swiper-slide a span {
-    display: block;
-}
-
-main .content_area .category_area .swiper-slide a .total_price {
-    display: inline-block;
-}
-
-/* 카테고리 버튼 활성화 영역 */
-main .content_area .category_area .keyboard {}
-
-main .content_area .category_area .swiches {
-    display: none;
-}
-
-/* 카테고리 종료 */
-
-/* 커스텀 영역 시작*/
-
-main .custom_area {
-    display: flex;
-    margin: 0 auto;
-    width: 100%;
-    justify-content: space-between;
-}
-
-main .custom_area .custom_bg {
-    width: 49%;
-    background-image: url(../images/index/custom_bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    align-content: center;
-    padding-right: 40px;
-}
-
-main .custom_area .custom_bg h3 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    padding-bottom: 15px;
-}
-
-main .custom_area .custom_bg p {
-    color: #333333;
-}
-
-main .right_contents {
-    width: 100%;  max-height: 610px; padding:0 20px;
-}
-
-main .right_contents .custom {}
-
-main .right_contents .custom .swiper-wrapper {
-    display: flex;
-}
-
-main .right_contents .custom .swiper-slide {}
-
-main .right_contents .custom .swiper-wrapper a {
-    padding-bottom: 20px;
-}
-
-main .right_contents .custom .swiper-slide .custom_text {
-    display: flex;
-    flex-flow: column nowrap
-}
-
-main .right_contents .custom .swiper-slide .custom_text img {
-    width: 100%;
-}
-
-main .right_contents .custom .swiper-slide .custom_text span {
-    line-height: 1.2;
-    margin: 20px 10px 0 10px;
-}
-
-main .right_contents .custom .swiper-slide .custom_text del {
-    color: #A5A5A5;
-    padding: 10px 0;
-    margin: 0 10px;
-}
-
-main .right_contents .custom .swiper-slide .price {
-    margin-bottom: 20px;
-}
-
-main .right_contents .custom .swiper-slide .price em {
-    color: #FF3131;
-    font-weight: 700;
-    margin: 0 10px;
-}
-
-main .right_contents .custom .swiper-slide .price span {}
-
-/* 커스텀 영역 종료*/
-/* 서비스 영역 시작 */
-main .service {
-    text-align: center;
-    margin-top: 100px;
-    margin-bottom: 150px;
-}
-
-main .service h3 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 17px;
-}
-
-main .service p {
-    line-height: 1.6;
-    letter-spacing: -0.05em;
-    color: #333333;
-    margin-bottom: 100px;
-}
-
-main .service .service_container {
-    display: flex;
-    width: 75%;
-    margin: 0 auto;
-}
-
-main .service .service_container a {
-    display: flex;
-    flex-flow: column nowrap;
-    width: calc((100%) / 3);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 5PX;
-    padding: 80px 0;
-}
-
-main .service .service_container a img {
-    width: 25%;
-    display: block;
-    position: relative;
-    right: -40%;
-    margin-bottom: 10px;
-}
-
-main .service .service_container a em {
-    font-size: 1.375rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-main .service .service_container a span {
-    line-height: 1.6;
-    letter-spacing: -0.02em;
-}
-
-main .service .service_container .question {}
-
-main .service .service_container .question img {}
-
-main .service .service_container .question em {}
-
-main .service .service_container .question span {}
-
-main .service .service_container .as {
-    margin: 0 30px;
-}
-
-main .service .service_container a em {
-    display: flex;
-    flex-flow: column nowrap;
-    margin-bottom: 10px;
-}
-
-main .service .service_container span {
-    padding: 10px;
-}
-
-/* 서비스 영역 종료 */
+.beginner_guide .beginner_inner p{ font-size: 18px;}
+.beginner_guide .beginner_inner a{}
+/*Beginner's Guide 종료*/

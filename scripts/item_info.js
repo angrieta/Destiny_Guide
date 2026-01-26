@@ -11,10 +11,12 @@ const ITEM_DETAIL = {
             '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
             
             '<div class="Material_title">V802 x2</div>',
-            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Whitill_icon.png" alt="Whitill"></img> Sinow Blue [Retrieval] Lost SOUL BLADE</p>', 
+            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Whitill_icon.png" alt="Whitill" Sinow Blue [Retrieval] Lost SOUL BLADE</p>', 
+            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Pinkal_icon.png" alt="Pinkal"> Gran Sorcerer [EP2] Path of VR Singularity </p>', 
             
+
             '<div class="Material_title">V503 x1</div>',
-            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Pinkal_icon.png" alt="Pinkal"></img> <img class="item_section" src="./images/common/section/32px-Redria_icon.png" alt="Redria"></img> - Goran Detonator ✨</p>',
+            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Pinkal_icon.png" alt="Pinkal"> <img class="item_section" src="./images/common/section/32px-Redria_icon.png" alt="Redria"></img> - Goran Detonator ✨</p>',
             '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Purplenum_icon.png" alt="Purplenum"></img> - Kondrieu</p>',
             '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Greenill_icon.png" alt="Greenil"></img> - Sinow Berill</p>',
             
@@ -178,7 +180,7 @@ const ITEM_DETAIL = {
 
   Jointparts: {
     sections: [
-      { title: '<p class="item_important"><span class="star_text">★ ★ ★</span>Item Importance</p>', body: [''] },
+      { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span>Item Importance</p>', body: [''] },
       { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Cladding of Manipulator III x7</div>',
                '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://www.youtube.com/watch?v=mPioItCl25A" target="blank" class="guide_btn">Guide Video</a></p>', 
@@ -216,7 +218,7 @@ const ITEM_DETAIL = {
     sections: [
       { title: '<p class="item_important"><span class="star_text">★ ★ ★</span>Item Importance</p>', body: [''] },
       { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
-            '<div class="Material_title">Millennium Photon Core x8</div>',
+            '<div class="Material_title">Millennium Photon Core x5</div>',
                 '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
 
             '<div class="Material_title">Immortal/HP x2</div>',
