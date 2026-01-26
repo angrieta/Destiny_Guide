@@ -1,0 +1,481 @@
+@media screen and (max-width:700px) {
+    .site-header .mid_menu {
+        position: absolute;
+        left: 22px;
+        top: 51px;
+    }
+    header{align-content: start; margin-top: 20px;}
+}
+@media screen and (max-width:1000px) {
+    .best_bg{position: absolute; max-width: 100%;} 
+    main .content_area .Character_info .best_bg img{
+            width: 100%;
+            position: relative;
+            right: 0px;
+    }
+    main .right_contents{
+        width: 90%;
+        scale: 0.9;
+        min-width: 380px;
+    }
+}
+@media screen and (max-width:1880px) {
+}
+@media screen and (max-width:1400px) {
+    main .content_area .best .right_contents p {
+        padding-bottom: 40px;
+    }
+    main .content_area .best .right_contents {
+        width: 60%;
+    }
+}
+@media screen and (max-width:1250px) {
+    /* 1250시작 판매 aria 종료 */
+    header .inner{
+        width: 100%; 
+        padding: 0 80px;
+    }
+    header .inner .left_menu a {
+    }
+    header .inner .right_menu a img{
+        width: 30px;
+    }
+    footer .top_menu {
+        padding: 20px 80px;
+    }
+    footer .btm_container {
+        padding: 0 80px;
+    }
+    main .btm_bnr_bg{
+        height: 300px;
+    }
+    main .btm_bnr_bg p{
+        font-size:1.125rem;
+    }
+    main .btm_bnr_bg h3{
+        font-size: 3.125rem;
+    }
+    main .bnr_slide{
+        height: 600px;
+    }
+    main .content_area .new_area h3 {
+        padding-top: 80px;
+        font-size:1.875rem;
+    }
+    main .content_area .new_area p {
+    }
+    main .content_area .new_area .swiper-button-prev {
+        transform: scale(0.6);
+    }
+    main .content_area .new_area .swiper-button-next {
+        transform: scale(0.6);
+    }
+    main .content_area .new_area .swiper-slide a .new_text span {
+        font-size: 0.8125rem;
+    }
+    main .content_area .new_area .swiper-slide a .new_text del{
+        font-size:0.875rem;
+    }
+    main .content_area .new_area .swiper-slide a .price_text em {
+        font-size:0.875rem;
+    }
+    main .content_area .new_area .swiper-slide a .price_text .total_price{
+        font-size:0.875rem;
+    }
+    main .content_area .best .right_contents p{
+        padding-bottom: 40px;
+    }
+    main .content_area .best .right_contents {
+        right: 0%;
+        width: 60%;
+    }
+    main .content_area .best .right_contents h3{
+        font-size:2.375rem
+    }
+    main .content_area .best .right_contents p{
+        font-size:0.875rem;
+    }
+    main .content_area .best .right_contents .best_slide a .best_text span{
+        font-size: 0.8125rem;
+    }
+    main .content_area .best .right_contents .best_slide a .best_text del{
+        font-size: 0.8125rem;
+    }
+    main .content_area .best .right_contents .best_slide a .price_text em{
+        font-size: 0.8125rem;
+    }
+    main .content_area .best .right_contents .best_slide a .price_text .total_price{
+        font-size: 0.8125rem;   
+    }
+    main .content_area .category_area h3{
+        padding-top: 80px;
+        font-size:1.875rem;
+    }
+    main .content_area .category_area p{
+        font-size:0.875rem;
+        padding-bottom: 40px;
+    }
+    main .content_area .category_area .category_btn a {
+        font-size:0.875rem;
+    }
+    main .content_area .category_area .category_btn {
+        margin-bottom: 40px;
+    }
+    main .content_area .category_area .swiper-button-prev {
+        transform: scale(0.6); 
+        position: absolute; top: 80px;
+    }
+    main .content_area .category_area .swiper-button-next {
+        transform: scale(0.6);
+        position: absolute; top: 80px;
+    }
+    main .content_area .category_area {
+        text-align: center;
+        position: relative;
+        padding-bottom: 80px;
+    }
+    main .content_area .category_area .swiper-slide a .category_text span {
+        font-size: 0.8125rem;
+    }
+    main .content_area .category_area .swiper-slide a .category_text del {
+        font-size:0.875rem;
+    }
+    main .content_area .category_area .swiper-slide a .price_text em {
+        font-size:0.875rem;
+    }
+    main .content_area .category_area .swiper-slide a .price_text .total_price {
+        font-size:0.875rem;
+    }
+    main .service .service_container a{
+        padding: 40px 0;
+    }
+    main .service .service_container a span {
+        font-size:0.875rem;
+    }
+    main .service p {
+        margin-bottom: 40px;
+    }
+    .header_menu{
+        width: 35%;
+    }
+    .header_menu .menu_box li .menu-item a {
+        font-size: 1.3125rem;
+    }
+    .header_menu .menu_box a {
+        font-size: 0.875rem;
+    }
+}
+/* 1250 end */  
+@media screen and (max-width:900px) {
+    .header_menu{
+        width: 40%;
+    }
+    /* =============================2행 반응형디자인(759~900) */
+}        
+/* 769~900 end */
+
+@media screen and (max-width:1000px) {
+    main .service .service_container a em {
+        font-size:0.75rem;
+    }
+    main .service .service_container a span {
+        font-size:0.5625rem;
+    }
+}
+    /* 1250시작 판매 aria 종료 */    
+    /* header 종료 */
+    @media screen and (max-width:983px) {
+        header .inner {
+            padding: 0 15px;
+        }
+        header .inner .left_menu .cs a {
+            display: none;
+        }
+        header .inner .right_menu a img {
+            width: 20px;
+        }
+        header .inner .logo a img {
+            width: 100px;
+        }
+        header .inner .left_menu a img {
+            width: 18px;
+        }
+        main .bnr_slide {
+            height: 400px;
+        }
+        main .bnr_slide .slide_btn .swiper-button-prev {
+            display: none;
+        }
+        main .bnr_slide .slide_btn .swiper-button-next {
+            display: none;
+        }
+        main .bnr_slide .swiper-wrapper .bnr_text {
+            text-align: end;
+            position: absolute;
+            bottom: 47px;
+            right: 37px;
+        }
+        main .bnr_slide .swiper-wrapper .swiper-slide p{
+            font-size:0.75rem;
+        }
+        main .bnr_slide .swiper-wrapper .swiper-slide h2 {
+            font-size:1.875rem;
+            margin-bottom:15px
+        }
+        main .bnr_slide .swiper-wrapper .swiper-slide a{
+            font-size:0.625rem 
+        }
+        .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+            display: none;
+        }
+        .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after{
+            display: none;
+        }
+        main .content_area .best .best_bg {
+        }
+        main .content_area .best .best_bg img {
+            width: 100%;
+        }
+        main .content_area .best .right_contents {
+            right: 0%;
+            top: 25%;
+            width: 100%;
+        }
+        main .content_area .best .right_contents h3{
+            padding-left: 0px; text-align: center;
+            color: #fff;
+            font-size:1.375rem;
+        }
+        main .content_area .best .right_contents p{
+            padding-left: 0px; text-align: center;
+            color: #fff
+        }
+        main .content_area .best .right_contents {
+            padding-left: 0px;
+        }  
+        main .content_area .best .right_contents .best_slide {
+            width: 99%; padding: 0 10px;
+        }
+        .best_slide{
+            position: relative;
+        }
+        main .right_contents .best_slide .event-scrollbar {
+            left: -5%;
+        }
+        main .content_area .new_area {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+    }
+    /* =============================1행 반응형디자인(mobile) */
+@media screen and (max-width:600px){
+    main .content_area .best .right_contents h3{
+        font-size:1.375rem;
+    }
+    main .content_area .best .right_contents p{
+        color: #fff;
+        font-size:0.6875rem;
+    }  
+    main .content_area .new_area h3 {
+        padding-top: 60px;
+        font-size:1.375rem;
+    }
+    main .content_area .new_area p {
+        font-size: 14px;
+    }
+    main .content_area .Character_info .right_contents p{
+        font-size: 16px;
+    }
+    main .content_area .new_area .swiper-slide a .new_text span{
+        font-size:0.5625rem; padding: 0; 
+        margin: 0px;
+    }
+    main .content_area .new_area .swiper-slide a .new_text del {
+        font-size: 0.6875rem; color: #a5a5a5; padding: 0;
+        margin: 0px;
+    }
+    main .content_area .new_area .swiper-slide a .price_text em {
+        font-size: 0.75rem; padding: 0;
+        margin: 0px;
+    }
+    main .content_area .new_area .swiper-slide a .price_text .total_price {
+        font-size: 0.75rem; padding: 0px;
+        margin: 0px;
+    }
+    main .content_area .category_area h3 {
+        padding-top: 40px;
+        font-size:1.375rem;
+    }
+    main .content_area .best .right_contents .best_slide a .best_text span {
+        font-size: 0.5625rem;
+    }
+    main .content_area .best .right_contents .best_slide a .best_text del {
+        font-size: 0.6875rem;     padding: 3px 0;
+    }
+    main .content_area .best .right_contents .best_slide a .price_text em {
+        font-size: 0.6875rem;
+    }
+    main .content_area .best .right_contents .best_slide a .price_text .total_price {
+        font-size: 0.6875rem;
+    }
+    main .content_area .category_area .category_btn {
+        margin-bottom: 30px;
+    }
+    main .content_area .category_area .category_btn a {
+        font-size: 0.6875rem;
+        padding: 5px 10px;
+        margin-right: 5px;
+    }
+    main .content_area .category_area .swiper-slide a .category_text span {
+        font-size: 0.5625rem;
+        padding: 0;
+        margin-top: 0px; 
+        margin: 0;
+    }
+    main .content_area .category_area .swiper-slide a .category_text del {
+        font-size: 0.6875rem;
+        color: #a5a5a5;
+        padding: 0; margin: 3px 0;
+    }
+    main .content_area .category_area .swiper-slide a .price_text em {
+        font-size: 0.75rem;
+        padding: 0; margin: 0;
+    }
+    main .content_area .category_area .swiper-slide a .price_text .total_price {
+        font-size: 0.75rem;
+        padding: 0; margin: 0;
+    }
+    main .right_contents .custom .swiper-slide .custom_text span {
+        font-size: 0.6875rem;
+        margin-top: 5px;
+        margin: 10px 4px 0 4px;
+    }
+    main .right_contents .custom .swiper-slide .custom_text del {
+        color: #A5A5A5;
+        padding: 0; font-size: 0.8125rem;
+        margin: 3px 4px 3px 4px;
+    }
+    main .right_contents .custom .swiper-slide .price em {
+        font-size: 0.875rem;
+        margin: 0px 3px 0 3px;
+    }
+    main .right_contents .custom .swiper-slide .price span {
+        font-size: 0.875rem;
+    }
+    main .right_contents .custom .swiper-slide .price {
+        margin-bottom: 10px;
+    }
+    main .custom_area .custom_bg {
+        width: 59.5%;
+        padding: 0;
+    }
+    main .right_contents .custom {
+        margin-right: 15px;
+    }
+    main .custom_area .custom_bg h3 {
+        font-size: 1.25rem;
+    }
+    main .custom_area .custom_bg p {
+        font-size: 0.6875rem;
+    }
+    main .service h3 {
+        font-size:1.375rem;
+    }
+    main .service p {
+        font-size: 0.6875rem;
+        margin-bottom: 20px;
+    }
+    main .service .service_container {
+        width: 90%;
+    }
+    main .service .service_container a {
+        padding: 10px;
+    }
+    main .service .service_container .as {
+        margin: 0 15px;
+    }
+    main .service{
+        margin-top: 60px;
+        margin-bottom: 70px;
+    }
+    main .btm_bnr_bg {
+        height: 160px;
+        background-size: cover;
+    }
+    main .btm_bnr_bg p {
+        font-size: 0.75rem;
+        
+    }
+    main .btm_bnr_bg h3 {
+        font-size: 1.375rem;
+    }
+    .header_menu .menu_close img {
+        width: 22px;
+    }
+    .header_menu{
+        width: 50%;
+    }
+    main .service .service_container a em {
+        margin-bottom: 0px;
+    }
+    .header_menu .menu_box li .menu-item a {
+        font-size: 1.125rem;
+    }
+    .header_menu .menu_box a {
+        font-size: 0.75rem;
+    }
+}
+@media screen and (max-width:810px){
+    footer .top_menu {
+        padding: 20px 15px;
+    }
+    footer .btm_container {
+        padding: 0 15px;
+    }
+    footer .btm_container ul{
+        margin-top: 30px;
+    }
+    .aria_bottom{
+        flex-flow: column nowrap;
+        width: 40%;
+    }
+}
+@media screen and (max-width:500px){
+    footer {
+        height: 280px;
+    }
+    footer .top_menu {
+        padding: 10px 15px;
+    }
+    footer .top_menu a {
+        padding-right: 15px;
+    }
+    footer .btm_container ul li span:first-child {
+        width: 70px;
+    }
+    footer .btm_container h3
+    {
+        font-size:0.625rem; 
+        margin-bottom: 10px;
+    }
+    footer .top_menu a {
+        font-size:0.625rem;
+    }
+    footer .btm_container .left_info .nuphy_info span {
+        font-size:0.5rem;
+    }
+    footer .btm_container .center_info .cs span {
+        font-size:0.5rem;
+    }
+    footer .btm_container .right_info .bank span {
+        font-size:0.5rem;
+    }
+    footer .btm_container .right_info .bank {
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width:400px){
+    body{
+        min-width: 400px;
+    }
+}
