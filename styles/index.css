@@ -749,11 +749,19 @@ main .right_contents .best_slide .event-scrollbar {
 
 
 /*Beginner's Guide 시작*/
-.beginner_guide{}
-.beginner_guide .beginner_inner{}
+.beginner_guide{text-align: center; display: flex;}
+.guide_bg{width: 50%;}
+.guide_bg img{width: 100%; height: 100%;}
+.beginner_guide .beginner_inner{width: 50%; align-content: center;}
 .beginner_guide .beginner_inner h3{
     font-size: 40px; font-weight: 700;
+    margin-bottom: 15px; 
 }
-.beginner_guide .beginner_inner p{ font-size: 18px;}
-.beginner_guide .beginner_inner a{}
+.beginner_guide .beginner_inner p{ font-size: 18px; margin-bottom: 60px;}
+.beginner_guide .beginner_inner .begineer_btn{
+    padding: 10px 60px; border: 1px solid #222; border-radius: 4px;
+}
+.beginner_guide .beginner_inner .begineer_btn:hover{
+    border: 1px solid #222; background-color: #222; color: #fff;
+}
 /*Beginner's Guide 종료*/

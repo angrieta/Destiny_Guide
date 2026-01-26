@@ -11,7 +11,7 @@ const ITEM_DETAIL = {
             '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
             
             '<div class="Material_title">V802 x2</div>',
-            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Whitill_icon.png" alt="Whitill" Sinow Blue [Retrieval] Lost SOUL BLADE</p>', 
+            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Whitill_icon.png" alt="Whitill"> Sinow Blue [EP1] Lost SOUL BLADE</p>', 
             '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Pinkal_icon.png" alt="Pinkal"> Gran Sorcerer [EP2] Path of VR Singularity </p>', 
             
 

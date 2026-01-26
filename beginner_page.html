@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DestinyGuide</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        main{padding: 60px 120px;}
+        main .beginner_title{}
+        main .beginner_title h2{font-size: 40px; font-weight: 700;}
+        main .beginner_title h3{font-size: 18px; font-weight: 500; color: #ff4f4f; padding: 15px 0;}
+        main .beginner_title p{margin-bottom: 5px;}
+        .contents_aria{width: 100%;}
+        .contents_aria h2{font-size: 30px; font-weight: 700; padding: 40px 0 15px 0;}
+        .contents_aria .photo_aria{
+            display: grid;
+            gap: 12px;
+            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            position: relative;
+            }
+
+            .contents_aria .photo_aria img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            }
+        .contents_aria .photo_aria span{padding: 4px 8px; background-color: #222; color: #fff; position: absolute;
+            box-shadow: 1px 1px 4px #fff;
+        }
+        .title_num{
+            padding: 4px 10px; border: 1px solid #222;
+            position: relative;
+            bottom: 4px; margin-right: 4px; font-weight: 700
+            ;
+        }
+        .youtube_wrap{
+            position: relative;
+            width: 50%;
+            padding-top: 56.25%;
+            }
+            .youtube_wrap iframe{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            }    
+
+    </style>
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<body>
+    <main>
+        <div class="beginner_title">
+            <h2>Beginner's Guide</h2>
+            <h3>Important Information</h3>
+            <P>If you’re new to the game, the Force class is the easiest and most beginner-friendly choice.</P>
+            <p>Because Force techniques deal fixed damage, while other classes depend on stats and gear, making them much harder to play on Ultimate difficulty without proper equipment.</p>
+            <p>Additionally, Force is recommended because it makes farming essential early-game items much easier.</p>
+            <p style="color: #c442cf;">Try asking on Discord if anyone can donate disks — you might be able to get some Tech Disks that way.</p>
+        </div>
+        <div class="contents_aria meseta_aria">
+            <h2><strong class="title_num">1</strong> How to earn Meseta</h2>
+            <p style="margin-bottom: 20px;">You can easily earn 999,999 Meseta.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/beginner_001.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/beginner_002.jpg" alt=""></div>
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/beginner_003.jpg" alt=""></div>
+                <div class="photo_aria photo_004"><span>4</span><img src="./images/index/beginner_004.jpg" alt=""></div>
+            </div>
+        </div>
+        <div class="contents_aria quickslot">
+            <h2><strong class="title_num">2</strong> How to set up quickslots</h2>
+            <p style="margin-bottom: 20px;">You can quickly and easily use various Techs with quickslots</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/beginner_005.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/beginner_006.jpg" alt=""></div>
+            </div>
+        </div>      
+        <div class="contents_aria get_mag">
+            <h2><strong class="title_num">3</strong> How to get a 200 MIND MAG</h2>
+            <p style="margin-bottom: 20px;">It may seem like a waste of 20 PD, but it is useful for future characters to</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/beginner_mag_001.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/beginner_mag_002.jpg" alt=""></div>
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/beginner_mag_003.jpg" alt=""></div>
+                <div class="photo_aria photo_004"><span>4</span><img src="./images/index/beginner_mag_004.jpg" alt=""></div>
+            </div>
+        </div>
+        <div class="contents_aria get_mag">
+            <h2><strong class="title_num">4</strong> How to obtain Psycho Wand</h2>
+            <p style="margin-bottom: 5px;">[EP2] Defend the main room: kill 1st 5 del lilies till Pwand drop (ID: whitill)</p>
+            <p style="margin-bottom: 20px;">You only need to watch until 1:07.</p>
+            <p style="margin-bottom: 5px;">Rafoie +30%, Rabarta +30%, Razonde +30%</p>
+            <p style="margin-bottom: 20px;">Halves TP cost and consumes HP instead.</p>
+            <div class="youtube_wrap">
+                <iframe
+                    src="https://www.youtube.com/embed/INyaq2UEklU"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>      
+    </main>
+</body>
