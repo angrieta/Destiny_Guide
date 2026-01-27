@@ -14,6 +14,102 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
+        html{
+        scroll-behavior: smooth;
+        }
+        /* 네비게이션 시작 */
+        .photo_aria img{
+            cursor: zoom-in;
+        }
+        .side_nav{
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 9999;
+            }
+
+            .side_nav a{
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.18);
+            transition: transform 160ms ease, background 160ms ease;
+            }
+
+            .side_nav a:hover{
+            transform: scale(1.08);
+            background: #c442cf;
+            }
+
+            /* 모바일에서는 숨김(선택) */
+            @media (max-width: 768px){
+                .side_nav{ display:flex; 
+                }
+                .popup_inner{
+                position: absolute;
+
+                width: 90%;
+            }
+            }
+            /* 네비게이션 종료 */
+            .img_popup{
+                position: fixed;
+                inset: 0;
+                z-index: 99999;
+                display: none;
+            }
+
+                .img_popup.active{
+                display: block;
+            }
+
+                .popup_dim{
+                position: absolute;
+                inset: 0;
+                background: rgba(0,0,0,0.75);
+            }
+
+                .popup_inner{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 600px;
+            }
+
+                .popup_inner img{
+                width: 100%;
+                height: auto;
+                max-height: 90vh;
+                display: block;
+                border-radius: 12px;
+            }
+
+                .popup_close{
+                position: absolute;
+                top: -42px;
+                right: 0;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                border: 0;
+                background: #fff;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
         main{padding: 60px 120px;}
         main .beginner_title{}
         main .beginner_title h2{font-size: 40px; font-weight: 700;}
@@ -46,7 +142,8 @@
         .youtube_wrap{
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 */
+            max-width: 826px;
+            padding-bottom: 28%;
             height: 0;
         }
 
@@ -56,7 +153,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border: 0;
+        }
+        @media screen and (max-width: 1250px) {
+            main {
+                padding: 60px 80px;
+            }
+        }
+        @media screen and (max-width: 983px) {
+            main {
+                padding: 60px 15px;
+            }
+            main .beginner_title h2{
+                font-size: 34px;
+            }
+            .contents_aria h2{
+                font-size: 24px;
+            }
         }
     </style>
 </head>
@@ -65,6 +177,16 @@
     <div id="site-header"></div>
     <script src="./scripts/include.js"></script>
 <!-- 헤더종료 -->
+
+<nav class="side_nav">
+    <a href="#meseta">Meseta</a>
+    <a href="#quickslot">Quick<br>slot</a>
+    <a href="#get_mag">Mag</a>
+    <a href="#psycho_wand">Psycho<br>Wand</a>
+    <a href="#three_seals">Three<br>seals</a>
+    <a href="#v802">V802</a>
+    <a href="#final">TIP</a>
+</nav>
 
 <body>
     <main>
@@ -76,7 +198,19 @@
             <p>Additionally, Force is recommended because it makes farming essential early-game items much easier.</p>
             <p style="color: #c442cf;">Try asking on Discord if anyone can donate disks — you might be able to get some Tech Disks that way.</p>
         </div>
-        <div class="contents_aria meseta_aria">
+        <div class="contents_aria meseta_aria" id="meseta">
+            <h2><strong class="title_num" style="padding:4px 3px;">✨</strong> Required setup</h2>
+            <p style="margin-bottom: 20px; font-size: 18px">This installation will help you enjoy the game more smoothly.</p>
+            <p style="margin-bottom: 20px; font-size: 18px"><a href="https://github.com/Developer-Roland/RPAS" target='_blank'style="border-radius: 4px;padding: 2px 10px;color: #fff;; background-color: #ff0b0b; font-weight: 700; margin-right: 5px;">LINK</a> Numeric keypad support,Commands can be used as hotkeys,Key repeat input support </p>
+            <p style="margin-bottom: 20px; font-size: 18px"><a href="https://playpso.net/forums/topic/1094-destiny-reader-update/" target='_blank'style="border-radius: 4px;padding: 2px 10px;color: #fff;; background-color: #ff0b0b; font-weight: 700; margin-right: 5px;">LINK</a>[Item Leader] You can check item details before pickup and see their location on the minimap.</p>
+            <p style="margin-bottom: 20px; font-size: 18px"><a href="https://www.mediafire.com/file/jhzlaeexvts0kjb/Effects_%252B_tech.zip/file" target='_blank'style="border-radius: 4px;padding: 2px 10px;color: #fff;; background-color: #ff0b0b; font-weight: 700; margin-right: 5px;">LINK</a> [Optional] Improves effects and color visuals</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/beginner_setup.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/beginner_setup_002.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>3</span><img src="./images/index/beginner_setup_003.jpg" alt=""></div>
+            </div>
+        </div>
+        <div class="contents_aria meseta_aria" id="meseta">
             <h2><strong class="title_num">1</strong> How to earn Meseta</h2>
             <p style="margin-bottom: 20px; font-size: 18px">You can easily earn 999,999 Meseta.</p>
             <div class="photo_aria">
@@ -86,7 +220,7 @@
                 <div class="photo_aria photo_004"><span>4</span><img src="./images/index/beginner_004.jpg" alt=""></div>
             </div>
         </div>
-        <div class="contents_aria quickslot">
+        <div class="contents_aria quickslot" id="quickslot">
             <h2><strong class="title_num">2</strong> How to set up quickslots</h2>
             <p style="margin-bottom: 20px; font-size: 18px">You can quickly and easily use various Techs with quickslots</p>
             <div class="photo_aria">
@@ -94,7 +228,7 @@
                 <div class="photo_aria photo_002"><span>2</span><img src="./images/index/beginner_006.jpg" alt=""></div>
             </div>
         </div>      
-        <div class="contents_aria get_mag">
+        <div class="contents_aria get_mag" id="get_mag">
             <h2><strong class="title_num">3</strong> How to get a 200 MIND MAG</h2>
             <p style="margin-bottom: 20px;font-size: 18px">It may seem like a waste of 20 PD, but it is useful for future characters to</p>
             <div class="photo_aria">
@@ -104,7 +238,7 @@
                 <div class="photo_aria photo_004"><span>4</span><img src="./images/index/beginner_mag_004.jpg" alt=""></div>
             </div>
         </div>
-        <div class="contents_aria psycho_wand">
+        <div class="contents_aria psycho_wand" id="psycho_wand">
             <h2><strong class="title_num">4</strong> How to obtain Psycho Wand</h2>
             <p style="margin-bottom: 5px; font-size: 18px;" >[EP2] Defend the main room: kill 1st 5 del lilies till Pwand drop (ID: whitill)</p>
             <p style="margin-bottom: 20px; color: #ff0b0b;">You only need to watch until 1:07.</p>
@@ -117,7 +251,7 @@
                 </iframe>
             </div>
         </div>      
-        <div class="contents_aria three_seals">
+        <div class="contents_aria three_seals" id="three_seals">
             <h2><strong class="title_num">5</strong> How to obtain Three Seals</h2>
             <p style="margin-bottom: 20px; font-size: 18px">[EP1] Take the Maximum Attack S quest (ID: Oran)</p>
             <p style="margin-bottom: 5px;">Rafoie +30%, Rabarta +30%, Razonde +30%</p>
@@ -130,8 +264,8 @@
                 <div class="photo_aria photo_004"><span>4</span><img src="./images/index/beginner_three_seals_004.jpg" alt=""></div>
             </div>
         </div>      
-        <div class="contents_aria v802">
-            <h2><strong class="title_num">6</strong> How to obtain v802</h2>
+        <div class="contents_aria v802" id="v802">
+            <h2><strong class="title_num">6</strong> How to obtain v802 ✨</h2>
             <p style="margin-bottom: 20px; font-size: 18px">[EP1] Lost SOUL BLADE Quest (ID: whitill)</p>
             <p style="margin-bottom: 20px;">Teck Cast Speed 100% UP / MST +80</p>
             <p style="margin-bottom: 5px; color: #ff0b0b;">Sinow Blue hits very hard, so you need to keep healing with Resta while using Rafoie.</p>
@@ -143,6 +277,82 @@
                 <div class="photo_aria photo_003"><span>3</span><img src="./images/index/beginner_v802_003.jpg" alt=""></div>
                 <div class="photo_aria photo_004"><span>4</span><img src="./images/index/beginner_v802_004.jpg" alt=""></div>
             </div>
+        </div>
+        <div class="contents_aria final" id="final">
+            <h2><strong class="title_num">7</strong> Nuke Force completed ✨</h2>
+            <p style="margin-bottom: 20px; font-size: 18px;color: #c442cf; ">Now you can start hunting for the gear you want.</p>
+            <p style="margin-bottom: 5px;">Tip 1: If you keep an eye on Discord Trades and Tradelists, you can often find items like <span style="color:#ff0b0b">Claw of Elements</span> for 10 PD and <span style="color:#ff0b0b">Adept</span> for 8 PD at a cheap price.</p>
+            <p style="margin-bottom: 20px; color: #ff0b0b;">Tip 2: Get Skyfall. It will definitely help. You can usually buy it for around 20–30 PD.</p>
+            <p style="margin-bottom: 2px;color: #c442cf;">Tip 3: When it comes to weapons, HIT is the top priority. 1 HIT = 1 ATA, so higher HIT directly means better accuracy.</p>
+            <p style="margin-bottom: 20px; color: #c442cf; margin-left: 42px;"> The HIT stat can be increased up to 80. You can raise it using Donate Tickets or Photon Tickets.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001" style="border: 1px solid #222;" ><span>1</span><img src="./images/index/beginner_tip_001.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/beginner_tip_002.jpg" alt=""></div>
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/beginner_tip_003.jpg" alt=""></div>
+            </div>
         </div>      
     </main>
 </body>
+
+<div class="img_popup" id="imgPopup">
+  <div class="popup_dim"></div>
+  <div class="popup_inner">
+    <button class="popup_close">✕</button>
+    <img src="" alt="">
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".contents_aria[id]");
+  const links = document.querySelectorAll(".side_nav a");
+
+  const map = new Map();
+  links.forEach(a => map.set(a.getAttribute("href").slice(1), a));
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        links.forEach(a => a.classList.remove("active"));
+        const id = entry.target.id;
+        const link = map.get(id);
+        if(link) link.classList.add("active");
+      }
+    });
+  }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
+
+  sections.forEach(sec => io.observe(sec));
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("imgPopup");
+  const popupImg = popup.querySelector("img");
+  const closeBtn = popup.querySelector(".popup_close");
+  const dim = popup.querySelector(".popup_dim");
+
+  document.querySelectorAll(".photo_aria img").forEach(img => {
+    img.addEventListener("click", () => {
+      popupImg.src = img.src;
+      popup.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function closePopup(){
+    popup.classList.remove("active");
+    popupImg.src = "";
+    document.body.style.overflow = "";
+  }
+
+  closeBtn.addEventListener("click", closePopup);
+  dim.addEventListener("click", closePopup);
+});
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape"){
+    closePopup();
+  }
+});
+</script>
