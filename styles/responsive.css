@@ -4,7 +4,7 @@
         left: 22px;
         top: 51px;
     }
-    header{align-content: start; margin-top: 20px;}
+    header{align-content: start; padding-top: 20px;}
 }
 @media screen and (max-width:1000px) {
     .best_bg{position: absolute; max-width: 100%;} 
