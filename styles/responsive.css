@@ -42,6 +42,13 @@
         padding: 60px 0;
     }
 }
+
+@media screen and (max-width:400px) {
+    .mid_menu .category_menu{
+        font-size: 13px;
+    }
+}
+
 @media screen and (max-width:1880px) {
 }
 @media screen and (max-width:1400px) {
@@ -495,10 +502,5 @@
     }
     footer .btm_container .right_info .bank {
         margin-top: 10px;
-    }
-}
-@media screen and (max-width:400px){
-    body{
-        min-width: 400px;
     }
 }
