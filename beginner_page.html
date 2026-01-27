@@ -285,8 +285,27 @@
                 <div class="photo_aria photo_004"><span>4</span><img src="./images/index/beginner_mag_004.jpg" alt=""></div>
             </div>
         </div>
+        <div class="contents_aria cure" id="cure">
+            <h2><strong class="title_num">5</strong> Immunity to status effects</h2>
+            <p style="margin-bottom: 20px;font-size: 18px">It prevents annoying status effects like paralysis, shock, and confusion. Having one early on is very helpful.</p>
+            <p style="margin-bottom: 5px; color: #222;">
+                <img class="item_section" src="./images/common/section/32px-Greenill_icon.png" alt="Greenil"> - Pouilly Slime Cure/Paralysis 1/1.14 [Paralysis]
+            </p>
+            <p style="margin-bottom: 5px; color: #222;">
+                <img class="item_section" src="./images/common/section/32px-Yellowboze_icon.png" alt="Yellowboze"> - Pouilly Slime Cure/Shock 1/1.14 [Shock]
+            </p>
+            <p style="margin-bottom: 20px; color: #222;">
+                <img class="item_section" src="./images/common/section/32px-Whitill_icon.png" alt="Whitill"> - Pouilly Slime Cure/Freeze 1/1.14 [Freeze]
+            </p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/beginner_cure_000.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/beginner_cure_001.jpg" alt=""></div>
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/beginner_cure_003.jpg" alt=""></div>
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/beginner_cure_002.jpg" alt=""></div>
+            </div>
+        </div>
         <div class="contents_aria psycho_wand" id="psycho_wand">
-            <h2><strong class="title_num">5</strong> How to obtain Psycho Wand</h2>
+            <h2><strong class="title_num">6</strong> How to obtain Psycho Wand</h2>
             <p style="margin-bottom: 5px; font-size: 18px;" >[EP2] Defend the main room: kill 1st 5 del lilies till Pwand drop (ID: whitill)</p>
             <p style="margin-bottom: 10px; color: #ff0b0b;">You only need to watch until 1:07.</p>
             <p style="margin-bottom: 5px;">Rafoie +30%, Rabarta +30%, Razonde +30%</p>
@@ -299,7 +318,7 @@
             </div>
         </div>      
         <div class="contents_aria three_seals" id="three_seals">
-            <h2><strong class="title_num">6</strong> How to obtain Three Seals</h2>
+            <h2><strong class="title_num">7</strong> How to obtain Three Seals</h2>
             <p style="margin-bottom: 20px; font-size: 18px">[EP1] Take the Maximum Attack S quest (ID: Oran)</p>
             <p style="margin-bottom: 5px;">Rafoie +30%, Rabarta +30%, Razonde +30%</p>
             <p style="margin-bottom: 5px;">all + resist 33</p>
@@ -312,7 +331,7 @@
             </div>
         </div>      
         <div class="contents_aria v802" id="v802">
-            <h2><strong class="title_num">7</strong> How to obtain v802 ✨</h2>
+            <h2><strong class="title_num">8</strong> How to obtain v802 ✨</h2>
             <p style="margin-bottom: 20px; font-size: 18px">[EP1] Lost SOUL BLADE Quest (ID: whitill)</p>
             <p style="margin-bottom: 20px;">Teck Cast Speed 100% UP / MST +80</p>
             <p style="margin-bottom: 5px; color: #ff0b0b;">Sinow Blue hits very hard, so you need to keep healing with Resta while using Rafoie.</p>
@@ -328,7 +347,7 @@ Gifoie usually does not, so it is weaker for control.</p>
             </div>
         </div>
         <div class="contents_aria final" id="final">
-            <h2><strong class="title_num">8</strong> Nuke Force completed ✨</h2>
+            <h2><strong class="title_num">9</strong> Nuke Force completed ✨</h2>
             <p style="margin-bottom: 20px; font-size: 18px;color: #c442cf; ">Now you can start hunting for the gear you want.</p>
             <p style="margin-bottom: 5px;">Tip 1: If you keep an eye on Discord Trades and Tradelists, you can often find items like <span style="color:#ff0b0b">Claw of Elements</span> for 10 PD and <span style="color:#ff0b0b">Adept</span> for 8 PD at a cheap price.</p>
             <p style="margin-bottom: 20px; color: #ff0b0b;">Tip 2: Get Skyfall. It will definitely help. You can usually buy it for around 20–30 PD.</p>
@@ -344,64 +363,64 @@ Gifoie usually does not, so it is weaker for control.</p>
 </body>
 
 <div class="img_popup" id="imgPopup">
-  <div class="popup_dim"></div>
-  <div class="popup_inner">
-    <button class="popup_close">✕</button>
-    <img src="" alt="">
-  </div>
+    <div class="popup_dim"></div>
+    <div class="popup_inner">
+        <button class="popup_close">✕</button>
+        <img src="" alt="">
+    </div>
 </div>
 
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".contents_aria[id]");
-  const links = document.querySelectorAll(".side_nav a");
+    const sections = document.querySelectorAll(".contents_aria[id]");
+    const links = document.querySelectorAll(".side_nav a");
 
-  const map = new Map();
-  links.forEach(a => map.set(a.getAttribute("href").slice(1), a));
+    const map = new Map();
+    links.forEach(a => map.set(a.getAttribute("href").slice(1), a));
 
-  const io = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
+        if(entry.isIntersecting){
         links.forEach(a => a.classList.remove("active"));
         const id = entry.target.id;
         const link = map.get(id);
         if(link) link.classList.add("active");
-      }
+        }
     });
-  }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
 
-  sections.forEach(sec => io.observe(sec));
+    sections.forEach(sec => io.observe(sec));
 });
 </script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const popup = document.getElementById("imgPopup");
-  const popupImg = popup.querySelector("img");
-  const closeBtn = popup.querySelector(".popup_close");
-  const dim = popup.querySelector(".popup_dim");
+    const popup = document.getElementById("imgPopup");
+    const popupImg = popup.querySelector("img");
+    const closeBtn = popup.querySelector(".popup_close");
+    const dim = popup.querySelector(".popup_dim");
 
-  document.querySelectorAll(".photo_aria img").forEach(img => {
+    document.querySelectorAll(".photo_aria img").forEach(img => {
     img.addEventListener("click", () => {
-      popupImg.src = img.src;
-      popup.classList.add("active");
-      document.body.style.overflow = "hidden";
+        popupImg.src = img.src;
+        popup.classList.add("active");
+        document.body.style.overflow = "hidden";
     });
-  });
+    });
 
-  function closePopup(){
+    function closePopup(){
     popup.classList.remove("active");
     popupImg.src = "";
     document.body.style.overflow = "";
-  }
+    }
 
-  closeBtn.addEventListener("click", closePopup);
-  dim.addEventListener("click", closePopup);
+    closeBtn.addEventListener("click", closePopup);
+    dim.addEventListener("click", closePopup);
 });
 document.addEventListener("keydown", e => {
-  if(e.key === "Escape"){
-    closePopup();
-  }
+    if(e.key === "Escape"){
+        closePopup();
+    }
 });
 </script>
