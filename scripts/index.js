@@ -80,7 +80,7 @@ $('.inner .right_menu').click(function(){
 })
 
 
-const popup = document.getElementById('itemPopup');
+/* const popup = document.getElementById('itemPopup');
 const dim = popup.querySelector('.popup_dim');
 const btnClose = popup.querySelector('.popup_close');
 
@@ -168,8 +168,121 @@ document.querySelectorAll('.swiper-slide .item_box').forEach(link => {
   });
 });
 
+// 카드에 보이는 item_info들 복사
+elInfos.innerHTML = '';
+inner.querySelectorAll('.item_info').forEach(p => {
+  elInfos.appendChild(p.cloneNode(true));
+});
+
+// ✅ 여기서 팝업 전용 info 추가
+const data = ITEM_DETAIL[key];
+if (data?.popupInfo?.length) {
+  data.popupInfo.forEach(html => {
+    elInfos.insertAdjacentHTML('beforeend', html);
+  });
+} */
 
 
+const popup = document.getElementById('itemPopup');
+const dim = popup.querySelector('.popup_dim');
+const btnClose = popup.querySelector('.popup_close');
+
+const elTitle = popup.querySelector('.popup_title');
+const elType  = popup.querySelector('.popup_type');
+const elImg   = popup.querySelector('.popup_img img');
+const elSymbols  = popup.querySelector('.popup_symbols');
+const elInfos = popup.querySelector('.popup_infos');
+const elSections = popup.querySelector('.popup_sections');
+
+function openPopup(){
+  popup.classList.add('open');
+  document.body.classList.add('overflow-hidden');
+  popup.setAttribute('aria-hidden', 'false');
+}
+
+function closePopup(){
+  popup.classList.remove('open');
+  document.body.classList.remove('overflow-hidden');
+  popup.setAttribute('aria-hidden', 'true');
+}
+
+btnClose.addEventListener('click', closePopup);
+dim.addEventListener('click', closePopup);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && popup.classList.contains('open')) closePopup();
+});
+
+function renderSections(key){
+  elSections.innerHTML = '';
+  const data = ITEM_DETAIL[key];
+  if (!data?.sections) return;
+
+  data.sections.forEach(sec => {
+    const wrap = document.createElement('div');
+    wrap.className = 'popup_section';
+    wrap.innerHTML = `
+      <h4 class="popup_section_title">${sec.title}</h4>
+      <div class="popup_section_body">
+        ${sec.body.join('')}
+      </div>
+    `;
+    elSections.appendChild(wrap);
+  });
+}
+
+document.querySelectorAll('.swiper-slide .item_box').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+
+    const key = link.dataset.item;
+    const inner = link.querySelector('.item_inner');
+    const data = ITEM_DETAIL[key];
+    if (!data) return;
+
+    // 제목
+    const titleEl = inner.querySelector('.item_title');
+    const typeEl  = titleEl?.querySelector('.item_type');
+    const titleClone = titleEl?.cloneNode(true);
+
+    if (titleClone?.querySelector('.item_type')) {
+      titleClone.querySelector('.item_type').remove();
+    }
+
+    elTitle.textContent = titleClone?.textContent.trim() || '';
+    elType.textContent = typeEl?.textContent.trim() || '';
+
+    // 이미지
+    const imgEl = inner.querySelector('.item_img img');
+    elImg.src = imgEl?.src || '';
+    elImg.alt = imgEl?.alt || elTitle.textContent;
+
+    // 심볼
+    elSymbols.innerHTML = '';
+    inner.querySelectorAll('.Symbol_item').forEach(s => {
+      elSymbols.appendChild(s.cloneNode(true));
+    });
+
+    // item_info 초기화
+    elInfos.innerHTML = '';
+
+    // 카드 item_info 복사
+    inner.querySelectorAll('.item_info').forEach(p => {
+      elInfos.appendChild(p.cloneNode(true));
+    });
+
+    // ✅ popup 전용 info 추가
+    if (data.popupInfo?.length) {
+      data.popupInfo.forEach(html => {
+        elInfos.insertAdjacentHTML('beforeend', html);
+      });
+    }
+
+    // 상세 섹션
+    renderSections(key);
+
+    openPopup();
+  });
+});
 
 let bestSwiperInstance
 

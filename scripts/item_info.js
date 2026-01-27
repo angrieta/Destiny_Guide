@@ -1,5 +1,11 @@
 const ITEM_DETAIL = {
     v803: {
+    popupInfo: [
+        '<p class="item_info">FO Rabarta: 50%</p>',
+        '<p class="item_info">FO Gibarta: 90%</p>',
+        '<p class="item_info">HU/RA Rabarta: 33%</p>',
+        '<p class="item_info">HU/RA Gibarta: 66%</p>',
+    ],
     sections: [
         { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
@@ -32,6 +38,10 @@ const ITEM_DETAIL = {
         ]
     },
     phantasmal_field: {
+    popupInfo: [
+        '<p class="item_info">DFP: 340</p>',
+        '<p class="item_info">EVP: 340</p>',
+    ],
     sections: [
         { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
@@ -73,6 +83,12 @@ const ITEM_DETAIL = {
         ]
     },
     ASTRAL_CLAW: {
+    popupInfo: [
+        '<p class="item_info">Range of Jellen +300%</p>',
+        '<p class="item_info">Range of Resta +100%</p>',
+        '<p class="item_info">Power of Barta +100%</p><br>',
+        '<p class="item_info">Force Only</p>',
+    ],    
     sections: [
         { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span>Item Importance</p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
@@ -111,6 +127,11 @@ const ITEM_DETAIL = {
     },
 
     ASTRAL_CLOAK: {
+    popupInfo: [
+        '<p class="item_info">Si techs 100%</p>',
+        '<p class="item_info">Gi techs 80%</p>',
+        '<p class="item_info">Rabarta 90%</p>',
+    ],
     sections: [
         { title: '<p class="item_important"><span class="star_text">★ ★ ★</span>Item Importance</p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
@@ -156,6 +177,12 @@ const ITEM_DETAIL = {
     },
 
     ASTRAL_WINGS: {
+    popupInfo: [
+        '<p class="item_info">DFP: 180</p>',
+        '<p class="item_info">EVP: 180</p>',
+        '<p class="item_info">State/Maintenance</p>',
+        '<p class="item_info">Trap/Search</p>',
+    ],
     sections: [
         { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
@@ -179,6 +206,37 @@ const ITEM_DETAIL = {
     },
 
     Jointparts: {
+    popupInfo: [
+        '<p class="item_info" style="color:#c442cf">Mille Marteaux</p>',
+            '<p class="item_sub_info">N/H Hits: 4-4-4 (auto-target mode and Range 130.0)</p>',
+            '<p class="item_sub_info">S Hits: 3-3-3Hits (Yes, x9 Divine Punishments in 1 combo. Range/Angle are better than regular DP)</p>',
+            '<p class="item_sub_info">ATP+100 / MST+100</p>',
+            '<p class="item_sub_info" style="margin-bottom:5px">In addition, beattime restriction is removed (You can always use DP)</p>',
+        '<p class="item_info" style="color:#c442cf">Guld Milla</p>',
+            '<p class="item_sub_info">N/H: Buffed Range (190.0)</p>',
+            '<p class="item_sub_info">S: Auto-Target mode</p>',
+            '<p class="item_sub_info">S Hits: 5-5-5</p>',
+            '<p class="item_sub_info" style="margin-bottom:5px">ATP+400',
+        '<p class="item_info" style="color:#c442cf">Dual Bird</p>',
+            '<p class="item_sub_info">N/H/S: Buffed Range (150.0)</p>',
+            '<p class="item_sub_info">Hits: 4-4-4</p>',
+            '<p class="item_sub_info" style="margin-bottom:5px">ATA+20</p>',
+        '<p class="item_info" style="color:#c442cf">Celestial Fusion</p>',
+            '<p class="item_sub_info">N/H/S: Buffed Range (150.0)</p>', 
+            '<p class="item_sub_info">ATA+20</p>',
+            '<p class="item_sub_info">MST+100</p>',
+            '<p class="item_sub_info" style="color: #ff4f4f; margin-bottom:5px"">Dual Casting: Jellen + Zalure (FO only)</p>',
+        '<p class="item_info" style="color:#c442cf">Twin Rika&#96;s Claw</p>',
+            '<p class="item_sub_info">Animation: Claw → Dagger</p>', 
+            '<p class="item_sub_info">Hits: 2-2-2</p>',
+            '<p class="item_sub_info">Targets: 5</p>',
+            '<p class="item_sub_info" style="margin-bottom:5px">Buffed Angle, Range of Tempest special</p>',
+        '<p class="item_info" style="color:#c442cf">Ultimate Double Cannon</p>',
+            '<p class="item_sub_info">Speed: +15%</p>',
+            '<p class="item_sub_info">Buffed Range/Angle of Special Attack</p>',
+            '<p class="item_sub_info">Special Attack Hits EP4 Lizards in the face</p>',
+            '<p class="item_sub_info" style="margin-bottom:5px">ATA+20</p>',
+    ],
     sections: [
         { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
@@ -215,6 +273,8 @@ const ITEM_DETAIL = {
     },
 
     MillenniumHP: {
+    popupInfo: [
+    ],
     sections: [
         { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
@@ -243,6 +303,10 @@ const ITEM_DETAIL = {
     },
 
     Ignis_Engine: {
+    popupInfo: [
+        '<p class="item_info">Recommended for: FO endgame</p>',
+        '<p class="item_info">Note: Needs 2x V802</p>',
+    ],
     sections: [
         { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
