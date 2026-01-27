@@ -18,6 +18,29 @@
         scale: 0.9;
         min-width: 380px;
     }
+    .beginner_guide .beginner_inner h3{
+        font-size: 30px;
+    }
+    .beginner_guide .beginner_inner p{
+        font-size: 14px;
+    }
+    .beginner_guide .beginner_inner .begineer_btn{
+            padding: 10px 30px;
+    }
+    .beginner_guide .beginner_inner {
+        width: 60% !important;
+    }
+    .guide_bg {
+        width: 40%;
+        min-width:300px;
+    }
+}
+@media screen and (max-width:600px) {
+    .guide_bg{display: none;}
+    .beginner_guide .beginner_inner{
+        width: 100% !important;
+        padding: 60px 0;
+    }
 }
 @media screen and (max-width:1880px) {
 }
