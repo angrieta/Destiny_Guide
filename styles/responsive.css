@@ -23,6 +23,7 @@
     .popup_box{padding: 40px 20px 60px 20px;}
     .popup_head{padding: 15px 15px 15px 5px;}
     .item_info {padding: 0 20px 0 5px !important;}
+    .bazaar_sub_text{font-size: 12px;}
 }
 @media screen and (max-width:365px) {
     .popup_head{gap: 10px;}
@@ -57,11 +58,15 @@
         min-width:300px;
     }
 }
-@media screen and (max-width:600px) {
+@media screen and (max-width:1200px) {
     .guide_bg{display: none;}
     .beginner_guide .beginner_inner{
         width: 100% !important;
         padding: 60px 0;
+    }
+    .tech_Trait p{font-size: 12px !important; padding: 4px 3px;}
+    .exclusive_Trait p{
+        font-size: 12px !important; padding: 4px 3px;
     }
 }
 

@@ -460,7 +460,7 @@ main .content_area .new_area .swiper-button-next {
     color: #ffc400;
     position: absolute;
     top: 25px;
-    left: 35px;
+    left: 25px;
 }
 .star_text{
     color: #ffc400; margin-right: 10px;
@@ -710,6 +710,7 @@ main .right_contents {
 main .content_area .Character_info .right_contents .best_slide a .character_info {
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
 }
 
 
@@ -757,7 +758,7 @@ main .right_contents .best_slide .event-scrollbar {
 
 
 /*Beginner's Guide 시작*/
-.beginner_guide{text-align: center; display: flex;}
+.beginner_guide{text-align: center; display: flex; height: 450px;}
 .guide_bg{width: 50%;}
 .guide_bg img{width: 100%; height: 100%;}
 .beginner_guide .beginner_inner{width: 50%; align-content: center;}
