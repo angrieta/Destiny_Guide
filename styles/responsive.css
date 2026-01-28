@@ -14,7 +14,8 @@
     .popup_type{text-align: center; display: block; width: 100%;}
     .guide_btn{font-size: 12px;}
     .item_info{font-size: 14px !important;}
-    .Symbol_item{ right: 0;}
+    .Symbol_item{ right: 15px}
+    .popup_symbols .Symbol_item { right: 0px}
     .Symbol_2 {
     top: 38px;}
     .Symbol_3{
