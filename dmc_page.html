@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DestinyGuide - Damage Cancel</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/header/common/favicon.jpg" type="image/x-icon">
+    <style>
+        main {
+            padding: 60px 120px;
+        }
+        main .dmc_title h2{
+            font-size: 40px;
+            font-weight: 700;
+        }
+        .dmc_gif{
+            padding: 30px 0;
+            min-width: 310px;
+        }
+        .dmc_gif img{
+            width: 100%;}
+        main .dmc_title h3{
+            font-size: 30px;
+            font-weight: 700; margin:30px 0 20px 0;
+        }
+        main .dmc_title p{font-size: 18px; line-height: 1.3;}
+        main .dmc_title ul{ font-size: 22px; line-height: 1.5; font-weight: 600;}
+        main .dmc_title li{ font-size: 22px; line-height: 1.5;}
+        @media screen and (max-width: 983px) {
+            main {
+                padding: 60px 15px !important;
+            }
+        }
+        @media screen and (max-width: 700px) {
+            main .dmc_title h2{font-size: 28px;}
+            main .dmc_title h3{font-size: 24px;}
+            main .dmc_title p{font-size: 14px;}
+            main .dmc_title ul{font-size: 16px;}
+            main .dmc_title li{font-size: 16px;}
+        }
+        
+    </style>
+</head>
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<body>
+    <main>
+        <div class="dmc_title">
+            <h2>1. What is Damage Cancel (DMC)?</h2>
+            <div class="dmc_gif"><img src="/images/index/DMC.gif" alt=""></div>
+            <P>Damage Cancel (DMC) is a phenomenon where, when multiple players attack the same monster at the same time, one player’s damage overwrites another player’s damage, causing it to effectively disappear.</P>
+            <h3>2. Why does this happen?</h3>
+            <p style="padding-bottom: 20px;">In PSO, damage is handled in a very specific way.<br><br>
+                When a player attacks a monster, the client sends data to the server based on the monster's max HP minus its current HP, not the actual damage dealt.<br>
+                regardless of the actual damage dealt.<br>
+                This includes 0 damage hits and status effects such as Jellen and Zalure.<br><br>
+                The server then forwards this information to the other players.
+            </p>
+            <ul style="color: #c442cf;">This happens even if:
+                <li>The attack deals 0 damage</li>
+                <li>The attack only applies status effects such as Jellen or Zalure</li>
+            </ul>
+            <h3>3. How the server processes damage</h3>
+            <p>The server forwards this damage data to all other players. <br><br>
+                However, the server has a critical flaw:<br>
+                it always applies the most recently received damage data, no matter what.<br><br>
+                It does not compare values or check which damage was higher or lower.
+            </p>
+            <h3>4. What happens as a result</h3>
+            <p>If two or more players attack a monster at nearly the same time,<br>
+                one player’s damage can overwrite another player’s damage.<br><br>
+                Because of this, the monster may appear to take far less damage than expected,<br>
+                even while being heavily attacked by multiple players.
+            </p>
+            <h3>5. When DMC becomes especially problematic</h3>
+            <p>DMC is most noticeable when using rapid-fire weapons that deal repeated 0 damage, for example weapons like Last Swan.<br><br>
+                If 0-damage packets are constantly sent, they can repeatedly overwrite real damage,<br>
+                making other players' attacks effectively useless and the monster appear almost invincible.<br>
+            </p>
+            <h3>6. Important notes</h3>
+            <ul style="color: #c442cf;">
+                <li>Attacks that miss due to ATA do not send damage data</li>
+                <li>However, when a special attack fails to activate, a damage packet is sentand can still trigger DMC</li>
+            </ul>
+            <h3>7. One-line summary</h3>
+            <p style="padding-bottom: 60px;">Damage Cancel (DMC) is a PSO server-side issue where simultaneous attacks can overwrite each other,<br>
+                especially due to frequent or 0-damage hits, causing monsters to take far less damage than expected.
+            </p>
+        </div>
+    </main>    
+</body>
+</html>
