@@ -187,11 +187,11 @@ main .content_area .new_area .bazaar_slide {
     font-weight: 600;
 }
 
-.item_title .item_type {
+.item_img .item_type {
     margin-left: 2px;
     position: absolute;
-    top: 8px;
-    left: 9px;
+    top: -19px;
+    left: -2px;
     padding: 4px 8px;
     border-radius: 4px;
     color: #fff;
@@ -199,10 +199,10 @@ main .content_area .new_area .bazaar_slide {
     background-color: #4b61aa;
     font-weight: 700;
 }
-.weapon_skin{
+.item_img .weapon_skin{
     position: absolute;
-    left: 16px;
-    top: 216px;
+    left: 5px;
+    top: 187px;
     background-color: #4b61aa;
     border-top: 1px solid #fff;
     color: #fff !important;
@@ -481,7 +481,7 @@ main .content_area .new_area .swiper-button-next {
     left: 25px;
 }
 .star_text{
-    color: #ffc400; margin-right: 10px;
+    color: #ffc400; margin-right: 10px;item_section_aria
 }
 .Material_title{
     padding: 6px 0 6px 0; font-size: 16px; font-weight: 500; color: #2b20c7;
@@ -795,29 +795,29 @@ main .right_contents .best_slide .event-scrollbar {
 
 
 .destiny_item {
-  width: 100%; 
+    width: 100%; 
 }
 
 .destiny_item_block {
-  margin: 40px 0;
+    margin: 40px 0;
 }
 
 .destiny_item_header {
-  margin-bottom: 14px;
+    margin-bottom: 14px;
 }
 
 .destiny_item_title {
-  font-size: 22px;
-  font-weight: 700;
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .destiny_item_swiper {
-  width: 100%;
+    width: 100%;
 }
 .destiny_item_slide .item_img img{border-radius: 4px; border: 1px solid #fff;}
 .destiny_item_slide .item_img{
     width: 210px; margin: 0 auto; padding: 5px 5px 2px 5px; border-radius: 0px 4px 4px 4px;
-    background-color: #4b61aa;;
+    background-color: #4b61aa; position: relative;
 }
 
 .destiny_item_slide {
@@ -830,20 +830,24 @@ main .right_contents .best_slide .event-scrollbar {
     border-radius: 5px;
     padding: 28px 0 14px 0;
     min-height: 240px;
-    width: 234px;
+    width: 100%;
 }
 
 .destiny_item_nav {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+.item_section_aria {
+    display: flex;
+    justify-content: center;
 }
 
 /* swiper 버튼 위치 고정 */
 .destiny_item_nav .swiper-button-prev,
 .destiny_item_nav .swiper-button-next {
-  position: static;
-  width: 40px;
-  height: 40px;
+    position: static;
+    width: 40px;
+    height: 40px;
 }

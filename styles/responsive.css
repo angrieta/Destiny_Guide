@@ -70,6 +70,7 @@
     }
     .stats_info .max_bar {font-size: 11px !important;}
     .stats_info .stats_bar{font-size: 11px !important;}
+    .destiny_item{padding:0 80px !important}
 }
 
 @media screen and (max-width:400px) {
@@ -324,6 +325,9 @@
         main .content_area .new_area {
             text-align: center;
             padding-bottom: 60px;
+        }
+        .destiny_item {
+        padding: 0 15px !important;
         }
     }
     /* =============================1행 반응형디자인(mobile) */
