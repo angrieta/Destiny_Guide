@@ -68,6 +68,8 @@
     .exclusive_Trait p{
         font-size: 12px !important; padding: 4px 3px;
     }
+    .stats_info .max_bar {font-size: 11px !important;}
+    .stats_info .stats_bar{font-size: 11px !important;}
 }
 
 @media screen and (max-width:400px) {
