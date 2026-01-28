@@ -184,7 +184,7 @@ const ITEM_DETAIL = {
         '<p class="item_info">Trap/Search</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Astral Essence x1 [Halloween Event Only]</div>',
                 '<p class="Material_info">Hallowed World [Extreme] [EP2] <a href="https://youtu.be/UgKX4sGKDE0?si=hfN5_aYLTS0d80sk"  target="blank" class="guide_btn">Guide</a></p>',
