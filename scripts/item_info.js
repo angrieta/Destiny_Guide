@@ -190,7 +190,7 @@ const ITEM_DETAIL = {
                 '<p class="Material_info">Hallowed World [Extreme] [EP2] <a href="https://youtu.be/UgKX4sGKDE0?si=hfN5_aYLTS0d80sk"  target="blank" class="guide_btn">Guide</a></p>',
 
             '<div class="Material_title">Bat Wings x3 [Halloween Event Only]</div>',
-                '<p class="Material_info">Path to Salvation [Event] [EP1] <a href="https://youtu.be/X6VVMUhRHTM"  target="blank" class="guide_btn">Guide</a></p>',
+                '<p class="Material_info">Path to Salvation [Event] [EP1] <a href="https://youtu.be/8eLVEUpkRR8?si=XRye6rCrjqG4hYU4"  target="blank" class="guide_btn">Guide</a></p>',
             
             '<div class="Material_title">Magic Rock &#96;Heart Key&#96;</div>',
                 '<p class="Material_info">Gallon&#96;s Shop for 50 Photon Drops</p>', 
