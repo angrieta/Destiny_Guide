@@ -72,7 +72,10 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
       prevEl: `[data-destiny-prev="${key}"]`
     },
     breakpoints: {
-      340: {
+      300: {
+        slidesPerView: 1.3
+      },
+      381: {
         slidesPerView: 1.5
       },
       500: {
