@@ -312,7 +312,7 @@ const ITEM_DETAIL = {
             '<p class="item_sub_info">MST+100</p>',
             '<p class="item_sub_info" style="color: #ff4f4f; margin-bottom:5px">Hits:1-2-3 (S) (2nd, 3rd attacks are slightly slower)</p>',
         '<p class="item_info">Rathalos Great Sword / Terror Sawd</p>',
-            '<p class="item_sub_info">Slightly longer sword range/p>',
+            '<p class="item_sub_info">Slightly longer sword range</p>',
             '<p class="item_sub_info" style="color: #ff4f4f; margin-bottom:5px">Hits:1-1-4 (3rd attack is slower)</p>',
     ],
     sections: [

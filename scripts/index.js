@@ -61,7 +61,32 @@ const bestSlide = new Swiper('.best_slide',{
     }
 });
 
+document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
+  const key = swiperEl.dataset.destinySwiper;
 
+  new Swiper(swiperEl, {
+    slidesPerView: 3,
+    spaceBetween: 16,
+    navigation: {
+      nextEl: `[data-destiny-next="${key}"]`,
+      prevEl: `[data-destiny-prev="${key}"]`
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 4
+      },
+      1024: {
+        slidesPerView: 5
+      },
+      1440: {
+        slidesPerView: 6
+      },
+      1920: {
+        slidesPerView: 7
+      }
+    }
+  });
+});
 
 
 $('.header_menu').show();
