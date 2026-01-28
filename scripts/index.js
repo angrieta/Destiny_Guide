@@ -73,6 +73,9 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
     },
     breakpoints: {
       300: {
+        slidesPerView: 1.2
+      },
+      340: {
         slidesPerView: 1.3
       },
       381: {
