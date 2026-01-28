@@ -210,8 +210,8 @@ main .content_area .new_area .bazaar_slide {
     padding: 4px 5px 2px 5px; 
     width: 200px; font-size: 13px !important;
 }
-.item_inner .item_title{text-align: center; width: 100%; margin: 8px 0; font-size: 20px; }
-.item_inner .item_name{font-size: 18px; font-weight: 700; color: #222;}
+.destiny_item_slide .item_inner .item_title{text-align: center; width: 100%; margin: 8px 0; font-size: 20px; }
+.destiny_item_slide .item_inner .item_name{font-size: 18px; font-weight: 700; color: #222;}
 .destiny_item_slide .item_inner{position: relative; height: 500px;}
 .destiny_item_slide .important_info {position: absolute; font-size: 14px; color: #ecc92e; top: 9px; right: 11px;}
 .destiny_item_slide .item_info{text-align: center; font-size: 14px; margin: 4px 0; padding: 0 10px;}
@@ -821,16 +821,16 @@ main .right_contents .best_slide .event-scrollbar {
 }
 
 .destiny_item_slide {
-  height: auto;
+    height: auto;
 }
 
-.item_inner {
-  background-color: #f5f5f5;
-  border: 1px solid #4b61aa;
-  border-radius: 5px;
-  padding: 28px 0 14px 0;
-  min-height: 240px;
-  width: 234px;
+.destiny_item_slide .item_inner {
+    background-color: #f5f5f5;
+    border: 1px solid #4b61aa;
+    border-radius: 5px;
+    padding: 28px 0 14px 0;
+    min-height: 240px;
+    width: 234px;
 }
 
 .destiny_item_nav {
