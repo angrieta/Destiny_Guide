@@ -211,7 +211,7 @@ main .content_area .new_area .bazaar_slide {
     width: 200px; font-size: 13px !important;
 }
 .destiny_item_slide .item_inner .item_title{text-align: center; width: 100%; margin: 8px 0; font-size: 20px; }
-.destiny_item_slide .item_inner .item_name{font-size: 18px; font-weight: 700; color: #222;}
+.destiny_item_slide .item_inner .item_name{font-size: 18px; font-weight: 700; color: #222; text-align: center;}
 .destiny_item_slide .item_inner{position: relative; height: 500px;}
 .destiny_item_slide .important_info {position: absolute; font-size: 14px; color: #ecc92e; top: 9px; right: 11px;}
 .destiny_item_slide .item_info{text-align: center; font-size: 14px; margin: 4px 0; padding: 0 10px;}

@@ -224,6 +224,8 @@
     .header_menu .menu_box a {
         font-size: 0.875rem;
     }
+    .destiny_item{padding: 0 80px !important;}
+    
 }
 /* 1250 end */  
 @media screen and (max-width:900px) {
