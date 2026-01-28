@@ -7,7 +7,7 @@ const ITEM_DETAIL = {
         '<p class="item_info">HU/RA Gibarta: 66%</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Darkness Photon Sphere x1</div>',
             '<p class="Material_info">Eclipse Dragon[BOSS] TPD [EP2], VR Test FINAL</p>',
@@ -43,7 +43,7 @@ const ITEM_DETAIL = {
         '<p class="item_info">EVP: 340</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★<span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Darkness Photon Sphere x1</div>',
                 '<p class="Material_info">Eclipse Dragon[BOSS] TPD [EP2], VR Test FINAL</p>',
@@ -53,7 +53,7 @@ const ITEM_DETAIL = {
                 '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
             
             '<div class="Material_title">Cladding of Manipulator III x1</div>',
-                '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://www.youtube.com/watch?v=mPioItCl25A" target="blank" class="guide_btn">Guide Video</a></p>', 
+                '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://www.youtube.com/watch?v=mPioItCl25A" target="blank" class="guide_btn">Guide</a></p>', 
             
             '<div class="Material_title">DF Field x1</div>',
                 '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Redria_icon.png" alt="Redria"> - Merlan 1/1462.87</p>', 
@@ -90,11 +90,11 @@ const ITEM_DETAIL = {
         '<p class="item_info">Force Only</p>',
     ],    
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span>Item Importance</p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Primal Photon Sphere x1</div>',
                 '<p class="Material_info" style="font-size: 17px">Beyond the Nightmare</p>',
-                '<p class="Material_info">Nightmare Dominator VI [EP1] <a href="https://youtu.be/mPioItCl25A?si=GbMs-ZtlCl78g3W-"  target="blank" class="guide_btn">Guide Video</a></p>',
+                '<p class="Material_info">Nightmare Dominator VI [EP1] <a href="https://youtu.be/mPioItCl25A?si=GbMs-ZtlCl78g3W-"  target="blank" class="guide_btn">Guide</a></p>',
 
             '<div class="Material_title">Millennium Photon Core x10</div>',
                 '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
@@ -133,11 +133,11 @@ const ITEM_DETAIL = {
         '<p class="item_info">Rabarta 90%</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★</span>Item Importance</p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Primal Photon Sphere x1</div>',
                 '<p class="Material_info" style="font-size: 17px">Beyond the Nightmare</p>',
-                '<p class="Material_info">Nightmare Dominator VI [EP1] <a href="https://youtu.be/mPioItCl25A?si=GbMs-ZtlCl78g3W-"  target="blank" class="guide_btn">Guide Video</a></p>',
+                '<p class="Material_info">Nightmare Dominator VI [EP1] <a href="https://youtu.be/mPioItCl25A?si=GbMs-ZtlCl78g3W-"  target="blank" class="guide_btn">Guide</a></p>',
 
             '<div class="Material_title">Millennium Photon Core x8</div>',
                 '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
@@ -184,13 +184,13 @@ const ITEM_DETAIL = {
         '<p class="item_info">Trap/Search</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Astral Essence x1 [Halloween Event Only]</div>',
-                '<p class="Material_info">Hallowed World [Extreme] [EP2] <a href="https://youtu.be/UgKX4sGKDE0?si=hfN5_aYLTS0d80sk"  target="blank" class="guide_btn">Guide Video</a></p>',
+                '<p class="Material_info">Hallowed World [Extreme] [EP2] <a href="https://youtu.be/UgKX4sGKDE0?si=hfN5_aYLTS0d80sk"  target="blank" class="guide_btn">Guide</a></p>',
 
             '<div class="Material_title">Bat Wings x3 [Halloween Event Only]</div>',
-                '<p class="Material_info">Path to Salvation [Event] [EP1] <a href="https://youtu.be/X6VVMUhRHTM"  target="blank" class="guide_btn">Guide Video</a></p>',
+                '<p class="Material_info">Path to Salvation [Event] [EP1] <a href="https://youtu.be/X6VVMUhRHTM"  target="blank" class="guide_btn">Guide</a></p>',
             
             '<div class="Material_title">Magic Rock &#96;Heart Key&#96;</div>',
                 '<p class="Material_info">Gallon&#96;s Shop for 50 Photon Drops</p>', 
@@ -238,10 +238,10 @@ const ITEM_DETAIL = {
             '<p class="item_sub_info" style="margin-bottom:5px">ATA+20</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Cladding of Manipulator III x7</div>',
-                '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://www.youtube.com/watch?v=mPioItCl25A" target="blank" class="guide_btn">Guide Video</a></p>', 
+                '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://www.youtube.com/watch?v=mPioItCl25A" target="blank" class="guide_btn">Guide</a></p>', 
             
             '<div class="Material_title">Syncesta x5</div>',
                 '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Oran_icon.png" alt="Oran"> - Hildetorr 1/21.33</p>',
@@ -276,7 +276,7 @@ const ITEM_DETAIL = {
     popupInfo: [
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Millennium Photon Core x5</div>',
                 '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
@@ -316,7 +316,7 @@ const ITEM_DETAIL = {
             '<p class="item_sub_info" style="color: #ff4f4f; margin-bottom:5px">Hits:1-1-4 (3rd attack is slower)</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span>Item Importance</p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Millennium Photon Core x25</div>',
                 '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
@@ -346,7 +346,7 @@ const ITEM_DETAIL = {
 
             '<div class="Material_title">Weapon Crystal Badge x10</div>',
                 '<p class="Material_info">Harmony of Despair I [EP1]</p>',  
-                '<p class="Material_info">VR Test Destiny: Underground [EP2]</p>',  
+                '<p class="Material_info">VR Test Destiny: Underground [EP2]</p>',
                 '<p class="Material_info">VT Test FINAL: Catastrophe [EP2]</p>',  
                 '<p class="Material_info">Legendary Item Crate</p>', 
             ] },
