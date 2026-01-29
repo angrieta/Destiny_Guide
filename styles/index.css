@@ -538,9 +538,10 @@ main .content_area .new_area .swiper-button-next {
 
 /* character 시작 */
 main .content_area {}
-
+.character_pros{width: 100%;}
 .Character_info {position: relative;}
-
+.character_info_aria{
+    width: 90%;}
 .Character_info .swiper-wrapper {margin-top: 30px;}
 
 .Character_info .swiper-slide {
