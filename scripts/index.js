@@ -10,7 +10,6 @@ const newSlide = new Swiper('.bazaar_slide',{
     watchOverflow: true,
     centeredSlides:true,
     simulateTouch: true,
-    touchStartPreventDefault: false,   // 링크/스크롤 요소랑 충돌 줄임
     passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
 
     threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
@@ -50,15 +49,13 @@ const bestSlide = new Swiper('.best_slide',{
     }, */
     //속성
     loop:true, //무한 반복 설정
-    slidesPerView: 2,  //한번에 표시되는 슬라이드 개수
     //(위)표시 슬라이드 개수보다 실제 슬라이드 개수가 많아야함 !!
     spaceBetween:0,
-    //centeredSlides:true,
+    centeredSlides:true,
     scrollbar: {
         el: ".best_slide .event-scrollbar",
     },
      simulateTouch: true,
-    touchStartPreventDefault: false,   // 링크/스크롤 요소랑 충돌 줄임
     passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
 
     threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
@@ -97,7 +94,6 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
       type: "progressbar",
     },
     simulateTouch: true,
-    touchStartPreventDefault: false,   // 링크/스크롤 요소랑 충돌 줄임
     passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
 
     threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
