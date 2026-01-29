@@ -9,6 +9,18 @@ const newSlide = new Swiper('.bazaar_slide',{
     initialSlide: 2,         // ← 첫번째 슬라이드부터            // ← 루프 켜면 다시 중앙정렬됨
     watchOverflow: true,
     centeredSlides:true,
+    simulateTouch: true,
+    touchStartPreventDefault: false,   // 링크/스크롤 요소랑 충돌 줄임
+    passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
+
+    threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
+    resistanceRatio: 0.85,
+
+    watchSlidesProgress: true,
+
+    // 슬라이드 클릭 요소가 많으면 이것도 도움됨
+    preventClicks: false,
+    preventClicksPropagation: false,
     navigation: {
         nextEl: ".bazaar_inner .swiper-button-next",
         prevEl: ".bazaar_inner .swiper-button-prev",
@@ -45,6 +57,18 @@ const bestSlide = new Swiper('.best_slide',{
     scrollbar: {
         el: ".best_slide .event-scrollbar",
     },
+     simulateTouch: true,
+    touchStartPreventDefault: false,   // 링크/스크롤 요소랑 충돌 줄임
+    passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
+
+    threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
+    resistanceRatio: 0.85,
+
+    watchSlidesProgress: true,
+
+    // 슬라이드 클릭 요소가 많으면 이것도 도움됨
+    preventClicks: false,
+    preventClicksPropagation: false,
     breakpoints: { 
         1920: {
             slidesPerView: 3.5,
@@ -65,12 +89,25 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
   const key = swiperEl.dataset.destinySwiper;
 
   new Swiper(swiperEl, {
+    loop:true,
     slidesPerView: 3,
     spaceBetween: 16,
-    navigation: {
-      nextEl: `[data-destiny-next="${key}"]`,
-      prevEl: `[data-destiny-prev="${key}"]`
+    pagination: {
+      el: `[data-destiny-pagination="${key}"]`,
+      type: "progressbar",
     },
+    simulateTouch: true,
+    touchStartPreventDefault: false,   // 링크/스크롤 요소랑 충돌 줄임
+    passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
+
+    threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
+    resistanceRatio: 0.85,
+
+    watchSlidesProgress: true,
+
+    // 슬라이드 클릭 요소가 많으면 이것도 도움됨
+    preventClicks: false,
+    preventClicksPropagation: false,
     breakpoints: {
       300: {
         slidesPerView: 1.2
@@ -80,6 +117,9 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
       },
       381: {
         slidesPerView: 1.5
+      },
+      430: {
+        slidesPerView: 1.8
       },
       500: {
         slidesPerView: 2
@@ -91,7 +131,10 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
         slidesPerView: 2.8
       },
       800: {
-        slidesPerView: 3
+        slidesPerView: 3.2
+      },
+      982: {
+        slidesPerView: 3.
       },
       1200: {
         slidesPerView: 4
