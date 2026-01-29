@@ -405,9 +405,13 @@ function initBestSwiper() {
             spaceBetween: 0,
             slidesPerView: 1.3,  //1024이하 일때
         },
-        300: {
+        350: {
             spaceBetween: 0,
             slidesPerView: 1.2,  //1024이하 일때
+        },
+        300: {
+            spaceBetween: 0,
+            slidesPerView: 1.1,  //1024이하 일때
         }
     },
     loop:true, //무한 반복 설정
