@@ -19,7 +19,6 @@ const newSlide = new Swiper('.bazaar_slide',{
 
     // 슬라이드 클릭 요소가 많으면 이것도 도움됨
     preventClicks: false,
-    preventClicksPropagation: false,
     navigation: {
         nextEl: ".bazaar_inner .swiper-button-next",
         prevEl: ".bazaar_inner .swiper-button-prev",
@@ -65,7 +64,6 @@ const bestSlide = new Swiper('.best_slide',{
 
     // 슬라이드 클릭 요소가 많으면 이것도 도움됨
     preventClicks: false,
-    preventClicksPropagation: false,
     breakpoints: { 
         1920: {
             slidesPerView: 3.5,
@@ -103,7 +101,6 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
 
     // 슬라이드 클릭 요소가 많으면 이것도 도움됨
     preventClicks: false,
-    preventClicksPropagation: false,
     breakpoints: {
       300: {
         slidesPerView: 1.2
