@@ -225,7 +225,8 @@
         font-size: 0.875rem;
     }
     .destiny_item{padding: 0 80px !important;}
-    
+    main .content_area .Character_info .right_contents .best_slide{
+    width: 88%;}
 }
 /* 1250 end */  
 @media screen and (max-width:900px) {
@@ -331,6 +332,12 @@
         .destiny_item {
         padding: 0 15px !important;
         }
+        main .content_area .Character_info .right_contents{
+            padding: 0 0px;
+        }
+        main .content_area .Character_info .right_contents .best_slide {
+        width: 100%;
+    }
     }
     /* =============================1행 반응형디자인(mobile) */
 @media screen and (max-width:600px){

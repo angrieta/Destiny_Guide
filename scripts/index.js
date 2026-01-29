@@ -16,7 +16,10 @@ const newSlide = new Swiper('.bazaar_slide',{
     resistanceRatio: 0.85,
 
     watchSlidesProgress: true,
-
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
     // 슬라이드 클릭 요소가 많으면 이것도 도움됨
     preventClicks: false,
     navigation: {
@@ -27,11 +30,8 @@ const newSlide = new Swiper('.bazaar_slide',{
         1920: {
             slidesPerView: 5,
         },
-        1500: {
-            slidesPerView: 5,
-        },
         1024: {
-            slidesPerView: 3.5, // ✅ 1500 미만 구간
+            slidesPerView: 3.2, // ✅ 1500 미만 구간
         },
         700: {
             slidesPerView: 2.4, // ✅ 1500 미만 구간
@@ -40,44 +40,6 @@ const newSlide = new Swiper('.bazaar_slide',{
             slidesPerView: 1, // 1024 이하
         }
     }    
-});
-const bestSlide = new Swiper('.best_slide',{
-/*     autoplay:{
-        delay:2000, //다음 슬라이드전환까지 대기시간
-        disableOnInteraction:true, // 사용자 상호작용 상관없이 계속 진행
-    }, */
-    //속성
-    loop:true, //무한 반복 설정
-    //(위)표시 슬라이드 개수보다 실제 슬라이드 개수가 많아야함 !!
-    spaceBetween:0,
-    centeredSlides:true,
-    scrollbar: {
-        el: ".best_slide .event-scrollbar",
-    },
-     simulateTouch: true,
-    passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
-
-    threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
-    resistanceRatio: 0.85,
-
-    watchSlidesProgress: true,
-
-    // 슬라이드 클릭 요소가 많으면 이것도 도움됨
-    preventClicks: false,
-    breakpoints: { 
-        1920: {
-            slidesPerView: 3.5,
-            spaceBetween: 30,
-        },
-        1000: {
-            slidesPerView: 3.5,
-            spaceBetween: 30,
-        },
-        0: {
-            spaceBetween: 13,
-            slidesPerView: 1,  //1024이하 일때
-        }
-    }
 });
 
 document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
@@ -93,7 +55,10 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
     },
     simulateTouch: true,
     passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
-
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },  
     threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
     resistanceRatio: 0.85,
 
@@ -137,7 +102,7 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
       },
       1920: {
         slidesPerView: 6
-      }
+      },
     }
   });
 });
@@ -369,32 +334,102 @@ function initBestSwiper() {
   if (bestSwiperInstance) bestSwiperInstance.destroy(true, true)
 
   bestSwiperInstance = new Swiper(".best_slide", {
-    slidesPerView: 2,  //한번에 표시되는 슬라이드 개수
-    //(위)표시 슬라이드 개수보다 실제 슬라이드 개수가 많아야함 !!
-    spaceBetween:0,
-    //centeredSlides:true,
     scrollbar: {
         el: ".best_slide .event-scrollbar",
     },
     breakpoints: { 
         1920: {
-            slidesPerView: 3.5,
+            slidesPerView: 5.2,
+            spaceBetween: 0,
+        },
+        1869: {
+            slidesPerView: 5,
+            spaceBetween: 0,
+        },
+        1800: {
+            slidesPerView: 5.1,
+            spaceBetween: 0,
+        },
+        1680: {
+            slidesPerView: 4.7,
+            spaceBetween: 0,
+        },
+        1570: {
+            slidesPerView: 4.7,
+            spaceBetween: 0,
+        },
+        1450: {
+            slidesPerView: 3.9,
             spaceBetween: 30,
         },
-        1000: {
-            slidesPerView: 3.5,
-            spaceBetween: 30,
+        1400: {
+            slidesPerView: 3.8,
+            spaceBetween: 0,
         },
-        0: {
-            spaceBetween: 13,
+        1320: {
+            slidesPerView: 3.8,
+            spaceBetween: 0,
+        },
+        1285: {
+            slidesPerView: 3.5,
+            spaceBetween: 0,
+        },
+        1200: {
+            slidesPerView: 3.2,
+            spaceBetween: 0,
+        },
+        1170: {
+            slidesPerView: 3.1,
+            spaceBetween: 0,
+        },
+        983: {
+            spaceBetween: 20,
             slidesPerView: 3,  //1024이하 일때
+        },
+        780: {
+            spaceBetween: 15,
+            slidesPerView: 2.8,  //1024이하 일때
+        },
+        630: {
+            spaceBetween: 0,
+            slidesPerView: 1.8,  //1024이하 일때
+        },
+        500: {
+            spaceBetween: 0,
+            slidesPerView: 1.5,  //1024이하 일때
+        },
+        400: {
+            spaceBetween: 0,
+            slidesPerView: 1.3,  //1024이하 일때
+        },
+        300: {
+            spaceBetween: 0,
+            slidesPerView: 1.2,  //1024이하 일때
         }
     },
-    loop: true,
-    pagination: { el: ".best_slide .swiper-pagination", clickable: true },
+    loop:true, //무한 반복 설정
+    slidesPerView:4.5,  //한번에 표시되는 슬라이드 개수
+    //(위)표시 슬라이드 개수보다 실제 슬라이드 개수가 많아야함 !!
+    slidesPerGroup:1,
+    centeredSlides: false,   // ← 이거 반드시 꺼야 함
+    initialSlide: 2,         // ← 첫번째 슬라이드부터            // ← 루프 켜면 다시 중앙정렬됨
+    watchOverflow: true,
+    centeredSlides:true,
+    simulateTouch: true,
+    passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
+
+    threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
+    resistanceRatio: 0.85,
+
+    watchSlidesProgress: true,
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+    },
+    // 슬라이드 클릭 요소가 많으면 이것도 도움됨
     navigation: {
-      nextEl: ".best_slide .swiper-button-next",
-      prevEl: ".best_slide .swiper-button-prev",
+        nextEl: ".bazaar_inner .swiper-button-next",
+        prevEl: ".bazaar_inner .swiper-button-prev",
     },
   })
 }
