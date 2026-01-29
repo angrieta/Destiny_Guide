@@ -172,6 +172,7 @@ main .content_area .new_area .bazaar_slide {
     margin: 0 auto;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     will-change: transform;
+    background-color: #fff;
 }
 
 .bazaar_slide .item_inner:hover {
@@ -187,6 +188,18 @@ main .content_area .new_area .bazaar_slide {
     font-weight: 600;
 }
 
+.item_type {
+    margin-left: 2px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #4b61aa;
+    font-weight: 700;
+}
 .item_img .item_type {
     margin-left: 2px;
     position: absolute;

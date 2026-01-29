@@ -329,6 +329,10 @@
             text-align: center;
             padding-bottom: 60px;
         }
+        main .content_area .new_area .bazaar_slide{
+            width: 100%; scale: 0.9;  
+
+        }
         .destiny_item {
         padding: 0 15px !important;
         }
@@ -495,6 +499,9 @@
     }
     .header_menu .menu_box a {
         font-size: 0.75rem;
+    }
+    .new_area>p{
+        margin-bottom: 0px !important;
     }
 }
 @media screen and (max-width:810px){

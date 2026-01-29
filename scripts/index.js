@@ -36,8 +36,11 @@ const newSlide = new Swiper('.bazaar_slide',{
         700: {
             slidesPerView: 2.4, // ✅ 1500 미만 구간
         },
+        450: {
+            slidesPerView: 1.6, // ✅ 1500 미만 구간
+        },
         0: {
-            slidesPerView: 1, // 1024 이하
+            slidesPerView: 1.2, // 1024 이하
         }
     }    
 });
