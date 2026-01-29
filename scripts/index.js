@@ -104,7 +104,7 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
         slidesPerView: 5
       },
       1920: {
-        slidesPerView: 6
+        slidesPerView: 6.7
       },
     }
   });
