@@ -399,11 +399,11 @@ function initBestSwiper() {
         },
         500: {
             spaceBetween: 0,
-            slidesPerView: 1.5,  //1024이하 일때
+            slidesPerView: 1.6,  //1024이하 일때
         },
         400: {
             spaceBetween: 0,
-            slidesPerView: 1.3,  //1024이하 일때
+            slidesPerView: 1.4,  //1024이하 일때
         },
         350: {
             spaceBetween: 0,
