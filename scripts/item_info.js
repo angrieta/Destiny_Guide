@@ -53,7 +53,7 @@ const ITEM_DETAIL = {
                 '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
             
             '<div class="Material_title">Cladding of Manipulator III x1</div>',
-                '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://www.youtube.com/watch?v=mPioItCl25A" target="blank" class="guide_btn">Guide</a></p>', 
+                '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://youtu.be/dJzVffLygqk?si=km4Eh-qVr9tjGsTl" target="blank" class="guide_btn">Guide</a></p>', 
             
             '<div class="Material_title">DF Field x1</div>',
                 '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Redria_icon.png" alt="Redria"> - Merlan 1/1462.87</p>', 
@@ -241,7 +241,7 @@ const ITEM_DETAIL = {
         { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
             '<div class="Material_title">Cladding of Manipulator III x7</div>',
-                '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://www.youtube.com/watch?v=mPioItCl25A" target="blank" class="guide_btn">Guide</a></p>', 
+                '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://youtu.be/dJzVffLygqk?si=km4Eh-qVr9tjGsTl" target="blank" class="guide_btn">Guide</a></p>', 
             
             '<div class="Material_title">Syncesta x5</div>',
                 '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Oran_icon.png" alt="Oran"> - Hildetorr 1/21.33</p>',
