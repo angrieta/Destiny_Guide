@@ -46,66 +46,34 @@ const newSlide = new Swiper('.bazaar_slide',{
 });
 
 document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
-  const key = swiperEl.dataset.destinySwiper;
+  const paginationEl = swiperEl.querySelector('.swiper-pagination');
 
   new Swiper(swiperEl, {
-    loop:true,
+    loop: true,
     slidesPerView: 3,
     spaceBetween: 16,
     pagination: {
-      el: `[data-destiny-pagination="${key}"]`,
-      type: "progressbar",
+      el: paginationEl,
+      type: 'progressbar',
     },
-    simulateTouch: true,
-    passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
-    keyboard: {
-      enabled: true,
-      onlyInViewport: true,
-    },  
-    threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
+    keyboard: { enabled: true, onlyInViewport: true },
+    threshold: 8,
     resistanceRatio: 0.85,
-
     watchSlidesProgress: true,
-
-    // 슬라이드 클릭 요소가 많으면 이것도 도움됨
     preventClicks: false,
     breakpoints: {
-      300: {
-        slidesPerView: 1.2
-      },
-      340: {
-        slidesPerView: 1.3
-      },
-      381: {
-        slidesPerView: 1.5
-      },
-      430: {
-        slidesPerView: 1.8
-      },
-      500: {
-        slidesPerView: 2
-      },
-      600: {
-        slidesPerView: 2.5
-      },
-      684: {
-        slidesPerView: 2.8
-      },
-      800: {
-        slidesPerView: 3.2
-      },
-      982: {
-        slidesPerView: 3.
-      },
-      1200: {
-        slidesPerView: 4
-      },
-      1440: {
-        slidesPerView: 5
-      },
-      1920: {
-        slidesPerView: 6.7
-      },
+      300: { slidesPerView: 1.2 },
+      340: { slidesPerView: 1.3 },
+      381: { slidesPerView: 1.5 },
+      430: { slidesPerView: 1.8 },
+      500: { slidesPerView: 2 },
+      600: { slidesPerView: 2.5 },
+      684: { slidesPerView: 2.8 },
+      800: { slidesPerView: 3.2 },
+      982: { slidesPerView: 3 },
+      1200: { slidesPerView: 4 },
+      1440: { slidesPerView: 5 },
+      1920: { slidesPerView: 6.7 },
     }
   });
 });
