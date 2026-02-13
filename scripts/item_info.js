@@ -286,7 +286,7 @@ const ITEM_DETAIL = {
                 '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Greenill_icon.png" alt="Greenil"> - Saint Million 1/28.44</p>',
 
             '<div class="Material_title">CATACLYSM SHIELD x1</div>',
-                '<p class="Material_info"<img class="item_section" src="./images/common/section/32px-Yellowboze_icon.png" alt="Yellowboze"> - Epsilon 1/341.33</p>', 
+                '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Yellowboze_icon.png" alt="Yellowboze"> - Epsilon 1/341.33</p>', 
                 '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Oran_icon.png" alt="Oran"> - Gal Gryphon 1/102.4</p>', 
 
             '<div class="Material_title">MOLTEN RING x1</div>',
