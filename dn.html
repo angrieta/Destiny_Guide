@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DestinyGuide - beginner</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/header/common/favicon.jpg" type="image/x-icon">
+    
+    <style>
+        html{
+        scroll-behavior: smooth;
+        }
+        .item_section{
+            width: 22px;
+            position: relative; top: 3px;}
+        main p{
+            line-height: 1.3;}
+        /* 네비게이션 시작 */
+        .photo_aria img{
+            cursor: zoom-in;
+        }
+        .side_nav{
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 9999;
+            }
+
+            .side_nav a{
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.18);
+            transition: transform 160ms ease, background 160ms ease;
+            }
+
+            .side_nav a:hover{
+            transform: scale(1.08);
+            background: #c442cf;
+            }
+
+            /* 모바일에서는 숨김(선택) */
+            @media (max-width: 768px){
+                .side_nav{ display:none; 
+                }
+                .popup_inner{
+                position: absolute;
+
+                width: 90%;
+            }
+            }
+            /* 네비게이션 종료 */
+            .img_popup{
+                position: fixed;
+                inset: 0;
+                z-index: 99999;
+                display: none;
+            }
+
+                .img_popup.active{
+                display: block;
+            }
+
+                .popup_dim{
+                position: absolute;
+                inset: 0;
+                background: rgba(0,0,0,0.75);
+            }
+
+                .popup_inner{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 600px;
+            }
+
+                .popup_inner img{
+                width: 100%;
+                height: auto;
+                max-height: 90vh;
+                display: block;
+                border-radius: 12px;
+            }
+
+                .popup_close{
+                position: absolute;
+                top: -42px;
+                right: 0;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                border: 0;
+                background: #fff;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+        main{padding: 60px 120px;}
+        main .beginner_title{}
+        main .beginner_title h2{font-size: 40px; font-weight: 700;}
+        main .beginner_title h3{font-size: 18px; font-weight: 500; color: #ff4f4f; padding: 15px 0;}
+        main .beginner_title p{margin-bottom: 5px;}
+        .contents_aria{width: 100%;}
+        .contents_aria h2{font-size: 30px; font-weight: 700; padding: 40px 0 15px 0;}
+        .contents_aria .photo_aria{
+            display: grid;
+            gap: 12px;
+            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            position: relative;
+            }
+
+            .contents_aria .photo_aria img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            }
+        .contents_aria .photo_aria span{padding: 4px 8px; background-color: #222; color: #fff; position: absolute;
+            box-shadow: 1px 1px 4px #fff;
+        }
+        .title_num{
+            padding: 4px 10px; border: 1px solid #222;
+            position: relative;
+            bottom: 4px; margin-right: 4px; font-weight: 700
+            ;
+        }
+        .youtube_wrap{
+            position: relative;
+            width: 100%;
+            max-width: 826px;
+            padding-bottom: 28%;
+            height: 0;
+        }
+
+        .youtube_wrap iframe{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @media screen and (max-width: 1250px) {
+            main {
+                padding: 60px 80px;
+            }
+        }
+        @media screen and (max-width: 983px) {
+            main {
+                padding: 60px 15px;
+            }
+            main .beginner_title h2{
+                font-size: 34px;
+            }
+            .contents_aria h2{
+                font-size: 24px;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<!-- <nav class="side_nav">
+    <a href="#meseta">Check<br>List</a>
+    <a href="#quickslot">Quick<br>slot</a>
+    <a href="#get_mag">Mag</a>
+    <a href="#levelup">Leveling</a>
+    <a href="#cure">Cure</a>
+    <a href="#tech">Disk</a>
+    <a href="#psycho_wand">Psycho<br>Wand</a>
+    <a href="#three_seals">Three<br>seals</a>
+    <a href="#v802">V802</a>
+    <a href="#final">TIP</a>
+</nav> -->
+
+<body>
+    <main>
+        <div class="beginner_title">
+            <h2>Distorted Nightmare</h2>
+            <h3>Support Force is mandatory</h3>
+            <p style="color: #c442cf;">Force gear: PARAGON FRAME + SKYFALL + Glide Divine S + (Golden Halo)</p>
+            <p style="color: #c442cf;">minimum recommended HP: 2000</p>
+
+        </div>
+        <div class="contents_aria meseta_aria" id="meseta">
+            <h2><strong class="title_num" style="padding:4px 3px;">✨</strong> Pre-boss checklist</h2>
+            <p style="color: #c442cf; padding: 15px 0; font-size: 18px; color: #ff4f4f;">(O) and similar symbols represent the boss’s skills. The skill name appears before it is used, so be sure to check it and react accordingly.</p>
+            <p style="margin-bottom: 5px; font-size: 18px">(O): Circle shaped hitbox, explosion</p>
+            <p style="margin-bottom: 5px; font-size: 18px">(O): Damage is determined by how far from the center of explosion</p>
+            <p style="margin-bottom: 5px; font-size: 18px">(!): This attack is inevitable</p>
+            <p style="margin-bottom: 5px; font-size: 18px">((<-->)): Circle AoE, you have to get away from each other</p>
+            <p style="margin-bottom: 5px; font-size: 18px">(-><-): Stack Damage, you have to group up</p>
+            <p style="margin-bottom: 5px; font-size: 18px">(III): Straight line attack (vertical)</p>
+            <p style="margin-bottom: 5px; font-size: 18px">(-): Straight attack (horizontal)</p>
+            <p style="margin-bottom: 5px; font-size: 18px">[*]: Various direction attack</p>
+            <p style="margin-bottom: 5px; font-size: 18px">Resist Down [X]: Increases damage of [X] attribute attack</p>
+            <p style="margin-bottom: 15px; font-size: 18px">Resist Reset [X]: Reset debuff of [X] attribute</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/dn_002.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/dn_001.jpg" alt=""></div>
+                <div class="photo_aria photo_002" style="border: 1px solid #222;"><span>3</span><img src="./images/index/dn_003.jpg" alt=""></div>
+            </div>
+        </div>
+        <div class="contents_aria meseta_aria" id="meseta">
+            <h2><strong class="title_num">1</strong> [ ! ] <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[<<-->>]</span> Blazing Burst Breath</h2>
+            <p style="color: #c442cf; font-size: 18px">If players overlap, the damage stacks and becomes more dangerous.</p>
+            <p style="margin-bottom: 20px; font-size: 18px">All players move to their corners without overlapping</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/dn_004.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/dn_006.jpg" alt=""></div>
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/dn_005.jpg" alt=""></div>
+            </div>
+        </div>
+        <div class="contents_aria quickslot" id="quickslot">
+            <h2><strong class="title_num">2</strong> <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">(O)</span> Super Explosion</h2>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">You can avoid it by standing against the wall on the opposite side of the glowing effect.</p>
+            <p style="margin-bottom: 20px; font-size: 18px">This pattern does not damage nearby players even if someone dies.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/dn_009.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/dn_007.jpg" alt=""></div>
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/dn_008.jpg" alt=""></div>
+            </div>
+        </div>      
+        <div class="contents_aria levelup" id="levelup">
+            <h2><strong class="title_num">3</strong>[ ! ] <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">->> << -</span> Toxic Blast</h2>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">All players should group at the center wall closest to the boss.</p>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">A heart effect will appear upon successful grouping.</p>
+            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px">Force keeps spamming Resta to prevent teammates from dying.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/dn_013.jpg" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/dn_011.jpg" alt=""></div>
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/dn_012.jpg" alt=""></div>
+
+            </div>
+        </div>      
+        <div class="contents_aria get_mag" id="get_mag">
+            <h2><strong class="title_num">4</strong> <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[O]</span> Ancient Rafoie - Round -</h2>
+            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px">Forces must use Resta to heal players who are hit by explosions or falling rocks during this phase.</p>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">Step 1 : The explosions go around in a full circle in this order: Red Warp → Blue Warp → Ill Gill → Green Warp → Red Warp.</p>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">Step 2 : After the explosion cycle ends, explosions occur at each player's position. Spread out and stand at different wall centers to avoid stacked damage.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001 " style="border: 1px solid #222;"><span>1</span><img src="./images/index/moving_001.gif" alt=""></div>
+                <div class="photo_aria photo_001"><span>2</span><img src="./images/index/moving_002.gif" alt=""></div>
+                <div class="photo_aria photo_001"><span>3</span><img src="./images/index/moving_003.gif" alt=""></div>
+            </div>
+        </div>
+        <div class="contents_aria cure" id="cure">
+            <h2><strong class="title_num">5</strong> <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[O]</span> Ancient Rafoie - Target -</h2>
+            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px">Force should use Resta to keep players alive while the boss fires lasers.</p>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">Step 1 : Avoid the corners, as the electric fields will instantly kill you.</p>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">Step 2 : Bombs appear on each player in the following order: Red → Green → Yellow → Blue, exploding from their character.</p>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">Step 3 : Bomb shows a green circle, then turns purple and locks to the ground at that position.</p>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">Step 4 : [★] Do not move during the green effect. Move only after it turns purple.</p>
+            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px">Based on 2 players, the bombs explode in order: Red → Green → Red → Green.</p>
+            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px">Based on 3 players, the bombs explode in order: Red → Green → Yellow → Red.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/moving_004.gif" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/moving_005.gif" alt=""></div>
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/moving_006.gif" alt=""></div>
+            </div>
+        </div>
+        <div class="contents_aria tech" id="tech">
+            <h2><strong class="title_num">6</strong> [!] <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[III]</span> Ancient Razonde</h2>
+            <p style="margin-bottom: 10px; color: #ff0b0b; font-size: 18px">Based on 4 players: Electric attacks target players in order — Red → Green → Yellow → Blue.</p>
+                <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">The attack is always fired 4 times, regardless of the number of players.</p>
+                <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">Based on 2 players, the laser targets in order: Red → Green → Red → Green.</p>
+                <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">Based on 3 players, the laser targets in order: Red → Green → yellow → Red</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/moving_007.gif" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/moving_008.gif" alt=""></div>
+            </div>
+        </div>           
+    </main>
+</body>
+
+<div class="img_popup" id="imgPopup">
+    <div class="popup_dim"></div>
+    <div class="popup_inner">
+        <button class="popup_close">✕</button>
+        <img src="" alt="">
+    </div>
+</div>
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".contents_aria[id]");
+    const links = document.querySelectorAll(".side_nav a");
+
+    const map = new Map();
+    links.forEach(a => map.set(a.getAttribute("href").slice(1), a));
+
+    const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+        links.forEach(a => a.classList.remove("active"));
+        const id = entry.target.id;
+        const link = map.get(id);
+        if(link) link.classList.add("active");
+        }
+    });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
+
+    sections.forEach(sec => io.observe(sec));
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("imgPopup");
+    const popupImg = popup.querySelector("img");
+    const closeBtn = popup.querySelector(".popup_close");
+    const dim = popup.querySelector(".popup_dim");
+
+    document.querySelectorAll(".photo_aria img").forEach(img => {
+    img.addEventListener("click", () => {
+        popupImg.src = img.src;
+        popup.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+    });
+
+    function closePopup(){
+    popup.classList.remove("active");
+    popupImg.src = "";
+    document.body.style.overflow = "";
+    }
+
+    closeBtn.addEventListener("click", closePopup);
+    dim.addEventListener("click", closePopup);
+});
+document.addEventListener("keydown", e => {
+    if(e.key === "Escape"){
+        closePopup();
+    }
+});
+</script>
