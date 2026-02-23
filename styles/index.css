@@ -228,7 +228,7 @@ main .content_area .new_area .bazaar_slide {
 .destiny_item_slide .item_inner{position: relative; height: 500px;}
 .destiny_item_slide .important_info {position: absolute; font-size: 14px; color: #ecc92e; top: 9px; right: 11px;}
 .destiny_item_slide .item_info{text-align: center; font-size: 14px; margin: 4px 0; padding: 0 10px;}
-.destiny_item_slide .item_detail{text-align: center; font-size: 14px; margin: 6px 0; padding: 0 10px; color: #4b61aa;; line-height: 1.3;}
+.destiny_item_slide .item_detail{text-align: center; font-size: 14px; margin: 2px 0; padding: 0 10px; color: #4b61aa;; line-height: 1.3;}
 .Symbol_item {
     right: 10px;
     top: 10px;
