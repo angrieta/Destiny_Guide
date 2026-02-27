@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DestinyGuide - The Discontrolled Tower Raid</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/header/common/favicon.jpg" type="image/x-icon">
+    
+    <style>
+        html{
+        scroll-behavior: smooth;
+        }
+        .item_section{
+            width: 22px;
+            position: relative; top: 3px;}
+        main p{
+            line-height: 1.3;}
+        /* 네비게이션 시작 */
+        .photo_aria img{
+            cursor: zoom-in;
+        }
+        .side_nav{
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 9999;
+            }
+
+            .side_nav a{
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.18);
+            transition: transform 160ms ease, background 160ms ease;
+            }
+
+            .side_nav a:hover{
+            transform: scale(1.08);
+            background: #c442cf;
+            }
+
+            /* 모바일에서는 숨김(선택) */
+            @media (max-width: 768px){
+                .side_nav{ display:none; 
+                }
+                .popup_inner{
+                position: absolute;
+
+                width: 90%;
+            }
+            }
+            /* 네비게이션 종료 */
+            .img_popup{
+                position: fixed;
+                inset: 0;
+                z-index: 99999;
+                display: none;
+            }
+
+                .img_popup.active{
+                display: block;
+            }
+
+                .popup_dim{
+                position: absolute;
+                inset: 0;
+                background: rgba(0,0,0,0.75);
+            }
+
+                .popup_inner{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 600px;
+            }
+
+                .popup_inner img{
+                width: 100%;
+                height: auto;
+                max-height: 90vh;
+                display: block;
+                border-radius: 12px;
+            }
+
+                .popup_close{
+                position: absolute;
+                top: -42px;
+                right: 0;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                border: 0;
+                background: #fff;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        main{padding: 60px 120px;}
+        main .beginner_title{}
+        main .beginner_title h2{font-size: 40px; font-weight: 700;}
+        main .beginner_title h3{font-size: 18px; font-weight: 500; color: #ff4f4f; padding: 15px 0;}
+        main .beginner_title p{margin-bottom: 5px;}
+        .contents_aria{width: 100%;}
+        .pc_h2{font-size: 30px; font-weight: 700; padding: 40px 0 15px 0; display: flex; align-items: center;}
+
+        .contents_aria .photo_aria{
+            display: grid;
+            gap: 12px;
+            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            position: relative;
+            }
+
+            .contents_aria .photo_aria img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            max-width: 827px;
+            }
+        .contents_aria .photo_aria span{padding: 4px 8px; background-color: #222; color: #fff; position: absolute;
+            box-shadow: 1px 1px 4px #fff;
+        }
+        .title_num{
+            padding: 4px 10px; border: 1px solid #222;
+            position: relative;
+            margin-right: 4px; font-weight: 700;
+        }
+        .youtube_wrap{
+            position: relative;
+            width: 100%;
+            max-width: 826px;
+            padding-bottom: 28%;
+            height: 226px;
+        }
+
+        .youtube_wrap iframe{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .text_high{font-size: 24px; font-weight: 700; }
+        .strong_text{
+            color:#c442cf
+        }
+        .title_number{margin: 0 4px; white-space: nowrap;;}
+        .mobile_h2{
+            display: none;
+        }
+        @media screen and (max-width:780px) {
+            .pc_h2{
+                display: none ;
+            }
+            .mobile_h2{
+                display: block;
+            }
+            .mobile_h2{ display: flex; align-items: center; margin: 30px 0 15px;}
+            .icon-text{
+            font-size: 17px; font-weight: 600;}
+            
+        }
+        @media screen and (max-width: 1250px) {
+            main {
+                padding: 60px 80px;
+            }
+        }
+        @media screen and (max-width: 983px) {
+            main {
+                padding: 60px 15px;
+            }
+            main .beginner_title h2{
+                font-size: 34px;
+            }
+            .contents_aria h2{
+                font-size: 24px;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<!-- <nav class="side_nav">
+    <a href="#meseta">Check<br>List</a>
+    <a href="#quickslot">Quick<br>slot</a>
+    <a href="#get_mag">Mag</a>
+    <a href="#levelup">Leveling</a>
+    <a href="#cure">Cure</a>
+    <a href="#tech">Disk</a>
+    <a href="#psycho_wand">Psycho<br>Wand</a>
+    <a href="#three_seals">Three<br>seals</a>
+    <a href="#v802">V802</a>
+    <a href="#final">TIP</a>
+</nav> -->
+
+<body>
+    <main>
+        <div class="beginner_title">
+            <h2>The Discontrolled Tower Raid</h2>
+            <h3>BOSS: Manipulator III / Divine Guard</h3>
+            <p style="color: #c442cf;">HP: 2,180,000</p>
+            <p style="color: #c442cf;">DEF: 2,500</p>
+            <div class="youtube_wrap" style="margin: 30px 0;">
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/dJzVffLygqk?start=942"
+                    title="YouTube video"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        <div class="contents_aria meseta_aria" id="meseta">
+            <h2 class="pc_h2"><strong class="title_num" style="padding:4px 3px;">✨</strong> Boss Fight Tips</h2>
+            <p style="color: #222; padding: 15px 0 5px; font-size: 18px;">[1] If you drop items inside the boss room, they will remain there the next time you enter.<span class="strong_text"> You can drop Moon Atomizers, healing items, Scape Dolls</span> , and other supplies as soon as you enter, and use them in the next run. </p>
+            <p style="color: #222; padding: 5px 0; font-size: 18px;">[2] MAG is unequipped when entering the boss room or after dying. <span class="strong_text">Press F2 to re-equip.</span>  </p>
+            <p style="color: #222; padding: 5px 0 15px 0; font-size: 18px;">[3] Like Epsilon, the boss only takes damage when its shield is open.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_001.gif" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/cladding_002.gif" alt=""></div>
+            </div>   
+            <div class="photo_aria" style="margin-top: 15px;">
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/cladding_003.gif" alt=""></div>
+                <div class="photo_aria photo_003" style="border: 1px solid #222;"><span>4</span><img src="./images/index/map.jpg" alt=""></div>
+
+            </div>   
+        </div>
+        <div class="contents_aria meseta_aria" id="meseta">
+            <h2 class="pc_h2"><strong class="title_num">1</strong><span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[O]</span> Explosion</h2>
+            <h2 class="mobile_h2">
+                <strong class="title_num">2</strong>
+                <div class="m_text_high" style="display: flex; flex-flow: column;">
+                    <span class="icon-text"style="margin-bottom: 4px;">
+                        <span style="color: #ff4f4f;">[O]</span> Explosion
+                    </span>
+                </div>
+            </h2>
+            <p style="color: #222; padding: 15px 0 15px; font-size: 18px;">[1] When the Explosion text appears, <span class="strong_text">move outside the red marked area.</span></p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_004.gif" alt=""></div>
+            </div>
+        </div>
+        <div class="contents_aria quickslot" id="quickslot">
+            <h2 class="pc_h2"><strong class="title_num">2</strong> <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px; margin-right: 4px;">[lll]</span> Thunder Line / Thunder Maze - α - </h2>
+            <h2 class="mobile_h2">
+                <strong class="title_num">2</strong>
+                <div class="m_text_high" style="display: flex; flex-flow: column;">
+                    <span class="icon-text"style="margin-bottom: 4px;">
+                        <span style="color: #ff4f4f;">[lll]</span> Thunder Line 
+                    </span>
+                    <span class="icon-text"style="margin-bottom: 4px;">
+                        <span style="color: #ff4f4f;">[lll]</span> Thunder Maze - α - 
+                    </span>
+                </div>
+            </h2>
+            <p style="color: #222; padding: 15px 0 5px; font-size: 18px;">[1] Before the lightning attack, an effect shows where it will strike. When the <span class="strong_text">purple effect</span> appears, move away from that spot. </p>
+            <p style="color: #222; padding: 5px 0 5px; font-size: 18px;">[2] If you see the text <span class="strong_text">Thunder Line 1 2 3 5, the 4th area is the safe zone.</span> </p>
+            <p style="color: #222; padding: 5px 0 5px; font-size: 18px;">[3] If you see the text <span class="strong_text">Thunder Line 1 2 4 5, the 3th area is the safe zone.</span> / <span class="strong_text">Thunder Line 1 3 5, the 2 4th area is the safe zone.</span> </p>
+            <p style="color: #222; padding: 5px 0 15px 0; font-size: 18px;">[4] Thunder Maze - α - alternates danger zones in this order: 2 4 → 1 3 5 → 2 4 → 1, 3 5. <span class="strong_text"> It’s easier if you think of dodging in the  middle area first.</span> </p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_006.gif" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/cladding_007.gif" alt=""></div>
+            </div>
+            <div class="photo_aria" style="margin-top: 15px;">
+                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/cladding_008.gif" alt=""></div>
+                <div class="photo_aria photo_004"><span>4</span><img src="./images/index/cladding_009.gif" alt=""></div>
+            </div>
+        </div>      
+        <div class="contents_aria quickslot" id="quickslot">
+            <h2 class="pc_h2"><strong class="title_num">3</strong> <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px; margin-right: 4px;">≪--≫ [O] </span>Ancient Ratoie -Duality-</h2>
+            <h2 class="mobile_h2">
+                <strong class="title_num">3</strong>
+                <div class="m_text_high" style="display: flex; flex-flow: column;">
+                    <span class="icon-text"style="margin-bottom: 4px;">
+                        <span style="color: #ff4f4f;">≪--≫ [O]</span> Ancient Ratoie -Duality-
+                    </span>
+                </div>
+            </h2>
+            <p style="color: #222; padding: 15px 0 5px; font-size: 18px;">[Step 1] When the text ≪--≫ [O] Ancient Ratoie -Duality- appears, all players should wait in the corners.</p>
+            <p style="color: #222; padding: 5px 0 5px; font-size: 18px;">[Step 2] Purple light appears in this order: <span class="strong_text">Red → Green → Yellow → Blue</span>, and each spot explodes.</p>
+            <p style="color: #222; padding: 5px 0 15px; font-size: 18px;">[★] Stand at each corner and move only after the purple effect appears.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_012.gif" alt=""></div>
+            </div>
+        </div>      
+        <div class="contents_aria quickslot" id="quickslot">
+            <h2 class="pc_h2"><strong class="title_num">4</strong> <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[@]</span> Divine Punishment / <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[O][X]</span> Divine Cross</h2>
+            <h2 class="mobile_h2">
+                <strong class="title_num">4</strong>
+                <div class="m_text_high" style="display: flex; flex-flow: column;">
+                    <span class="icon-text"style="margin-bottom: 4px;">
+                    <span style="color: #ff4f4f;">[@]</span> Divine Punishment
+                    </span>
+                    <span class="icon-text">
+                    <span style="color: #ff4f4f;">[O][X]</span> Divine Cross
+                    </span>
+                </div>
+            </h2>
+            <p style="color: #222; padding: 15px 0 5px; font-size: 18px;">[1] When the text <span class="strong_text">Coordinate Charge</span> appears, it forces the player to move to the corner of the map. </p>
+            <p style="color: #222; padding: 5px 0 15px 0; font-size: 18px;">[2] Position yourself in the circle near the boss to trigger the explosion (standing too close can cause overlapping damage to players).</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_002"><span>1</span><img src="./images/index/cladding_005.gif" alt=""></div>
+                <div class="photo_aria photo_002"><span>1</span><img src="./images/index/cladding_010.gif" alt=""></div>
+            </div>
+        </div>      
+        <div class="contents_aria levelup" id="levelup">
+            <h2 class="pc_h2"><strong class="title_num">5</strong><div class="text_high"><span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[?]</span>Get the <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 30px;">4</span> Orbs! /<span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[!][O] </span>Catastrophe Flame</div></h2>
+            <h2 class="mobile_h2">
+                <strong class="title_num">5</strong>
+                <div class="m_text_high" style="display: flex; flex-flow: column;">
+                    <span class="icon-text"style="margin-bottom: 4px;">
+                    <span style="color: #ff4f4f;">[?]</span> Get the 4 Orbs!
+                    </span>
+                    <span class="icon-text">
+                    <span style="color: #ff4f4f;">[!!][O]</span> Catastrophe Flame
+                    </span>
+                </div>
+            </h2>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">[1] [?] Get the 4 Orbs! - Go to the designated corner and approach the Orb to pick it up.</p>
+            <p style="margin-bottom: 8px; color: #ff4f4f; font-size: 18px">If your HP is low, heal first before grabbing the Orb, or you might die.</p>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">[2] [!][O] Catastrophe Flame - The closer you are to the boss, the more damage you take. Stay as close to the wall as possible. </p>
+            <p style="margin-bottom: 8px; color: #ff4f4f; font-size: 18px">Staying at the wall deals exactly 2000 HP damage. Good for triggering MAG invincibility.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_011.gif" alt=""></div>
+                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/cladding_013.gif" alt=""></div>
+            </div>
+        </div>      
+        <div class="contents_aria get_mag" id="get_mag">
+            <h2 class="pc_h2"><strong class="title_num">6</strong><span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[*]</span>Ultimate Destruction [Cannon]</h2>
+            <h2 class="mobile_h2">
+                <strong class="title_num">6</strong>
+                <div class="m_text_high" style="display: flex; flex-flow: column;">
+                    <span class="icon-text"style="margin-bottom: 4px;">
+                    <span style="color: #ff4f4f;">[*]</span> Ultimate Destruction [Cannon]
+                    </span>
+                </div>
+            </h2>
+            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px">[1] It fires lasers in this order: 11 o’clock → 1 o’clock → 5 o’clock → 7 o’clock.</p>
+            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px">Check for the laser firing from the center, then dodge.</p>
+            <div class="photo_aria">
+                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_015.gif" alt=""></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<div class="img_popup" id="imgPopup">
+    <div class="popup_dim"></div>
+    <div class="popup_inner">
+        <button class="popup_close">✕</button>
+        <img src="" alt="">
+    </div>
+</div>
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".contents_aria[id]");
+    const links = document.querySelectorAll(".side_nav a");
+
+    const map = new Map();
+    links.forEach(a => map.set(a.getAttribute("href").slice(1), a));
+
+    const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+        links.forEach(a => a.classList.remove("active"));
+        const id = entry.target.id;
+        const link = map.get(id);
+        if(link) link.classList.add("active");
+        }
+    });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
+
+    sections.forEach(sec => io.observe(sec));
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("imgPopup");
+    const popupImg = popup.querySelector("img");
+    const closeBtn = popup.querySelector(".popup_close");
+    const dim = popup.querySelector(".popup_dim");
+
+    document.querySelectorAll(".photo_aria img").forEach(img => {
+    img.addEventListener("click", () => {
+        popupImg.src = img.src;
+        popup.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+    });
+
+    function closePopup(){
+    popup.classList.remove("active");
+    popupImg.src = "";
+    document.body.style.overflow = "";
+    }
+
+    closeBtn.addEventListener("click", closePopup);
+    dim.addEventListener("click", closePopup);
+});
+document.addEventListener("keydown", e => {
+    if(e.key === "Escape"){
+        closePopup();
+    }
+});
+</script>

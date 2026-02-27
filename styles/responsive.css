@@ -1,10 +1,4 @@
 @media screen and (max-width:700px) {
-    .site-header .mid_menu {
-        position: absolute;
-        left: 22px;
-        top: 51px;
-    }
-    header{align-content: start; padding-top: 20px; height: 120px;}
     /* bazaar 아이템 팝업 */
     .popup_img{width: 60px; height: 60px; position: relative;}
     .popup_title{font-size: 16px;}
@@ -28,9 +22,41 @@
     margin-top: 20px;
     }
 }
+@media screen and (max-width:780px) {
+    .text_high{
+        display: flex; flex-flow: nowrap;
+    }
+    .pc_h2{
+        display: none !important;
+    }
+    .mobile_h2{
+        display: block;
+    }
+    header{align-content: start; padding-top: 20px; height: 120px;}
+    .site-header .mid_menu {
+        position: absolute;
+        left: 22px;
+        top: 51px;
+    }
+    .mid_menu .category_menu {
+        font-size: 13px;
+    }
+    main .beginner_title h2 {
+        font-size: 28px;
+    }
+    .contents_aria h2{font-size: 18px !important;}
+    .title_number{font-size: 18px !important;}
+}
 @media screen and (max-width:365px) {
     .popup_head{gap: 10px;}
     .popup_title{font-size: 14px;}
+}
+@media screen and (max-width:1160PX) {
+    .mid_menu_box{
+        display: flex; flex-flow: column;
+    }
+    .mid_menu_2{margin-left: 0; padding-top: px;
+    }
 }
 @media screen and (max-width:1000px) {
     .best_bg{position: absolute; max-width: 100%;} 
