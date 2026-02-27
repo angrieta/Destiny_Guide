@@ -18,13 +18,14 @@
     .popup_head{padding: 15px 15px 15px 5px;}
     .item_info {padding: 0 20px 0 5px !important;}
     .bazaar_sub_text{font-size: 12px;}
-    .mid_menu_2{
-    margin-top: 20px;
-    }
+
 }
 @media screen and (max-width:780px) {
     .text_high{
         display: flex; flex-flow: nowrap;
+    }
+    .mid_menu_2{
+    margin-top: 20px;
     }
     .pc_h2{
         display: none !important;
