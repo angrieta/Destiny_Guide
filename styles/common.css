@@ -60,7 +60,7 @@ header .inner .left_menu .cart {}
 header .inner .left_menu .cart a{}
 header .inner .left_menu .cart a img{}
 .mid_menu {display: flex; position: relative; right: 0%;}
-.mid_menu .category_menu{margin-right: 15px; font-weight: 400; color: #222; padding-bottom: 4px; border-bottom: 1px solid #ffffff;}
+.mid_menu .category_menu{margin-right: 10px; font-weight: 400; color: #222; padding-bottom: 4px; border-bottom: 1px solid #ffffff;}
 .mid_menu .category_menu:last-child{margin-right: 0px;}
 .mid_menu .category_menu:hover{border-bottom: 1px solid #222;}
 /* ====================================↑header 종료 */
