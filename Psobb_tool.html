@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DestinyGuide - The Discontrolled Tower Raid</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/header/common/favicon.jpg" type="image/x-icon">
+    
+    <style>
+        html{
+        scroll-behavior: smooth;
+        }
+        .item_section{
+            width: 22px;
+            position: relative; top: 3px;}
+        main p{
+            line-height: 1.3;}
+        /* 네비게이션 시작 */
+        .photo_aria img{
+            cursor: zoom-in;
+        }
+        .side_nav{
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 9999;
+            }
+
+            .side_nav a{
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 12px;
+            border: 1px solid rgba(255,255,255,0.18);
+            transition: transform 160ms ease, background 160ms ease;
+            }
+
+            .side_nav a:hover{
+            transform: scale(1.08);
+            background: #c442cf;
+            }
+
+            /* 모바일에서는 숨김(선택) */
+            @media (max-width: 768px){
+                .side_nav{ display:none; 
+                }
+                .popup_inner{
+                position: absolute;
+
+                width: 90%;
+            }
+            }
+            /* 네비게이션 종료 */
+            .img_popup{
+                position: fixed;
+                inset: 0;
+                z-index: 99999;
+                display: none;
+            }
+
+                .img_popup.active{
+                display: block;
+            }
+
+                .popup_dim{
+                position: absolute;
+                inset: 0;
+                background: rgba(0,0,0,0.75);
+            }
+
+                .popup_inner{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 600px;
+            }
+
+                .popup_inner img{
+                width: 100%;
+                height: auto;
+                max-height: 90vh;
+                display: block;
+                border-radius: 12px;
+            }
+
+                .popup_close{
+                position: absolute;
+                top: -42px;
+                right: 0;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                border: 0;
+                background: #fff;
+                font-size: 20px;
+                cursor: pointer;
+            }
+        main{padding: 60px 120px;}
+        main .beginner_title{}
+        main .beginner_title h2{font-size: 40px; font-weight: 700;}
+        main .beginner_title h3{font-size: 18px; font-weight: 500; color: #222; padding: 15px 0 5px 0;}
+        main .beginner_title p{margin-bottom: 5px;}
+        .contents_aria{width: 100%;}
+        .pc_h2{font-size: 30px; font-weight: 700; padding: 40px 0 15px 0; display: flex; align-items: center;}
+
+        .contents_aria .photo_aria{
+            display: grid;
+            gap: 12px;
+            width: 100%;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            position: relative;
+            }
+
+            .contents_aria .photo_aria img{
+            width: 100%;
+            height: 100%;
+            display: block;
+            max-width: 827px;
+            }
+        .contents_aria .photo_aria span{padding: 4px 8px; background-color: #222; color: #fff; position: absolute;
+            box-shadow: 1px 1px 4px #fff;
+        }
+        .title_num{
+            padding: 4px 10px; border: 1px solid #222;
+            position: relative;
+            margin-right: 4px; font-weight: 700;
+        }
+        .youtube_wrap{
+            position: relative;
+            width: 100%;
+            max-width: 826px;
+            padding-bottom: 28%;
+            height: 226px;
+        }
+
+        .youtube_wrap iframe{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .text_high{font-size: 24px; font-weight: 700; }
+        .strong_text{
+            color:#c442cf
+        }
+        .title_number{margin: 0 4px; white-space: nowrap;;}
+        .mobile_h2{
+            display: none;
+        }
+        /* 키 공통 스타일 */
+          .kb-row {
+                display: flex;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 10px;
+        }
+  .key {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #222;
+    padding: 0 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    flex-direction: column;
+    line-height: 1.1;
+    transition: all 0.1s ease;
+  }
+ 
+  .key:hover {
+    background: #f0f0f0;
+  }
+ 
+  .key:active {
+    transform: scale(0.95);
+  }
+ 
+  /* 키가 눌린 상태 (토글) */
+  .key.pressed {
+    background: #d6e9ff;
+    color: #1a5fb4;
+    border-color: #6aaed8;
+  }
+ 
+  /* 너비 modifier 클래스 */
+  .key.w45  {}
+  .key.w50  { min-width: 50px; }
+  .key.w55  { min-width: 55px; }
+  .key.w70  { min-width: 70px; }
+  .key.w85  { min-width: 85px; }
+  .key.w100 { min-width: 70px; }
+  .key.wide-space { min-width: 232px; }
+ 
+  /* 숫자패드 + / Enter는 세로로 긴 키 */
+  .key.tall { height: 72px; }
+ 
+  /* 두 글자 키 (상단 기호 + 하단 숫자/문자) */
+  .key .top { font-size: 10px; }
+  .key .bot { font-size: 10px; margin-top: 2px; }
+ 
+   /* 다운로드 버튼 영역 */
+    .download_aria {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin: 30px 0;
+        padding: 30px 20px;
+        background: linear-gradient(135deg, #f9f0ff 0%, #fff 100%);
+        border: 2px dashed #c442cf;
+        border-radius: 12px;
+    }
+ 
+    .download_btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 36px;
+        background: #c442cf;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(196, 66, 207, 0.3);
+        transition: all 0.2s ease;
+    }
+ 
+    .download_btn:hover {
+        background: #a835b3;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(196, 66, 207, 0.45);
+    }
+ 
+    .download_btn:active {
+        transform: translateY(0);
+    }
+ 
+    .download_btn .icon {
+        font-size: 22px;
+    }
+ 
+    .download_info {
+        display: flex;
+        gap: 16px;
+        font-size: 13px;
+        color: #666;
+    }
+ 
+    .download_info span {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .rapidfire_aira {max-width: 400px;}
+    .rapidfire_aira img{width: 100%;}
+    @media screen and (max-width: 780px) {
+        .download_btn {
+            font-size: 16px;
+            padding: 14px 24px;
+        }
+        .download_info {
+            gap: 4px;
+            align-items: center;
+        }
+    }
+  /* F키 그룹 간격 */
+  .fn-spacer { width: 16px; }
+        @media screen and (max-width:780px) {
+            .pc_h2{
+                display: none ;
+            }
+            .mobile_h2{
+                display: block;
+            }
+            .mobile_h2{ display: flex; align-items: center; margin: 30px 0 15px;}
+            .icon-text{
+            font-size: 17px; font-weight: 600;}
+            
+        }
+        @media screen and (max-width: 1250px) {
+            main {
+                padding: 60px 80px;
+            }
+        }
+        @media screen and (max-width: 983px) {
+            main {
+                padding: 60px 15px;
+            }
+            main .beginner_title h2{
+                font-size: 34px;
+            }
+            .contents_aria h2{
+                font-size: 24px;
+                line-height: 1.3;
+            }
+        }
+    </style>
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<!-- <nav class="side_nav">
+    <a href="#meseta">Check<br>List</a>
+    <a href="#quickslot">Quick<br>slot</a>
+    <a href="#get_mag">Mag</a>
+    <a href="#levelup">Leveling</a>
+    <a href="#cure">Cure</a>
+    <a href="#tech">Disk</a>
+    <a href="#psycho_wand">Psycho<br>Wand</a>
+    <a href="#three_seals">Three<br>seals</a>
+    <a href="#v802">V802</a>
+    <a href="#final">TIP</a>
+</nav> -->
+
+<body>
+    <main>
+        <div class="beginner_title">
+            <h2>PSOBB-Tools</h2>
+            <h3>I made this tool to smooth out as many of PSOBB's pain points as possible and make the game more enjoyable to play. </h3>
+            <p style="color: #c442cf;">psobb-tools is based on the structure of RPAS — a huge thank you to Roland, who has since retired. Your work made this possible.</p>
+        </div>
+
+        <!-- =============== HTML (본문에 삽입) =============== -->
+ 
+        <!-- 심플 버전 -->
+        <div class="download_aria">
+            <a href="images/file/PSOBB-Tools.exe" download class="download_btn">
+                <span class="icon">⬇</span>
+                Download PSOBB-Tools.exe
+            </a>
+            <div class="download_info">
+                <span>📦 Version 1.0</span>
+                <span>💻 Windows</span>
+            </div>
+        </div>
+        
+
+        <!-- ============ psobb-Tools Features (배포용) ============ -->
+        <div class="contents_aria meseta_aria" id="meseta">
+            <h2 class="pc_h2"><strong class="title_num" style="padding:4px 3px;">✨</strong> psobb-Tools Features</h2>
+
+            <!-- ===================================================== -->
+            <!-- 1. RAPID FIRE                                          -->
+            <!-- ===================================================== -->
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">⚡</strong> Rapid Fire</h2>
+            <p>Holding a number key makes it auto-repeat. Every key (0~9 number row &amp; Numpad 0~9) has its own individual delay you can customize.</p>
+
+            <div class="kb-row" style="margin-top: 10px;">
+                <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Number row rapid fire -&nbsp;</p>
+                <div class="key"><span class="top">!</span><span class="bot">1</span></div>
+                <div class="key"><span class="top">@</span><span class="bot">2</span></div>
+                <div class="key"><span class="top">#</span><span class="bot">3</span></div>
+                <div class="key"><span class="top">$</span><span class="bot">4</span></div>
+                <div class="key"><span class="top">%</span><span class="bot">5</span></div>
+                <div class="key"><span class="top">^</span><span class="bot">6</span></div>
+                <div class="key"><span class="top">&amp;</span><span class="bot">7</span></div>
+                <div class="key"><span class="top">*</span><span class="bot">8</span></div>
+                <div class="key"><span class="top">(</span><span class="bot">9</span></div>
+                <div class="key"><span class="top">)</span><span class="bot">0</span></div>
+            </div>
+
+            <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center; margin: 15px 0 10px;">Numpad rapid fire</p>
+            <div class="numpad_aria">
+                <div class="kb-row">
+                    <div class="key w45">7</div>
+                    <div class="key w45">8</div>
+                    <div class="key w45">9</div>
+                </div>
+                <div class="kb-row">
+                    <div class="key w45" style="background-color: yellow;">4</div>
+                    <div class="key w45" style="background-color: yellow;">5</div>
+                    <div class="key w45" style="background-color: yellow;">6</div>
+                </div>
+                <div class="kb-row">
+                    <div class="key w45">1</div>
+                    <div class="key w45">2</div>
+                    <div class="key w45">3</div>
+                </div>
+                <div class="kb-row">
+                    <div class="key w100" style="justify-content: center;">0</div>
+                </div>
+            </div>
+
+            <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 15px;">
+                <div class="kb-row" style="margin-right: 20px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Toggle ON/OFF -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key">R</div>
+                </div>
+                <div class="kb-row">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Per-key settings -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key">K</div>
+                </div>
+            </div>
+            <div class="rapidfire_aira" style="margin-top: 30px;">
+                <img src="./images/tools/rapidfire_popup.png" alt="">
+            </div>
+
+            <!-- ===================================================== -->
+            <!-- 2. AUTO ROOM CREATE                                    -->
+            <!-- ===================================================== -->
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🏠</strong> Auto Room Create</h2>
+            <p style="color: #c442cf;">You need to try it in front of the NPC that creates rooms.</p>
+            <p>Creates a room automatically with your preset name, password, and difficulty. A counter in the top-right shows how many rooms you've made this session.</p>
+
+            <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">EP1 Room -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key w45" style="background-color: yellow;">4</div>
+                </div>
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">EP2 Room -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key w45" style="background-color: yellow;">5</div>
+                </div>
+                <div class="kb-row">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">EP4 Room -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key w45" style="background-color: yellow;">6</div>
+                </div>
+            </div>
+
+            <div class="kb-row" style="margin-top: 10px;">
+                <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Room settings (name / password / difficulty) -&nbsp;</p>
+                <div class="key w45">Win</div> +
+                <div class="key">H</div>
+            </div>
+            <div class="rapidfire_aira" style="margin-top: 30px;">
+                <img src="./images/tools/room_popup.png" alt="">
+            </div>
+            <!-- ===================================================== -->
+            <!-- 3. WEAPON / SHIELD SWAP                                -->
+            <!-- ===================================================== -->
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">⚔️</strong> Weapon &amp; Shield Swap</h2>
+            <p>Instantly switch between equipment slots without opening menus manually.</p>
+
+            <p style="font-size: 18px; font-weight: 600; margin: 15px 0 10px;">Weapon Swap</p>
+            <div class="room_create_aria" style="display: flex; flex-wrap: wrap;">
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 1 -&nbsp;</p>
+                    <div class="key w45">/</div>
+                    <p style="font-size: 14px; color: #666; margin-left: 6px;">(Numpad)</p>
+                </div>
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 2 -&nbsp;</p>
+                    <div class="key w45">*</div>
+                    <p style="font-size: 14px; color: #666; margin-left: 6px;">(Numpad)</p>
+                </div>
+                <div class="kb-row">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 3 -&nbsp;</p>
+                    <div class="key w45">-</div>
+                    <p style="font-size: 14px; color: #666; margin-left: 6px;">(Numpad)</p>
+                </div>
+            </div>
+
+            <p style="font-size: 18px; font-weight: 600; margin: 15px 0 10px;">Shield Swap</p>
+            <div class="room_create_aria" style="display: flex; flex-wrap: wrap;">
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 1 -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key w45">/</div>
+                </div>
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 2 -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key w45">*</div>
+                </div>
+                <div class="kb-row">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 3 -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key w45">-</div>
+                </div>
+            </div>
+
+            <!-- ===================================================== -->
+            <!-- 4. SECTION ID SHORTCUTS                                -->
+            <!-- ===================================================== -->
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🎨</strong> Section ID Shortcuts</h2>
+            <p>Change your Section ID instantly using <code>/sectionid</code>. Perfect for farming specific drops.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px 20px; margin-top: 10px;">
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">0</div><span style="margin-left: 8px; color: #00581d;">Viridia</span></div>
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">1</div><span style="margin-left: 8px; color: #00cc0a;">Greenill</span></div>
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">2</div><span style="margin-left: 8px;color: #00e2e2;" >Skyly</span></div>
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">3</div><span style="margin-left: 8px; color: #0073f7;">Bluefull</span></div>
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">4</div><span style="margin-left: 8px;color: #b400cc;">Purplenum</span></div>
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">5</div><span style="margin-left: 8px; color: #fc3fec;">Pinkal</span></div>
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">6</div><span style="margin-left: 8px; color: #cc0000;">Redria</span></div>
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">7</div><span style="margin-left: 8px;color: #ff6207;">Oran</span></div>
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">8</div><span style="margin-left: 8px;color: #e2cc00;">Yellowboze</span></div>
+                <div class="kb-row"><div class="key w45">Win</div> + <div class="key">9</div><span style="margin-left: 8px; color: #d1d1d1;">Whitill</span></div>
+            </div>
+
+            <!-- ===================================================== -->
+            <!-- 5. CHAT COMMAND SHORTCUTS                              -->
+            <!-- ===================================================== -->
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">💬</strong> Chat Command Shortcuts</h2>
+            <p>Send frequently used chat commands with a single keystroke.</p>
+
+            <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">/lobby -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key"><span class="top">~</span><span class="bot">`</span></div>
+                </div>
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">/bank -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key">B</div>
+                </div>
+                <div class="kb-row">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">/dropnotifications 1 -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key w45">.</div>
+                    <p style="font-size: 14px; color: #666; margin-left: 6px;">(Numpad)</p>
+                </div>
+            </div>
+
+            <!-- ===================================================== -->
+            <!-- 6. KEY REMAPS                                          -->
+            <!-- ===================================================== -->
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🔄</strong> Key Remaps</h2>
+            <p>Remaps several awkward default keys to something more ergonomic.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px 20px; margin-top: 10px;">
+                <div class="kb-row">
+                    <div class="key w45" style="font-size: 10px;">PgUp</div>
+                    <span style="margin: 0 8px;">→</span>
+                    <div class="key">F2</div>
+                    <span style="margin-left: 8px;">Equipment window</span>
+                </div>
+                <div class="kb-row">
+                    <div class="key w45" style="font-size: 10px;">PgDn</div>
+                    <span style="margin: 0 8px;">→</span>
+                    <span>Q-Menu (Ctrl+End)</span>
+                </div>
+                <div class="kb-row">
+                    <div class="key">F11</div>
+                    <span style="margin: 0 8px;">→</span>
+                    <div class="key">F12</div>
+                    <span style="margin-left: 8px; font-size: 13px; color: #666;">(disable always-chat)</span>
+                </div>
+                <div class="kb-row">
+                    <div class="key w45">Ctrl</div> +
+                    <div class="key">V</div>
+                    <span style="margin-left: 8px;">Paste clipboard into chat</span>
+                </div>
+                <div class="kb-row">
+                    <div class="key w85">Shift</div> +
+                    <div class="key w85">Enter</div>
+                    <span style="margin-left: 8px;">Rapid-fire Enter</span>
+                </div>
+                <div class="kb-row">
+                    <div class="key w45">Ctrl</div> +
+                    <div class="key w45" style="width: 80px;">Numpad</div>
+                    <span style="margin-left: 8px;">Sub Palette</span>
+                </div>
+            </div>
+
+            <!-- ===================================================== -->
+            <!-- 8. UTILITIES & LAUNCHERS                               -->
+            <!-- ===================================================== -->
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🛠️</strong> Utilities &amp; Launchers</h2>
+
+            <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Control map -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key w45">/</div>
+                </div>
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Restart script -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key">Z</div>
+                </div>
+            </div>
+
+            <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
+                <div class="kb-row" style="margin-right: 15px;">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Launch PSO -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key">P</div>
+                </div>
+                <div class="kb-row">
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Launch Floor Reader -&nbsp;</p>
+                    <div class="key w45">Win</div> +
+                    <div class="key">F</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+
+<div class="img_popup" id="imgPopup">
+    <div class="popup_dim"></div>
+    <div class="popup_inner">
+        <button class="popup_close">✕</button>
+        <img src="" alt="">
+    </div>
+</div>
+</html>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".contents_aria[id]");
+    const links = document.querySelectorAll(".side_nav a");
+
+    const map = new Map();
+    links.forEach(a => map.set(a.getAttribute("href").slice(1), a));
+
+    const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+        links.forEach(a => a.classList.remove("active"));
+        const id = entry.target.id;
+        const link = map.get(id);
+        if(link) link.classList.add("active");
+        }
+    });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
+
+    sections.forEach(sec => io.observe(sec));
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("imgPopup");
+    const popupImg = popup.querySelector("img");
+    const closeBtn = popup.querySelector(".popup_close");
+    const dim = popup.querySelector(".popup_dim");
+
+    document.querySelectorAll(".photo_aria img").forEach(img => {
+    img.addEventListener("click", () => {
+        popupImg.src = img.src;
+        popup.classList.add("active");
+        document.body.style.overflow = "hidden";
+    });
+    });
+
+    function closePopup(){
+    popup.classList.remove("active");
+    popupImg.src = "";
+    document.body.style.overflow = "";
+    }
+
+    closeBtn.addEventListener("click", closePopup);
+    dim.addEventListener("click", closePopup);
+});
+document.addEventListener("keydown", e => {
+    if(e.key === "Escape"){
+        closePopup();
+    }
+});
+</script>
