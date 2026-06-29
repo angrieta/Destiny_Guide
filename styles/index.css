@@ -150,7 +150,7 @@ main .content_area .new_area .bazaar_slide {
 
 .item_img {
     width: 80px;
-    margin: 10px 0 0 0;
+    margin: 10px auto 0 auto;
 }
 
 .item_img img {
@@ -183,7 +183,8 @@ main .content_area .new_area .bazaar_slide {
 .bazaar_slide .item_title {
     padding: 10px 0 10px 0;
     display: flex;
-    align-items: end;
+    align-items: center;
+    margin: 0 auto;
     font-size: 20px;
     font-weight: 600;
 }
