@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/output/
+.next/
+.sites-static/
+.open-next/
+.wrangler/
+
+# tooling / editor
+.codex-tmp/
+.openai/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# packages
+*.tgz
+
+# 원본 GIF 소스 (배포에는 .webp 사용)
+*.gif

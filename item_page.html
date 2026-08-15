@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/responsive.css">
+    <script src="./scripts/destiny_catalog.js" defer></script>
     <script src="./scripts/index.js" defer></script>
     <script src="./scripts/item_info.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -15,14 +16,31 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
-    <link rel="icon" href="./images/header/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
 </head>
 <!-- 헤더시작 -->
     <div id="site-header" style="width: 100%;"></div>
     <script src="./scripts/include.js"></script>
 <!-- 헤더종료 -->
 <body>
-    <section class="destiny_item" style="padding: 0 120px;">
+    <section class="destiny_item">
+        <nav class="destiny_item_filters" aria-label="Destiny item categories">
+            <div class="destiny_item_filters_intro">
+                <strong>Browse Destiny Items</strong>
+                <span>Select a category, then click any card to open the full item guide.</span>
+            </div>
+            <div class="destiny_item_filter_buttons" role="group" aria-label="Filter Destiny items">
+                <button type="button" class="destiny_item_filter is-active" data-destiny-filter="all" aria-pressed="true">All</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="common" aria-pressed="false">Common</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="hunter" aria-pressed="false">Hunter</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="ranger" aria-pressed="false">Ranger</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="force" aria-pressed="false">Force</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="armor" aria-pressed="false">Armor</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="unit" aria-pressed="false">Unit</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="shield" aria-pressed="false">Shield</button>
+            </div>
+        </nav>
+
         <!-- COMMON -->
         <div class="destiny_item_block" id="destiny-Common">
             <header class="destiny_item_header">
@@ -528,7 +546,7 @@
         <div class="destiny_item_block" id="destiny-ranger">
             <header class="destiny_item_header">
                 <h3 class="destiny_item_title">
-                    Ranger
+                    RANGER
                     <span class="destiny_item_sub">Core Weapon</span>
                 </h3>
                 <p class="destiny_item_desc">Swipe left or right to view.</p>
@@ -1249,6 +1267,90 @@
                 </div>
             </div>
         </div>
+
+        <div class="destiny_item_block unit_recommendation_block" id="destiny-units">
+            <header class="destiny_item_header">
+                <h3 class="destiny_item_title">
+                    UNITS
+                    <span class="destiny_item_sub">High-impact recommendations</span>
+                </h3>
+                <p class="destiny_item_desc">Core units that unlock stronger Ranger and Hunter setups.</p>
+            </header>
+
+            <div class="swiper destiny_item_swiper" data-destiny-swiper="units">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide destiny_item_slide">
+                        <article class="item_section_aria">
+                            <div class="item_inner">
+                                <div class="item_img">
+                                    <img src="./images/items/units/scope-effect.png" alt="Vector Scope targeting effect">
+                                    <span class="item_type">UNIT</span>
+                                </div>
+                                <h4 class="item_title"><span class="item_name">VECTOR SCOPE</span></h4>
+                                <p class="item_info">Needle weapon modifier</p>
+                                <p class="item_detail">Arrest / Hell / Berserk Needle: Range +105, ATA +20</p>
+                                <p class="item_detail">Gush Needle: Range +105, ATA +20, improved special combo</p>
+                                <p class="item_detail">Grave Digger / Nefarious Needle: ATP +60, ATA +30</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="swiper-slide destiny_item_slide">
+                        <article class="item_section_aria">
+                            <div class="item_inner">
+                                <div class="item_img">
+                                    <img src="./images/items/units/photon-flow-effect.png" alt="PB Flow photon effect">
+                                    <span class="item_type">UNIT</span>
+                                </div>
+                                <h4 class="item_title"><span class="item_name">PB/FLOW</span></h4>
+                                <p class="item_info">Photon Blast utility</p>
+                                <p class="item_detail">Popular in Hunter, Ranger, and cast raid builds.</p>
+                                <p class="item_detail">Often equipped as a temporary utility unit while building Photon Blast to 100.</p>
+                                <p class="item_detail">Carry one or two when your core setup has spare unit slots.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="swiper-slide destiny_item_slide">
+                        <article class="item_section_aria">
+                            <div class="item_inner">
+                                <div class="item_img">
+                                    <img src="./images/items/units/chaos-effect.png" alt="Immortal Battle speed effect">
+                                    <span class="item_type">UNIT</span>
+                                </div>
+                                <h4 class="item_title"><span class="item_name">IMMORTAL/BATTLE</span></h4>
+                                <p class="item_info">Attack speed: 120%</p>
+                                <p class="item_detail">A defining Destiny unit for faster Hunter, Ranger, and battle-Force combat.</p>
+                                <p class="item_detail">Available year-round and commonly treated as an endgame core slot.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="destiny_item_pagination">
+                    <div class="swiper-pagination" data-destiny-pagination="units"></div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <div class="destiny_detail_modal" id="destinyDetailModal" aria-hidden="true">
+        <div class="destiny_detail_dim" data-destiny-detail-close></div>
+        <article class="destiny_detail_dialog" role="dialog" aria-modal="true" aria-labelledby="destinyDetailTitle">
+            <button type="button" class="destiny_detail_close" data-destiny-detail-close aria-label="Close item details">&times;</button>
+            <div class="destiny_detail_media">
+                <a class="destiny_detail_image_link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open the source image at full size">
+                    <img class="destiny_detail_image" src="" alt="">
+                </a>
+                <p class="destiny_detail_image_hint">Click the image to view the supplied source at full size.</p>
+            </div>
+            <div class="destiny_detail_content">
+                <div class="destiny_detail_badges"></div>
+                <h2 id="destinyDetailTitle" class="destiny_detail_title"></h2>
+                <p class="destiny_detail_summary"></p>
+                <dl class="destiny_detail_stats"></dl>
+                <div class="destiny_detail_sections"></div>
+            </div>
+        </article>
+    </div>
 </body>
 </html>

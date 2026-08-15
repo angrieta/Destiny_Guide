@@ -1,105 +1,57 @@
-    <!-- 헤더시작 -->
-    <header>
-        <div class="inner">
-            <div class="right_menu">
-                <a href="#" class="white"><img src="./images/header/white_menu.png" alt="메뉴열기"></a>
-                <a href="#" class="black"><img src="./images/header/black_menu.png" alt="메뉴열기"></a>
-            </div>
-            <h1 class="logo">
-                <a href="#" class="white"><img src="./images/header/white_logo.png" alt="메인페이지로 이동하기"></a>
-                <a href="#" class="black"><img src="./images/header/black_logo.png" alt="메인페이지로 이동하기"></a>
-            </h1>
-            <div class="left_menu">
-                <div class="cs">
-                    <a href="#" class="white">고객지원</a>
-                    <a href="#" class="black">고객지원</a>
-                </div>
-                <div class="search">
-                    <a href="#" class="white"><img src="./images/header/white_search.png" alt=""></a>
-                    <a href="#" class="black"><img src="./images/header/black_search.png" alt=""></a>
-                </div>
-                <div class="mypage">
-                    <a href="#" class="white"><img src="./images/header/white_person.png" alt=""></a>
-                    <a href="#" class="black"><img src="./images/header/black_person.png" alt=""></a>
-                </div>
-                <div class="cart">
-                    <a href="#" class="white"><img src="./images/header/white_local_mall.png" alt=""></a>
-                    <a href="#" class="black"><img src="./images/header/black_mall.png" alt=""></a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- 헤더종료 -->
-         <!-- footer시작 -->
-    <footer>
-        <div class="btm_border">
-            <div class="top_menu">
-                <a href="#">Nuphy</a>
-                <a href="#">이용약관</a>
-                <a href="#">개인정보처리방침</a>
-                <a href="#">EVENT</a>
-            </div>
-        </div>
-        <div class="btm_container">
-            <div class="left_info">
-                <ul class="nuphy_info">
-                    <h3>Nuphy</h3>
-                    <li>
-                        <span>회사명</span>
-                        <span>Nuphy(주)</span>
-                    </li>
-                    <li>
-                        <span>대표자</span>
-                        <span>이종호</span>
-                    </li>
-                    <li>
-                        <span>주소</span>
-                        <span>인천광역시 서구 중봉대로490 530호</span>
-                    </li>
-                    <li>
-                        <span>개인정보관리책임자</span>
-                        <span>이종호</span>
-                    </li>
-                    <li>
-                        <span>사업자등록번호</span>
-                        <span>254-87-02737</span>
-                    </li>
-                    <li>
-                        <span>통신판매업신고번호</span>
-                        <span>제 2022-인천서구-0964 호</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="center_info">
-                <ul class="cs">
-                    <h3>고객센터</h3>
-                    <li>
-                        <span>TEL</span>
-                        <span>070-8624-5013</span>
-                    </li>
-                    <li>
-                        <span>E-MAIL</span>
-                        <span>cs@ninone.kr</span>
-                    </li>
-                    <li>
-                        <span>상호</span>
-                        <span>주식회사 엔인원</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="right_info">
-                <ul class="bank">
-                    <h3>계좌정보</h3>
-                    <li>
-                        <span>예금주</span>
-                        <span>주식회사 엔인원</span>
-                    </li>
-                    <li>
-                        <span>입금계좌</span>
-                        <span>우리은행 1005-304-321141</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>   
-    <!-- footer시작 -->
+# PSOBB Destiny Guide
+
+Phantasy Star Online Blue Burst - Destiny 서버 공략 사이트입니다.
+초보자 루트, 캐릭터 정보, 아이템 도감, 레이드 공략, 계산 도구를 제공합니다.
+
+## 페이지 구성
+
+| 파일 | 내용 |
+| --- | --- |
+| `index.html` | 메인 랜딩 페이지 |
+| `beginner_page.html` | 초보자 가이드 / 육성 루트 |
+| `character_aria.html` | 캐릭터별 정보 |
+| `item_page.html` | 아이템 도감 |
+| `dn.html` | Destiny 던전 공략 |
+| `discontrolled_tower_raid.html` | Discontrolled Tower 레이드 공략 |
+| `dmc_page.html` | DMC 페이지 |
+| `Psobb_tool.html` | 계산 도구 |
+| `header.html` | 공통 헤더 (`scripts/include.js`가 런타임에 주입) |
+
+## 디렉터리
+
+```
+app/       Next.js(vinext) 진입점 — /index.html 로 리다이렉트
+build/     정적 파일 준비 스크립트 및 Vite 플러그인
+images/    이미지 에셋
+scripts/   페이지별 클라이언트 스크립트, 헤더 인클루드, 테마 토글
+styles/    reset / common / index / responsive CSS
+worker/    Cloudflare Worker 엔트리
+```
+
+## 실행 방법
+
+Node.js 22.13 이상과 pnpm이 필요합니다.
+
+```bash
+pnpm install
+pnpm dev      # 개발 서버
+pnpm build    # 프로덕션 빌드
+pnpm start    # 빌드 결과 실행
+```
+
+`pnpm dev` / `pnpm build`는 먼저 `build/prepare-static.mjs`를 실행해
+`images`, `scripts`, `styles`와 루트의 HTML 파일을 `.sites-static/`으로 복사합니다.
+(`test.html`과 모든 `.gif`는 이 과정에서 제외됩니다.)
+
+## 이미지에 대한 참고
+
+`images/index/`의 배경 애니메이션은 `.webp`로 제공됩니다.
+원본 `.gif` 파일은 용량이 커서 저장소에 포함하지 않았으며,
+빌드 스크립트와 `.gitignore` 모두 `.gif`를 제외하도록 설정되어 있습니다.
+
+## 기술 스택
+
+- Next.js 16 (vinext) + React 19
+- Vite 8
+- Cloudflare Workers (`wrangler`)
+- TypeScript 5.9

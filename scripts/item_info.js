@@ -126,11 +126,37 @@ const ITEM_DETAIL = {
     ]
     },
 
+    ASTRAL_SABER: {
+    popupInfo: [
+        '<p class="item_info">Force Only · Requirement: MST 1200</p>',
+        '<p class="item_info">ATP: 800–850 · ATA: 55</p>',
+        '<p class="item_info">Special: Berserk · Targets: 4</p>',
+        '<p class="item_info">Bonus: DFP +300 · Speed +15%</p>',
+        '<p class="item_info">Gifoie +100% · Rafoie +90% · Gibarta +400%</p>',
+    ],
+    sections: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox">Required items', body: [
+            '<div class="Material_title">BLAST GARMENT x1</div>',
+            '<div class="Material_title">Cladding of Manipulator III x2</div>',
+            '<div class="Material_title">Millennium Photon Core x15</div>',
+            '<div class="Material_title">Red Crystal x1</div>',
+            '<p class="Material_info">Meri Noir — VR Test Destiny: Sandstorm [EP1], 1/204 on all IDs</p>',
+            '<div class="Material_title">Blue Crystal x2</div>',
+            '<p class="Material_info">Bar Dalus — VR Test EXTRA: Singularity [EP1], 1/24</p>',
+            '<div class="Material_title">Yellow Crystal x2</div>',
+            '<p class="Material_info">Epsilon — The Eternal Age [EP2], 1/102</p>',
+            '<div class="Material_title">Green Crystal x2</div>',
+            '<p class="Material_info">Girtablulu — Christmas Fiasco EP4, 1/393</p>',
+            '<div class="Material_title">IZMAELA x1</div>',
+            '<div class="Material_title">Dark Matter x1</div>',
+        ] },
+    ]
+    },
+
     ASTRAL_CLOAK: {
     popupInfo: [
-        '<p class="item_info">Si techs 100%</p>',
-        '<p class="item_info">Gi techs 80%</p>',
-        '<p class="item_info">Rabarta 90%</p>',
+        '<div class="tech_bonus_list"><div class="tech_bonus"><span>Si techs 100%</span><span class="tech_bonus_icons"><img src="./images/common/140px-Foie.png" alt="Foie"><img src="./images/common/140px-Barta.png" alt="Barta"><img src="./images/common/140px-Zonde.png" alt="Zonde"></span></div><div class="tech_bonus"><span>Gi techs 80%</span><span class="tech_bonus_icons"><img src="./images/common/140px-Gifoie.png" alt="Gifoie"><img src="./images/common/140px-Gibarta.png" alt="Gibarta"><img src="./images/common/140px-Gizonde.png" alt="Gizonde"></span></div><div class="tech_bonus"><span>Rabarta 90%</span><span class="tech_bonus_icons"><img src="./images/common/140px-Rabarta.png" alt="Rabarta"></span></div></div>',
     ],
     sections: [
         { title: '<p class="item_important"><span class="star_text">★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
@@ -300,6 +326,35 @@ const ITEM_DETAIL = {
                 '<p class="Material_info">Legendary Item Crate</p>',  
             ] },
         ]
+    },
+
+    MATRIX_SCOPE: {
+    popupInfo: [
+        '<p class="item_info" style="color:#c442cf">Apocalypse Bowgun</p>',
+        '<p class="item_sub_info">N/H hits: 3-3-3</p>',
+        '<p class="item_sub_info">Special hits: 1-2-3, adjusted angle, ATP +100</p>',
+        '<p class="item_info" style="color:#c442cf; margin-top:8px">Snow Queen</p>',
+        '<p class="item_sub_info">Special hits: 3, ATP +150, ATA +30</p>',
+        '<p class="item_info" style="color:#c442cf; margin-top:8px">Power Maser</p>',
+        '<p class="item_sub_info">Hits: 4-4-4, MST +150</p>',
+        '<p class="item_sub_info">Range 185.0, angle 60.0</p>',
+    ],
+    sections: [
+        { title: '<p class="item_important"><span class="star_text">NEW</span><span class="important_text">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="red box">Item Material', body: [
+            '<div class="Material_title">Infernal Stone x1</div>',
+            '<p class="Material_info">VR Test OMEGA: Oblivion</p>',
+            '<div class="Material_title">Fragments of Orb [Red] x2</div>',
+            '<div class="Material_title">Fragments of Orb [Blue] x2</div>',
+            '<div class="Material_title">Reflex Gear x2</div>',
+            '<div class="Material_title">Ethereal Armor x1</div>',
+            '<div class="Material_title">Shadow Cloak x1</div>',
+            '<div class="Material_title">Proof of Sonic Team x1</div>',
+            '<div class="Material_title">Photon Booster x3</div>',
+            '<div class="Material_title">ADEPT x2</div>',
+            '<div class="Material_title">Syncesta x3</div>',
+        ] },
+    ]
     },
 
     Ignis_Engine: {

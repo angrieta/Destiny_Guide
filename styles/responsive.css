@@ -15,8 +15,8 @@
     .Symbol_3{
     top: 66px;}
     .popup_box{padding: 40px 20px 60px 20px;}
-    .popup_head{padding: 15px 15px 15px 5px;}
-    .item_info {padding: 0 20px 0 5px !important;}
+    .popup_head{padding: 15px;}
+    .popup_box .item_info {padding: 0 !important;}
     .bazaar_sub_text{font-size: 12px;}
 
 }
@@ -89,6 +89,9 @@
     }
 }
 @media screen and (max-width:1200px) {
+    .beginner_guide{
+        background: var(--surface) !important;
+    }
     .guide_bg{display: none;}
     .beginner_guide .beginner_inner{
         width: 100% !important;
@@ -100,7 +103,6 @@
     }
     .stats_info .max_bar {font-size: 11px !important;}
     .stats_info .stats_bar{font-size: 11px !important;}
-    .destiny_item{padding:0 80px !important}
 }
 
 @media screen and (max-width:400px) {
@@ -123,7 +125,7 @@
     /* 1250시작 판매 aria 종료 */
     header .inner{
         width: 100%; 
-        padding: 0 80px;
+        padding: 0 32px;
     }
     header .inner .left_menu a {
     }
@@ -254,7 +256,6 @@
     .header_menu .menu_box a {
         font-size: 0.875rem;
     }
-    .destiny_item{padding: 0 80px !important;}
     main .content_area .Character_info .right_contents .best_slide{
     width: 88%;}
 }

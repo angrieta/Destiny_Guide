@@ -199,6 +199,7 @@ if (data?.popupInfo?.length) {
 
 
 const popup = document.getElementById('itemPopup');
+if (popup) {
 const dim = popup.querySelector('.popup_dim');
 const btnClose = popup.querySelector('.popup_close');
 
@@ -298,6 +299,7 @@ document.querySelectorAll('.swiper-slide .item_box').forEach(link => {
     openPopup();
   });
 });
+}
 
 let bestSwiperInstance
 
@@ -409,9 +411,72 @@ function initBestSwiper() {
   })
 }
 
-fetch("character_aria.html")
-  .then(res => res.text())
-  .then(html => {
-    document.getElementById("best-slide-area").innerHTML = html
-    initBestSwiper()
+function initCharacterPopup() {
+  const area = document.getElementById("best-slide-area")
+  const modal = document.getElementById("characterPopup")
+  if (!area || !modal) return
+
+  const content = modal.querySelector(".character_popup_content")
+  const closeButton = modal.querySelector(".character_popup_close")
+  const dimmer = modal.querySelector(".character_popup_dim")
+  let previousFocus = null
+
+  const closeCharacterPopup = () => {
+    modal.classList.remove("open")
+    modal.setAttribute("aria-hidden", "true")
+    document.body.classList.remove("overflow-hidden")
+    previousFocus?.focus()
+  }
+
+  area.querySelectorAll(".swiper-slide > a").forEach(card => {
+    const name = card.querySelector(".character_name")?.textContent.trim() || "character"
+    card.setAttribute("aria-label", `Open expanded ${name} stats`)
+    card.setAttribute("aria-haspopup", "dialog")
   })
+
+  area.addEventListener("click", event => {
+    const card = event.target.closest(".swiper-slide > a")
+    if (!card || !area.contains(card)) return
+
+    event.preventDefault()
+    previousFocus = card
+    content.innerHTML = ""
+
+    const expandedCard = card.cloneNode(true)
+    expandedCard.removeAttribute("href")
+    expandedCard.removeAttribute("aria-haspopup")
+    expandedCard.removeAttribute("aria-label")
+    expandedCard.setAttribute("tabindex", "-1")
+    content.appendChild(expandedCard)
+
+    modal.classList.add("open")
+    modal.setAttribute("aria-hidden", "false")
+    document.body.classList.add("overflow-hidden")
+    closeButton.focus()
+  })
+
+  closeButton.addEventListener("click", closeCharacterPopup)
+  dimmer.addEventListener("click", closeCharacterPopup)
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && modal.classList.contains("open")) {
+      closeCharacterPopup()
+    }
+  })
+}
+
+const bestSlideArea = document.getElementById("best-slide-area")
+if (bestSlideArea) {
+  fetch("character_aria.html")
+    .then(res => {
+      if (!res.ok) throw new Error(`Character card request failed: ${res.status}`)
+      return res.text()
+    })
+    .then(html => {
+      bestSlideArea.innerHTML = html
+      initBestSwiper()
+      initCharacterPopup()
+    })
+    .catch(error => {
+      console.error("Unable to load character cards.", error)
+    })
+}

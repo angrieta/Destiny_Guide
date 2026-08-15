@@ -161,18 +161,18 @@ main .content_area .new_area .bazaar_slide {
 .bazaar_slide .item_inner {
     display: flex;
     flex-flow: column;
-    padding: 40px 0;
+    padding: 40px 16px 30px;
     align-items: anchor-center;
-    height: 430px;
+    height: 460px;
     border-radius: 8px;
-    box-shadow: 2px 2px 2px #333333;
-    border: 1px solid #333333;
+    box-shadow: 0 12px 26px rgba(2, 19, 49, 0.28);
+    border: 1px solid rgba(124, 191, 255, 0.85);
     max-width: 320px;
     position: relative;
     margin: 0 auto;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     will-change: transform;
-    background-color: #fff;
+    background: linear-gradient(180deg, #ffffff 0%, #eaf5ff 100%);
 }
 
 .bazaar_slide .item_inner:hover {
@@ -254,6 +254,63 @@ main .content_area .new_area .bazaar_slide {
     width: 100%
 }
 
+.tech_bonus_list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: min(100%, 235px);
+    margin-top: 4px;
+}
+
+.bazaar_slide .tech_bonus_list {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.tech_bonus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 30px;
+    padding: 4px 7px;
+    border: 1px solid #c8d8ee;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.74);
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.tech_bonus_icons {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 0;
+}
+
+.tech_bonus_icons img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+main .content_area .new_area .swiper-slide a .tech_bonus > span {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+main .content_area .new_area .swiper-slide a .tech_bonus .tech_bonus_icons {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+main .content_area .new_area .swiper-slide a .tech_bonus .tech_bonus_icons img {
+    flex: 0 0 25px;
+    width: 25px;
+    height: 25px;
+}
+
 main .content_area .new_area .swiper-slide {}
 
 main .content_area .new_area .swiper-slide a {
@@ -318,12 +375,40 @@ main .content_area .new_area .slide3 {}
 
 main .content_area .new_area {
     position: relative;
-    background-color: #f5f5f5;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 18% 18%, rgba(52, 191, 255, 0.42), transparent 30%),
+        linear-gradient(135deg, #071c47 0%, #0c4b8f 52%, #0a79bc 100%);
+    overflow: hidden;
+}
+
+main .content_area .new_area::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.16;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px);
+    background-size: 34px 34px;
+    transform: perspective(700px) rotateX(60deg) scale(1.4);
+    transform-origin: center bottom;
+}
+
+main .content_area .new_area > * {
+    position: relative;
+    z-index: 1;
+}
+
+main .content_area .new_area h3,
+main .content_area .new_area > p {
+    color: #ffffff;
 }
 
 main .content_area .new_area .bazaar_slide {
     width: 88%;
-    height: 460px;
+    height: 500px;
     padding: 20px 10px 0 10px;
 }
 
@@ -336,11 +421,11 @@ main .content_area .new_area .new_btn {
 }
 
 main .content_area .new_area .swiper-button-prev {
-    color: #000;
+    color: #9bddff;
 }
 
 main .content_area .new_area .swiper-button-next {
-    color: #000;
+    color: #9bddff;
 }
 
 .swiper-button-next:after {
@@ -380,7 +465,8 @@ main .content_area .new_area .swiper-button-next {
     max-width: 600px;
     width: calc(100% - 32px);
     margin: 40px auto;
-    background: #fff;
+    background: var(--surface);
+    color: var(--text);
     border-radius: 14px;
     padding: 40px 20px 60px 20px;
     max-height: calc(100vh - 73px);
@@ -392,6 +478,7 @@ main .content_area .new_area .swiper-button-next {
     right: 12px;
     border: 0;
     background: transparent;
+    color: var(--text);
     font-size: 24px;
     cursor: pointer;
 }
@@ -407,7 +494,7 @@ main .content_area .new_area .swiper-button-next {
     width: 78px;
     height: 78px;
     border-radius: 12px;
-    background: #f5f5f5;
+    background: var(--surface-soft);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -423,7 +510,7 @@ main .content_area .new_area .swiper-button-next {
 
 .popup_sections {
     margin-top: 14px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border);
     padding-top: 14px;
     height: 405px;
 }
@@ -453,18 +540,19 @@ main .content_area .new_area .swiper-button-next {
     line-height: 1.3;
     font-size: 16px;
     font-weight: 400;
-    padding: 0 20px;
+    padding: 0;
 }
 .popup_box .item_sub_info {
     line-height: 1.3;
     font-size: 14px;
     font-weight: 400;
-    padding: 0 25px;
+    padding: 0;
 }
 
 .popup_body {
     overflow: auto;
     max-height: calc(80vh - 73px);
+    padding-inline: 15px;
 }
 
 .popup_symbols {
@@ -492,7 +580,7 @@ main .content_area .new_area .swiper-button-next {
     color: #ffc400;
     position: absolute;
     top: 25px;
-    left: 25px;
+    left: 35px;
 }
 .star_text{
     color: #ffc400; margin-right: 10px;item_section_aria
@@ -502,7 +590,7 @@ main .content_area .new_area .swiper-button-next {
 }
 .Material_info{
     display: flex; align-items: center; gap: 4px; padding: 2px 0 2px 20px; font-size: 13px;
-    font-weight: 400; color: #222;
+    font-weight: 400; color: var(--text);
 }
 .guide_btn{
     padding: 2px 6px; 
@@ -542,12 +630,12 @@ main .content_area {}
 .character_pros{width: 100%;}
 .Character_info {position: relative;}
 .character_info_aria{
-    width: 90%;}
+    width: 100%;}
 .Character_info .swiper-wrapper {margin-top: 30px;}
 
 .Character_info .swiper-slide {
     display: flex; justify-content: center;
-    padding: 0 0 15px 0;
+    padding: 0 10px 18px;
 }
 
 main .content_area .Character_info {
@@ -623,7 +711,7 @@ main .content_area .Character_info .right_contents h3 {
     width: 49px; text-align: center;
     border-right: 1px solid #fff;
 }
-.stats_info{display: flex; justify-content: space-between; width: 244px; align-items: center; background-color: rgb(255, 88, 88); border-bottom: 1px solid #fff;}
+.stats_info{display: flex; justify-content: space-between; width: 100%; max-width: 244px; align-items: center; background-color: rgb(255, 88, 88); border-bottom: 1px solid #fff;}
 .stats_info .stats_bar{font-size: 12px; color: #fff ;padding: 4px 6px 4px 6px; border-right: 1px solid #fff; width: 74px; font-weight: 500;}
 .stats_info .max_bar{font-size: 12px; color: #fff;padding: 4px 6px 4px 6px; border-right: 1px solid #fff; width: 74px; text-align: left; font-weight: 500; display: flex; align-items: end;}
 .stats_info .require_mat{font-size: 12px; color: #fff;padding: 4px 4px; width: 60px; font-weight: 500; text-align: center;}
@@ -641,6 +729,9 @@ main .content_area .Character_info .right_contents h3 {
 .character_info_aria .EVP{background-color: #a341ff;}
 .character_info_aria .LUCK .state_title{background-color: #fd0356;}
 .character_info_aria .LUCK{background-color: #ff4e89;}
+.character_info_aria .stats_info .state_title{
+    background-color: transparent;
+}
 .exclusive_Trait{display: flex; flex-flow: column; position: absolute; right: 0px; top: -178px;}
 .exclusive_Trait h5{font-size: 12px; background-color: #222; color: #fff; padding: 4px 4px;}
 .exclusive_Trait p{font-size: 11px; text-align: end !important; padding: 2px 6px; border-right: 1px solid #222;}
@@ -699,8 +790,8 @@ main .content_area .Character_info .right_contents .best_slide a {
     border-radius: 10px;
     background-color: #f5f5f5;
     border: 1px solid #FF3131;
-    padding: 30px 0;
-    width: 300px;
+    padding: 30px 8px;
+    width: 100%;
     height: 480px;
 }
 
@@ -721,8 +812,9 @@ main .content_area .Character_info .right_contents .best_slide a .item_img img {
 }
 
 main .content_area .Character_info .right_contents .best_slide {
-    width: 94%;
+    width: calc(100% - 32px);
     overflow: hidden;
+    padding-inline: 4px;
 }
 
 main .content_area .Character_info .right_contents .best_slide a:hover .text_ani {
@@ -796,9 +888,19 @@ main .right_contents .best_slide .event-scrollbar {
 
 
 /*Beginner's Guide 시작*/
-.beginner_guide{text-align: center; display: flex; height: 450px;}
+.beginner_guide{
+    width: 100%;
+    height: 450px;
+    text-align: center;
+    background: var(--surface);
+}
+.beginner_guide_inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
 .guide_bg{width: 50%;}
-.guide_bg img{width: 100%; height: 100%;}
+.guide_bg img{width: 100%; height: 100%; object-fit: cover;}
 .beginner_guide .beginner_inner{width: 50%; align-content: center;}
 .beginner_guide .beginner_inner h3{
     font-size: 40px; font-weight: 700;
@@ -887,6 +989,732 @@ main .right_contents .best_slide .event-scrollbar {
 
 .destiny_item_pagination .swiper-pagination-progressbar-fill{
   border-radius: 999px; background-color: #f5f5f5;
+}
+
+/* Expanded character cards */
+.character_popup {
+    position: fixed;
+    inset: 0;
+    z-index: 10020;
+    display: none;
+}
+
+.character_popup.open {
+    display: grid;
+    place-items: center;
+}
+
+.character_popup_dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 7, 18, 0.78);
+    backdrop-filter: blur(4px);
+}
+
+.character_popup_box {
+    position: relative;
+    z-index: 1;
+    width: min(92vw, 520px);
+    max-height: 92vh;
+    overflow: auto;
+    padding: 38px 28px 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+}
+
+.character_popup_close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface-soft);
+    color: var(--text);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.character_popup_content > a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    min-height: 610px;
+    padding: 34px 26px;
+    border: 1px solid #ff6b6b;
+    border-radius: 14px;
+    background: var(--surface-soft);
+    color: var(--text);
+    pointer-events: none;
+}
+
+.character_popup_content .character_img {
+    width: auto !important;
+    height: 165px;
+    margin-bottom: 12px;
+}
+
+.character_popup_content .character_img img {
+    width: auto !important;
+    height: 100%;
+    object-fit: contain;
+}
+
+.character_popup_content .character_name {
+    font-size: 28px;
+}
+
+.character_popup_content .character_pros,
+.character_popup_content .character_cons {
+    font-size: 16px;
+    line-height: 1.35;
+}
+
+.character_popup_content .mat_value {
+    width: min(100%, 390px);
+    font-size: 16px;
+    text-align: center;
+}
+
+.character_popup_content .stats_info {
+    width: min(100%, 390px);
+    max-width: 390px;
+    min-height: 34px;
+    flex-wrap: nowrap;
+}
+
+.character_popup_content .stats_info > * {
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.character_popup_content .stats_info .state_title {
+    flex: 0 0 64px;
+    width: auto;
+    font-size: 14px;
+}
+
+.character_popup_content .stats_info .stats_bar,
+.character_popup_content .stats_info .max_bar,
+.character_popup_content .stats_info .require_mat {
+    font-size: 14px;
+}
+
+.character_popup_content .stats_info .stats_bar {
+    flex: 1 1 auto;
+    width: auto;
+    text-align: left;
+}
+
+.character_popup_content .stats_info .max_bar {
+    flex: 1 1 150px;
+    width: auto;
+}
+
+.character_popup_content .stats_info .require_mat {
+    flex: 0 0 78px;
+    width: auto;
+}
+
+.character_popup_content .atp_bar {
+    flex: 1 1 248px;
+    width: auto !important;
+}
+
+.character_popup_content .mag_info {
+    font-size: 12px;
+}
+
+.character_popup_content .exclusive_Trait,
+.character_popup_content .tech_Trait {
+    position: static;
+    width: min(100%, 390px);
+    margin-bottom: 8px;
+}
+
+.character_popup_content .exclusive_Trait h5,
+.character_popup_content .tech_Trait h5 {
+    width: 100%;
+    text-align: center;
+}
+
+.character_popup_content .exclusive_Trait p,
+.character_popup_content .tech_Trait p {
+    border: 0;
+    font-size: 13px;
+    text-align: center !important;
+}
+
+.character_popup_hint {
+    margin: 16px 0 0;
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+/* Unit recommendations added to Destiny Items */
+.unit_recommendation_block .item_inner {
+    min-height: 350px;
+}
+
+.unit_recommendation_block .item_img {
+    width: 128px;
+    background: linear-gradient(145deg, #173e7b, #2e77ff);
+}
+
+.unit_recommendation_block .item_detail {
+    max-width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+html[data-theme="dark"] .bazaar_slide .item_inner {
+    background: linear-gradient(180deg, #14243a 0%, #0e1c30 100%);
+    border-color: #4d8ed0;
+    color: var(--text);
+}
+
+html[data-theme="dark"] .bazaar_slide .infortant_info {
+    color: #9fc6ff;
+}
+
+html[data-theme="dark"] .tech_bonus {
+    background: rgba(7, 17, 31, 0.7);
+    border-color: #355a84;
+}
+
+html[data-theme="dark"] .Material_title {
+    color: #8cc6ff;
+}
+
+html[data-theme="dark"] .beginner_inner,
+html[data-theme="dark"] .destiny_item_slide .item_inner,
+html[data-theme="dark"] main .content_area .Character_info .right_contents .best_slide a {
+    background: var(--surface-soft);
+    color: var(--text);
+}
+
+html[data-theme="dark"] .destiny_item_slide .item_inner {
+    border-color: #477cbb;
+}
+
+html[data-theme="dark"] .destiny_item_slide .item_detail {
+    color: #a9c7ff;
+}
+
+html[data-theme="dark"] .destiny_item_slide .item_inner .item_name,
+html[data-theme="dark"] .character_name,
+html[data-theme="dark"] .character_pros,
+html[data-theme="dark"] .character_cons {
+    color: var(--text);
+}
+
+html[data-theme="dark"] .character_popup_box {
+    border-color: #5f9fdf;
+    background: #1a3453;
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.62), 0 0 0 1px rgba(122, 190, 255, 0.12);
+}
+
+html[data-theme="dark"] .character_popup_content > a {
+    border-color: #ff8080;
+    background: #284b70;
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .character_popup_content .character_name,
+html[data-theme="dark"] .character_popup_content .character_pros,
+html[data-theme="dark"] .character_popup_content .character_cons {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="dark"] .character_popup_content .mat_value {
+    color: #9fd2ff;
+}
+
+html[data-theme="dark"] .character_popup_hint {
+    color: #dce9f7;
+}
+
+html[data-theme="dark"] .character_popup_close {
+    border-color: #8fc5f7;
+    background: #203f62;
+    color: #ffffff;
+}
+
+html[data-theme="dark"] main .content_area .Character_info {
+    background: linear-gradient(135deg, #102849, #173d6d);
+}
+
+html[data-theme="dark"] .beginner_guide {
+    background: var(--surface);
+}
+
+html[data-theme="dark"] .beginner_guide .beginner_inner .begineer_btn {
+    border-color: var(--border);
+    color: var(--text);
+}
+
+html[data-theme="dark"] .beginner_guide .beginner_inner .begineer_btn:hover {
+    background: #dcecff;
+    color: #0a1b31;
+}
+
+@media screen and (max-width: 560px) {
+    .character_popup_box {
+        padding: 38px 14px 18px;
+    }
+
+    .character_popup_content > a {
+        min-height: 560px;
+        padding: 26px 10px;
+    }
+
+    .character_popup_content .character_img {
+        height: 130px;
+    }
+
+    .character_popup_content .stats_info {
+        width: 100%;
+    }
+
+    .character_popup_content .stats_info .state_title {
+        flex-basis: 48px;
+        font-size: 12px;
+    }
+
+    .character_popup_content .stats_info .stats_bar {
+        flex-basis: 72px;
+    }
+
+    .character_popup_content .stats_info .require_mat {
+        flex-basis: 54px;
+    }
+
+    .character_popup_content .stats_info .stats_bar,
+    .character_popup_content .stats_info .max_bar,
+    .character_popup_content .stats_info .require_mat {
+        font-size: 11px;
+    }
+
+    .character_popup_content .mag_info {
+        font-size: 9px;
+    }
+}
+
+/* Destiny Items filters, update cards, and expanded guide */
+.destiny_item_filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin: 30px 0 8px;
+    padding: 20px 22px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 10px 30px rgba(14, 36, 72, 0.08);
+}
+
+.destiny_item_filters_intro {
+    display: flex;
+    flex: 1 1 360px;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.destiny_item_filters_intro strong {
+    font-size: 18px;
+}
+
+.destiny_item_filters_intro span {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.35;
+}
+
+.destiny_item_filter_buttons {
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.destiny_item_filter {
+    min-height: 38px;
+    padding: 7px 15px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.destiny_item_filter:hover {
+    transform: translateY(-1px);
+    border-color: var(--accent);
+}
+
+.destiny_item_filter.is-active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.destiny_item_block[hidden] {
+    display: none !important;
+}
+
+.destiny_item_slide .item_section_aria {
+    cursor: zoom-in;
+}
+
+.destiny_item_slide .item_section_aria:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+.destiny_item_slide .item_inner {
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.destiny_item_slide .item_section_aria:hover .item_inner {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 24px rgba(14, 36, 72, 0.14);
+}
+
+.destiny_catalog_card .item_inner {
+    overflow: hidden;
+    padding-bottom: 46px;
+}
+
+.destiny_catalog_card .destiny_catalog_image {
+    width: calc(100% - 12px);
+    height: 190px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.destiny_catalog_card .destiny_catalog_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destiny_catalog_block[data-category="armor"] .destiny_catalog_card .destiny_catalog_image {
+    width: 210px;
+    height: 210px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.unit_recommendation_block .destiny_catalog_card .destiny_catalog_image {
+    width: 128px;
+    height: 128px;
+}
+
+.destiny_catalog_card .important_info {
+    color: #2e77ff;
+}
+
+.destiny_card_open_hint {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    display: block;
+    padding-top: 9px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+body.destiny-detail-open {
+    overflow: hidden;
+}
+
+.destiny_detail_modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    display: none;
+    place-items: center;
+    padding: 24px;
+}
+
+.destiny_detail_modal.is-open {
+    display: grid;
+}
+
+.destiny_detail_dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 7, 18, 0.82);
+    backdrop-filter: blur(5px);
+}
+
+.destiny_detail_dialog {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+    gap: 28px;
+    width: min(1180px, 96vw);
+    max-height: 92vh;
+    padding: 34px;
+    overflow: auto;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.52);
+}
+
+.destiny_detail_close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    z-index: 2;
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface-soft);
+    color: var(--text);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.destiny_detail_media {
+    align-self: start;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface-soft);
+}
+
+.destiny_detail_image_link {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #05090f;
+    cursor: zoom-in;
+}
+
+.destiny_detail_image {
+    display: block;
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+.destiny_detail_image_hint {
+    margin-top: 10px;
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 12px;
+}
+
+.destiny_detail_content {
+    min-width: 0;
+    padding: 10px 8px 8px 0;
+}
+
+.destiny_detail_badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 12px;
+}
+
+.destiny_detail_badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 27px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.destiny_detail_badge--type {
+    background: var(--surface-soft);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.destiny_detail_title {
+    padding-right: 38px;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 800;
+    line-height: 1.08;
+}
+
+.destiny_detail_summary {
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+.destiny_detail_stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 22px;
+}
+
+.destiny_detail_stats > div {
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--surface-soft);
+}
+
+.destiny_detail_stats dt {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.destiny_detail_stats dd {
+    margin-top: 4px;
+    overflow-wrap: anywhere;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.destiny_detail_sections {
+    display: grid;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.destiny_detail_section {
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-soft);
+}
+
+.destiny_detail_section h3 {
+    margin-bottom: 9px;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.destiny_detail_section ul {
+    margin: 0;
+    padding-left: 19px;
+}
+
+.destiny_detail_section li {
+    margin: 6px 0;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.48;
+}
+
+html[data-theme="dark"] .destiny_item_filters,
+html[data-theme="dark"] .destiny_detail_dialog {
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+}
+
+html[data-theme="dark"] .destiny_catalog_card .important_info {
+    color: #8cc6ff;
+}
+
+@media screen and (max-width: 900px) {
+    .destiny_item_filters {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .destiny_item_filter_buttons {
+        justify-content: flex-start;
+    }
+
+    .destiny_detail_dialog {
+        grid-template-columns: 1fr;
+        width: min(720px, 96vw);
+    }
+
+    .destiny_detail_image {
+        max-height: 48vh;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .destiny_item_filters {
+        margin-top: 18px;
+        padding: 16px;
+    }
+
+    .destiny_item_filter_buttons {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .destiny_item_filter {
+        width: 100%;
+    }
+
+    .destiny_detail_modal {
+        padding: 8px;
+    }
+
+    .destiny_detail_dialog {
+        width: 100%;
+        max-height: 96vh;
+        gap: 16px;
+        padding: 48px 14px 20px;
+        border-radius: 14px;
+    }
+
+    .destiny_detail_media {
+        padding: 8px;
+    }
+
+    .destiny_detail_content {
+        padding: 0;
+    }
+
+    .destiny_detail_stats {
+        grid-template-columns: 1fr;
+    }
+
+    .destiny_detail_title {
+        font-size: 28px;
+    }
 }
 
 
