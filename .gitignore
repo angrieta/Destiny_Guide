@@ -8,6 +8,7 @@ build/output/
 .sites-static/
 .open-next/
 .wrangler/
+*.tsbuildinfo
 
 # tooling / editor
 .codex-tmp/
