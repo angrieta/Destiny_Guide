@@ -9,6 +9,9 @@ const DIFFICULTIES = ["Normal", "Hard", "Very Hard", "Ultimate"];
 const SECTION_IDS = ["Viridia", "Greenill", "Skyly", "Bluefull", "Purplenum", "Pinkal", "Redria", "Oran", "Yellowboze", "Whitill"];
 const ITEM_TYPES: Array<"All" | ItemType> = ["All", "Weapon", "Armor", "Shield", "Unit", "Mag", "Material", "Consumable", "Other"];
 const EPISODES = [1, 2, 4];
+type PartySize = 1 | 2 | 3 | 4;
+const PARTY_SIZES: PartySize[] = [1, 2, 3, 4];
+const PARTY_DAR_MULTIPLIERS: Record<PartySize, number> = { 1: 1, 2: 0.8, 3: 0.7, 4: 0.6 };
 
 const normalize = (value: string) =>
   value
@@ -22,12 +25,29 @@ function itemSearchValue(value: string) {
   return normalize(value) === "pgf" ? "parasitic gene flow" : normalize(value);
 }
 
-function formatChance(record: DropRecord) {
-  if (!record.denominator) return "—";
-  const chance = 100 / record.denominator;
+function getAdjustedDenominator(denominator: number | null, multiplier: number) {
+  return denominator ? denominator / multiplier : null;
+}
+
+function formatDenominator(value: number) {
+  return value.toLocaleString("en-US", { useGrouping: false, maximumFractionDigits: 2 });
+}
+
+function formatRate(rate: string | null, denominator: number | null, multiplier: number) {
+  if (!rate || !denominator || multiplier === 1) return rate;
+  return `1/${formatDenominator(denominator / multiplier)}`;
+}
+
+function formatChance(denominator: number | null) {
+  if (!denominator) return "—";
+  const chance = 100 / denominator;
   if (chance >= 1) return `${chance.toFixed(2)}%`;
   if (chance >= 0.01) return `${chance.toFixed(3)}%`;
   return `${chance.toFixed(5)}%`;
+}
+
+function formatDar(value: number) {
+  return Number.isInteger(value) ? String(value) : value.toFixed(1).replace(/\.0$/, "");
 }
 
 function dropMatches(drop: MatrixDrop, itemNeedle: string, itemType: "All" | ItemType) {
@@ -47,6 +67,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const [itemType, setItemType] = useState<"All" | ItemType>("All");
   const [itemQuery, setItemQuery] = useState("");
   const [enemyQuery, setEnemyQuery] = useState("");
+  const [partySize, setPartySize] = useState<PartySize>(1);
   const [showQuickControls, setShowQuickControls] = useState(false);
   const [mobileControlsOpen, setMobileControlsOpen] = useState(false);
   const controlsAnchorRef = useRef<HTMLDivElement>(null);
@@ -73,6 +94,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const enemyNeedle = normalize(enemyQuery);
   const selectedEpisode = episode === "All" ? null : Number(episode);
   const displayedSections = sectionId === "All" ? SECTION_IDS : [sectionId];
+  const partyDarMultiplier = PARTY_DAR_MULTIPLIERS[partySize];
 
   const areas = useMemo(
     () =>
@@ -174,7 +196,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     return Array.from(groups.values()).sort((a, b) => a.item.localeCompare(b.item));
   }, [searchResults]);
 
-  const activeFilterCount = [sectionId, episode, area, itemType].filter((value) => value !== "All").length + Number(Boolean(itemQuery)) + Number(Boolean(enemyQuery));
+  const activeFilterCount = [sectionId, episode, area, itemType].filter((value) => value !== "All").length + Number(Boolean(itemQuery)) + Number(Boolean(enemyQuery)) + Number(partySize !== 1);
 
   const resetFilters = () => {
     setSectionId("All");
@@ -183,7 +205,24 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     setItemType("All");
     setItemQuery("");
     setEnemyQuery("");
+    setPartySize(1);
   };
+
+  const partySelector = (compact = false) => (
+    <div className={compact ? styles.quickPartyDar : styles.partyDarControl}>
+      <div className={styles.partyDarLabel}>
+        <span>Party size</span>
+        <small>DAR multiplier: {Math.round(partyDarMultiplier * 100)}%</small>
+      </div>
+      <div className={styles.partyButtons} role="group" aria-label={compact ? "Quick party size" : "Party size for drop rate calculation"}>
+        {PARTY_SIZES.map((value) => (
+          <button key={value} type="button" className={partySize === value ? styles.partyActive : ""} aria-pressed={partySize === value} onClick={() => setPartySize(value)}>
+            {value}P
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 
   const quickControls = (mobile = false) => (
     <>
@@ -207,6 +246,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
         <span>Table difficulty</span>
         <div>{DIFFICULTIES.map((value) => <button key={value} type="button" className={difficulty === value ? styles.quickDifficultyActive : ""} onClick={() => setDifficulty(value)}>{value}</button>)}</div>
       </div>
+      {partySelector(true)}
       <button className={styles.quickReset} type="button" onClick={resetFilters} disabled={activeFilterCount === 0}>Reset filters {activeFilterCount > 0 && <span>{activeFilterCount}</span>}</button>
     </>
   );
@@ -267,6 +307,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
               <label><span>Item type</span><select value={itemType} onChange={(event) => setItemType(event.target.value as "All" | ItemType)}>{ITEM_TYPES.map((value) => <option key={value}>{value}</option>)}</select></label>
               <button className={styles.resetButton} type="button" onClick={resetFilters} disabled={activeFilterCount === 0}>Reset filters {activeFilterCount > 0 && <span>{activeFilterCount}</span>}</button>
             </div>
+            {partySelector()}
           </div>
 
           <div className={styles.browseDifficulty}>
@@ -301,8 +342,8 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
                         <div key={record.id}>
                           <span className={`${styles.sectionDot} ${styles[`section${record.sectionId}`]}`} />
                           <strong>{record.difficulty} · {record.sectionId}</strong>
-                          <span>{record.enemy} · EP {record.episode} {record.area}</span>
-                          <b>{record.rate ?? "Special"}<small>{formatChance(record)}</small></b>
+                          <span>{record.enemy} · EP {record.episode} {record.area} · DAR {formatDar(record.dar * partyDarMultiplier)}%</span>
+                          <b>{formatRate(record.rate, record.denominator, partyDarMultiplier) ?? "Special"}<small>{formatChance(getAdjustedDenominator(record.denominator, partyDarMultiplier))}</small></b>
                         </div>
                       ))}
                     </div>
@@ -363,14 +404,14 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
                   <tbody>
                     {rows.map((row) => (
                       <tr key={row.id}>
-                        <th scope="row"><strong>{row.enemy}</strong><span>DAR: {row.dar}%</span></th>
+                        <th scope="row"><strong>{row.enemy}</strong><span>DAR: {formatDar(row.dar * partyDarMultiplier)}%</span><small>{partySize === 1 ? "1P baseline" : `Base ${row.dar}% · ${partySize}P`}</small></th>
                         {displayedSections.map((value) => {
                           const drop = row.drops.find((candidate) => candidate.sectionId === value)!;
                           const focused = !itemNeedle && itemType === "All" ? true : dropMatches(drop, itemNeedle, itemType);
                           return (
                             <td className={`${styles.dropCell} ${styles[`column${value}`]} ${focused ? styles.dropFocused : styles.dropDimmed}`} key={value}>
                               <strong>{drop.item}</strong>
-                              {drop.rate && <span>{drop.rate}</span>}
+                              {drop.rate && <span>{formatRate(drop.rate, drop.denominator, partyDarMultiplier)}</span>}
                             </td>
                           );
                         })}

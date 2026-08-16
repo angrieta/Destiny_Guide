@@ -120,7 +120,7 @@ const ITEM_DETAIL = {
             '<div class="Material_title">ANTI-DARK RING x1</div>',
                 '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Viridia_icon.png" alt="Viridia"> - Crimson Assassin 1/531.95</p>',
 
-            '<div class="Material_title">ANTI-DARK RING x1</div>',
+            '<div class="Material_title">ANTI-LIGHT RING x1</div>',
                 '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Oran_icon.png" alt="Oran"> - Gulgus 1/525.13</p>',
         ] },
     ]
@@ -328,6 +328,32 @@ const ITEM_DETAIL = {
         ]
     },
 
+    FORBIDDEN_GRIMOIRE: {
+    popupInfo: [
+        '<p class="item_info">HP +200</p>',
+        '<p class="item_info" style="color:#c442cf; margin-top:8px">Prophet of Motav</p>',
+        '<p class="item_sub_info">Hits: 1-2-3</p>',
+        '<p class="item_info" style="color:#c442cf; margin-top:8px">The Sigh of a God</p>',
+        '<p class="item_sub_info">Expanded range, hits: 3-3-3</p>',
+        '<p class="item_info" style="color:#c442cf; margin-top:8px">Gal Wind</p>',
+        '<p class="item_sub_info">ATP +350, ATA +30</p>',
+        '<p class="item_sub_info">N/H hits: 3-3-3, Special hits: 3-3-4</p>',
+    ],
+    sections: [
+        { title: '<p class="item_important"><span class="star_text">NEW</span><span class="important_text">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="red box">Paganini Trade', body: [
+            '<p class="Material_info">Hallowed World [Master] · Pioneer 2</p>',
+            '<div class="Material_title">Hallowed Jack-O-Lantern x1</div>',
+            '<div class="Material_title">Millennium Photon Core x10</div>',
+            '<div class="Material_title">Cladding of Epsilon x1</div>',
+            '<div class="Material_title">Proof of Sonic Team x1</div>',
+            '<div class="Material_title">Sorcerer&#39;s Right Arm x1</div>',
+            '<div class="Material_title">Magic Stone &#39;Iritista&#39; x2</div>',
+            '<div class="Material_title">Book of Hitogata x1</div>',
+        ] },
+    ]
+    },
+
     MATRIX_SCOPE: {
     popupInfo: [
         '<p class="item_info" style="color:#c442cf">Apocalypse Bowgun</p>',
@@ -345,7 +371,9 @@ const ITEM_DETAIL = {
             '<div class="Material_title">Infernal Stone x1</div>',
             '<p class="Material_info">VR Test OMEGA: Oblivion</p>',
             '<div class="Material_title">Fragments of Orb [Red] x2</div>',
+            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Redria_icon.png" alt="Redria"><img class="item_section" src="./images/common/section/32px-Pinkal_icon.png" alt="Pinkal"> Christmas Fiasco EP2 · Delbiter · 1/393</p>',
             '<div class="Material_title">Fragments of Orb [Blue] x2</div>',
+            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Skyly_icon.png" alt="Skyly"><img class="item_section" src="./images/common/section/32px-Bluefull_icon.png" alt="Bluefull"> Christmas Fiasco EP1 · Dark Bringer · 1/393</p>',
             '<div class="Material_title">Reflex Gear x2</div>',
             '<div class="Material_title">Ethereal Armor x1</div>',
             '<div class="Material_title">Shadow Cloak x1</div>',

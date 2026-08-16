@@ -206,7 +206,8 @@
       category: "Unit",
       type: "Unit",
       name: "FORBIDDEN GRIMOIRE",
-      image: "./images/items/units/photon-flow-effect.png",
+      image: "./images/items/units/forbidden-grimoire-cutout.png",
+      imageFit: "contain",
       imagePosition: "center center",
       summary: "An ancient grimoire that enhances selected Force-class weapons and adds 200 HP.",
       stats: [
@@ -1264,7 +1265,8 @@
       category: "Unit",
       type: "Unit",
       name: "MATRIX SCOPE",
-      image: "./images/items/units/scope-effect.png",
+      image: "./images/items/units/matrix-scope-cutout.png",
+      imageFit: "contain",
       imagePosition: "center center",
       summary: "A scope unit with all resists +5 that empowers Apocalypse Bowgun, Snow Queen, and Power Maser.",
       stats: [
@@ -1277,7 +1279,9 @@
         "Power Maser: Hits 4–4–4, MST +150, range 185.0 and angle 60.0."
       ],
       obtain: [
-        "Create or trade the item with the required components shown in the supplied source."
+        "Create or trade the item with the required components shown in the supplied source.",
+        "Fragments of Orb [Red]: Delbiter in Christmas Fiasco EP2, 1/393 on Redria and Pinkal.",
+        "Fragments of Orb [Blue]: Dark Bringer in Christmas Fiasco EP1, 1/393 on Skyly and Bluefull."
       ],
       required: [
         "Infernal Stone x1",
@@ -1416,7 +1420,7 @@
       '<a href="#" class="item_section_aria" data-catalog-id="' + escapeHTML(item.id) + '">' +
         '<div class="item_inner">' +
           '<div class="item_img destiny_catalog_image">' +
-            '<img src="' + escapeHTML(item.image) + '" alt="' + escapeHTML(item.name) + '" style="object-position:' + escapeHTML(item.imagePosition || "center top") + ';filter:' + escapeHTML(item.imageFilter || "none") + '">' +
+            '<img src="' + escapeHTML(item.image) + '" alt="' + escapeHTML(item.name) + '" style="object-fit:' + escapeHTML(item.imageFit || "cover") + ';object-position:' + escapeHTML(item.imagePosition || "center top") + ';filter:' + escapeHTML(item.imageFilter || "none") + '">' +
             '<span class="item_type">' + escapeHTML(item.type) + "</span>" +
           "</div>" +
           '<h4 class="item_title"><span class="item_name">' + escapeHTML(item.name) + "</span></h4>" +
