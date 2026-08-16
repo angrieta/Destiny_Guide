@@ -6,6 +6,7 @@ dist/
 build/output/
 .next/
 .sites-static/
+.pages-output/
 .open-next/
 .wrangler/
 *.tsbuildinfo

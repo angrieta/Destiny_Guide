@@ -216,18 +216,18 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <h1 className={styles.siteLogo}>
-            <a href="/index.html" aria-label="Destiny Guide home"><img src="/images/common/rogo.png" alt="Destiny Guide" /></a>
+            <a href="../index.html" aria-label="Destiny Guide home"><img src="../images/common/rogo.png" alt="Destiny Guide" /></a>
           </h1>
           <nav className={styles.headerMenus} aria-label="Main navigation">
             <div>
-              <a href="/beginner_page.html">Beginner</a>
-              <a href="/item_page.html">Destiny Items</a>
-              <a href="/dmc_page.html">DMC Guide</a>
-              <a href="/Psobb_tool.html">Tools</a>
+              <a href="../beginner_page.html">Beginner</a>
+              <a href="../item_page.html">Destiny Items</a>
+              <a href="../dmc_page.html">DMC Guide</a>
+              <a href="../Psobb_tool.html">Tools</a>
             </div>
             <div className={styles.raidMenu}>
-              <a href="/dn.html">Distorted Nightmare [RAID]</a>
-              <a href="/discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
+              <a href="../dn.html">Distorted Nightmare [RAID]</a>
+              <a href="../discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
             </div>
           </nav>
           <div className={styles.headerActions}>
@@ -236,7 +236,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
               {theme === "dark" ? "Light" : "Dark"}
             </button>
             <a className={styles.discordLink} href="https://discord.gg/FesaarwjFn" target="_blank" rel="noreferrer" aria-label="Destiny Discord" />
-            <a className={styles.dropTableLink} href="/drop-tables" aria-current="page">Drop Tables</a>
+            <a className={styles.dropTableLink} href="../drop-tables/" aria-current="page">Drop Tables</a>
           </div>
         </div>
       </header>

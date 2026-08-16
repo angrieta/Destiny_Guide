@@ -9,6 +9,7 @@
   "scripts": {
     "prepare:static": "node build/prepare-static.mjs",
     "sync:drops": "node scripts/sync-drop-tables.mjs",
+    "export:pages": "node scripts/export-github-pages.mjs",
     "dev": "node build/prepare-static.mjs && vinext dev --hostname 0.0.0.0",
     "build": "node build/prepare-static.mjs && vinext build",
     "start": "vinext start"
