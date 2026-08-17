@@ -338,10 +338,14 @@
 
 @media (min-width: 1321px) {
   .explorerQuickOpen {
-    width: min(1540px, calc(100% - 356px));
+    --quick-explorer-width: min(1540px, calc(100% - 356px));
+    width: var(--quick-explorer-width);
     max-width: none;
-    margin-right: 356px;
-    margin-left: auto;
+    margin-right: auto;
+    margin-left: min(
+      calc((100% - var(--quick-explorer-width)) / 2),
+      calc(100% - var(--quick-explorer-width) - 356px + clamp(16px, 4vw, 64px))
+    );
     transition: width 180ms ease, margin 180ms ease;
   }
 }
