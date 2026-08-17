@@ -302,9 +302,10 @@
 .matrixFilters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: end; gap: 12px; padding-top: 18px; border-top: 1px solid var(--border); }
 .matrixFilters select { width: 100%; min-height: 44px; padding: 0 34px 0 12px; border: 1px solid var(--border); border-radius: 9px; outline: 0; background: var(--surface-soft); color: var(--text); cursor: pointer; }
 .matrixFilters select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent); }
-.partyDarControl, .quickPartyDar { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.partyDarControl { margin-top: 16px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface-soft); }
-.quickPartyDar { align-items: stretch; flex-direction: column; gap: 8px; margin-top: 15px; padding-top: 14px; border-top: 1px solid var(--border); }
+.rateControls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.partyDarControl, .dropRateControl, .quickPartyDar, .quickDropRate { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.partyDarControl, .dropRateControl { margin-top: 16px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface-soft); }
+.quickPartyDar, .quickDropRate { align-items: stretch; flex-direction: column; gap: 8px; margin-top: 15px; padding-top: 14px; border-top: 1px solid var(--border); }
 .partyDarLabel { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
 .partyDarLabel span { color: var(--text); font-size: 11px; font-weight: 850; letter-spacing: 0.06em; text-transform: uppercase; }
 .partyDarLabel small { color: var(--muted); font-size: 10px; }
@@ -313,8 +314,10 @@
 .partyButtons button:hover { border-color: var(--blue); color: var(--text); }
 .partyButtons .partyActive { border-color: var(--blue); background: var(--blue); color: #ffffff; box-shadow: 0 5px 14px color-mix(in srgb, var(--blue) 25%, transparent); }
 :global(html[data-theme="dark"]) .partyButtons .partyActive { color: #07111f; }
-.quickPartyDar .partyButtons { grid-template-columns: repeat(4, 1fr); }
-.quickPartyDar .partyButtons button { min-width: 0; min-height: 36px; padding-inline: 4px; }
+.dropRateButtons { grid-template-columns: repeat(3, minmax(44px, 1fr)); }
+.quickPartyDar .partyButtons, .quickDropRate .partyButtons { grid-template-columns: repeat(4, 1fr); }
+.quickDropRate .partyButtons { grid-template-columns: repeat(3, 1fr); }
+.quickPartyDar .partyButtons button, .quickDropRate .partyButtons button { min-width: 0; min-height: 36px; padding-inline: 4px; }
 
 .controlsAnchor { position: relative; }
 .desktopQuickPanel {
@@ -524,11 +527,14 @@
   .resultLocations > div { grid-template-columns: 8px 125px minmax(0, 1fr); }
   .resultLocations b { grid-column: 3; text-align: left; }
   .episodeTable h2 { text-align: left; }
-  .partyDarControl { align-items: stretch; flex-direction: column; gap: 10px; }
+  .partyDarControl, .dropRateControl { align-items: stretch; flex-direction: column; gap: 10px; }
   .partyButtons { grid-template-columns: repeat(4, 1fr); }
+  .dropRateButtons { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 760px) {
+  .rateControls { grid-template-columns: 1fr; }
+  .dropRateControl { margin-top: 0; }
   .stickySectionHeader { top: 120px; }
   .mobileSwipeHint {
     position: relative;
