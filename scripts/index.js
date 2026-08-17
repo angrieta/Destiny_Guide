@@ -60,7 +60,8 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
     threshold: 8,
     resistanceRatio: 0.85,
     watchSlidesProgress: true,
-    preventClicks: false,
+    preventClicks: true,
+    preventClicksPropagation: true,
     breakpoints: {
       300: { slidesPerView: 1.2 },
       340: { slidesPerView: 1.3 },

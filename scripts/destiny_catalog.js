@@ -1417,7 +1417,7 @@
       : [item.combat[0] || item.obtain[0] || item.summary];
 
     slide.innerHTML =
-      '<a href="#" class="item_section_aria" data-catalog-id="' + escapeHTML(item.id) + '">' +
+      '<button type="button" class="item_section_aria" data-catalog-id="' + escapeHTML(item.id) + '">' +
         '<div class="item_inner">' +
           '<div class="item_img destiny_catalog_image">' +
             '<img src="' + escapeHTML(item.image) + '" alt="' + escapeHTML(item.name) + '" style="object-fit:' + escapeHTML(item.imageFit || "cover") + ';object-position:' + escapeHTML(item.imagePosition || "center top") + ';filter:' + escapeHTML(item.imageFilter || "none") + '">' +
@@ -1428,7 +1428,7 @@
           previewDetails.map((line) => '<p class="item_detail">' + escapeHTML(line) + "</p>").join("") +
           '<span class="destiny_card_open_hint">Click for full details</span>' +
         "</div>" +
-      "</a>";
+      "</button>";
 
     return slide;
   }
@@ -1637,7 +1637,8 @@
 
     document.querySelectorAll(".destiny_item_slide .item_section_aria").forEach((card) => {
       card.setAttribute("aria-haspopup", "dialog");
-      if (card.tagName !== "A" && card.tagName !== "BUTTON") {
+      if (card.tagName === "A") card.removeAttribute("href");
+      if (card.tagName !== "BUTTON") {
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", "0");
       }
@@ -1646,6 +1647,11 @@
     document.addEventListener("click", (event) => {
       const card = event.target.closest(".destiny_item_slide .item_section_aria");
       if (!card) return;
+      const swiper = card.closest(".destiny_item_swiper")?.swiper;
+      if (event.defaultPrevented || (swiper && !swiper.allowClick)) {
+        event.preventDefault();
+        return;
+      }
       event.preventDefault();
       const item = card.dataset.catalogId
         ? catalogById.get(card.dataset.catalogId)

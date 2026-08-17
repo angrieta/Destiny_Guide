@@ -1381,6 +1381,16 @@ html[data-theme="dark"] .beginner_guide .beginner_inner .begineer_btn:hover {
     cursor: zoom-in;
 }
 
+.destiny_item_slide button.item_section_aria {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: inherit;
+}
+
 .destiny_item_slide .item_section_aria:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 3px;
