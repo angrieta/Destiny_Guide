@@ -287,7 +287,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
         <p>Choose a difficulty, then read each monster across the ten Section IDs. Search results are highlighted and summarized above the original table layout.</p>
       </section>
 
-      <section className={styles.explorer}>
+      <section className={`${styles.explorer} ${showQuickControls ? styles.explorerQuickOpen : ""}`}>
         <div className={styles.controlsAnchor} ref={controlsAnchorRef}>
           <div className={styles.filterPanel}>
             <div className={styles.searchGrid}>
