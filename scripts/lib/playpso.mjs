@@ -13,9 +13,14 @@ export const ARTIFACT_DIR = resolve(PROJECT_ROOT, "sync-artifacts");
  * a genuine Chrome build — no challenge solving, token forging, or fingerprint spoofing.
  */
 export async function launchBrowser(chromium) {
+  // SYNC_BROWSER_CHANNEL lets a machine use a browser it already has. Playwright
+  // bundles its own Chromium, but that build needs the VC++ runtime, which many
+  // Windows machines lack ("side-by-side configuration is incorrect") - pointing at
+  // the installed Edge or Chrome avoids the extra system dependency entirely.
+  const channel = process.env.SYNC_BROWSER_CHANNEL || "chromium";
   return chromium.launch({
     headless: true,
-    channel: "chromium",
+    channel,
     args: ["--disable-blink-features=AutomationControlled"],
   });
 }
@@ -100,6 +105,15 @@ async function captureFailureArtifacts(page, label, diagnostics) {
   }
 }
 
+/**
+ * PlayPSO refuses automated browsers outright, so a challenge page is the expected
+ * outcome of a scheduled run, not a regression worth a red build every night.
+ * Anything else - a markup change, a network fault, bad data - still fails loudly.
+ */
+export function isExpectedBlock(error) {
+  return error instanceof SyncError && error.diagnostics.reason === "CLOUDFLARE_CHALLENGE";
+}
+
 export function logDiagnostics(diagnostics) {
   console.error("");
   console.error(`::error title=PlayPSO sync failed (${diagnostics.reason})::${diagnostics.label}`);
@@ -162,7 +176,15 @@ export async function writeSyncStatus(fileName, { status, changed, extra = {}, e
     status,
     ...extra,
   };
-  if (status === "failed") {
+
+  if (status === "blocked") {
+    // A blocked run is a standing condition, not an event. Stamping it with the
+    // current time would rewrite this file every night and commit pure noise, so
+    // record when the block started and leave the file byte-identical after that.
+    payload.blockedSince = previous.status === "blocked" ? (previous.blockedSince ?? now) : now;
+    payload.lastError = error ?? "unknown error";
+    if (previous.itemCount !== undefined) payload.itemCount = previous.itemCount;
+  } else if (status === "failed") {
     payload.lastFailedAt = now;
     payload.lastError = error ?? "unknown error";
   } else if (previous.lastFailedAt) {

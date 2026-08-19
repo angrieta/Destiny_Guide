@@ -5,6 +5,7 @@ import {
   DATA_DIR,
   SyncError,
   createPage,
+  isExpectedBlock,
   launchBrowser,
   loadPage,
   logDiagnostics,
@@ -215,12 +216,22 @@ async function run() {
 try {
   await run();
 } catch (error) {
+  const blocked = isExpectedBlock(error);
   await writeSyncStatus("database-sync-status.json", {
-    status: "failed",
+    status: blocked ? "blocked" : "failed",
     changed: false,
     error: error instanceof SyncError ? `${error.diagnostics.reason}: ${error.message}` : error.message,
   });
   console.error(`\nItem database sync failed: ${error.message}`);
   console.error("Existing database JSON was left untouched.");
-  process.exitCode = 1;
+
+  if (blocked) {
+    console.log("");
+    console.log("::warning title=PlayPSO blocked the sync::Refresh manually with scripts/collect-in-browser.js");
+    console.log("PlayPSO serves a Cloudflare challenge to automated browsers, so this is expected.");
+    console.log("See docs/playpso-sync.md for the manual refresh steps.");
+    process.exitCode = 0;
+  } else {
+    process.exitCode = 1;
+  }
 }

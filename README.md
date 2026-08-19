@@ -61,11 +61,14 @@ pnpm start    # 빌드 결과 실행
 
 ## PlayPSO 데이터 동기화
 
-`/drop-tables`와 `/database` 데이터 수집, 검증, 자동화 구조는
+PlayPSO가 자동화 브라우저를 차단하므로, 데이터 갱신은 직접 연 브라우저에서
+콘솔 스니펫으로 수집한 뒤 가져옵니다. 전체 절차는
 [docs/playpso-sync.md](docs/playpso-sync.md)를 참고하세요.
 
+1. <https://www.playpso.net/database> 를 열고 표가 보일 때까지 대기
+2. `F12` → Console에 `scripts/collect-in-browser.js` 내용 붙여넣기 → JSON 다운로드
+3. 저장소에서 가져오기
+
 ```bash
-pnpm exec playwright install chromium
-pnpm sync:drops      # 드랍표 갱신
-pnpm sync:database   # 아이템 DB 갱신
+pnpm import:snapshot ~/Downloads/playpso-database-snapshot.json
 ```

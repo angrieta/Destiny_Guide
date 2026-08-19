@@ -3,6 +3,38 @@
 `/drop-tables`와 `/database`는 PlayPSO에서 가져온 스냅샷 JSON을 빌드 시점에 읽어
 정적으로 렌더링합니다. 방문자의 브라우저는 PlayPSO에 직접 요청하지 않습니다.
 
+## 데이터 갱신 방법 (실제로 동작하는 방법)
+
+PlayPSO는 자동화된 브라우저를 차단합니다(아래 [제약](#제약-playpso는-자동화-브라우저를-차단합니다) 참고).
+따라서 갱신은 **직접 열어둔 브라우저 안에서** 수행합니다. 1분이면 끝납니다.
+
+1. 브라우저로 <https://www.playpso.net/database> 를 엽니다.
+   Cloudflare 확인 화면이 지나가고 아이템 표가 보일 때까지 기다립니다.
+2. `F12` → **Console** 탭.
+3. `scripts/collect-in-browser.js` 파일 내용을 전부 복사해 콘솔에 붙여넣고 Enter.
+   5개 분류를 차례로 읽어 `playpso-database-snapshot.json`이 다운로드됩니다.
+   ```
+   Weapons: 490 rows
+   Armor: 111 rows
+   Shields: 207 rows
+   Units: 132 rows
+   Mags: 82 rows
+   Downloaded playpso-database-snapshot.json - 5 categories, 1022 items.
+   ```
+   일부 분류에서 경고가 나오면, 해당 `?type=N` 주소를 직접 열고 스니펫을 다시 실행하세요.
+4. 저장소에서 가져오기:
+   ```bash
+   pnpm import:snapshot ~/Downloads/playpso-database-snapshot.json
+   ```
+   변경된 분류만 기록되고, 검증에 실패하면 **기존 파일은 그대로 둡니다.**
+5. 변경이 있었다면 커밋:
+   ```bash
+   git add data && git commit -m "chore: sync PlayPSO item database" && git push
+   ```
+   push되면 GitHub Pages가 자동으로 재배포합니다.
+
+`import:snapshot`은 인자를 생략하면 `~/Downloads/playpso-database-snapshot.json`을 찾습니다.
+
 ## 데이터 파일
 
 | 파일 | 내용 | 사용처 |
@@ -23,46 +55,52 @@
 }
 ```
 
-`lastCheckedAt`은 확인에 성공할 때마다 갱신되고, `lastChangedAt`은 PlayPSO의 실제
-내용이 바뀐 경우에만 움직입니다. 따라서 "오늘 확인은 했지만 변경은 없었다"를 구분할 수 있습니다.
-
-## 워크플로
-
-| 워크플로 | 파일 | 역할 |
-| --- | --- | --- |
-| Sync Drop Tables | `.github/workflows/sync-drop-tables.yml` | 드랍표 확인 → 검증 → 변경 시에만 커밋 |
-| Sync Item Database | `.github/workflows/sync-item-database.yml` | 아이템 DB 확인 → 검증 → 변경 시에만 커밋 |
-| Deploy GitHub Pages | `.github/workflows/deploy-pages.yml` | 사이트 빌드 및 배포 |
-
-두 sync 워크플로는 매일 `5 15 * * *` (UTC) = **한국시간 00:05**에 실행됩니다.
-GitHub Actions의 cron은 UTC만 지원하며 `timezone` 키가 없으므로 UTC로 환산해 두었습니다.
-
-동시에 같은 브랜치로 push하지 않도록 두 워크플로는 `playpso-sync` concurrency 그룹을
-공유하고, push 충돌 시 `git pull --rebase` 후 최대 3회까지 재시도합니다.
-
-### 불필요한 재배포 방지
-
-확인만 하고 변경이 없는 날에도 `lastCheckedAt` 갱신 때문에 커밋이 발생합니다.
-`deploy-pages.yml`은 `paths-ignore`로 상태 파일만 바뀐 push를 무시하므로,
-사이트는 **실제 데이터가 바뀐 날에만** 다시 배포됩니다.
-
-사이트에 표시되는 "Last automatic check"는 빌드 시점 값에 묶이지 않도록
-`raw.githubusercontent.com`에서 상태 파일을 직접 읽습니다. 따라서 재배포 없이도
-매일의 확인 시각이 최신으로 보입니다.
+`lastCheckedAt`은 확인에 성공할 때만 갱신되고, `lastChangedAt`은 PlayPSO의 실제 내용이
+바뀐 경우에만 움직입니다. `status`는 `success` / `blocked` / `failed` 중 하나입니다.
 
 ## 데이터 검증
 
-`scripts/sync-*.mjs`는 새 데이터를 기존 스냅샷과 비교해 아래 중 하나라도 걸리면
-**기존 JSON을 그대로 두고 워크플로를 실패**시킵니다.
+`import:snapshot`과 자동 sync 스크립트는 동일한 검증을 거칩니다. 아래 중 하나라도
+걸리면 **기존 JSON을 그대로 두고** 해당 분류를 거부합니다.
 
 - 파싱된 행이 0개
 - `Name` 컬럼이 없음
 - 이름이 있는 행이 95% 미만
 - 행 수가 이전 대비 80% 미만으로 감소
 - 기존에 있던 컬럼이 사라짐
+- 분류 이름이 예상과 다름 (`type=2`인데 `Weapons` 등)
 - (드랍표) Episode 1 / 2 / 4 중 누락, 실제 드랍이 하나도 없음
 
 잘못 수집된 빈 데이터가 사이트를 망가뜨리지 않도록 하기 위한 장치입니다.
+
+## 워크플로
+
+| 워크플로 | 파일 | 역할 |
+| --- | --- | --- |
+| Sync Drop Tables | `.github/workflows/sync-drop-tables.yml` | 매일 접근 가능 여부 확인, 가능해지면 자동 수집 |
+| Sync Item Database | `.github/workflows/sync-item-database.yml` | 위와 동일 |
+| Deploy GitHub Pages | `.github/workflows/deploy-pages.yml` | 사이트 빌드 및 배포 |
+
+두 sync 워크플로는 매일 `5 15 * * *` (UTC) = **한국시간 00:05**에 실행됩니다.
+GitHub Actions의 cron은 UTC만 지원하며 `timezone` 키가 없으므로 UTC로 환산했습니다.
+
+현재는 PlayPSO 차단 때문에 실제 수집이 되지 않지만, 워크플로는 그대로 유지합니다.
+PlayPSO가 차단을 완화하면 **아무것도 고치지 않아도 자동으로 동기화가 재개**됩니다.
+
+동시에 같은 브랜치로 push하지 않도록 두 워크플로는 `playpso-sync` concurrency 그룹을
+공유하고, push 충돌 시 `git pull --rebase` 후 최대 3회까지 재시도합니다.
+
+### 불필요한 재배포 방지
+
+확인만 하고 변경이 없는 날에도 `lastCheckedAt` 갱신 때문에 커밋이 발생할 수 있습니다.
+`deploy-pages.yml`은 `paths-ignore`로 상태 파일만 바뀐 push를 무시하므로,
+사이트는 **실제 데이터가 바뀐 날에만** 다시 배포됩니다.
+
+차단 상태(`status: "blocked"`)가 이어지는 동안에는 상태 파일이 매번 동일한 내용으로
+기록되므로 git이 변경을 감지하지 않고, 따라서 커밋도 배포도 발생하지 않습니다.
+
+사이트에 표시되는 "Last automatic check"는 빌드 시점 값에 묶이지 않도록
+`raw.githubusercontent.com`에서 상태 파일을 직접 읽습니다.
 
 ## 실패 진단
 
@@ -84,29 +122,31 @@ Timestamp           : 2026-08-19T13:24:53.010Z
 `NETWORK_ERROR`, `UPSTREAM_SERVER_ERROR`, `HTTP_<code>`, `UNEXPECTED_DOM_STRUCTURE`,
 `VALIDATION_FAILED`.
 
-## 알려진 제약: PlayPSO의 데이터센터 IP 차단
+`CLOUDFLARE_CHALLENGE`는 예상된 상태이므로 워크플로를 실패 처리하지 않고 경고만 남깁니다.
+그 외의 원인은 실제 회귀이므로 워크플로가 빨간색으로 실패합니다.
 
-PlayPSO는 **모든 경로**(`/robots.txt` 포함)를 Cloudflare Managed Challenge 뒤에 두고
-있습니다. GitHub Actions 러너(Azure 데이터센터 IP)에서는 이 검증이 통과되지 않고
-HTTP 403 + `Just a moment...`가 계속 반환됩니다. 일반 가정용 회선에서는 정상 접속됩니다.
+## 제약: PlayPSO는 자동화 브라우저를 차단합니다
 
-이 저장소는 검증을 우회하는 코드를 포함하지 않습니다. 따라서 GitHub 호스팅 러너에서는
-수집이 실패하며, 이때도 **기존 데이터는 절대 덮어쓰지 않습니다.**
+PlayPSO는 **모든 경로**(`/robots.txt` 포함)를 Cloudflare Managed Challenge 뒤에 둡니다.
 
-### 데이터를 갱신하는 방법
-
-가정용 회선이 있는 환경에서 실행하면 정상 동작합니다.
-
-```bash
-pnpm install
-pnpm exec playwright install chromium
-pnpm sync:drops
-pnpm sync:database
-git add data && git commit -m "chore: sync PlayPSO data" && git push
+```
+$ curl -sI https://www.playpso.net/robots.txt
+HTTP/1.1 403 Forbidden
+Cf-Mitigated: challenge
 ```
 
-PC가 꺼져 있어도 자동으로 돌리려면 다음 중 하나가 필요합니다.
+측정 결과:
 
-1. **PlayPSO 측에 허용 요청** — Discord로 GitHub Actions IP 허용 또는 공식 API 제공을 문의
-2. **가정용 회선의 self-hosted runner** — 항상 켜져 있는 미니 PC / 라즈베리파이에
-   GitHub self-hosted runner를 등록하고 워크플로의 `runs-on`을 바꾸면 됩니다
+| 환경 | 결과 |
+| --- | --- |
+| GitHub Actions + headless Chromium | 403, `Just a moment...` (120초 대기 후 타임아웃) |
+| 가정용 회선 + headless Edge | 403, 동일 |
+| 가정용 회선 + **화면에 보이는** Edge (Playwright 제어) | 403, 동일 |
+| 가정용 회선 + 직접 조작하는 브라우저 | **정상** |
+
+즉 IP 문제가 아니라 **Playwright/CDP로 제어되는 브라우저 자체를 차단**합니다.
+이 저장소는 그 차단을 우회하는 코드를 포함하지 않으므로, 자동 수집은 동작하지 않으며
+이때도 **기존 데이터는 절대 덮어쓰지 않습니다.**
+
+자동화를 되살리려면 PlayPSO 측의 협조가 필요합니다. Discord로 공식 API나
+데이터 제공 방식을 문의하는 것이 가장 확실한 방법입니다.

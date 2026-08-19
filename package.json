@@ -13,7 +13,8 @@
     "dev": "node build/prepare-static.mjs && vinext dev --hostname 0.0.0.0",
     "build": "node build/prepare-static.mjs && vinext build",
     "start": "vinext start",
-    "sync:database": "node scripts/sync-item-database.mjs"
+    "sync:database": "node scripts/sync-item-database.mjs",
+    "import:snapshot": "node scripts/import-snapshot.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
