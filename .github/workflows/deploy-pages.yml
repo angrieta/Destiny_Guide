@@ -8,6 +8,8 @@ on:
     paths-ignore:
       - "data/drop-sync-status.json"
       - "data/database-sync-status.json"
+      - "extension/**"
+      - "docs/**"
       - "**/*.md"
   workflow_dispatch:
 
