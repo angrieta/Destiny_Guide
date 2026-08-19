@@ -49,6 +49,20 @@ function formatChance(denominator: number | null) {
   return `${chance.toFixed(5)}%`;
 }
 
+/**
+ * Pinned to UTC on purpose. The static export is rendered on a UTC runner while
+ * most visitors are in KST, and a plain toLocaleDateString shows a different day
+ * on each side, which React reports as a hydration mismatch.
+ */
+function formatSyncedDate(value: string) {
+  return new Date(value).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 function formatDar(value: number) {
   return Number.isInteger(value) ? String(value) : value.toFixed(1).replace(/\.0$/, "");
 }
@@ -387,7 +401,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
 
         <div className={styles.matrixSummary}>
           <span><strong>{visibleRows.length}</strong> monster rows</span>
-          <p>Synced {new Date(payload.syncedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })} · <a href={payload.sourceUrl} target="_blank" rel="noreferrer">Official source ↗</a> · <button type="button" className={styles.updateLink} onClick={() => setUpdateOpen(true)}>Update data</button></p>
+          <p>Synced {formatSyncedDate(payload.syncedAt)} · <a href={payload.sourceUrl} target="_blank" rel="noreferrer">Official source ↗</a> · <button type="button" className={styles.updateLink} onClick={() => setUpdateOpen(true)}>Update data</button></p>
         </div>
 
         {EPISODES.filter((value) => selectedEpisode === null || value === selectedEpisode).map((episodeNumber) => {
