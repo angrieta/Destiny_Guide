@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "destiny-guide-dev",
+      "runtimeExecutable": "C:\\Program Files\\Adobe\\Adobe Photoshop 2026\\node.exe",
+      "runtimeArgs": ["node_modules/vinext/dist/cli.js", "dev", "--port", "5188"],
+      "port": 5188
+    }
+  ]
+}

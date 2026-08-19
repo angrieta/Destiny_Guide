@@ -44,7 +44,7 @@ await rm(outputDirectory, { recursive: true, force: true });
 await mkdir(outputDirectory, { recursive: true });
 await cp(clientDirectory, outputDirectory, { recursive: true });
 
-const route = `${basePath}/drop-tables`;
+const routes = ["drop-tables", "database"];
 const server = spawn(process.execPath, [vinextCli, "start", "--port", String(port)], {
   cwd: projectRoot,
   env: { ...process.env, GITHUB_PAGES_BASE_PATH: basePath },
@@ -57,11 +57,14 @@ server.stderr.on("data", (chunk) => {
 });
 
 try {
-  const response = await waitForServer(`http://127.0.0.1:${port}${route}`);
-  const html = await response.text();
-  const routeDirectory = resolve(outputDirectory, "drop-tables");
-  await mkdir(routeDirectory, { recursive: true });
-  await writeFile(resolve(routeDirectory, "index.html"), html, "utf8");
+  for (const route of routes) {
+    const response = await waitForServer(`http://127.0.0.1:${port}${basePath}/${route}`);
+    const html = await response.text();
+    const routeDirectory = resolve(outputDirectory, route);
+    await mkdir(routeDirectory, { recursive: true });
+    await writeFile(resolve(routeDirectory, "index.html"), html, "utf8");
+    console.log(`Exported /${route}`);
+  }
   await writeFile(resolve(outputDirectory, ".nojekyll"), "", "utf8");
   await rewriteCssAssetUrls(resolve(outputDirectory, "assets"));
   console.log(`Exported GitHub Pages site to ${outputDirectory}`);

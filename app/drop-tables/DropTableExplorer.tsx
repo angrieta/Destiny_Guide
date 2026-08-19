@@ -300,6 +300,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
             </button>
             <a className={styles.discordLink} href="https://discord.gg/FesaarwjFn" target="_blank" rel="noreferrer" aria-label="Destiny Discord" />
             <a className={styles.dropTableLink} href="../drop-tables/" aria-current="page">Drop Tables</a>
+            <a className={styles.dropTableLink} href="../database/">Database</a>
           </div>
         </div>
       </header>
