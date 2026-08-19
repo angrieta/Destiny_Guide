@@ -81,13 +81,37 @@
     };
   }
 
-  const collected = [];
+  // Results accumulate across runs, so if a category has to be opened by hand
+  // you can just re-run this on each page until all five are collected.
+  const STORE_KEY = "destiny-guide-snapshot";
+  const collected = new Map();
+  try {
+    for (const entry of JSON.parse(sessionStorage.getItem(STORE_KEY) ?? "[]")) {
+      collected.set(entry.type, entry);
+    }
+  } catch {
+    // A corrupt store just means starting over.
+  }
+
+  const record = (category, parsed, note) => {
+    const payload = buildPayload(category, parsed);
+    collected.set(category.type, payload);
+    console.log(`${category.name}: ${parsed.rows.length} rows${note ? ` (${note})` : ""}`);
+    if (parsed.rows.length > 0) console.log("   first row:", parsed.rows[0]);
+  };
+
   const currentType = Number(new URLSearchParams(location.search).get("type") ?? 1);
+  const missing = [];
 
   for (const category of CATEGORIES) {
     if (category.type === currentType) {
-      collected.push(buildPayload(category, parseDocument(document)));
-      console.log(`${category.name}: ${collected.at(-1).rows.length} rows (current page)`);
+      const parsed = parseDocument(document);
+      if (parsed.rows.length === 0) {
+        console.error(`${category.name}: no table found on this page. Wait for it to load, then re-run.`);
+        missing.push(category);
+        continue;
+      }
+      record(category, parsed, "current page");
       continue;
     }
     try {
@@ -95,26 +119,35 @@
       const response = await fetch(`/database?type=${category.type}`, { credentials: "include" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const html = await response.text();
-      const doc = new DOMParser().parseFromString(html, "text/html");
-      const parsed = parseDocument(doc);
-      if (parsed.rows.length === 0) throw new Error("no rows parsed");
-      collected.push(buildPayload(category, parsed));
-      console.log(`${category.name}: ${parsed.rows.length} rows`);
+      const parsed = parseDocument(new DOMParser().parseFromString(html, "text/html"));
+      if (parsed.rows.length === 0) throw new Error("table is rendered by script, not in the HTML");
+      record(category, parsed);
     } catch (error) {
-      console.warn(
-        `${category.name}: could not read automatically (${error.message}). ` +
-          `Open https://www.playpso.net/database?type=${category.type} and run this snippet again.`,
-      );
+      if (!collected.has(category.type)) missing.push(category);
+      console.warn(`${category.name}: not readable from here (${error.message})`);
     }
   }
 
-  if (collected.length === 0) {
-    console.error("Nothing collected. Make sure the item table is visible, then run again.");
+  sessionStorage.setItem(STORE_KEY, JSON.stringify([...collected.values()]));
+
+  if (collected.size === 0) {
+    console.error("Nothing collected yet. Make sure the item table is visible, then run again.");
     return;
   }
 
-  const total = collected.reduce((sum, entry) => sum + entry.rows.length, 0);
-  const blob = new Blob([JSON.stringify({ collectedAt: new Date().toISOString(), categories: collected })], {
+  if (missing.length > 0) {
+    console.log("");
+    console.log(`Collected ${collected.size} of ${CATEGORIES.length}. Open each of these and re-run this snippet:`);
+    for (const category of missing) {
+      console.log(`  ${category.name}: https://www.playpso.net/database?type=${category.type}`);
+    }
+    console.log("Progress is kept in this tab, so the download happens once all five are in.");
+    return;
+  }
+
+  const categories = [...collected.values()].sort((a, b) => a.type - b.type);
+  const total = categories.reduce((sum, entry) => sum + entry.rows.length, 0);
+  const blob = new Blob([JSON.stringify({ collectedAt: new Date().toISOString(), categories })], {
     type: "application/json",
   });
   const link = document.createElement("a");
@@ -123,6 +156,8 @@
   document.body.appendChild(link);
   link.click();
   link.remove();
+  sessionStorage.removeItem(STORE_KEY);
 
-  console.log(`Downloaded playpso-database-snapshot.json - ${collected.length} categories, ${total} items.`);
+  console.log("");
+  console.log(`Downloaded playpso-database-snapshot.json - ${categories.length} categories, ${total} items.`);
 })();
