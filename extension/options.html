@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Destiny Guide Sync</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f3f6fb;
+        --surface: #fff;
+        --soft: #f7f9fc;
+        --text: #142033;
+        --muted: #68758a;
+        --border: #dde4ee;
+        --blue: #1769e0;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #07111f;
+          --surface: #0e1b2d;
+          --soft: #132239;
+          --text: #edf4ff;
+          --muted: #9dabc0;
+          --border: #263b59;
+          --blue: #65a6ff;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        width: 420px;
+        margin: 0;
+        padding: 20px;
+        background: var(--bg);
+        color: var(--text);
+        font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      h1 { margin: 0 0 4px; font-size: 17px; letter-spacing: -0.02em; }
+      .sub { margin: 0 0 18px; color: var(--muted); font-size: 12.5px; }
+      section { margin-bottom: 16px; padding: 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+      label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+      input[type="password"] { width: 100%; min-height: 38px; padding: 0 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--soft); color: var(--text); font: inherit; }
+      .row { display: flex; align-items: center; gap: 8px; margin-top: 10px; color: var(--muted); font-size: 12.5px; }
+      .actions { display: flex; gap: 8px; margin-top: 12px; }
+      button { min-height: 38px; padding: 0 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--soft); color: var(--text); font: inherit; font-weight: 650; cursor: pointer; }
+      button:hover { border-color: var(--blue); color: var(--blue); }
+      button.primary { border-color: var(--blue); background: var(--blue); color: #fff; }
+      button:disabled { opacity: 0.55; cursor: default; }
+      pre { max-height: 190px; margin: 0; overflow: auto; padding: 11px; border-radius: 8px; background: var(--soft); color: var(--muted); font-size: 11.5px; white-space: pre-wrap; word-break: break-word; }
+      a { color: var(--blue); }
+      .note { margin: 10px 0 0; color: var(--muted); font-size: 11.5px; }
+    </style>
+  </head>
+  <body>
+    <h1>Destiny Guide Sync</h1>
+    <p class="sub">Checks PlayPSO when the browser starts and publishes any changes.</p>
+
+    <section>
+      <label for="token">GitHub token</label>
+      <input id="token" type="password" placeholder="github_pat_..." autocomplete="off" spellcheck="false" />
+      <div class="row">
+        <input id="enabled" type="checkbox" />
+        <span>Sync automatically</span>
+      </div>
+      <div class="actions">
+        <button id="save" class="primary" type="button">Save</button>
+        <button id="run" type="button">Run now</button>
+      </div>
+      <p class="note">
+        Needs a fine-grained token with <strong>Contents: Read and write</strong> on Destiny_Guide.
+        It is stored in your browser profile, so it comes back when you sign in again after a reinstall.
+        <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noreferrer">Create one</a>
+      </p>
+    </section>
+
+    <section>
+      <label>Last result</label>
+      <pre id="status">Loading...</pre>
+    </section>
+
+    <script src="options.js" type="module"></script>
+  </body>
+</html>

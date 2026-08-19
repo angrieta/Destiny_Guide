@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Destiny Guide Sync",
+  "version": "1.0.0",
+  "description": "Keeps the Destiny Guide item database and drop tables in sync with PlayPSO once a day.",
+  "permissions": ["alarms", "storage", "scripting", "tabs"],
+  "host_permissions": [
+    "https://playpso.net/*",
+    "https://www.playpso.net/*",
+    "https://api.github.com/*",
+    "https://raw.githubusercontent.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "options_page": "options.html",
+  "action": {
+    "default_title": "Destiny Guide Sync",
+    "default_popup": "options.html"
+  }
+}

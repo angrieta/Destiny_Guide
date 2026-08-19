@@ -61,8 +61,14 @@ pnpm start    # 빌드 결과 실행
 
 ## PlayPSO 데이터 동기화
 
-PlayPSO가 자동화 브라우저를 차단하므로, 데이터는 직접 연 브라우저에서 수집하고
-사이트의 **Update data** 버튼으로 반영합니다. 개발 도구 설치가 필요 없습니다.
+PlayPSO가 자동화 브라우저를 차단하므로 서버에서는 수집할 수 없습니다.
+대신 두 가지 방법이 있습니다.
+
+**자동 (권장)** — [extension/](extension/)의 Chrome/Edge 확장을 설치하면
+브라우저를 켤 때마다 알아서 확인하고 바뀐 데이터만 커밋합니다.
+포맷 후 복구 절차 포함, 자세한 내용은 [extension/README.md](extension/README.md).
+
+**수동** — 사이트의 **Update data** 버튼. 개발 도구 설치가 필요 없습니다.
 
 1. `/database` 또는 `/drop-tables` 하단의 **Update data** 클릭
 2. "Copy collector script" → PlayPSO 페이지에서 `F12` → Console에 붙여넣기 → JSON 다운로드
