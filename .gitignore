@@ -26,3 +26,6 @@ Thumbs.db
 
 # Playwright failure diagnostics from sync runs
 sync-artifacts/
+
+# 실수로 만들어진 중첩 클론
+/Destiny_Guide/
