@@ -1,8 +1,8 @@
 /**
  * Paste this into the DevTools console on https://playpso.net/drop-tables
  * (F12 -> Console). It reads the tables your browser has already loaded and
- * downloads playpso-drops-snapshot.json, which the Update data panel on
- * /drop-tables publishes to the repository.
+ * downloads playpso-drops-snapshot.json, which `pnpm import:snapshot` turns
+ * into data/drop-tables-*.json.
  *
  * Why a console snippet: PlayPSO sits behind a Cloudflare challenge that refuses
  * automated browsers, so a scraper cannot fetch these pages. This runs inside the
