@@ -3,8 +3,12 @@ name: Deploy GitHub Pages
 on:
   push:
     branches: [landing]
-  schedule:
-    - cron: "47 3 * * *"
+    # A sync run that found no changes still commits its "last checked" stamp.
+    # Those commits touch nothing the site renders, so they must not trigger a rebuild.
+    paths-ignore:
+      - "data/drop-sync-status.json"
+      - "data/database-sync-status.json"
+      - "**/*.md"
   workflow_dispatch:
 
 permissions:

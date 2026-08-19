@@ -23,3 +23,6 @@ Thumbs.db
 
 # 원본 GIF 소스 (배포에는 .webp 사용)
 *.gif
+
+# Playwright failure diagnostics from sync runs
+sync-artifacts/

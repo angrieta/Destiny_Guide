@@ -1,19 +1,30 @@
 import { chromium } from "playwright";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
+import {
+  DATA_DIR,
+  SyncError,
+  createPage,
+  launchBrowser,
+  loadPage,
+  logDiagnostics,
+  readJson,
+  writeJsonIfChanged,
+  writeSyncStatus,
+} from "./lib/playpso.mjs";
 
-const projectRoot = process.cwd();
-const outputDir = resolve(projectRoot, "data");
-const difficultyNames = ["Normal", "Hard", "Very Hard", "Ultimate"];
+const DIFFICULTY_NAMES = ["Normal", "Hard", "Very Hard", "Ultimate"];
+const EXPECTED_EPISODES = [1, 2, 4];
+const MIN_ROW_RETENTION = 0.8;
+
+const readyPredicate = () =>
+  document.title !== "Just a moment..." && document.querySelectorAll("table").length > 1;
 
 async function extractDifficulty(page, difficulty) {
   const source = `https://playpso.net/drop-tables?diff=${difficulty}`;
-  await page.goto(source, { waitUntil: "domcontentloaded", timeout: 90_000 });
-  await page.waitForFunction(
-    () => document.title !== "Just a moment..." && document.querySelectorAll("table").length > 1,
-    undefined,
-    { timeout: 90_000 },
-  );
+  const label = `drop-tables-diff-${difficulty}`;
+
+  await loadPage(page, source, { label, readyPredicate });
 
   const episodes = await page.evaluate(() => {
     const tables = Array.from(document.querySelectorAll("table")).filter((table) => {
@@ -50,45 +61,108 @@ async function extractDifficulty(page, difficulty) {
     return Array.from(new Map(parsed.map((episode) => [episode.episode, episode])).values());
   });
 
-  return { source, difficulty, name: difficultyNames[difficulty], episodes };
+  return { source, difficulty, name: DIFFICULTY_NAMES[difficulty], episodes };
 }
 
-async function writeIfChanged(difficulty, table) {
-  const path = resolve(outputDir, `drop-tables-${difficulty}.json`);
-  let previous = null;
+/**
+ * Refuses to hand back a payload that would visibly damage the live site.
+ * A half-rendered Cloudflare page parses into zero rows, and silently committing
+ * that would blank out /drop-tables until someone noticed.
+ */
+function validate(table, previous) {
+  const problems = [];
+  const rowCount = table.episodes.reduce((total, episode) => total + episode.rows.length, 0);
 
-  try {
-    previous = JSON.parse(await readFile(path, "utf8"));
-  } catch {
-    // The first sync creates the snapshot.
+  if (table.episodes.length === 0) problems.push("no episode tables were parsed");
+  if (rowCount === 0) problems.push("no enemy rows were parsed");
+
+  const missingEpisodes = EXPECTED_EPISODES.filter(
+    (episode) => !table.episodes.some((entry) => entry.episode === episode),
+  );
+  if (missingEpisodes.length > 0) problems.push(`missing episode(s): ${missingEpisodes.join(", ")}`);
+
+  const namedRows = table.episodes.flatMap((episode) => episode.rows).filter(([enemy]) => enemy.trim().length > 0);
+  if (rowCount > 0 && namedRows.length / rowCount < 0.95) {
+    problems.push(`only ${namedRows.length}/${rowCount} rows carry an enemy name`);
   }
 
-  const previousComparable = previous ? JSON.stringify({ ...previous, syncedAt: undefined }) : null;
-  const nextComparable = JSON.stringify({ ...table, syncedAt: undefined });
-  if (previousComparable === nextComparable) {
-    console.log(`${table.name}: no changes`);
-    return false;
+  const withDrops = table.episodes
+    .flatMap((episode) => episode.rows)
+    .filter(([, , drops]) => drops.some(([, item]) => item && item.toLowerCase() !== "no item"));
+  if (rowCount > 0 && withDrops.length === 0) problems.push("no row contains a single real drop");
+
+  if (previous) {
+    const previousRows = previous.episodes.reduce((total, episode) => total + episode.rows.length, 0);
+    if (previousRows > 0 && rowCount < previousRows * MIN_ROW_RETENTION) {
+      problems.push(`row count collapsed from ${previousRows} to ${rowCount}`);
+    }
   }
 
-  const next = { ...table, syncedAt: new Date().toISOString() };
-  await writeFile(path, `${JSON.stringify(next)}\n`, "utf8");
-  console.log(`${table.name}: updated ${path}`);
-  return true;
+  return { ok: problems.length === 0, problems, rowCount };
 }
 
-await mkdir(outputDir, { recursive: true });
-const browser = await chromium.launch({ headless: true });
-
-try {
-  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+async function run() {
+  await mkdir(DATA_DIR, { recursive: true });
+  const browser = await launchBrowser(chromium);
+  const summary = [];
   let changed = 0;
 
-  for (let difficulty = 0; difficulty < difficultyNames.length; difficulty += 1) {
-    const table = await extractDifficulty(page, difficulty);
-    if (await writeIfChanged(difficulty, table)) changed += 1;
+  try {
+    const page = await createPage(browser);
+
+    for (let difficulty = 0; difficulty < DIFFICULTY_NAMES.length; difficulty += 1) {
+      const path = resolve(DATA_DIR, `drop-tables-${difficulty}.json`);
+      const previous = await readJson(path);
+      const table = await extractDifficulty(page, difficulty);
+      const check = validate(table, previous);
+
+      if (!check.ok) {
+        const diagnostics = {
+          label: table.name,
+          reason: "VALIDATION_FAILED",
+          requestedUrl: table.source,
+          currentUrl: page.url(),
+          httpStatus: null,
+          documentTitle: await page.title().catch(() => "<unavailable>"),
+          detectedTableCount: table.episodes.length,
+          errorMessage: check.problems.join("; "),
+          timestamp: new Date().toISOString(),
+        };
+        logDiagnostics(diagnostics);
+        throw new SyncError(`${table.name}: validation failed`, diagnostics);
+      }
+
+      const didChange = await writeJsonIfChanged(path, { ...table, syncedAt: new Date().toISOString() });
+      if (didChange) changed += 1;
+      summary.push(`${table.name}: ${didChange ? "updated" : "no changes"} (${check.rowCount} rows)`);
+    }
+  } finally {
+    await browser.close();
   }
 
+  console.log("Drop tables checked successfully.");
+  console.log("");
+  for (const line of summary) console.log(`  ${line}`);
+  console.log("");
+
+  const status = await writeSyncStatus("drop-sync-status.json", {
+    status: "success",
+    changed: changed > 0,
+    extra: { changedTables: changed, source: "https://playpso.net/drop-tables" },
+  });
   console.log(changed === 0 ? "Drop tables are already current." : `Updated ${changed} drop table snapshot(s).`);
-} finally {
-  await browser.close();
+  console.log(`Status: lastCheckedAt=${status.lastCheckedAt} lastChangedAt=${status.lastChangedAt}`);
+}
+
+try {
+  await run();
+} catch (error) {
+  await writeSyncStatus("drop-sync-status.json", {
+    status: "failed",
+    changed: false,
+    error: error instanceof SyncError ? `${error.diagnostics.reason}: ${error.message}` : error.message,
+  });
+  console.error(`\nDrop table sync failed: ${error.message}`);
+  console.error("Existing drop table JSON was left untouched.");
+  process.exitCode = 1;
 }

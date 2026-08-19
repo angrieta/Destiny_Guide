@@ -1,4 +1,4 @@
-name: Sync Drop Tables
+name: Sync Item Database
 
 on:
   schedule:
@@ -37,14 +37,14 @@ jobs:
       - name: Install Chromium
         run: pnpm exec playwright install --with-deps chromium
 
-      - name: Sync drop tables
-        run: pnpm sync:drops
+      - name: Sync item database
+        run: pnpm sync:database
 
       - name: Upload failure diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: drop-tables-failure
+          name: item-database-failure
           path: sync-artifacts/
           if-no-files-found: ignore
           retention-days: 14
@@ -54,20 +54,20 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/drop-tables-*.json data/drop-sync-status.json
+          git add data/database-*.json data/database-sync-status.json
 
           if git diff --cached --quiet; then
             echo "Nothing to commit."
             exit 0
           fi
 
-          if git diff --cached --quiet -- data/drop-tables-0.json data/drop-tables-1.json data/drop-tables-2.json data/drop-tables-3.json; then
-            git commit -m "chore: record drop table check [skip deploy]"
+          if git diff --cached --quiet -- data/database-1.json data/database-2.json data/database-3.json data/database-4.json data/database-5.json; then
+            git commit -m "chore: record item database check [skip deploy]"
           else
-            git commit -m "chore: sync Destiny drop tables"
+            git commit -m "chore: sync PlayPSO item database"
           fi
 
-          # The database job may have pushed while we were scraping.
+          # The drop table job may have pushed while we were scraping.
           for attempt in 1 2 3; do
             if git push origin HEAD:landing; then
               echo "Pushed on attempt $attempt."
@@ -76,5 +76,5 @@ jobs:
             echo "Push rejected, rebasing and retrying..."
             git pull --rebase origin landing
           done
-          echo "::error::Could not push drop table updates after 3 attempts."
+          echo "::error::Could not push item database updates after 3 attempts."
           exit 1

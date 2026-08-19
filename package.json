@@ -12,7 +12,8 @@
     "export:pages": "node scripts/export-github-pages.mjs",
     "dev": "node build/prepare-static.mjs && vinext dev --hostname 0.0.0.0",
     "build": "node build/prepare-static.mjs && vinext build",
-    "start": "vinext start"
+    "start": "vinext start",
+    "sync:database": "node scripts/sync-item-database.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
