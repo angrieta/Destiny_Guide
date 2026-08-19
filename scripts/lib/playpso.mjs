@@ -129,10 +129,28 @@ export function logDiagnostics(diagnostics) {
   console.error("  ------------------------------------------------------------");
 }
 
-/** Compares payloads while ignoring the volatile syncedAt stamp. */
+/** Sorts keys at every level so property order cannot masquerade as a change. */
+function canonical(value) {
+  if (Array.isArray(value)) return value.map(canonical);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.keys(value)
+        .sort()
+        .map((key) => [key, canonical(value[key])]),
+    );
+  }
+  return value;
+}
+
+/**
+ * Compares payloads while ignoring the volatile syncedAt stamp.
+ * Key order has to be ignored too: identical data written by a different
+ * collector serialises its keys in a different order, which once produced a
+ * "4 tables updated" commit for data that had not changed at all.
+ */
 export function isUnchanged(previous, next) {
   if (!previous) return false;
-  const strip = (value) => JSON.stringify({ ...value, syncedAt: undefined });
+  const strip = (value) => JSON.stringify(canonical({ ...value, syncedAt: undefined }));
   return strip(previous) === strip(next);
 }
 

@@ -19,9 +19,22 @@ const EXPECTED_EPISODES = [1, 2, 4];
 
 const stringify = (value) => `${JSON.stringify(value)}\n`;
 
+/** Sorts keys at every level so property order cannot masquerade as a change. */
+function canonical(value) {
+  if (Array.isArray(value)) return value.map(canonical);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.keys(value)
+        .sort()
+        .map((key) => [key, canonical(value[key])]),
+    );
+  }
+  return value;
+}
+
 function isUnchanged(previous, next) {
   if (!previous) return false;
-  const strip = (value) => JSON.stringify({ ...value, syncedAt: undefined });
+  const strip = (value) => JSON.stringify(canonical({ ...value, syncedAt: undefined }));
   return strip(previous) === strip(next);
 }
 

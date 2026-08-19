@@ -18,24 +18,33 @@
 
   const text = (cell) => (cell.textContent ?? "").replace(/\s+/g, " ").trim();
 
-  function parseDocument(doc) {
-    const table = Array.from(doc.querySelectorAll("table")).find((candidate) => {
-      const headings = Array.from(candidate.querySelectorAll("th")).map((cell) => text(cell));
-      return headings.includes("Name") && candidate.querySelectorAll("tbody tr").length > 0;
-    });
-    if (!table) return { fields: [], rows: [] };
+  /**
+   * Reads the category table without assuming thead/tbody exist. PlayPSO renders
+   * the drop tables as bare <tr> rows, so the database table may well do the same,
+   * and a tbody-only selector silently finds nothing.
+   */
+  function parseTable(table) {
+    const rows = Array.from(table.rows);
+    if (rows.length === 0) return { fields: [], rows: [] };
 
-    const headerRows = Array.from(table.querySelectorAll("thead tr"));
-    const bodyRows = Array.from(table.querySelectorAll("tbody tr"));
+    // Header rows are the leading rows made entirely of <th> cells.
+    let headerCount = 0;
+    while (headerCount < rows.length) {
+      const cells = Array.from(rows[headerCount].cells);
+      if (cells.length === 0 || !cells.every((cell) => cell.tagName === "TH")) break;
+      headerCount += 1;
+    }
+    if (headerCount === 0) headerCount = 1; // No <th> at all: treat row 0 as the header.
 
     let fields = [];
-    if (headerRows.length >= 2) {
-      const groups = Array.from(headerRows[0].children).map((cell) => ({
+    if (headerCount >= 2) {
+      // Grouped header: "DFP" spanning min/max becomes min-DFP / max-DFP.
+      const groups = Array.from(rows[0].cells).map((cell) => ({
         label: text(cell),
-        span: Number(cell.getAttribute("colspan") ?? 1),
-        spansBothRows: Number(cell.getAttribute("rowspan") ?? 1) > 1,
+        span: cell.colSpan || 1,
+        spansBothRows: (cell.rowSpan || 1) > 1,
       }));
-      const subLabels = Array.from(headerRows[1].children).map(text);
+      const subLabels = Array.from(rows[1].cells).map(text);
       let subIndex = 0;
       for (const group of groups) {
         if (group.spansBothRows) {
@@ -47,26 +56,31 @@
           fields.push(sub ? `${sub}-${group.label}` : group.label);
         }
       }
-    } else if (headerRows.length === 1) {
-      fields = Array.from(headerRows[0].children).map(text);
     } else {
-      const firstRow = table.querySelector("tr");
-      fields = firstRow ? Array.from(firstRow.children).map(text) : [];
+      fields = Array.from(rows[0].cells).map(text);
     }
 
-    const rows = bodyRows
-      .map((row) => {
-        const cells = Array.from(row.children);
-        if (cells.length === 0) return null;
-        const record = {};
-        fields.forEach((field, index) => {
-          record[field] = cells[index] ? text(cells[index]) : "";
-        });
-        return record;
-      })
-      .filter((row) => row && Object.values(row).some((value) => value !== ""));
+    const body = rows.slice(headerCount).map((row) => {
+      const cells = Array.from(row.cells);
+      if (cells.length === 0) return null;
+      const record = {};
+      fields.forEach((field, index) => {
+        record[field] = cells[index] ? text(cells[index]) : "";
+      });
+      return record;
+    });
 
-    return { fields, rows };
+    return { fields, rows: body.filter((row) => row && Object.values(row).some((value) => value !== "")) };
+  }
+
+  /** Picks the table whose header carries a Name column and has real data rows. */
+  function parseDocument(doc) {
+    const candidates = Array.from(doc.querySelectorAll("table"))
+      .map(parseTable)
+      .filter((parsed) => parsed.fields.includes("Name") && parsed.rows.length > 0);
+    if (candidates.length === 0) return { fields: [], rows: [] };
+    // The item table is the biggest one; anything else is navigation or a legend.
+    return candidates.sort((a, b) => b.rows.length - a.rows.length)[0];
   }
 
   function buildPayload(category, parsed) {
