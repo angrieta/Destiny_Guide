@@ -180,6 +180,8 @@
 .sourceNote { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12.5px; }
 .sourceNote p { margin: 0 0 6px; }
 .sourceNote a { color: var(--blue); text-decoration: underline; }
+.updateLink { padding: 0; border: 0; background: none; color: var(--blue); font-size: inherit; text-decoration: underline; cursor: pointer; }
+.updateLink:hover { color: var(--blue-strong); }
 
 /* ---------- Item detail ---------- */
 

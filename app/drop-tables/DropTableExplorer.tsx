@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import UpdatePanel from "../update/UpdatePanel";
 import type { DropRecord, DropTablePayload, ItemType, MatrixDrop } from "./types";
 import styles from "./drop-tables.module.css";
 
@@ -73,6 +74,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const [dropRateMultiplier, setDropRateMultiplier] = useState<DropRateMultiplier>(2);
   const [showQuickControls, setShowQuickControls] = useState(false);
   const [mobileControlsOpen, setMobileControlsOpen] = useState(false);
+  const [updateOpen, setUpdateOpen] = useState(false);
   const controlsAnchorRef = useRef<HTMLDivElement>(null);
   const matrixScrollRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const sectionHeaderRefs = useRef<Record<number, HTMLDivElement | null>>({});
@@ -385,7 +387,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
 
         <div className={styles.matrixSummary}>
           <span><strong>{visibleRows.length}</strong> monster rows</span>
-          <p>Synced {new Date(payload.syncedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })} · <a href={payload.sourceUrl} target="_blank" rel="noreferrer">Official source ↗</a></p>
+          <p>Synced {new Date(payload.syncedAt).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })} · <a href={payload.sourceUrl} target="_blank" rel="noreferrer">Official source ↗</a> · <button type="button" className={styles.updateLink} onClick={() => setUpdateOpen(true)}>Update data</button></p>
         </div>
 
         {EPISODES.filter((value) => selectedEpisode === null || value === selectedEpisode).map((episodeNumber) => {
@@ -472,6 +474,8 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
           </aside>
         </div>
       )}
+
+      {updateOpen && <UpdatePanel kind="drop-tables" onClose={() => setUpdateOpen(false)} />}
     </>
   );
 }

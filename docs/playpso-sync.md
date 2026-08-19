@@ -3,37 +3,61 @@
 `/drop-tables`와 `/database`는 PlayPSO에서 가져온 스냅샷 JSON을 빌드 시점에 읽어
 정적으로 렌더링합니다. 방문자의 브라우저는 PlayPSO에 직접 요청하지 않습니다.
 
-## 데이터 갱신 방법 (실제로 동작하는 방법)
+## 데이터 갱신 방법
 
-PlayPSO는 자동화된 브라우저를 차단합니다(아래 [제약](#제약-playpso는-자동화-브라우저를-차단합니다) 참고).
-따라서 갱신은 **직접 열어둔 브라우저 안에서** 수행합니다. 1분이면 끝납니다.
+PlayPSO는 자동화된 브라우저를 차단하므로(아래 [제약](#제약-playpso는-자동화-브라우저를-차단합니다) 참고),
+데이터는 **직접 열어둔 브라우저 안에서** 수집합니다. 반영은 사이트의 버튼으로 합니다.
+개발 도구 설치가 전혀 필요 없어서 아무 PC에서나 갱신할 수 있습니다.
 
-1. 브라우저로 <https://www.playpso.net/database> 를 엽니다.
-   Cloudflare 확인 화면이 지나가고 아이템 표가 보일 때까지 기다립니다.
-2. `F12` → **Console** 탭.
-3. `scripts/collect-in-browser.js` 파일 내용을 전부 복사해 콘솔에 붙여넣고 Enter.
-   5개 분류를 차례로 읽어 `playpso-database-snapshot.json`이 다운로드됩니다.
+### 준비: GitHub 토큰 (최초 1회)
+
+<https://github.com/settings/personal-access-tokens/new> 에서 fine-grained token 생성:
+
+- **Repository access**: Only select repositories → `Destiny_Guide`
+- **Permissions** → Repository permissions → **Contents: Read and write**
+- 만료일은 짧게 설정하는 것을 권장합니다
+
+토큰은 브라우저의 localStorage에만 저장되고 저장소에 커밋되지 않습니다.
+**공용 PC에서는 "Remember on this device" 체크를 해제**하세요.
+
+### 갱신 절차
+
+| 대상 | 갱신 버튼 위치 | 수집 스크립트 | PlayPSO 페이지 |
+| --- | --- | --- | --- |
+| 아이템 DB | `/database` 하단 "Update data" | `scripts/collect-in-browser.js` | `/database` |
+| 드랍표 | `/drop-tables` 하단 "Update data" | `scripts/collect-drops-in-browser.js` | `/drop-tables` |
+
+1. Destiny Guide에서 해당 페이지를 열고 하단의 **Update data**를 누릅니다.
+2. **1단계** — "Copy collector script"로 스크립트를 복사하고, "Open PlayPSO ↗"로 원본을 엽니다.
+3. PlayPSO 페이지에서 표가 보일 때까지 기다린 뒤 `F12` → **Console** → 붙여넣고 Enter.
    ```
    Weapons: 490 rows
+      first row: {Name: "3RD ANNIVERSARY BLADE", Type: "Dagger", …}
    Armor: 111 rows
-   Shields: 207 rows
-   Units: 132 rows
-   Mags: 82 rows
+   ...
    Downloaded playpso-database-snapshot.json - 5 categories, 1022 items.
    ```
-   일부 분류에서 경고가 나오면, 해당 `?type=N` 주소를 직접 열고 스니펫을 다시 실행하세요.
-4. 저장소에서 가져오기:
-   ```bash
-   pnpm import:snapshot ~/Downloads/playpso-database-snapshot.json
+   일부 분류를 못 읽으면 열어야 할 주소를 알려줍니다. 진행 상황은 탭에 저장되므로
+   해당 페이지에서 스니펫을 다시 실행하면 이어서 모입니다.
+4. **2단계** — 다운로드된 JSON을 Update data 패널에 드래그하거나 클릭해서 선택합니다.
+5. **3단계** — 분류별 변경 내역이 표시됩니다.
    ```
-   변경된 분류만 기록되고, 검증에 실패하면 **기존 파일은 그대로 둡니다.**
-5. 변경이 있었다면 커밋:
-   ```bash
-   git add data && git commit -m "chore: sync PlayPSO item database" && git push
+   Weapons    2 added or changed, 0 removed
+   Armor      no changes
+   ...
    ```
-   push되면 GitHub Pages가 자동으로 재배포합니다.
+   검증에 걸린 항목이 하나라도 있으면 **4단계 자체가 나타나지 않습니다.**
+6. **4단계** — 토큰을 넣고 **Publish** 클릭. 변경된 파일이 **하나의 커밋**으로 `landing`에
+   올라가고, 데이터가 실제로 바뀐 경우에만 GitHub Pages가 재배포됩니다.
 
-`import:snapshot`은 인자를 생략하면 `~/Downloads/playpso-database-snapshot.json`을 찾습니다.
+### 명령줄로 갱신하기 (선택)
+
+Node와 저장소가 있는 환경이라면 아이템 DB는 CLI로도 가능합니다.
+
+```bash
+pnpm import:snapshot ~/Downloads/playpso-database-snapshot.json
+git add data && git commit -m "chore: sync PlayPSO item database" && git push
+```
 
 ## 데이터 파일
 

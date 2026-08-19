@@ -61,14 +61,12 @@ pnpm start    # 빌드 결과 실행
 
 ## PlayPSO 데이터 동기화
 
-PlayPSO가 자동화 브라우저를 차단하므로, 데이터 갱신은 직접 연 브라우저에서
-콘솔 스니펫으로 수집한 뒤 가져옵니다. 전체 절차는
+PlayPSO가 자동화 브라우저를 차단하므로, 데이터는 직접 연 브라우저에서 수집하고
+사이트의 **Update data** 버튼으로 반영합니다. 개발 도구 설치가 필요 없습니다.
+
+1. `/database` 또는 `/drop-tables` 하단의 **Update data** 클릭
+2. "Copy collector script" → PlayPSO 페이지에서 `F12` → Console에 붙여넣기 → JSON 다운로드
+3. 받은 파일을 패널에 드래그 → 변경 내역 확인 → **Publish**
+
+전체 절차와 GitHub 토큰 준비 방법은
 [docs/playpso-sync.md](docs/playpso-sync.md)를 참고하세요.
-
-1. <https://www.playpso.net/database> 를 열고 표가 보일 때까지 대기
-2. `F12` → Console에 `scripts/collect-in-browser.js` 내용 붙여넣기 → JSON 다운로드
-3. 저장소에서 가져오기
-
-```bash
-pnpm import:snapshot ~/Downloads/playpso-database-snapshot.json
-```

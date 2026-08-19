@@ -575,3 +575,6 @@
 @media (prefers-reduced-motion: reduce) {
   .mobileSwipeHint > span { animation: none; }
 }
+
+.updateLink { padding: 0; border: 0; background: none; color: var(--blue); font-size: inherit; text-decoration: underline; cursor: pointer; }
+.updateLink:hover { color: var(--blue-strong); }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import UpdatePanel from "../update/UpdatePanel";
 import type { DatabaseItem, DatabasePayload, ItemCategory } from "./types";
 import styles from "./database.module.css";
 
@@ -98,6 +99,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [liveCheckedAt, setLiveCheckedAt] = useState<string | null>(null);
+  const [updateOpen, setUpdateOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const resultsRef = useRef<HTMLDivElement>(null);
 
@@ -582,7 +584,11 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
             Last automatic check: <strong>{formatTimestamp(checkedAt)}</strong>
             {payload.syncStatus.lastChangedAt && (
               <> · last content change: {formatTimestamp(payload.syncStatus.lastChangedAt)}</>
-            )}
+            )}{" "}
+            ·{" "}
+            <button type="button" className={styles.updateLink} onClick={() => setUpdateOpen(true)}>
+              Update data
+            </button>
           </p>
         </footer>
       </main>
@@ -616,6 +622,8 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
       )}
 
       {selected && <ItemDetail item={selected} onClose={() => setSelectedId(null)} />}
+
+      {updateOpen && <UpdatePanel kind="database" onClose={() => setUpdateOpen(false)} />}
     </div>
   );
 }
