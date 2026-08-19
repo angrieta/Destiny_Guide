@@ -16,6 +16,7 @@ Phantasy Star Online Blue Burst - Destiny 서버 공략 사이트입니다.
 | `dmc_page.html` | DMC 페이지 |
 | `Psobb_tool.html` | 계산 도구 |
 | `/drop-tables` | 난이도·Section ID·에피소드·지역·아이템 종류별 드랍 검색 |
+| `/database` | 무기·방어구·실드·유닛·마그 통합 검색 (PlayPSO Item Database 미러) |
 | `header.html` | 공통 헤더 (`scripts/include.js`가 런타임에 주입) |
 
 ## 디렉터리
@@ -57,13 +58,14 @@ pnpm start    # 빌드 결과 실행
 - Cloudflare Workers (`wrangler`)
 - TypeScript 5.9
 
-## Drop Table 데이터 동기화
 
-`/drop-tables`는 `data/drop-tables-0.json`부터 `data/drop-tables-3.json`까지의 검증된 스냅샷을 사용합니다. 원본 서버의 Cloudflare 검증 화면 때문에 방문자의 브라우저에서 직접 크로스 도메인 요청하지 않고, Playwright 동기화 작업이 원본 페이지를 렌더링한 뒤 표를 구조화합니다.
+## PlayPSO 데이터 동기화
+
+`/drop-tables`와 `/database` 데이터 수집, 검증, 자동화 구조는
+[docs/playpso-sync.md](docs/playpso-sync.md)를 참고하세요.
 
 ```bash
 pnpm exec playwright install chromium
-pnpm sync:drops
+pnpm sync:drops      # 드랍표 갱신
+pnpm sync:database   # 아이템 DB 갱신
 ```
-
-`.github/workflows/sync-drop-tables.yml`이 매일 원본을 확인하며, 실제 드랍 데이터가 달라진 경우에만 JSON 스냅샷을 커밋합니다. GitHub 저장소에서 Actions의 `Workflow permissions`가 `Read and write permissions`로 설정되어 있어야 자동 커밋이 가능합니다.
