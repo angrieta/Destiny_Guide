@@ -34,10 +34,9 @@
         display: block;
     }
     header{align-content: start; padding-top: 20px; height: 120px;}
+    /* 절대배치는 액션 줄이 감길 때 그 아래 내용과 겹친다. 흐름 안에 둔다. */
     .site-header .mid_menu {
-        position: absolute;
-        left: 22px;
-        top: 51px;
+        position: static;
     }
     .mid_menu .category_menu {
         font-size: 13px;
@@ -628,19 +627,16 @@
         flex-flow: column;
         gap: 8px;
         min-width: 0;
-        overflow: hidden;
     }
+    /* 가로 스크롤로 감춰 두면 뒤쪽 메뉴가 있는지 알 수 없다.
+       헤더가 높아지더라도 줄을 넘겨 전부 보이게 한다. */
     .site-header .mid_menu {
         position: static;
         width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scrollbar-width: none;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-    .site-header .mid_menu::-webkit-scrollbar {
-        display: none;
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 6px;
+        white-space: normal;
     }
     .site-header .mid_menu_2 {
         margin: 0;
@@ -718,20 +714,9 @@
         padding: 4px 8px;
         font-size: 11px;
     }
-    .lang_switch {
-        width: 54px;
-        min-height: 30px;
-        padding: 3px 6px;
-        gap: 4px;
-    }
-    .lang_switch::after { right: 6px; font-size: 10.5px; }
 }
 
 @media screen and (max-width: 480px) {
-    /* 아주 좁은 화면에서는 지구 아이콘을 숨긴다. EN / KO 코드만으로 의미가 통한다. */
-    .lang_switch_icon { display: none; }
-    .lang_switch { width: 38px; padding: 3px 5px; }
-    .lang_switch::after { right: 5px; }
     header .inner .left_menu { gap: 5px; }
     header .inner .left_menu .drop_table a { padding: 4px 7px; font-size: 10.5px; }
 }
@@ -749,6 +734,18 @@ header .inner .left_menu { min-width: 0; }
 .drop_table a,
 .theme_toggle_label {
     white-space: nowrap;
+}
+
+/* 내비는 어느 폭에서든 넘치기 전에 줄을 넘긴다.
+   가로 스크롤로 감추면 뒤쪽 메뉴를 못 찾고, 감지 않으면 로고와 버튼 위로 겹친다.
+   개별 링크는 위의 nowrap 으로 한 줄을 유지하므로, 줄바꿈은 링크 사이에서만 일어난다. */
+.mid_menu,
+.mid_menu_2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 6px;
+    min-width: 0;
 }
 
 /* 헤더 데이터 링크는 내비와 같은 크기(13px)로 맞춘다.

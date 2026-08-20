@@ -17,11 +17,15 @@
             </div>
         </div>
         <div class="left_menu">
-            <label class="lang_switch">
-                <span class="lang_switch_icon" aria-hidden="true"></span>
-                <span class="sr_only" data-i18n="header.lang.label">Language</span>
-                <select data-lang-select aria-label="Language" data-i18n-aria-label="header.lang.label"></select>
-            </label>
+            <div class="lang_switch" data-lang-switch>
+                <button type="button" class="lang_switch_button" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="lang_switch_icon" aria-hidden="true"></span>
+                    <span class="lang_switch_code">EN</span>
+                    <span class="lang_switch_caret" aria-hidden="true"></span>
+                    <span class="sr_only" data-i18n="header.lang.label">Language</span>
+                </button>
+                <ul class="lang_switch_list" role="listbox" hidden></ul>
+            </div>
             <button type="button" class="theme_toggle" aria-label="Switch to dark mode" aria-pressed="false">
                 <span class="theme_toggle_icon" aria-hidden="true"></span>
                 <span class="theme_toggle_label" data-i18n="header.theme.dark">Dark</span>

@@ -155,42 +155,109 @@
     });
   }
 
-  var LABELS = { en: "EN", ko: "한국어", ja: "日本語", es: "Español", fr: "Français" };
+  var LABELS = { en: "English", ko: "한국어", ja: "日本語", es: "Español", fr: "Français" };
   var SHORT = { en: "EN", ko: "KO", ja: "JA", es: "ES", fr: "FR" };
 
   function updateSwitcher() {
-    document.querySelectorAll("[data-lang-select]").forEach(function (select) {
-      if (select.value !== current) select.value = current;
-    });
-    document.querySelectorAll("[data-lang-current]").forEach(function (el) {
+    document.querySelectorAll(".lang_switch_code, [data-lang-current]").forEach(function (el) {
       el.textContent = SHORT[current] || "EN";
     });
-    // CSS ::after 로 현재 언어 코드를 보여준다. select 폭을 고정해 두었기 때문에
-    // 언어명이 길어져도 헤더 폭이 변하지 않는다.
-    document.querySelectorAll(".lang_switch").forEach(function (el) {
-      el.setAttribute("data-current", SHORT[current] || "EN");
+    document.querySelectorAll(".lang_switch_option").forEach(function (option) {
+      option.setAttribute("aria-selected", option.dataset.lang === current ? "true" : "false");
     });
   }
 
-  /** 헤더가 나중에 주입되므로, 셀렉트가 생길 때마다 연결한다. */
+  function closeSwitcher(root) {
+    (root || document).querySelectorAll("[data-lang-switch]").forEach(function (box) {
+      box.setAttribute("data-open", "false");
+      var button = box.querySelector(".lang_switch_button");
+      var list = box.querySelector(".lang_switch_list");
+      if (button) button.setAttribute("aria-expanded", "false");
+      if (list) list.hidden = true;
+    });
+  }
+
+  /**
+   * 언어 선택기를 만든다.
+   *
+   * 네이티브 select 를 쓰다가 직접 만든 목록으로 바꿨다.
+   * select 는 열린 목록의 글꼴과 색을 브라우저가 정해서 사이트 디자인과 맞출 수 없고,
+   * 목록 폭이 select 폭에 묶여 언어명이 잘렸다.
+   *
+   * 헤더가 나중에 주입되므로 생길 때마다 연결한다.
+   */
   function bindSwitchers(root) {
-    (root || document).querySelectorAll("[data-lang-select]").forEach(function (select) {
-      if (select.dataset.i18nBound === "1") return;
-      select.dataset.i18nBound = "1";
+    (root || document).querySelectorAll("[data-lang-switch]").forEach(function (box) {
+      if (box.dataset.i18nBound === "1") return;
+      box.dataset.i18nBound = "1";
+
+      var button = box.querySelector(".lang_switch_button");
+      var list = box.querySelector(".lang_switch_list");
+      if (!button || !list) return;
+
+      list.innerHTML = "";
       SUPPORTED.forEach(function (lang) {
-        if ([].some.call(select.options, function (o) { return o.value === lang; })) return;
-        var option = document.createElement("option");
-        option.value = lang;
-        option.textContent = LABELS[lang];
-        select.appendChild(option);
+        var item = document.createElement("li");
+        var option = document.createElement("button");
+        option.type = "button";
+        option.className = "lang_switch_option";
+        option.setAttribute("role", "option");
+        option.dataset.lang = lang;
+        option.setAttribute("aria-selected", lang === current ? "true" : "false");
+        // 언어 이름과 코드를 함께 보여준다. 코드만으로는 알아보기 어렵다.
+        var name = document.createElement("span");
+        name.textContent = LABELS[lang];
+        var code = document.createElement("span");
+        code.textContent = SHORT[lang];
+        option.appendChild(name);
+        option.appendChild(code);
+        option.addEventListener("click", function () {
+          setLang(lang, true);
+          closeSwitcher();
+          button.focus();
+        });
+        item.appendChild(option);
+        list.appendChild(item);
       });
-      select.value = current;
-      select.addEventListener("change", function () {
-        setLang(select.value, true);
+
+      button.addEventListener("click", function (event) {
+        event.stopPropagation();
+        var open = box.getAttribute("data-open") === "true";
+        closeSwitcher();
+        if (open) return;
+        box.setAttribute("data-open", "true");
+        button.setAttribute("aria-expanded", "true");
+        list.hidden = false;
+        var selected = list.querySelector('[aria-selected="true"]');
+        if (selected) selected.focus();
+      });
+
+      // 목록 안에서 위/아래 키로 이동하고, Escape 로 닫는다.
+      list.addEventListener("keydown", function (event) {
+        var options = [].slice.call(list.querySelectorAll(".lang_switch_option"));
+        var index = options.indexOf(document.activeElement);
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+          event.preventDefault();
+          var step = event.key === "ArrowDown" ? 1 : -1;
+          var next = options[(index + step + options.length) % options.length];
+          if (next) next.focus();
+        } else if (event.key === "Escape") {
+          closeSwitcher();
+          button.focus();
+        }
       });
     });
+
     updateSwitcher();
   }
+
+  // 바깥을 누르거나 Escape 를 누르면 닫는다.
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest || !event.target.closest("[data-lang-switch]")) closeSwitcher();
+  });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeSwitcher();
+  });
 
   /** 이미 불러온 사전에서 문구를 꺼낸다. JS 로 만드는 DOM 에서 쓴다. */
   function translate(key, fallbackEnglish) {

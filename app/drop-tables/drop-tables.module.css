@@ -41,15 +41,17 @@
   top: 0;
   z-index: 30;
   width: 100%;
-  height: 100px;
+  min-height: 100px;
   background: var(--surface);
   box-shadow: 1px 1px 7px color-mix(in srgb, var(--text) 16%, transparent);
 }
 .headerInner { display: flex; align-items: center; justify-content: space-between; gap: 32px; width: 100%; max-width: 1600px; height: 100%; margin: 0 auto; padding: 0 24px; }
 .siteLogo { flex: 0 0 150px; width: 150px; margin: 0; }
 .siteLogo a, .siteLogo img { display: block; width: 100%; }
-.headerMenus { display: flex; flex: 1 1 auto; justify-content: center; gap: 15px; min-width: 0; }
-.headerMenus > div { display: flex; align-items: center; gap: 10px; }
+/* 감기지 않는 한 줄이라 폭이 부족하면 로고와 버튼 위로 겹쳤다(es 900~1300px).
+   헤더가 높아지더라도 줄을 넘겨 전부 보이게 한다. */
+.headerMenus { display: flex; flex: 1 1 auto; flex-wrap: wrap; justify-content: center; gap: 8px 15px; min-width: 0; }
+.headerMenus > div { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; min-width: 0; }
 .headerMenus a { padding-bottom: 4px; border-bottom: 1px solid transparent; color: var(--text); font-size: 13px; font-weight: 400; white-space: nowrap; }
 .headerMenus a:hover { border-bottom-color: var(--text); }
 .headerActions { display: flex; flex: 0 0 auto; align-items: center; gap: 12px; }
@@ -234,13 +236,12 @@
   .header { height: auto; }
   .headerInner { position: relative; flex-wrap: wrap; align-items: center; gap: 10px; padding: 12px 15px; }
   .siteLogo { flex-basis: 100px; width: 100px; }
-  .headerMenus { order: 3; flex: 1 1 100%; display: block; overflow-x: auto; scrollbar-width: none; }
-  .headerMenus::-webkit-scrollbar { display: none; }
+  /* 가로 스크롤로 감추면 뒤쪽 메뉴를 못 찾는다. 줄을 넘겨 전부 보이게 한다. */
+  .headerMenus { order: 3; flex: 1 1 100%; justify-content: flex-start; }
   .headerMenus > div:first-child { justify-content: flex-start; width: max-content; }
   .headerMenus a { font-size: 12px; }
   .raidMenu { display: none !important; }
   .headerActions { flex: 1 1 auto; flex-wrap: wrap; justify-content: flex-end; min-width: 0; margin-left: auto; gap: 8px; }
-  :global(.lang_switch_icon) { display: none; }
   .themeButton { min-width: 60px; min-height: 30px; padding: 4px 8px; font-size: 11px; }
   .themeIcon { width: 12px; height: 12px; }
   .dropTableLink { font-size: 11px; }

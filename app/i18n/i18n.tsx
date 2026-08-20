@@ -10,14 +10,14 @@
  *     사전 로딩이 실패하면 영어가 보인다. 빈 화면이 되지 않는다.
  */
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 const LANG_KEY = "destiny-guide-lang";
 export const SUPPORTED = ["en", "ko", "ja", "es", "fr"] as const;
 export type Lang = (typeof SUPPORTED)[number];
 
 export const LANG_LABELS: Record<Lang, string> = {
-  en: "EN",
+  en: "English",
   ko: "한국어",
   ja: "日本語",
   es: "Español",
@@ -119,30 +119,83 @@ export function useI18n() {
 }
 
 /**
- * 언어 선택기. 정적 페이지의 헤더와 같은 모양이며 스타일도 공유한다(globals.css).
+ * 언어 선택기. 정적 페이지와 같은 마크업/클래스를 쓴다(globals.css 공유).
  *
- * 칩 폭을 고정하고 그 안의 넓은 select 를 잘라내는 방식이다.
- * select 자체를 좁히면 브라우저가 열린 목록 폭까지 맞춰 언어명이 잘린다.
+ * 네이티브 <select> 를 쓰다가 직접 만든 목록으로 바꿨다.
+ * select 는 열린 목록의 글꼴과 색을 브라우저가 정해 버려서 사이트 디자인과 맞출 수 없고,
+ * 목록 폭이 select 폭에 묶여 언어명이 잘렸다.
  */
 export function LanguageSwitcher() {
   const { lang, setLang, t } = useI18n();
+  const [open, setOpen] = useState(false);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const label = t("header.lang.label", "Language");
 
+  // 바깥을 누르거나 Escape 를 누르면 닫는다.
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (event: MouseEvent) => {
+      if (!boxRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const moveFocus = (event: React.KeyboardEvent<HTMLUListElement>) => {
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+    event.preventDefault();
+    const options = [...(boxRef.current?.querySelectorAll<HTMLButtonElement>(".lang_switch_option") ?? [])];
+    const index = options.indexOf(document.activeElement as HTMLButtonElement);
+    const step = event.key === "ArrowDown" ? 1 : -1;
+    options[(index + step + options.length) % options.length]?.focus();
+  };
+
   return (
-    <label className="lang_switch" data-current={LANG_SHORT[lang]}>
-      <span className="lang_switch_icon" aria-hidden="true" />
-      <span className="sr_only">{label}</span>
-      <select
-        aria-label={label}
-        value={lang}
-        onChange={(event) => setLang(event.target.value as Lang)}
+    <div className="lang_switch" data-lang-switch data-open={open ? "true" : "false"} ref={boxRef}>
+      <button
+        type="button"
+        className="lang_switch_button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        ref={buttonRef}
       >
+        <span className="lang_switch_icon" aria-hidden="true" />
+        <span className="lang_switch_code">{LANG_SHORT[lang]}</span>
+        <span className="lang_switch_caret" aria-hidden="true" />
+        <span className="sr_only">{label}</span>
+      </button>
+      <ul className="lang_switch_list" role="listbox" aria-label={label} hidden={!open} onKeyDown={moveFocus}>
         {SUPPORTED.map((code) => (
-          <option key={code} value={code}>
-            {LANG_LABELS[code]}
-          </option>
+          <li key={code}>
+            <button
+              type="button"
+              className="lang_switch_option"
+              role="option"
+              aria-selected={code === lang}
+              onClick={() => {
+                setLang(code);
+                setOpen(false);
+                buttonRef.current?.focus();
+              }}
+            >
+              <span>{LANG_LABELS[code]}</span>
+              <span>{LANG_SHORT[code]}</span>
+            </button>
+          </li>
         ))}
-      </select>
-    </label>
+      </ul>
+    </div>
   );
 }

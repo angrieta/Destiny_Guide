@@ -574,95 +574,142 @@ html[data-theme="dark"] .img_popup .popup_inner {
     border: 0;
 }
 
+/* ── 언어 선택기 ────────────────────────────────────────────────
+   선택자를 .lang_switch 하위로 중첩해 둔 이유:
+   React 모듈 CSS 에 `.pageShell button { font: inherit }` 가 있어서
+   특정성이 낮으면 글꼴 지정이 통째로 덮인다.
+   네이티브 <select> 를 쓰다가 직접 만든 드롭다운으로 바꿨다.
+   select 는 열린 목록의 글꼴과 색을 브라우저가 정해 버려서
+   사이트 디자인과 맞출 수 없고, 목록 폭도 select 폭에 묶여 잘렸다.
+   ──────────────────────────────────────────────────────────── */
 .lang_switch {
     position: relative;
+    flex: 0 0 auto;
+}
+
+.lang_switch .lang_switch_button {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    flex: 0 0 auto;
-    /* 칩 폭을 고정하고, 안에 든 넓은 select 는 잘라낸다.
-       select 자체를 좁히면 열린 목록까지 좁아져 언어명이 잘렸다. */
-    width: 62px;
+    gap: 6px;
     min-height: 34px;
-    padding: 4px 8px;
-    overflow: hidden;
+    padding: 4px 10px;
     border: 1px solid var(--border);
     border-radius: 999px;
     background: var(--surface-soft);
     color: var(--text);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1;
     cursor: pointer;
-    transition: border-color 180ms ease;
+    transition: border-color 180ms ease, background-color 180ms ease;
 }
 
-.lang_switch:hover { border-color: var(--accent); }
+.lang_switch .lang_switch_button:hover { border-color: var(--accent); }
 
-.lang_switch:focus-within {
+.lang_switch .lang_switch_button:focus-visible {
     border-color: var(--accent);
-    /* overflow: hidden 때문에 outline 이 잘린다. 안쪽으로 그리는 box-shadow 를 쓴다. */
-    box-shadow: inset 0 0 0 2px var(--accent);
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
 }
 
-/* 지구 아이콘: 이미지 파일 없이 CSS 로만 그린다 */
-.lang_switch_icon {
+.lang_switch[data-open="true"] .lang_switch_button {
+    border-color: var(--accent);
+}
+
+/* 지구 아이콘: 이미지 파일 없이 CSS 로만 그린다.
+   좁은 화면에서 숨겼더니 무슨 버튼인지 알 수 없다는 지적을 받아 항상 보여준다. */
+.lang_switch .lang_switch_icon {
     position: relative;
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
     flex: 0 0 auto;
     border: 1.5px solid currentColor;
     border-radius: 50%;
 }
-.lang_switch_icon::before,
-.lang_switch_icon::after {
+.lang_switch .lang_switch_icon::before,
+.lang_switch .lang_switch_icon::after {
     content: "";
     position: absolute;
     inset: 0;
     border: 1.5px solid currentColor;
     border-radius: 50%;
 }
-.lang_switch_icon::before { border-width: 0 1.5px; border-radius: 50%; transform: scaleX(0.45); }
-.lang_switch_icon::after { border-width: 1.5px 0 0; border-radius: 0; top: 50%; }
+.lang_switch .lang_switch_icon::before { border-width: 0 1.5px; border-radius: 50%; transform: scaleX(0.45); }
+.lang_switch .lang_switch_icon::after { border-width: 1.5px 0 0; border-radius: 0; top: 50%; }
 
-/* select 는 넓게 둔다. 브라우저가 열린 목록의 폭을 select 폭에 맞추기 때문에
-   좁히면 "Français" 같은 이름이 잘린다. 칩의 overflow: hidden 이 넘치는 부분을 가린다. */
-.lang_switch select {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 150px;
-    /* flex 축소가 걸리면 칩 폭에 맞춰 44px 까지 줄어들고,
-       브라우저가 열린 목록 폭을 여기에 맞추기 때문에 다시 잘린다. */
-    flex: 0 0 150px;
-    padding: 0;
+/* 현재 언어 코드. 항상 두 글자라 버튼 폭이 언어에 따라 흔들리지 않는다. */
+.lang_switch .lang_switch_code {
+    font-variant-numeric: tabular-nums;
+}
+
+.lang_switch .lang_switch_caret {
+    width: 0;
+    height: 0;
+    flex: 0 0 auto;
+    border: 3.5px solid transparent;
+    border-top-color: currentColor;
+    margin-top: 2px;
+    transition: transform 180ms ease;
+}
+.lang_switch[data-open="true"] .lang_switch_caret { transform: rotate(180deg); margin-top: -2px; }
+
+.lang_switch .lang_switch_list {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 120;
+    min-width: 132px;
+    margin: 0;
+    padding: 6px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    box-shadow: 0 14px 34px rgba(12, 26, 48, 0.18);
+    list-style: none;
+}
+
+.lang_switch .lang_switch_list[hidden] { display: none; }
+
+.lang_switch .lang_switch_option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 10px;
     border: 0;
+    border-radius: 8px;
     background: transparent;
-    color: transparent;   /* 닫힌 상태의 표시는 아래 ::after 가 담당 */
-    font-size: 12px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: left;
+    white-space: nowrap;
     cursor: pointer;
+}
+
+.lang_switch .lang_switch_option:hover,
+.lang_switch .lang_switch_option:focus-visible {
+    background: var(--surface-soft);
     outline: none;
 }
 
-/* 닫힌 상태의 글자만 숨기려던 transparent 가 option 까지 상속되어
-   열린 목록이 빈 칸으로 보였다. 목록 색은 명시적으로 되돌린다. */
-.lang_switch select option {
-    color: var(--text, #142033);
-    background: var(--surface, #ffffff);
-    font-size: 13px;
+.lang_switch .lang_switch_option[aria-selected="true"] {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
 }
 
-/* 현재 언어 코드를 select 위에 겹쳐 보여준다 (i18n.js 가 채운다) */
-.lang_switch::after {
-    content: attr(data-current);
-    position: absolute;
-    right: 9px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.02em;
-    pointer-events: none;
-    color: var(--text);
+.lang_switch .lang_switch_option span:last-child {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.65;
 }
 
 @media screen and (max-width: 780px) {
-    .lang_switch { min-height: 30px; padding: 3px 7px; }
-    .lang_switch_icon { width: 13px; height: 13px; }
-    .lang_switch select { width: 30px; min-width: 30px; font-size: 11px; }
-    .lang_switch::after { right: 7px; font-size: 11px; }
+    .lang_switch .lang_switch_button { min-height: 30px; padding: 3px 8px; gap: 5px; }
+    .lang_switch .lang_switch_icon { width: 13px; height: 13px; }
+    .lang_switch .lang_switch_list { min-width: 124px; }
 }
