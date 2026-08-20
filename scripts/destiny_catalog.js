@@ -1437,10 +1437,14 @@
    * 영어 원문을 기본값으로 넘기므로 사전에 없으면 영어가 그대로 보인다.
    * required(재료 목록)는 아이템명이라 번역 대상이 아니다.
    */
-  const prose = (item, field, index) =>
-    index === undefined
-      ? t("cat." + item.id + "." + field, item[field] || "")
-      : t("cat." + item.id + "." + field + "." + index, (item[field] || [])[index] || "");
+  const prose = (item, field, index) => {
+    const value = index === undefined ? item[field] || "" : (item[field] || [])[index] || "";
+    // 정적 카드에서 합성한 아이템은 고정 문구용 공용 키를 들고 온다.
+    // 아이템 id 로 키를 만들면 카드마다 다른 키가 되어 사전과 맞지 않는다.
+    const shared = index === undefined ? item[field + "Key"] : (item[field + "Keys"] || [])[index];
+    if (shared) return t(shared, value);
+    return t("cat." + item.id + "." + field + (index === undefined ? "" : "." + index), value);
+  };
 
   const proseList = (item, field) => (item[field] || []).map((_line, i) => prose(item, field, i));
 
@@ -1605,13 +1609,16 @@
       type: typeElement ? typeElement.textContent.trim() : "Item",
       image: imageElement ? imageElement.getAttribute("src") : "",
       imagePosition: "center center",
+      // 모든 정적 카드가 공유하는 고정 문구다. 아이템별 키로 만들면 사전과 맞지 않는다.
       summary: "Expanded view of the information currently shown on this Destiny Items card.",
+      summaryKey: "catalog.existing.summary",
       stats: info.map((line) => ["Info", line]),
       requirements: [],
       combat: details,
       obtain: [
         "A specific drop or crafting route is not listed on the current card."
       ],
+      obtainKeys: ["catalog.existing.obtain"],
       required: []
     };
   }

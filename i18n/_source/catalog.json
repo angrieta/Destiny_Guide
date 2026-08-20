@@ -222,7 +222,5 @@
   "cat.vector-scope.combat.0": "Arrest Needle / Hell Needle: Range +105, ATA +20.",
   "cat.vector-scope.combat.1": "Gush Needle: Range +105, special hits 1–1–3, ATA +20.",
   "cat.vector-scope.combat.2": "Grave Digger / Nefarious Needle: ATP +60, ATA +30.",
-  "cat.vector-scope.obtain.0": "The supplied source lists the buffs but does not include a drop or crafting route.",
-  "cat.existing-.summary": "Expanded view of the information currently shown on this Destiny Items card.",
-  "cat.existing-.obtain.0": "A specific drop or crafting route is not listed on the current card."
+  "cat.vector-scope.obtain.0": "The supplied source lists the buffs but does not include a drop or crafting route."
 }

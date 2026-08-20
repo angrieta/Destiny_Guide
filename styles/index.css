@@ -1642,9 +1642,11 @@ body.destiny-detail-open {
     font-weight: 800;
 }
 
+/* reset.css 가 list-style: none 을 주므로 불릿이 없다.
+   그런데 불릿 자리만큼 왼쪽이 비어 제목과 어긋나 보였다. */
 .destiny_detail_section ul {
     margin: 0;
-    padding-left: 19px;
+    padding-left: 0;
 }
 
 .destiny_detail_section li {

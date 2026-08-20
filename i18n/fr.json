@@ -618,7 +618,6 @@
   "cat.chaos-engine.summary": "Une unité disponible toute l’année, avec toutes les résistances +5, qui améliore quatre armes.",
   "cat.raster-scope.summary": "Une unité de visée avec toutes les résistances +5 qui modifie les armes de type Yasminkov.",
   "cat.vector-scope.summary": "Une unité de visée avec toutes les résistances +5 qui améliore les armes de type Needle.",
-  "cat.existing-.summary": "Vue agrandie des informations actuellement affichées sur cette carte d’objets Destiny.",
   "cat.astral-claw.combat.0": "Portée de Jellen +300%",
   "cat.astral-claw.combat.1": "Portée de Resta +100%",
   "cat.astral-claw.combat.2": "Puissance de Barta +100%",
@@ -778,5 +777,7 @@
   "cat.chaos-engine.obtain.0": "Nightmare Chaser XII dans Silent Nightmare [Raid], 1/75 sur tous les IDs.",
   "cat.raster-scope.obtain.0": "Epsilon : Raster Scope à 1/2100, selon la mise à jour de la table de drops fournie.",
   "cat.vector-scope.obtain.0": "La source fournie indique les bonus, mais n’inclut ni route de drop ni de fabrication.",
-  "cat.existing-.obtain.0": "La carte actuelle n’indique pas de route précise de drop ni de fabrication."
+  "catalog.existing.summary": "Vue agrandie des informations actuellement affichées sur cette carte d’objets Destiny.",
+  "catalog.existing.obtain": "La carte actuelle n’indique pas de route précise de drop ni de fabrication.",
+  "stat.info": "Info"
 }

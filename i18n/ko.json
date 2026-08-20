@@ -618,7 +618,6 @@
   "cat.chaos-engine.summary": "전 내성 +5에 무기 4종을 강화해주는, 연중 상시 구할 수 있는 유닛입니다.",
   "cat.raster-scope.summary": "전 내성 +5에 Yasminkov 계열 무기를 개조해주는 스코프 유닛입니다.",
   "cat.vector-scope.summary": "전 내성 +5에 Needle 계열 무기를 강화해주는 스코프 유닛입니다.",
-  "cat.existing-.summary": "이 Destiny 아이템 카드에 표시된 정보를 확대해서 봅니다.",
   "cat.astral-claw.combat.0": "Jellen 범위 +300%",
   "cat.astral-claw.combat.1": "Resta 범위 +100%",
   "cat.astral-claw.combat.2": "Barta 위력 +100%",
@@ -778,5 +777,7 @@
   "cat.chaos-engine.obtain.0": "Silent Nightmare [Raid]의 Nightmare Chaser XII, 전 ID 1/75.",
   "cat.raster-scope.obtain.0": "Epsilon: Raster Scope 1/2100 — 제공된 드랍 테이블 업데이트 기준입니다.",
   "cat.vector-scope.obtain.0": "제공된 자료에는 보정 내용만 있고 드랍처나 제작 경로는 없습니다.",
-  "cat.existing-.obtain.0": "현재 카드에는 구체적인 드랍처나 제작 경로가 없습니다."
+  "catalog.existing.summary": "이 Destiny 아이템 카드에 표시된 정보를 확대해서 봅니다.",
+  "catalog.existing.obtain": "현재 카드에는 구체적인 드랍처나 제작 경로가 없습니다.",
+  "stat.info": "정보"
 }

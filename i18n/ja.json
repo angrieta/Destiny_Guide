@@ -618,7 +618,6 @@
   "cat.chaos-engine.summary": "全耐性 +5 に加え武器 4 種を強化する、通年入手できるユニットです。",
   "cat.raster-scope.summary": "全耐性 +5 に加え Yasminkov 系の武器を改造するスコープユニットです。",
   "cat.vector-scope.summary": "全耐性 +5 に加え Needle 系の武器を強化するスコープユニットです。",
-  "cat.existing-.summary": "この Destiny アイテムカードに表示されている情報を拡大して表示します。",
   "cat.astral-claw.combat.0": "Jellen の範囲 +300%",
   "cat.astral-claw.combat.1": "Resta の範囲 +100%",
   "cat.astral-claw.combat.2": "Barta の威力 +100%",
@@ -778,5 +777,7 @@
   "cat.chaos-engine.obtain.0": "Silent Nightmare [Raid] の Nightmare Chaser XII、全 ID 1/75。",
   "cat.raster-scope.obtain.0": "Epsilon: Raster Scope 1/2100 — 提供されたドロップ表の更新に基づきます。",
   "cat.vector-scope.obtain.0": "提供された資料には補正内容のみで、ドロップ元や作成手順は記載されていません。",
-  "cat.existing-.obtain.0": "現在のカードには具体的なドロップ元や作成手順が記載されていません。"
+  "catalog.existing.summary": "この Destiny アイテムカードに表示されている情報を拡大して表示します。",
+  "catalog.existing.obtain": "現在のカードには具体的なドロップ元や作成手順が記載されていません。",
+  "stat.info": "情報"
 }
