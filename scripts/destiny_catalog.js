@@ -1406,6 +1406,44 @@
   /** 아이템 데이터는 영어로 두고, 화면 문구만 사전에서 가져온다. */
   const t = (key, en) => window.DestinyI18n?.t(key, en) ?? en;
 
+  /**
+   * 스탯 라벨만 번역한다. 값은 게임 수치이므로 그대로 둔다.
+   * ATP 같은 약어는 사전에 키가 없어 영어가 유지된다.
+   */
+  /** 라벨에서 사전 키만 만든다 (마킹용). */
+  const statKey = (raw) => "stat." + String(raw).trim()
+    .replace(/\s*%$/, " percent")
+    .replace(/[^A-Za-z0-9 ]+/g, " ")
+    .trim()
+    .split(/\s+/)
+    .map((w, i) => (i === 0 ? w.charAt(0).toLowerCase() + w.slice(1) : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()))
+    .join("");
+
+  const statLabel = (raw) => {
+    const camel = String(raw).trim()
+      .replace(/\s*%$/, " percent")
+      .replace(/[^A-Za-z0-9 ]+/g, " ")
+      .trim()
+      .split(/\s+/)
+      .map((word, i) => (i === 0 ? word.charAt(0).toLowerCase() + word.slice(1) : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()))
+      .join("");
+    return t("stat." + camel, raw);
+  };
+
+  /**
+   * 아이템 설명문을 사전에서 가져온다.
+   *
+   * 키는 아이템 id 와 필드 이름으로 만든다: cat.<id>.summary, cat.<id>.combat.0
+   * 영어 원문을 기본값으로 넘기므로 사전에 없으면 영어가 그대로 보인다.
+   * required(재료 목록)는 아이템명이라 번역 대상이 아니다.
+   */
+  const prose = (item, field, index) =>
+    index === undefined
+      ? t("cat." + item.id + "." + field, item[field] || "")
+      : t("cat." + item.id + "." + field + "." + index, (item[field] || [])[index] || "");
+
+  const proseList = (item, field) => (item[field] || []).map((_line, i) => prose(item, field, i));
+
   function createCatalogCard(item) {
     const slide = document.createElement("div");
     slide.className = "swiper-slide destiny_item_slide destiny_catalog_card";
@@ -1415,13 +1453,20 @@
     const comboEntry = item.stats.find((entry) => comboPattern.test(entry.join(" ")));
     if (comboEntry && !previewEntries.includes(comboEntry)) previewEntries.push(comboEntry);
 
+    // 라벨만 data-i18n 으로 감싼다. 값은 게임 수치라 번역을 거치지 않는다.
+    // t() 로 미리 넣으면 사전이 늦게 도착할 때 영어로 굳는다.
     const previewStats = previewEntries
-      .map((entry) => '<p class="item_info">' + escapeHTML(entry[0]) + ": " + escapeHTML(entry[1]) + "</p>")
+      .map((entry) =>
+        '<p class="item_info"><span data-i18n="' + escapeHTML(statKey(entry[0])) + '">' +
+        escapeHTML(entry[0]) + "</span>: " + escapeHTML(entry[1]) + "</p>")
       .join("");
-    const comboDetails = item.combat.filter((line) => comboPattern.test(line)).slice(0, 3);
+    const combatRefs = (item.combat || []).map((en, i) => ({ key: "cat." + item.id + ".combat." + i, en }));
+    const comboDetails = combatRefs.filter((d) => comboPattern.test(d.en)).slice(0, 3);
     const previewDetails = comboDetails.length
       ? comboDetails
-      : [item.combat[0] || item.obtain[0] || item.summary];
+      : [combatRefs[0]
+          || ((item.obtain || [])[0] ? { key: "cat." + item.id + ".obtain.0", en: item.obtain[0] } : null)
+          || { key: "cat." + item.id + ".summary", en: item.summary || "" }];
 
     slide.innerHTML =
       '<button type="button" class="item_section_aria" data-catalog-id="' + escapeHTML(item.id) + '">' +
@@ -1432,7 +1477,7 @@
           "</div>" +
           '<h4 class="item_title"><span class="item_name">' + escapeHTML(item.name) + "</span></h4>" +
           previewStats +
-          previewDetails.map((line) => '<p class="item_detail">' + escapeHTML(line) + "</p>").join("") +
+          previewDetails.map((d) => '<p class="item_detail"' + (d.key ? ' data-i18n="' + escapeHTML(d.key) + '"' : "") + ">" + escapeHTML(d.en) + "</p>").join("") +
           '<span class="destiny_card_open_hint" data-i18n="catalog.card.hint">Click for full details</span>' +
         "</div>" +
       "</button>";
@@ -1573,7 +1618,7 @@
 
   function renderDefinitionList(entries) {
     return entries.map((entry) =>
-      "<div><dt>" + escapeHTML(entry[0]) + "</dt><dd>" + escapeHTML(entry[1]) + "</dd></div>"
+      "<div><dt>" + escapeHTML(statLabel(entry[0])) + "</dt><dd>" + escapeHTML(entry[1]) + "</dd></div>"
     ).join("");
   }
 
@@ -1610,16 +1655,16 @@
     const openModal = (item, trigger) => {
       previousFocus = trigger;
       titleElement.textContent = item.name;
-      summaryElement.textContent = item.summary || "";
+      summaryElement.textContent = prose(item, "summary");
       badgeElement.innerHTML =
         '<span class="destiny_detail_badge">' + escapeHTML(item.category || "Item") + "</span>" +
         '<span class="destiny_detail_badge destiny_detail_badge--type">' + escapeHTML(item.type || "Item") + "</span>";
       statsElement.innerHTML = renderDefinitionList(item.stats || []);
       sectionsElement.innerHTML =
-        renderSection(t("catalog.detail.combat", "Special, targets & bonuses"), item.combat || []) +
-        renderSection(t("catalog.detail.obtain", "How to obtain"), item.obtain || []) +
+        renderSection(t("catalog.detail.combat", "Special, targets & bonuses"), proseList(item, "combat")) +
+        renderSection(t("catalog.detail.obtain", "How to obtain"), proseList(item, "obtain")) +
         renderSection(t("catalog.detail.required", "Required items"), item.required || []) +
-        renderSection(t("catalog.detail.notes", "Additional notes"), item.notes || []);
+        renderSection(t("catalog.detail.notes", "Additional notes"), proseList(item, "notes"));
 
       if (item.image) {
         imageElement.src = item.image;
