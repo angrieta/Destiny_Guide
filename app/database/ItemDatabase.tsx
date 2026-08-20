@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { DatabaseItem, DatabasePayload, ItemCategory } from "./types";
 import styles from "./database.module.css";
+import { LanguageSwitcher, useI18n } from "../i18n/i18n";
 
 const THEME_KEY = "destiny-guide-theme";
 const PAGE_SIZE = 60;
@@ -85,6 +86,7 @@ const DEFAULTS = {
 };
 
 export default function ItemDatabase({ payload }: { payload: DatabasePayload }) {
+  const { t } = useI18n();
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [query, setQuery] = useState(DEFAULTS.q);
   const [category, setCategory] = useState<"All" | ItemCategory>(DEFAULTS.cat);
@@ -284,11 +286,11 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
       <div className={styles.pageShell}>
         <main className={styles.explorer}>
           <div className={styles.emptyState}>
-            <strong>Unable to load database.</strong>
+            <strong>{t("db.error.title", "Unable to load database.")}</strong>
             <p>
-              The item data could not be read. Please try again later, or check the{" "}
+              {t("db.error.note", "The item data could not be read. Please try again later, or check the")}{" "}
               <a href={payload.sourceUrl} target="_blank" rel="noreferrer">
-                original source
+                {t("db.error.source", "original source")}
               </a>
               .
             </p>
@@ -302,9 +304,9 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
     <>
       {showWeaponFilters && (
         <label>
-          <span>Weapon type</span>
+          <span>{t("db.filter.weaponType", "Weapon type")}</span>
           <select value={weaponType} onChange={(event) => setWeaponType(event.target.value)}>
-            <option value="All">All types</option>
+            <option value="All">{t("db.filter.allTypes", "All types")}</option>
             {payload.weaponTypes.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -315,9 +317,9 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
       )}
       {showWeaponFilters && (
         <label>
-          <span>Special</span>
+          <span>{t("db.filter.special", "Special")}</span>
           <select value={special} onChange={(event) => setSpecial(event.target.value)}>
-            <option value="All">Any special</option>
+            <option value="All">{t("db.filter.anySpecial", "Any special")}</option>
             {payload.specials.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -328,9 +330,9 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
       )}
       {showUnitFilters && (
         <label>
-          <span>Unit stat</span>
+          <span>{t("db.filter.unitStat", "Unit stat")}</span>
           <select value={statType} onChange={(event) => setStatType(event.target.value)}>
-            <option value="All">Any stat</option>
+            <option value="All">{t("db.filter.anyStat", "Any stat")}</option>
             {payload.unitStatTypes.map((value) => (
               <option key={value} value={value}>
                 {value}
@@ -341,11 +343,11 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
       )}
       {showDefenceFilters && (
         <label>
-          <span>Required Lv up to</span>
+          <span>{t("db.filter.levelCap", "Required Lv up to")}</span>
           <select value={maxLevel} onChange={(event) => setMaxLevel(event.target.value)}>
             {levelCaps.map((value) => (
               <option key={value} value={value}>
-                {value === "All" ? "Any level" : `Lv ${value}`}
+                {value === "All" ? t("db.filter.anyLevel", "Any level") : `Lv ${value}`}
               </option>
             ))}
           </select>
@@ -353,9 +355,9 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
       )}
       {showClassFilter && (
         <label>
-          <span>Class</span>
+          <span>{t("db.filter.class", "Class")}</span>
           <select value={playerClass} onChange={(event) => setPlayerClass(event.target.value)}>
-            <option value="All">Any class</option>
+            <option value="All">{t("db.filter.anyClass", "Any class")}</option>
             {payload.classes.map((value) => (
               <option key={value} value={value}>
                 {formatClass(value)}
@@ -365,11 +367,11 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
         </label>
       )}
       <label>
-        <span>Sort by</span>
+        <span>{t("db.filter.sort", "Sort by")}</span>
         <select value={sort} onChange={(event) => setSort(event.target.value as SortKey)}>
           {availableSorts.map((option) => (
             <option key={option.value} value={option.value}>
-              {option.label}
+              {t(`db.sort.${option.value}`, option.label)}
             </option>
           ))}
         </select>
@@ -382,16 +384,16 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <h1 className={styles.siteLogo}>
-            <a href="../index.html" aria-label="Destiny Guide home">
+            <a href="../index.html" aria-label={t("header.logo.alt", "Destiny Guide")}>
               <img src="../images/common/rogo.png" alt="Destiny Guide" />
             </a>
           </h1>
-          <nav className={styles.headerMenus} aria-label="Main navigation">
+          <nav className={styles.headerMenus} aria-label={t("db.nav.aria", "Main navigation")}>
             <div>
-              <a href="../beginner_page.html">Beginner</a>
-              <a href="../item_page.html">Destiny Items</a>
-              <a href="../dmc_page.html">DMC Guide</a>
-              <a href="../Psobb_tool.html">Tools</a>
+              <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
+              <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
+              <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
+              <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
             </div>
             <div className={styles.raidMenu}>
               <a href="../dn.html">Distorted Nightmare [RAID]</a>
@@ -403,11 +405,13 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
               className={styles.themeButton}
               type="button"
               onClick={updateTheme}
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              aria-label={theme === "dark" ? t("header.theme.light", "Light mode") : t("header.theme.dark", "Dark mode")}
               aria-pressed={theme === "dark"}
             >
               <span className={styles.themeIcon} aria-hidden="true" />
-              {theme === "dark" ? "Light" : "Dark"}
+              <span className={styles.themeLabel}>
+                {theme === "dark" ? t("header.theme.lightShort", "Light") : t("header.theme.darkShort", "Dark")}
+              </span>
             </button>
             <a
               className={styles.discordLink}
@@ -417,36 +421,36 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
               aria-label="Destiny Discord"
             />
             <a className={styles.navLink} href="../drop-tables/">
-              Drop Tables
+              {t("header.link.dropTables", "Drop Tables")}
             </a>
             <a className={styles.navLinkActive} href="../database/" aria-current="page">
-              Database
+              {t("header.link.database", "Database")}
             </a>
+            <LanguageSwitcher />
           </div>
         </div>
       </header>
 
       <section className={styles.hero}>
         <div>
-          <p className={styles.eyebrow}>ITEM DATABASE</p>
-          <h2>Every Destiny item, one search away.</h2>
+          <p className={styles.eyebrow}>{t("db.hero.eyebrow", "ITEM DATABASE")}</p>
+          <h2>{t("db.hero.title", "Every Destiny item, one search away.")}</h2>
           <p className={styles.heroCopy}>
-            Weapons, armor, shields, units, and mags mirrored from PlayPSO and rebuilt for fast lookup. Filter by
-            what you actually care about, then share the exact view you are looking at.
+            {t("db.hero.lead", "Weapons, armor, shields, units, and mags mirrored from PlayPSO and rebuilt for fast lookup. Filter by what you actually care about, then share the exact view you are looking at.")}
           </p>
         </div>
         <div className={styles.heroStats}>
           <div>
             <strong>{payload.items.length.toLocaleString("en-US")}</strong>
-            <span>Items</span>
+            <span>{t("db.stat.items", "Items")}</span>
           </div>
           <div>
             <strong>{payload.categories.length}</strong>
-            <span>Categories</span>
+            <span>{t("db.stat.categories", "Categories")}</span>
           </div>
           <div>
             <strong>{formatTimestamp(checkedAt).slice(0, 10)}</strong>
-            <span>Last checked</span>
+            <span>{t("db.stat.checked", "Last checked")}</span>
           </div>
         </div>
       </section>
@@ -459,11 +463,11 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search items... try dark flow, DF, or Katana"
-              aria-label="Search items"
+              placeholder={t("db.search.hint", "Search items... try dark flow, DF, or Katana")}
+              aria-label={t("db.search.aria", "Search items")}
             />
             {query && (
-              <button type="button" onClick={() => setQuery("")} aria-label="Clear search">
+              <button type="button" onClick={() => setQuery("")} aria-label={t("db.search.clear", "Clear search")}>
                 ×
               </button>
             )}
@@ -472,14 +476,14 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
             className={styles.filterToggle}
             type="button"
             onClick={() => setFiltersOpen(true)}
-            aria-label="Open filters"
+            aria-label={t("db.filters.open", "Open filters")}
           >
-            Filters
+            {t("db.filters.label", "Filters")}
             {activeFilterCount > 0 && <em>{activeFilterCount}</em>}
           </button>
         </div>
 
-        <div className={styles.categoryTabs} role="tablist" aria-label="Item category">
+        <div className={styles.categoryTabs} role="tablist" aria-label={t("db.category.aria", "Item category")}>
           {CATEGORIES.map((value) => {
             const count =
               value === "All"
@@ -494,7 +498,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
                 className={category === value ? styles.categoryActive : undefined}
                 onClick={() => setCategory(value)}
               >
-                {CATEGORY_LABELS[value]}
+                {value === "All" ? t("db.category.all", "All") : CATEGORY_LABELS[value]}
                 <em>{count.toLocaleString("en-US")}</em>
               </button>
             );
@@ -506,7 +510,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
         <div className={styles.resultBar} ref={resultsRef}>
           <p>
             <strong>{results.length.toLocaleString("en-US")}</strong>
-            {results.length === payload.items.length ? " Items" : " Results"}
+            {results.length === payload.items.length ? ` ${t("db.stat.items", "Items")}` : ` ${t("db.results.label", "Results")}`}
           </p>
           <button
             type="button"
@@ -514,16 +518,16 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
             onClick={resetFilters}
             disabled={activeFilterCount === 0}
           >
-            Reset Filters
+            {t("db.filters.reset", "Reset Filters")}
           </button>
         </div>
 
         {results.length === 0 ? (
           <div className={styles.emptyState}>
-            <strong>No items found</strong>
-            <p>Try changing your search or filters.</p>
+            <strong>{t("db.empty.title", "No items found")}</strong>
+            <p>{t("db.empty.note", "Try changing your search or filters.")}</p>
             <button type="button" onClick={resetFilters}>
-              Reset Filters
+              {t("db.filters.reset", "Reset Filters")}
             </button>
           </div>
         ) : (
@@ -538,7 +542,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
                         <span className={styles.categoryChip}>{item.type ?? item.category}</span>
                         {item.variant && <span className={styles.variantChip}>{item.variant}</span>}
                         {item.requiredLevel !== null && item.requiredLevel > 1 && (
-                          <span>Required Lv. {item.requiredLevel}</span>
+                          <span>{t("db.item.requiredLv", "Required Lv.")} {item.requiredLevel}</span>
                         )}
                         {item.requiredText && <span>{item.requiredText}</span>}
                       </div>
@@ -561,9 +565,9 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
                 type="button"
                 onClick={() => setVisible((current) => current + PAGE_SIZE)}
               >
-                Show {Math.min(PAGE_SIZE, results.length - visible)} more
+                {t("db.more", "Show {n} more").replace("{n}", String(Math.min(PAGE_SIZE, results.length - visible)))}
                 <em>
-                  {visible.toLocaleString("en-US")} of {results.length.toLocaleString("en-US")}
+                  {t("db.more.count", "{a} of {b}").replace("{a}", visible.toLocaleString("en-US")).replace("{b}", results.length.toLocaleString("en-US"))}
                 </em>
               </button>
             )}
@@ -572,16 +576,16 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
 
         <footer className={styles.sourceNote}>
           <p>
-            Data mirrored from{" "}
+            {t("db.footer.mirrored", "Data mirrored from")}{" "}
             <a href={payload.sourceUrl} target="_blank" rel="noreferrer">
               playpso.net/database
             </a>
             .
           </p>
           <p>
-            Last automatic check: <strong>{formatTimestamp(checkedAt)}</strong>
+            {t("db.footer.lastCheck", "Last automatic check:")} <strong>{formatTimestamp(checkedAt)}</strong>
             {payload.syncStatus.lastChangedAt && (
-              <> · last content change: {formatTimestamp(payload.syncStatus.lastChangedAt)}</>
+              <> · {t("db.footer.lastChange", "last content change:")} {formatTimestamp(payload.syncStatus.lastChangedAt)}</>
             )}
           </p>
         </footer>
@@ -593,22 +597,22 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
             className={styles.sheet}
             role="dialog"
             aria-modal="true"
-            aria-label="Filters"
+            aria-label={t("db.filters.label", "Filters")}
             onClick={(event) => event.stopPropagation()}
           >
             <header>
-              <h3>Filters</h3>
-              <button type="button" onClick={() => setFiltersOpen(false)} aria-label="Close filters">
+              <h3>{t("db.filters.label", "Filters")}</h3>
+              <button type="button" onClick={() => setFiltersOpen(false)} aria-label={t("db.filters.close", "Close filters")}>
                 ×
               </button>
             </header>
             <div className={styles.sheetBody}>{filterControls}</div>
             <div className={styles.sheetActions}>
               <button type="button" onClick={resetFilters} disabled={activeFilterCount === 0}>
-                Reset
+                {t("db.filters.resetShort", "Reset")}
               </button>
               <button type="button" className={styles.sheetPrimary} onClick={() => setFiltersOpen(false)}>
-                Show {results.length.toLocaleString("en-US")} results
+                {t("db.filters.show", "Show {n} results").replace("{n}", results.length.toLocaleString("en-US"))}
               </button>
             </div>
           </div>
@@ -621,6 +625,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
 }
 
 function ItemDetail({ item, onClose }: { item: DatabaseItem; onClose: () => void }) {
+  const { t } = useI18n();
   return (
     <div className={styles.detailBackdrop} onClick={onClose} role="presentation">
       <aside
@@ -639,7 +644,7 @@ function ItemDetail({ item, onClose }: { item: DatabaseItem; onClose: () => void
             </p>
             <h3>{item.name}</h3>
           </div>
-          <button type="button" onClick={onClose} aria-label="Close item details">
+          <button type="button" onClick={onClose} aria-label={t("db.detail.close", "Close item details")}>
             ×
           </button>
         </header>
@@ -649,7 +654,7 @@ function ItemDetail({ item, onClose }: { item: DatabaseItem; onClose: () => void
 
           {item.allStats.length > 0 && (
             <section>
-              <h4>Stats</h4>
+              <h4>{t("db.detail.stats", "Stats")}</h4>
               <dl className={styles.detailStats}>
                 {item.allStats.map((stat) => (
                   <div key={stat.label}>
@@ -663,21 +668,21 @@ function ItemDetail({ item, onClose }: { item: DatabaseItem; onClose: () => void
 
           {item.boosts && (
             <section>
-              <h4>Boosts</h4>
+              <h4>{t("db.detail.boosts", "Boosts")}</h4>
               <p>{item.boosts}</p>
             </section>
           )}
 
           {item.notes && (
             <section>
-              <h4>Notes</h4>
+              <h4>{t("db.detail.notes", "Notes")}</h4>
               <p>{item.notes}</p>
             </section>
           )}
 
           {item.classes.length > 0 && (
             <section>
-              <h4>Equippable by</h4>
+              <h4>{t("db.detail.classes", "Equippable by")}</h4>
               <div className={styles.classList}>
                 {item.classes.map((entry) => (
                   <span key={entry}>{formatClass(entry)}</span>

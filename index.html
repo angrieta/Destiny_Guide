@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/responsive.css">
+    <script src="./scripts/i18n.js"></script>
     <script src="./scripts/index.js" defer></script>
     <script src="./scripts/item_info.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -36,8 +37,8 @@
             <!-- bazaar라인 시작 -->
             <div class="bazaar_inner">
                 <div class="new_area">
-                    <h3>END-ITEM <span class="bazaar_sub_text">(Bazaar-Quest)</span></h3>
-                    <p>Check item details, required materials, and farming priority</p>
+                    <h3><span data-i18n="index.endItem.title">END-ITEM</span> <span class="bazaar_sub_text" data-i18n="index.endItem.sub">(Bazaar-Quest)</span></h3>
+                    <p data-i18n="index.endItem.desc">Check item details, required materials, and farming priority</p>
                     <div class="swiper bazaar_slide">
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
@@ -51,7 +52,7 @@
                                     </div>
                                     <div class="item_img"><img src="./images/common/v803_img.png" alt="v803"></div>
                                     <h4 class="item_title">v803<span class="item_type">Unit</span></h4>
-                                    <p class="item_info infortant_info">Success rate of freezing</p>
+                                    <p class="item_info infortant_info" data-i18n="bz.freeze">Success rate of freezing</p>
                                     <p class="item_info">MST+165</p>
                                     <p class="item_detail">
                                         FO Rabarta: 50% <br>
@@ -67,8 +68,8 @@
                                     <div class="item_inner">
                                         <div class="item_img"><img src="./images/common/phantasmal_field_img.png" alt="v803"></div>
                                         <h4 class="item_title">Phantasmal Field<span class="item_type">Armor</span></h4>
-                                        <p class="item_info infortant_info">All Stats +30 (Lv: 200)</p>
-                                        <p class="item_info">Resists: 32-32-32-41-41</p>
+                                        <p class="item_info infortant_info" data-i18n="bz.allStats">All Stats +30 (Lv: 200)</p>
+                                        <p class="item_info" data-i18n="bz.resists.a">Resists: 32-32-32-41-41</p>
                                         <p class="item_detail">
                                             DFP: 340 <br>
                                             EVP: 340 <br>
@@ -89,13 +90,13 @@
                                         </div> -->
                                         <div class="item_img"><img src="./images/common/astral_claw_img.png" alt="v803"></div>
                                         <h4 class="item_title">ASTRAL CLAW<span class="item_type">Weapon</span></h4>
-                                        <p class="item_info infortant_info">Special: Demons (target: 4)</p>
+                                        <p class="item_info infortant_info" data-i18n="bz.special.demons">Special: Demons (target: 4)</p>
                                         <p class="item_info">ATP: 700 &nbsp;·&nbsp; ATA: 50 &nbsp;·&nbsp; HP +73</p>
                                         <p class="item_detail">
-                                            Range of Jellen +300% <br>
-                                            Range of Resta +100% <br>
-                                            Power of Barta +100%<br><br>
-                                            Force Only
+                                            <span data-i18n="bz.jellen">Range of Jellen +300%</span> <br>
+                                            <span data-i18n="bz.resta">Range of Resta +100%</span> <br>
+                                            <span data-i18n="bz.barta">Power of Barta +100%</span><br><br>
+                                            <span data-i18n="bz.forceOnly">Force Only</span>
                                             </p>
                                     </div> 
                                 </a>
@@ -107,12 +108,12 @@
                                             <img src="./images/items/gameplay/astral-saber-card.png" alt="Astral Saber in-game effect">
                                         </div>
                                         <h4 class="item_title">ASTRAL SABER<span class="item_type">Weapon</span></h4>
-                                        <p class="item_info infortant_info">Special: Berserk (targets: 4)</p>
-                                        <p class="item_info">Force only &nbsp;·&nbsp; Req: MST 1200</p>
+                                        <p class="item_info infortant_info" data-i18n="bz.special.berserk">Special: Berserk (targets: 4)</p>
+                                        <p class="item_info" data-i18n="bz.forceReq">Force only &nbsp;·&nbsp; Req: MST 1200</p>
                                         <p class="item_detail">
                                             ATP: 800–850 &nbsp;·&nbsp; ATA: 55<br>
                                             Gifoie +100% &nbsp;·&nbsp; Rafoie +90%<br>
-                                            Gibarta +400% &nbsp;·&nbsp; Speed +15%
+                                            <span data-i18n="bz.gibartaSpeed">Gibarta +400% &nbsp;·&nbsp; Speed +15%</span>
                                         </p>
                                     </div>
                                 </a>
@@ -122,11 +123,11 @@
                                     <div class="item_inner">
                                         <div class="item_img"><img src="./images/common/astral_cloak_img.png" alt="astral_cloak"></div>
                                         <h4 class="item_title">ASTRAL CLOAK<span class="item_type">Armor</span></h4>
-                                        <p class="item_info infortant_info">Class: ALL (Lv: 200)</p>
-                                        <p class="item_info">Resists: 35-35-35-35-35</p>
+                                        <p class="item_info infortant_info" data-i18n="bz.classAll200">Class: ALL (Lv: 200)</p>
+                                        <p class="item_info" data-i18n="bz.resists.b">Resists: 35-35-35-35-35</p>
                                         <div class="tech_bonus_list">
                                             <div class="tech_bonus">
-                                                <span>Si techs 100%</span>
+                                                <span data-i18n="bz.siTechs">Si techs 100%</span>
                                                 <span class="tech_bonus_icons">
                                                     <img src="./images/common/140px-Foie.png" alt="Foie">
                                                     <img src="./images/common/140px-Barta.png" alt="Barta">
@@ -134,7 +135,7 @@
                                                 </span>
                                             </div>
                                             <div class="tech_bonus">
-                                                <span>Gi techs 80%</span>
+                                                <span data-i18n="bz.giTechs">Gi techs 80%</span>
                                                 <span class="tech_bonus_icons">
                                                     <img src="./images/common/140px-Gifoie.png" alt="Gifoie">
                                                     <img src="./images/common/140px-Gibarta.png" alt="Gibarta">
@@ -142,7 +143,7 @@
                                                 </span>
                                             </div>
                                             <div class="tech_bonus">
-                                                <span>Rabarta 90%</span>
+                                                <span data-i18n="bz.rabarta">Rabarta 90%</span>
                                                 <span class="tech_bonus_icons">
                                                     <img src="./images/common/140px-Rabarta.png" alt="Rabarta">
                                                 </span>
@@ -156,13 +157,13 @@
                                     <div class="item_inner">
                                         <div class="item_img"><img src="./images/common/astral_wing_img.png" alt="v803"></div>
                                         <h4 class="item_title">ASTRAL WINGS<span class="item_type">Shield</span></h4>
-                                        <p class="item_info infortant_info">Class: ALL</p>
-                                        <p class="item_info">Resists: 32/32/32/24/24</p>
+                                        <p class="item_info infortant_info" data-i18n="bz.classAll">Class: ALL</p>
+                                        <p class="item_info" data-i18n="bz.resists.c">Resists: 32/32/32/24/24</p>
                                         <p class="item_detail">
                                             DFP: 180 <br>
                                             EVP: 180 <br>
-                                            State/Maintenance <br>
-                                            Trap/Search
+                                            <span data-i18n="bz.stateMaint">State/Maintenance</span> <br>
+                                            <span data-i18n="bz.trapSearch">Trap/Search</span>
                                             </p>
                                     </div> 
                                 </a>
@@ -172,8 +173,8 @@
                                     <div class="item_inner">
                                         <div class="item_img"><img src="./images/common/jointparts.png" alt="v803"></div>
                                         <h4 class="item_title">Jointparts<span class="item_type">Unit</span></h4>
-                                        <p class="item_info infortant_info">Click for details</p>
-                                        <p class="item_info">Weapon Special Boost</p>
+                                        <p class="item_info infortant_info" data-i18n="bz.clickDetails">Click for details</p>
+                                        <p class="item_info" data-i18n="bz.weaponSpecialBoost">Weapon Special Boost</p>
                                         <p class="item_detail">
                                             Mille Marteaux <br>
                                             Guld Milla <br>
@@ -191,7 +192,7 @@
                                         <div class="item_img"><img src="./images/common/Millennium_HP.png" alt="v803"></div>
                                         <h4 class="item_title">Millennium/HP<span class="item_type">Unit</span></h4>
                                         <p class="item_info infortant_info">HP +275</p>
-                                        <p class="item_detail">Endgame Required</p>
+                                        <p class="item_detail" data-i18n="bz.endgame">Endgame Required</p>
                                     </div> 
                                 </a>
                             </div>
@@ -218,13 +219,13 @@
                                     <div class="item_inner">
                                         <div class="item_img"><img src="./images/items/units/matrix-scope-cutout.png" alt="Matrix Scope targeting effect"></div>
                                         <h4 class="item_title">MATRIX SCOPE<span class="item_type">Unit</span></h4>
-                                        <p class="item_info infortant_info">All resists +5</p>
-                                        <p class="item_info">Ranger weapon modifier</p>
+                                        <p class="item_info infortant_info" data-i18n="bz.allResists5">All resists +5</p>
+                                        <p class="item_info" data-i18n="bz.rangerMod">Ranger weapon modifier</p>
                                         <p class="item_detail">
                                             Apocalypse Bowgun<br>
                                             Snow Queen<br>
                                             Power Maser<br><br>
-                                            Click for weapon bonuses and materials
+                                            <span data-i18n="bz.clickWeaponBonus">Click for weapon bonuses and materials</span>
                                             </p>
                                     </div>
                                 </a>
@@ -235,12 +236,12 @@
                                         <div class="item_img"><img src="./images/items/units/forbidden-grimoire-cutout.png" alt="Forbidden Grimoire photon effect"></div>
                                         <h4 class="item_title">FORBIDDEN GRIMOIRE<span class="item_type">Unit</span></h4>
                                         <p class="item_info infortant_info">HP +200</p>
-                                        <p class="item_info">Force weapon modifier</p>
+                                        <p class="item_info" data-i18n="bz.forceMod">Force weapon modifier</p>
                                         <p class="item_detail">
                                             Prophet of Motav<br>
                                             The Sigh of a God<br>
                                             Gal Wind<br><br>
-                                            Click for bonuses and materials
+                                            <span data-i18n="bz.clickBonus">Click for bonuses and materials</span>
                                             </p>
                                     </div> 
                                 </a>
@@ -259,9 +260,9 @@
                 <div class="beginner_guide_inner">
                     <div class="guide_bg"><img src="./images/index/destiny_bnr_1.jpg" alt=""></div>
                     <div class="beginner_inner">
-                        <h3>Beginner's Guide</h3>
-                        <p>Beginner Guide for New Players</p>
-                        <a href="./beginner_page.html" class="begineer_btn">Go to Page</a>
+                        <h3 data-i18n="index.beginner.title">Beginner's Guide</h3>
+                        <p data-i18n="index.beginner.desc">Beginner Guide for New Players</p>
+                        <a href="./beginner_page.html" class="begineer_btn" data-i18n="index.beginner.cta">Go to Page</a>
                     </div>
                 </div>
             </div>
@@ -269,8 +270,8 @@
             <!-- Destiny Character info 라인 시작 -->
             <div class="Character_info">
                 <div class="right_contents">
-                    <h3>Character Guide</h3>
-                    <p>View stats, materials, and recommended MAG. Click a card for a larger view.</p>
+                    <h3 data-i18n="index.character.title">Character Guide</h3>
+                    <p data-i18n="index.character.desc">View stats, materials, and recommended MAG. Click a card for a larger view.</p>
                     <div id="best-slide-area"></div>  
                 </div>
             </div>
@@ -307,7 +308,7 @@
     <div class="character_popup_box" role="dialog" aria-modal="true" aria-label="Expanded character details">
         <button type="button" class="character_popup_close" aria-label="Close">&times;</button>
         <div class="character_popup_content"></div>
-        <p class="character_popup_hint">Expanded view of the character's level 200 stats, material targets, and recommended MAG setup.</p>
+        <p class="character_popup_hint" data-i18n="index.popup.hint">Expanded view of the character's level 200 stats, material targets, and recommended MAG setup.</p>
     </div>
 </div>
 

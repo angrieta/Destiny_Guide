@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DestinyGuide - The Discontrolled Tower Raid</title>
+    <title data-i18n="tool.t001">DestinyGuide - PSOBB Tools</title>
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/responsive.css">
+    <script src="./scripts/i18n.js"></script>
     <script src="./scripts/index.js" defer></script>
     <script src="./scripts/item_info.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -174,12 +175,17 @@
         /* 키 공통 스타일 */
           .kb-row {
                 display: flex;
+    /* 감기지 않는 한 줄이라, 라벨이 긴 언어(es/fr)에서 키캡이 화면 밖으로 나갔다.
+       키캡은 크기를 유지해야 읽히므로, 줄을 넘기는 쪽으로 해결한다. */
+    flex-wrap: wrap;
+    row-gap: 6px;
     gap: 4px;
     align-items: center;
     margin-bottom: 10px;
         }
   .key {
     width: 34px;
+    flex: 0 0 34px;
     height: 34px;
     display: flex;
     align-items: center;
@@ -352,14 +358,14 @@
     <main>
         <section class="reader_cta reader_cta--top" aria-labelledby="reader-title">
             <h2 id="reader-title">Destiny Reader</h2>
-            <p>The official lightweight item reader is a quick alternative when you only need floor-item details and minimap locations. Installation takes just a few clicks, and the forum post includes the latest download and update notes.</p>
-            <a class="reader_cta_link" href="https://playpso.net/forums/topic/1094-destiny-reader-update/" target="_blank" rel="noopener noreferrer">Open Destiny Reader download</a>
+            <p data-i18n="tool.t015">The official lightweight item reader is a quick alternative when you only need floor-item details and minimap locations. Installation takes just a few clicks, and the forum post includes the latest download and update notes.</p>
+            <a class="reader_cta_link" href="https://playpso.net/forums/topic/1094-destiny-reader-update/" target="_blank" rel="noopener noreferrer" data-i18n="tool.t016">Open Destiny Reader download</a>
         </section>
 
         <div class="beginner_title">
             <h2>PSOBB-Tools</h2>
-            <h3>I made this tool to smooth out as many of PSOBB's pain points as possible and make the game more enjoyable to play. </h3>
-            <p style="color: #c442cf;">psobb-tools is based on the structure of RPAS — a huge thank you to Roland, who has since retired. Your work made this possible.</p>
+            <h3 data-i18n="tool.t018">I made this tool to smooth out as many of PSOBB's pain points as possible and make the game more enjoyable to play. </h3>
+            <p style="color: #c442cf;" data-i18n="tool.t019">psobb-tools is based on the structure of RPAS — a huge thank you to Roland, who has since retired. Your work made this possible.</p>
         </div>
 
         <!-- =============== HTML (본문에 삽입) =============== -->
@@ -368,7 +374,7 @@
         <div class="download_aria">
             <a href="images/file/PSOBB-Tools.exe" download class="download_btn">
                 <span class="icon">⬇</span>
-                Download PSOBB-Tools.exe
+                <span data-i18n="tool.t020">Download PSOBB-Tools.exe</span>
             </a>
             <div class="download_info">
                 <span>📦 Version 1.0</span>
@@ -379,16 +385,16 @@
 
         <!-- ============ psobb-Tools Features (배포용) ============ -->
         <div class="contents_aria meseta_aria" id="meseta">
-            <h2 class="pc_h2"><strong class="title_num" style="padding:4px 3px;">✨</strong> psobb-Tools Features</h2>
+            <h2 class="pc_h2"><strong class="title_num" style="padding:4px 3px;">✨</strong> <span data-i18n="tool.t023">psobb-Tools Features</span></h2>
 
             <!-- ===================================================== -->
             <!-- 1. RAPID FIRE                                          -->
             <!-- ===================================================== -->
-            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">⚡</strong> Rapid Fire</h2>
-            <p>Holding a number key makes it auto-repeat. Every key (0~9 number row &amp; Numpad 0~9) has its own individual delay you can customize.</p>
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">⚡</strong> <span data-i18n="tool.t024">Rapid Fire</span></h2>
+            <p data-i18n="tool.t025">Holding a number key makes it auto-repeat. Every key (0~9 number row &amp; Numpad 0~9) has its own individual delay you can customize.</p>
 
             <div class="kb-row" style="margin-top: 10px;">
-                <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Number row rapid fire -&nbsp;</p>
+                <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t026">Number row rapid fire -&nbsp;</p>
                 <div class="key"><span class="top">!</span><span class="bot">1</span></div>
                 <div class="key"><span class="top">@</span><span class="bot">2</span></div>
                 <div class="key"><span class="top">#</span><span class="bot">3</span></div>
@@ -401,7 +407,7 @@
                 <div class="key"><span class="top">)</span><span class="bot">0</span></div>
             </div>
 
-            <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center; margin: 15px 0 10px;">Numpad rapid fire</p>
+            <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center; margin: 15px 0 10px;" data-i18n="tool.t028">Numpad rapid fire</p>
             <div class="numpad_aria">
                 <div class="kb-row">
                     <div class="key w45">7</div>
@@ -425,12 +431,12 @@
 
             <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 15px;">
                 <div class="kb-row" style="margin-right: 20px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Toggle ON/OFF -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t029">Toggle ON/OFF -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key">R</div>
                 </div>
                 <div class="kb-row">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Per-key settings -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t031">Per-key settings -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key">K</div>
                 </div>
@@ -442,30 +448,30 @@
             <!-- ===================================================== -->
             <!-- 2. ROOM CREATE                                    -->
             <!-- ===================================================== -->
-            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🏠</strong> Room Create</h2>
-            <p style="color: #c442cf;">You need to try it in front of the NPC that creates rooms.</p>
-            <p>Creates a room automatically with your preset name, password, and difficulty. A counter in the top-right shows how many rooms you've made this session.</p>
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🏠</strong> <span data-i18n="tool.t032">Room Create</span></h2>
+            <p style="color: #c442cf;" data-i18n="tool.t033">You need to try it in front of the NPC that creates rooms.</p>
+            <p data-i18n="tool.t034">Creates a room automatically with your preset name, password, and difficulty. A counter in the top-right shows how many rooms you've made this session.</p>
 
             <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
                 <div class="kb-row" style="margin-right: 15px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">EP1 Room -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t035">EP1 Room -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key w45" style="background-color: yellow;">4</div>
                 </div>
                 <div class="kb-row" style="margin-right: 15px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">EP2 Room -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t036">EP2 Room -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key w45" style="background-color: yellow;">5</div>
                 </div>
                 <div class="kb-row">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">EP4 Room -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t037">EP4 Room -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key w45" style="background-color: yellow;">6</div>
                 </div>
             </div>
 
             <div class="kb-row" style="margin-top: 10px;">
-                <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Room settings (name / password / difficulty) -&nbsp;</p>
+                <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t038">Room settings (name / password / difficulty) -&nbsp;</p>
                 <div class="key w45">Win</div> +
                 <div class="key">H</div>
             </div>
@@ -475,42 +481,42 @@
             <!-- ===================================================== -->
             <!-- 3. WEAPON / SHIELD SWAP                                -->
             <!-- ===================================================== -->
-            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">⚔️</strong> Weapon &amp; Shield Swap</h2>
-            <p>Instantly switch between equipment slots without opening menus manually.</p>
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">⚔️</strong> <span data-i18n="tool.t039">Weapon &amp; Shield Swap</span></h2>
+            <p data-i18n="tool.t040">Instantly switch between equipment slots without opening menus manually.</p>
 
-            <p style="font-size: 18px; font-weight: 600; margin: 15px 0 10px;">Weapon Swap</p>
+            <p style="font-size: 18px; font-weight: 600; margin: 15px 0 10px;" data-i18n="tool.t041">Weapon Swap</p>
             <div class="room_create_aria" style="display: flex; flex-wrap: wrap;">
                 <div class="kb-row" style="margin-right: 15px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 1 -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t042">Slot 1 -&nbsp;</p>
                     <div class="key w45">/</div>
                     <p style="font-size: 14px; color: #666; margin-left: 6px;">(Numpad)</p>
                 </div>
                 <div class="kb-row" style="margin-right: 15px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 2 -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t044">Slot 2 -&nbsp;</p>
                     <div class="key w45">*</div>
                     <p style="font-size: 14px; color: #666; margin-left: 6px;">(Numpad)</p>
                 </div>
                 <div class="kb-row">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 3 -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t045">Slot 3 -&nbsp;</p>
                     <div class="key w45">-</div>
                     <p style="font-size: 14px; color: #666; margin-left: 6px;">(Numpad)</p>
                 </div>
             </div>
 
-            <p style="font-size: 18px; font-weight: 600; margin: 15px 0 10px;">Shield Swap</p>
+            <p style="font-size: 18px; font-weight: 600; margin: 15px 0 10px;" data-i18n="tool.t046">Shield Swap</p>
             <div class="room_create_aria" style="display: flex; flex-wrap: wrap;">
                 <div class="kb-row" style="margin-right: 15px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 1 -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t042">Slot 1 -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key w45">/</div>
                 </div>
                 <div class="kb-row" style="margin-right: 15px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 2 -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t044">Slot 2 -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key w45">*</div>
                 </div>
                 <div class="kb-row">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Slot 3 -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t045">Slot 3 -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key w45">-</div>
                 </div>
@@ -519,8 +525,8 @@
             <!-- ===================================================== -->
             <!-- 4. SECTION ID SHORTCUTS                                -->
             <!-- ===================================================== -->
-            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🎨</strong> Section ID Shortcuts</h2>
-            <p>Change your Section ID instantly using <code>/sectionid</code>. Perfect for farming specific drops.</p>
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🎨</strong> <span data-i18n="tool.t047">Section ID Shortcuts</span></h2>
+            <p data-i18n="tool.t048">Change your Section ID instantly using <code>/sectionid</code><span data-i18n="tool.t050">. Perfect for farming specific drops.</span></p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px 20px; margin-top: 10px;">
                 <div class="kb-row"><div class="key w45">Win</div> + <div class="key">0</div><span style="margin-left: 8px; color: #00581d;">Viridia</span></div>
@@ -538,8 +544,8 @@
             <!-- ===================================================== -->
             <!-- 5. CHAT COMMAND SHORTCUTS                              -->
             <!-- ===================================================== -->
-            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">💬</strong> Chat Command Shortcuts</h2>
-            <p>Send frequently used chat commands with a single keystroke.</p>
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">💬</strong> <span data-i18n="tool.t051">Chat Command Shortcuts</span></h2>
+            <p data-i18n="tool.t052">Send frequently used chat commands with a single keystroke.</p>
 
             <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
                 <div class="kb-row" style="margin-right: 15px;">
@@ -563,57 +569,57 @@
             <!-- ===================================================== -->
             <!-- 6. KEY REMAPS                                          -->
             <!-- ===================================================== -->
-            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🔄</strong> Key Remaps</h2>
-            <p>Remaps several awkward default keys to something more ergonomic.</p>
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🔄</strong> <span data-i18n="tool.t056">Key Remaps</span></h2>
+            <p data-i18n="tool.t057">Remaps several awkward default keys to something more ergonomic.</p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px 20px; margin-top: 10px;">
                 <div class="kb-row">
                     <div class="key w45" style="font-size: 10px;">PgUp</div>
                     <span style="margin: 0 8px;">→</span>
                     <div class="key">F2</div>
-                    <span style="margin-left: 8px;">Equipment window</span>
+                    <span style="margin-left: 8px;" data-i18n="tool.t059">Equipment window</span>
                 </div>
                 <div class="kb-row">
                     <div class="key w45" style="font-size: 10px;">PgDn</div>
                     <span style="margin: 0 8px;">→</span>
-                    <span>Q-Menu (Ctrl+End)</span>
+                    <span data-i18n="tool.t061">Q-Menu (Ctrl+End)</span>
                 </div>
                 <div class="kb-row">
                     <div class="key">F11</div>
                     <span style="margin: 0 8px;">→</span>
                     <div class="key">F12</div>
-                    <span style="margin-left: 8px; font-size: 13px; color: #666;">(disable always-chat)</span>
+                    <span style="margin-left: 8px; font-size: 13px; color: #666;" data-i18n="tool.t062">(disable always-chat)</span>
                 </div>
                 <div class="kb-row">
                     <div class="key w45">Ctrl</div> +
                     <div class="key">V</div>
-                    <span style="margin-left: 8px;">Paste clipboard into chat</span>
+                    <span style="margin-left: 8px;" data-i18n="tool.t064">Paste clipboard into chat</span>
                 </div>
                 <div class="kb-row">
                     <div class="key w85">Shift</div> +
                     <div class="key w85">Enter</div>
-                    <span style="margin-left: 8px;">Rapid-fire Enter</span>
+                    <span style="margin-left: 8px;" data-i18n="tool.t067">Rapid-fire Enter</span>
                 </div>
                 <div class="kb-row">
                     <div class="key w45">Ctrl</div> +
                     <div class="key w45" style="width: 80px;">Numpad</div>
-                    <span style="margin-left: 8px;">Sub Palette</span>
+                    <span style="margin-left: 8px;" data-i18n="tool.t069">Sub Palette</span>
                 </div>
             </div>
 
             <!-- ===================================================== -->
             <!-- 8. UTILITIES & LAUNCHERS                               -->
             <!-- ===================================================== -->
-            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🛠️</strong> Utilities &amp; Launchers</h2>
+            <h2 class="pc_h2" style="font-size: 22px;"><strong class="title_num" style="padding:4px 3px;">🛠️</strong> <span data-i18n="tool.t070">Utilities &amp; Launchers</span></h2>
 
             <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
                 <div class="kb-row" style="margin-right: 15px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Control map -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t071">Control map -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key w45">/</div>
                 </div>
                 <div class="kb-row" style="margin-right: 15px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Restart script -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t072">Restart script -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key">Z</div>
                 </div>
@@ -621,12 +627,12 @@
 
             <div class="room_create_aria" style="display: flex; flex-wrap: wrap; margin-top: 10px;">
                 <div class="kb-row" style="margin-right: 15px;">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Launch PSO -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t073">Launch PSO -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key">P</div>
                 </div>
                 <div class="kb-row">
-                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;">Launch Floor Reader -&nbsp;</p>
+                    <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t074">Launch Floor Reader -&nbsp;</p>
                     <div class="key w45">Win</div> +
                     <div class="key">F</div>
                 </div>

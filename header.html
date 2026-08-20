@@ -1,32 +1,37 @@
 <header class="site-header">
     <div class="inner">
         <h1 class="logo">
-            <a href="./index.html" class="white" style="display: none;"><img src="./images/common/rogo.png" alt="메인페이지로 이동하기"></a>
-            <a href="./index.html" class="black"><img src="./images/common/rogo.png" alt="메인페이지로 이동하기"></a>
+            <a href="./index.html" class="white" style="display: none;"><img src="./images/common/rogo.png" alt="Destiny Guide home" data-i18n-alt="header.logo.alt"></a>
+            <a href="./index.html" class="black"><img src="./images/common/rogo.png" alt="Destiny Guide home" data-i18n-alt="header.logo.alt"></a>
         </h1>
         <div class="mid_menu_box">
             <div class="mid_menu">
-                <a href="./beginner_page.html" class="category_menu actice">Beginner</a>
-                <a href="./item_page.html" class="category_menu">Destiny Items</a>
-                <a href="./dmc_page.html" class="category_menu">DMC Guide</a>
-                <a href="./Psobb_tool.html" class="category_menu">Tools</a>
+                <a href="./beginner_page.html" class="category_menu actice" data-i18n="header.nav.beginner">Beginner</a>
+                <a href="./item_page.html" class="category_menu" data-i18n="header.nav.items">Destiny Items</a>
+                <a href="./dmc_page.html" class="category_menu" data-i18n="header.nav.dmc">DMC Guide</a>
+                <a href="./Psobb_tool.html" class="category_menu" data-i18n="header.nav.tools">Tools</a>
             </div>
             <div class="mid_menu mid_menu_2">
-                <a href="./dn.html" class="category_menu actice">Distorted Nightmare [RAID]</a>
-                <a href="./discontrolled_tower_raid.html" class="category_menu actice">The Discontrolled Tower [RAID]</a>
+                <a href="./dn.html" class="category_menu actice" data-i18n="header.nav.dn">Distorted Nightmare [RAID]</a>
+                <a href="./discontrolled_tower_raid.html" class="category_menu actice" data-i18n="header.nav.tower">The Discontrolled Tower [RAID]</a>
             </div>
         </div>
         <div class="left_menu">
+            <label class="lang_switch">
+                <span class="lang_switch_icon" aria-hidden="true"></span>
+                <span class="sr_only" data-i18n="header.lang.label">Language</span>
+                <select data-lang-select aria-label="Language" data-i18n-aria-label="header.lang.label"></select>
+            </label>
             <button type="button" class="theme_toggle" aria-label="Switch to dark mode" aria-pressed="false">
                 <span class="theme_toggle_icon" aria-hidden="true"></span>
-                <span class="theme_toggle_label">Dark</span>
+                <span class="theme_toggle_label" data-i18n="header.theme.dark">Dark</span>
             </button>
             <a href="https://discord.gg/FesaarwjFn" target='_blank' class="discord"></a>
             <div class="drop_table">
-                <a href="./drop-tables/" class="drop_table_inner">Drop Tables</a>
+                <a href="./drop-tables/" class="drop_table_inner" data-i18n="header.link.dropTables">Drop Tables</a>
             </div>
             <div class="drop_table">
-                <a href="./database/" class="drop_table_inner">Database</a>
+                <a href="./database/" class="drop_table_inner" data-i18n="header.link.database">Database</a>
             </div>
         </div>
     </div>

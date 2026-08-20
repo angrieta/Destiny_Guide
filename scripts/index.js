@@ -180,6 +180,9 @@ document.querySelectorAll('.swiper-slide .item_box').forEach(link => {
     // 핵심: 상세 섹션 렌더링
     renderSections(key);
 
+    // 주입된 팝업 전용 문구에 번역을 적용한다 (아래쪽 블록과 같은 이유)
+    window.DestinyI18n?.hydrate(document);
+
     openPopup();
   });
 });
@@ -296,6 +299,10 @@ document.querySelectorAll('.swiper-slide .item_box').forEach(link => {
 
     // 상세 섹션
     renderSections(key);
+
+    // 팝업 전용 문구는 item_info.js 의 HTML 문자열에서 새로 주입되므로
+    // 여기서 한 번 번역을 적용해야 한다. 카드에서 복제한 노드는 이미 번역된 상태다.
+    window.DestinyI18n?.hydrate(document);
 
     openPopup();
   });
@@ -429,11 +436,17 @@ function initCharacterPopup() {
     previousFocus?.focus()
   }
 
-  area.querySelectorAll(".swiper-slide > a").forEach(card => {
-    const name = card.querySelector(".character_name")?.textContent.trim() || "character"
-    card.setAttribute("aria-label", `Open expanded ${name} stats`)
-    card.setAttribute("aria-haspopup", "dialog")
-  })
+  // 사전이 늦게 도착할 수 있고 언어도 바뀔 수 있으니, 라벨 설정을 함수로 빼서 다시 부른다.
+  const applyCardLabels = () => {
+    const template = window.DestinyI18n?.t("index.popup.open", "Open expanded {name} stats") ?? "Open expanded {name} stats"
+    area.querySelectorAll(".swiper-slide > a").forEach(card => {
+      const name = card.querySelector(".character_name")?.textContent.trim() || "character"
+      card.setAttribute("aria-label", template.replace("{name}", name))
+      card.setAttribute("aria-haspopup", "dialog")
+    })
+  }
+  applyCardLabels()
+  document.addEventListener("destiny-lang-change", applyCardLabels)
 
   area.addEventListener("click", event => {
     const card = event.target.closest(".swiper-slide > a")
@@ -474,8 +487,12 @@ if (bestSlideArea) {
     })
     .then(html => {
       bestSlideArea.innerHTML = html
-      initBestSwiper()
-      initCharacterPopup()
+      // 조각을 넣은 뒤 번역을 적용한다. 이걸 빼면 카드가 영어로 남는다.
+      // hydrate 가 끝난 뒤에 초기화해야 팝업 라벨까지 번역된 상태로 잡힌다.
+      Promise.resolve(window.DestinyI18n?.hydrate(bestSlideArea)).then(() => {
+        initBestSwiper()
+        initCharacterPopup()
+      })
     })
     .catch(error => {
       console.error("Unable to load character cards.", error)

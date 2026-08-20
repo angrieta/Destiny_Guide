@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { DropRecord, DropTablePayload, ItemType, MatrixDrop } from "./types";
 import styles from "./drop-tables.module.css";
+import { LanguageSwitcher, useI18n } from "../i18n/i18n";
 
 const THEME_KEY = "destiny-guide-theme";
 const DIFFICULTIES = ["Normal", "Hard", "Very Hard", "Ultimate"];
@@ -61,6 +62,7 @@ function dropMatches(drop: MatrixDrop, itemNeedle: string, itemType: "All" | Ite
 }
 
 export default function DropTableExplorer({ payload }: { payload: DropTablePayload }) {
+  const { t } = useI18n();
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [difficulty, setDifficulty] = useState("Normal");
   const [sectionId, setSectionId] = useState("All");
@@ -124,7 +126,9 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     const updateQuickControls = () => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
-        const headerOffset = window.innerWidth <= 760 ? 132 : 110;
+        // 헤더 높이를 실측한다. 언어에 따라 칩이 감겨 헤더가 두 줄이 될 수 있어서
+        // 뷰포트 폭으로 추측하면 sticky 판정이 어긋난다.
+        const headerOffset = document.querySelector("header")?.getBoundingClientRect().height ?? 110;
         const passedAboveHeader = anchor.getBoundingClientRect().bottom <= headerOffset;
         setShowQuickControls(passedAboveHeader);
         if (!passedAboveHeader) setMobileControlsOpen(false);
@@ -217,10 +221,10 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const partySelector = (compact = false) => (
     <div className={compact ? styles.quickPartyDar : styles.partyDarControl}>
       <div className={styles.partyDarLabel}>
-        <span>Party size</span>
+        <span>{t("dt.party.title", "Party size")}</span>
         <small>DAR multiplier: {Math.round(partyDarMultiplier * 100)}%</small>
       </div>
-      <div className={styles.partyButtons} role="group" aria-label={compact ? "Quick party size" : "Party size for drop rate calculation"}>
+      <div className={styles.partyButtons} role="group" aria-label={compact ? t("dt.party.aria.quick", "Quick party size") : t("dt.party.aria", "Party size for drop rate calculation")}>
         {PARTY_SIZES.map((value) => (
           <button key={value} type="button" className={partySize === value ? styles.partyActive : ""} aria-pressed={partySize === value} onClick={() => setPartySize(value)}>
             {value}P
@@ -233,10 +237,10 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const dropRateSelector = (compact = false) => (
     <div className={compact ? styles.quickDropRate : styles.dropRateControl}>
       <div className={styles.partyDarLabel}>
-        <span>Ultimate drop rate</span>
-        <small>N/H/VH always x1 · x2 standard · x3 Happy Hour</small>
+        <span>{t("dt.rate.title", "Ultimate drop rate")}</span>
+        <small>{t("dt.rate.note", "N/H/VH always x1 · x2 standard · x3 Happy Hour")}</small>
       </div>
-      <div className={`${styles.partyButtons} ${styles.dropRateButtons}`} role="group" aria-label={compact ? "Quick Ultimate drop rate multiplier" : "Ultimate server drop rate multiplier"}>
+      <div className={`${styles.partyButtons} ${styles.dropRateButtons}`} role="group" aria-label={compact ? t("dt.rate.aria.quick", "Quick Ultimate drop rate multiplier") : t("dt.rate.aria", "Ultimate server drop rate multiplier")}>
         {DROP_RATE_MULTIPLIERS.map((value) => (
           <button key={value} type="button" className={dropRateMultiplier === value ? styles.partyActive : ""} aria-pressed={dropRateMultiplier === value} onClick={() => setDropRateMultiplier(value)}>
             x{value}
@@ -250,22 +254,22 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     <>
       <div className={styles.quickSearches}>
         <label>
-          <span>Item name</span>
-          <div className={styles.quickSearchInput}><span aria-hidden="true">⌕</span><input aria-label={mobile ? "Mobile item name" : "Quick item name"} value={itemQuery} onChange={(event) => setItemQuery(event.target.value)} placeholder="Item name" /></div>
+          <span>{t("dt.filter.item", "Item name")}</span>
+          <div className={styles.quickSearchInput}><span aria-hidden="true">⌕</span><input aria-label={mobile ? t("dt.filter.item.aria.mobile", "Mobile item name") : t("dt.filter.item.aria.quick", "Quick item name")} value={itemQuery} onChange={(event) => setItemQuery(event.target.value)} placeholder={t("dt.filter.item", "Item name")} /></div>
         </label>
         <label>
-          <span>Monster name</span>
-          <div className={styles.quickSearchInput}><span aria-hidden="true">⌕</span><input aria-label={mobile ? "Mobile monster name" : "Quick monster name"} value={enemyQuery} onChange={(event) => setEnemyQuery(event.target.value)} placeholder="Monster name" /></div>
+          <span>{t("dt.filter.monster", "Monster name")}</span>
+          <div className={styles.quickSearchInput}><span aria-hidden="true">⌕</span><input aria-label={mobile ? t("dt.filter.monster.aria.mobile", "Mobile monster name") : t("dt.filter.monster.aria.quick", "Quick monster name")} value={enemyQuery} onChange={(event) => setEnemyQuery(event.target.value)} placeholder={t("dt.filter.monster", "Monster name")} /></div>
         </label>
       </div>
       <div className={styles.quickFilters}>
-        <label><span>Section ID</span><select aria-label={mobile ? "Mobile Section ID" : "Quick Section ID"} value={sectionId} onChange={(event) => setSectionId(event.target.value)}><option>All</option>{SECTION_IDS.map((value) => <option key={value}>{value}</option>)}</select></label>
-        <label><span>Episode</span><select aria-label={mobile ? "Mobile episode" : "Quick episode"} value={episode} onChange={(event) => setEpisode(event.target.value)}><option>All</option><option value="1">Episode 1</option><option value="2">Episode 2</option><option value="4">Episode 4</option></select></label>
-        <label><span>Area</span><select aria-label={mobile ? "Mobile area" : "Quick area"} value={area} onChange={(event) => setArea(event.target.value)}><option>All</option>{areas.map((value) => <option key={value}>{value}</option>)}</select></label>
-        <label><span>Item type</span><select aria-label={mobile ? "Mobile item type" : "Quick item type"} value={itemType} onChange={(event) => setItemType(event.target.value as "All" | ItemType)}>{ITEM_TYPES.map((value) => <option key={value}>{value}</option>)}</select></label>
+        <label><span>{t("dt.filter.section", "Section ID")}</span><select aria-label={mobile ? t("dt.filter.section.aria.mobile", "Mobile Section ID") : t("dt.filter.section.aria.quick", "Quick Section ID")} value={sectionId} onChange={(event) => setSectionId(event.target.value)}><option value="All">{t("dt.filter.all", "All")}</option>{SECTION_IDS.map((value) => <option key={value}>{value}</option>)}</select></label>
+        <label><span>{t("dt.filter.episode", "Episode")}</span><select aria-label={mobile ? t("dt.filter.episode.aria.mobile", "Mobile episode") : t("dt.filter.episode.aria.quick", "Quick episode")} value={episode} onChange={(event) => setEpisode(event.target.value)}><option value="All">{t("dt.filter.all", "All")}</option><option value="1">Episode 1</option><option value="2">Episode 2</option><option value="4">Episode 4</option></select></label>
+        <label><span>{t("dt.filter.area", "Area")}</span><select aria-label={mobile ? t("dt.filter.area.aria.mobile", "Mobile area") : t("dt.filter.area.aria.quick", "Quick area")} value={area} onChange={(event) => setArea(event.target.value)}><option value="All">{t("dt.filter.all", "All")}</option>{areas.map((value) => <option key={value}>{value}</option>)}</select></label>
+        <label><span>{t("dt.filter.type", "Item type")}</span><select aria-label={mobile ? t("dt.filter.type.aria.mobile", "Mobile item type") : t("dt.filter.type.aria.quick", "Quick item type")} value={itemType} onChange={(event) => setItemType(event.target.value as "All" | ItemType)}>{ITEM_TYPES.map((value) => <option key={value} value={value}>{value === "All" ? t("dt.filter.all", "All") : value}</option>)}</select></label>
       </div>
-      <div className={styles.quickDifficulty} aria-label={mobile ? "Mobile difficulty" : "Quick difficulty"}>
-        <span>Table difficulty</span>
+      <div className={styles.quickDifficulty} aria-label={mobile ? t("dt.filter.difficulty.aria.mobile", "Mobile difficulty") : t("dt.filter.difficulty.aria.quick", "Quick difficulty")}>
+        <span>{t("dt.filter.difficulty", "Table difficulty")}</span>
         <div>{DIFFICULTIES.map((value) => <button key={value} type="button" className={difficulty === value ? styles.quickDifficultyActive : ""} onClick={() => setDifficulty(value)}>{value}</button>)}</div>
       </div>
       {partySelector(true)}
@@ -279,14 +283,14 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <h1 className={styles.siteLogo}>
-            <a href="../index.html" aria-label="Destiny Guide home"><img src="../images/common/rogo.png" alt="Destiny Guide" /></a>
+            <a href="../index.html" aria-label={t("header.logo.alt", "Destiny Guide")}><img src="../images/common/rogo.png" alt="Destiny Guide" /></a>
           </h1>
-          <nav className={styles.headerMenus} aria-label="Main navigation">
+          <nav className={styles.headerMenus} aria-label={t("dt.nav.aria", "Main navigation")}>
             <div>
-              <a href="../beginner_page.html">Beginner</a>
-              <a href="../item_page.html">Destiny Items</a>
-              <a href="../dmc_page.html">DMC Guide</a>
-              <a href="../Psobb_tool.html">Tools</a>
+              <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
+              <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
+              <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
+              <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
             </div>
             <div className={styles.raidMenu}>
               <a href="../dn.html">Distorted Nightmare [RAID]</a>
@@ -294,21 +298,22 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
             </div>
           </nav>
           <div className={styles.headerActions}>
-            <button className={styles.themeButton} type="button" onClick={updateTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`} aria-pressed={theme === "dark"}>
+            <button className={styles.themeButton} type="button" onClick={updateTheme} aria-label={theme === "dark" ? t("header.theme.light", "Light mode") : t("header.theme.dark", "Dark mode")} aria-pressed={theme === "dark"}>
               <span className={styles.themeIcon} aria-hidden="true" />
               {theme === "dark" ? "Light" : "Dark"}
             </button>
             <a className={styles.discordLink} href="https://discord.gg/FesaarwjFn" target="_blank" rel="noreferrer" aria-label="Destiny Discord" />
-            <a className={styles.dropTableLink} href="../drop-tables/" aria-current="page">Drop Tables</a>
-            <a className={styles.dropTableLink} href="../database/">Database</a>
+            <a className={styles.dropTableLink} href="../drop-tables/" aria-current="page">{t("header.link.dropTables", "Drop Tables")}</a>
+            <a className={styles.dropTableLink} href="../database/">{t("header.link.database", "Database")}</a>
+            <LanguageSwitcher />
           </div>
         </div>
       </header>
 
       <section className={styles.matrixHero}>
-        <p className={styles.eyebrow}>DESTINY PSOBB DATABASE</p>
-        <h1>Drop Tables</h1>
-        <p>Choose a difficulty, then read each monster across the ten Section IDs. Search results are highlighted and summarized above the original table layout.</p>
+        <p className={styles.eyebrow}>{t("dt.hero.eyebrow", "DESTINY PSOBB DATABASE")}</p>
+        <h1>{t("dt.hero.title", "Drop Tables")}</h1>
+        <p>{t("dt.hero.lead", "Choose a difficulty, then read each monster across the ten Section IDs. Search results are highlighted and summarized above the original table layout.")}</p>
       </section>
 
       <section className={`${styles.explorer} ${showQuickControls ? styles.explorerQuickOpen : ""}`}>
@@ -316,19 +321,19 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
           <div className={styles.filterPanel}>
             <div className={styles.searchGrid}>
               <label>
-                <span>Item name</span>
-                <div className={styles.searchInput}><span aria-hidden="true">⌕</span><input value={itemQuery} onChange={(event) => setItemQuery(event.target.value)} placeholder="e.g. PGF, Heaven Striker" /></div>
+                <span>{t("dt.filter.item", "Item name")}</span>
+                <div className={styles.searchInput}><span aria-hidden="true">⌕</span><input value={itemQuery} onChange={(event) => setItemQuery(event.target.value)} placeholder={t("dt.filter.item.hint", "e.g. PGF, Heaven Striker")} /></div>
               </label>
               <label>
-                <span>Monster name</span>
-                <div className={styles.searchInput}><span aria-hidden="true">⌕</span><input value={enemyQuery} onChange={(event) => setEnemyQuery(event.target.value)} placeholder="e.g. Olga Flow" /></div>
+                <span>{t("dt.filter.monster", "Monster name")}</span>
+                <div className={styles.searchInput}><span aria-hidden="true">⌕</span><input value={enemyQuery} onChange={(event) => setEnemyQuery(event.target.value)} placeholder={t("dt.filter.monster.hint", "e.g. Olga Flow")} /></div>
               </label>
             </div>
             <div className={styles.matrixFilters}>
-              <label><span>Section ID</span><select value={sectionId} onChange={(event) => setSectionId(event.target.value)}><option>All</option>{SECTION_IDS.map((value) => <option key={value}>{value}</option>)}</select></label>
-              <label><span>Episode</span><select value={episode} onChange={(event) => setEpisode(event.target.value)}><option>All</option><option value="1">Episode 1</option><option value="2">Episode 2</option><option value="4">Episode 4</option></select></label>
-              <label><span>Area</span><select value={area} onChange={(event) => setArea(event.target.value)}><option>All</option>{areas.map((value) => <option key={value}>{value}</option>)}</select></label>
-              <label><span>Item type</span><select value={itemType} onChange={(event) => setItemType(event.target.value as "All" | ItemType)}>{ITEM_TYPES.map((value) => <option key={value}>{value}</option>)}</select></label>
+              <label><span>{t("dt.filter.section", "Section ID")}</span><select value={sectionId} onChange={(event) => setSectionId(event.target.value)}><option value="All">{t("dt.filter.all", "All")}</option>{SECTION_IDS.map((value) => <option key={value}>{value}</option>)}</select></label>
+              <label><span>{t("dt.filter.episode", "Episode")}</span><select value={episode} onChange={(event) => setEpisode(event.target.value)}><option value="All">{t("dt.filter.all", "All")}</option><option value="1">Episode 1</option><option value="2">Episode 2</option><option value="4">Episode 4</option></select></label>
+              <label><span>{t("dt.filter.area", "Area")}</span><select value={area} onChange={(event) => setArea(event.target.value)}><option value="All">{t("dt.filter.all", "All")}</option>{areas.map((value) => <option key={value}>{value}</option>)}</select></label>
+              <label><span>{t("dt.filter.type", "Item type")}</span><select value={itemType} onChange={(event) => setItemType(event.target.value as "All" | ItemType)}>{ITEM_TYPES.map((value) => <option key={value} value={value}>{value === "All" ? t("dt.filter.all", "All") : value}</option>)}</select></label>
               <button className={styles.resetButton} type="button" onClick={resetFilters} disabled={activeFilterCount === 0}>Reset filters {activeFilterCount > 0 && <span>{activeFilterCount}</span>}</button>
             </div>
             <div className={styles.rateControls}>
@@ -338,10 +343,10 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
           </div>
 
           <div className={styles.browseDifficulty}>
-            <span>Browse original table</span>
-            <p>N/H/VH use x1. Ultimate uses the selected x1/x2/x3 rate. Search always covers every difficulty.</p>
+            <span>{t("dt.browse.title", "Browse original table")}</span>
+            <p>{t("dt.browse.note", "N/H/VH use x1. Ultimate uses the selected x1/x2/x3 rate. Search always covers every difficulty.")}</p>
           </div>
-          <div className={styles.difficultyBar} aria-label="Browse table by difficulty">
+          <div className={styles.difficultyBar} aria-label={t("dt.browse.aria", "Browse table by difficulty")}>
             {DIFFICULTIES.map((value) => (
               <button key={value} type="button" className={difficulty === value ? styles.difficultyActive : ""} onClick={() => setDifficulty(value)}>
                 {value}
@@ -353,8 +358,8 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
         {(itemNeedle || enemyNeedle) && (
           <section className={styles.searchResults} aria-labelledby="drop-search-results">
             <header>
-              <div><span>All difficulties</span><h2 id="drop-search-results">Related item information</h2></div>
-              <strong>{searchResults.length.toLocaleString()} drops</strong>
+              <div><span>{t("dt.results.scope", "All difficulties")}</span><h2 id="drop-search-results">{t("dt.results.title", "Related item information")}</h2></div>
+              <strong>{t("dt.results.count", "{n} drops").replace("{n}", searchResults.length.toLocaleString())}</strong>
             </header>
             {resultGroups.length > 0 ? (
               <div className={styles.resultItemGrid}>
@@ -362,7 +367,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
                   <article className={styles.resultItemCard} key={normalize(group.item)}>
                     <div className={styles.resultItemTitle}>
                       <span className={`${styles.typeIcon} ${styles[`type${group.itemType}`]}`}>{group.itemType.slice(0, 1)}</span>
-                      <div><h3>{group.item}</h3><p>{group.itemType} · {group.records.length} location{group.records.length === 1 ? "" : "s"}</p></div>
+                      <div><h3>{group.item}</h3><p>{group.itemType} · {(group.records.length === 1 ? t("dt.card.location", "{n} location") : t("dt.card.locations", "{n} locations")).replace("{n}", String(group.records.length))}</p></div>
                     </div>
                     <div className={styles.resultLocations}>
                       {group.records.map((record) => (
@@ -370,7 +375,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
                           <span className={`${styles.sectionDot} ${styles[`section${record.sectionId}`]}`} />
                           <strong>{record.difficulty} · {record.sectionId}</strong>
                           <span>{record.enemy} · EP {record.episode} {record.area} · DAR {formatDar(record.dar * partyDarMultiplier)}% · x{serverDropMultiplier(record.difficulty)}</span>
-                          <b>{formatRate(record.rate, record.denominator, combinedDropMultiplier(record.difficulty)) ?? "Special"}<small>{formatChance(getAdjustedDenominator(record.denominator, combinedDropMultiplier(record.difficulty)))}</small></b>
+                          <b>{formatRate(record.rate, record.denominator, combinedDropMultiplier(record.difficulty)) ?? t("dt.rate.special", "Special")}<small>{formatChance(getAdjustedDenominator(record.denominator, combinedDropMultiplier(record.difficulty)))}</small></b>
                         </div>
                       ))}
                     </div>
@@ -378,13 +383,13 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
                 ))}
               </div>
             ) : (
-              <div className={styles.empty}><span>⌕</span><h2>No drops found</h2><p>Try a broader item or monster name.</p><button type="button" onClick={resetFilters}>Reset all filters</button></div>
+              <div className={styles.empty}><span>⌕</span><h2>{t("dt.empty.title", "No drops found")}</h2><p>{t("dt.empty.note", "Try a broader item or monster name.")}</p><button type="button" onClick={resetFilters}>{t("dt.empty.reset", "Reset all filters")}</button></div>
             )}
           </section>
         )}
 
         <div className={styles.matrixSummary}>
-          <span><strong>{visibleRows.length}</strong> monster rows</span>
+          <span dangerouslySetInnerHTML={{ __html: t("dt.summary.rows", "<strong>{n}</strong> monster rows").replace("{n}", String(visibleRows.length)) }} />
         </div>
 
         {EPISODES.filter((value) => selectedEpisode === null || value === selectedEpisode).map((episodeNumber) => {
@@ -393,9 +398,9 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
           return (
             <section className={styles.episodeTable} key={episodeNumber}>
               <h2>{difficulty.toUpperCase()} <span>|</span> EPISODE {episodeNumber}</h2>
-              <div className={styles.mobileSwipeHint} aria-label="Swipe left or right to view every Section ID">
+              <div className={styles.mobileSwipeHint} aria-label={t("dt.swipe.aria", "Swipe left or right to view every Section ID")}>
                 <span aria-hidden="true">←</span>
-                <strong>Swipe left or right to view Section IDs</strong>
+                <strong>{t("dt.swipe.label", "Swipe left or right to view Section IDs")}</strong>
                 <span aria-hidden="true">→</span>
               </div>
               <div className={styles.stickySectionHeader} aria-hidden="true">
@@ -408,7 +413,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
                   }}
                 >
                   <div className={`${styles.stickySectionHeaderRow} ${displayedSections.length === 1 ? styles.singleSectionHeaderRow : ""}`}>
-                    <span>Monster</span>
+                    <span>{t("dt.table.monster", "Monster")}</span>
                     {displayedSections.map((value) => <strong className={styles[`column${value}`]} key={value}>{value}</strong>)}
                   </div>
                 </div>
@@ -426,11 +431,11 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
                     <col className={styles.monsterColumn} />
                     {displayedSections.map((value) => <col key={value} />)}
                   </colgroup>
-                  <thead className={styles.srOnlyTableHead}><tr><th>Monster</th>{displayedSections.map((value) => <th key={value}>{value}</th>)}</tr></thead>
+                  <thead className={styles.srOnlyTableHead}><tr><th>{t("dt.table.monster", "Monster")}</th>{displayedSections.map((value) => <th key={value}>{value}</th>)}</tr></thead>
                   <tbody>
                     {rows.map((row) => (
                       <tr key={row.id}>
-                        <th scope="row"><strong>{row.enemy}</strong><span>DAR: {formatDar(row.dar * partyDarMultiplier)}%</span><small>Base {row.dar}% · {partySize}P · x{serverDropMultiplier(row.difficulty)} drops</small></th>
+                        <th scope="row"><strong>{row.enemy}</strong><span>DAR: {formatDar(row.dar * partyDarMultiplier)}%</span><small>{t("dt.table.base", "Base")} {row.dar}% · {partySize}P · x{serverDropMultiplier(row.difficulty)} {t("dt.table.drops", "drops")}</small></th>
                         {displayedSections.map((value) => {
                           const drop = row.drops.find((candidate) => candidate.sectionId === value)!;
                           const focused = !itemNeedle && itemType === "All" ? true : dropMatches(drop, itemNeedle, itemType);
@@ -453,20 +458,20 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
 
       {showQuickControls && (
         <>
-          <aside className={styles.desktopQuickPanel} aria-label="Quick drop table controls">
-            <header><div><span>Quick controls</span><strong>Search & filter</strong></div><small>All difficulties search</small></header>
+          <aside className={styles.desktopQuickPanel} aria-label={t("dt.quick.aria", "Quick drop table controls")}>
+            <header><div><span>{t("dt.quick.eyebrow", "Quick controls")}</span><strong>{t("dt.quick.title", "Search & filter")}</strong></div><small>{t("dt.quick.note", "All difficulties search")}</small></header>
             <div className={styles.quickPanelBody}>{quickControls()}</div>
           </aside>
-          <button className={styles.mobileQuickButton} type="button" onClick={() => setMobileControlsOpen(true)} aria-label="Open search and filters" aria-expanded={mobileControlsOpen}>
-            <span aria-hidden="true">⌕</span><strong>Search<br />& Filter</strong>{activeFilterCount > 0 && <b>{activeFilterCount}</b>}
+          <button className={styles.mobileQuickButton} type="button" onClick={() => setMobileControlsOpen(true)} aria-label={t("dt.quick.open", "Open search and filters")} aria-expanded={mobileControlsOpen}>
+            <span aria-hidden="true">⌕</span><strong dangerouslySetInnerHTML={{ __html: t("dt.quick.button", "Search<br />& Filter") }} />{activeFilterCount > 0 && <b>{activeFilterCount}</b>}
           </button>
         </>
       )}
 
       {mobileControlsOpen && (
         <div className={styles.mobileQuickBackdrop} role="presentation" onClick={() => setMobileControlsOpen(false)}>
-          <aside className={styles.mobileQuickDrawer} role="dialog" aria-modal="true" aria-label="Search, filters and difficulty" onClick={(event) => event.stopPropagation()}>
-            <header><div><span>Drop Tables</span><h2>Search & Filter</h2></div><button type="button" onClick={() => setMobileControlsOpen(false)} aria-label="Close search and filters">×</button></header>
+          <aside className={styles.mobileQuickDrawer} role="dialog" aria-modal="true" aria-label={t("dt.drawer.aria", "Search, filters and difficulty")} onClick={(event) => event.stopPropagation()}>
+            <header><div><span>{t("dt.hero.title", "Drop Tables")}</span><h2>{t("dt.drawer.title", "Search & Filter")}</h2></div><button type="button" onClick={() => setMobileControlsOpen(false)} aria-label={t("dt.drawer.close", "Close search and filters")}>×</button></header>
             <div className={styles.quickPanelBody}>{quickControls(true)}</div>
           </aside>
         </div>

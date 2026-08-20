@@ -69,7 +69,9 @@
     main .right_contents{
         width: 90%;
         scale: 0.9;
-        min-width: 380px;
+        /* 고정 380px 이라 화면이 그보다 좁으면(320px 등) 무조건 넘쳤다.
+           컨테이너보다 커지지 않게 상한을 둔다. */
+        min-width: min(380px, 100%);
     }
     .beginner_guide .beginner_inner h3{
         font-size: 30px;
@@ -596,15 +598,17 @@
 /* Compact mobile header */
 @media screen and (max-width:780px) {
     header.site-header {
-        height: 132px;
-        padding-top: 0;
+        /* 고정 높이였다. 액션 줄이 언어에 따라 감기면 헤더 밖으로 나갔다. */
+        height: auto;
+        min-height: 0;
+        padding: 0;
         align-content: start;
     }
     header.site-header .inner {
-        min-height: 132px;
-        padding: 17px 15px 0;
-        align-items: flex-start;
-        gap: 12px;
+        padding: 12px 15px;
+        align-items: center;
+        gap: 10px;
+        row-gap: 10px;
     }
     header.site-header .logo {
         flex: 0 0 100px;
@@ -614,11 +618,12 @@
     header.site-header .logo img {
         width: 100px;
     }
+    /* 내비를 top: 63px 절대배치로 두면, 언어에 따라 액션 줄이 두 줄이 될 때
+       그 두 번째 줄이 내비 위에 겹친다. 흐름 안에 두면 자연히 아래로 밀린다. */
     .site-header .mid_menu_box {
-        position: absolute;
-        top: 63px;
-        left: 15px;
-        right: 15px;
+        position: static;
+        order: 3;
+        flex: 1 1 100%;
         display: flex;
         flex-flow: column;
         gap: 8px;
@@ -676,4 +681,79 @@
     .site-header .inner .left_menu {
         gap: 6px;
     }
+}
+
+/* ============================================================================
+   헤더 액션 영역 반응형 (언어 선택기 추가에 따른 보정)
+   ----------------------------------------------------------------------------
+   언어 선택기가 들어오면서 390px 에서 .left_menu 가 넘쳤다(영어도 411/390).
+   좁은 화면에서는 줄바꿈을 허용하고 각 항목을 조금씩 줄인다.
+   헤더에는 세로 여유가 있으므로 한 줄을 더 쓰는 편이 가로 스크롤보다 낫다.
+   이 파일이 common.css 보다 뒤에 로드되므로 여기 두어야 적용된다.
+   ============================================================================ */
+@media screen and (max-width: 1250px) {
+    /* .inner 가 줄바꿈을 허용해야 .left_menu 가 한 행을 온전히 쓸 수 있다.
+       그러지 않으면 .left_menu 는 max-content 폭을 유지한 채 넘친다(실측). */
+    /* .inner 가 감기면 줄이 하나 늘어난다. header 는 height: 100px 고정이었기 때문에
+       두 번째 줄이 헤더 밖으로 나가 본문 위에 겹쳤다. 높이를 내용에 맞춘다. */
+    header {
+        height: auto;
+        min-height: 100px;
+        padding: 10px 0;
+        align-content: center;
+    }
+    header .inner { flex-wrap: wrap; row-gap: 10px; }
+    header .inner .left_menu {
+        flex: 1 1 100%;
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 6px;
+        min-width: 0;
+    }
+}
+
+@media screen and (max-width: 983px) {
+    header .inner .left_menu .drop_table a {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    .lang_switch {
+        width: 54px;
+        min-height: 30px;
+        padding: 3px 6px;
+        gap: 4px;
+    }
+    .lang_switch::after { right: 6px; font-size: 10.5px; }
+}
+
+@media screen and (max-width: 480px) {
+    /* 아주 좁은 화면에서는 지구 아이콘을 숨긴다. EN / KO 코드만으로 의미가 통한다. */
+    .lang_switch_icon { display: none; }
+    .lang_switch { width: 38px; padding: 3px 5px; }
+    .lang_switch::after { right: 5px; }
+    header .inner .left_menu { gap: 5px; }
+    header .inner .left_menu .drop_table a { padding: 4px 7px; font-size: 10.5px; }
+}
+
+/* 감기 시점을 브레이크포인트로 정하면 언어마다 필요한 폭이 달라 항상 어긋난다.
+   (1250px 로 잡았더니 스페인어가 1260~1280px 에서 넘쳤다)
+   폭이 부족할 때만 브라우저가 감도록 두는 편이 모든 언어에서 안전하다. */
+header .inner { flex-wrap: wrap; row-gap: 10px; }
+header .inner .left_menu { min-width: 0; }
+
+/* 헤더 내비와 데이터 링크는 한 줄을 유지한다.
+   언어에 따라 라벨이 길어져도 두 줄로 접히지 않게 하고, 폭이 부족한 경우는
+   사전에서 라벨을 줄여 해결한다(줄바꿈보다 축약이 읽기 쉽다). */
+.mid_menu .category_menu,
+.drop_table a,
+.theme_toggle_label {
+    white-space: nowrap;
+}
+
+/* 헤더 데이터 링크는 내비와 같은 크기(13px)로 맞춘다.
+   reset.css 가 전역 16px 를 주기 때문에 그대로 두면 칩이 과하게 크고,
+   그래서 번역 라벨을 축약해야 했다. 크기를 맞추면 온전한 표현을 쓸 수 있다. */
+.drop_table a {
+    font-size: 13px;
 }

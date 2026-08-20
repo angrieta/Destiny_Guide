@@ -1669,6 +1669,13 @@ html[data-theme="dark"] .destiny_catalog_card .important_info {
         flex-direction: column;
     }
 
+    /* flex: 1 1 360px 는 가로 배치를 전제로 쓴 값이다.
+       여기서 column 으로 바뀌면 360px 이 폭이 아니라 "높이"로 적용되어
+       설명 문구 아래에 300px 가까운 빈 공간이 생겼다. 기준을 내용에 맞춘다. */
+    .destiny_item_filters_intro {
+        flex: 0 0 auto;
+    }
+
     .destiny_item_filter_buttons {
         justify-content: flex-start;
     }

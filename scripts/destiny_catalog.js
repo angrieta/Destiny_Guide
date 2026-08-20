@@ -1374,12 +1374,16 @@
   const sectionLabels = {
     armor: {
       title: "ARMOR",
+      subtitleKey: "catalog.armor.subtitle",
       subtitle: "Defensive equipment",
+      descriptionKey: "catalog.armor.desc",
       description: "Armor updates, defensive stats, class requirements, and item sources."
     },
     shield: {
       title: "SHIELDS",
+      subtitleKey: "catalog.shield.subtitle",
       subtitle: "Barriers and rings",
+      descriptionKey: "catalog.shield.desc",
       description: "Shields, wings, rings, technique boosts, and quest-exclusive sources."
     }
   };
@@ -1398,6 +1402,9 @@
 
   const catalogById = new Map(catalogItems.map((item) => [item.id, item]));
   const catalogByName = new Map(catalogItems.map((item) => [normalizeName(item.name), item]));
+
+  /** 아이템 데이터는 영어로 두고, 화면 문구만 사전에서 가져온다. */
+  const t = (key, en) => window.DestinyI18n?.t(key, en) ?? en;
 
   function createCatalogCard(item) {
     const slide = document.createElement("div");
@@ -1426,7 +1433,7 @@
           '<h4 class="item_title"><span class="item_name">' + escapeHTML(item.name) + "</span></h4>" +
           previewStats +
           previewDetails.map((line) => '<p class="item_detail">' + escapeHTML(line) + "</p>").join("") +
-          '<span class="destiny_card_open_hint">Click for full details</span>' +
+          '<span class="destiny_card_open_hint" data-i18n="catalog.card.hint">Click for full details</span>' +
         "</div>" +
       "</button>";
 
@@ -1457,9 +1464,9 @@
     block.innerHTML =
       '<header class="destiny_item_header">' +
         '<h3 class="destiny_item_title">' + escapeHTML(meta.title) +
-          ' <span class="destiny_item_sub">' + escapeHTML(meta.subtitle) + "</span>" +
+          ' <span class="destiny_item_sub" data-i18n="' + escapeHTML(meta.subtitleKey) + '">' + escapeHTML(meta.subtitle) + "</span>" +
         "</h3>" +
-        '<p class="destiny_item_desc">' + escapeHTML(meta.description) + "</p>" +
+        '<p class="destiny_item_desc" data-i18n="' + escapeHTML(meta.descriptionKey) + '">' + escapeHTML(meta.description) + "</p>" +
       "</header>" +
       '<div class="swiper destiny_item_swiper" data-destiny-swiper="' + escapeHTML(section) + '">' +
         '<div class="swiper-wrapper"></div>' +
@@ -1609,14 +1616,14 @@
         '<span class="destiny_detail_badge destiny_detail_badge--type">' + escapeHTML(item.type || "Item") + "</span>";
       statsElement.innerHTML = renderDefinitionList(item.stats || []);
       sectionsElement.innerHTML =
-        renderSection("Special, targets & bonuses", item.combat || []) +
-        renderSection("How to obtain", item.obtain || []) +
-        renderSection("Required items", item.required || []) +
-        renderSection("Additional notes", item.notes || []);
+        renderSection(t("catalog.detail.combat", "Special, targets & bonuses"), item.combat || []) +
+        renderSection(t("catalog.detail.obtain", "How to obtain"), item.obtain || []) +
+        renderSection(t("catalog.detail.required", "Required items"), item.required || []) +
+        renderSection(t("catalog.detail.notes", "Additional notes"), item.notes || []);
 
       if (item.image) {
         imageElement.src = item.image;
-        imageElement.alt = item.name + " source image";
+        imageElement.alt = item.name + " " + t("catalog.detail.imageAlt", "source image");
         imageElement.style.objectPosition = item.imagePosition || "center top";
         imageElement.style.filter = item.imageFilter || "none";
         imageLink.href = item.image;
@@ -1681,4 +1688,8 @@
   assignBlockCategories();
   initFilters();
   initDetailModal();
+
+  // 카드와 섹션 헤더는 이 스크립트가 만들기 때문에 i18n.js 의 첫 적용 대상에 없다.
+  // 만든 뒤 한 번 hydrate 해 주면 이후 언어 변경은 i18n.js 가 알아서 처리한다.
+  window.DestinyI18n?.hydrate(document.querySelector(".destiny_item") || document);
 })();

@@ -4,3 +4,100 @@ body {
   margin: 0;
 }
 
+
+/* ── 언어 선택기 ─────────────────────────────────────────────
+   styles/common.css 와 동일한 규칙이다. 두 곳의 모양이 같아야 한다.
+   React 라우트는 common.css 를 읽지 않으므로 여기에 복제한다.
+   --border / --surface-soft / --text / --accent 는 각 모듈 CSS 가 정의한다.
+   ──────────────────────────────────────────────────────── */
+.sr_only {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.lang_switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 180ms ease;
+}
+
+.lang_switch:hover { border-color: var(--accent); }
+
+.lang_switch:focus-within {
+    border-color: var(--accent);
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* 지구 아이콘: 이미지 파일 없이 CSS 로만 그린다 */
+.lang_switch_icon {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    flex: 0 0 auto;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+}
+.lang_switch_icon::before,
+.lang_switch_icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+}
+.lang_switch_icon::before { border-width: 0 1.5px; border-radius: 50%; transform: scaleX(0.45); }
+.lang_switch_icon::after { border-width: 1.5px 0 0; border-radius: 0; top: 50%; }
+
+/* select 는 폭을 아이콘 옆 최소치로 고정한다. 언어명이 길어도 헤더가 밀리지 않는다. */
+.lang_switch select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 34px;
+    min-width: 34px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: transparent;   /* 실제 표시는 아래 ::after 가 담당 */
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* 현재 언어 코드를 select 위에 겹쳐 보여준다 (i18n.js 가 채운다) */
+.lang_switch::after {
+    content: attr(data-current);
+    position: absolute;
+    right: 9px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+    color: var(--text);
+}
+
+@media screen and (max-width: 780px) {
+    .lang_switch { min-height: 30px; padding: 3px 7px; }
+    .lang_switch_icon { width: 13px; height: 13px; }
+    .lang_switch select { width: 30px; min-width: 30px; font-size: 11px; }
+    .lang_switch::after { right: 7px; font-size: 11px; }
+}
+
+/* React 라우트의 모듈 CSS 는 강조색을 --blue 라고 부른다. 이름만 맞춰준다. */
+.lang_switch { --accent: var(--blue, #1769e0); }

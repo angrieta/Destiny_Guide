@@ -3,7 +3,8 @@ import { resolve } from "node:path";
 
 const projectRoot = process.cwd();
 const outputDir = resolve(projectRoot, ".sites-static");
-const directories = ["images", "scripts", "styles"];
+// i18n: 번역 사전. 빠지면 런타임에 404 가 나고 영어로만 표시된다.
+const directories = ["images", "scripts", "styles", "i18n"];
 const excludedHtml = new Set(["test.html"]);
 
 await rm(outputDir, { recursive: true, force: true });

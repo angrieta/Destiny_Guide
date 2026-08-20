@@ -20,7 +20,14 @@ function updateThemeToggle(theme) {
     toggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
 
     const label = toggle.querySelector(".theme_toggle_label");
-    if (label) label.textContent = isDark ? "Light" : "Dark";
+    if (label) {
+        // 언어가 바뀌어도 맞는 라벨이 나오도록 키를 갱신하고 i18n 에 다시 맡긴다
+        const key = isDark ? "header.theme.light" : "header.theme.dark";
+        label.dataset.i18n = key;
+        label.dataset.i18nOriginal = isDark ? "Light" : "Dark";
+        label.textContent = label.dataset.i18nOriginal;
+        window.DestinyI18n?.hydrate(label.parentElement ?? label);
+    }
 }
 
 function applyTheme(theme, persist = false) {
@@ -48,6 +55,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         mount.innerHTML = await res.text();
         updateThemeToggle(document.documentElement.dataset.theme);
+
+        // 헤더는 여기서 처음 DOM 에 들어오므로, 번역과 언어 선택기를 지금 연결한다.
+        // i18n.js 가 먼저 로드되지 않았더라도(순서 문제) 아래에서 안전하게 넘어간다.
+        window.DestinyI18n?.hydrate(mount);
 
         const toggle = mount.querySelector(".theme_toggle");
         toggle?.addEventListener("click", () => {

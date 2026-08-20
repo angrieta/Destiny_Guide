@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DestinyGuide - Item List</title>
+    <title data-i18n="item.t001">DestinyGuide - Item List</title>
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/responsive.css">
     <script src="./scripts/destiny_catalog.js?v=swiper-fix-1" defer></script>
     <script src="./scripts/index.js?v=swiper-fix-1" defer></script>
+    <script src="./scripts/i18n.js"></script>
     <script src="./scripts/item_info.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -26,12 +27,12 @@
     <section class="destiny_item">
         <nav class="destiny_item_filters" aria-label="Destiny item categories">
             <div class="destiny_item_filters_intro">
-                <strong>Browse Destiny Items</strong>
-                <span>Select a category, then click any card to open the full item guide.</span>
+                <strong data-i18n="item.t002">Browse Destiny Items</strong>
+                <span data-i18n="item.t003">Select a category, then click any card to open the full item guide.</span>
             </div>
             <div class="destiny_item_filter_buttons" role="group" aria-label="Filter Destiny items">
-                <button type="button" class="destiny_item_filter is-active" data-destiny-filter="all" aria-pressed="true">All</button>
-                <button type="button" class="destiny_item_filter" data-destiny-filter="common" aria-pressed="false">Common</button>
+                <button type="button" class="destiny_item_filter is-active" data-destiny-filter="all" aria-pressed="true" data-i18n="item.t004">All</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="common" aria-pressed="false" data-i18n="item.t005">Common</button>
                 <button type="button" class="destiny_item_filter" data-destiny-filter="hunter" aria-pressed="false">Hunter</button>
                 <button type="button" class="destiny_item_filter" data-destiny-filter="ranger" aria-pressed="false">Ranger</button>
                 <button type="button" class="destiny_item_filter" data-destiny-filter="force" aria-pressed="false">Force</button>
@@ -48,7 +49,7 @@
                     COMMON
                     <span class="destiny_item_sub">Core Weapon</span>
                 </h3>
-                <p class="destiny_item_desc">Swipe left or right to view.</p>
+                <p class="destiny_item_desc" data-i18n="item.t013">Swipe left or right to view.</p>
             </header>
 
             <div class="swiper destiny_item_swiper" data-destiny-swiper="common">
@@ -74,7 +75,7 @@
                                 <p class="item_info">Targets : 1</p>
                                 <p class="item_detail">Range : 170.0</p>
                                 <p class="item_detail">Preferred %: Native / Dark / Hit</p>
-                                <p class="item_detail">Set is worth using on Fomarl or Humans.</p>
+                                <p class="item_detail" data-i18n="item.t015">Set is worth using on Fomarl or Humans.</p>
                                 <p class="item_detail">Christmas Spirit + 4th Anniversary Orb = Act of War</p>
                             </div>
                         </a>
@@ -119,9 +120,9 @@
                                 <p class="item_info">Required : ATP685</p>
                                 <p class="item_info">Special : Gifoie</p>
                                 <p class="item_info">Grind : +9</p>
-                                <p class="item_detail">Not usable by Force</p>
-                                <p class="item_detail">% don't matter</p>
-                                <p class="item_detail">Creates a Gifoie mine that stops enemy rushes</p>
+                                <p class="item_detail" data-i18n="item.t018">Not usable by Force</p>
+                                <p class="item_detail" data-i18n="item.t019">% don't matter</p>
+                                <p class="item_detail" data-i18n="item.t020">Creates a Gifoie mine that stops enemy rushes</p>
                             </div>
                         </a>
                     </div>
@@ -167,9 +168,9 @@
                                 <p class="item_info">Special : Energy Blast</p>
                                 <p class="item_info">Targets : 3</p>
                                 <p class="item_info">Grind : +15</p>
-                                <p class="item_detail">The special attack uses 40 TP</p>
+                                <p class="item_detail" data-i18n="item.t024">The special attack uses 40 TP</p>
                                 <p class="item_detail">Preferred %: Machine / Dark / Hit</p>
-                                <p class="item_detail">Ignores evasion and excels against high-HP or high-EVP enemies.</p>
+                                <p class="item_detail" data-i18n="item.t026">Ignores evasion and excels against high-HP or high-EVP enemies.</p>
                             </div>
                         </a>
                     </div>
@@ -193,8 +194,8 @@
                                 <p class="item_info">Targets : 1</p>
                                 <p class="item_detail">Jellen +100%, Zalure +100%</p>
                                 <p class="item_detail">Required : Jointparts</p>
-                                <p class="item_detail">Jointparts empowers Range and ATA.</p>
-                                <p class="item_detail">FO is using, Dual Casting: Jellen+Zalure" </p>
+                                <p class="item_detail" data-i18n="item.t029">Jointparts empowers Range and ATA.</p>
+                                <p class="item_detail" data-i18n="item.t030">FO is using, Dual Casting: Jellen+Zalure" </p>
                             </div>
                         </a>
                     </div>
@@ -215,8 +216,8 @@
                                 <p class="item_info">Required : ATA 177</p>
                                 <p class="item_info">Special : Set 777 Damage</p>
                                 <p class="item_info">Targets : 5</p>
-                                <p class="item_detail">special attack deals a reliable 777 damage</p>
-                                <p class="item_detail">costs 777 meseta to use. </p>
+                                <p class="item_detail" data-i18n="item.t032">special attack deals a reliable 777 damage</p>
+                                <p class="item_detail" data-i18n="item.t033">costs 777 meseta to use. </p>
                                 <p class="item_detail">Resta range +100%</p>
                                 <p class="item_detail">Anti range +100%</p>
                             </div>
@@ -240,10 +241,10 @@
                                 <p class="item_info">Special : Hell</p>
                                 <p class="item_info">range : 210.0</p>
                                 <p class="item_info">Targets : 1</p>
-                                <p class="item_detail">Not usable by Force</p>
+                                <p class="item_detail" data-i18n="item.t018">Not usable by Force</p>
                                 <p class="item_detail">auto-lock Hell</p>
-                                <p class="item_detail">Used by Hunters and Rangers,</p>
-                                <p class="item_detail">Recommended to pair with V503</p>
+                                <p class="item_detail" data-i18n="item.t038">Used by Hunters and Rangers,</p>
+                                <p class="item_detail" data-i18n="item.t039">Recommended to pair with V503</p>
                             </div>
                         </a>
                     </div>
@@ -263,7 +264,7 @@
                     HUNTER
                     <span class="destiny_item_sub">Core Weapon</span>
                 </h3>
-                <p class="destiny_item_desc">Swipe left or right to view.</p>
+                <p class="destiny_item_desc" data-i18n="item.t013">Swipe left or right to view.</p>
             </header>
 
             <div class="swiper destiny_item_swiper" data-destiny-swiper="hunter">
@@ -286,11 +287,11 @@
                                 <p class="item_info">Required : ATP 1100</p>
                                 <p class="item_info">Special : Energy Wave</p>
                                 <p class="item_info">Targets : 10</p>
-                                <p class="item_detail">under 12.5% HP its special attack</p>
-                                <p class="item_detail">The wave does not trigger DMC.</p>
+                                <p class="item_detail" data-i18n="item.t041">under 12.5% HP its special attack</p>
+                                <p class="item_detail" data-i18n="item.t042">The wave does not trigger DMC.</p>
                                 <p class="item_detail">Native + Dark + Hit</p>
                                 <p class="item_detail">A Beast + Machine + Hit</p>
-                                <p class="item_detail">combo unlocked here</p>
+                                <p class="item_detail" data-i18n="item.t045">combo unlocked here</p>
                             </div>
                         </a>
                     </div>
@@ -312,8 +313,8 @@
                                 <p class="item_info">Required : ATP 1200</p>
                                 <p class="item_info">Special : Ultimate Destruction</p>
                                 <p class="item_info">Targets : 3</p>
-                                <p class="item_detail">It has also capabilities with a full combo to drain your HP under 12.5% which make an effective synergy with Dark Flow</p>
-                                <p class="item_detail">Jointparts empowers Speed by 15%, ATA+20, can hit EP4 Lizards in the face.</p>
+                                <p class="item_detail" data-i18n="item.t047">It has also capabilities with a full combo to drain your HP under 12.5% which make an effective synergy with Dark Flow</p>
+                                <p class="item_detail" data-i18n="item.t048">Jointparts empowers Speed by 15%, ATA+20, can hit EP4 Lizards in the face.</p>
                             </div>
                         </a>
                     </div>
@@ -336,9 +337,9 @@
                                 <p class="item_info">Special : Explosion</p>
                                 <p class="item_info">Targets : 10</p>
                                 <p class="item_info">Grind : +15</p>
-                                <p class="item_detail">Explodes on contact with enemies, walls, and traps</p>
+                                <p class="item_detail" data-i18n="item.t050">Explodes on contact with enemies, walls, and traps</p>
                                 <p class="item_detail">Required: Ignis Engine</p>
-                                <p class="item_detail">Slightly longer sword range</p>
+                                <p class="item_detail" data-i18n="item.t051">Slightly longer sword range</p>
                                 <p class="item_detail">Hits : 1-1-4 (3rd attack is slower)</p>
                             </div>
                         </a>
@@ -361,9 +362,9 @@
                                 <p class="item_info">Special : Freeze Mist</p>
                                 <p class="item_info">Targets : 3</p>
                                 <p class="item_info">Grind : +14</p>
-                                <p class="item_detail">Humans can freeze monsters, and CASTs use fewer Freeze Traps.</p>
-                                <p class="item_detail">Twin Cyclone special can hit lizards in the face. </p>
-                                <p class="item_detail">I recommend prioritizing Hit, Dark, and Machine for % choices</p>
+                                <p class="item_detail" data-i18n="item.t053">Humans can freeze monsters, and CASTs use fewer Freeze Traps.</p>
+                                <p class="item_detail" data-i18n="item.t054">Twin Cyclone special can hit lizards in the face. </p>
+                                <p class="item_detail" data-i18n="item.t055">I recommend prioritizing Hit, Dark, and Machine for % choices</p>
                             </div>
                         </a>
                     </div>
@@ -385,7 +386,7 @@
                                 <p class="item_info">Special : Hell Storm</p>
                                 <p class="item_info">Targets : 10</p>
                                 <p class="item_info">Grind : +80</p>
-                                <p class="item_detail">Nightmare features a Dark Flow – like wave attack that inflicts Hell on groups of enemies and has infinite vertical range</p>
+                                <p class="item_detail" data-i18n="item.t057">Nightmare features a Dark Flow – like wave attack that inflicts Hell on groups of enemies and has infinite vertical range</p>
                                 <p class="item_detail">Yamigarasu + Dark Matter = Nightmare</p>
                             </div>
                         </a>
@@ -411,7 +412,7 @@
                                 <p class="item_detail">Hits : 3-3-3 (Normal/Heavy)</p>
                                 <p class="item_detail">Animation: Sword → Custom</p>
                                 <p class="item_detail">Samurai Armor equipped: +30% ATP, +20 ATA</p>
-                                <p class="item_detail">Useful with Mag invincibility trigger </p>
+                                <p class="item_detail" data-i18n="item.t060">Useful with Mag invincibility trigger </p>
                             </div>
                         </a>
                     </div>
@@ -433,9 +434,9 @@
                                 <p class="item_info">Required : ATP 900</p>
                                 <p class="item_info">Special : Storm Blast</p>
                                 <p class="item_info">Targets : 3</p>
-                                <p class="item_detail">Handgun-range special, consumes HP</p>
-                                <p class="item_detail">Best for HUcast / HUcaseal</p>
-                                <p class="item_detail">Special does not hit 3 targets</p>
+                                <p class="item_detail" data-i18n="item.t062">Handgun-range special, consumes HP</p>
+                                <p class="item_detail" data-i18n="item.t063">Best for HUcast / HUcaseal</p>
+                                <p class="item_detail" data-i18n="item.t064">Special does not hit 3 targets</p>
                                 <p class="item_detail">Storm Render + 4th Anniversary Orb → Twin Executioner </p>
                             </div>
                         </a>
@@ -460,7 +461,7 @@
                                 <p class="item_info">Targets : 3</p>
                                 <p class="item_info">Grind : +95</p>
                                 <p class="item_detail">hits 3 targets + Charge</p>
-                                <p class="item_detail">Needs some Hit %</p>
+                                <p class="item_detail" data-i18n="item.t067">Needs some Hit %</p>
                                 <p class="item_detail">Dark + Native % choice</p>
                             </div>
                         </a>
@@ -509,7 +510,7 @@
                                 <p class="item_detail">Targets: 1→3</p>
                                 <p class="item_detail">Range: 14.0 → 25.0</p>
                                 <p class="item_detail">Hits: 1-1-1 → 2-2-2</p>
-                                <p class="item_detail">All attacks are 35% faster</p>
+                                <p class="item_detail" data-i18n="item.t072">All attacks are 35% faster</p>
                             </div>
                         </a>
                     </div>
@@ -551,7 +552,7 @@
                     RANGER
                     <span class="destiny_item_sub">Core Weapon</span>
                 </h3>
-                <p class="destiny_item_desc">Swipe left or right to view.</p>
+                <p class="destiny_item_desc" data-i18n="item.t013">Swipe left or right to view.</p>
             </header>
 
             <div class="swiper destiny_item_swiper" data-destiny-swiper="ranger">
@@ -575,7 +576,7 @@
                                 <p class="item_info">Targets : 7</p>
                                 <p class="item_info">Grind : +25</p>
                                 <p class="item_info">Range : 150.0</p>
-                                <p class="item_detail">under 12.5% HP its special attack</p>
+                                <p class="item_detail" data-i18n="item.t041">under 12.5% HP its special attack</p>
                                 <p class="item_detail">Hits : 1-1-3 (Normal/Heavy)</p>
                                 <p class="item_detail">Hits : 1-1-5 (Special) (3rd shot fires 3times(N/H) or 5times(SP) when you are low HP)</p>
                             </div>
@@ -626,8 +627,8 @@
                                 <p class="item_info">Targets : 5</p>
                                 <p class="item_info">Range : 130.0</p>
                                 <p class="item_info">Grind : +80</p>
-                                <p class="item_detail">Under 50% HP: 2 bullets per shot</p>
-                                <p class="item_detail">Under 12.5% HP: 3 bullets per shot</p>
+                                <p class="item_detail" data-i18n="item.t078">Under 50% HP: 2 bullets per shot</p>
+                                <p class="item_detail" data-i18n="item.t079">Under 12.5% HP: 3 bullets per shot</p>
                             </div>
                         </a>
                     </div>
@@ -652,8 +653,8 @@
                                 <p class="item_info">Range : 130.0</p>
                                 <p class="item_detail">Required: Ignis Engine</p>
                                 <p class="item_detail">ATP+100</p>
-                                <p class="item_detail">Slightly longer range</p>
-                                <p class="item_detail">Slightly narrower angle</p>
+                                <p class="item_detail" data-i18n="item.t081">Slightly longer range</p>
+                                <p class="item_detail" data-i18n="item.t082">Slightly narrower angle</p>
                             </div>
                         </a>
                     </div>
@@ -676,7 +677,7 @@
                                 <p class="item_info">Targets : 1</p>
                                 <p class="item_info">Range : 210.0</p>
                                 <p class="item_info">Grind : +21</p>
-                                <p class="item_detail">A rifle that almost guarantees freezing monsters. <br> A must-have weapon to always carry.</p>
+                                <p class="item_detail" data-i18n="item.t083">A rifle that almost guarantees freezing monsters. <br data-i18n="item.t084"> A must-have weapon to always carry.</p>
                             </div>
                         </a>
                     </div>
@@ -699,8 +700,8 @@
                                 <p class="item_info">Targets : 1</p>
                                 <p class="item_info">Range : 210.0</p>
                                 <p class="item_info">Grind : +18</p>
-                                <p class="item_detail">OP due to excellent accuracy and piercing.</p>
-                                <p class="item_detail">Snow Queen works best with over 40 Hit%.</p>
+                                <p class="item_detail" data-i18n="item.t086">OP due to excellent accuracy and piercing.</p>
+                                <p class="item_detail" data-i18n="item.t087">Snow Queen works best with over 40 Hit%.</p>
                             </div>
                         </a>
                     </div>
@@ -773,7 +774,7 @@
                                 <p class="item_info">Targets : 1</p>
                                 <p class="item_info">Range : 210.0</p>
                                 <p class="item_info">Grind : +20</p>
-                                <p class="item_detail">Used for Trap Shot and finishing mobs that survive 1 combo</p>
+                                <p class="item_detail" data-i18n="item.t092">Used for Trap Shot and finishing mobs that survive 1 combo</p>
                             </div>
                         </a>
                     </div>
@@ -795,10 +796,10 @@
                                 <p class="item_info">Special : Overdrive</p>
                                 <p class="item_info">Targets : 10</p>
                                 <p class="item_info">Range : 210.0</p>
-                                <p class="item_detail">High ATP and rifle range</p>
-                                <p class="item_detail">Can hit enemies through walls</p>
-                                <p class="item_detail">Prioritize area % stats over Hit%</p>
-                                <p class="item_detail">Dark % is especially effective when using the special</p>
+                                <p class="item_detail" data-i18n="item.t094">High ATP and rifle range</p>
+                                <p class="item_detail" data-i18n="item.t095">Can hit enemies through walls</p>
+                                <p class="item_detail" data-i18n="item.t096">Prioritize area % stats over Hit%</p>
+                                <p class="item_detail" data-i18n="item.t097">Dark % is especially effective when using the special</p>
                             </div>
                         </a>
                     </div>
@@ -822,9 +823,9 @@
                                 <p class="item_info">Range : 200.0</p>
                                 <p class="item_info">Grind : +30</p>
                                 <p class="item_detail">Required: Asteroid Engine</p>
-                                <p class="item_detail">Shots 5 bullets instead of 1</p>
+                                <p class="item_detail" data-i18n="item.t099">Shots 5 bullets instead of 1</p>
                                 <p class="item_detail">ATP+150</p>
-                                <p class="item_detail">Combo locked</p>
+                                <p class="item_detail" data-i18n="item.t100">Combo locked</p>
                             </div>
                         </a>
                     </div>
@@ -876,7 +877,7 @@
                                 <p class="item_detail" style="margin: 6px 0 !important;">Required: Raster Scope</p>
                                 <p class="item_detail" style="margin: 6px 0 !important;">ATP +50 / ATA+20 / Range +40.0</p>
                                 <p class="item_detail" style="margin: 6px 0 !important;">Demon / Charge / Berserk</p>
-                                <p class="item_detail" style="margin: 6px 0 !important;">Special can be added with 50 PD.</p>
+                                <p class="item_detail" style="margin: 6px 0 !important;" data-i18n="item.t105">Special can be added with 50 PD.</p>
                             </div>
                         </a>
                     </div>
@@ -902,7 +903,7 @@
                                 <p class="item_detail" style="margin: 6px 0 !important;">Required: Raster Scope</p>
                                 <p class="item_detail" style="margin: 6px 0 !important;">Range -70.0 / Hits 3-3-3</p>
                                 <p class="item_detail" style="margin: 6px 0 !important;">Demon / Charge / Berserk</p>
-                                <p class="item_detail" style="margin: 6px 0 !important;">Special can be added with 50 PD.</p>
+                                <p class="item_detail" style="margin: 6px 0 !important;" data-i18n="item.t105">Special can be added with 50 PD.</p>
                             </div>
                         </a>
                     </div>
@@ -928,7 +929,7 @@
                                 <p class="item_detail" style="margin: 6px 0 !important;">Required: Raster Scope</p>
                                 <p class="item_detail" style="margin: 6px 0 !important;">ATP+300, Range +55.0</p>
                                 <p class="item_detail" style="margin: 6px 0 !important;">Demon / Charge / Berserk</p>
-                                <p class="item_detail" style="margin: 6px 0 !important;">Special can be added with 50 PD.</p>
+                                <p class="item_detail" style="margin: 6px 0 !important;" data-i18n="item.t105">Special can be added with 50 PD.</p>
                             </div>
                         </a>
                     </div>
@@ -955,7 +956,7 @@
                                 <p class="item_detail" style="margin: 2px 0 !important;">Hits : N/H: 3-3-3, S:1-1-3</p>
                                 <p class="item_detail" style="margin: 2px 0 !important;">S Range -75.0, S Angle +35</p>
                                 <p class="item_detail" style="margin: 2px 0 !important;">Demon / Charge / Berserk</p>
-                                <p class="item_detail" style="margin: 2px 0 !important;">Special can be added with 50 PD.</p>
+                                <p class="item_detail" style="margin: 2px 0 !important;" data-i18n="item.t105">Special can be added with 50 PD.</p>
                             </div>
                         </a>
                     </div>
@@ -1031,7 +1032,7 @@
                                 <p class="item_info">Targets : 10</p>
                                 <p class="item_info">Range : 150.0</p>
                                 <p class="item_info">Grind : +18</p>
-                                <p class="item_detail">Recommended: Dark % and Hit %</p>
+                                <p class="item_detail" data-i18n="item.t117">Recommended: Dark % and Hit %</p>
                                 <p class="item_detail">Arctic Faust = Iron Faust + Cryo Warhead Requires LVL 200</p>
                             </div>
                         </a>
@@ -1051,7 +1052,7 @@
                     FORCE
                     <span class="destiny_item_sub">Core Weapon</span>
                 </h3>
-                <p class="destiny_item_desc">Swipe left or right to view.</p>
+                <p class="destiny_item_desc" data-i18n="item.t013">Swipe left or right to view.</p>
             </header>
 
             <div class="swiper destiny_item_swiper" data-destiny-swiper="force">
@@ -1076,7 +1077,7 @@
                                 <p class="item_detail">Ra Tech + 50% / Grant + 50%</p>
                                 <p class="item_detail">Required : Parasitic Armor 'Predator</p>
                                 <p class="item_detail">Low HP : 1 - 1 - 4 </p>
-                                <p class="item_detail">Equipping Three Seals + Primal Nexus makes your damage insanely high.</p>
+                                <p class="item_detail" data-i18n="item.t121">Equipping Three Seals + Primal Nexus makes your damage insanely high.</p>
                             </div>
                         </a>
                     </div>
@@ -1100,8 +1101,8 @@
                                 <p class="item_info">Targets : 1</p>
                                 <p class="item_detail">Jellen +100%, Zalure +100%</p>
                                 <p class="item_detail">Required : Jointparts</p>
-                                <p class="item_detail">Jointparts empowers Range and ATA.</p>
-                                <p class="item_detail">FO is using, Dual Casting: Jellen+Zalure" </p>
+                                <p class="item_detail" data-i18n="item.t029">Jointparts empowers Range and ATA.</p>
+                                <p class="item_detail" data-i18n="item.t030">FO is using, Dual Casting: Jellen+Zalure" </p>
                             </div>
                         </a>
                     </div>
@@ -1145,8 +1146,8 @@
                                 <p class="item_info">Required : MST 770</p>
                                 <p class="item_info">Special : Spirit</p>
                                 <p class="item_info">Gifoie +60%, Gibarta +90%, Gizonde +90%</p>
-                                <p class="item_detail">Casting speed is fastest while wearing Fonewm</p>
-                                <p class="item_detail">Astral Cloak + Heavenly Resonance makes Gi-techs deal insane damage.</p>
+                                <p class="item_detail" data-i18n="item.t127">Casting speed is fastest while wearing Fonewm</p>
+                                <p class="item_detail" data-i18n="item.t128">Astral Cloak + Heavenly Resonance makes Gi-techs deal insane damage.</p>
                             </div>
                         </a>
                     </div>
@@ -1171,7 +1172,7 @@
                                 <p class="item_info">Target : 7</p>
                                 <p class="item_detail">Required : Paragon Frame</p>
                                 <p class="item_detail">Hits: N/H 1-1-1 → 1-2-5  / S 1-1-3</p>
-                                <p class="item_detail">ATP+100, hits Lizards in the face</p>
+                                <p class="item_detail" data-i18n="item.t130">ATP+100, hits Lizards in the face</p>
                             </div>
                         </a>
                     </div>
@@ -1192,8 +1193,8 @@
                                 <p class="item_info">Required : MST 1250</p>
                                 <p class="item_info">Special : Random Foie/Barta/Zonde</p>
                                 <p class="item_info">Resta +300%, Shifta +300%, Deband +300%</p>
-                                <p class="item_info">Halves TP cost by consuming HP instead.</p>
-                                <p class="item_detail">You should always carry it.</p>
+                                <p class="item_info" data-i18n="item.t132">Halves TP cost by consuming HP instead.</p>
+                                <p class="item_detail" data-i18n="item.t133">You should always carry it.</p>
                             </div>
                         </a>
                     </div>
@@ -1215,7 +1216,7 @@
                                 <p class="item_info">Special : Anti/TP Refill</p>
                                 <p class="item_info">All resist + 15</p>
                                 <p class="item_info">DFP +50, Zalure +100%, Jellen +100%</p>
-                                <p class="item_detail">You should always carry it.</p>
+                                <p class="item_detail" data-i18n="item.t133">You should always carry it.</p>
                             </div>
                         </a>
                     </div>
@@ -1237,7 +1238,7 @@
                                 <p class="item_info">Special : Anti/TP Refill</p>
                                 <p class="item_info">All resist + 15</p>
                                 <p class="item_info">DFP +50, Foie +60%, Barta +60%, Zonde +60%</p>
-                                <p class="item_detail">Astral Cloak + ELEMENTAL SHIELD makes Si-techs deal insane damage.</p>
+                                <p class="item_detail" data-i18n="item.t137">Astral Cloak + ELEMENTAL SHIELD makes Si-techs deal insane damage.</p>
                             </div>
                         </a>
                     </div>
@@ -1259,7 +1260,7 @@
                                 <p class="item_info">Special : Anti/TP Refill</p>
                                 <p class="item_info">All resist + 15</p>
                                 <p class="item_info">DFP +50, Megid Penetration, Grants +60%, Zalure +300%</p>
-                                <p class="item_detail">Zalure is boosted by 300%, making it very effective against bosses like De Rol Le.</p>
+                                <p class="item_detail" data-i18n="item.t139">Zalure is boosted by 300%, making it very effective against bosses like De Rol Le.</p>
                             </div>
                         </a>
                     </div>
@@ -1274,9 +1275,9 @@
             <header class="destiny_item_header">
                 <h3 class="destiny_item_title">
                     UNITS
-                    <span class="destiny_item_sub">High-impact recommendations</span>
+                    <span class="destiny_item_sub" data-i18n="item.t140">High-impact recommendations</span>
                 </h3>
-                <p class="destiny_item_desc">Core units that unlock stronger Ranger and Hunter setups.</p>
+                <p class="destiny_item_desc" data-i18n="item.t141">Core units that unlock stronger Ranger and Hunter setups.</p>
             </header>
 
             <div class="swiper destiny_item_swiper" data-destiny-swiper="units">
@@ -1289,7 +1290,7 @@
                                     <span class="item_type">UNIT</span>
                                 </div>
                                 <h4 class="item_title"><span class="item_name">VECTOR SCOPE</span></h4>
-                                <p class="item_info">Needle weapon modifier</p>
+                                <p class="item_info" data-i18n="item.t142">Needle weapon modifier</p>
                                 <p class="item_detail">Arrest / Hell / Berserk Needle: Range +105, ATA +20</p>
                                 <p class="item_detail">Gush Needle: Range +105, ATA +20, improved special combo</p>
                                 <p class="item_detail">Grave Digger / Nefarious Needle: ATP +60, ATA +30</p>
@@ -1305,10 +1306,10 @@
                                     <span class="item_type">UNIT</span>
                                 </div>
                                 <h4 class="item_title"><span class="item_name">PB/FLOW</span></h4>
-                                <p class="item_info">Photon Blast utility</p>
-                                <p class="item_detail">Popular in Hunter, Ranger, and cast raid builds.</p>
-                                <p class="item_detail">Often equipped as a temporary utility unit while building Photon Blast to 100.</p>
-                                <p class="item_detail">Carry one or two when your core setup has spare unit slots.</p>
+                                <p class="item_info" data-i18n="item.t146">Photon Blast utility</p>
+                                <p class="item_detail" data-i18n="item.t147">Popular in Hunter, Ranger, and cast raid builds.</p>
+                                <p class="item_detail" data-i18n="item.t148">Often equipped as a temporary utility unit while building Photon Blast to 100.</p>
+                                <p class="item_detail" data-i18n="item.t149">Carry one or two when your core setup has spare unit slots.</p>
                             </div>
                         </article>
                     </div>
@@ -1322,8 +1323,8 @@
                                 </div>
                                 <h4 class="item_title"><span class="item_name">IMMORTAL/BATTLE</span></h4>
                                 <p class="item_info">Attack speed: 120%</p>
-                                <p class="item_detail">A defining Destiny unit for faster Hunter, Ranger, and battle-Force combat.</p>
-                                <p class="item_detail">Available year-round and commonly treated as an endgame core slot.</p>
+                                <p class="item_detail" data-i18n="item.t151">A defining Destiny unit for faster Hunter, Ranger, and battle-Force combat.</p>
+                                <p class="item_detail" data-i18n="item.t152">Available year-round and commonly treated as an endgame core slot.</p>
                             </div>
                         </article>
                     </div>
@@ -1343,7 +1344,7 @@
                 <a class="destiny_detail_image_link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open the source image at full size">
                     <img class="destiny_detail_image" src="" alt="">
                 </a>
-                <p class="destiny_detail_image_hint">Click the image to view the supplied source at full size.</p>
+                <p class="destiny_detail_image_hint" data-i18n="item.t154">Click the image to view the supplied source at full size.</p>
             </div>
             <div class="destiny_detail_content">
                 <div class="destiny_detail_badges"></div>

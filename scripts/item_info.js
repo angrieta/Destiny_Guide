@@ -7,8 +7,8 @@ const ITEM_DETAIL = {
         '<p class="item_info">HU/RA Gibarta: 66%</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img><span data-i18n="bz.pop.material">Item Material</span>', body: [
             '<div class="Material_title">Darkness Photon Sphere x1</div>',
             '<p class="Material_info">Eclipse Dragon[BOSS] TPD [EP2], VR Test FINAL</p>',
             '<p class="Material_info">Deos Behemoth[BOSS] TPD [EP2], VR Test FINAL</p>', 
@@ -43,8 +43,8 @@ const ITEM_DETAIL = {
         '<p class="item_info">EVP: 340</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★<span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★<span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img><span data-i18n="bz.pop.material">Item Material</span>', body: [
             '<div class="Material_title">Darkness Photon Sphere x1</div>',
                 '<p class="Material_info">Eclipse Dragon[BOSS] TPD [EP2], VR Test FINAL</p>',
                 '<p class="Material_info">Deos Behemoth[BOSS] TPD [EP2], VR Test FINAL</p>', 
@@ -84,14 +84,14 @@ const ITEM_DETAIL = {
     },
     ASTRAL_CLAW: {
     popupInfo: [
-        '<p class="item_info">Range of Jellen +300%</p>',
-        '<p class="item_info">Range of Resta +100%</p>',
-        '<p class="item_info">Power of Barta +100%</p><br>',
-        '<p class="item_info">Force Only</p>',
+        '<p class="item_info" data-i18n="bz.jellen">Range of Jellen +300%</p>',
+        '<p class="item_info" data-i18n="bz.resta">Range of Resta +100%</p>',
+        '<p class="item_info" data-i18n="bz.barta">Power of Barta +100%</p><br>',
+        '<p class="item_info" data-i18n="bz.forceOnly">Force Only</p>',
     ],    
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img><span data-i18n="bz.pop.material">Item Material</span>', body: [
             '<div class="Material_title">Primal Photon Sphere x1</div>',
                 '<p class="Material_info" style="font-size: 17px">Beyond the Nightmare</p>',
                 '<p class="Material_info">Nightmare Dominator VI [EP1] <a href="https://youtu.be/mPioItCl25A?si=GbMs-ZtlCl78g3W-"  target="blank" class="guide_btn">Guide</a></p>',
@@ -128,15 +128,15 @@ const ITEM_DETAIL = {
 
     ASTRAL_SABER: {
     popupInfo: [
-        '<p class="item_info">Force Only · Requirement: MST 1200</p>',
+        '<p class="item_info" data-i18n="bz.pop.forceReq">Force Only · Requirement: MST 1200</p>',
         '<p class="item_info">ATP: 800–850 · ATA: 55</p>',
-        '<p class="item_info">Special: Berserk · Targets: 4</p>',
-        '<p class="item_info">Bonus: DFP +300 · Speed +15%</p>',
+        '<p class="item_info" data-i18n="bz.pop.berserk">Special: Berserk · Targets: 4</p>',
+        '<p class="item_info" data-i18n="bz.pop.bonusDfp">Bonus: DFP +300 · Speed +15%</p>',
         '<p class="item_info">Gifoie +100% · Rafoie +90% · Gibarta +400%</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox">Required items', body: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"><span data-i18n="bz.pop.required">Required items</span>', body: [
             '<div class="Material_title">BLAST GARMENT x1</div>',
             '<div class="Material_title">Cladding of Manipulator III x2</div>',
             '<div class="Material_title">Millennium Photon Core x15</div>',
@@ -159,8 +159,8 @@ const ITEM_DETAIL = {
         '<div class="tech_bonus_list"><div class="tech_bonus"><span>Si techs 100%</span><span class="tech_bonus_icons"><img src="./images/common/140px-Foie.png" alt="Foie"><img src="./images/common/140px-Barta.png" alt="Barta"><img src="./images/common/140px-Zonde.png" alt="Zonde"></span></div><div class="tech_bonus"><span>Gi techs 80%</span><span class="tech_bonus_icons"><img src="./images/common/140px-Gifoie.png" alt="Gifoie"><img src="./images/common/140px-Gibarta.png" alt="Gibarta"><img src="./images/common/140px-Gizonde.png" alt="Gizonde"></span></div><div class="tech_bonus"><span>Rabarta 90%</span><span class="tech_bonus_icons"><img src="./images/common/140px-Rabarta.png" alt="Rabarta"></span></div></div>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img><span data-i18n="bz.pop.material">Item Material</span>', body: [
             '<div class="Material_title">Primal Photon Sphere x1</div>',
                 '<p class="Material_info" style="font-size: 17px">Beyond the Nightmare</p>',
                 '<p class="Material_info">Nightmare Dominator VI [EP1] <a href="https://youtu.be/mPioItCl25A?si=GbMs-ZtlCl78g3W-"  target="blank" class="guide_btn">Guide</a></p>',
@@ -206,12 +206,12 @@ const ITEM_DETAIL = {
     popupInfo: [
         '<p class="item_info">DFP: 180</p>',
         '<p class="item_info">EVP: 180</p>',
-        '<p class="item_info">State/Maintenance</p>',
-        '<p class="item_info">Trap/Search</p>',
+        '<p class="item_info" data-i18n="bz.stateMaint">State/Maintenance</p>',
+        '<p class="item_info" data-i18n="bz.trapSearch">Trap/Search</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img><span data-i18n="bz.pop.material">Item Material</span>', body: [
             '<div class="Material_title">Astral Essence x1 [Halloween Event Only]</div>',
                 '<p class="Material_info">Hallowed World [Extreme] [EP2] <a href="https://youtu.be/UgKX4sGKDE0?si=hfN5_aYLTS0d80sk"  target="blank" class="guide_btn">Guide</a></p>',
 
@@ -264,8 +264,8 @@ const ITEM_DETAIL = {
             '<p class="item_sub_info" style="margin-bottom:5px">ATA+20</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img><span data-i18n="bz.pop.material">Item Material</span>', body: [
             '<div class="Material_title">Cladding of Manipulator III x7</div>',
                 '<p class="Material_info">Discontrolled Tower [Raid] (EP2>Special) <a href="https://youtu.be/dJzVffLygqk?si=km4Eh-qVr9tjGsTl" target="blank" class="guide_btn">Guide</a></p>', 
             
@@ -302,8 +302,8 @@ const ITEM_DETAIL = {
     popupInfo: [
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img><span data-i18n="bz.pop.material">Item Material</span>', body: [
             '<div class="Material_title">Millennium Photon Core x5</div>',
                 '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
 
@@ -340,8 +340,8 @@ const ITEM_DETAIL = {
         '<p class="item_sub_info">N/H hits: 3-3-3, Special hits: 3-3-4</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">NEW</span><span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="red box">Paganini Trade', body: [
+        { title: '<p class="item_important"><span class="star_text">NEW</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="red box"><span data-i18n="bz.pop.paganini">Paganini Trade</span>', body: [
             '<p class="Material_info">Hallowed World [Master] · Pioneer 2</p>',
             '<div class="Material_title">Hallowed Jack-O-Lantern x1</div>',
             '<div class="Material_title">Millennium Photon Core x10</div>',
@@ -366,7 +366,7 @@ const ITEM_DETAIL = {
         '<p class="item_sub_info">Range 185.0, angle 60.0</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">NEW</span><span class="important_text">Item Importance</span></p>', body: [''] },
+        { title: '<p class="item_important"><span class="star_text">NEW</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="red box">Item Material', body: [
             '<div class="Material_title">Infernal Stone x1</div>',
             '<p class="Material_info">VR Test OMEGA: Oblivion</p>',
@@ -399,8 +399,8 @@ const ITEM_DETAIL = {
             '<p class="item_sub_info" style="color: #ff4f4f; margin-bottom:5px">Hits:1-1-4 (3rd attack is slower)</p>',
     ],
     sections: [
-        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text">Item Importance</span></p>', body: [''] },
-        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img>Item Material', body: [
+        { title: '<p class="item_important"><span class="star_text">★ ★ ★ ★ ★</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
+        { title: '<img class="rare_img" src="./images/common/redbox.png" alt="redbox"></img><span data-i18n="bz.pop.material">Item Material</span>', body: [
             '<div class="Material_title">Millennium Photon Core x25</div>',
                 '<p class="Material_info">TPD [EP2], VR Test FINAL, Lost SOUL BLADE EX</p>', 
 
