@@ -46,6 +46,84 @@ header .inner .left_menu{
     align-items: center;
     gap: 12px;
 }
+
+.happy_hour_header {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 7px;
+    min-height: 34px;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.happy_hour_header:hover,
+.happy_hour_header:focus-visible {
+    border-color: var(--accent);
+}
+
+.happy_hour_header:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.happy_hour_header_dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--text-muted);
+}
+
+.happy_hour_header_label {
+    color: var(--text-muted);
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: .05em;
+}
+
+.happy_hour_header_time {
+    color: var(--text);
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 800;
+}
+
+.happy_hour_header[data-state="active"] {
+    border-color: color-mix(in srgb, #ef3f73 55%, var(--border));
+    background: color-mix(in srgb, #ef3f73 11%, var(--surface));
+}
+
+.happy_hour_header[data-state="active"] .happy_hour_header_dot {
+    background: #ef3f73;
+    box-shadow: 0 0 0 4px color-mix(in srgb, #ef3f73 18%, transparent);
+    animation: happy-hour-pulse 1.8s ease-in-out infinite;
+}
+
+.happy_hour_header[data-state="active"] .happy_hour_header_label {
+    color: #d92860;
+}
+
+.happy_hour_header[data-state="upcoming"] .happy_hour_header_dot {
+    background: var(--accent);
+}
+
+@keyframes happy-hour-pulse {
+    50% { box-shadow: 0 0 0 7px color-mix(in srgb, #ef3f73 5%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .happy_hour_header[data-state="active"] .happy_hour_header_dot { animation: none; }
+}
 header .inner .left_menu a {
 
 }
@@ -459,7 +537,7 @@ html[data-theme="dark"] .img_popup .popup_inner {
 }
 
 .starter_path_card ol {
-    padding-left: 20px;
+    padding-left: 0px;
 }
 
 .starter_path_card li {

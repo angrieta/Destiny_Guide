@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="tpd.t069">DestinyGuide - The Phantasmal Dimension</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<body>
+    <main class="g_page">
+        <div class="g_head">
+            <h2><span>The Phantasmal Dimension</span></h2>
+            <p class="g_lead" data-i18n="tpd.t070">Difficulty 10, Ultimate only, and the longest run on the server. This page collects the floor layout, the room rules, every secret boss and the spawn wave charts the community mapped out.</p>
+            <p class="g_source"><span data-i18n="tpd.t068">Source: the quest channel, plus the TPD Wave thread in the Discord strategy forum. Spawn charts by thanx JP, fixed damage values researched by Nyanchi JP, gear lists by Nyanchi JP.</span></p>
+        </div>
+        <section class="g_sec" id="overview">
+            <h3><span class="g_sec_num">1</span><span data-i18n="tpd.t001">Quest overview</span></h3>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="tpd.t002">Item</th>
+                        <th data-i18n="tpd.t003">Detail</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td data-i18n="tpd.t004">Where to find it</td>
+                            <td>Episode 2 &gt; Special &gt; The Phantasmal Dimension</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="tpd.t005">Difficulty</td>
+                            <td>★10</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="tpd.t006">Main route</td>
+                            <td>FLOOR1 → FLOOR2 → FLOOR3 → FLOOR4</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="tpd.t007">Secret route</td>
+                            <td>Secret1 → BOSS[A] · Secret2 → BOSS[B] · BOSS[C]</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="tpd.t008">Secret floors</td>
+                            <td>Secret Floor1: Crater Interior · Secret Floor2: Desert 3 </td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="tpd.t009">Boss room entry</td>
+                            <td data-i18n="tpd.t010">Clear FLOOR1 Neoteric Battle Field within 16 minutes.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="tpd.t011">Quest by</td>
+                            <td>VEL(JP)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="tpd.t012">The entrance to Secret Floor2 is on FLOOR3. Once you unlock the secrets, shortcut warps appear in the city so you can go straight there.</p>
+            <figure class="g_fig g_fig_full">
+                <img src="./images/guide/tpd-overview.webp" alt="" loading="lazy" decoding="async">
+                <figcaption data-i18n="tpd.t013">The quest board entry for The Phantasmal Dimension.</figcaption>
+            </figure>
+        </section>
+        <section class="g_sec" id="rules">
+            <h3><span class="g_sec_num">2</span><span data-i18n="tpd.t014">Room rules</span></h3>
+            <p data-i18n="tpd.t015">Two rules apply inside the boss rooms and they decide how the fight is played.</p>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="tpd.t016">Rule</th>
+                        <th data-i18n="tpd.t017">Effect</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Life Limit [20]</td>
+                            <td data-i18n="tpd.t018">Once the team has used 20 revives in total, the boss fires an enrage attack that wipes the party.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Anti Photon Blast</td>
+                            <td data-i18n="tpd.t019">Using a Photon Blast unequips your mag.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="g_sec" id="bosses">
+            <h3><span class="g_sec_num">3</span><span data-i18n="tpd.t020">Secret bosses</span></h3>
+            <p data-i18n="tpd.t021">All three are buffed versions. Weaknesses matter here, so bring the right attribute.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="tpd.t022">Boss</th>
+                        <th data-i18n="tpd.t023">HP</th>
+                        <th data-i18n="tpd.t024">Notable damage</th>
+                        <th data-i18n="tpd.t025">Weakness</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Deos Behemoth</td>
+                            <td class="g_num">936,000</td>
+                            <td>Thunder 7112 (at ETH 0) · Earthquake edge 2100</td>
+                            <td>Light</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Bar Dalus / Gal Ray / Zol Ray</td>
+                            <td class="g_num">500,000</td>
+                            <td>Shell 150,000 · Gal Ray 15,800 · Zol Ray 13,800 · Photon Bullet 2200</td>
+                            <td>Fire</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Eclipse Dragon</td>
+                            <td class="g_num">820,000</td>
+                            <td>Clone 112,500 · Breath (ground) 5686 · Breath (air) 4295</td>
+                            <td>—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="tpd.t026">A resist value of 75 or higher makes you immune to the shock and freeze these bosses apply. That is usually worth more than raw defence.</p>
+        </section>
+        <section class="g_sec" id="damage">
+            <h3><span class="g_sec_num">4</span><span data-i18n="tpd.t027">Fixed damage values</span></h3>
+            <p data-i18n="tpd.t028">These attacks ignore defence and always deal the same amount, so they decide the minimum HP you need. Researched by Nyanchi JP.</p>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="tpd.t029">Enemy and attack</th>
+                        <th data-i18n="tpd.t030">Damage</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Lavaross — press</td>
+                            <td class="g_num">1846</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dark Nebulas — charge</td>
+                            <td class="g_num">1643</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Pazuzu — gliding</td>
+                            <td class="g_num">1528</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Pazuzu — laser</td>
+                            <td class="g_num">1294</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubchic — beam</td>
+                            <td class="g_num">1339</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Varazopt Ver.D — missile (1 hit)</td>
+                            <td class="g_num">1248</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Astark — on spawn</td>
+                            <td class="g_num">1154</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Epsilon — Rafoie</td>
+                            <td class="g_num">2105 (EFR 0) · 736 (EFR 65) · 505 (EFR 76)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="tpd.t031">Epsilon's Rafoie scales with your fire resist, so resist gear cuts it by more than half.</p>
+        </section>
+        <section class="g_sec" id="waves">
+            <h3><span class="g_sec_num">5</span><span data-i18n="tpd.t032">Spawn wave charts</span></h3>
+            <p data-i18n="tpd.t033">Each circle is one wave seen from above, numbered in spawn order. Red arrows mark enemies that come in from outside the ring. Charts by thanx JP.</p>
+            <figure class="g_fig g_fig_full">
+                <img src="./images/guide/tpd-wave-area1.webp" alt="" loading="lazy" decoding="async">
+                <figcaption data-i18n="tpd.t034">FLOOR1 — 24 waves.</figcaption>
+            </figure>
+            <figure class="g_fig g_fig_full">
+                <img src="./images/guide/tpd-wave-area4.webp" alt="" loading="lazy" decoding="async">
+                <figcaption data-i18n="tpd.t035">FLOOR4.</figcaption>
+            </figure>
+            <figure class="g_fig g_fig_full">
+                <img src="./images/guide/tpd-wave-secret1.webp" alt="" loading="lazy" decoding="async">
+                <figcaption data-i18n="tpd.t036">Secret Area 1, the Crater.</figcaption>
+            </figure>
+        </section>
+        <section class="g_sec" id="rewards">
+            <h3><span class="g_sec_num">6</span><span data-i18n="tpd.t037">Drops and exchanges</span></h3>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="tpd.t038">Source</th>
+                        <th data-i18n="tpd.t002">Item</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td data-i18n="tpd.t039">Quest boss</td>
+                            <td>CHAOS HALO 1/45 (all IDs)</td>
+                        </tr>
+                        <tr>
+                            <td>Pazuzu</td>
+                            <td>V503 1/787 · Millennium Photon Core 1/700</td>
+                        </tr>
+                        <tr>
+                            <td>Dorphon Eclair</td>
+                            <td>Dark Matter 1/1024</td>
+                        </tr>
+                        <tr>
+                            <td>D-Virus Morfos</td>
+                            <td>D-Virus Launcher 1/2100</td>
+                        </tr>
+                        <tr>
+                            <td>Epsilon</td>
+                            <td>RASTER SCOPE 1/1559</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="tpd.t040">Throughout the quest</td>
+                            <td>Millennium Photon Core 1/450 · 1/204 · 1/170</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="tpd.t041">NPC</th>
+                        <th data-i18n="tpd.t042">Exchange</th>
+                        <th data-i18n="tpd.t043">Limit</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Paganini</td>
+                            <td>Millennium Photon Core x1 ← Photon Drop x25</td>
+                            <td data-i18n="tpd.t044">Once per run.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Spirit Flow</td>
+                            <td>Legendary Crate x20 ← Photon Sphere x1</td>
+                            <td data-i18n="tpd.t045">Needs the secret floors cleared.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="tpd.t046">Secret boss reward</td>
+                            <td>Legendary Crate x20 ← Photon Sphere</td>
+                            <td data-i18n="tpd.t047">Twice per run, after beating Deos Behemoth and Bar Dalus.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="tpd.t048">CHAOS HALO has a different guard effect from the other halos, so you can tell it apart in game.</p>
+        </section>
+        <section class="g_sec" id="gear">
+            <h3><span class="g_sec_num">7</span><span data-i18n="tpd.t049">Gear the community uses</span></h3>
+            <p data-i18n="tpd.t050">Suggested loadouts for the secret bosses, from Nyanchi JP. Treat them as a reference point rather than a requirement.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="tpd.t022">Boss</th>
+                        <th data-i18n="tpd.t051">Weapons</th>
+                        <th data-i18n="tpd.t052">Armour, shield and units</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Deos Behemoth</td>
+                            <td>RGS (AB100) · TUMIKIRI (AB100) · DRAGON SWORD</td>
+                            <td>Behemoth Armor / Phantasmal Field / PAP · ASTRAL HALO / DVS / CHAOS HALO · Ignis Engine, Heavenly/Resist x2, Immortal/Battle</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Bar Dalus</td>
+                            <td>UDC (AB100) · RGS (AB100) · TUMIKIRI (AB100) · DRAGON SWORD</td>
+                            <td>Same armour options · Ignis Engine, v503, Jointparts, Immortal/Battle · Recon or Gael Giel (HP 2201 or more)</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Eclipse Dragon</td>
+                            <td>RGS (N100) · TUMIKIRI (N100) · DRAGON SWORD</td>
+                            <td>Same armour options · Ignis Engine, Heavenly/Resist x2, Immortal/Battle</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="g_sec" id="legend">
+            <h3><span class="g_sec_num">8</span><span data-i18n="tpd.t053">Reading the skill symbols</span></h3>
+            <p data-i18n="tpd.t054">A boss announces its skill name before it fires. The symbols in the name tell you what shape the attack takes, so learning them is faster than memorising every skill.</p>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="tpd.t055">Symbol</th>
+                        <th data-i18n="tpd.t056">Meaning</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">[O]</td>
+                            <td data-i18n="tpd.t057">Circular hitbox, explosion.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[●]</td>
+                            <td data-i18n="tpd.t058">Damage falls off with distance from the centre of the explosion.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[!]</td>
+                            <td data-i18n="tpd.t059">Unavoidable.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[&lt;&lt;--&gt;&gt;]</td>
+                            <td data-i18n="tpd.t060">Circular area of effect. Spread out from each other.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[-&gt;&gt;&lt;&lt;-]</td>
+                            <td data-i18n="tpd.t061">Damage stacks. Group up.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[|||]</td>
+                            <td data-i18n="tpd.t062">Straight line attack, vertical.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[=]</td>
+                            <td data-i18n="tpd.t063">Straight line attack, horizontal.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[*]</td>
+                            <td data-i18n="tpd.t064">Attacks from several directions.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Resist Down [X]</td>
+                            <td data-i18n="tpd.t065">Increases the damage you take from the [X] attribute.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Resist Reset [X]</td>
+                            <td data-i18n="tpd.t066">Clears the [X] attribute debuff.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[Death Sentence]</td>
+                            <td data-i18n="tpd.t067">Your HP must be full when the effect ends.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div class="g_popup" id="gPopup">
+        <div class="g_popup_dim"></div>
+        <div class="g_popup_inner">
+            <button class="g_popup_close" type="button" aria-label="Close">&#10005;</button>
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <script>
+    // 도해는 작게 보면 읽을 수 없다. 눌러서 크게 본다.
+    document.addEventListener("DOMContentLoaded", function () {
+        var popup = document.getElementById("gPopup");
+        if (!popup) return;
+        var img = popup.querySelector("img");
+
+        function close() {
+            popup.classList.remove("active");
+            img.src = "";
+            document.body.style.overflow = "";
+        }
+        document.querySelectorAll(".g_fig img").forEach(function (el) {
+            el.addEventListener("click", function () {
+                img.src = el.currentSrc || el.src;
+                popup.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+        });
+        popup.querySelector(".g_popup_close").addEventListener("click", close);
+        popup.querySelector(".g_popup_dim").addEventListener("click", close);
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") close();
+        });
+    });
+    </script>
+</body>
+</html>

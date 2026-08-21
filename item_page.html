@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/responsive.css">
-    <script src="./scripts/destiny_catalog.js?v=swiper-fix-1" defer></script>
-    <script src="./scripts/index.js?v=swiper-fix-1" defer></script>
+    <link rel="stylesheet" href="./styles/item_grid.css">
+    <script src="./scripts/destiny_catalog.js?v=grid-1" defer></script>
+    <script src="./scripts/item_grid.js?v=grid-1" defer></script>
+    <script src="./scripts/index.js?v=grid-1" defer></script>
     <script src="./scripts/i18n.js"></script>
     <script src="./scripts/item_info.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -24,11 +26,11 @@
     <script src="./scripts/include.js"></script>
 <!-- 헤더종료 -->
 <body>
-    <section class="destiny_item">
+    <section class="destiny_item" data-destiny-item-grid>
         <nav class="destiny_item_filters" aria-label="Destiny item categories">
             <div class="destiny_item_filters_intro">
                 <strong data-i18n="item.t002">Browse Destiny Items</strong>
-                <span data-i18n="item.t003">Select a category, then click any card to open the full item guide.</span>
+                <span data-i18n="ig.intro">Search by item name, or pick a category below. Click any card to open the full item guide.</span>
             </div>
             <div class="destiny_item_filter_buttons" role="group" aria-label="Filter Destiny items">
                 <button type="button" class="destiny_item_filter is-active" data-destiny-filter="all" aria-pressed="true" data-i18n="item.t004">All</button>
@@ -36,9 +38,9 @@
                 <button type="button" class="destiny_item_filter" data-destiny-filter="hunter" aria-pressed="false">Hunter</button>
                 <button type="button" class="destiny_item_filter" data-destiny-filter="ranger" aria-pressed="false">Ranger</button>
                 <button type="button" class="destiny_item_filter" data-destiny-filter="force" aria-pressed="false">Force</button>
-                <button type="button" class="destiny_item_filter" data-destiny-filter="armor" aria-pressed="false">Armor</button>
-                <button type="button" class="destiny_item_filter" data-destiny-filter="unit" aria-pressed="false">Unit</button>
-                <button type="button" class="destiny_item_filter" data-destiny-filter="shield" aria-pressed="false">Shield</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="armor" aria-pressed="false" data-i18n="ig.cat.armor">Armor</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="unit" aria-pressed="false" data-i18n="ig.cat.unit">Unit</button>
+                <button type="button" class="destiny_item_filter" data-destiny-filter="shield" aria-pressed="false" data-i18n="ig.cat.shield">Shield</button>
             </div>
         </nav>
 
@@ -49,7 +51,7 @@
                     COMMON
                     <span class="destiny_item_sub">Core Weapon</span>
                 </h3>
-                <p class="destiny_item_desc" data-i18n="item.t013">Swipe left or right to view.</p>
+                <p class="destiny_item_desc" data-i18n="ig.hint">Click any card for full stats, requirements, and how to obtain it.</p>
             </header>
 
             <div class="swiper destiny_item_swiper" data-destiny-swiper="common">
@@ -264,7 +266,7 @@
                     HUNTER
                     <span class="destiny_item_sub">Core Weapon</span>
                 </h3>
-                <p class="destiny_item_desc" data-i18n="item.t013">Swipe left or right to view.</p>
+                <p class="destiny_item_desc" data-i18n="ig.hint">Click any card for full stats, requirements, and how to obtain it.</p>
             </header>
 
             <div class="swiper destiny_item_swiper" data-destiny-swiper="hunter">
@@ -552,7 +554,7 @@
                     RANGER
                     <span class="destiny_item_sub">Core Weapon</span>
                 </h3>
-                <p class="destiny_item_desc" data-i18n="item.t013">Swipe left or right to view.</p>
+                <p class="destiny_item_desc" data-i18n="ig.hint">Click any card for full stats, requirements, and how to obtain it.</p>
             </header>
 
             <div class="swiper destiny_item_swiper" data-destiny-swiper="ranger">
@@ -1052,7 +1054,7 @@
                     FORCE
                     <span class="destiny_item_sub">Core Weapon</span>
                 </h3>
-                <p class="destiny_item_desc" data-i18n="item.t013">Swipe left or right to view.</p>
+                <p class="destiny_item_desc" data-i18n="ig.hint">Click any card for full stats, requirements, and how to obtain it.</p>
             </header>
 
             <div class="swiper destiny_item_swiper" data-destiny-swiper="force">

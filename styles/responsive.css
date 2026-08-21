@@ -663,6 +663,13 @@
         line-height: 1;
         white-space: nowrap;
     }
+    .site-header .happy_hour_header {
+        min-height: 30px;
+        padding: 4px 8px;
+        gap: 5px;
+    }
+    .site-header .happy_hour_header_label { font-size: 8px; }
+    .site-header .happy_hour_header_time { font-size: 10px; }
 }
 
 @media screen and (max-width:400px) {
@@ -753,4 +760,83 @@ header .inner .left_menu { min-width: 0; }
    그래서 번역 라벨을 축약해야 했다. 크기를 맞추면 온전한 표현을 쓸 수 있다. */
 .drop_table a {
     font-size: 13px;
+}
+
+/* ============================================================================
+   PC 헤더 여유 (>= 1251px)
+
+   내비 링크가 4개에서 12개로 늘어나면서, 로고 / 내비 / 액션이 왼쪽에 세 줄로
+   쌓이고 오른쪽 절반이 통째로 비는데도 빽빽해 보였다(1920px 실측: inner 1600px 중
+   내비가 1430px 를 한 덩어리로 차지, 행 간격 10px).
+
+   가진 폭을 실제로 쓰도록 바꾼다.
+     1줄  로고(왼쪽) ————————————————— 액션(오른쪽)
+     2줄  가이드 메뉴
+     3줄  레이드 메뉴
+   링크 사이 간격은 margin-right: 10px 에서 gap 으로 옮겨 넓혔다.
+
+   1250px 이하(모바일·태블릿)는 지금 배치가 좋다는 피드백이라 건드리지 않는다.
+   ============================================================================ */
+@media screen and (min-width: 1251px) {
+    header {
+        min-height: 132px;
+        padding: 16px 0;
+        align-content: center;
+    }
+
+    header .inner {
+        column-gap: 44px;
+        row-gap: 16px;
+        align-items: center;
+    }
+
+    /* DOM 순서는 로고 → 내비 → 액션이다. 내비가 한 줄을 통째로 쓰면 그 자리에서
+       줄이 끊겨 액션이 세 번째 줄로 내려간다. order 로 액션을 내비보다 앞에 두어
+       로고와 같은 줄에 남게 한다. (.inner 는 space-between 이라 양끝으로 벌어진다) */
+    header .inner .logo { order: 1; flex: 0 0 auto; }
+
+    header .inner .left_menu {
+        order: 2;
+        flex: 0 0 auto;
+        margin-left: auto;
+        gap: 14px;
+    }
+
+    /* 내비는 한 줄을 통째로 받고, 그 안에서 가이드 / 레이드를 위아래로 나눈다.
+       한 줄에 12개를 늘어놓으면 어느 언어에서도 여유가 안 생긴다. */
+    .mid_menu_box {
+        order: 3;
+        flex: 1 1 100%;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        row-gap: 12px;
+    }
+
+    .mid_menu {
+        column-gap: 26px;
+        row-gap: 10px;
+    }
+
+    /* 간격을 gap 으로 옮긴다. margin-right 가 남아 있으면 gap 과 더해져 어긋난다. */
+    .mid_menu .category_menu {
+        margin-right: 0;
+        padding-bottom: 5px;
+        font-size: 14.5px;
+    }
+
+    .mid_menu_2 {
+        margin-left: 0;
+        column-gap: 24px;
+    }
+
+    /* 레이드 이름은 영문 정식 명칭이라 길다. 조금 작게 두어 가이드 메뉴가 먼저 읽히게 한다. */
+    .mid_menu_2 .category_menu {
+        font-size: 13.5px;
+    }
+
+    /* 액션 칩도 함께 키워 첫 줄이 헐렁해 보이지 않게 맞춘다. */
+    header .inner .left_menu .drop_table a {
+        padding: 6px 12px;
+        font-size: 13.5px;
+    }
 }

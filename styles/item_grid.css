@@ -1,0 +1,599 @@
+/* ==========================================================================
+   item_page 그리드 뷰
+   캐러셀(스와이프) 대신 "검색 + 카테고리 + 그리드" 로 121개 카드를 다룬다.
+   - 색은 전부 기존 토큰(--text / --surface / --surface-soft / --border /
+     --accent / --text-muted)에서 가져온다. 다크모드가 자동으로 따라온다.
+   - 가로 스크롤이 생길 수 있는 요소(칩 줄)는 자기 컨테이너 안에서만 스크롤한다.
+     문서 자체는 344px 에서도 가로로 밀리지 않아야 한다.
+   ========================================================================== */
+
+/* 984px 이상 구간에는 원래 좌우 여백이 없어서 카드가 화면 끝에 붙었다.
+   (983px 이하는 responsive.css 가 !important 로 15px 을 주고 있다.) */
+@media screen and (min-width: 984px) {
+    .destiny_item[data-destiny-item-grid] {
+        padding: 0 24px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   상단 소개 블록: 원래는 칩까지 담은 카드였는데 칩이 아래 툴바로 내려갔다.
+   카드 테두리를 지워 툴바와 상자가 겹쳐 보이지 않게 한다.
+   -------------------------------------------------------------------------- */
+[data-destiny-item-grid] .destiny_item_filters {
+    display: block;
+    margin: 26px 0 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+}
+
+[data-destiny-item-grid] .destiny_item_filters_intro {
+    display: block;
+    flex: none;
+}
+
+[data-destiny-item-grid] .destiny_item_filters_intro strong {
+    display: block;
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+[data-destiny-item-grid] .destiny_item_filters_intro span {
+    display: block;
+    margin-top: 4px;
+    max-width: 62ch;
+}
+
+/* --------------------------------------------------------------------------
+   툴바 (검색 + 카테고리 칩 + 결과 수). 스크롤해도 위에 붙어 있어야
+   목록 아래쪽에서도 바로 검색·필터를 바꿀 수 있다.
+   헤더가 static 이라 위로 흘러가므로 top: 0 이면 겹치지 않는다.
+   -------------------------------------------------------------------------- */
+.ig_bar {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin: 14px 0 4px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 8px 22px rgba(14, 36, 72, 0.10);
+}
+
+/* 검색 입력 */
+.ig_search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 260px;
+    min-width: 0; /* 플렉스 자식이 줄어들 수 있게 (344px 대응) */
+}
+
+.ig_search_icon {
+    position: absolute;
+    left: 12px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.ig_search input {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    padding: 0 40px 0 36px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text);
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.ig_search input::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+}
+
+/* type="search" 는 브라우저가 자체 지우기 버튼을 붙인다. 우리 .ig_clear 와
+   나란히 X 가 두 개 보였다. 기본 버튼을 숨기고 우리 것만 남긴다.
+   (Chrome/Safari 는 -webkit-, Edge/구 IE 는 -ms- 를 쓴다.) */
+.ig_search input::-webkit-search-cancel-button,
+.ig_search input::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.ig_search input::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.ig_search input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(75, 97, 170, 0.18);
+}
+
+.ig_clear {
+    position: absolute;
+    right: 6px;
+    display: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: var(--text-muted);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.ig_clear:hover {
+    background: var(--surface-soft);
+    color: var(--text);
+}
+
+.ig_search.is-filled .ig_clear {
+    display: block;
+}
+
+/* 카테고리 칩: 좁은 화면에서는 한 줄 안에서 가로 스크롤한다.
+   문서를 밀지 않도록 스크롤은 이 컨테이너가 흡수한다. */
+[data-destiny-item-grid] .destiny_item_filter_buttons {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    min-width: 0;
+}
+
+/* 결과 수 */
+.ig_count {
+    flex: 0 0 auto;
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 900px) {
+    .ig_bar {
+        gap: 8px 10px;
+        padding: 10px 12px;
+    }
+
+    /* index.css 는 560px 이하에서 이 컨테이너를 display: grid 2열로 바꾼다.
+       칩이 8개라 4줄(156px)이 되어 sticky 툴바가 화면의 30% 를 먹었다.
+       한 줄로 되돌리고, 넘치는 만큼은 이 컨테이너 안에서만 가로 스크롤한다. */
+    [data-destiny-item-grid] .destiny_item_filter_buttons {
+        display: flex;
+        flex: 1 1 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 6px;
+        padding-bottom: 2px;
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    [data-destiny-item-grid] .destiny_item_filter {
+        flex: 0 0 auto;
+        width: auto; /* index.css 의 width: 100% (그리드 셀 전제) 해제 */
+        min-height: 34px;
+        padding: 6px 13px;
+        font-size: 13px;
+    }
+
+    /* DOM 순서는 검색 -> 칩 -> 결과수 다. 칩이 한 줄을 통째로 쓰면 결과수가
+       세 번째 줄로 밀린다. order 로 결과수를 칩보다 앞에 두어 검색창과 같은
+       줄에 남게 한다. 툴바가 sticky 라 한 줄을 줄이는 게 그대로 화면 이득이다. */
+    .ig_search {
+        order: 1;
+        flex: 1 1 140px;
+    }
+
+    .ig_count {
+        order: 2;
+        flex: 0 0 auto;
+        margin-left: 0;
+    }
+
+    [data-destiny-item-grid] .destiny_item_filter_buttons {
+        order: 3;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    [data-destiny-item-grid] .destiny_item_filters_intro strong {
+        font-size: 20px;
+    }
+
+    .ig_search input {
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+/* 툴바가 sticky 이므로 scrollIntoView 나 #앵커 이동 시 섹션 제목이 툴바 밑에
+   숨는다. 툴바 높이만큼 여유를 준다(데스크톱 70px / 모바일 106px 실측). */
+[data-destiny-item-grid] .destiny_item_block {
+    scroll-margin-top: 86px;
+}
+
+@media screen and (max-width: 900px) {
+    [data-destiny-item-grid] .destiny_item_block {
+        scroll-margin-top: 122px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   그리드
+   -------------------------------------------------------------------------- */
+.ig_grid {
+    --ig-cols: 1;
+    width: 100%;
+    position: relative;
+}
+
+.ig_grid_inner {
+    display: grid;
+    grid-template-columns: repeat(var(--ig-cols), minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+
+@media screen and (min-width: 560px)  { .ig_grid { --ig-cols: 2; } }
+@media screen and (min-width: 900px)  { .ig_grid { --ig-cols: 3; } }
+@media screen and (min-width: 1280px) { .ig_grid { --ig-cols: 4; } }
+@media screen and (min-width: 1700px) { .ig_grid { --ig-cols: 5; } }
+
+/* 카드: 캐러셀에서는 슬라이드 폭이 인라인으로 정해졌고 이미지 상자는 210px
+   고정이었다. 그리드에서는 열 폭이 좁아질 수 있으니 이미지를 유동으로 바꾼다. */
+.ig_grid_inner .destiny_item_slide {
+    height: auto;
+    min-width: 0;
+}
+
+.ig_grid_inner .item_img {
+    width: 100%;
+    max-width: 210px;
+}
+
+.ig_grid_inner .item_img img {
+    width: 100%;
+    height: auto;
+}
+
+/* 500px 고정 높이는 내용이 길면 넘쳤다. 높이를 내용에 맞추면 한 행 안에서는
+   그리드가 알아서 맞춰 주고, 넘치는 카드도 잘리지 않는다. */
+.ig_grid_inner .item_inner {
+    height: auto;
+}
+
+/* 여러 열이 나란히 설 때만 최소 높이를 준다. 카드 높이가 들쭉날쭉하면
+   행 경계가 지저분해 보인다. 1열(모바일)에서는 비교할 이웃이 없으니
+   내용 높이 그대로 두어 페이지 길이를 줄인다. */
+@media screen and (min-width: 560px) {
+    .ig_grid_inner .item_inner {
+        min-height: 460px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   모바일 압축 행 (560px 미만)
+   카드 한 장이 약 470px 이라 세로가 너무 길어졌다. 같은 링크 안에 들어 있는
+   한 줄 행(약 88px)으로 바꿔 보여 준다. 전체 스탯은 탭하면 열리는 상세 모달에 있다.
+   -------------------------------------------------------------------------- */
+.ig_row {
+    display: none;
+}
+
+@media screen and (max-width: 559px) {
+    .ig_grid_inner {
+        gap: 8px;
+    }
+
+    /* 카드 본체는 감추고 행만 남긴다 */
+    .ig_grid_inner .item_inner {
+        display: none;
+    }
+
+    /* .item_section_aria 는 카드를 가운데 두려고 flex 였다. 행은 폭을 다 쓴다. */
+    .ig_grid_inner .item_section_aria {
+        display: block;
+        width: 100%;
+    }
+
+    .ig_row {
+        display: grid;
+        grid-template-columns: 64px minmax(0, 1fr) 12px;
+        align-items: center;
+        column-gap: 10px;
+        padding: 8px 10px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface);
+        text-align: left;
+    }
+
+    .ig_row_thumb {
+        display: block;
+        width: 64px;
+        height: 64px;
+        overflow: hidden;
+        border-radius: 6px;
+        background: #4b61aa; /* 카드 이미지 상자와 같은 바탕 */
+    }
+
+    .ig_row_thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .ig_row_body {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .ig_row_top {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .ig_row_name {
+        overflow: hidden;
+        color: var(--text);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.25;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .ig_row_stars {
+        flex: 0 0 auto;
+        color: #ecc92e;
+        font-size: 11px;
+        letter-spacing: -1px;
+        white-space: nowrap;
+    }
+
+    .ig_row_meta,
+    .ig_row_sub {
+        overflow: hidden;
+        font-size: 12.5px;
+        line-height: 1.3;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .ig_row_meta {
+        color: var(--text-muted);
+    }
+
+    /* 종류와 대표 수치를 가운뎃점으로 잇는다 */
+    .ig_row_type + .ig_row_stat::before {
+        content: " · ";
+    }
+
+    .ig_row_sub {
+        color: #4b61aa; /* 카드의 .item_detail 과 같은 파랑 */
+    }
+
+    .ig_row_chev {
+        color: var(--text-muted);
+        font-size: 18px;
+        line-height: 1;
+        text-align: right;
+    }
+
+    /* 카드 hover 효과는 행에 맞춰 다시 준다 */
+    .ig_grid_inner .item_section_aria:hover .ig_row {
+        border-color: var(--accent);
+    }
+}
+
+/* 다크모드: .ig_row_sub 의 파랑은 어두운 배경에서 대비가 부족하다 */
+html[data-theme="dark"] .ig_row_sub {
+    color: #8cc6ff;
+}
+
+.ig_grid_inner .item_section_aria {
+    height: 100%;
+    cursor: pointer; /* 캐러셀 시절의 zoom-in 커서는 그리드에서 어울리지 않는다 */
+}
+
+.ig_grid_inner .item_section_aria .item_inner {
+    height: 100%;
+}
+
+/* 검색·필터로 걸러진 카드 */
+.ig_grid_inner .destiny_item_slide[hidden] {
+    display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   섹션 헤더의 개수 배지 / 더 보기 버튼
+   -------------------------------------------------------------------------- */
+.ig_seccount {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 9px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    vertical-align: middle;
+}
+
+.ig_more_wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+/* UA 스타일시트의 [hidden] { display: none } 은 특정성 (0,1,0) 이다.
+   위의 .ig_more_wrap { display: flex } 도 (0,1,0) 인데 작성자 스타일이 이기므로
+   el.hidden = true 가 무력화된다(검색 중에도 '더 보기' 가 남았다). 명시적으로 끈다. */
+.ig_more_wrap[hidden] {
+    display: none;
+}
+
+.ig_more {
+    min-height: 42px;
+    padding: 9px 22px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.ig_more:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+}
+
+.ig_more:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   결과 없음
+   -------------------------------------------------------------------------- */
+.ig_empty {
+    display: none;
+    margin: 34px 0 10px;
+    padding: 34px 20px;
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+    background: var(--surface-soft);
+    text-align: center;
+}
+
+.ig_empty.is-on {
+    display: block;
+}
+
+.ig_empty strong {
+    display: block;
+    font-size: 18px;
+}
+
+.ig_empty p {
+    margin: 6px 0 16px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   전체 아이템 DB 안내
+   -------------------------------------------------------------------------- */
+.ig_dblink {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin: 40px 0 56px;
+    padding: 20px 22px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+}
+
+.ig_dblink p {
+    flex: 1 1 320px;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.ig_dblink a {
+    flex: 0 0 auto;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* 다크모드의 --accent 는 밝은 파랑(#65a6ff)이다. 흰 글자를 얹으면 대비 2.26 으로
+   읽을 수 없다. 배경 채도를 살리고 글자를 어둡게 가져간다(대비 7.6). */
+html[data-theme="dark"] .ig_dblink a {
+    color: #07111f;
+}
+
+.ig_dblink a:hover {
+    background: var(--accent-strong, var(--accent));
+}
+
+/* index.css 의 #888 은 흰 배경에서 대비 3.54 로 본문 기준에 못 미친다.
+   그리드에서는 이 문구가 각 섹션의 유일한 안내라 더 잘 읽혀야 한다.
+   (다크모드는 common.css 가 더 높은 특정성으로 이미 --text-muted 를 준다.) */
+[data-destiny-item-grid] .destiny_item_desc {
+    color: var(--text-muted);
+    font-size: 15px;
+}
+
+/* 모바일 섹션 머리말이 한 섹션당 150px 가까이 차지했다. 압축 행 목록에서는
+   이 정도 여백이 필요 없다. 7개 섹션에서 약 300px 을 줄인다. */
+@media screen and (max-width: 559px) {
+    [data-destiny-item-grid] .destiny_item_block {
+        margin: 26px 0;
+    }
+
+    [data-destiny-item-grid] .destiny_item_header {
+        margin-bottom: 12px;
+    }
+
+    [data-destiny-item-grid] .destiny_item_desc {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+    [data-destiny-item-grid] .destiny_item_title {
+        font-size: 19px;
+    }
+
+    .ig_more_wrap {
+        margin-top: 10px;
+    }
+
+    .ig_more {
+        min-height: 38px;
+        padding: 7px 18px;
+        font-size: 13px;
+    }
+}

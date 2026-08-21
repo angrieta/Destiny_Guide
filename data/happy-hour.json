@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "source": "Destiny Discord app",
+  "announcement": "Scheduled Happy Hours active! 179 minutes remaining.",
+  "observedAt": "2026-08-21T06:00:00.000Z",
+  "remainingMinutes": 179,
+  "windowStart": "2026-08-21T05:59:00.000Z",
+  "windowEnd": "2026-08-21T08:59:00.000Z",
+  "cycleMinutes": 930,
+  "durationMinutes": 180,
+  "updatedAt": "2026-08-21T06:00:00.000Z"
+}

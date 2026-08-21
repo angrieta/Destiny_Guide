@@ -17,6 +17,202 @@
 
   const catalogItems = [
     {
+      id: "divine-blade",
+      section: "common",
+      category: "Common",
+      type: "Twin Sword",
+      name: "DIVINE BLADE",
+      image: "./images/items/gameplay/divine-blade-gameplay.webp",
+      imagePosition: "center center",
+      summary: "The Starlight Tower twin sword. It is the only weapon on the server that boosts Reverser, and it casts Shifta and Deband together.",
+      stats: [
+        ["Class", "All"],
+        ["Type", "Twin Sword"],
+        ["ATP", "1200"],
+        ["ATA", "55"],
+        ["Special", "Arrest"],
+        ["Targets", "1"],
+        ["Bonus", "All stats +30"]
+      ],
+      combat: [
+        "Reverser +100% \u2014 the only weapon with a Reverser boost.",
+        "Shifta +200%, Deband +200%.",
+        "Casts Shifta and Deband at the same time.",
+        "With DIVINE FIELD: targets 1\u21925, Speed +50%, wider angle."
+      ],
+      obtain: [
+        "Reward from The Starlight Tower [Raid] \u2014 EP2 Special."
+      ],
+      required: []
+    },
+    {
+      id: "venus-bow",
+      section: "common",
+      category: "Common",
+      type: "Needle",
+      name: "VENUS BOW",
+      image: "./images/items/gameplay/rare-unit-box.png",
+      imagePosition: "center center",
+      summary: "An anniversary needle whose special deals fixed damage, so it works on enemies that shrug off attack power.",
+      stats: [
+        ["Class", "All"],
+        ["Type", "Needle"],
+        ["ATP", "777"],
+        ["ATA", "77"],
+        ["Requirement", "ATA 77"],
+        ["Range", "77.7"],
+        ["Targets", "7"]
+      ],
+      combat: [
+        "Special deals fixed damage: 7 on Normal, 77 on Heavy, 777 on Extra.",
+        "The special damages EP4 lizards.",
+        "Hits lizards in the face.",
+        "Resta and Anti range +100%."
+      ],
+      obtain: [
+        "Radiant Destiny! \u2014 EP2 Anniversary. Tormentorr at 1/154 on all IDs."
+      ],
+      required: []
+    },
+    {
+      id: "madams-bracelet",
+      section: "shield",
+      category: "Shield",
+      type: "Shield",
+      name: "MADAM'S BRACELET",
+      image: "./images/items/gameplay/madams-bracelet-gameplay.webp",
+      imagePosition: "center center",
+      summary: "A support shield with a strong ice resist and doubled Resta and Anti range.",
+      stats: [
+        ["Class", "All"],
+        ["Level", "150"],
+        ["DFP", "135"],
+        ["EVP", "225"],
+        ["Resists", "30 / 50 / 30 / 25 / 25"],
+        ["Bonus", "ATA +25"]
+      ],
+      combat: [
+        "Resta +100%.",
+        "Anti +100%.",
+        "Rabarta +70%."
+      ],
+      obtain: [
+        "New MSB \u2014 EP2 Destiny. Olga Flow at 1/64 on all IDs (Ultimate)."
+      ],
+      required: []
+    },
+    {
+      id: "lightning-garment",
+      section: "armor",
+      category: "Armor",
+      type: "Armor",
+      name: "LIGHTNING GARMENT",
+      image: "./images/items/gameplay/blast-garment-item.png",
+      imagePosition: "center center",
+      summary: "A trade-only armor with heavy light and dark resistance and a Grants boost.",
+      stats: [
+        ["Class", "All"],
+        ["Level", "150"],
+        ["DFP", "210"],
+        ["EVP", "170"],
+        ["Resists", "15 / 15 / 15 / 60 / 60"],
+        ["Bonus", "ATA +20"]
+      ],
+      combat: [
+        "Grants +50%."
+      ],
+      obtain: [
+        "Traded from the RAcaseal NPC in The Phantastic Bazaar \u2014 EP2 Shop.",
+        "Secret Tickets come from Simulator 2.0 [EP1] and Random Attack Xrd Stage [EP2] on clearing the secret area."
+      ],
+      required: [
+        "Secret Ticket x99"
+      ]
+    },
+    {
+      id: "jointparts",
+      section: "unit",
+      category: "Unit",
+      type: "Unit",
+      name: "JOINTPARTS",
+      image: "./images/common/jointparts-effect.png",
+      imagePosition: "center center",
+      summary: "A trade unit that reworks six ranged and support weapons, and the only way to unlock Dual Casting.",
+      stats: [
+        ["Type", "Unit"],
+        ["Affected weapons", "6"]
+      ],
+      combat: [
+        "Guld Milla: ATP +400, longer range, auto-aim special with 5\u20135\u20135 hits.",
+        "Mille Marteaux: Divine Punishment 3\u20133\u20133 and auto-aim 4\u20134\u20134 on Normal/Heavy, ATP and MST +100, longer range.",
+        "Dual Bird: hits 4\u20134\u20134 on Normal/Heavy/Special, longer range. ATA requirement lowered to 190.",
+        "Celestial Fusion: Dual Casting \u2014 Jellen and Zalure together at technique Lv30, ATA +20, longer range.",
+        "Twin Rika's Claw: 5 targets, dagger animation, wider angle.",
+        "Ultimate Double Cannon: ATA +20, better special range and angle, hits lizards, Speed +15%.",
+        "Jointparts + Celestial Fusion + Blue Phantom Field pushes Jellen and Zalure to 400%."
+      ],
+      obtain: [
+        "Traded from the FOmar NPC in the Bazaar.",
+        "Materials drop in The Discontrolled Tower [Raid] \u2014 EP2 Special."
+      ],
+      required: []
+    },
+    {
+      id: "ignis-engine",
+      section: "unit",
+      category: "Unit",
+      type: "Unit",
+      name: "IGNIS ENGINE",
+      image: "./images/common/ignis-engine-effect.png",
+      imagePosition: "center center",
+      summary: "A Millennium Shop unit that reworks the fire-themed weapons.",
+      stats: [
+        ["Type", "Unit"],
+        ["Affected weapons", "3"]
+      ],
+      combat: [
+        "Final Egg Blaster / Astral Dragon: ATP +100, hits 4\u20134\u20134, longer range, hits lizards in the face.",
+        "Zu's Punishment: special hits 1\u20132\u20133, MST +100.",
+        "Rathalos Great Sword / Terror Sawd: special hits 1\u20131\u20134, custom animation."
+      ],
+      obtain: [
+        "Traded in the Millennium Shop \u2014 The Phantastic Bazaar, EP2 Shop.",
+        "The material list in the original announcement was cut off, so there may be further requirements."
+      ],
+      required: [
+        "Millennium Photon Core x25",
+        "Darkness Photon Sphere x1",
+        "Blast Garment x1",
+        "Behemoth Armor x1",
+        "Proof of Sonic Team x1"
+      ]
+    },
+    {
+      id: "millennium-hp",
+      section: "unit",
+      category: "Unit",
+      type: "Unit",
+      name: "MILLENNIUM/HP",
+      image: "./images/common/millennium-hp-effect.png",
+      imagePosition: "center center",
+      summary: "The largest single HP unit on the server.",
+      stats: [
+        ["Type", "Unit"],
+        ["Bonus", "Max HP +275"]
+      ],
+      combat: [],
+      obtain: [
+        "Traded in the Millennium Shop \u2014 The Phantastic Bazaar, EP2 Shop."
+      ],
+      required: [
+        "Millennium Photon Core x5",
+        "Immortal/HP x2",
+        "Cataclysm Shield x1",
+        "MOLTEN RING x1",
+        "Weapon Crystal Badge x10"
+      ]
+    },
+    {
       id: "astral-claw",
       section: "force",
       category: "Force",
@@ -108,7 +304,7 @@
       summary: "A multi-shot firearm that fires dark energy rounds and uses Arrest to paralyze enemies.",
       stats: [
         ["Class", "All"],
-        ["ATP", "238–268"],
+        ["ATP", "220–250"],
         ["ATA", "52"],
         ["Special", "Arrest"],
         ["Shots", "3–3–3 bullets"]
@@ -133,7 +329,7 @@
       imagePosition: "center center",
       summary: "A custom shotgun that fires countless needles and trades HP for higher damage.",
       stats: [
-        ["ATP", "520"],
+        ["ATP", "400"],
         ["ATA", "40"],
         ["Special", "Berserk"],
         ["Targets", "Needle spread"]
@@ -183,7 +379,7 @@
       summary: "A Hunter weapon that uses melee claw attacks and unleashes a piercing energy laser.",
       stats: [
         ["Class", "Hunter"],
-        ["ATP", "600–620"],
+        ["ATP", "500–520"],
         ["ATA", "50"],
         ["Bonus", "HP +100"],
         ["Normal / Heavy", "2–2–3, Claw animation"],
@@ -265,19 +461,31 @@
       name: "DIVINE FIELD",
       image: "./images/items/gameplay/blast-garment-item.png",
       imagePosition: "center center",
-      summary: "A top-end raid armor earned from Destiny's hardest Starlight Tower encounter.",
+      summary: "The endgame armor from The Starlight Tower, with the highest defense on the server and a flat bonus to every stat.",
       stats: [
         ["Class", "All"],
-        ["Role", "Endgame defense"],
-        ["Source", "Raid boss"]
+        ["Level", "200"],
+        ["DFP", "508"],
+        ["EVP", "284"],
+        ["Resists", "46 / 46 / 46 / 55 / 55"],
+        ["Bonus", "All stats +20"]
       ],
       combat: [
-        "Recommended as a premium defensive armor for endgame builds."
+        "DIVINE BLADE: targets 1\u21925, Speed +50%, wider angle.",
+        "Heaven Striker: hits 3\u20133\u20133 while HP is low."
       ],
       obtain: [
-        "Administrator, the fourth raid boss in The Starlight Tower [Raid]."
+        "Traded with materials from The Starlight Tower [Raid] \u2014 EP2 Special.",
+        "Also added to the Millennium Shop during the Easter 2026 event."
       ],
-      required: []
+      required: [
+        "Cladding of Administrator x2",
+        "Millennium Photon Core x15",
+        "Proof of Sonic Team x2",
+        "Primal Nexus x1",
+        "Ethereal Armor x1",
+        "D-Virus Armor x1"
+      ]
     },
     {
       id: "parasitic-armor-predator",
@@ -287,11 +495,11 @@
       name: "PARASITIC ARMOR 'PREDATOR'",
       image: "./images/items/gameplay/blast-garment-item.png",
       imagePosition: "center center",
-      summary: "A raid-exclusive armor dropped by Soul Butcher in The Ravenous Predator.",
+      summary: "A raid-exclusive armor dropped by Soul Butcher. It unlocks Dark Bridge's low HP mode.",
       stats: [
         ["Class", "All"],
-        ["Role", "Endgame defense"],
-        ["Source", "Raid boss"]
+        ["Type", "Armor"],
+        ["Source", "The Ravenous Predator [Raid]"]
       ],
       combat: [
         "A high-end defensive option from the third raid tier."
@@ -747,7 +955,7 @@
       stats: [
         ["Class", "All"],
         ["Level", "80"],
-        ["DFP", "235"]
+        ["DFP", "235–285"]
       ],
       combat: [
         "A strong leveling armor that bridges characters into high-level gear."
@@ -952,7 +1160,9 @@
         ["Resists", "32 / 32 / 32 / 32 / 32"],
         ["Bonus", "All stats +20"]
       ],
-      combat: [],
+      combat: [
+        "Dark Bridge low HP mode: the special hits 1\u20131\u20134 with an alternate motion."
+      ],
       obtain: [
         "Lost SOUL RIPPER [Extreme], difficulty 9.",
         "D-Virus Baranz ver.2 custom drop: D-Virus Shield at 1/1204."

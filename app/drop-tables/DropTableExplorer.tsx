@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { DropRecord, DropTablePayload, ItemType, MatrixDrop } from "./types";
 import styles from "./drop-tables.module.css";
 import { LanguageSwitcher, useI18n } from "../i18n/i18n";
+import { HappyHourHeader } from "../components/HappyHourHeader";
 
 const THEME_KEY = "destiny-guide-theme";
 const DIFFICULTIES = ["Normal", "Hard", "Very Hard", "Ultimate"];
@@ -42,11 +43,17 @@ function formatRate(rate: string | null, denominator: number | null, multiplier:
 }
 
 function formatChance(denominator: number | null) {
-  if (!denominator) return "—";
+  if (!denominator) return "-";
   const chance = 100 / denominator;
   if (chance >= 1) return `${chance.toFixed(2)}%`;
   if (chance >= 0.01) return `${chance.toFixed(3)}%`;
   return `${chance.toFixed(5)}%`;
+}
+
+function formatCumulativeChance(denominator: number | null, attempts: number) {
+  if (!denominator || attempts <= 0) return "-";
+  const chance = 1 - Math.pow(1 - 1 / denominator, attempts);
+  return `${(chance * 100).toFixed(chance >= 0.1 ? 1 : chance >= 0.01 ? 2 : 3)}%`;
 }
 
 function formatDar(value: number) {
@@ -73,6 +80,8 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const [enemyQuery, setEnemyQuery] = useState("");
   const [partySize, setPartySize] = useState<PartySize>(1);
   const [dropRateMultiplier, setDropRateMultiplier] = useState<DropRateMultiplier>(2);
+  const [farmTargetsPerRun, setFarmTargetsPerRun] = useState(1);
+  const [farmRuns, setFarmRuns] = useState(20);
   const [showQuickControls, setShowQuickControls] = useState(false);
   const [mobileControlsOpen, setMobileControlsOpen] = useState(false);
   const controlsAnchorRef = useRef<HTMLDivElement>(null);
@@ -205,7 +214,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     return Array.from(groups.values()).sort((a, b) => a.item.localeCompare(b.item));
   }, [searchResults]);
 
-  const activeFilterCount = [sectionId, episode, area, itemType].filter((value) => value !== "All").length + Number(Boolean(itemQuery)) + Number(Boolean(enemyQuery)) + Number(partySize !== 1) + Number(dropRateMultiplier !== 2);
+  const activeFilterCount = [sectionId, episode, area, itemType].filter((value) => value !== "All").length + Number(Boolean(itemQuery)) + Number(Boolean(enemyQuery)) + Number(partySize !== 1) + Number(dropRateMultiplier !== 2) + Number(farmTargetsPerRun !== 1) + Number(farmRuns !== 20);
 
   const resetFilters = () => {
     setSectionId("All");
@@ -216,6 +225,8 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     setEnemyQuery("");
     setPartySize(1);
     setDropRateMultiplier(2);
+    setFarmTargetsPerRun(1);
+    setFarmRuns(20);
   };
 
   const partySelector = (compact = false) => (
@@ -243,9 +254,28 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
       <div className={`${styles.partyButtons} ${styles.dropRateButtons}`} role="group" aria-label={compact ? t("dt.rate.aria.quick", "Quick Ultimate drop rate multiplier") : t("dt.rate.aria", "Ultimate server drop rate multiplier")}>
         {DROP_RATE_MULTIPLIERS.map((value) => (
           <button key={value} type="button" className={dropRateMultiplier === value ? styles.partyActive : ""} aria-pressed={dropRateMultiplier === value} onClick={() => setDropRateMultiplier(value)}>
-            x{value}
+            {value === 3 ? t("dt.rate.hh", "x3 HH") : `x${value}`}
           </button>
         ))}
+      </div>
+    </div>
+  );
+
+  const farmPlanSelector = (compact = false) => (
+    <div className={compact ? styles.quickFarmPlan : styles.farmPlanControl}>
+      <div className={styles.partyDarLabel}>
+        <span>{t("dt.plan.title", "Farming plan")}</span>
+        <small>{t("dt.plan.note", "Cumulative chance in search results")}</small>
+      </div>
+      <div className={styles.farmPlanInputs}>
+        <label>
+          <span>{t("dt.plan.targets", "Targets/run")}</span>
+          <input type="number" min="1" step="1" value={farmTargetsPerRun} onChange={(event) => setFarmTargetsPerRun(Math.max(1, Math.round(Number(event.target.value) || 1)))} />
+        </label>
+        <label>
+          <span>{t("dt.plan.runs", "Runs")}</span>
+          <input type="number" min="1" step="1" value={farmRuns} onChange={(event) => setFarmRuns(Math.max(1, Math.round(Number(event.target.value) || 1)))} />
+        </label>
       </div>
     </div>
   );
@@ -274,6 +304,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
       </div>
       {partySelector(true)}
       {dropRateSelector(true)}
+      {farmPlanSelector(true)}
       <button className={styles.quickReset} type="button" onClick={resetFilters} disabled={activeFilterCount === 0}>Reset filters {activeFilterCount > 0 && <span>{activeFilterCount}</span>}</button>
     </>
   );
@@ -289,12 +320,20 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
             <div>
               <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
               <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
+              <a href="../class_builds.html">Class Builds</a>
+              <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
+              <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
+              <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
+              <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
               <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
               <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
+              <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
             </div>
             <div className={styles.raidMenu}>
               <a href="../dn.html">Distorted Nightmare [RAID]</a>
               <a href="../discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
+              <a href="../predator_raid.html">The Ravenous Predator [RAID]</a>
+              <a href="../tpd_page.html">The Phantasmal Dimension</a>
             </div>
           </nav>
           <div className={styles.headerActions}>
@@ -306,6 +345,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
             <a className={styles.dropTableLink} href="../drop-tables/" aria-current="page">{t("header.link.dropTables", "Drop Tables")}</a>
             <a className={styles.dropTableLink} href="../database/">{t("header.link.database", "Database")}</a>
             <LanguageSwitcher />
+            <HappyHourHeader />
           </div>
         </div>
       </header>
@@ -339,6 +379,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
             <div className={styles.rateControls}>
               {partySelector()}
               {dropRateSelector()}
+              {farmPlanSelector()}
             </div>
           </div>
 
@@ -370,14 +411,23 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
                       <div><h3>{group.item}</h3><p>{group.itemType} · {(group.records.length === 1 ? t("dt.card.location", "{n} location") : t("dt.card.locations", "{n} locations")).replace("{n}", String(group.records.length))}</p></div>
                     </div>
                     <div className={styles.resultLocations}>
-                      {group.records.map((record) => (
-                        <div key={record.id}>
-                          <span className={`${styles.sectionDot} ${styles[`section${record.sectionId}`]}`} />
-                          <strong>{record.difficulty} · {record.sectionId}</strong>
-                          <span>{record.enemy} · EP {record.episode} {record.area} · DAR {formatDar(record.dar * partyDarMultiplier)}% · x{serverDropMultiplier(record.difficulty)}</span>
-                          <b>{formatRate(record.rate, record.denominator, combinedDropMultiplier(record.difficulty)) ?? t("dt.rate.special", "Special")}<small>{formatChance(getAdjustedDenominator(record.denominator, combinedDropMultiplier(record.difficulty)))}</small></b>
-                        </div>
-                      ))}
+                      {group.records.map((record) => {
+                        const multiplier = combinedDropMultiplier(record.difficulty);
+                        const adjustedDenominator = getAdjustedDenominator(record.denominator, multiplier);
+                        const plannedAttempts = farmTargetsPerRun * farmRuns;
+                        return (
+                          <div key={record.id}>
+                            <span className={`${styles.sectionDot} ${styles[`section${record.sectionId}`]}`} />
+                            <strong>{record.difficulty} · {record.sectionId}</strong>
+                            <span>{record.enemy} · EP {record.episode} {record.area} · DAR {formatDar(record.dar * partyDarMultiplier)}% · x{serverDropMultiplier(record.difficulty)}</span>
+                            <b>
+                              {formatRate(record.rate, record.denominator, multiplier) ?? t("dt.rate.special", "Special")}
+                              <small>{formatChance(adjustedDenominator)}</small>
+                              {adjustedDenominator && <em>{t("dt.plan.chance", "{runs} runs: {chance}").replace("{runs}", farmRuns.toLocaleString()).replace("{chance}", formatCumulativeChance(adjustedDenominator, plannedAttempts))}</em>}
+                            </b>
+                          </div>
+                        );
+                      })}
                     </div>
                   </article>
                 ))}

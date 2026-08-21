@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="ui.pageTitle">DestinyGuide - Class Builds</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <link rel="stylesheet" href="./styles/class_builds.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <!-- 데이터가 먼저 실행되어야 렌더러가 window.DESTINY_BUILDS 를 찾을 수 있다 -->
+    <script src="./scripts/class_builds.js" defer></script>
+    <script src="./scripts/class_builds_ui.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<body>
+    <!-- 본문은 scripts/class_builds_ui.js 가 scripts/class_builds.js 의 데이터로 그린다.
+         자바스크립트가 꺼져 있으면 아래 안내와 원문 링크만 남는다. -->
+    <main class="cb_page" id="cb-root">
+        <noscript>
+            <p>This page needs JavaScript to render the build tables.
+               The original guide is at
+               <a href="https://playpso.net/forums/topic/745-collaborative-weapon-gear-and-class-build-end-of-2020-revision/">playpso.net forums topic 745</a>.</p>
+        </noscript>
+    </main>
+</body>
+</html>

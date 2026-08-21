@@ -1,0 +1,813 @@
+/*
+ * 가이드 페이지 공용 스타일
+ * (weapon enhancement / shops & currency / server systems / quest data / raid guides)
+ *
+ * 설계 메모
+ * ─────────────────────────────────────────────────────────────────────
+ * 1. 색은 전부 common.css 의 테마 토큰(--text, --surface ...)을 쓴다.
+ *    그래야 다크모드 전환에 따로 손댈 필요가 없다.
+ * 2. 표는 넓다. 화면이 좁아도 **본문이 옆으로 밀리지 않도록** 표마다
+ *    스크롤 컨테이너(.g_scroll)를 두고 그 안에서만 가로 스크롤한다.
+ *    344px 폴드 화면 기준으로 잡았다.
+ * 3. 게임 데이터(아이템명·수치)는 번역하지 않으므로 언어가 바뀌어도
+ *    표의 폭이 크게 흔들리지 않는다. 흔들리는 건 헤더 라벨과 설명문뿐이라
+ *    라벨에는 넉넉한 최소폭을 주지 않는다(줄바꿈을 허용한다).
+ */
+
+/* ── 페이지 골격 ───────────────────────────────────────────────── */
+
+.g_page {
+    padding: 56px 120px 96px;
+}
+
+.g_head {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 22px;
+    margin-bottom: 8px;
+}
+
+.g_head h2 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.15;
+    text-wrap: balance;
+}
+
+.g_head .g_lead {
+    margin-top: 14px;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    max-width: 78ch;
+}
+
+/* 출처 표기. 게임 데이터의 근거를 밝혀 두면 나중에 대조하기 쉽다. */
+.g_source {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.g_video_source {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 6px;
+    color: var(--accent-strong);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.g_video_source::before {
+    content: "▶";
+    font-size: 0.78em;
+}
+
+.g_video_source:hover {
+    text-decoration: underline;
+}
+
+/* ── 섹션 목차 (앵커) ─────────────────────────────────────────── */
+
+.g_toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 26px 0 10px;
+}
+
+.g_toc a {
+    display: inline-block;
+    padding: 7px 13px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 140ms ease, border-color 140ms ease;
+}
+
+.g_toc a:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+/* ── 섹션 ─────────────────────────────────────────────────────── */
+
+.g_sec {
+    padding-top: 46px;
+    /* 앵커로 이동했을 때 제목이 헤더에 가리지 않게 */
+    scroll-margin-top: 24px;
+}
+
+.g_sec > h3 {
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-wrap: balance;
+}
+
+.g_sec > h3 .g_sec_num {
+    display: inline-block;
+    min-width: 1.9em;
+    margin-right: 9px;
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface-soft);
+    font-size: 17px;
+    text-align: center;
+    vertical-align: 3px;
+}
+
+.g_sec > p,
+.g_sec > .g_note {
+    margin-top: 13px;
+    font-size: 15.5px;
+    line-height: 1.6;
+    max-width: 82ch;
+}
+
+.g_sec > p {
+    color: var(--text-muted);
+}
+
+.g_note {
+    padding: 12px 15px;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    background: var(--surface-soft);
+    color: var(--text);
+}
+
+.g_note.g_warn {
+    border-left-color: #e0603c;
+}
+
+.g_sub {
+    margin: 34px 0 0;
+    font-size: 19.5px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.g_sub + p,
+.g_sub + .g_note {
+    margin-top: 10px;
+}
+
+/* ── 표 ───────────────────────────────────────────────────────── */
+
+.g_scroll {
+    margin-top: 16px;
+    overflow-x: auto;
+    /* 스크롤이 가능하다는 걸 보이게. 넘치지 않으면 그림자가 안 생긴다. */
+    background:
+        linear-gradient(to right, var(--surface) 30%, rgba(0, 0, 0, 0)) left / 40px 100% no-repeat,
+        linear-gradient(to left, var(--surface) 30%, rgba(0, 0, 0, 0)) right / 40px 100% no-repeat,
+        radial-gradient(farthest-side at 0 50%, var(--header-shadow), transparent) left / 14px 100% no-repeat,
+        radial-gradient(farthest-side at 100% 50%, var(--header-shadow), transparent) right / 14px 100% no-repeat;
+    background-attachment: local, local, scroll, scroll;
+}
+
+.g_table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    font-size: 14.5px;
+    line-height: 1.5;
+}
+
+.g_table th,
+.g_table td {
+    padding: 9px 13px;
+    border: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+}
+
+.g_table thead th {
+    background: var(--surface-soft);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* 아이템명·수치가 들어가는 칸은 줄바꿈을 막지 않되 통짜로 붙지 않게 */
+.g_table td.g_name {
+    font-weight: 600;
+    min-width: 11em;
+}
+
+.g_table td.g_req {
+    min-width: 9em;
+    color: var(--accent-strong);
+    font-weight: 600;
+}
+
+.g_table td.g_num {
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.g_table tbody tr:nth-child(even) td {
+    background: var(--surface-soft);
+}
+
+/* 좁은 화면에서 표가 최소 폭을 유지해 세로로 뭉개지지 않게 */
+.g_table.g_wide {
+    min-width: 720px;
+}
+
+.g_table.g_mid {
+    min-width: 520px;
+}
+
+/* ── 강화 아이템 카드 ─────────────────────────────────────────── */
+
+.g_cards {
+    display: grid;
+    gap: 16px;
+    margin-top: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+}
+
+.g_card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    padding: 16px 18px 18px;
+}
+
+.g_card_h {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.g_card_h b {
+    font-size: 17.5px;
+    font-weight: 700;
+}
+
+.g_card_h .g_kind {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text-muted);
+}
+
+.g_card_src {
+    margin-top: 9px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.g_card ul {
+    margin-top: 11px;
+    display: grid;
+    gap: 8px;
+}
+
+.g_card li {
+    font-size: 14.5px;
+    line-height: 1.5;
+    padding-left: 12px;
+    position: relative;
+}
+
+.g_card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.g_card li b {
+    font-weight: 700;
+}
+
+/* ── 티어 배지 ────────────────────────────────────────────────── */
+
+.g_tier {
+    display: inline-block;
+    min-width: 2.4em;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13.5px;
+    text-align: center;
+    color: #fff;
+    background: #6b7688;
+}
+
+.g_tier.t_s  { background: #b4322f; }
+.g_tier.t_ap { background: #c25a1c; }
+.g_tier.t_a  { background: #b07d10; }
+.g_tier.t_bp { background: #2f7d4f; }
+.g_tier.t_b  { background: #2b6ba8; }
+.g_tier.t_c  { background: #5d5f79; }
+
+/* 난이도 별 표기는 게임 데이터라 색만 준다 */
+.g_star {
+    white-space: nowrap;
+    font-weight: 700;
+    color: var(--accent-strong);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── 그림 ─────────────────────────────────────────────────────── */
+
+.g_figs {
+    display: grid;
+    gap: 16px;
+    margin-top: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
+
+.g_figs.g_figs_wide {
+    grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+}
+
+.g_fig {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    overflow: hidden;
+}
+
+.g_fig img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+}
+
+.g_fig figcaption {
+    padding: 9px 12px 11px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+}
+
+.g_diagram_key {
+    margin-top: 14px;
+}
+
+.g_pattern_brief {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.g_pattern_brief p {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding: 12px 14px;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--border));
+    border-radius: 9px;
+    background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+
+.g_pattern_brief_blazing p {
+    border-color: color-mix(in srgb, #e36b42 48%, var(--border));
+    background: color-mix(in srgb, #e36b42 7%, var(--surface));
+}
+
+.g_pattern_brief strong {
+    color: var(--accent-strong);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.g_pattern_brief span {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.g_pattern_caption {
+    display: grid;
+    gap: 4px;
+}
+
+.g_pattern_caption strong {
+    color: var(--text);
+    font-size: 13.5px;
+    font-weight: 750;
+}
+
+.g_pattern_caption span {
+    color: var(--text-muted);
+}
+
+/* 스폰 웨이브처럼 세로로 긴 도해는 폭을 꽉 채우는 게 낫다 */
+.g_fig_full {
+    margin-top: 18px;
+    max-width: 100%;
+}
+
+/* ── 레이드 영상 해설 카드 ───────────────────────────────────── */
+
+.g_video_grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.g_video_card {
+    min-width: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    overflow: hidden;
+}
+
+.g_video_card .g_fig {
+    border: 0;
+    border-radius: 0;
+}
+
+.g_video_card .g_fig img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.g_video_body {
+    padding: 15px 17px 18px;
+    border-top: 1px solid var(--border);
+}
+
+.g_video_heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.g_video_title {
+    margin: 0;
+    color: var(--accent-strong);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.g_video_source_time {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 5px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.g_video_source_time::before {
+    content: "▶";
+    font-size: 0.72em;
+}
+
+.g_video_source_time:hover {
+    color: var(--accent-strong);
+    text-decoration: underline;
+}
+
+.g_video_steps {
+    display: grid;
+    gap: 10px;
+    margin-top: 13px;
+}
+
+.g_video_steps > div {
+    display: grid;
+    grid-template-columns: minmax(70px, 0.3fr) minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+}
+
+.g_video_steps dt {
+    padding-top: 1px;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.g_video_steps dd {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.g_rule_cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* ── 이미지 확대 팝업 (dn.html 과 같은 동작) ──────────────────── */
+
+.g_popup {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+}
+
+.g_popup.active {
+    display: block;
+}
+
+.g_popup_dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.78);
+}
+
+.g_popup_inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(94vw, 1180px);
+}
+
+.g_popup_inner img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #000;
+}
+
+.g_popup_close {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    color: #111;
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* ── 반응형 ───────────────────────────────────────────────────── */
+
+@media screen and (max-width: 1250px) {
+    .g_page { padding: 52px 80px 84px; }
+}
+
+@media screen and (max-width: 983px) {
+    .g_page { padding: 44px 15px 72px; }
+    .g_head h2 { font-size: 31px; }
+    .g_head .g_lead { font-size: 16px; }
+    .g_sec { padding-top: 40px; }
+    .g_sec > h3 { font-size: 23px; }
+    .g_sub { font-size: 18px; }
+}
+
+@media screen and (max-width: 700px) {
+    .g_head h2 { font-size: 26px; }
+    .g_sec > h3 { font-size: 20.5px; }
+    .g_sec > h3 .g_sec_num { font-size: 15px; }
+    .g_sub { font-size: 17px; }
+    .g_sec > p, .g_sec > .g_note { font-size: 14.5px; }
+    .g_table { font-size: 13.5px; }
+    .g_table th, .g_table td { padding: 8px 10px; }
+    .g_popup_close { top: -38px; }
+    .g_video_grid,
+    .g_rule_cards { grid-template-columns: 1fr; }
+    .g_video_body { padding: 13px 14px 16px; }
+}
+
+@media screen and (max-width: 420px) {
+    .g_page { padding: 34px 11px 60px; }
+    .g_head h2 { font-size: 22px; }
+    .g_head .g_lead { font-size: 14.5px; }
+    .g_sec > h3 { font-size: 18.5px; }
+    .g_sec > h3 .g_sec_num { min-width: 0; margin-right: 7px; padding: 1px 6px; font-size: 13.5px; }
+    .g_toc a { font-size: 12.5px; padding: 6px 11px; }
+    .g_card { padding: 13px 14px 15px; }
+    .g_card_h b { font-size: 16px; }
+    .g_card li { font-size: 13.5px; }
+    .g_table { font-size: 13px; }
+    .g_table th, .g_table td { padding: 7px 9px; }
+    .g_video_steps > div { grid-template-columns: 1fr; gap: 2px; }
+    .g_video_title { font-size: 15px; }
+    .g_video_heading { align-items: flex-start; }
+    .g_video_source { display: flex; margin: 4px 0 0; }
+    .g_pattern_brief { grid-template-columns: 1fr; }
+}
+
+/* ── 접기 (몬스터 수 상세 등) ─────────────────────────────────── */
+
+.g_details {
+    margin-top: 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    overflow: hidden;
+}
+
+.g_details > summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 9px;
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 15.5px;
+    background: var(--surface-soft);
+    list-style: none;
+}
+
+.g_details > summary::-webkit-details-marker { display: none; }
+
+.g_details > summary::before {
+    content: "\25B8";
+    font-size: 12px;
+    color: var(--text-muted);
+    transition: transform 140ms ease;
+}
+
+.g_details[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+.g_details > summary b {
+    font-weight: 700;
+}
+
+.g_details .g_dcount {
+    margin-left: auto;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.g_details > .g_note,
+.g_details > .g_scroll {
+    margin: 0;
+}
+
+.g_details > .g_note {
+    border-radius: 0;
+    border-left: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+/* 접힌 표는 컨테이너 안쪽이므로 테두리를 겹치지 않게 */
+.g_details .g_table {
+    border-top: 0;
+}
+
+.g_details .g_table th:first-child,
+.g_details .g_table td:first-child { border-left: 0; }
+
+.g_details .g_table th:last-child,
+.g_details .g_table td:last-child { border-right: 0; }
+
+/* ── 문장 목록 ────────────────────────────────────────────────── */
+
+.g_bullets {
+    display: grid;
+    gap: 9px;
+    margin-top: 14px;
+    max-width: 82ch;
+}
+
+.g_bullets li {
+    position: relative;
+    padding-left: 14px;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.g_bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.66em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+@media screen and (max-width: 420px) {
+    .g_details > summary { font-size: 14px; padding: 10px 12px; }
+    .g_bullets li { font-size: 14px; }
+}
+
+/* ── 보스 기믹 타임라인 ───────────────────────────────────────── */
+
+.g_timeline {
+    display: grid;
+    gap: 6px;
+    margin-top: 16px;
+    counter-reset: none;
+}
+
+.g_timeline li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.g_timeline .g_tl_n {
+    flex: 0 0 auto;
+    min-width: 2.1em;
+    padding: 1px 6px;
+    border-radius: 5px;
+    background: var(--surface-soft);
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-weight: 700;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 항목이 많아 화면이 넓으면 두세 줄로 나눠 담는다 */
+@media screen and (min-width: 760px) {
+    .g_timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media screen and (min-width: 1280px) {
+    .g_timeline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media screen and (max-width: 420px) {
+    .g_timeline li { font-size: 13.5px; padding: 6px 9px; gap: 7px; }
+}
+
+/* ── 기존 레이드 페이지에 덧붙인 섹션 ─────────────────────────────
+   discontrolled_tower_raid.html 은 섹션 제목을 `.pc_h2` / `.mobile_h2` 두 벌로
+   두고 폭에 따라 하나만 보여 준다. (dn.html 은 `.contents_aria h2` 로 한 벌만 쓴다)
+   덧붙인 섹션은 두 벌을 만들지 않고 이 클래스 하나로 처리한다.
+   좁은 화면에서는 그 페이지의 `@media (max-width: 983px) .contents_aria h2`
+   (0,1,1) 가 이 규칙(0,1,0)을 이기므로 기존 반응형 크기를 그대로 따른다. */
+
+.g_added_h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* 기존 .pc_h2 와 같은 값으로 맞춘다 (40px 0 15px) */
+    padding: 40px 0 15px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+/* 표 바로 다음에 오는 설명문이 표에 붙어 보였다. 표와 문단 사이를 띄운다.
+   문단의 margin-bottom 은 인라인 스타일로 이미 있으므로 위쪽만 준다. */
+.contents_aria .g_scroll + p,
+.contents_aria .g_scroll + .g_figs {
+    margin-top: 15px;
+}
+
+/* 문단 다음에 표가 오는 경우도 같이 띄운다 (dn.html 의 부위별 표 등) */
+.contents_aria p + .g_scroll {
+    margin-top: 18px;
+}
+
+/* 덧붙인 섹션 안의 그림은 아래 여백을 조금 준다 */
+.contents_aria .g_figs {
+    margin-bottom: 6px;
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title data-i18n="lab.t001">DestinyGuide - Farming Tools</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/player_tools.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/player_tools.js" defer></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+</head>
+
+<div id="site-header" style="width: 100%;"></div>
+<script src="./scripts/include.js"></script>
+
+<body>
+    <main class="lab_page">
+        <section class="lab_hero" aria-labelledby="lab-title">
+            <div>
+                <p class="lab_eyebrow" data-i18n="lab.t002">PSOBB FARMING TOOLS</p>
+                <h1 id="lab-title" data-i18n="lab.t003">Find the count. Plan the hour.</h1>
+                <p data-i18n="lab.t004">Search quest monster counts and estimate scheduled Happy Hour windows.</p>
+            </div>
+            <nav class="lab_jump" aria-label="Farming tools" data-i18n-aria-label="lab.t005">
+                <a href="#monster-counter"><span>01</span><strong data-i18n="lab.t006">Monster count search</strong></a>
+                <a href="#happy-schedule"><span>02</span><strong data-i18n="lab.t007">Happy Hour schedule</strong></a>
+                <a href="./drop-tables/"><span>↗</span><strong data-i18n="lab.t008">Drop rate planner</strong></a>
+            </nav>
+        </section>
+
+        <section class="lab_tool lab_monsters" id="monster-counter" aria-labelledby="monster-title">
+            <header class="lab_section_header">
+                <div>
+                    <h2 id="monster-title" data-i18n="lab.t009">How many monsters are in each quest?</h2>
+                    <p data-i18n="lab.t010">Enter a monster name to see the count per run, sorted from highest to lowest.</p>
+                </div>
+                <a href="./quest_data_page.html#monsters" data-i18n="lab.t011">Open all quest counts</a>
+            </header>
+
+            <div class="lab_monster_controls">
+                <div class="lab_field lab_enemy_search">
+                    <label for="quest-enemy" data-i18n="lab.t012">Monster name</label>
+                    <input id="quest-enemy" type="search" list="enemy-options" placeholder="e.g. Epsilon, Del Lily" data-i18n-placeholder="lab.t013" autocomplete="off">
+                    <datalist id="enemy-options"></datalist>
+                </div>
+                <div class="lab_field">
+                    <label for="quest-episode" data-i18n="lab.t014">Episode</label>
+                    <select id="quest-episode">
+                        <option value="all" data-i18n="lab.t015">All episodes</option>
+                        <option value="1">Episode 1</option>
+                        <option value="2">Episode 2</option>
+                        <option value="4">Episode 4</option>
+                    </select>
+                </div>
+                <label class="lab_check" for="quest-events">
+                    <input id="quest-events" type="checkbox">
+                    <span data-i18n="lab.t016">Include event-only quests</span>
+                </label>
+                <button type="button" id="quest-reset" data-i18n="lab.t017">Clear search</button>
+            </div>
+
+            <div class="lab_quick_enemies" aria-label="Quick monster searches" data-i18n-aria-label="lab.t018">
+                <span data-i18n="lab.t019">Quick search</span>
+                <div id="enemy-suggestions"></div>
+            </div>
+
+            <div class="lab_result_header lab_monster_summary">
+                <p id="quest-result-summary" data-i18n="lab.t020">Loading quest count data...</p>
+                <strong id="quest-result-total" hidden></strong>
+            </div>
+            <div class="lab_quest_results" id="quest-results" aria-live="polite" aria-busy="true">
+                <div class="lab_skeleton"></div><div class="lab_skeleton"></div>
+            </div>
+        </section>
+
+        <section class="lab_tool lab_schedule" id="happy-schedule" aria-labelledby="schedule-title">
+            <header class="lab_section_header">
+                <div>
+                    <h2 id="schedule-title" data-i18n="lab.t021">Next Happy Hour schedule</h2>
+                    <p data-i18n="lab.t022">An administrator syncs the Destiny Discord announcement, and everyone sees the same schedule.</p>
+                </div>
+                <a href="https://playpso.net/forums/topic/767-destiny-v0618-the-eternal-age/?tab=comments#comment-5393" target="_blank" rel="noreferrer" data-i18n="lab.t023">View official rule</a>
+            </header>
+
+            <div class="lab_schedule_grid">
+                <section class="lab_sync_panel" aria-labelledby="hh-sync-title">
+                    <h3 id="hh-sync-title" data-i18n="lab.t024">Discord announcement sync</h3>
+                    <p data-i18n="lab.t025">Only administrators can update the source data. This page is read-only for visitors.</p>
+                    <dl class="lab_sync_facts">
+                        <div>
+                            <dt data-i18n="lab.t026">Announcement time</dt>
+                            <dd id="hh-observed-at">—</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n="lab.t027">Remaining in announcement</dt>
+                            <dd id="hh-announced-remaining">—</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n="lab.t028">Data source</dt>
+                            <dd id="hh-source">—</dd>
+                        </div>
+                    </dl>
+                    <p class="lab_data_status" id="hh-data-status" role="status" data-i18n="lab.t029">Loading synchronized data...</p>
+                    <small data-i18n="lab.t030">Scheduled starts repeat every 15 hours 30 minutes. A window lasts 3 hours.</small>
+                </section>
+
+                <div class="lab_countdown_panel" aria-live="polite">
+                    <span id="hh-status-label" data-i18n="lab.t031">Loading schedule data</span>
+                    <strong id="hh-countdown">--:--:--</strong>
+                    <p id="hh-next-label" data-i18n="lab.t032">Waiting for the administrator sync.</p>
+                    <label class="lab_timezone_picker" for="hh-timezone-select">
+                        <span data-i18n="lab.t067">Display time zone</span>
+                        <select id="hh-timezone-select">
+                            <option value="local" data-i18n="lab.t068">Automatic — browser location</option>
+                            <option value="Asia/Seoul" data-i18n="lab.t069">South Korea — Seoul</option>
+                            <option value="Asia/Tokyo" data-i18n="lab.t070">Japan — Tokyo</option>
+                            <option value="Europe/Madrid" data-i18n="lab.t071">Spain — Madrid</option>
+                            <option value="Europe/Paris" data-i18n="lab.t072">France — Paris</option>
+                            <option value="Europe/London" data-i18n="lab.t073">United Kingdom — London</option>
+                            <option value="America/New_York" data-i18n="lab.t074">United States — New York</option>
+                            <option value="America/Los_Angeles" data-i18n="lab.t075">United States — Los Angeles</option>
+                            <option value="America/Mexico_City" data-i18n="lab.t076">Mexico — Mexico City</option>
+                            <option value="America/Sao_Paulo" data-i18n="lab.t077">Brazil — São Paulo</option>
+                            <option value="America/Argentina/Buenos_Aires" data-i18n="lab.t078">Argentina — Buenos Aires</option>
+                            <option value="Australia/Sydney" data-i18n="lab.t079">Australia — Sydney</option>
+                            <option value="Asia/Singapore" data-i18n="lab.t080">Singapore — Singapore</option>
+                        </select>
+                    </label>
+                    <small id="hh-timezone"></small>
+                    <small data-i18n="lab.t081">Dates and times use the selected city. The countdown is the same worldwide.</small>
+                </div>
+            </div>
+
+            <div class="lab_schedule_header">
+                <h3 data-i18n="lab.t033">Upcoming scheduled windows</h3>
+                <p data-i18n="lab.t034">Maintenance can shift the reference time. Special random Happy Hours are not included.</p>
+            </div>
+            <div class="lab_schedule_list" id="hh-schedule-list">
+                <div class="lab_empty"><h3 data-i18n="lab.t035">Waiting for schedule data</h3><p data-i18n="lab.t036">An administrator must publish the latest Discord announcement.</p></div>
+            </div>
+        </section>
+
+        <section class="lab_existing">
+            <div>
+                <h2 data-i18n="lab.t037">Planning an item drop?</h2>
+                <p data-i18n="lab.t038">The Drop Tables now apply party DAR, x3 Happy Hour, targets per run, and planned runs together.</p>
+            </div>
+            <a href="./drop-tables/" data-i18n="lab.t039">Open Drop Tables</a>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="qst.t035">DestinyGuide - Quest Data</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<body>
+    <main class="g_page">
+        <div class="g_head">
+            <h2><span data-i18n="qst.t036">Quest Data</span></h2>
+            <p class="g_lead" data-i18n="qst.t037">Which quests match your gear, and how many monsters each one holds. Use the difficulty list to pick a target, and the monster counts to judge how long a run will take.</p>
+            <p class="g_source"><span data-i18n="qst.t034">Source: the Discord difficulty list maintained by the development team, and the monster counts posted in each quest channel. Quest and enemy names are kept in English.</span></p>
+        </div>
+        <section class="g_sec" id="difficulty">
+            <h3><span class="g_sec_num">1</span><span data-i18n="qst.t001">Difficulty list</span></h3>
+            <p data-i18n="qst.t002">Stars run from 1 to 10. Anything from ★8 upward expects a full team and finished gear.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="qst.t003">Rating</th>
+                        <th data-i18n="qst.t004">Quests</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_star">★10</td>
+                            <td>The Starlight Tower [Raid] [EP2] · The Ravenous Predator [Raid] [EP1] · The Phantasmal Dimension [EP2]</td>
+                        </tr>
+                        <tr>
+                            <td class="g_star">★9</td>
+                            <td>Toward the Multiverse [Lv.III] [EP1] · Hallowed World [Master] [EP2] · The Manipulated Tower [Raid] [EP2] · Phantasmal World #3 [Extreme] [EP2] · Lost Soul Ripper [Extreme] [EP1]</td>
+                        </tr>
+                        <tr>
+                            <td class="g_star">★8</td>
+                            <td>VR Test OMEGA: Oblivion · The Discontrolled Tower [Raid] [EP2] · Distorted Nightmare [Raid] [EP1] · Beyond the Nightmare [EP1] · Hallowed World [Extreme] [EP2] [Halloween] · VR Test Final: Catastrophe [EP2] · Lost Soul Ripper [EP1] [Easter]</td>
+                        </tr>
+                        <tr>
+                            <td class="g_star">★7</td>
+                            <td>Silent Nightmare [Raid] [EP1] · Beyond the Mainframe [EP1] [Extreme] · Phantasmal World #3 [EP2] [Summer] · Walking through flame [EP2] [Halloween] · Gal Da Val's Darkness [EP2] [Easter] · Radiant Destiny! [EP2] [Anniversary] · Love Research [EP2] [Valentine]</td>
+                        </tr>
+                        <tr>
+                            <td class="g_star">★6</td>
+                            <td>Mines Offensive [EP1] [Easter] · Harmony of Despair II [Halloween] · The Eternal Age [EP2] [Summer] · Birth of Forest [EP1] [April Fool] · VR Test Destiny: Meteor Impact [EP2] · Maximum Attack S [EP2] · Summer Vacation Tragedy [EP4] [Summer] · Path to Salvation [EP1] [Halloween] · Towards the Multiverse [Lv.II] [EP1] · VR Test EXTRA: Singularity [EP2] · VR Test Destiny: Sandstorm [EP1] · Beyond the Veil [EP1]</td>
+                        </tr>
+                        <tr>
+                            <td class="g_star">★5</td>
+                            <td>Walking through flame [EP2] · Raid on Central Tower [EP2] · Maximum Attack S [EP4] · Harmony of Despair II [EP1] · VR Test Destiny: Underground [EP2] (secret route ★6) · Christmas Fiasco [EP2] · Harmony of Despair I [EP1] · World of Illusion [EP2] · Simulator 2.0 [EP1]</td>
+                        </tr>
+                        <tr>
+                            <td class="g_star">★4</td>
+                            <td>Neo Maximum Attack: Episode VI [EP4] · VR Test Destiny: Seabed [EP2] · Maximum Attack S [EP1] · Path to Salvation [EP1] · Defend the main room! [EP2] · The Eternal Age [EP2] · Maximum Attack 4th Stage -C- [EP2] · Mines Offensive [EP1] · Random Attack Xrd Stage [EP2] · Lost HAVOC VULCAN [EP1] · Christmas Fiasco [EP4]</td>
+                        </tr>
+                        <tr>
+                            <td class="g_star">★3</td>
+                            <td>Tragedy in Chaos [EP1] · Towards the Multiverse [Lv.I] [EP1] · Cavern of Glooms [EP1] · New MSB [EP2] · Random Attack Xrd Stage [EP1] · Gal Da Val's Darkness [EP2] · Phantasmal World #3 #4 [EP2] · Maximum Attack 4th Stage -A,B,C- [EP1] · Maximum Attack 4th Stage -A,B- [EP2] · Maximum Attack 4th Stage -A,B,C- [EP4] · Respective Tomorrow [EP2] · Beyond the Mainframe [EP1] · New Mop-Up Operation #3 #4 #5 [EP4] · War of Limit #4 #5 [EP4] · Blink of Oblivion [EP4] · Christmas Fiasco [EP1] · Christmas Catastrophe [EP1] [Xmas] · Forest Offensive [EP1]</td>
+                        </tr>
+                        <tr>
+                            <td class="g_star">★2</td>
+                            <td>Revisiting Darkness [EP2] · Science Project [EP1] · Shattered Dreams [EP1] · Towards the Future [EP1] · Lost SOUL BLADE [EP1] · Lost HELL PALLASCH [EP1] · Point of Disaster [EP4] · War of Limit #3 [EP4] · War of Limit #1 #2 [EP4] · New Mop-Up Operation #1 #2 [EP4] · Phantasmal World #1 #2 [EP2] · Endless Nightmare #3 #4 [EP1] · Mop-Up Operation #3 #4 [EP1]</td>
+                        </tr>
+                        <tr>
+                            <td class="g_star">★1</td>
+                            <td>Wrath of Forest [EP1] · Strange Sighting [EP1] · Lost HEAT SWORD [EP1] · Lost ICE SPINNER [EP1] · Endless Nightmare #1 #2 [EP1] · Mop-Up Operation #1 #2 [EP1]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="qst.t005">Tags in brackets show the folder the quest lives in, for example [EP2] or [Halloween]. Event quests only appear while that event is running.</p>
+        </section>
+        <section class="g_sec" id="monsters">
+            <h3><span class="g_sec_num">2</span><span data-i18n="qst.t006">Monster counts</span></h3>
+            <p data-i18n="qst.t007">Counts come from the quest channels. Totals let you compare how dense a run is, which matters for experience and for material farming.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="qst.t008">Quest</th>
+                        <th data-i18n="qst.t003">Rating</th>
+                        <th data-i18n="qst.t009">Total monsters</th>
+                        <th data-i18n="qst.t010">Most numerous</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Neo Maximum Attack: Episode IV</td>
+                            <td class="g_star">★4</td>
+                            <td class="g_num">548</td>
+                            <td>Merissa A, Goran, Goran Detonator</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Lost Soul Ripper [Extreme]</td>
+                            <td class="g_star">★9</td>
+                            <td class="g_num">534</td>
+                            <td>Gilchic, Oppressor VII, Canadine</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Phantasmal World #3 [Extreme]</td>
+                            <td class="g_star">★9</td>
+                            <td class="g_num">485</td>
+                            <td>Dolmolm, Dolmdarl, Recobox</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Test Destiny: Meteor Impact</td>
+                            <td class="g_star">★6</td>
+                            <td class="g_num">477</td>
+                            <td>Del Lily, Epsilon, Delbiter</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">The Discontrolled Tower [Raid]</td>
+                            <td class="g_star">★8</td>
+                            <td class="g_num">424</td>
+                            <td>Ill Gill, Dubchic, Gilchic</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Hallowed World [Master]</td>
+                            <td class="g_star">★9</td>
+                            <td class="g_num">415</td>
+                            <td>Del Lily, Hallowed Reaper, Delbiter</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Test Destiny: Sandstorm</td>
+                            <td class="g_star">★6</td>
+                            <td class="g_num">407</td>
+                            <td>Sinow Beat, Guil Shark, Hildebear</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Test OMEGA: Oblivion</td>
+                            <td class="g_star">★8</td>
+                            <td class="g_num">385</td>
+                            <td>Ill Gill, Del Lily, Tormentark</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Test Destiny: Underground</td>
+                            <td class="g_star">★5</td>
+                            <td class="g_num">361</td>
+                            <td>Gee, Sinow Berill, Merillia</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Beyond the Mainframe</td>
+                            <td class="g_star">★3</td>
+                            <td class="g_num">341</td>
+                            <td>Gilchic, Dubchic, Sinow Beat</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Test EXTRA: Singularity</td>
+                            <td class="g_star">★6</td>
+                            <td class="g_num">311</td>
+                            <td>Chaos Sorcerer, Sinow Zoa, Dark Belra</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Test Destiny: Seabed</td>
+                            <td class="g_star">★4</td>
+                            <td class="g_num">292</td>
+                            <td>Dolmolm, Sinow Zoa, Morfos</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Test FINAL: Catastrophe</td>
+                            <td class="g_star">★8</td>
+                            <td class="g_num">232</td>
+                            <td>Del Lily, Lavaross, Ill Gill</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="g_sub" data-i18n="qst.t011">Full breakdown</h4>
+            <p data-i18n="qst.t012">Open a quest to see every enemy and how many of them spawn.</p>
+            <details class="g_details">
+                <summary><b>Hallowed World [Master]</b> <span class="g_star">★9</span> <span class="g_dcount">415</span></summary>
+                <p class="g_note" data-i18n="qst.t013">Excludes the boss.</p>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Del Lily</td>
+                            <td class="g_num">73</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Hallowed Reaper</td>
+                            <td class="g_num">73</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delbiter</td>
+                            <td class="g_num">43</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Recobox</td>
+                            <td class="g_num">41</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Forbidden Saber</td>
+                            <td class="g_num">36</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Queen of Gal Da Val</td>
+                            <td class="g_num">36</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Epsilon</td>
+                            <td class="g_num">30</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericarol</td>
+                            <td class="g_num">30</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merikle</td>
+                            <td class="g_num">29</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericus</td>
+                            <td class="g_num">24</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>Phantasmal World #3 [Extreme]</b> <span class="g_star">★9</span> <span class="g_dcount">485</span></summary>
+                <p class="g_note" data-i18n="qst.t016">Totals across both maps.</p>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Dolmolm</td>
+                            <td class="g_num">107</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dolmdarl</td>
+                            <td class="g_num">61</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Recobox</td>
+                            <td class="g_num">56</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">D-Virus Morfos</td>
+                            <td class="g_num">54</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dr. Robotonik</td>
+                            <td class="g_num">44</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Azure</td>
+                            <td class="g_num">38</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Yowie</td>
+                            <td class="g_num">31</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Gore</td>
+                            <td class="g_num">30</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dark Nebulas</td>
+                            <td class="g_num">29</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gibbles</td>
+                            <td class="g_num">15</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Girtablulu</td>
+                            <td class="g_num">12</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ill Gill</td>
+                            <td class="g_num">8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>Lost Soul Ripper [Extreme]</b> <span class="g_star">★9</span> <span class="g_dcount">534</span></summary>
+                <p class="g_note" data-i18n="qst.t017">Some enemies spawn in two waves; both are counted.</p>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Gilchic</td>
+                            <td class="g_num">87</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Oppressor VII</td>
+                            <td class="g_num">82</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Canadine</td>
+                            <td class="g_num">80</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">D-Virus Baranz ver.2</td>
+                            <td class="g_num">52</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Praetorian IV</td>
+                            <td class="g_num">49</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubchic</td>
+                            <td class="g_num">36</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericus</td>
+                            <td class="g_num">22</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Girtablulu</td>
+                            <td class="g_num">21</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Chaos Bringer</td>
+                            <td class="g_num">20</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ba Boota</td>
+                            <td class="g_num">17</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Canane</td>
+                            <td class="g_num">14</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gibbles</td>
+                            <td class="g_num">11</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Pyro Goran</td>
+                            <td class="g_num">11</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Morfos</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gi Gue</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dark Belra</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubswitch</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">The Prophet</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>VR Test OMEGA: Oblivion</b> <span class="g_star">★8</span> <span class="g_dcount">385</span></summary>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Ill Gill</td>
+                            <td class="g_num">36</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Del Lily</td>
+                            <td class="g_num">36</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Tormentark</td>
+                            <td class="g_num">32</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Epsilon</td>
+                            <td class="g_num">31</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dorphon Divine</td>
+                            <td class="g_num">27</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dolmolm</td>
+                            <td class="g_num">24</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delbiter</td>
+                            <td class="g_num">22</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merikle</td>
+                            <td class="g_num">21</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Yowie</td>
+                            <td class="g_num">20</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Girtablulu</td>
+                            <td class="g_num">19</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Recobox</td>
+                            <td class="g_num">16</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericarol</td>
+                            <td class="g_num">15</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gi Gue</td>
+                            <td class="g_num">12</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Giga Gue ver.B</td>
+                            <td class="g_num">12</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dolmdarl</td>
+                            <td class="g_num">11</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubchic</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Goran Detonator</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gibbles</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericus</td>
+                            <td class="g_num">9</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Morfos</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gilchic</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubswitch</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>The Discontrolled Tower [Raid]</b> <span class="g_star">★8</span> <span class="g_dcount">424</span></summary>
+                <p class="g_note" data-i18n="qst.t018">Excludes the secret area.</p>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Ill Gill</td>
+                            <td class="g_num">27</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubchic</td>
+                            <td class="g_num">27</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gilchic</td>
+                            <td class="g_num">23</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Del Lily</td>
+                            <td class="g_num">22</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Astark</td>
+                            <td class="g_num">20</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Garanz</td>
+                            <td class="g_num">19</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ba Boota</td>
+                            <td class="g_num">19</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Morfos</td>
+                            <td class="g_num">17</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericus</td>
+                            <td class="g_num">16</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delbiter</td>
+                            <td class="g_num">16</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delsaber</td>
+                            <td class="g_num">15</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dark Belra</td>
+                            <td class="g_num">14</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merikle</td>
+                            <td class="g_num">14</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Berill</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericarol</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gibbles</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dolmolm</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gi Gue</td>
+                            <td class="g_num">12</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dorphon Eclair</td>
+                            <td class="g_num">11</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merillia</td>
+                            <td class="g_num">9</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ul Gibbon</td>
+                            <td class="g_num">9</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Girtablulu</td>
+                            <td class="g_num">8</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Spigell</td>
+                            <td class="g_num">8</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Zol Gibbon</td>
+                            <td class="g_num">7</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Zele</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Deldepth</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Grass Assassin</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Goran Detonator</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Meriltas</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dimenian</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dolmdarl</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Zoa</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Pazuzu</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Pyro Goran</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">So Dimenian</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubswitch</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">La Dimenian</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Manipulator III</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>VR Test FINAL: Catastrophe</b> <span class="g_star">★8</span> <span class="g_dcount">232</span></summary>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Del Lily</td>
+                            <td class="g_num">24</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Lavaross</td>
+                            <td class="g_num">19</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ill Gill</td>
+                            <td class="g_num">17</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Epsilon</td>
+                            <td class="g_num">17</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Liquid Monkey</td>
+                            <td class="g_num">15</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delbiter</td>
+                            <td class="g_num">15</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Morfos</td>
+                            <td class="g_num">14</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Vol Gibbon</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merikle</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericarol</td>
+                            <td class="g_num">12</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Girtablulu</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Recobox</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Astark</td>
+                            <td class="g_num">9</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Meriltas</td>
+                            <td class="g_num">9</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gee</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Spigell</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Berill</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericus</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Pazuzu</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merillia</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delsaber</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Deldepth</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Deos Behemoth</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Eclipse Dragon</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>VR Test Destiny: Sandstorm</b> <span class="g_star">★6</span> <span class="g_dcount">407</span></summary>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Sinow Beat</td>
+                            <td class="g_num">41</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Guil Shark</td>
+                            <td class="g_num">39</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Hildebear</td>
+                            <td class="g_num">37</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ba Boota</td>
+                            <td class="g_num">37</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Chaos Bringer</td>
+                            <td class="g_num">36</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Goran Detonator</td>
+                            <td class="g_num">32</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Evil Shark</td>
+                            <td class="g_num">27</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Pal Shark</td>
+                            <td class="g_num">27</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delsaber</td>
+                            <td class="g_num">25</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Grass Assassin</td>
+                            <td class="g_num">23</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dark Belra</td>
+                            <td class="g_num">17</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericarol</td>
+                            <td class="g_num">16</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Pazuzu</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">So Dimenian</td>
+                            <td class="g_num">11</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merikle</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Meri Noir</td>
+                            <td class="g_num">9</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericus</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Hildeblue</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>VR Test Destiny: Meteor Impact</b> <span class="g_star">★6</span> <span class="g_dcount">477</span></summary>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Del Lily</td>
+                            <td class="g_num">86</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Epsilon</td>
+                            <td class="g_num">48</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delbiter</td>
+                            <td class="g_num">44</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Recobox</td>
+                            <td class="g_num">33</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merikle</td>
+                            <td class="g_num">32</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Morfos</td>
+                            <td class="g_num">25</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericarol</td>
+                            <td class="g_num">23</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gi Gue</td>
+                            <td class="g_num">23</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gibbles</td>
+                            <td class="g_num">22</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericus</td>
+                            <td class="g_num">20</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Garanz</td>
+                            <td class="g_num">16</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Astark</td>
+                            <td class="g_num">14</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Goran Detonator</td>
+                            <td class="g_num">12</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dorphon Eclair</td>
+                            <td class="g_num">11</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delsaber</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dark Belra</td>
+                            <td class="g_num">8</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dolmdarl</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Deldepth</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ill Gill</td>
+                            <td class="g_num">41</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>VR Test EXTRA: Singularity</b> <span class="g_star">★6</span> <span class="g_dcount">311</span></summary>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Chaos Sorcerer</td>
+                            <td class="g_num">24</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Zoa</td>
+                            <td class="g_num">23</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dark Belra</td>
+                            <td class="g_num">26</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Garanz</td>
+                            <td class="g_num">18</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Morfos</td>
+                            <td class="g_num">17</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Zol Gibbon</td>
+                            <td class="g_num">16</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delsaber</td>
+                            <td class="g_num">15</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gibbles</td>
+                            <td class="g_num">14</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Deldepth</td>
+                            <td class="g_num">14</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">So Dimenian</td>
+                            <td class="g_num">12</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Zele</td>
+                            <td class="g_num">12</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericus</td>
+                            <td class="g_num">11</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Berill</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericarol</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merikle</td>
+                            <td class="g_num">9</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delbiter</td>
+                            <td class="g_num">9</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dolmolm</td>
+                            <td class="g_num">8</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dolmdarl</td>
+                            <td class="g_num">7</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Grass Assassin</td>
+                            <td class="g_num">7</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Spigell</td>
+                            <td class="g_num">7</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ul Gibbon</td>
+                            <td class="g_num">7</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gee</td>
+                            <td class="g_num">7</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Poison Lily</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">La Dimenian</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dimenian</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gi Gue</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Meriltas</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merillia</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ill Gill</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Bar Dalus</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>VR Test Destiny: Underground</b> <span class="g_star">★5</span> <span class="g_dcount">361</span></summary>
+                <p class="g_note" data-i18n="qst.t019">The secret route is rated ★6.</p>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Gee</td>
+                            <td class="g_num">35</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Berill</td>
+                            <td class="g_num">28</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merillia</td>
+                            <td class="g_num">27</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Spigell</td>
+                            <td class="g_num">24</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Zol Gibbon</td>
+                            <td class="g_num">25</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ul Gibbon</td>
+                            <td class="g_num">22</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gibbles</td>
+                            <td class="g_num">22</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Merikle</td>
+                            <td class="g_num">22</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericarol</td>
+                            <td class="g_num">21</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Del Lily</td>
+                            <td class="g_num">19</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gi Gue</td>
+                            <td class="g_num">17</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Epsilon</td>
+                            <td class="g_num">17</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ill Gill</td>
+                            <td class="g_num">16</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mericus</td>
+                            <td class="g_num">15</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Meriltas</td>
+                            <td class="g_num">14</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delbiter</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Recobox</td>
+                            <td class="g_num">11</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Morfos</td>
+                            <td class="g_num">7</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Zele</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Zoa</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Deldepth</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>VR Test Destiny: Seabed</b> <span class="g_star">★4</span> <span class="g_dcount">292</span></summary>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Dolmolm</td>
+                            <td class="g_num">57</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Zoa</td>
+                            <td class="g_num">32</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Morfos</td>
+                            <td class="g_num">28</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Recobox</td>
+                            <td class="g_num">27</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dolmdarl</td>
+                            <td class="g_num">25</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Zele</td>
+                            <td class="g_num">25</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Deldepth</td>
+                            <td class="g_num">22</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delbiter</td>
+                            <td class="g_num">22</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ill Gill</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gibbles</td>
+                            <td class="g_num">8</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delsaber</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gi Gue</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Garanz</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gilchic</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dark Belra</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubchic</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">So Dimenian</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Grass Assassin</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">La Dimenian</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubswitch</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Olga Flow</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>Neo Maximum Attack: Episode IV</b> <span class="g_star">★4</span> <span class="g_dcount">548</span></summary>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Merissa A</td>
+                            <td class="g_num">64</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Goran</td>
+                            <td class="g_num">61</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Goran Detonator</td>
+                            <td class="g_num">61</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dorphon</td>
+                            <td class="g_num">56</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Astark</td>
+                            <td class="g_num">49</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ba Boota</td>
+                            <td class="g_num">39</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ze Boota</td>
+                            <td class="g_num">38</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Satellite Lizard</td>
+                            <td class="g_num">36</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Boota</td>
+                            <td class="g_num">34</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Pyro Goran</td>
+                            <td class="g_num">31</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Girtablulu</td>
+                            <td class="g_num">27</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Zu</td>
+                            <td class="g_num">27</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Yowie</td>
+                            <td class="g_num">23</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sand Rappy</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <details class="g_details">
+                <summary><b>Beyond the Mainframe</b> <span class="g_star">★3</span> <span class="g_dcount">341</span></summary>
+                <p class="g_note" data-i18n="qst.t020">A 50 wave defence in the Mines.</p>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="qst.t014">Enemy</th>
+                        <th data-i18n="qst.t015">Count</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Gilchic</td>
+                            <td class="g_num">73</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubchic</td>
+                            <td class="g_num">47</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Beat</td>
+                            <td class="g_num">47</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Garanz</td>
+                            <td class="g_num">37</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sinow Gold</td>
+                            <td class="g_num">32</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Canane</td>
+                            <td class="g_num">18</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Canadine</td>
+                            <td class="g_num">15</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Chaos Bringer</td>
+                            <td class="g_num">13</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dark Belra</td>
+                            <td class="g_num">10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">La Dimenian</td>
+                            <td class="g_num">8</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Claw</td>
+                            <td class="g_num">8</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delsaber</td>
+                            <td class="g_num">7</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">So Dimenian</td>
+                            <td class="g_num">7</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dimenian</td>
+                            <td class="g_num">6</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dubswitch</td>
+                            <td class="g_num">5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Guil Shark</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Grass Assassin</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Vol Opt</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </details>
+            <p class="g_note g_warn" data-i18n="qst.t021">A few quests list an enemy without a number in the original post. Those entries are left out rather than guessed, so a total can be slightly lower than the real count.</p>
+        </section>
+        <section class="g_sec" id="route">
+            <h3><span class="g_sec_num">3</span><span data-i18n="qst.t022">Where to start</span></h3>
+            <p data-i18n="qst.t023">High end content is built for players who already have the gear. The development team's own advice is to work up through the easier content first.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="qst.t024">Goal</th>
+                        <th data-i18n="qst.t025">Where to go</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td data-i18n="qst.t026">Photon Drop and Photon Sphere</td>
+                            <td>Respective Tomorrow [EP2] · 8-3</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="qst.t027">Photon Token</td>
+                            <td>Walking through Flames (solo) · Harmony of Despair II (multi)</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="qst.t028">Weapon Crystal Badge</td>
+                            <td>Harmony of Despair I [EP1] · VR Test Destiny: Underground [EP2] · VR Test FINAL: Catastrophe [EP2]</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="qst.t029">First taste of raid mechanics</td>
+                            <td>Silent Nightmare [Raid] [EP1] ★7</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="qst.t030">Materials and level</td>
+                            <td>Neo Maximum Attack: Episode IV [EP4] · VR Test Destiny: Seabed [EP2]</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="qst.t031">High Hit% weapons</td>
+                            <td data-i18n="qst.t032">Any area with an Area% level of 4. See the Server Systems page.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="qst.t033">Quoting the development team on Silent Nightmare: the harder content was designed for players who already have the equipment and the practice. If you are not there yet, build up in the lower difficulty content first. It is not a step to skip.</p>
+        </section>
+    </main>
+
+    <div class="g_popup" id="gPopup">
+        <div class="g_popup_dim"></div>
+        <div class="g_popup_inner">
+            <button class="g_popup_close" type="button" aria-label="Close">&#10005;</button>
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <script>
+    // 도해는 작게 보면 읽을 수 없다. 눌러서 크게 본다.
+    document.addEventListener("DOMContentLoaded", function () {
+        var popup = document.getElementById("gPopup");
+        if (!popup) return;
+        var img = popup.querySelector("img");
+
+        function close() {
+            popup.classList.remove("active");
+            img.src = "";
+            document.body.style.overflow = "";
+        }
+        document.querySelectorAll(".g_fig img").forEach(function (el) {
+            el.addEventListener("click", function () {
+                img.src = el.currentSrc || el.src;
+                popup.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+        });
+        popup.querySelector(".g_popup_close").addEventListener("click", close);
+        popup.querySelector(".g_popup_dim").addEventListener("click", close);
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") close();
+        });
+    });
+    </script>
+</body>
+</html>

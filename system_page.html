@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="sys.t071">DestinyGuide - Server Systems</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<body>
+    <main class="g_page">
+        <div class="g_head">
+            <h2><span data-i18n="sys.t072">Server Systems</span></h2>
+            <p class="g_lead" data-i18n="sys.t073">Destiny changes a number of things the original Blue Burst never had. This page collects those changes, and the area table that decides which percentages a weapon can roll.</p>
+            <p class="g_source"><span data-i18n="sys.t070">Source: the Discord patch note channels, and the area table posted by the development team on 19 July 2026.</span></p>
+        </div>
+        <section class="g_sec" id="features">
+            <h3><span class="g_sec_num">1</span><span data-i18n="sys.t001">What is different from the original game</span></h3>
+            <p data-i18n="sys.t002">If you are returning from another server, these are the changes you will notice first.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="sys.t003">Feature</th>
+                        <th data-i18n="sys.t004">Added in</th>
+                        <th data-i18n="sys.t005">What it does</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td data-i18n="sys.t006">Enemy HP bar</td>
+                            <td>Ver.0.7.134</td>
+                            <td data-i18n="sys.t007">Every enemy shows an HP bar. De Rol Le and Barba Ray were fixed later so the bar tracks the real body HP.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t008">Coloured enemy names</td>
+                            <td>Ver.0.8135</td>
+                            <td data-i18n="sys.t009">The name colour tells you whether Demon's and Hell will work. Details in the next section.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t010">Dual Casting</td>
+                            <td>Ver.0.8135</td>
+                            <td data-i18n="sys.t011">With Jointparts and Celestial Fusion equipped and both techniques at Lv30, Jellen and Zalure are cast at the same time.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t012">Back ten key palette</td>
+                            <td>Ver.0.729</td>
+                            <td data-i18n="sys.t013">While the back palette is held, keys 0 and 1 also switch to the back palette, giving ten extra palette slots.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t014">Item modification framework</td>
+                            <td>Ver.0.7.8</td>
+                            <td data-i18n="sys.t015">The update that made combo bonuses, custom motions and changed hit patterns possible at all.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t016">Pioneer 2 warp points</td>
+                            <td>Ver.0.8163</td>
+                            <td data-i18n="sys.t017">Warps added in multi mode for Episodes 1, 2 and 4, and the lobby 1 spawn moved next to the counter.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t018">Stack limit raised to 250</td>
+                            <td>Ver.0.715</td>
+                            <td data-i18n="sys.t019">Anything that used to cap at 99 now holds up to 250.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t020">TP material</td>
+                            <td>Ver.0.8133</td>
+                            <td data-i18n="sys.t021">Drops randomly in Seabed, Tower and Sub Desert 3 on Ultimate, at the same rate as Luck material.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t022">Cleaner Ultimate drops</td>
+                            <td>Ver.0.7282</td>
+                            <td data-i18n="sys.t023">Monofluid, Difluid, Antidote, Antiparalysis and Trap Vision no longer drop on Ultimate. Trimate, Trifluid and Moon and Star Atomizer appear more often instead.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t024">Beginner friendly parts</td>
+                            <td>Ver.0.91</td>
+                            <td data-i18n="sys.t025">On Ultimate, parts such as P-Arms and Bringer's arm drop directly as the finished weapon.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t026">Training Room</td>
+                            <td>Ver.0.7.132</td>
+                            <td data-i18n="sys.t027">Ruins 1 to 3 with Recoboxes at 3,000,000 HP, a 100 Photon Blast machine, an auto-revive mode and an NPC that gives 999,999 Meseta.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t028">Battle mode content</td>
+                            <td>Ver.0.7282</td>
+                            <td data-i18n="sys.t029">Battle 1 [Advanced] and Battle 2 [Advanced] were added, including 2 on 2 in a four player room.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t030">Death penalty removed</td>
+                            <td>Ver.0.944</td>
+                            <td data-i18n="sys.t031">Simulator 2.0 no longer sends you back to the city on death. World of Illusion is planned next.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig">
+                    <img src="./images/guide/feature-enemy-hp-bar.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="sys.t032">Enemy HP bars.</figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/feature-pioneer2-warp-1.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="sys.t033">Warp points added on Pioneer 2.</figcaption>
+                </figure>
+            </div>
+            <h4 class="g_sub" data-i18n="sys.t034">Client settings worth changing</h4>
+            <ul class="g_bullets">
+                <li data-i18n="sys.t035">Set message speed to 'fastest'. Boss skill names scroll past before the attack lands, and the faster setting gives you more time to react. Recommended for every raid.</li>
+                <li data-i18n="sys.t036">The Starlight Tower, Distorted Nightmare and The Manipulated Tower require the widescreen client (psobbw.exe). A 4:3 client cannot run them.</li>
+                <li data-i18n="sys.t037">If area-of-effect markers are hard to see, use the Effect Pack linked in the Discord guides channel.</li>
+            </ul>
+        </section>
+        <section class="g_sec" id="name-colour">
+            <h3><span class="g_sec_num">2</span><span data-i18n="sys.t038">Enemy name colours</span></h3>
+            <p data-i18n="sys.t039">Instant-kill specials do not work on everything. The name colour tells you before you waste a combo.</p>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="sys.t040">Colour</th>
+                        <th data-i18n="sys.t041">Meaning</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td data-i18n="sys.t042">Default</td>
+                            <td data-i18n="sys.t043">Demon's and Hell work normally.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t044">Purple</td>
+                            <td data-i18n="sys.t045">Immune to Demon's and Hell. Some of these enemies also have more than 32,767 HP.</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="sys.t046">Red</td>
+                            <td data-i18n="sys.t047">Immune to Demon's and Hell. On a boss it also means very high HP or a damage reduction barrier.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="sys.t048">Using Demon's on an immune enemy shows the text IMMUNE in purple, so you can confirm it in the middle of a fight.</p>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig">
+                    <img src="./images/guide/feature-name-purple.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="sys.t049">A purple name means the enemy is immune.</figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/feature-name-immune.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="sys.t050">The IMMUNE text shown when the special is blocked.</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section class="g_sec" id="area-percent">
+            <h3><span class="g_sec_num">3</span><span data-i18n="sys.t051">Area% — where high percentages come from</span></h3>
+            <p data-i18n="sys.t052">A weapon's attribute and Hit percentage are decided by the area it drops in, not by the monster. Every area carries three Area% levels, and each level caps how high a roll can go.</p>
+            <div class="g_scroll">
+                <table class="g_table">
+                    <thead><tr>
+                        <th data-i18n="sys.t053">Area% level</th>
+                        <th data-i18n="sys.t054">Range you can roll</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_num">0</td>
+                            <td>−5% ~ 60%</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">1</td>
+                            <td>−5% ~ 65%</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">2</td>
+                            <td>−5% ~ 75%</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">3</td>
+                            <td>−5% ~ 85%</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">4</td>
+                            <td>−5% ~ 100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="sys.t055">So a 100% Hit weapon can only come from an area that has a level 4 among its three values. Ruins 3, Seabed Lower - Tower, Sub Desert 3, Saint Million and the EP4 boss map are all 4/4/4.</p>
+            <h4 class="g_sub" data-i18n="sys.t056">Episode 1</h4>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="sys.t057">Area</th>
+                        <th>None</th>
+                        <th>Native</th>
+                        <th>A.Beast</th>
+                        <th>Machine</th>
+                        <th>Dark</th>
+                        <th>Hit</th>
+                        <th data-i18n="sys.t058">Area% 1</th>
+                        <th data-i18n="sys.t059">Area% 2</th>
+                        <th data-i18n="sys.t060">Area% 3</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Forest 1</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">30%</td>
+                            <td class="g_num">19%</td>
+                            <td class="g_num">13%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">1</td>
+                            <td class="g_num">0</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Forest 2</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">30%</td>
+                            <td class="g_num">19%</td>
+                            <td class="g_num">13%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">1</td>
+                            <td class="g_num">0</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Caves 1</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">11%</td>
+                            <td class="g_num">30%</td>
+                            <td class="g_num">19%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Caves 2</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">11%</td>
+                            <td class="g_num">30%</td>
+                            <td class="g_num">19%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Caves 3</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">9%</td>
+                            <td class="g_num">30%</td>
+                            <td class="g_num">21%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mines 1</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">6%</td>
+                            <td class="g_num">12%</td>
+                            <td class="g_num">32%</td>
+                            <td class="g_num">20%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mines 2</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">6%</td>
+                            <td class="g_num">12%</td>
+                            <td class="g_num">32%</td>
+                            <td class="g_num">20%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ruins 1</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">20%</td>
+                            <td class="g_num">7%</td>
+                            <td class="g_num">11%</td>
+                            <td class="g_num">32%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ruins 2</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">20%</td>
+                            <td class="g_num">7%</td>
+                            <td class="g_num">11%</td>
+                            <td class="g_num">32%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Ruins 3</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">13%</td>
+                            <td class="g_num">13%</td>
+                            <td class="g_num">12%</td>
+                            <td class="g_num">32%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="g_sub" data-i18n="sys.t061">Episode 2</h4>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="sys.t057">Area</th>
+                        <th>None</th>
+                        <th>Native</th>
+                        <th>A.Beast</th>
+                        <th>Machine</th>
+                        <th>Dark</th>
+                        <th>Hit</th>
+                        <th data-i18n="sys.t058">Area% 1</th>
+                        <th data-i18n="sys.t059">Area% 2</th>
+                        <th data-i18n="sys.t060">Area% 3</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">VR Temple Alpha</td>
+                            <td class="g_num">40%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Temple Beta</td>
+                            <td class="g_num">40%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Spaceship Alpha</td>
+                            <td class="g_num">40%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VR Spaceship Beta</td>
+                            <td class="g_num">40%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Jungle North</td>
+                            <td class="g_num">35%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Jungle East</td>
+                            <td class="g_num">35%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mountain</td>
+                            <td class="g_num">35%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Seaside - CCA</td>
+                            <td class="g_num">35%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Seabed Upper</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">8%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">20%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Seabed Lower - Tower</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">13%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">27%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="g_sub" data-i18n="sys.t062">Episode 4</h4>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="sys.t057">Area</th>
+                        <th>None</th>
+                        <th>Native</th>
+                        <th>A.Beast</th>
+                        <th>Machine</th>
+                        <th>Dark</th>
+                        <th>Hit</th>
+                        <th data-i18n="sys.t058">Area% 1</th>
+                        <th data-i18n="sys.t059">Area% 2</th>
+                        <th data-i18n="sys.t060">Area% 3</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Crater (East)</td>
+                            <td class="g_num">50%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Crater (West)</td>
+                            <td class="g_num">50%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Crater (South)</td>
+                            <td class="g_num">50%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Crater (North)</td>
+                            <td class="g_num">50%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">2</td>
+                            <td class="g_num">2</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Crater (Interior)</td>
+                            <td class="g_num">40%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">20%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sub Desert 1</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">20%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">3</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sub Desert 2</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">20%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">30%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Sub Desert 3</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">35%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Saint Million</td>
+                            <td class="g_num">25%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">30%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">???</td>
+                            <td class="g_num">45%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">10%</td>
+                            <td class="g_num">15%</td>
+                            <td class="g_num">5%</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                            <td class="g_num">4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="sys.t063">The first six columns are the chance of each attribute appearing, and they always add up to 100. None means the weapon drops with no attribute.</p>
+            <p class="g_note g_warn" data-i18n="sys.t064">This is a snapshot from 19 July 2026. Earlier patch notes list lower Area% values for Episode 4, so the levels have been raised over time. The original screenshots are below if you want to check.</p>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig">
+                    <img src="./images/guide/area-attribute-table.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="sys.t065">The original area table this page transcribes.</figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/percent-pattern-table.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="sys.t066">The roll weight table behind each Area% level, for reference.</figcaption>
+                </figure>
+            </div>
+            <h4 class="g_sub" data-i18n="sys.t067">Related improvements</h4>
+            <ul class="g_bullets">
+                <li data-i18n="sys.t068">Ver.0.8133 brought Episode 2 Hit% chances in line with Episodes 1 and 4. Every Section ID now has the same odds.</li>
+                <li data-i18n="sys.t069">The chance of a weapon dropping with no attribute was reduced in the later Episode 2 and Episode 4 areas.</li>
+            </ul>
+        </section>
+    </main>
+
+    <div class="g_popup" id="gPopup">
+        <div class="g_popup_dim"></div>
+        <div class="g_popup_inner">
+            <button class="g_popup_close" type="button" aria-label="Close">&#10005;</button>
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <script>
+    // 도해는 작게 보면 읽을 수 없다. 눌러서 크게 본다.
+    document.addEventListener("DOMContentLoaded", function () {
+        var popup = document.getElementById("gPopup");
+        if (!popup) return;
+        var img = popup.querySelector("img");
+
+        function close() {
+            popup.classList.remove("active");
+            img.src = "";
+            document.body.style.overflow = "";
+        }
+        document.querySelectorAll(".g_fig img").forEach(function (el) {
+            el.addEventListener("click", function () {
+                img.src = el.currentSrc || el.src;
+                popup.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+        });
+        popup.querySelector(".g_popup_close").addEventListener("click", close);
+        popup.querySelector(".g_popup_dim").addEventListener("click", close);
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") close();
+        });
+    });
+    </script>
+</body>
+</html>

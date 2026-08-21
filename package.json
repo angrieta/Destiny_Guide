@@ -8,6 +8,7 @@
   },
   "scripts": {
     "prepare:static": "node build/prepare-static.mjs",
+    "update:happy-hour": "node scripts/update-happy-hour.mjs",
     "sync:drops": "node scripts/sync-drop-tables.mjs",
     "export:pages": "node scripts/export-github-pages.mjs",
     "dev": "node build/prepare-static.mjs && vinext dev --hostname 0.0.0.0",

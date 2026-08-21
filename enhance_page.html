@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="enh.t057">DestinyGuide - Weapon Enhancement</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<body>
+    <main class="g_page">
+        <div class="g_head">
+            <h2><span data-i18n="enh.t058">Weapon Enhancement</span></h2>
+            <p class="g_lead" data-i18n="enh.t059">On this server a weapon can change completely once you equip the right unit, armor, mag or character. This page lists every enhancement condition and what it does, so you can tell at a glance what a weapon still needs.</p>
+            <p class="g_source"><span data-i18n="enh.t055">Source: Discord #list-of-combo-bonus-buffed-items and #weapons-priority-list, both written by the development team. Values follow the original English notation and are not translated.</span><br><span data-i18n="enh.t056">The developer marks the original list as still in progress, so entries may be added or adjusted later.</span></p>
+        </div>
+        <section class="g_sec" id="notation">
+            <h3><span class="g_sec_num">1</span><span data-i18n="enh.t001">How to read the notation</span></h3>
+            <p data-i18n="enh.t002">The list uses a few shorthands throughout. They are the developer's own wording.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="enh.t003">Notation</th>
+                        <th data-i18n="enh.t004">Meaning</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Hits A-B-C</td>
+                            <td data-i18n="enh.t005">Hits per attack in a combo. 5-2-4 means the 1st attack hits 5 times, the 2nd 2 times, the 3rd 4 times.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">N / H / S</td>
+                            <td data-i18n="enh.t006">Normal attack / Heavy attack / Special attack.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Required [X]</td>
+                            <td data-i18n="enh.t007">What you must have for the buff to apply. It can be equipment, low HP, a character or a class.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Custom Animation</td>
+                            <td data-i18n="enh.t008">A motion reworked for this server that does not exist in the original game.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Combo-unlocked</td>
+                            <td data-i18n="enh.t009">A weapon that could not combo in the original game can now chain attacks.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Speed +15%</td>
+                            <td data-i18n="enh.t010">Attack speed. This stacks with Battle units.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="enh.t011">Everything here started with the Ver.0.7.8 major update, which introduced the framework for modifying items in ways that were not possible before.</p>
+        </section>
+        <section class="g_sec" id="by-item">
+            <h3><span class="g_sec_num">2</span><span data-i18n="enh.t012">By enhancement item</span></h3>
+            <p data-i18n="enh.t013">Equip the item on the left and every weapon listed under it changes. One item usually covers several weapons, so it is worth checking what else you already own.</p>
+            <h4 class="g_sub" data-i18n="enh.t014">Units</h4>
+            <div class="g_cards">
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Chaos Engine</b>
+                        <span class="g_kind" data-i18n="enh.t015">Unit</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t016">Drops from Silent Nightmare [Raid] 1/73, Silent Nightmare [Boss Only] 1/136 and Distorted Nightmare [Raid] 1/73.</p>
+                    <ul>
+                        <li><b>Planet Eater</b> — Targets: 4, Hits: 1-2-2 → 2-2-3, Animation: Twin Sword → Custom, ATA+30, Buffed Angle</li>
+                        <li><b>Mortal Ruin</b> — Targets: 3 → 10, ATP+250, Buffed Range/Angle, Auto-Aim Megid special</li>
+                        <li><b>Ill Gill Reaper</b> — Hits: 1-1-1 → 2-2-3 (Normal) / 2-2-2 (Heavy/Special), Animation: Partisan → Custom, Targets: 10 → 6, Speed +15%, Buffed Angle</li>
+                        <li><b>M&amp;A85 Fury</b> — ATP+150, Piercing Bullet, Range: 170.0 → 210.0</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Jointparts</b>
+                        <span class="g_kind" data-i18n="enh.t015">Unit</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t017">Traded from the Bazaar NPC (FOmar). Materials drop in The Discontrolled Tower [Raid].</p>
+                    <ul>
+                        <li><b>Guld Milla</b> — ATP+400, Buffed Range, Auto-Aim special with 5-5-5 Hits</li>
+                        <li><b>Mille Marteaux</b> — 3-3-3 Hits of Divine Punishment and 4-4-4 Hits Auto-Aim N/H, ATP &amp; MST+100, Buffed Range N/H/S</li>
+                        <li><b>Dual Bird</b> — Hits 4-4-4 N/H/S, Buffed Range (ATA requirement lowered to 190)</li>
+                        <li><b>Celestial Fusion</b> — Dual Casting: Jellen + Zalure if tech Lv is 30, ATA+20, Buffed Range</li>
+                        <li><b>Twin Rika's Claw</b> — Targets: 5, Dagger animation, Buffed Angle</li>
+                        <li><b>Ultimate Double Cannon</b> — ATA+20, Buffed Range/Angle on the special, hits EP4 lizards, Speed +15% (skinned versions included)</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Asteroid Engine</b>
+                        <span class="g_kind" data-i18n="enh.t015">Unit</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t018">VR Test Destiny: Meteor Impact — Epsilon 1/2100. Also gives all resists +5.</p>
+                    <ul>
+                        <li><b>Yunchang</b> — ATP+150, ATA+20, Buffed Range/Angle, Speed +15%, Double Saber Animation</li>
+                        <li><b>Cannon Rouge</b> — Hits: 5, ATP+150</li>
+                        <li><b>Slicer of Fanatic</b> — Targets: 6, ATA+20, Buffed Angle, Speed +15%</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Ignis Engine</b>
+                        <span class="g_kind" data-i18n="enh.t015">Unit</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t019">Traded in the Millennium Shop (The Phantastic Bazaar, EP2 &gt; Shop).</p>
+                    <ul>
+                        <li><b>Final Egg Blaster / Astral Dragon</b> — ATP+100, Hits: 4-4-4, Buffed Range, hits lizards in the face</li>
+                        <li><b>Zu's Punishment</b> — Hits [S]: 1-2-3, MST+100</li>
+                        <li><b>Rathalos Great Sword / Terror Sawd</b> — Hits [S]: 1-1-4, Custom Animation</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>RASTER SCOPE</b>
+                        <span class="g_kind" data-i18n="enh.t015">Unit</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t020">Epsilon 1/2100, The Phantasmal Dimension 1/1559, Silent Nightmare [Raid] Dark Falz 1/64. Also gives all resists +5.</p>
+                    <ul>
+                        <li><b>Yasminkov 9000M</b> — Range +40.0, ATP+50, ATA+20</li>
+                        <li><b>Yasminkov 2000H</b> — Range −70.0, Hits 3-3-3</li>
+                        <li><b>Yasminkov 7000V</b> — ATP+300, Range +55.0</li>
+                        <li><b>Yasminkov 3000R</b> — Hits N/H: 3-3-3, S: 1-1-3, S Range −75.0, S Angle +35</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>VECTOR SCOPE</b>
+                        <span class="g_kind" data-i18n="enh.t015">Unit</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t021">Olga Flow 1/128, Silent Nightmare [Raid] Dark Falz 1/64. Also gives all resists +5.</p>
+                    <ul>
+                        <li><b>Arrest Needle / Hell Needle / Berserk Needle</b> — Range +105, ATA+20</li>
+                        <li><b>Gush Needle</b> — Range +105, Hits [S]: 1-1-3, ATA+20</li>
+                        <li><b>Grave Digger / Nefarious Needle</b> — ATP+60, ATA+30</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>MATRIX SCOPE</b>
+                        <span class="g_kind" data-i18n="enh.t015">Unit</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t022">Traded in the Millennium Shop. Needs Fragments of Orb [Red] x2, Fragments of Orb [Blue] x2, Infernal Stone and Photon Booster x1 among others.</p>
+                    <ul>
+                        <li><b>Snow Queen</b> — Hits [S]: 3, ATP+150, ATA+30</li>
+                        <li><b>Power Maser</b> — Hits: 4-4-4, MST+150, Buffed Range (185.0) / Angle (60.0)</li>
+                        <li><b>Apocalypse Bowgun</b> — Hits N/H: 3-3-3, S: 1-2-3, ATP+100, adjusted special angle</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>FORBIDDEN GRIMOIRE</b>
+                        <span class="g_kind" data-i18n="enh.t015">Unit</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t023">Traded from NPC Paganini on Pioneer2, using materials from Hallowed World [Master]. Also gives HP +200.</p>
+                    <ul>
+                        <li><b>Prophets of Motav</b> — Hits: 1-2-3 (special is Rabarta Lv26)</li>
+                        <li><b>The Sigh of a God</b> — Hits 3-3-3, expanded range, buffed Gizonde damage, combo unlocked</li>
+                        <li><b>Gal Wind</b> — ATP+350, ATA+30, Hits 3-3-3 (N/H), 3-3-4 (S)</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Three Seals</b>
+                        <span class="g_kind" data-i18n="enh.t015">Unit</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t024">Buffs all Ra-series techniques by 30%. No specific weapon is required.</p>
+                </div>
+            </div>
+            <h4 class="g_sub" data-i18n="enh.t025">Armor and shields</h4>
+            <div class="g_cards">
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>DIVINE FIELD</b>
+                        <span class="g_kind" data-i18n="enh.t026">Armor</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t027">Traded with materials from The Starlight Tower [Raid].</p>
+                    <ul>
+                        <li><b>DIVINE BLADE</b> — Targets +4, Speed +50%, Buffed Angle</li>
+                        <li><b>Heaven Striker</b> — Hits: 3-3-3 when HP is low</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Samurai Armor</b>
+                        <span class="g_kind" data-i18n="enh.t026">Armor</span>
+                    </div>
+                    <ul>
+                        <li><b>Tsumikiri J-Sword</b> — ATP +30%</li>
+                        <li><b>Orotiagito</b> — ATP+50, ATA+20, Targets: 3, Hits N/H/S 2-2-2, Buffed Range/Angle, Speed +15%, special also has better range and angle</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Ninja Suit</b>
+                        <span class="g_kind" data-i18n="enh.t026">Armor</span>
+                    </div>
+                    <ul>
+                        <li><b>Kunai</b> — Hits N/H/S 2-2-4, Slicer Animation, ATP+50, ATA+20</li>
+                        <li><b>Flight Cutter</b> — Hits: 1-1-1 → 2-2-2, Targets: 4 → 5, ATP+100, Buffed Angle</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Paragon Frame</b>
+                        <span class="g_kind" data-i18n="enh.t026">Armor</span>
+                    </div>
+                    <ul>
+                        <li><b>Soul Devourer</b> — Hits N/H 1-2-5, S 1-1-3, ATP+100, Custom Animation, hits EP4 lizards in the face</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Parasitic Armor 'Predator'</b>
+                        <span class="g_kind" data-i18n="enh.t026">Armor</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t028">The Ravenous Predator [Raid] — Soul Butcher 1/36 (all IDs).</p>
+                    <ul>
+                        <li><b>Dark Bridge</b> — Low HP mode — Hits: 1-1-4 with an alternate motion</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>RADIANT RING</b>
+                        <span class="g_kind" data-i18n="enh.t029">Shield</span>
+                    </div>
+                    <p class="g_card_src" data-i18n="enh.t030">8th Anniversary item. Radiant Destiny! — Olga Flow 1/51 and others.</p>
+                    <ul>
+                        <li><b>Last Emperor</b> — Hits [S]: 3-3-3</li>
+                    </ul>
+                </div>
+            </div>
+            <h4 class="g_sub" data-i18n="enh.t031">Mags</h4>
+            <div class="g_cards">
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Tellusis</b>
+                        <span class="g_kind" data-i18n="enh.t032">Mag</span>
+                    </div>
+                    <ul>
+                        <li><b>Excalibur</b> — Targets: 3, Double Saber Animation, Hits 2-1-3, Buffed Range/Angle</li>
+                    </ul>
+                </div>
+                <div class="g_card">
+                    <div class="g_card_h">
+                        <b>Moro</b>
+                        <span class="g_kind" data-i18n="enh.t032">Mag</span>
+                    </div>
+                    <ul>
+                        <li><b>Tension Blaster</b> — Hits: 3-3-3</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="g_note" data-i18n="enh.t033">Tip: the range of Dual Casting on Celestial Fusion is calculated from the technique you cast, so Jointparts + Celestial Fusion + Blue Phantom Field pushes Jellen and Zalure to 400%.</p>
+        </section>
+        <section class="g_sec" id="by-class">
+            <h3><span class="g_sec_num">3</span><span data-i18n="enh.t034">Class and character conditions</span></h3>
+            <p data-i18n="enh.t035">These weapons need no equipment. They change depending on who is holding them.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="enh.t036">Weapon</th>
+                        <th data-i18n="enh.t037">Condition</th>
+                        <th data-i18n="enh.t038">Effect</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">NEI'S CLAW (Real)</td>
+                            <td class="g_req">HUmar / HUnewearl</td>
+                            <td>Targets: 3, Hits N/H/S 2-2-4, Custom Animation, Buffed Range/Angle</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Zanba</td>
+                            <td class="g_req">HUmar</td>
+                            <td>Hits N/H/S: 1-1-3, Speed +15%, Angle 45.0 → 55.0</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">ANO RIFLE</td>
+                            <td class="g_req">RAcaseal</td>
+                            <td>Hits N/H/S: 3-3-3, ATP+150</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">L&amp;K38 Combat</td>
+                            <td class="g_req">Ranger class</td>
+                            <td>Combo unlocked</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Valkyrie</td>
+                            <td class="g_req">FOnewearl / FOmarl</td>
+                            <td>1-1-3 swing usable when HP is low (the 10-target wide swing works for everyone)</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Berdysh</td>
+                            <td class="g_req">All HU / All RA</td>
+                            <td>Equip restriction relaxed</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">S-Red's Blade</td>
+                            <td class="g_req">All RA</td>
+                            <td>Equip restriction relaxed</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Iron Faust</td>
+                            <td class="g_req">All RA</td>
+                            <td>Combo unlocked, equip restriction relaxed</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mother Garb+</td>
+                            <td class="g_req">All FO</td>
+                            <td>Equip restriction relaxed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="g_sec" id="no-gear">
+            <h3><span class="g_sec_num">4</span><span data-i18n="enh.t039">Buffed without any condition</span></h3>
+            <p data-i18n="enh.t040">These weapons were reworked outright. Nothing needs to be equipped.</p>
+            <h4 class="g_sub" data-i18n="enh.t041">Melee</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="enh.t036">Weapon</th>
+                        <th data-i18n="enh.t038">Effect</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Dark Flow</td>
+                            <td>ATP 1100, combo unlocked, special does a sword swing and waves at the same time</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Tsumikiri J-Sword</td>
+                            <td>Custom Animation, Targets: 10 → 5, Hits N/H 3-3-3, S 5-1-1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Daylight Scar</td>
+                            <td>Targets: 3, Buffed Range/Angle</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Laconium Axe</td>
+                            <td>Targets: 3</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Twin Cyclone</td>
+                            <td>Special hits EP4 lizards in the face</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="g_sub" data-i18n="enh.t042">Ranged</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="enh.t036">Weapon</th>
+                        <th data-i18n="enh.t038">Effect</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Dark Meteor</td>
+                            <td>ATP 750, combo unlocked, 7 bullets. Low HP Mode: Hits N/H 1-1-3, special 1-1-5</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Rianov 303SNR-5</td>
+                            <td>Triple shots (Normal 4 hits, Heavy 3 hits, Special 5 hits)</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Master Raven</td>
+                            <td>Combo unlocked, ATP reduced to match Last Swan</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Venus Bow</td>
+                            <td>Targets: 7, hits lizards in the face</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Gi Gue Bazooka</td>
+                            <td>Combo unlocked</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Power Maser</td>
+                            <td>Combo unlocked, Gizonde damage boost</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Burning Visit</td>
+                            <td>Combo unlocked</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">NUG-2000 BAZOOKA</td>
+                            <td>Combo unlocked, can take a special</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="g_sub" data-i18n="enh.t043">Technique</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="enh.t036">Weapon</th>
+                        <th data-i18n="enh.t038">Effect</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Dark Bridge</td>
+                            <td>Ra techs +50%, Grants +50%, Special: 3 targets Lv23 Grants</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Siren Glass Hammer</td>
+                            <td>Combo unlocked</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Hildeblue's Cane</td>
+                            <td>Adjusted angle, Gibarta random level raised to 7–16, freeze rate boosted by V803</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">VENUS BOW</td>
+                            <td>Targets: 5 → 7, Resta and Anti range +100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="g_sub" data-i18n="enh.t044">Other buffed gear</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="enh.t045">Item</th>
+                        <th data-i18n="enh.t038">Effect</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Gael Giel</td>
+                            <td>Activation rate buffed to 60%, all actions are invincible</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Devil's Wing</td>
+                            <td>All actions are invincible, usable by all</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Angel's Wing</td>
+                            <td>All actions are invincible, usable by all</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Elenor</td>
+                            <td>All characters can equip</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Dreamcast</td>
+                            <td>The version with a Photon Blast is obtainable in the Bazaar</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="g_sec" id="priority">
+            <h3><span class="g_sec_num">5</span><span data-i18n="enh.t046">Which weapons deserve high Hit% and attribute%</span></h3>
+            <p data-i18n="enh.t047">Chasing a high percentage takes a long time, so it helps to know which weapons actually reward it. The lists below are the development team's own priority ranking.</p>
+            <p class="g_note g_warn" data-i18n="enh.t048">The developer's note: the tier moves up or down depending on your priorities and playstyle (character, class, personal preference). Treat it as a starting point, not a rule.</p>
+            <h4 class="g_sub" data-i18n="enh.t049">Hit% priority</h4>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="enh.t050">Tier</th>
+                        <th data-i18n="enh.t051">Weapons</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_num">S</td>
+                            <td>SNOW QUEEN / D-VIRUS LAUNCHER / FINAL EGG BLASTER / ASTRAL DRAGON / DARK FLOW / ULTIMATE DOUBLE CANNON / LAVIS STORM / DOUBLE FURY / GRAVE DIGGER / NEFARIOUS NEEDLE</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">A+</td>
+                            <td>TWIN RIKA'S CLAW / EXCALIBUR / TWIN CYCLONE / CELESTIAL FUSION</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">A</td>
+                            <td>PLANET EATER / TSUMIKIRI J-SWORD / TERROR SAWD / RATHALOS GREATSWORD / TWIN EXCECUTIONER / STORMRENDER / YASMINKOV 9000M [Demon's, Charge, Berserk] / ETERNAL NIGHT / 3RD ANNIVERSARY BLADE / ILL GILL REAPER</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">B+</td>
+                            <td>DARK METEOR / VENUS BOW / SOUL DEVOURER / TASTE OF AFFECTION / LAST EMPEROR</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">B</td>
+                            <td>M&amp;A85 FURY / OROTIAGITO / ARMAGEDDON / CHRISTMAS SPIRIT / ACT OF WAR / HELL STRIKER / HELL NEEDLE / TYPE-SH / SHOT [Hell] / NIGHTMARE / COMBUSTION CANNON / DAYLIGHT SCAR / ARREST NEEDLE</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">C</td>
+                            <td>HOLY RAY / SUBZERO / IRON FAUST / ARCTIC FAUST / MASTER RAVEN / LAST SWAN / JUDGEMENT BLADE / KITETSU / BRINGER'S RIFLE / SLICER OF FANATIC / HEAVEN STRIKER</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="enh.t052">YASMINKOV 9000M sits higher than tier A if you play RAmar or RAmarl.</p>
+            <h4 class="g_sub" data-i18n="enh.t053">Attribute% priority</h4>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="enh.t050">Tier</th>
+                        <th data-i18n="enh.t051">Weapons</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_num">S</td>
+                            <td>D-VIRUS LAUNCHER / FINAL EGG BLASTER / ASTRAL DRAGON / DARK FLOW / ULTIMATE DOUBLE CANNON / LAVIS STORM / DOUBLE FURY</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">A+</td>
+                            <td>EXCALIBUR / TWIN RIKA'S CLAW / TSUMIKIRI J-SWORD / DARK METEOR</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">A</td>
+                            <td>PLANET EATER / ETERNAL NIGHT / 3RD ANNIVERSARY BLADE / STORMRENDER / TWIN EXCECUTIONER / TWIN CYCLONE / RATHALOS GREATSWORD / TERROR SAWD / ILL GILL REAPER / LAST EMPEROR</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">B+</td>
+                            <td>SOUL DEVOURER / M&amp;A85 FURY / OROTIAGITO</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">B</td>
+                            <td>SNOW QUEEN / TASTE OF AFFECTION / ARMAGEDDON / GRAVE DIGGER / NEFARIOUS NEEDLE / CELESTIAL FUSION / CHRISTMAS SPIRIT / ACT OF WAR / COMBUSTION CANNON / DAYLIGHT SCAR / HEAVEN STRIKER</td>
+                        </tr>
+                        <tr>
+                            <td class="g_num">C</td>
+                            <td>IRON FAUST / ARCTIC FAUST / JUDGEMENT BLADE / KITETSU</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p data-i18n="enh.t054">Where to farm a given percentage is decided by the area, not the monster. The area table is on the Server Systems page.</p>
+        </section>
+    </main>
+
+    <div class="g_popup" id="gPopup">
+        <div class="g_popup_dim"></div>
+        <div class="g_popup_inner">
+            <button class="g_popup_close" type="button" aria-label="Close">&#10005;</button>
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <script>
+    // 도해는 작게 보면 읽을 수 없다. 눌러서 크게 본다.
+    document.addEventListener("DOMContentLoaded", function () {
+        var popup = document.getElementById("gPopup");
+        if (!popup) return;
+        var img = popup.querySelector("img");
+
+        function close() {
+            popup.classList.remove("active");
+            img.src = "";
+            document.body.style.overflow = "";
+        }
+        document.querySelectorAll(".g_fig img").forEach(function (el) {
+            el.addEventListener("click", function () {
+                img.src = el.currentSrc || el.src;
+                popup.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+        });
+        popup.querySelector(".g_popup_close").addEventListener("click", close);
+        popup.querySelector(".g_popup_dim").addEventListener("click", close);
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") close();
+        });
+    });
+    </script>
+</body>
+</html>

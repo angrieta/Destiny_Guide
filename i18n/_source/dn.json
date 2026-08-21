@@ -26,5 +26,19 @@
   "dn.t045": "Step 1 : Avoid the corners, as the electric fields will instantly kill you.",
   "dn.t046": "Step 3 : Bomb shows a green circle, then turns purple and locks to the ground at that position.",
   "dn.t047": "Step 4 : [★] Do not move during the green effect. Move only after it turns purple.",
-  "dn.t050": "The attack is always fired 4 times, regardless of the number of players."
+  "dn.t050": "The attack is always fired 4 times, regardless of the number of players.",
+  "dn.t201": "Boss data",
+  "dn.t202": "Distorted Nightmare is the EX version of Silent Nightmare: the boss fight only, with a buffed Nightmare Chaser XII. Parts take damage separately, so check which part you are hitting.",
+  "dn.t203": "Part",
+  "dn.t204": "HP",
+  "dn.t205": "DEF",
+  "dn.t206": "Body",
+  "dn.t207": "Body shell",
+  "dn.t208": "Mines",
+  "dn.t209": "The head takes damage at DEF 2,500.",
+  "dn.t210": "Item",
+  "dn.t211": "Value",
+  "dn.t212": "Role challenge — The Nightmare Chaser: clear without a wipe and without returning to Pioneer 2 during the boss fight.",
+  "dn.t213": "Chaos Engine reworks Planet Eater, Mortal Ruin, Ill Gill Reaper and M&A85 Fury. The full effect list is on the Weapon Enhancement page.",
+  "dn.t214": "Set message speed to 'fastest'. Skill names scroll past before the attack lands, and the faster setting buys you reaction time."
 }

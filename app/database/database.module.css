@@ -249,6 +249,16 @@
 }
 
 @media (max-width: 520px) {
+  /* 헤더 메인 메뉴가 8 -> 9 로 늘면서 링크가 13개가 되었다. 로고 150px 과
+     메뉴 글자 13px 을 그대로 두면 344px 에서 메뉴 블록만 204px, 헤더 전체가
+     357~369px 까지 커진다(정적 헤더는 221px, /drop-tables 는 164px).
+     로고와 글자를 줄여 다른 헤더와 비슷한 높이로 맞춘다. */
+  .headerInner { gap: 10px; padding: 0 15px; }
+  .siteLogo { flex: 0 0 108px; width: 108px; }
+  .headerMenus { gap: 5px 10px; }
+  .headerMenus > div { gap: 4px 8px; }
+  .headerMenus a { padding-bottom: 2px; font-size: 11.5px; }
+
   /* 좁은 화면에서는 액션 줄을 한 줄에 담는다.
      테마 라벨을 숨기고 칩 글자를 줄이면 5개 요소가 327px 안에 들어간다. */
   .themeLabel { display: none; }

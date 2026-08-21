@@ -45,6 +45,10 @@ const newSlide = new Swiper('.bazaar_slide',{
     }    
 });
 
+// item_page 는 캐러셀 대신 검색 가능한 그리드를 쓴다(scripts/item_grid.js).
+// 그 스크립트가 먼저 실행되어 .destiny_item_swiper 클래스를 떼어내지만,
+// 로드 순서가 바뀌어도 캐러셀이 되살아나지 않도록 마커로 한 번 더 막는다.
+if (!document.querySelector('[data-destiny-item-grid]')) {
 document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
   const paginationEl = swiperEl.querySelector('.swiper-pagination');
 
@@ -78,6 +82,7 @@ document.querySelectorAll('.destiny_item_swiper').forEach(swiperEl => {
     }
   });
 });
+}
 
 
 $('.header_menu').show();

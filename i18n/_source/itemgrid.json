@@ -1,0 +1,21 @@
+{
+  "ig.intro": "Search by item name, or pick a category below. Click any card to open the full item guide.",
+  "ig.hint": "Click any card for full stats, requirements, and how to obtain it.",
+  "ig.cat.armor": "Armor",
+  "ig.cat.unit": "Unit",
+  "ig.cat.shield": "Shield",
+  "ig.search.ph": "Search by name, type, or special",
+  "ig.search.label": "Search items",
+  "ig.search.clear": "Clear search",
+  "ig.count.all": "{total} items",
+  "ig.count.some": "{shown} of {total} items",
+  "ig.sec.count": "{n} items",
+  "ig.sec.count.some": "{shown} / {n}",
+  "ig.more": "Show {n} more",
+  "ig.less": "Show less",
+  "ig.empty.title": "No matching items",
+  "ig.empty.desc": "Try a shorter keyword, or pick another category.",
+  "ig.empty.reset": "Show all items",
+  "ig.db.text": "Looking for an item that is not here? The Item Database has every item with search and filters.",
+  "ig.db.cta": "Open Item Database"
+}

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="eco.t058">DestinyGuide - Shops &amp; Currency</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<body>
+    <main class="g_page">
+        <div class="g_head">
+            <h2><span data-i18n="eco.t059">Shops &amp; Currency</span></h2>
+            <p class="g_lead" data-i18n="eco.t060">Almost every strong item on this server is traded, not dropped. This page puts the currencies and the trade NPCs side by side, so you can see what a material is for before you start farming it.</p>
+            <p class="g_source"><span data-i18n="eco.t057">Source: the Discord patch note channels and the Bazaar and currency channel. Item names, amounts and drop rates follow the original English notation and are not translated.</span></p>
+        </div>
+        <section class="g_sec" id="currency">
+            <h3><span class="g_sec_num">1</span><span data-i18n="eco.t001">Currencies and materials</span></h3>
+            <p data-i18n="eco.t002">Read this table as: what it is, where it comes from, what it turns into.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="eco.t003">Item</th>
+                        <th data-i18n="eco.t004">Where to get it</th>
+                        <th data-i18n="eco.t005">What it is for</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Meseta</td>
+                            <td data-i18n="eco.t006">Everywhere. Training Room [EP1 &gt; Special] has an NPC that hands out 999,999 for free.</td>
+                            <td data-i18n="eco.t007">Shops, and a few quests that ask for a specific amount.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Photon Drop</td>
+                            <td data-i18n="eco.t008">Common drop across the game.</td>
+                            <td>Photon Sphere x1 ← Photon Drop x98 (Bazaar, FOnewm)</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Photon Sphere</td>
+                            <td data-i18n="eco.t009">Traded from Photon Drop x98, or dropped in some quests.</td>
+                            <td>Legendary Crate x20 ← Photon Sphere x1 (The Phantasmal Dimension)</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Photon Token</td>
+                            <td data-i18n="eco.t010">Drops from every monster during token mini-events. Custom drops in many quests at 1/400 to 1/1000. Also sold in the Bazaar in stacks of 5.</td>
+                            <td data-i18n="eco.t011">Adds Hit% to a weapon (Paganini, up to 80). Trades for Legendary Crates with Hopkins.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Millennium Photon Core</td>
+                            <td data-i18n="eco.t012">The Phantasmal Dimension, Hallowed World [Master], Lost Soul Ripper [Extreme], Toward the Multiverse and more, roughly 1/64 to 1/500. Also Photon Drop x25 → 1 in TPD.</td>
+                            <td>Millennium/HP, Ignis Engine, FORBIDDEN GRIMOIRE, DIVINE FIELD, ASTRAL CLOAK</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Weapon Crystal Badge</td>
+                            <td data-i18n="eco.t013">Harmony of Despair I, VR Test Destiny: Underground (secret floor), VR Test FINAL: Catastrophe, Walking through Flames, and the Legendary, Phantasmal and Valentine crates.</td>
+                            <td data-i18n="eco.t014">Millennium/HP needs 10. Some quests need one to start.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Photon Booster</td>
+                            <td data-i18n="eco.t015">Replaced the Weapon Badge x20 requirement in Ver.0.942.</td>
+                            <td>MATRIX SCOPE</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Proof of Sonic Team</td>
+                            <td data-i18n="eco.t016">Rare drop.</td>
+                            <td>Elenor (Mag Shop), FORBIDDEN GRIMOIRE, DIVINE FIELD</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Darkness Photon Sphere</td>
+                            <td>VR Test FINAL: Catastrophe — Eclipse Dragon 1/45, Deos Behemoth 1/45</td>
+                            <td data-i18n="eco.t017">One each for V803 and Phantasmal Field. Also a material for Ignis Engine.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Primal Photon Sphere</td>
+                            <td>Beyond the Nightmare 1/45</td>
+                            <td>ASTRAL CLOAK</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Fragments of Orb [Red]</td>
+                            <td>Christmas Fiasco [EP2] — Delbiter 1/393 (Redria, Pinkal)</td>
+                            <td data-i18n="eco.t018">MATRIX SCOPE needs two red and two blue.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Fragments of Orb [Blue]</td>
+                            <td>Christmas Fiasco [EP1] — Dark Bringer 1/393 (Skyly, Bluefull)</td>
+                            <td data-i18n="eco.t018">MATRIX SCOPE needs two red and two blue.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Infernal Stone</td>
+                            <td>VR Test OMEGA: Oblivion — Tormentark 1/930 (Pinkal to Whitill)</td>
+                            <td>MATRIX SCOPE</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Red / Blue / Yellow / Green Crystal</td>
+                            <td data-i18n="eco.t019">Quest specific. Blue from VR Test EXTRA: Singularity 1/24, Red from VR Test Destiny: Sandstorm 1/204, Yellow from The Eternal Age 1/102, Green from Christmas Fiasco [EP4] 1/393.</td>
+                            <td data-i18n="eco.t020">Tool items used to receive an item from an NPC.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Secret Ticket</td>
+                            <td data-i18n="eco.t021">Simulator 2.0 [EP1] and Random Attack Xrd Stage [EP2], on clearing the secret area.</td>
+                            <td>Lightning Garment ← Secret Ticket x99</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Donation Token</td>
+                            <td data-i18n="eco.t022">Donation.</td>
+                            <td data-i18n="eco.t023">From Ver.0.94 onward it can no longer be exchanged for mags.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Legendary Item Crate</td>
+                            <td data-i18n="eco.t024">Hopkins in VR Test Destiny: Underground, and the secret NPC in The Phantasmal Dimension.</td>
+                            <td data-i18n="eco.t025">An older version of the daily crate. Weapons can roll up to 100%.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="eco.t026">Anything that stacks to 99 can be held up to 250 since Ver.0.715. That includes Photon Token, crates and event currencies.</p>
+            <p class="g_note" data-i18n="eco.t027">At the Bazaar counter you can also put a fake special on a weapon for 50 Photon Drop. It only changes the displayed name, so it does not add the real effect.</p>
+        </section>
+        <section class="g_sec" id="bazaar">
+            <h3><span class="g_sec_num">2</span><span data-i18n="eco.t028">The Phantastic Bazaar (EP2 &gt; Shop)</span></h3>
+            <p data-i18n="eco.t029">The main trade hub, formerly called the Spooky Bazaar. Several NPCs stand here and each one handles a different exchange.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="eco.t030">NPC or shop</th>
+                        <th data-i18n="eco.t031">What you get</th>
+                        <th data-i18n="eco.t032">What it costs</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">Millennium Shop</td>
+                            <td>Millennium/HP</td>
+                            <td>Millennium Photon Core x5, Immortal/HP x2, Cataclysm Shield x1, MOLTEN RING x1, Weapon Crystal Badge x10</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Millennium Shop</td>
+                            <td>Ignis Engine</td>
+                            <td>Millennium Photon Core x25, Darkness Photon Sphere x1, Blast Garment x1, Behemoth Armor x1, Proof of Sonic Team</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Millennium Shop</td>
+                            <td>ASTRAL CLAW / ASTRAL SABER / ASTRAL CLOAK / DIVINE FIELD / MATRIX SCOPE</td>
+                            <td data-i18n="eco.t033">Added over several updates. Check in game for the current material list.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Delta</td>
+                            <td>ASTRAL CLOAK</td>
+                            <td>Primal Photon Sphere x1, Millennium Photon Core x8, KROE'S SWEATER x1, X-Parts ver3.10 x1, Archfiend Armor</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">FOnewm</td>
+                            <td>Photon Sphere x1</td>
+                            <td>Photon Drop x98</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">FOmar</td>
+                            <td>Jointparts</td>
+                            <td data-i18n="eco.t034">Materials from The Discontrolled Tower [Raid].</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Paganini</td>
+                            <td data-i18n="eco.t035">Adds Hit% to a weapon, up to 80.</td>
+                            <td>Photon Token</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mag Shop</td>
+                            <td>Dreamcast</td>
+                            <td>Mark III, Master System, Genesis, Sega Saturn and Dreamcast kits + Photon Sphere x1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Mag Shop</td>
+                            <td>Elenor</td>
+                            <td>Elenor (the one without a Photon Blast) + Proof of Sonicteam x1</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">RAcaseal</td>
+                            <td>Lightning Garment</td>
+                            <td>Secret Ticket x99</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">RAcaseal</td>
+                            <td data-i18n="eco.t036">Opens the Halloween, Xmas and Another shops.</td>
+                            <td data-i18n="eco.t037">Added in Ver.0.944.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Bazaar counter</td>
+                            <td data-i18n="eco.t038">A fake special on a weapon, for example a 'Burning' DARK FLOW.</td>
+                            <td>50 Photon Drop</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="eco.t039">Mags from the Mag Shop always arrive at Lv0 with M&amp;Y+2 and a random Photon Blast.</p>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig">
+                    <img src="./images/guide/shop-mag-1.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="eco.t040">The Mag Shop added in Ver.0.94.</figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/shop-mag-2.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="eco.t041">Dreamcast and Elenor material lists.</figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/shop-bazaar-npc.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="eco.t042">Bring the required items and talk to the trade NPC in the Bazaar quest.</figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/shop-millennium.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="eco.t043">The Millennium Shop sits inside The Phantastic Bazaar.</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section class="g_sec" id="npc">
+            <h3><span class="g_sec_num">3</span><span data-i18n="eco.t044">Trade NPCs outside the Bazaar</span></h3>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="eco.t045">Where</th>
+                        <th data-i18n="eco.t046">NPC</th>
+                        <th data-i18n="eco.t047">Exchange</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>Pioneer2</td>
+                            <td class="g_name">Paganini</td>
+                            <td>FORBIDDEN GRIMOIRE ← Hallowed Jack-O-Lantern x1, Millennium Photon Core x10, Cladding of Epsilon x1, Proof of Sonic Team x1, Sorcerer's Right Arm x1, Magic Stone 'Iritista' x2, Book of Hitogata x1</td>
+                        </tr>
+                        <tr>
+                            <td>Pioneer2</td>
+                            <td class="g_name">Paganini</td>
+                            <td>Astral Wing ← Bat Wing x3, Astral Essence x1, Gratia x1, Magic Stone 'Iritista' x2, Magic Rock 'Heart Key' x1</td>
+                        </tr>
+                        <tr>
+                            <td>VR Test Destiny: Underground</td>
+                            <td class="g_name">Hopkins</td>
+                            <td>Legendary Crate x5 ← Photon Token x5 / Legendary Crate x1 ← Photon Token x1</td>
+                        </tr>
+                        <tr>
+                            <td>The Phantasmal Dimension</td>
+                            <td class="g_name">Paganini</td>
+                            <td>Millennium Photon Core x1 ← Photon Drop x25</td>
+                        </tr>
+                        <tr>
+                            <td>The Phantasmal Dimension</td>
+                            <td class="g_name">Spirit Flow</td>
+                            <td>Legendary Crate x20 ← Photon Sphere x1</td>
+                        </tr>
+                        <tr>
+                            <td>Training Room [EP1 &gt; Special]</td>
+                            <td class="g_name">Meseta NPC</td>
+                            <td data-i18n="eco.t048">Hands out 999,999 Meseta for free.</td>
+                        </tr>
+                        <tr>
+                            <td>Toward the Multiverse</td>
+                            <td class="g_name">Reward NPC</td>
+                            <td data-i18n="eco.t049">Pays out by clear time and level. Includes S-Rank guns and weapons with an attribute.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="eco.t050">Hopkins is Ultimate only and trades once per run, or twice if you defeat the secret Gol Dragon. If you do not trade, you get a Photon Drop as the clear reward instead. Clearing the secret floor also gives a Weapon Crystal Badge.</p>
+            <p class="g_note" data-i18n="eco.t051">Paganini in The Phantasmal Dimension trades only once per run. The Spirit Flow NPC needs the secret floors cleared first.</p>
+        </section>
+        <section class="g_sec" id="event-shop">
+            <h3><span class="g_sec_num">4</span><span data-i18n="eco.t052">Seasonal event shops</span></h3>
+            <p data-i18n="eco.t053">Event shops open inside The Phantastic Bazaar while the event runs. Event currencies drop from every monster during the period.</p>
+            <div class="g_scroll">
+                <table class="g_table g_wide">
+                    <thead><tr>
+                        <th data-i18n="eco.t054">Event</th>
+                        <th data-i18n="eco.t031">What you get</th>
+                        <th data-i18n="eco.t032">What it costs</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>Easter</td>
+                            <td>D-Virus Armor</td>
+                            <td>Easter Egg x30</td>
+                        </tr>
+                        <tr>
+                            <td>Easter</td>
+                            <td>D-Virus Launcher (0% attribute)</td>
+                            <td>Easter Egg x30</td>
+                        </tr>
+                        <tr>
+                            <td>Easter</td>
+                            <td>BERSERK NEEDLE (0% attribute)</td>
+                            <td>Easter Egg x60</td>
+                        </tr>
+                        <tr>
+                            <td>Anniversary</td>
+                            <td>RADIANT RING</td>
+                            <td>Anniversary Crate x60</td>
+                        </tr>
+                        <tr>
+                            <td>Valentine</td>
+                            <td>Wings of Life</td>
+                            <td>Flower Bouquet x150</td>
+                        </tr>
+                        <tr>
+                            <td>Valentine</td>
+                            <td>Weapon Crystal Badge x5</td>
+                            <td>Flower Bouquet x25</td>
+                        </tr>
+                        <tr>
+                            <td>Halloween</td>
+                            <td>Astral Wing</td>
+                            <td data-i18n="eco.t055">Traded from Paganini. Same materials as the year-round version.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="eco.t056">The Valentine exchange NPC stays in the Bazaar all year. The others close with the event.</p>
+        </section>
+    </main>
+
+    <div class="g_popup" id="gPopup">
+        <div class="g_popup_dim"></div>
+        <div class="g_popup_inner">
+            <button class="g_popup_close" type="button" aria-label="Close">&#10005;</button>
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <script>
+    // 도해는 작게 보면 읽을 수 없다. 눌러서 크게 본다.
+    document.addEventListener("DOMContentLoaded", function () {
+        var popup = document.getElementById("gPopup");
+        if (!popup) return;
+        var img = popup.querySelector("img");
+
+        function close() {
+            popup.classList.remove("active");
+            img.src = "";
+            document.body.style.overflow = "";
+        }
+        document.querySelectorAll(".g_fig img").forEach(function (el) {
+            el.addEventListener("click", function () {
+                img.src = el.currentSrc || el.src;
+                popup.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+        });
+        popup.querySelector(".g_popup_close").addEventListener("click", close);
+        popup.querySelector(".g_popup_dim").addEventListener("click", close);
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") close();
+        });
+    });
+    </script>
+</body>
+</html>

@@ -238,7 +238,10 @@
   .siteLogo { flex-basis: 100px; width: 100px; }
   /* 가로 스크롤로 감추면 뒤쪽 메뉴를 못 찾는다. 줄을 넘겨 전부 보이게 한다. */
   .headerMenus { order: 3; flex: 1 1 100%; justify-content: flex-start; }
-  .headerMenus > div:first-child { justify-content: flex-start; width: max-content; }
+  /* width: max-content 는 한 줄을 강제한다. 메뉴가 4개일 때는 들어갔지만
+     8개로 늘자 좁은 화면에서 헤더가 화면 밖으로 나갔다. 한 줄을 다 쓰게 하고
+     그 안에서 감기게 한다. */
+  .headerMenus > div:first-child { justify-content: flex-start; width: 100%; }
   .headerMenus a { font-size: 12px; }
   .raidMenu { display: none !important; }
   .headerActions { flex: 1 1 auto; flex-wrap: wrap; justify-content: flex-end; min-width: 0; margin-left: auto; gap: 8px; }
@@ -308,15 +311,15 @@
 .matrixFilters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) auto; align-items: end; gap: 12px; padding-top: 18px; border-top: 1px solid var(--border); }
 .matrixFilters select { width: 100%; min-height: 44px; padding: 0 34px 0 12px; border: 1px solid var(--border); border-radius: 9px; outline: 0; background: var(--surface-soft); color: var(--text); cursor: pointer; }
 .matrixFilters select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent); }
-.rateControls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.partyDarControl, .dropRateControl, .quickPartyDar, .quickDropRate { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.partyDarControl, .dropRateControl { margin-top: 16px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface-soft); }
-.quickPartyDar, .quickDropRate { align-items: stretch; flex-direction: column; gap: 8px; margin-top: 15px; padding-top: 14px; border-top: 1px solid var(--border); }
+.rateControls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.partyDarControl, .dropRateControl, .farmPlanControl, .quickPartyDar, .quickDropRate, .quickFarmPlan { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.partyDarControl, .dropRateControl, .farmPlanControl { margin-top: 16px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface-soft); }
+.quickPartyDar, .quickDropRate, .quickFarmPlan { align-items: stretch; flex-direction: column; gap: 8px; margin-top: 15px; padding-top: 14px; border-top: 1px solid var(--border); }
 .partyDarLabel { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
 .partyDarLabel span { color: var(--text); font-size: 11px; font-weight: 850; letter-spacing: 0.06em; text-transform: uppercase; }
 .partyDarLabel small { color: var(--muted); font-size: 10px; }
 .partyButtons { display: grid; grid-template-columns: repeat(4, minmax(44px, 1fr)); gap: 7px; }
-.partyButtons button { min-height: 38px; padding: 5px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--muted); font-size: 11px; font-weight: 850; cursor: pointer; }
+.partyButtons button { min-height: 38px; padding: 5px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--muted); font-size: 11px; font-weight: 850; white-space: nowrap; cursor: pointer; }
 .partyButtons button:hover { border-color: var(--blue); color: var(--text); }
 .partyButtons .partyActive { border-color: var(--blue); background: var(--blue); color: #ffffff; box-shadow: 0 5px 14px color-mix(in srgb, var(--blue) 25%, transparent); }
 :global(html[data-theme="dark"]) .partyButtons .partyActive { color: #07111f; }
@@ -324,6 +327,12 @@
 .quickPartyDar .partyButtons, .quickDropRate .partyButtons { grid-template-columns: repeat(4, 1fr); }
 .quickDropRate .partyButtons { grid-template-columns: repeat(3, 1fr); }
 .quickPartyDar .partyButtons button, .quickDropRate .partyButtons button { min-width: 0; min-height: 36px; padding-inline: 4px; }
+.farmPlanInputs { display: grid; grid-template-columns: repeat(2, minmax(72px, 1fr)); gap: 7px; }
+.farmPlanInputs label { display: grid; gap: 4px; }
+.farmPlanInputs label > span { color: var(--muted); font-size: 8px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.farmPlanInputs input { width: 100%; min-width: 0; min-height: 38px; padding: 6px 9px; border: 1px solid var(--border); border-radius: 8px; outline: 0; background: var(--surface); color: var(--text); font-size: 12px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.farmPlanInputs input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 16%, transparent); }
+.quickFarmPlan .farmPlanInputs { grid-template-columns: 1fr 1fr; }
 
 .controlsAnchor { position: relative; }
 .desktopQuickPanel {
@@ -414,6 +423,7 @@
 .resultLocations > div > span:nth-child(3) { overflow: hidden; color: var(--muted); text-overflow: ellipsis; white-space: nowrap; }
 .resultLocations b { color: var(--blue); font-size: 12px; font-variant-numeric: tabular-nums; text-align: right; }
 .resultLocations small { display: block; margin-top: 1px; color: var(--muted); font-size: 8px; font-weight: 600; }
+.resultLocations em { display: block; margin-top: 3px; color: var(--text); font-size: 9px; font-style: normal; font-weight: 800; white-space: nowrap; }
 
 .matrixSummary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 25px 4px 4px; }
 .matrixSummary > span { color: var(--muted); font-size: 13px; }
@@ -537,14 +547,14 @@
   .resultLocations > div { grid-template-columns: 8px 125px minmax(0, 1fr); }
   .resultLocations b { grid-column: 3; text-align: left; }
   .episodeTable h2 { text-align: left; }
-  .partyDarControl, .dropRateControl { align-items: stretch; flex-direction: column; gap: 10px; }
+  .partyDarControl, .dropRateControl, .farmPlanControl { align-items: stretch; flex-direction: column; gap: 10px; }
   .partyButtons { grid-template-columns: repeat(4, 1fr); }
   .dropRateButtons { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 760px) {
   .rateControls { grid-template-columns: 1fr; }
-  .dropRateControl { margin-top: 0; }
+  .dropRateControl, .farmPlanControl { margin-top: 0; }
   .stickySectionHeader { top: 120px; }
   .mobileSwipeHint {
     position: relative;
@@ -581,4 +591,3 @@
 @media (prefers-reduced-motion: reduce) {
   .mobileSwipeHint > span { animation: none; }
 }
-

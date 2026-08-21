@@ -1,0 +1,844 @@
+/* ==========================================================================
+   클래스 빌드 페이지
+   원문(2020) 빌드 + 2021~2026 추가 후보를 2층으로 보여 준다.
+   색은 전부 기존 토큰에서 가져오고, 가로 스크롤이 생길 수 있는 요소는
+   자기 컨테이너 안에서만 스크롤한다(문서는 344px 에서도 밀리지 않아야 한다).
+   ========================================================================== */
+
+.cb_page {
+    width: 100%;
+    max-width: 1560px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+}
+
+@media screen and (max-width: 983px) {
+    .cb_page { padding: 0 15px 48px; }
+}
+
+/* --------------------------------------------------------------------------
+   머리말 + 출처
+   -------------------------------------------------------------------------- */
+.cb_head { padding: 30px 0 0; }
+
+.cb_head h1 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.cb_head > p {
+    margin-top: 8px;
+    max-width: 74ch;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   툴바 (검색 + 2층 토글 + 범례). 스크롤해도 위에 붙는다.
+   -------------------------------------------------------------------------- */
+.cb_bar {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 12px;
+    margin: 20px 0 0;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 8px 22px rgba(14, 36, 72, 0.10);
+}
+
+.cb_search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 240px;
+    min-width: 0;
+}
+
+.cb_search svg {
+    position: absolute;
+    left: 12px;
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.cb_search input {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    padding: 0 38px 0 36px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+}
+
+.cb_search input::placeholder { color: var(--text-muted); opacity: 1; }
+
+.cb_search input::-webkit-search-cancel-button,
+.cb_search input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
+.cb_search input::-ms-clear { display: none; width: 0; height: 0; }
+
+.cb_search input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(75, 97, 170, 0.18);
+}
+
+.cb_clear {
+    position: absolute;
+    right: 5px;
+    display: none;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    color: var(--text-muted);
+    font-size: 19px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.cb_search.is-filled .cb_clear { display: block; }
+.cb_clear:hover { background: var(--surface-soft); color: var(--text); }
+
+/* 범례 버튼 */
+.cb_legend_btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text);
+    font: inherit;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cb_legend_btn:hover { border-color: var(--accent); }
+
+/* 다크모드의 --accent 는 밝은 파랑이라 흰 글자로는 대비가 2.5 밖에 안 된다.
+   채도를 살리고 글자를 어둡게 가져간다(item_page 의 DB 버튼과 같은 처리). */
+html[data-theme="dark"] .cb_var.is-active {
+    color: #07111f;
+}
+
+/* --------------------------------------------------------------------------
+   % 약어 범례
+   -------------------------------------------------------------------------- */
+.cb_legend {
+    margin: 10px 0 0;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+}
+
+.cb_legend[hidden] { display: none; }
+
+.cb_legend h3 { font-size: 15px; font-weight: 700; }
+
+.cb_legend_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(158px, 1fr));
+    gap: 8px 18px;
+    margin-top: 10px;
+}
+
+.cb_legend_grid div {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.45;
+}
+
+.cb_legend_grid b {
+    display: inline-block;
+    min-width: 46px;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.cb_legend > p {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.cb_legend a { color: var(--accent); font-weight: 700; }
+
+/* --------------------------------------------------------------------------
+   검색 결과 (역방향 조회)
+   -------------------------------------------------------------------------- */
+.cb_hits { margin: 12px 0 0; }
+.cb_hits[hidden] { display: none; }
+
+.cb_hits_head {
+    color: var(--text-muted);
+    font-size: 13.5px;
+    font-weight: 700;
+}
+
+.cb_hits_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.cb_hit {
+    padding: 7px 13px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cb_hit:hover { border-color: var(--accent); }
+
+.cb_hit span {
+    margin-left: 5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   클래스 선택 — 계열(HU / RA / FO) 3줄
+   -------------------------------------------------------------------------- */
+.cb_classes { margin: 22px 0 0; }
+
+.cb_family {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.cb_family_label {
+    flex: 0 0 auto;
+    width: 30px;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.cb_family_row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.cb_cls {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.cb_cls:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+.cb_cls.is-active {
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent);
+    background: var(--surface-soft);
+}
+
+.cb_cls b {
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cb_cls .cb_cls_n {
+    margin-left: auto;
+    flex: 0 0 auto;
+    color: var(--text-muted);
+    font-size: 11.5px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 검색 중 일치가 없는 클래스는 흐리게 */
+.cb_cls.is-dim { opacity: 0.38; }
+
+@media screen and (max-width: 900px) {
+    .cb_family { display: block; }
+    .cb_family_label { width: auto; margin-bottom: 6px; }
+    .cb_family_row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cb_cls b { font-size: 13px; }
+}
+
+/* --------------------------------------------------------------------------
+   선택된 클래스
+   -------------------------------------------------------------------------- */
+.cb_class { margin: 30px 0 0; }
+
+.cb_class_head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* 원본 246x34 (7.2:1). 이보다 줄이면 글자를 읽을 수 없다. */
+.cb_class_head img {
+    width: 100%;
+    max-width: 246px;
+    height: auto;
+}
+
+.cb_class_head h2 { font-size: 25px; font-weight: 700; }
+
+.cb_class > p {
+    margin-top: 8px;
+    max-width: 82ch;
+    color: var(--text-muted);
+    font-size: 14.5px;
+    line-height: 1.55;
+}
+
+/* 빌드 변형 탭 */
+.cb_variants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 16px 0 0;
+}
+
+.cb_var {
+    min-height: 38px;
+    padding: 8px 15px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text);
+    font: inherit;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cb_var:hover { border-color: var(--accent); }
+
+.cb_var.is-active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   빌드 본문
+   -------------------------------------------------------------------------- */
+.cb_build { margin: 18px 0 0; }
+
+.cb_flags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.cb_flag {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.cb_flag.is-warn {
+    border: 1px solid #d98a1f;
+    background: #fdf1dc;
+    color: #6b3d02;
+}
+
+html[data-theme="dark"] .cb_flag.is-warn {
+    border-color: #a9772c;
+    background: #33240d;
+    color: #ffd9a1;
+}
+
+/* 마테리얼 · 매그 플랜 */
+.cb_plan {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin: 14px 0 0;
+    padding: 15px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-soft);
+}
+
+.cb_plan_label {
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-weight: 700;
+}
+
+.cb_plan_val {
+    font-size: 22px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+}
+
+.cb_plan_note,
+.cb_plan_mats {
+    flex: 1 1 100%;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.45;
+}
+
+.cb_summary {
+    margin: 12px 0 0;
+    max-width: 84ch;
+    color: var(--text);
+    font-size: 14.5px;
+    line-height: 1.6;
+}
+
+/* 슬롯 */
+.cb_slot { margin: 22px 0 0; }
+
+.cb_slot_head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 9px;
+}
+
+.cb_slot_head h3 { font-size: 17px; font-weight: 700; }
+
+.cb_slot_n {
+    padding: 2px 8px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text-muted);
+    font-size: 11.5px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 방어구 · 실드 · 유닛은 나란히 */
+.cb_row3 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 22px;
+}
+
+@media screen and (max-width: 900px) {
+    .cb_row3 { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* --------------------------------------------------------------------------
+   장비 칩
+   -------------------------------------------------------------------------- */
+.cb_chips {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(228px, 1fr));
+    gap: 8px;
+}
+
+.cb_chip {
+    display: block;
+    padding: 9px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 150ms ease, transform 150ms ease;
+}
+
+.cb_chip:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+.cb_chip:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.cb_chip_top {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.cb_chip_name {
+    overflow: hidden;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cb_req {
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+html[data-theme="dark"] .cb_req { color: #07111f; }
+
+/* 칩 안의 줄은 전부 block 이어야 한다. span 기본값(inline)이면 margin-top 이 먹지 않고
+   수치와 메모가 한 줄로 붙어 버린다("... SpiritA full set also works."). */
+.cb_chip_stat {
+    display: block;
+    margin-top: 3px;
+    overflow: hidden;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    line-height: 1.35;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cb_chip_note {
+    display: block;
+    margin-top: 4px;
+    color: #4b61aa;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+html[data-theme="dark"] .cb_chip_note { color: #8cc6ff; }
+
+/* DB 에서 확인되지 않은 원문 표기 */
+.cb_chip.is-unresolved { border-style: dashed; }
+
+.cb_chip_hint {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-muted);
+    font-size: 11.5px;
+    line-height: 1.4;
+}
+
+/* 검색 일치 */
+.cb_chip.is-hit {
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent);
+    background: var(--surface-soft);
+}
+
+/* --------------------------------------------------------------------------
+   선택 항목
+   -------------------------------------------------------------------------- */
+.cb_optional { margin: 24px 0 0; }
+
+.cb_optional > summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-soft);
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.cb_optional > summary::-webkit-details-marker { display: none; }
+
+.cb_optional > summary::after {
+    margin-left: auto;
+    color: var(--text-muted);
+    content: "+";
+    font-size: 18px;
+}
+
+.cb_optional[open] > summary::after { content: "\2212"; }
+
+.cb_optional .cb_chips { margin-top: 10px; }
+
+/* --------------------------------------------------------------------------
+   2층 — 2021~2026 추가 후보
+   -------------------------------------------------------------------------- */
+.cb_new {
+    margin: 26px 0 0;
+    padding: 18px 20px;
+    border: 1px solid var(--accent);
+    border-radius: 14px;
+    background: var(--surface);
+}
+
+.cb_new[hidden] { display: none; }
+
+.cb_new_head {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+}
+
+.cb_new_head h3 { font-size: 17px; font-weight: 700; }
+
+.cb_new_head .cb_layer {
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+html[data-theme="dark"] .cb_new_head .cb_layer { color: #07111f; }
+
+.cb_new > p {
+    margin-top: 7px;
+    max-width: 82ch;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.55;
+}
+
+.cb_new_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.cb_new_item {
+    display: block;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface-soft);
+    color: inherit;
+    text-decoration: none;
+}
+
+.cb_new_item:hover { border-color: var(--accent); }
+
+.cb_new_item_top {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.cb_new_item b { color: var(--text); font-size: 14.5px; font-weight: 700; }
+
+.cb_year {
+    padding: 2px 7px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.cb_slotname {
+    color: var(--text-muted);
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.cb_new_item p {
+    margin-top: 5px;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    line-height: 1.45;
+}
+
+.cb_new_item .cb_pair {
+    margin-top: 5px;
+    color: #4b61aa;
+    font-size: 12.5px;
+    line-height: 1.45;
+}
+
+html[data-theme="dark"] .cb_new_item .cb_pair { color: #8cc6ff; }
+
+/* --------------------------------------------------------------------------
+   공통 참고 · Over Resilience
+   -------------------------------------------------------------------------- */
+.cb_extra { margin: 46px 0 0; }
+
+.cb_extra h2 { font-size: 22px; font-weight: 700; }
+
+.cb_notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.cb_note {
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+}
+
+.cb_note h3 { font-size: 15.5px; font-weight: 700; }
+
+.cb_note p {
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.55;
+}
+
+.cb_note .cb_chips { margin-top: 11px; grid-template-columns: 1fr; }
+
+.cb_or {
+    margin: 26px 0 0;
+    padding: 20px 22px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+}
+
+.cb_or h3 { font-size: 18px; font-weight: 700; }
+
+.cb_or > p {
+    margin-top: 7px;
+    max-width: 84ch;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.cb_or_result {
+    margin: 12px 0 0;
+    padding: 13px 15px;
+    border-radius: 10px;
+    background: var(--surface-soft);
+    font-size: 13.5px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.cb_or .cb_chips { margin-top: 13px; }
+
+.cb_credit {
+    margin-top: 11px;
+    color: var(--text-muted);
+    font-size: 12.5px;
+}
+
+/* --------------------------------------------------------------------------
+   출처
+   -------------------------------------------------------------------------- */
+.cb_source {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin: 46px 0 0;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface-soft);
+}
+
+.cb_source p {
+    flex: 1 1 320px;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+}
+
+.cb_source a {
+    flex: 0 0 auto;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 13.5px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+html[data-theme="dark"] .cb_source a { color: #07111f; }
+
+@media screen and (max-width: 560px) {
+    .cb_head h1 { font-size: 24px; }
+    .cb_class_head h2 { font-size: 21px; }
+    .cb_class_head img { max-width: 200px; }
+    .cb_plan_val { font-size: 19px; }
+    .cb_chips { grid-template-columns: 1fr; }
+    .cb_new_list { grid-template-columns: 1fr; }
+    .cb_page { padding-bottom: 40px; }
+}
+
+/* --------------------------------------------------------------------------
+   좁은 화면 툴바
+   검색 + 버튼 2개가 각자 줄을 차지해 166px(3줄)까지 커졌다. sticky 라서
+   화면을 그만큼 계속 먹는다. 검색을 한 줄로 두고 버튼 2개를 아래 한 줄에
+   나눠 담아 2줄로 고정한다. 라벨은 언어마다 길이가 달라 말줄임으로 자른다.
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 620px) {
+    .cb_bar {
+        gap: 8px;
+        padding: 10px 12px;
+    }
+
+    .cb_search { flex: 1 1 100%; }
+
+    .cb_search input { height: 40px; font-size: 14px; }
+
+    .cb_legend_btn {
+        flex: 0 0 auto;
+        min-width: 0;
+        min-height: 36px;
+        padding: 7px 11px;
+        font-size: 12.5px;
+    }
+
+    .cb_legend_btn > span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}

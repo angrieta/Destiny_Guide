@@ -21,8 +21,9 @@ Thumbs.db
 # packages
 *.tgz
 
-# 원본 GIF 소스 (배포에는 .webp 사용)
+# 원본 GIF 소스는 제외하되, 공략에서 직접 사용하는 짧은 영상 GIF는 포함
 *.gif
+!images/guide/sb-video-*.gif
 
 # Playwright failure diagnostics from sync runs
 sync-artifacts/

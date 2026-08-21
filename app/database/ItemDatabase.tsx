@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { DatabaseItem, DatabasePayload, ItemCategory } from "./types";
 import styles from "./database.module.css";
 import { LanguageSwitcher, useI18n } from "../i18n/i18n";
+import { HappyHourHeader } from "../components/HappyHourHeader";
 
 const THEME_KEY = "destiny-guide-theme";
 const PAGE_SIZE = 60;
@@ -392,12 +393,20 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
             <div>
               <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
               <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
+              <a href="../class_builds.html">Class Builds</a>
+              <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
+              <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
+              <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
+              <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
               <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
               <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
+              <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
             </div>
             <div className={styles.raidMenu}>
               <a href="../dn.html">Distorted Nightmare [RAID]</a>
               <a href="../discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
+              <a href="../predator_raid.html">The Ravenous Predator [RAID]</a>
+              <a href="../tpd_page.html">The Phantasmal Dimension</a>
             </div>
           </nav>
           <div className={styles.headerActions}>
@@ -427,6 +436,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
               {t("header.link.database", "Database")}
             </a>
             <LanguageSwitcher />
+            <HappyHourHeader />
           </div>
         </div>
       </header>

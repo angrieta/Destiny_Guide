@@ -19,6 +19,44 @@ body {
     border: 0;
 }
 
+.happy_hour_header {
+    --accent: var(--blue, #1769e0);
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 7px;
+    min-height: 34px;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-soft);
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.happy_hour_header:hover,
+.happy_hour_header:focus-visible { border-color: var(--accent); }
+.happy_hour_header:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.happy_hour_header_dot { width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: var(--muted, #718096); }
+.happy_hour_header_label { color: var(--muted, #718096); font-size: 9px; font-weight: 850; letter-spacing: .05em; }
+.happy_hour_header_time { color: var(--text); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-variant-numeric: tabular-nums; font-weight: 800; }
+.happy_hour_header[data-state="active"] { border-color: color-mix(in srgb, #ef3f73 55%, var(--border)); background: color-mix(in srgb, #ef3f73 11%, var(--surface)); }
+.happy_hour_header[data-state="active"] .happy_hour_header_dot { background: #ef3f73; box-shadow: 0 0 0 4px color-mix(in srgb, #ef3f73 18%, transparent); animation: happy-hour-pulse 1.8s ease-in-out infinite; }
+.happy_hour_header[data-state="active"] .happy_hour_header_label { color: #d92860; }
+.happy_hour_header[data-state="upcoming"] .happy_hour_header_dot { background: var(--accent); }
+
+@keyframes happy-hour-pulse {
+    50% { box-shadow: 0 0 0 7px color-mix(in srgb, #ef3f73 5%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .happy_hour_header[data-state="active"] .happy_hour_header_dot { animation: none; }
+}
+
 /* ── 언어 선택기 ────────────────────────────────────────────────
    선택자를 .lang_switch 하위로 중첩해 둔 이유:
    React 모듈 CSS 에 `.pageShell button { font: inherit }` 가 있어서
@@ -154,6 +192,9 @@ body {
 }
 
 @media screen and (max-width: 780px) {
+    .happy_hour_header { min-height: 30px; padding: 4px 8px; gap: 5px; }
+    .happy_hour_header_label { font-size: 8px; }
+    .happy_hour_header_time { font-size: 10px; }
     .lang_switch .lang_switch_button { min-height: 30px; padding: 3px 8px; gap: 5px; }
     .lang_switch .lang_switch_icon { width: 13px; height: 13px; }
     .lang_switch .lang_switch_list { min-width: 124px; }

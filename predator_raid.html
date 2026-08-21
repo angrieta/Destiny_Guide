@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="prd.t039">DestinyGuide - The Ravenous Predator [RAID]</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/item_info.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+<!-- 헤더종료 -->
+
+<body>
+    <main class="g_page">
+        <div class="g_head">
+            <h2><span>The Ravenous Predator</span></h2>
+            <p class="g_lead" data-i18n="prd.t040">A difficulty 10 raid built around one boss, Soul Butcher. The fight is a positioning puzzle on a raft, and the pattern charts below are what make it learnable.</p>
+            <p class="g_source">
+                <span data-i18n="prd.t038">Source: the raid channel, plus the How to Soul Butcher thread in the Discord strategy forum. Pattern charts and the corner strategy by Rang3r, area skin by thanx JP.</span><br>
+                <span data-i18n="prd.t099">Video source: HammerHead9000's clear run.</span>
+                <a class="g_video_source" href="https://discord.com/channels/363947585154580480/1366736613459365928" target="_blank" rel="noopener noreferrer" data-i18n="prd.t186">Open the Discord source channel</a>
+                <a class="g_video_source" href="https://www.youtube.com/watch?v=CUF69RkXxGk" target="_blank" rel="noopener noreferrer" data-i18n="prd.t043">Open the full video</a>
+            </p>
+        </div>
+        <nav class="g_toc" aria-label="Guide sections">
+            <a href="#overview" data-i18n="prd.t001">Quest overview</a>
+            <a href="#positions" data-i18n="prd.t010">Assign the corners before you start</a>
+            <a href="#toxic" data-i18n="prd.t017">Ravenous Storm [Toxic]</a>
+            <a href="#blazing" data-i18n="prd.t020">Ravenous Storm [Blazing]</a>
+            <a href="#video-dodges" data-i18n="prd.t041">Video walkthrough and practical dodges</a>
+            <a href="#call-sheet" data-i18n="prd.t080">Quick call sheet</a>
+            <a href="#legend" data-i18n="prd.t023">Reading the skill symbols</a>
+        </nav>
+        <section class="g_sec" id="overview">
+            <h3><span class="g_sec_num">1</span><span data-i18n="prd.t001">Quest overview</span></h3>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="prd.t002">Item</th>
+                        <th data-i18n="prd.t003">Detail</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td data-i18n="prd.t004">Where to find it</td>
+                            <td>Episode 1 &gt; Special &gt; The Ravenous Predator [Raid]</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="prd.t005">Difficulty</td>
+                            <td>★10</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="prd.t006">Boss</td>
+                            <td>Soul Butcher</td>
+                        </tr>
+                        <tr>
+                            <td data-i18n="prd.t007">Signature drop</td>
+                            <td>Parasitic Armor 'Predator' 1/36 (all IDs)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note" data-i18n="prd.t008">Parasitic Armor 'Predator' is what unlocks Dark Bridge's low HP mode, which switches the special to 1-1-4 hits with a different motion.</p>
+            <figure class="g_fig g_fig_full">
+                <img src="./images/guide/sb-boss.webp" alt="" loading="lazy" decoding="async">
+                <figcaption data-i18n="prd.t009">Soul Butcher.</figcaption>
+            </figure>
+        </section>
+        <section class="g_sec" id="positions">
+            <h3><span class="g_sec_num">2</span><span data-i18n="prd.t010">Assign the corners before you start</span></h3>
+            <p data-i18n="prd.t011">Most wipes come from two players running to the same corner. Decide who takes which corner in the lobby, not during the fight.</p>
+            <ul class="g_bullets">
+                <li data-i18n="prd.t012">Give every player one corner of the raft up front. The community names them after the warps and the NPC: red, blue, green and ill gill.</li>
+                <li data-i18n="prd.t013">If you cannot reach your own corner in time, swap with the player on the same side. Front left (ill gill) pairs with back left (blue), and front right (green) pairs with back right (red).</li>
+                <li data-i18n="prd.t014">Three teleporters coloured red, blue and green plus the NPC ill gill show up as map markers, so you can orient yourself from the map.</li>
+            </ul>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-raft-template.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="prd.t015">The raft layout used by the pattern charts. Explosion sizes are marked on the chart itself.</figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-safe-zone-skin.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption data-i18n="prd.t016">An optional area skin that paints the safe ground. Drop the file into the scene folder to use it.</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section class="g_sec" id="toxic">
+            <h3><span class="g_sec_num">3</span><span data-i18n="prd.t017">Ravenous Storm [Toxic]</span></h3>
+            <p data-i18n="prd.t018">Five steps, in order. Each chart shows where the damage lands and where you should be standing.</p>
+            <p class="g_note g_diagram_key" data-i18n="prd.t185">How to read the charts: dark red circles are damage zones, coloured stars are player positions, and arrows show the next move.</p>
+            <div class="g_pattern_brief">
+                <p><strong data-i18n="prd.t159">Core route</strong><span data-i18n="prd.t160">Centre → split into front/back pairs → assigned corners → remain spread through the finish.</span></p>
+                <p><strong data-i18n="prd.t161">Final check</strong><span data-i18n="prd.t162">Read the [Toxic] suffix before moving. The last personal areas must not overlap.</span></p>
+            </div>
+            <div class="g_figs">
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-toxic-1.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t163">pt.1 · Split into front/back pairs</strong><span data-i18n="prd.t164">Start in the centre, then split two players to the front and two to the back while the four corners explode.</span></figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-toxic-2.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t165">pt.2 · Spread to assigned corners</strong><span data-i18n="prd.t166">Avoid the left/right blasts and fan out from each pair to the four assigned corners.</span></figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-toxic-3.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t167">pt.3 · Hold the corners</strong><span data-i18n="prd.t168">The front and back centres explode. Do not leave your corner.</span></figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-toxic-4.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t169">pt.4 · Keep holding</strong><span data-i18n="prd.t170">The centre explodes next. Stay at the assigned corner until it resolves.</span></figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-toxic-5.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t171">pt.5 · Personal-area spread</strong><span data-i18n="prd.t172">Each corner receives a large personal area. Finish the pattern spread out; never converge.</span></figcaption>
+                </figure>
+            </div>
+            <p class="g_note" data-i18n="prd.t019">Toxic ends with four players spread at their assigned corners. Tap a chart to enlarge it.</p>
+        </section>
+        <section class="g_sec" id="blazing">
+            <h3><span class="g_sec_num">4</span><span data-i18n="prd.t020">Ravenous Storm [Blazing]</span></h3>
+            <p data-i18n="prd.t021">Same idea, different pattern. Watch for the finish.</p>
+            <div class="g_pattern_brief g_pattern_brief_blazing">
+                <p><strong data-i18n="prd.t159">Core route</strong><span data-i18n="prd.t173">Assigned corners → hold → split into front/back pairs → exact centre → remain stacked.</span></p>
+                <p><strong data-i18n="prd.t161">Final check</strong><span data-i18n="prd.t174">Read the [Blazing] suffix before moving. After pt.5, stay together for the stack-damage explosion.</span></p>
+            </div>
+            <div class="g_figs">
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-blazing-1.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t175">pt.1 · Assigned-corner spread</strong><span data-i18n="prd.t176">Start at the four assigned corners so the large personal areas do not overlap.</span></figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-blazing-2.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t177">pt.2 · Hold the corners</strong><span data-i18n="prd.t178">The centre explodes. Stay out and keep your corner.</span></figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-blazing-3.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t179">pt.3 · Keep holding</strong><span data-i18n="prd.t180">The front and back centres explode next. Remain in the corners.</span></figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-blazing-4.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t181">pt.4 · Gather into front/back pairs</strong><span data-i18n="prd.t182">The left and right sides explode. Two players meet at the front centre and two at the back centre.</span></figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/guide/sb-blazing-5.webp" alt="" loading="lazy" decoding="async">
+                    <figcaption class="g_pattern_caption"><strong data-i18n="prd.t183">pt.5 · Stack in the exact centre</strong><span data-i18n="prd.t184">The four corners explode. All four players converge in the centre and stay together.</span></figcaption>
+                </figure>
+            </div>
+            <p class="g_note" data-i18n="prd.t022">After pt.5 the attack ends with a stack-damage explosion, so group up instead of spreading out.</p>
+        </section>
+        <section class="g_sec" id="video-dodges">
+            <h3><span class="g_sec_num">5</span><span data-i18n="prd.t041">Video walkthrough and practical dodges</span></h3>
+            <p data-i18n="prd.t042">The diagrams show where safe zones are. These clips show when to move: watch the call, let the hit finish, then reset to your assigned position.</p>
+            <p class="g_note g_warn" data-i18n="prd.t100">The video is one successful run, so use the on-screen skill name and your party caller as the final timing cue.</p>
+
+            <div class="g_video_grid">
+                <article class="g_video_card">
+                    <figure class="g_fig">
+                        <img src="./images/guide/sb-video-corners.gif?v=12fps" width="480" height="270" alt="Party swaps same-side corners while Soul Butcher attacks." data-i18n-alt="prd.t101" loading="lazy" decoding="async">
+                    </figure>
+                    <div class="g_video_body">
+                        <div class="g_video_heading">
+                            <h3 class="g_video_title" data-i18n="prd.t044">Party operation · Corner swap</h3>
+                            <a class="g_video_source_time" href="https://www.youtube.com/watch?v=CUF69RkXxGk&t=301s" target="_blank" rel="noopener noreferrer" data-i18n="prd.t153">Source clip · 5:01</a>
+                        </div>
+                        <dl class="g_video_steps">
+                            <div><dt data-i18n="prd.t045">Signal</dt><dd data-i18n="prd.t046">A player cannot reach their assigned corner.</dd></div>
+                            <div><dt data-i18n="prd.t047">Response</dt><dd data-i18n="prd.t048">Call the swap immediately and take your partner's corner on the same side. Never cross through the middle.</dd></div>
+                            <div><dt data-i18n="prd.t049">Common mistake</dt><dd data-i18n="prd.t050">Two players silently choose the same corner and overlap explosions.</dd></div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="g_video_card">
+                    <figure class="g_fig">
+                        <img src="./images/guide/sb-video-wait-explosion.gif?v=12fps" width="480" height="270" alt="Soul Explosion X resolves before the party spreads for Twin Blast." data-i18n-alt="prd.t102" loading="lazy" decoding="async">
+                    </figure>
+                    <div class="g_video_body">
+                        <div class="g_video_heading">
+                            <h3 class="g_video_title" data-i18n="prd.t051">Soul Explosion X → Twin Blast</h3>
+                            <a class="g_video_source_time" href="https://www.youtube.com/watch?v=CUF69RkXxGk&t=321s" target="_blank" rel="noopener noreferrer" data-i18n="prd.t154">Source clip · 5:21</a>
+                        </div>
+                        <dl class="g_video_steps">
+                            <div><dt data-i18n="prd.t045">Signal</dt><dd data-i18n="prd.t052">Soul Explosion X resolves on the grouped party, followed by [&lt;&lt;--&gt;&gt;] Twin Blast.</dd></div>
+                            <div><dt data-i18n="prd.t047">Response</dt><dd data-i18n="prd.t053">Hold until Soul Explosion X finishes, then spread to assigned positions for Twin Blast.</dd></div>
+                            <div><dt data-i18n="prd.t049">Common mistake</dt><dd data-i18n="prd.t054">Leaving before the first blast finishes or remaining stacked for Twin Blast overlaps the follow-up.</dd></div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="g_video_card">
+                    <figure class="g_fig">
+                        <img src="./images/guide/sb-video-side-lightning.gif?v=12fps" width="480" height="270" alt="Players spread to assigned edges for Fire Blast." data-i18n-alt="prd.t103" loading="lazy" decoding="async">
+                    </figure>
+                    <div class="g_video_body">
+                        <div class="g_video_heading">
+                            <h3 class="g_video_title" data-i18n="prd.t055">Fire Blast</h3>
+                            <a class="g_video_source_time" href="https://www.youtube.com/watch?v=CUF69RkXxGk&t=725s" target="_blank" rel="noopener noreferrer" data-i18n="prd.t155">Source clip · 12:05</a>
+                        </div>
+                        <dl class="g_video_steps">
+                            <div><dt data-i18n="prd.t045">Signal</dt><dd data-i18n="prd.t056">[&lt;&lt;--&gt;&gt;] Fire Blast appears: the spread symbol means each player receives a circular area.</dd></div>
+                            <div><dt data-i18n="prd.t047">Response</dt><dd data-i18n="prd.t057">Take an assigned edge or corner with enough spacing and hold it until the blast fully resolves.</dd></div>
+                            <div><dt data-i18n="prd.t049">Common mistake</dt><dd data-i18n="prd.t058">Returning to the middle early overlaps personal areas or catches the remaining hits.</dd></div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="g_video_card">
+                    <figure class="g_fig">
+                        <img src="./images/guide/sb-video-target-spread.gif?v=12fps" width="480" height="270" alt="The selected party member isolates during Ancient Grants." data-i18n-alt="prd.t104" loading="lazy" decoding="async">
+                    </figure>
+                    <div class="g_video_body">
+                        <div class="g_video_heading">
+                            <h3 class="g_video_title" data-i18n="prd.t059">Ancient Grants</h3>
+                            <a class="g_video_source_time" href="https://www.youtube.com/watch?v=CUF69RkXxGk&t=843s" target="_blank" rel="noopener noreferrer" data-i18n="prd.t156">Source clip · 14:03</a>
+                        </div>
+                        <dl class="g_video_steps">
+                            <div><dt data-i18n="prd.t045">Signal</dt><dd data-i18n="prd.t060">Ancient Grants designates one player while the group is close.</dd></div>
+                            <div><dt data-i18n="prd.t047">Response</dt><dd data-i18n="prd.t061">The marked player isolates to the called side; everyone else creates space from that player.</dd></div>
+                            <div><dt data-i18n="prd.t049">Common mistake</dt><dd data-i18n="prd.t062">Following the marked player turns a single-target burst into party damage.</dd></div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="g_video_card">
+                    <figure class="g_fig">
+                        <img src="./images/guide/sb-video-route.gif?v=12fps" width="480" height="270" alt="Party begins the chained route at the front edge." data-i18n-alt="prd.t105" loading="lazy" decoding="async">
+                    </figure>
+                    <div class="g_video_body">
+                        <div class="g_video_heading">
+                            <h3 class="g_video_title" data-i18n="prd.t063">Party operation · Position calls</h3>
+                            <a class="g_video_source_time" href="https://www.youtube.com/watch?v=CUF69RkXxGk&t=897s" target="_blank" rel="noopener noreferrer" data-i18n="prd.t157">Source clip · 14:57</a>
+                        </div>
+                        <dl class="g_video_steps">
+                            <div><dt data-i18n="prd.t045">Signal</dt><dd data-i18n="prd.t064">For this cast, the caller announces front → right → middle → corners.</dd></div>
+                            <div><dt data-i18n="prd.t047">Response</dt><dd data-i18n="prd.t065">Move as one group for shared safe zones, but fan out to assigned corners at the corner call.</dd></div>
+                            <div><dt data-i18n="prd.t049">Common mistake</dt><dd data-i18n="prd.t066">Cutting across the raft or anticipating the next step breaks the formation.</dd></div>
+                        </dl>
+                    </div>
+                </article>
+
+                <article class="g_video_card">
+                    <figure class="g_fig">
+                        <img src="./images/guide/sb-video-laser.gif?v=12fps" width="480" height="270" alt="Party waits at the edge for Ancient Rabarta to finish." data-i18n-alt="prd.t106" loading="lazy" decoding="async">
+                    </figure>
+                    <div class="g_video_body">
+                        <div class="g_video_heading">
+                            <h3 class="g_video_title" data-i18n="prd.t067">Ancient Rabarta</h3>
+                            <a class="g_video_source_time" href="https://www.youtube.com/watch?v=CUF69RkXxGk&t=1065s" target="_blank" rel="noopener noreferrer" data-i18n="prd.t158">Source clip · 17:45</a>
+                        </div>
+                        <dl class="g_video_steps">
+                            <div><dt data-i18n="prd.t045">Signal</dt><dd data-i18n="prd.t068">Ancient Rabarta appears while the party is holding near the edge.</dd></div>
+                            <div><dt data-i18n="prd.t047">Response</dt><dd data-i18n="prd.t069">Stop and wait for the ice/line effect to finish, then follow the next call into the middle.</dd></div>
+                            <div><dt data-i18n="prd.t049">Common mistake</dt><dd data-i18n="prd.t070">Moving as soon as you reach the edge puts you back into the unresolved attack.</dd></div>
+                        </dl>
+                    </div>
+                </article>
+            </div>
+
+            <h4 class="g_sub" data-i18n="prd.t071">Practical rules that prevent most wipes</h4>
+            <div class="g_cards g_rule_cards">
+                <article class="g_card">
+                    <div class="g_card_h"><b data-i18n="prd.t072">One caller only</b></div>
+                    <p class="g_card_src" data-i18n="prd.t073">Use short calls: centre, corner, side, front, back, colour, stack, spread. Everyone moves on the same call.</p>
+                </article>
+                <article class="g_card">
+                    <div class="g_card_h"><b data-i18n="prd.t074">Reset after every mechanic</b></div>
+                    <p class="g_card_src" data-i18n="prd.t075">After an explosion, add wave or laser, return to your assigned home position unless the next call says otherwise.</p>
+                </article>
+                <article class="g_card">
+                    <div class="g_card_h"><b data-i18n="prd.t076">Do not revive into an active pattern</b></div>
+                    <p class="g_card_src" data-i18n="prd.t077">Wait for a multi-hit or line attack to finish before using Moon Atomizer or accepting the revive.</p>
+                </article>
+                <article class="g_card">
+                    <div class="g_card_h"><b data-i18n="prd.t078">Keep the map visible</b></div>
+                    <p class="g_card_src" data-i18n="prd.t079">Use the red, blue, green and ill gill markers to identify the correct edge without turning the camera.</p>
+                </article>
+                <article class="g_card">
+                    <div class="g_card_h"><b data-i18n="prd.t145">Restock before the pull</b></div>
+                    <p class="g_card_src" data-i18n="prd.t146">Bring a full Moon Atomizer supply and finish MAG/equipment setup before entering. The run loses time and resources correcting this after the pull.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="g_sec" id="call-sheet">
+            <h3><span class="g_sec_num">6</span><span data-i18n="prd.t080">Quick call sheet</span></h3>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="prd.t081">Call / signal</th>
+                        <th data-i18n="prd.t082">What to do</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr><td class="g_name" data-i18n="prd.t017">Ravenous Storm [Toxic]</td><td data-i18n="prd.t187">Centre → front/back pairs → corners. Finish spread at the four assigned corners.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t020">Ravenous Storm [Blazing]</td><td data-i18n="prd.t188">Corners → front/back pairs → exact centre. Remain stacked after pt.5.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t051">Soul Explosion X → Twin Blast</td><td data-i18n="prd.t189">Hold for Soul Explosion X, then spread to assigned positions for Twin Blast.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t055">Fire Blast</td><td data-i18n="prd.t190">Spread to assigned edges so the personal areas do not overlap.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t083">Centre</td><td data-i18n="prd.t084">Group briefly for damage or the shared safe zone; be ready to split on the next call.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t085">Corner</td><td data-i18n="prd.t086">Take your assigned corner. If blocked, swap only with the partner on the same side.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t087">Side / front / back</td><td data-i18n="prd.t088">Move to the called edge, wait for the full hit, then reset.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t089">Colour</td><td data-i18n="prd.t090">Follow the caller to the named map marker; do not invent a second route.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t091">Ancient Grants</td><td data-i18n="prd.t092">Marked player isolates; the other three spread away.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t093">Ancient Rabarta</td><td data-i18n="prd.t094">Hold at the edge until the ice/line effect finishes, then move on the next call.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t147">Jump</td><td data-i18n="prd.t148">Stay spread for the landing blast. Enter the middle only on the next call.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t149">Counted call</td><td data-i18n="prd.t150">Wait for the called hit count to finish, then move.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t151">Spawned targets</td><td data-i18n="prd.t152">Destroy them during the front/back sequence, then reset to corners.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t095">Stack symbol</td><td data-i18n="prd.t096">Group tightly so the damage is shared.</td></tr>
+                        <tr><td class="g_name" data-i18n="prd.t097">Spread symbol</td><td data-i18n="prd.t098">Create space so personal areas do not overlap.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="g_sec" id="legend">
+            <h3><span class="g_sec_num">7</span><span data-i18n="prd.t023">Reading the skill symbols</span></h3>
+            <p data-i18n="prd.t024">A boss announces its skill name before it fires. The symbols in the name tell you what shape the attack takes, so learning them is faster than memorising every skill.</p>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr>
+                        <th data-i18n="prd.t025">Symbol</th>
+                        <th data-i18n="prd.t026">Meaning</th>
+                    </tr></thead>
+                    <tbody>
+                        <tr>
+                            <td class="g_name">[O]</td>
+                            <td data-i18n="prd.t027">Circular hitbox, explosion.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[●]</td>
+                            <td data-i18n="prd.t028">Damage falls off with distance from the centre of the explosion.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[!]</td>
+                            <td data-i18n="prd.t029">Unavoidable.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[&lt;&lt;--&gt;&gt;]</td>
+                            <td data-i18n="prd.t030">Circular area of effect. Spread out from each other.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[-&gt;&gt;&lt;&lt;-]</td>
+                            <td data-i18n="prd.t031">Damage stacks. Group up.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[|||]</td>
+                            <td data-i18n="prd.t032">Straight line attack, vertical.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[=]</td>
+                            <td data-i18n="prd.t033">Straight line attack, horizontal.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[*]</td>
+                            <td data-i18n="prd.t034">Attacks from several directions.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Resist Down [X]</td>
+                            <td data-i18n="prd.t035">Increases the damage you take from the [X] attribute.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">Resist Reset [X]</td>
+                            <td data-i18n="prd.t036">Clears the [X] attribute debuff.</td>
+                        </tr>
+                        <tr>
+                            <td class="g_name">[Death Sentence]</td>
+                            <td data-i18n="prd.t037">Your HP must be full when the effect ends.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div class="g_popup" id="gPopup">
+        <div class="g_popup_dim"></div>
+        <div class="g_popup_inner">
+            <button class="g_popup_close" type="button" aria-label="Close">&#10005;</button>
+            <img src="" alt="">
+        </div>
+    </div>
+
+    <script>
+    // 도해는 작게 보면 읽을 수 없다. 눌러서 크게 본다.
+    document.addEventListener("DOMContentLoaded", function () {
+        var popup = document.getElementById("gPopup");
+        if (!popup) return;
+        var img = popup.querySelector("img");
+
+        function close() {
+            popup.classList.remove("active");
+            img.src = "";
+            document.body.style.overflow = "";
+        }
+        document.querySelectorAll(".g_fig img").forEach(function (el) {
+            el.addEventListener("click", function () {
+                img.src = el.currentSrc || el.src;
+                popup.classList.add("active");
+                document.body.style.overflow = "hidden";
+            });
+        });
+        popup.querySelector(".g_popup_close").addEventListener("click", close);
+        popup.querySelector(".g_popup_dim").addEventListener("click", close);
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") close();
+        });
+    });
+    </script>
+</body>
+</html>

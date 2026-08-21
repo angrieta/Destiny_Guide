@@ -1,0 +1,63 @@
+name: Update Happy Hour Schedule
+
+on:
+  workflow_dispatch:
+    inputs:
+      announcement_time:
+        description: "Discord announcement time in KST (YYYY-MM-DD HH:mm)"
+        required: true
+        type: string
+      discord_message:
+        description: "Paste the full Destiny app message"
+        required: true
+        default: "Scheduled Happy Hours active! 179 minutes remaining."
+        type: string
+
+permissions:
+  contents: write
+
+# All automated jobs push to landing, so they must not race with each other.
+concurrency:
+  group: playpso-sync
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: landing
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Parse Discord announcement
+        env:
+          ANNOUNCEMENT_TIME: ${{ inputs.announcement_time }}
+          DISCORD_MESSAGE: ${{ inputs.discord_message }}
+        run: node scripts/update-happy-hour.mjs --at "$ANNOUNCEMENT_TIME" --message "$DISCORD_MESSAGE"
+
+      - name: Publish schedule data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/happy-hour.json
+
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: update Happy Hour schedule"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:landing; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected, rebasing and retrying..."
+            git pull --rebase origin landing
+          done
+          echo "::error::Could not push Happy Hour update after 3 attempts."
+          exit 1
