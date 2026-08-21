@@ -5,6 +5,7 @@ import type { DatabaseItem, DatabasePayload, ItemCategory } from "./types";
 import styles from "./database.module.css";
 import { LanguageSwitcher, useI18n } from "../i18n/i18n";
 import { HappyHourHeader } from "../components/HappyHourHeader";
+import { useHeaderHeight } from "../components/useHeaderHeight";
 
 const THEME_KEY = "destiny-guide-theme";
 const PAGE_SIZE = 60;
@@ -87,6 +88,7 @@ const DEFAULTS = {
 };
 
 export default function ItemDatabase({ payload }: { payload: DatabasePayload }) {
+  useHeaderHeight();
   const { t } = useI18n();
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [query, setQuery] = useState(DEFAULTS.q);

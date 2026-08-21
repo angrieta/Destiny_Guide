@@ -69,6 +69,14 @@
 .dropTableLink { padding: 5px 10px; border-radius: 6px; background: #222; color: #fff !important; font-size: 13px; white-space: nowrap; }
 :global(html[data-theme="dark"]) .dropTableLink { background: #dcecff; color: #0a1b31 !important; }
 
+
+/* 정적 페이지 헤더와 같은 구성. 내비를 로고와 액션 사이 좁은 칸에 밀어넣으면
+   메뉴가 14개라 두 줄로 빽빽하게 감긴다. 정적 쪽처럼 내비에 한 줄을 통째로 준다. */
+.headerInner { flex-wrap: wrap; height: auto; row-gap: 12px; padding: 16px var(--content-gutter); }
+.headerActions { margin-left: auto; }
+.headerMenus { order: 3; flex: 1 1 100%; flex-flow: column; justify-content: flex-start; gap: 8px; }
+.headerMenus > div { justify-content: flex-start; }
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -235,7 +243,9 @@
      고정 높이 + 절대배치 내비게이션이던 기존 구조에서는 가로 스크롤이 생겼다.
      내비게이션을 흐름 안으로 되돌리고 액션 줄이 감기게 한다.
      아래 sticky 계산은 헤더 높이를 실측하므로 높이가 변해도 어긋나지 않는다. */
-  .header { height: auto; }
+  /* 정적 페이지와 동일하게 모바일에서는 sticky를 해제한다. 메뉴를 모두 보여주면
+     헤더가 200px을 넘어서, 고정해두면 화면의 1/4을 잡아먹는다. */
+  .header { position: static; height: auto; }
   .headerInner { position: relative; flex-wrap: wrap; align-items: center; gap: 10px; padding: 12px 15px; }
   .siteLogo { flex-basis: 100px; width: 100px; }
   /* 가로 스크롤로 감추면 뒤쪽 메뉴를 못 찾는다. 줄을 넘겨 전부 보이게 한다. */
@@ -437,7 +447,7 @@
 .episodeTable h2 { margin: 0 0 24px; color: var(--text); font-size: clamp(26px, 3vw, 38px); font-weight: 500; letter-spacing: -0.035em; text-align: center; }
 .episodeTable h2 span { color: var(--muted); font-weight: 300; }
 .mobileSwipeHint { display: none; }
-.stickySectionHeader { position: sticky; top: 100px; z-index: 17; height: 46px; overflow: hidden; border: 1px solid var(--border-strong); border-radius: 8px 8px 0 0; background: var(--surface); box-shadow: 0 8px 22px rgba(17, 34, 59, 0.13); }
+.stickySectionHeader { position: sticky; top: var(--header-h, 100px); z-index: 17; height: 46px; overflow: hidden; border: 1px solid var(--border-strong); border-radius: 8px 8px 0 0; background: var(--surface); box-shadow: 0 8px 22px rgba(17, 34, 59, 0.13); }
 .stickySectionHeaderScroll { width: 100%; height: 100%; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
 .stickySectionHeaderScroll::-webkit-scrollbar { display: none; }
 .stickySectionHeaderRow { display: grid; grid-template-columns: 150px repeat(10, minmax(0, 1fr)); width: 100%; min-width: 1180px; height: 45px; }

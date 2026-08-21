@@ -5,6 +5,7 @@ import type { DropRecord, DropTablePayload, ItemType, MatrixDrop } from "./types
 import styles from "./drop-tables.module.css";
 import { LanguageSwitcher, useI18n } from "../i18n/i18n";
 import { HappyHourHeader } from "../components/HappyHourHeader";
+import { useHeaderHeight } from "../components/useHeaderHeight";
 
 const THEME_KEY = "destiny-guide-theme";
 const DIFFICULTIES = ["Normal", "Hard", "Very Hard", "Ultimate"];
@@ -69,6 +70,7 @@ function dropMatches(drop: MatrixDrop, itemNeedle: string, itemType: "All" | Ite
 }
 
 export default function DropTableExplorer({ payload }: { payload: DropTablePayload }) {
+  useHeaderHeight();
   const { t } = useI18n();
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [difficulty, setDifficulty] = useState("Normal");

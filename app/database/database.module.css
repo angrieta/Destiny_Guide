@@ -74,6 +74,14 @@
 .navLinkActive { padding: 5px 10px; border-radius: 6px; background: #222; color: #fff !important; font-size: 13px; white-space: nowrap; }
 :global(html[data-theme="dark"]) .navLinkActive { background: #dcecff; color: #0a1b31 !important; }
 
+
+/* 정적 페이지 헤더와 같은 구성. 내비를 로고와 액션 사이 좁은 칸에 밀어넣으면
+   메뉴가 14개라 두 줄로 빽빽하게 감긴다. 정적 쪽처럼 내비에 한 줄을 통째로 준다. */
+.headerInner { flex-wrap: wrap; height: auto; row-gap: 12px; padding: 16px var(--content-gutter); }
+.headerActions { margin-left: auto; }
+.headerMenus { order: 3; flex: 1 1 100%; flex-flow: column; justify-content: flex-start; gap: 8px; }
+.headerMenus > div { justify-content: flex-start; }
+
 /* ---------- Hero ---------- */
 
 .hero {
@@ -99,7 +107,7 @@
 
 .searchBar {
   position: sticky;
-  top: 100px;
+  top: var(--header-h, 100px);
   z-index: 20;
   display: flex;
   gap: 12px;
@@ -233,7 +241,9 @@
 }
 
 @media (max-width: 860px) {
-  .header { height: auto; padding: 10px 0; }
+  /* 정적 페이지와 동일하게 모바일에서는 sticky를 해제한다. 메뉴를 모두 보여주면
+     헤더가 200px을 넘어서, 고정해두면 화면의 1/4을 잡아먹는다. */
+  .header { position: static; height: auto; padding: 10px 0; }
   .headerInner { flex-wrap: wrap; gap: 12px; }
   .headerMenus { order: 3; flex-basis: 100%; justify-content: flex-start; }
   /* 언어에 따라 칩 문구가 길어지면 한 줄에 안 들어간다.
