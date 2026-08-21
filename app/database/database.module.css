@@ -144,6 +144,12 @@
 .resultBar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 26px 0 14px; }
 .resultBar p { margin: 0; color: var(--muted); font-size: 14px; font-weight: 700; }
 .resultBar strong { color: var(--text); font-size: 22px; letter-spacing: -0.03em; }
+.resultActions { display: flex; align-items: center; justify-content: flex-end; gap: 9px; }
+.levelSort { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
+.levelSort button { min-height: 32px; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: var(--muted); font-size: 12px; font-weight: 750; white-space: nowrap; cursor: pointer; transition: 150ms ease; }
+.levelSort button:hover { background: var(--surface-soft); color: var(--text); }
+.levelSort .levelSortActive { background: var(--blue); color: #fff; box-shadow: 0 4px 12px color-mix(in srgb, var(--blue) 28%, transparent); }
+:global(html[data-theme="dark"]) .levelSort .levelSortActive { color: #07111f; }
 .reset, .resetActive { min-height: 40px; padding: 0 16px; border: 1px solid var(--border); border-radius: 9px; background: var(--surface); color: var(--muted); font-size: 13px; font-weight: 750; cursor: pointer; transition: 150ms ease; }
 .reset:disabled { opacity: 0.5; cursor: default; }
 .resetActive { border-color: var(--blue); background: var(--blue-soft); color: var(--blue-strong); }
@@ -280,5 +286,9 @@
   .heroStats div { padding: 14px 12px; }
   .heroStats strong { font-size: 19px; }
   .categoryTabs button { flex: 0 0 auto; }
+  .resultBar { align-items: stretch; flex-direction: column; }
+  .resultActions { justify-content: space-between; }
+  .levelSort { flex: 1 1 auto; }
+  .levelSort button { flex: 1 1 0; padding-inline: 8px; }
   .detailStats { grid-template-columns: minmax(0, 1fr); }
 }

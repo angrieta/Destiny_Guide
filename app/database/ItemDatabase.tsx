@@ -10,6 +10,7 @@ import { useHeaderHeight } from "../components/useHeaderHeight";
 const THEME_KEY = "destiny-guide-theme";
 const PAGE_SIZE = 60;
 const CATEGORIES: Array<"All" | ItemCategory> = ["All", "Weapons", "Armor", "Shields", "Units", "Mags"];
+const LEVEL_CAPS = ["All", "20", "40", "60", "80", "100", "120", "150", "180", "200"];
 const CATEGORY_LABELS: Record<string, string> = {
   All: "All",
   Weapons: "Weapons",
@@ -87,6 +88,33 @@ const DEFAULTS = {
   sort: "name-asc" as SortKey,
 };
 
+function canonicalOption(value: string | null, options: readonly string[]) {
+  if (!value) return null;
+  const normalized = value.toLocaleLowerCase("en-US");
+  return options.find((option) => option.toLocaleLowerCase("en-US") === normalized) ?? null;
+}
+
+function supportsWeaponFilters(category: "All" | ItemCategory) {
+  return category === "All" || category === "Weapons";
+}
+
+function supportsDefenceFilters(category: "All" | ItemCategory) {
+  return category === "All" || category === "Armor" || category === "Shields";
+}
+
+function supportsUnitFilters(category: "All" | ItemCategory) {
+  return category === "All" || category === "Units";
+}
+
+function supportsClassFilter(category: "All" | ItemCategory) {
+  return category !== "Units";
+}
+
+function supportsSort(category: "All" | ItemCategory, sort: SortKey) {
+  const option = SORT_OPTIONS.find((entry) => entry.value === sort);
+  return Boolean(option && (!option.categories || category === "All" || option.categories.includes(category)));
+}
+
 export default function ItemDatabase({ payload }: { payload: DatabasePayload }) {
   useHeaderHeight();
   const { t } = useI18n();
@@ -127,24 +155,56 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
     document.documentElement.style.colorScheme = next;
   };
 
-  // Restore a shared URL on first paint.
-  useEffect(() => {
+  const restoreFromUrl = useCallback(() => {
     const params = new URLSearchParams(window.location.search);
-    const readCategory = params.get("cat");
+    const readCategory = canonicalOption(params.get("cat"), CATEGORIES) as "All" | ItemCategory | null;
+    const nextCategory = readCategory ?? DEFAULTS.cat;
+
     setQuery(params.get("q") ?? DEFAULTS.q);
-    if (readCategory && CATEGORIES.includes(readCategory as ItemCategory)) {
-      setCategory(readCategory as ItemCategory);
-    }
-    setWeaponType(params.get("type") ?? DEFAULTS.type);
-    setSpecial(params.get("special") ?? DEFAULTS.special);
-    setPlayerClass(params.get("class") ?? DEFAULTS.cls);
-    setStatType(params.get("stat") ?? DEFAULTS.stat);
-    setMaxLevel(params.get("lv") ?? DEFAULTS.maxLv);
-    const readSort = params.get("sort");
-    if (readSort && SORT_OPTIONS.some((option) => option.value === readSort)) setSort(readSort as SortKey);
-    setSelectedId(params.get("item"));
+    setCategory(nextCategory);
+    setWeaponType(
+      supportsWeaponFilters(nextCategory)
+        ? (canonicalOption(params.get("type"), payload.weaponTypes) ?? DEFAULTS.type)
+        : DEFAULTS.type,
+    );
+    setSpecial(
+      supportsWeaponFilters(nextCategory)
+        ? (canonicalOption(params.get("special"), payload.specials) ?? DEFAULTS.special)
+        : DEFAULTS.special,
+    );
+    setPlayerClass(
+      supportsClassFilter(nextCategory)
+        ? (canonicalOption(params.get("class"), payload.classes) ?? DEFAULTS.cls)
+        : DEFAULTS.cls,
+    );
+    setStatType(
+      supportsUnitFilters(nextCategory)
+        ? (canonicalOption(params.get("stat"), payload.unitStatTypes) ?? DEFAULTS.stat)
+        : DEFAULTS.stat,
+    );
+    setMaxLevel(
+      supportsDefenceFilters(nextCategory)
+        ? (canonicalOption(params.get("lv"), LEVEL_CAPS) ?? DEFAULTS.maxLv)
+        : DEFAULTS.maxLv,
+    );
+
+    const readSort = canonicalOption(
+      params.get("sort"),
+      SORT_OPTIONS.map((option) => option.value),
+    ) as SortKey | null;
+    setSort(readSort && supportsSort(nextCategory, readSort) ? readSort : DEFAULTS.sort);
+
+    const readItem = params.get("item");
+    setSelectedId(readItem && payload.items.some((item) => item.id === readItem) ? readItem : null);
+  }, [payload.classes, payload.items, payload.specials, payload.unitStatTypes, payload.weaponTypes]);
+
+  // Restore shared URLs and keep browser Back/Forward navigation in sync.
+  useEffect(() => {
+    restoreFromUrl();
     setHydrated(true);
-  }, []);
+    window.addEventListener("popstate", restoreFromUrl);
+    return () => window.removeEventListener("popstate", restoreFromUrl);
+  }, [restoreFromUrl]);
 
   // A no-change sync run only commits its status file, which never rebuilds Pages,
   // so read the current stamp straight from the branch.
@@ -186,10 +246,11 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
     if (sort !== DEFAULTS.sort) params.set("sort", sort);
     if (selectedId) params.set("item", selectedId);
     const search = params.toString();
-    window.history.replaceState(null, "", search ? `?${search}` : window.location.pathname);
+    const nextUrl = `${window.location.pathname}${search ? `?${search}` : ""}${window.location.hash}`;
+    window.history.replaceState(window.history.state, "", nextUrl);
   }, [hydrated, query, category, weaponType, special, playerClass, statType, maxLevel, sort, selectedId]);
 
-  const needle = normalize(query);
+  const searchTokens = useMemo(() => normalize(query).split(" ").filter(Boolean), [query]);
 
   const results = useMemo(() => {
     const filtered = payload.items.filter((item) => {
@@ -197,12 +258,13 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
       if (weaponType !== "All" && item.type !== weaponType) return false;
       if (special !== "All" && item.special !== special) return false;
       if (statType !== "All" && item.statType !== statType) return false;
-      if (playerClass !== "All" && !item.classes.includes(playerClass)) return false;
+      // A blank Class column means the item has no class restriction (all Units use this).
+      if (playerClass !== "All" && item.classes.length > 0 && !item.classes.includes(playerClass)) return false;
       if (maxLevel !== "All") {
         const cap = Number(maxLevel);
         if (item.requiredLevel !== null && item.requiredLevel > cap) return false;
       }
-      if (needle && !item.searchText.includes(needle)) return false;
+      if (searchTokens.length > 0 && !searchTokens.every((token) => item.searchText.includes(token))) return false;
       return true;
     });
 
@@ -234,11 +296,11 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
         sorted.sort((a, b) => a.name.localeCompare(b.name));
     }
     return sorted;
-  }, [payload.items, category, weaponType, special, statType, playerClass, maxLevel, needle, sort]);
+  }, [payload.items, category, weaponType, special, statType, playerClass, maxLevel, searchTokens, sort]);
 
   useEffect(() => {
     setVisible(PAGE_SIZE);
-  }, [category, weaponType, special, statType, playerClass, maxLevel, needle, sort]);
+  }, [category, weaponType, special, statType, playerClass, maxLevel, searchTokens, sort]);
 
   const selected = useMemo(
     () => payload.items.find((item) => item.id === selectedId) ?? null,
@@ -265,21 +327,36 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
     setSort(DEFAULTS.sort);
   }, []);
 
-  // Only offer filters that mean something for the current category.
-  const showWeaponFilters = category === "All" || category === "Weapons";
-  const showDefenceFilters = category === "All" || category === "Armor" || category === "Shields";
-  const showUnitFilters = category === "All" || category === "Units";
-  const showClassFilter = category !== "Units";
+  const selectCategory = useCallback((nextCategory: "All" | ItemCategory) => {
+    setCategory(nextCategory);
 
-  const availableSorts = SORT_OPTIONS.filter(
-    (option) => !option.categories || category === "All" || option.categories.includes(category as ItemCategory),
+    // Never leave a filter active after its control disappears from the new category.
+    if (!supportsWeaponFilters(nextCategory)) {
+      setWeaponType(DEFAULTS.type);
+      setSpecial(DEFAULTS.special);
+    }
+    if (!supportsDefenceFilters(nextCategory)) setMaxLevel(DEFAULTS.maxLv);
+    if (!supportsUnitFilters(nextCategory)) setStatType(DEFAULTS.stat);
+    if (!supportsClassFilter(nextCategory)) setPlayerClass(DEFAULTS.cls);
+    setSort((current) => (supportsSort(nextCategory, current) ? current : DEFAULTS.sort));
+  }, []);
+
+  // Only offer filters that mean something for the current category.
+  const showWeaponFilters = supportsWeaponFilters(category);
+  const showDefenceFilters = supportsDefenceFilters(category);
+  const showUnitFilters = supportsUnitFilters(category);
+  const showClassFilter = supportsClassFilter(category);
+  const showLevelSortShortcuts = category === "Armor" || category === "Shields";
+
+  const availableSorts = useMemo(
+    () => SORT_OPTIONS.filter((option) => supportsSort(category, option.value)),
+    [category],
   );
 
   useEffect(() => {
     if (!availableSorts.some((option) => option.value === sort)) setSort(DEFAULTS.sort);
   }, [availableSorts, sort]);
 
-  const levelCaps = ["All", "20", "40", "60", "80", "100", "120", "150", "180", "200"];
   const checkedAt = liveCheckedAt ?? payload.syncStatus.lastCheckedAt;
 
   // A guard rather than a real state: the payload is baked in at build time, so an
@@ -348,9 +425,11 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
         <label>
           <span>{t("db.filter.levelCap", "Required Lv up to")}</span>
           <select value={maxLevel} onChange={(event) => setMaxLevel(event.target.value)}>
-            {levelCaps.map((value) => (
+            {LEVEL_CAPS.map((value) => (
               <option key={value} value={value}>
-                {value === "All" ? t("db.filter.anyLevel", "Any level") : `Lv ${value}`}
+                {value === "All"
+                  ? t("db.filter.anyLevel", "Any level")
+                  : t("db.filter.levelUpTo", "Up to Lv {n}").replace("{n}", value)}
               </option>
             ))}
           </select>
@@ -508,7 +587,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
                 role="tab"
                 aria-selected={category === value}
                 className={category === value ? styles.categoryActive : undefined}
-                onClick={() => setCategory(value)}
+                onClick={() => selectCategory(value)}
               >
                 {value === "All" ? t("db.category.all", "All") : CATEGORY_LABELS[value]}
                 <em>{count.toLocaleString("en-US")}</em>
@@ -524,14 +603,36 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
             <strong>{results.length.toLocaleString("en-US")}</strong>
             {results.length === payload.items.length ? ` ${t("db.stat.items", "Items")}` : ` ${t("db.results.label", "Results")}`}
           </p>
-          <button
-            type="button"
-            className={activeFilterCount > 0 ? styles.resetActive : styles.reset}
-            onClick={resetFilters}
-            disabled={activeFilterCount === 0}
-          >
-            {t("db.filters.reset", "Reset Filters")}
-          </button>
+          <div className={styles.resultActions}>
+            {showLevelSortShortcuts && (
+              <div className={styles.levelSort} role="group" aria-label={t("db.sort.levelGroup", "Level sorting")}>
+                <button
+                  type="button"
+                  className={sort === "level-asc" ? styles.levelSortActive : undefined}
+                  aria-pressed={sort === "level-asc"}
+                  onClick={() => setSort("level-asc")}
+                >
+                  {t("db.sort.level-asc-short", "Lv low to high")}
+                </button>
+                <button
+                  type="button"
+                  className={sort === "level-desc" ? styles.levelSortActive : undefined}
+                  aria-pressed={sort === "level-desc"}
+                  onClick={() => setSort("level-desc")}
+                >
+                  {t("db.sort.level-desc-short", "Lv high to low")}
+                </button>
+              </div>
+            )}
+            <button
+              type="button"
+              className={activeFilterCount > 0 ? styles.resetActive : styles.reset}
+              onClick={resetFilters}
+              disabled={activeFilterCount === 0}
+            >
+              {t("db.filters.reset", "Reset Filters")}
+            </button>
+          </div>
         </div>
 
         {results.length === 0 ? (
