@@ -316,6 +316,34 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -740,6 +768,34 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -1142,6 +1198,34 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -1535,6 +1619,34 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -1897,6 +2009,34 @@ window.DESTINY_BUILDS = {
        "cat": "Armor",
        "stat": "DFP 600 · EVP 200 · 32/32/32/32/32",
        "dbName": "D-VIRUS ARMOR",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
@@ -2288,6 +2428,34 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -2608,6 +2776,34 @@ window.DESTINY_BUILDS = {
        "cat": "Armor",
        "stat": "DFP 150 · EVP 380 · 30/30/30/30/30",
        "dbName": "REFLEX GEAR",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
@@ -2945,6 +3141,34 @@ window.DESTINY_BUILDS = {
        "cat": "Armor",
        "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
        "dbName": "EVIL AURA",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
@@ -3339,6 +3563,34 @@ window.DESTINY_BUILDS = {
        "cat": "Armor",
        "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
        "dbName": "BEHEMOTH ARMOR",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
@@ -3789,6 +4041,34 @@ window.DESTINY_BUILDS = {
        "cat": "Armor",
        "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
        "dbName": "BEHEMOTH ARMOR",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
@@ -4284,6 +4564,34 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -4703,6 +5011,34 @@ window.DESTINY_BUILDS = {
        "cat": "Armor",
        "stat": "DFP 600 · EVP 200 · 32/32/32/32/32",
        "dbName": "D-VIRUS ARMOR",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "PHANTASMAL FIELD",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 340 · EVP 340 · 32/32/32/41/41",
+       "dbName": "PHANTASMAL FIELD",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "Parasitic Armor 'Predator'",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 508 · EVP 284 · 32/32/32/41/41",
+       "dbName": "Parasitic Armor 'Predator'",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
@@ -5172,6 +5508,20 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PARAGON FRAME",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 250 · EVP 220 · 40/40/40/40/40",
+       "dbName": "PARAGON FRAME",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -5199,6 +5549,34 @@ window.DESTINY_BUILDS = {
        "cat": "Shields",
        "stat": "DFP 200 · EVP 180 · 20/20/20/25/20",
        "dbName": "WINGS OF LIFE",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "GOLDEN HALO",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Shields",
+       "stat": "DFP 150 · EVP 210 · 32/32/32/32/32",
+       "dbName": "GOLDEN HALO",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "CRYSTALLIZED WINGS",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Shields",
+       "stat": "DFP 230 · EVP 250 · 32/32/40/20/40",
+       "dbName": "CRYSTALLIZED WINGS",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
@@ -5530,6 +5908,20 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PARAGON FRAME",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 250 · EVP 220 · 40/40/40/40/40",
+       "dbName": "PARAGON FRAME",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -5585,6 +5977,34 @@ window.DESTINY_BUILDS = {
        "cat": "Shields",
        "stat": "DFP 200 · EVP 180 · 20/20/20/25/20",
        "dbName": "WINGS OF LIFE",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "GOLDEN HALO",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Shields",
+       "stat": "DFP 150 · EVP 210 · 32/32/32/32/32",
+       "dbName": "GOLDEN HALO",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "CRYSTALLIZED WINGS",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Shields",
+       "stat": "DFP 230 · EVP 250 · 32/32/40/20/40",
+       "dbName": "CRYSTALLIZED WINGS",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
@@ -5926,6 +6346,20 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PARAGON FRAME",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 250 · EVP 220 · 40/40/40/40/40",
+       "dbName": "PARAGON FRAME",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -5967,6 +6401,34 @@ window.DESTINY_BUILDS = {
        "cat": "Shields",
        "stat": "DFP 200 · EVP 180 · 20/20/20/25/20",
        "dbName": "WINGS OF LIFE",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "GOLDEN HALO",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Shields",
+       "stat": "DFP 150 · EVP 210 · 32/32/32/32/32",
+       "dbName": "GOLDEN HALO",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "CRYSTALLIZED WINGS",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Shields",
+       "stat": "DFP 230 · EVP 250 · 32/32/40/20/40",
+       "dbName": "CRYSTALLIZED WINGS",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
@@ -6298,6 +6760,20 @@ window.DESTINY_BUILDS = {
        "unresolved": false,
        "hint": "",
        "hintKey": ""
+      },
+      {
+       "name": "PARAGON FRAME",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Armor",
+       "stat": "DFP 250 · EVP 220 · 40/40/40/40/40",
+       "dbName": "PARAGON FRAME",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
       }
      ],
      "shield": [
@@ -6353,6 +6829,34 @@ window.DESTINY_BUILDS = {
        "cat": "Shields",
        "stat": "DFP 200 · EVP 180 · 20/20/20/25/20",
        "dbName": "WINGS OF LIFE",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "GOLDEN HALO",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Shields",
+       "stat": "DFP 150 · EVP 210 · 32/32/32/32/32",
+       "dbName": "GOLDEN HALO",
+       "unresolved": false,
+       "hint": "",
+       "hintKey": ""
+      },
+      {
+       "name": "CRYSTALLIZED WINGS",
+       "req": "",
+       "tag": "",
+       "noteKey": "",
+       "note": "",
+       "alt": [],
+       "cat": "Shields",
+       "stat": "DFP 230 · EVP 250 · 32/32/40/20/40",
+       "dbName": "CRYSTALLIZED WINGS",
        "unresolved": false,
        "hint": "",
        "hintKey": ""
