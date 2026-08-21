@@ -5,7 +5,14 @@ const projectRoot = process.cwd();
 const outputDir = resolve(projectRoot, ".sites-static");
 // i18n: 번역 사전. 빠지면 런타임에 404 가 나고 영어로만 표시된다.
 const directories = ["images", "scripts", "styles", "i18n"];
-const publicFiles = ["data/happy-hour.json"];
+const publicFiles = [
+  "data/happy-hour.json",
+  "data/database-1.json",
+  "data/database-2.json",
+  "data/database-3.json",
+  "data/database-4.json",
+  "data/database-5.json",
+];
 const excludedHtml = new Set(["test.html"]);
 
 await rm(outputDir, { recursive: true, force: true });
