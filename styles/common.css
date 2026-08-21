@@ -41,6 +41,15 @@ header .inner .right_menu a img{}
 header .inner .logo{}
 header .inner .logo a{}
 header .inner .logo a img{}
+/* Happy Hour 위젯은 로고와 같은 줄에 둔다.
+   액션 묶음(.left_menu) 안에 있을 때는 좁은 폭에서 로고보다 80px 아래로 떨어졌다.
+   로고 옆에 두면 어느 폭에서든 한 줄에 들어간다(344px: 100 + 90 < 314). */
+header .inner > .happy_hour_header {
+    order: 1;
+    flex: 0 0 auto;
+    margin-right: auto;
+}
+
 header .inner .left_menu{
     display: flex;
     align-items: center;

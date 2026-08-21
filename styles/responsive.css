@@ -706,14 +706,22 @@
         align-content: center;
     }
     header .inner { flex-wrap: wrap; row-gap: 10px; }
+    /* 액션 묶음에 flex: 1 1 100% 를 주면 한 줄을 통째로 차지해서, 안에 있는
+       Happy Hour 위젯이 로고보다 53~111px 아래 줄로 떨어졌다.
+       1251px 이상에서 쓰는 것과 같은 방식으로, 줄을 넘기는 쪽을 내비로 바꾼다.
+       DOM 순서는 로고 -> 내비 -> 액션이므로 order 로 액션을 내비 앞에 둔다. */
+    header .inner .logo { order: 1; }
     header .inner .left_menu {
-        flex: 1 1 100%;
+        order: 2;
+        flex: 0 1 auto;
+        margin-left: auto;
         max-width: 100%;
         flex-wrap: wrap;
         justify-content: flex-end;
         gap: 6px;
         min-width: 0;
     }
+    header .inner .mid_menu_box { order: 3; flex: 1 1 100%; }
 }
 
 @media screen and (max-width: 983px) {
