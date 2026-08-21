@@ -126,7 +126,7 @@
     /* 1250시작 판매 aria 종료 */
     header .inner{
         width: 100%; 
-        padding: 0 32px;
+        padding: 0 var(--content-gutter);
     }
     header .inner .left_menu a {
     }

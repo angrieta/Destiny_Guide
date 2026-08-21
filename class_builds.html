@@ -14,6 +14,9 @@
     <script src="./scripts/item_info.js" defer></script>
     <!-- 데이터가 먼저 실행되어야 렌더러가 window.DESTINY_BUILDS 를 찾을 수 있다 -->
     <script src="./scripts/class_builds.js" defer></script>
+    <script src="./scripts/destiny_catalog.js" defer></script>
+    <script src="./scripts/guide_item_cards.js" defer></script>
+    <script src="./scripts/class_builds_items.js" defer></script>
     <script src="./scripts/class_builds_ui.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -38,5 +41,25 @@
                <a href="https://playpso.net/forums/topic/745-collaborative-weapon-gear-and-class-build-end-of-2020-revision/">playpso.net forums topic 745</a>.</p>
         </noscript>
     </main>
+
+    <div class="destiny_detail_modal" id="destinyDetailModal" aria-hidden="true">
+        <div class="destiny_detail_dim" data-destiny-detail-close></div>
+        <article class="destiny_detail_dialog" role="dialog" aria-modal="true" aria-labelledby="destinyDetailTitle">
+            <button type="button" class="destiny_detail_close" data-destiny-detail-close aria-label="Close item details">&times;</button>
+            <div class="destiny_detail_media">
+                <a class="destiny_detail_image_link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open the source image at full size">
+                    <img class="destiny_detail_image" src="" alt="">
+                </a>
+                <p class="destiny_detail_image_hint" data-i18n="item.t154">Click the image to view the supplied source at full size.</p>
+            </div>
+            <div class="destiny_detail_content">
+                <div class="destiny_detail_badges"></div>
+                <h2 id="destinyDetailTitle" class="destiny_detail_title"></h2>
+                <p class="destiny_detail_summary"></p>
+                <dl class="destiny_detail_stats"></dl>
+                <div class="destiny_detail_sections"></div>
+            </div>
+        </article>
+    </div>
 </body>
 </html>

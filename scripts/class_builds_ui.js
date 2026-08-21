@@ -49,7 +49,7 @@
 
     var CAT_PARAM = { Weapons: "Weapons", Armor: "Armor", Shields: "Shields", Units: "Units", Mags: "Mags" };
 
-    /** 아이템 하나를 /database 검색 결과로 연결한다. */
+    /** 자바스크립트가 꺼졌을 때만 사용하는 데이터베이스 대체 링크. */
     function dbHref(item) {
         var q = item.dbName || item.name;
         var url = "./database/?q=" + encodeURIComponent(q);
@@ -57,12 +57,27 @@
         return url;
     }
 
+    /**
+     * 빌드 장비를 현재 페이지의 아이템 상세 팝업과 연결한다.
+     * href 는 스크립트 로드 실패 시에만 쓰는 대체 경로로 남긴다.
+     */
+    function itemTrigger(a, item) {
+        a.href = dbHref(item);
+        a.dataset.buildItem = "";
+        a.dataset.itemName = item.name || "";
+        a.dataset.dbName = item.dbName || item.name || "";
+        a.dataset.itemCategory = item.cat || "";
+        a.dataset.itemStat = [item.tag, item.stat].filter(Boolean).join(" · ");
+        a.setAttribute("aria-haspopup", "dialog");
+        a.setAttribute("aria-controls", "destinyDetailModal");
+        return a;
+    }
+
     /* ----------------------------------------------------------------------
        장비 칩
        ---------------------------------------------------------------------- */
     function chip(item) {
-        var a = el("a", "cb_chip");
-        a.href = dbHref(item);
+        var a = itemTrigger(el("a", "cb_chip"), item);
         a.dataset.item = (item.name || "").toLowerCase();
         if (item.unresolved) a.classList.add("is-unresolved");
 
@@ -129,8 +144,7 @@
 
         var list = el("div", "cb_new_list");
         rows.forEach(function (n) {
-            var a = el("a", "cb_new_item");
-            a.href = dbHref(n);
+            var a = itemTrigger(el("a", "cb_new_item"), n);
             a.dataset.item = (n.name || "").toLowerCase();
             var top = el("div", "cb_new_item_top");
             top.appendChild(el("b", null, n.name));

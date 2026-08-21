@@ -17,7 +17,10 @@
 /* ── 페이지 골격 ───────────────────────────────────────────────── */
 
 .g_page {
-    padding: 56px 120px 96px;
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+    padding: 56px var(--content-gutter) 96px;
 }
 
 .g_head {
@@ -582,7 +585,7 @@
 /* ── 반응형 ───────────────────────────────────────────────────── */
 
 @media screen and (max-width: 1250px) {
-    .g_page { padding: 52px 80px 84px; }
+    .g_page { padding: 52px var(--content-gutter) 84px; }
 }
 
 @media screen and (max-width: 983px) {

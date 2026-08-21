@@ -1860,6 +1860,7 @@
     const imageElement = modal.querySelector(".destiny_detail_image");
     const imageLink = modal.querySelector(".destiny_detail_image_link");
     const imageHint = modal.querySelector(".destiny_detail_image_hint");
+    const mediaElement = modal.querySelector(".destiny_detail_media");
     let previousFocus = null;
 
     const closeModal = () => {
@@ -1887,13 +1888,19 @@
         imageElement.src = item.image;
         imageElement.alt = item.name + " " + t("catalog.detail.imageAlt", "source image");
         imageElement.style.objectPosition = item.imagePosition || "center top";
+        imageElement.style.objectFit = item.imageFit || "contain";
         imageElement.style.filter = item.imageFilter || "none";
-        imageLink.href = item.image;
+        mediaElement.classList.toggle("is-placeholder", Boolean(item.imageFallback));
+        if (item.imageFallback) imageLink.removeAttribute("href");
+        else imageLink.href = item.image;
         imageLink.hidden = false;
-        imageHint.hidden = false;
+        imageHint.hidden = Boolean(item.imageFallback);
       } else {
         imageElement.removeAttribute("src");
         imageElement.alt = "";
+        imageElement.style.objectFit = "contain";
+        mediaElement.classList.remove("is-placeholder");
+        imageLink.removeAttribute("href");
         imageLink.hidden = true;
         imageHint.hidden = true;
       }
@@ -1944,12 +1951,32 @@
     modal.querySelectorAll("[data-destiny-detail-close]").forEach((element) => {
       element.addEventListener("click", closeModal);
     });
+
+    return { open: openModal, close: closeModal };
   }
 
   mountCatalogSections();
   assignBlockCategories();
   initFilters();
-  initDetailModal();
+  const detailModal = initDetailModal();
+
+  // 다른 가이드 페이지도 아이템 도감과 동일한 상세창을 재사용할 수 있게 한다.
+  window.DestinyItemCatalog = {
+    normalizeName,
+    findByName(name) {
+      return catalogByName.get(normalizeName(name)) || null;
+    },
+    fromCard: readExistingCard,
+    open(item, trigger) {
+      if (detailModal && item) detailModal.open(item, trigger);
+    },
+    close() {
+      if (detailModal) detailModal.close();
+    },
+    isOpen() {
+      return Boolean(detailModal && document.getElementById("destinyDetailModal")?.classList.contains("is-open"));
+    }
+  };
 
   // 카드와 섹션 헤더는 이 스크립트가 만들기 때문에 i18n.js 의 첫 적용 대상에 없다.
   // 만든 뒤 한 번 hydrate 해 주면 이후 언어 변경은 i18n.js 가 알아서 처리한다.

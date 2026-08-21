@@ -21,9 +21,9 @@ html[data-theme="dark"] {
 }
 
 .lab_page {
-    width: min(100%, 1460px);
+    width: min(100%, var(--content-max-width));
     margin: 0 auto;
-    padding: 54px 54px 96px;
+    padding: 54px var(--content-gutter) 96px;
     color: var(--text);
 }
 
@@ -645,7 +645,7 @@ html[data-theme="dark"] {
 }
 
 @media (max-width: 1120px) {
-    .lab_page { padding-inline: 32px; }
+    .lab_page { padding-inline: var(--content-gutter); }
     .lab_hero { grid-template-columns: minmax(0, 1fr) minmax(300px, .75fr); gap: 44px; }
     .lab_monster_controls { grid-template-columns: minmax(280px, 1.4fr) minmax(170px, .6fr); }
     .lab_check { align-self: center; }

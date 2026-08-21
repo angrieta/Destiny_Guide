@@ -659,7 +659,7 @@ main .content_area .Character_info .best_bg img {
 main .content_area .Character_info .right_contents {
     width: 100%;   /* 원하는 폭 */
     margin: 0 auto;      /* 가운데 정렬 */
-    padding: 0 20px;
+    padding: 0 var(--content-gutter);
 }
 main .content_area .Character_info .right_contents > p{
     text-align: center;color: #fff;
@@ -1540,6 +1540,23 @@ body.destiny-detail-open {
     object-fit: contain;
 }
 
+/* 도감 전용 이미지가 없는 DB 항목은 작은 게임 내 레드박스로 명확히 구분한다. */
+.destiny_detail_media.is-placeholder .destiny_detail_image_link {
+    min-height: 320px;
+    align-items: center;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(207, 54, 65, 0.18), transparent 42%),
+        #05090f;
+    cursor: default;
+}
+
+.destiny_detail_media.is-placeholder .destiny_detail_image {
+    width: 104px;
+    height: 104px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
 .destiny_detail_image_hint {
     margin-top: 10px;
     color: var(--text-muted);
@@ -1721,6 +1738,15 @@ html[data-theme="dark"] .destiny_catalog_card .important_info {
 
     .destiny_detail_media {
         padding: 8px;
+    }
+
+    .destiny_detail_media.is-placeholder .destiny_detail_image_link {
+        min-height: 210px;
+    }
+
+    .destiny_detail_media.is-placeholder .destiny_detail_image {
+        width: 80px;
+        height: 80px;
     }
 
     .destiny_detail_content {

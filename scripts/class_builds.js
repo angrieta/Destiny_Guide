@@ -14,7 +14,7 @@ window.DESTINY_BUILDS = {
  "ui": {
   "ui.pageTitle": "DestinyGuide - Class Builds",
   "ui.title": "Class Builds",
-  "ui.lead": "Slot-by-slot gear and material plans for all twelve classes, with the attribute percentages each weapon wants. Every item links to its database entry.",
+  "ui.lead": "Slot-by-slot gear and material plans for all twelve classes, with the attribute percentages each weapon wants. Select an item to view its details without leaving the build.",
   "ui.sourceLine": "Original guide written by Depassage and revised at the end of 2020, with material plans contributed by Orgodermirk. Only the slot-and-percentage data is reorganised here.",
   "ui.openSource": "Open the original thread",
   "ui.search": "Search an item to see which builds use it",
@@ -34,6 +34,9 @@ window.DESTINY_BUILDS = {
   "ui.theory": "Not verified by the original author",
   "ui.unverifiedItem": "Untested",
   "ui.notInDb": "Not found in the database",
+  "ui.itemLoading": "Loading item details...",
+  "ui.itemNoDatabase": "No detailed database entry was found. Showing the information recorded in this build.",
+  "ui.itemBuildStat": "Build summary",
   "ui.or": "or",
   "ui.newLayerTitle": "Added since the original guide",
   "ui.newLayerBadge": "2021 - 2026",

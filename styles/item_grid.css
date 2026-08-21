@@ -11,7 +11,7 @@
    (983px 이하는 responsive.css 가 !important 로 15px 을 주고 있다.) */
 @media screen and (min-width: 984px) {
     .destiny_item[data-destiny-item-grid] {
-        padding: 0 24px;
+        padding: 0 var(--content-gutter);
     }
 }
 

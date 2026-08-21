@@ -1,4 +1,6 @@
 .pageShell {
+  --content-max-width: 1600px;
+  --content-gutter: 24px;
   --bg: #f3f6fb;
   --surface: #ffffff;
   --surface-soft: #f7f9fc;
@@ -45,7 +47,7 @@
   background: var(--surface);
   box-shadow: 1px 1px 7px color-mix(in srgb, var(--text) 16%, transparent);
 }
-.headerInner { display: flex; align-items: center; justify-content: space-between; gap: 32px; width: 100%; max-width: 1600px; height: 100%; margin: 0 auto; padding: 0 24px; }
+.headerInner { display: flex; align-items: center; justify-content: space-between; gap: 32px; width: 100%; max-width: var(--content-max-width); height: 100%; margin: 0 auto; padding: 0 var(--content-gutter); }
 .siteLogo { flex: 0 0 150px; width: 150px; margin: 0; }
 .siteLogo a, .siteLogo img { display: block; width: 100%; }
 /* 감기지 않는 한 줄이라 폭이 부족하면 로고와 버튼 위로 겹쳤다(es 900~1300px).
@@ -74,9 +76,9 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: end;
   gap: 48px;
-  max-width: 1540px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 78px clamp(22px, 5vw, 74px) 72px;
+  padding: 78px var(--content-gutter) 72px;
 }
 
 .hero::before {
@@ -101,7 +103,7 @@
 .heroStats strong { font-size: 28px; letter-spacing: -0.04em; }
 .heroStats span { margin-top: 4px; color: var(--muted); font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: 0.08em; }
 
-.explorer { max-width: 1540px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 64px) 80px; }
+.explorer { max-width: var(--content-max-width); margin: 0 auto; padding: 0 var(--content-gutter) 80px; }
 .difficultyBar { display: flex; gap: 7px; margin-bottom: 12px; padding: 7px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); box-shadow: 0 8px 28px rgba(25, 48, 80, 0.06); scrollbar-width: none; }
 .difficultyBar::-webkit-scrollbar { display: none; }
 .difficultyBar button { flex: 1; min-height: 46px; padding: 8px 16px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); font-weight: 750; cursor: pointer; transition: 150ms ease; }
@@ -299,9 +301,9 @@
 
 /* Original Destiny drop-table matrix */
 .matrixHero {
-  max-width: 1440px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 58px clamp(20px, 5vw, 72px) 42px;
+  padding: 58px var(--content-gutter) 42px;
   text-align: center;
 }
 .matrixHero .eyebrow { margin-bottom: 11px; }
@@ -353,13 +355,13 @@
 
 @media (min-width: 1321px) {
   .explorerQuickOpen {
-    --quick-explorer-width: min(1540px, calc(100% - 356px));
+    --quick-explorer-width: min(var(--content-max-width), calc(100% - 356px));
     width: var(--quick-explorer-width);
     max-width: none;
     margin-right: auto;
     margin-left: min(
       calc((100% - var(--quick-explorer-width)) / 2),
-      calc(100% - var(--quick-explorer-width) - 356px + clamp(16px, 4vw, 64px))
+      calc(100% - var(--quick-explorer-width) - 356px + var(--content-gutter))
     );
     transition: width 180ms ease, margin 180ms ease;
   }

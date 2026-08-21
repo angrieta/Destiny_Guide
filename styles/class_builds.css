@@ -7,9 +7,9 @@
 
 .cb_page {
     width: 100%;
-    max-width: 1560px;
+    max-width: var(--content-max-width);
     margin: 0 auto;
-    padding: 0 24px 64px;
+    padding: 0 var(--content-gutter) 64px;
 }
 
 @media screen and (max-width: 983px) {
