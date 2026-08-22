@@ -4,8 +4,8 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { LanguageSwitcher, useI18n } from "../i18n/i18n";
 import { HappyHourHeader } from "../components/HappyHourHeader";
 import { useHeaderHeight } from "../components/useHeaderHeight";
-import { computeTotals } from "./totals";
-import type { BaseStats, Loadout } from "./totals";
+import { MAX_BUFF_LEVEL, buffPercent, computeTotals } from "./totals";
+import type { BaseStats, Buffs, Loadout } from "./totals";
 import type { CalculatorPayload, Equipment, MagStats, StatKey } from "./types";
 import { RESIST_KEYS, STAT_KEYS } from "./types";
 
@@ -50,6 +50,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
   const [mag, setMag] = useState<MagStats>(payload.classes[0].mag);
   /** Left alone once the player edits the plan, so changing class does not wipe it. */
   const [magTouched, setMagTouched] = useState(false);
+  const [buffs, setBuffs] = useState<Buffs>({ shifta: 0, deband: 0 });
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -95,6 +96,9 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     } else {
       setMag(payload.classes.find((entry) => entry.id === startClass)?.mag ?? payload.classes[0].mag);
     }
+    const readShifta = Number(params.get("sh")) || 0;
+    const readDeband = Number(params.get("db")) || 0;
+    setBuffs({ shifta: Math.min(MAX_BUFF_LEVEL, Math.max(0, readShifta)), deband: Math.min(MAX_BUFF_LEVEL, Math.max(0, readDeband)) });
     const readLevel = Number(params.get("lv"));
     if (Number.isFinite(readLevel) && readLevel > 0) setLevel(readLevel);
     const readGrind = Number(params.get("g"));
@@ -123,6 +127,8 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     if (level !== 200) params.set("lv", String(level));
     if (grind > 0) params.set("g", String(grind));
     if (magTouched) params.set("mag", `${mag.DEF}/${mag.POW}/${mag.DEX}/${mag.MIND}`);
+    if (buffs.shifta > 0) params.set("sh", String(buffs.shifta));
+    if (buffs.deband > 0) params.set("db", String(buffs.deband));
     for (const [slot, param] of Object.entries(SLOT_PARAM) as Array<[SlotKey, string]>) {
       const value = picked[slot];
       if (value) params.set(param, value);
@@ -133,7 +139,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     }
     const search = params.toString();
     window.history.replaceState(null, "", search ? `?${search}` : window.location.pathname);
-  }, [hydrated, playerClass, level, grind, picked, base, mag, magTouched]);
+  }, [hydrated, playerClass, level, grind, picked, base, mag, magTouched, buffs]);
 
   const changeClass = (next: string) => {
     setPlayerClass(next);
@@ -156,7 +162,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     [picked, byId, grind],
   );
 
-  const totals = useMemo(() => computeTotals(base, loadout, playerClass, level, mag), [base, loadout, playerClass, level, mag]);
+  const totals = useMemo(() => computeTotals(base, loadout, playerClass, level, mag, buffs), [base, loadout, playerClass, level, mag, buffs]);
 
   const reset = useCallback(() => {
     setPicked({});
@@ -166,6 +172,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     setPlayerClass("humar");
     setMag(payload.classes[0].mag);
     setMagTouched(false);
+    setBuffs({ shifta: 0, deband: 0 });
   }, [payload.classes]);
 
   const hasSelection = Object.values(picked).some(Boolean) || Object.values(base).some(Boolean);
@@ -283,6 +290,34 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
             {t("calc.magRates", "DEF 1 DFP, POW 2 ATP, DEX 0.5 ATA, MIND 2 MST per level")}
           </p>
 
+          <h3 className={styles.subhead}>{t("calc.buffs", "Shifta / Deband")}</h3>
+          <p className={styles.hint}>
+            {t(
+              "calc.buffHint",
+              "Each level gives 10 + 1.3 x (level - 1) percent. Androids cast Lv3 on their own and Lv21 from a Photon Blast, HUmar Lv15, Forces Lv30, and PARAGON FRAME raises the cap to 35.",
+            )}
+          </p>
+          <div className={styles.fieldRow}>
+            {(["shifta", "deband"] as const).map((key) => (
+              <label key={key}>
+                <span>
+                  {key === "shifta" ? t("calc.shifta", "Shifta Lv") : t("calc.deband", "Deband Lv")}
+                  {buffs[key] > 0 && ` (+${buffPercent(buffs[key]).toFixed(1)}%)`}
+                </span>
+                <input
+                  type="number"
+                  min={0}
+                  max={MAX_BUFF_LEVEL}
+                  value={buffs[key]}
+                  onChange={(event) => {
+                    const value = Math.min(MAX_BUFF_LEVEL, Math.max(0, Number(event.target.value) || 0));
+                    setBuffs((current) => ({ ...current, [key]: value }));
+                  }}
+                />
+              </label>
+            ))}
+          </div>
+
           <h3 className={styles.subhead}>{t("calc.baseStats", "Your stats, unequipped")}</h3>
           <p className={styles.hint}>
             {t(
@@ -369,6 +404,38 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
               </div>
             ))}
           </dl>
+
+          {totals.buffed && (
+            <>
+              <h4>
+                {t("calc.withBuffs", "With Shifta")} {totals.buffed.shifta} / {t("calc.debandShort", "Deband")}{" "}
+                {totals.buffed.deband}
+              </h4>
+              <dl className={styles.factList}>
+                <div>
+                  <dt>ATP</dt>
+                  <dd>
+                    {totals.stats.ATP.toLocaleString("en-US")} →{" "}
+                    <strong>{totals.buffed.ATP.toLocaleString("en-US")}</strong>
+                  </dd>
+                </div>
+                <div>
+                  <dt>DFP</dt>
+                  <dd>
+                    {totals.stats.DFP.toLocaleString("en-US")} →{" "}
+                    <strong>{totals.buffed.DFP.toLocaleString("en-US")}</strong>
+                  </dd>
+                </div>
+              </dl>
+              {totals.buffed.atpWeapon > 0 && (
+                <p className={styles.magNote}>
+                  {t("calc.shiftaSkipsWeapon", "Shifta scales the character's")} {totals.buffed.atpCharacter} ATP,{" "}
+                  {t("calc.shiftaSkipsWeaponTail", "not the weapon's")} {totals.buffed.atpWeapon}.{" "}
+                  {t("calc.debandWhole", "Deband scales the whole DFP.")}
+                </p>
+              )}
+            </>
+          )}
 
           <h4>{t("calc.resists", "Resistances")}</h4>
           <dl className={styles.statGrid}>

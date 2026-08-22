@@ -8,6 +8,28 @@ import { RESIST_KEYS, STAT_KEYS } from "./types";
  */
 export const MAG_RATES = { DEF: 1, POW: 2, DEX: 0.5, MIND: 2 } as const;
 
+export const MAX_BUFF_LEVEL = 35;
+
+/**
+ * Shifta and Deband both grant `10 + 1.3 * (level - 1)` percent, the vanilla
+ * progression (Lv1 10%, Lv30 47.7%) which this server kept while raising the cap
+ * to 35. Measured on a FOmar at Lv35, where the formula gives 54.2%:
+ *
+ *   mag only    ATP 1350 -> 2081   (1350 * 1.542 = 2081.7)
+ *               DFP  501 ->  772   ( 501 * 1.542 =  772.4)
+ *   with gear   ATP 1730 -> 2461   (1350 * 1.542 = 2081, + 380 weapon)
+ *               DFP  877 -> 1352   ( 877 * 1.542 = 1352.3)
+ *
+ * Note the asymmetry both runs agree on: Deband scales the whole DFP including
+ * armour and shield, while Shifta leaves the weapon's ATP untouched.
+ */
+export function buffPercent(level: number) {
+  if (level <= 0) return 0;
+  return 10 + 1.3 * (level - 1);
+}
+
+const applyBuff = (value: number, percent: number) => Math.floor(value * (1 + percent / 100));
+
 export function magContribution(mag: MagStats): Partial<Record<StatKey, number>> {
   const stats: Partial<Record<StatKey, number>> = {};
   if (mag.DEF) stats.DFP = mag.DEF * MAG_RATES.DEF;
@@ -55,7 +77,21 @@ export type Totals = {
   warnings: Warning[];
   /** Weapon facts that matter for damage but are not stats. */
   weapon: { targets: number | null; range: number | null; special: string | null; atpMin: number | null; atpMax: number | null } | null;
+  /** Totals with Shifta and Deband applied. Null when neither is set. */
+  buffed: {
+    shifta: number;
+    deband: number;
+    shiftaPercent: number;
+    debandPercent: number;
+    ATP: number;
+    DFP: number;
+    /** The part of ATP Shifta acts on, i.e. everything but the weapon. */
+    atpCharacter: number;
+    atpWeapon: number;
+  } | null;
 };
+
+export type Buffs = { shifta: number; deband: number };
 
 const zeroStats = () => Object.fromEntries(STAT_KEYS.map((key) => [key, 0])) as Record<StatKey, number>;
 const zeroResists = () => Object.fromEntries(RESIST_KEYS.map((key) => [key, 0])) as Record<ResistKey, number>;
@@ -104,6 +140,7 @@ export function computeTotals(
   playerClass: string,
   level: number,
   mag?: MagStats,
+  buffs?: Buffs,
 ): Totals {
   const totals: Totals = {
     stats: zeroStats(),
@@ -117,7 +154,9 @@ export function computeTotals(
     uncounted: [],
     warnings: [],
     weapon: null,
+    buffed: null,
   };
+  let atpFromWeapon = 0;
 
   for (const key of STAT_KEYS) totals.stats[key] += base[key] ?? 0;
   if (Object.values(base).some((value) => (value ?? 0) > 0)) {
@@ -159,10 +198,13 @@ export function computeTotals(
     for (const [stat, value] of Object.entries(weapon.base)) {
       totals.stats[stat as StatKey] += value;
       stats[stat as StatKey] = value;
+      // Tracked separately because Shifta does not scale the weapon's own ATP.
+      if (stat === "ATP") atpFromWeapon += value;
     }
     if (loadout.grind > 0) {
       totals.stats.ATP += loadout.grind;
       stats.ATP = (stats.ATP ?? 0) + loadout.grind;
+      atpFromWeapon += loadout.grind;
     }
     addModifiers(totals, weapon.modifiers, weapon.name, stats);
     totals.contributions.push({ label: weapon.name, slot: "weapon", stats });
@@ -187,6 +229,22 @@ export function computeTotals(
       special: weapon.special,
       atpMin: weapon.atpMin === null ? null : weapon.atpMin + loadout.grind,
       atpMax: weapon.atpMax === null ? null : weapon.atpMax + loadout.grind,
+    };
+  }
+
+  if (buffs && (buffs.shifta > 0 || buffs.deband > 0)) {
+    const shiftaPercent = buffPercent(buffs.shifta);
+    const debandPercent = buffPercent(buffs.deband);
+    const atpCharacter = totals.stats.ATP - atpFromWeapon;
+    totals.buffed = {
+      shifta: buffs.shifta,
+      deband: buffs.deband,
+      shiftaPercent,
+      debandPercent,
+      atpCharacter,
+      atpWeapon: atpFromWeapon,
+      ATP: applyBuff(atpCharacter, shiftaPercent) + atpFromWeapon,
+      DFP: applyBuff(totals.stats.DFP, debandPercent),
     };
   }
 
