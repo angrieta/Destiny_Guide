@@ -1,0 +1,19 @@
+{
+  "_comment": "Notes we write ourselves, shown under an item in the database and keyed by \"<Category>:<Name>\". Kept out of database-*.json because scripts/sync-item-database.mjs overwrites those on every sync. Say what the item page does not: what an item replaces, what a boost line means in play, where a combo bonus comes from. Each note carries every language the site ships; \"en\" is the fallback.",
+  "notes": {
+    "Shields:ASTRAL WINGS": {
+      "en": "Carries the same cure-all as the State/Maintenance unit, but on the shield slot, which leaves a unit slot free for something else. It also brings Trap/Search, 180 DFP and 180 EVP with a full set of resistances, where the unit itself gives no stats at all. Wearing both is wasted.",
+      "ko": "State/Maintenance 유닛과 같은 상태이상 전체 해제를 실드 슬롯에서 제공하므로, 유닛 슬롯 하나를 다른 곳에 쓸 수 있습니다. 여기에 Trap/Search와 DFP 180 · EVP 180, 그리고 내성까지 함께 붙습니다. 유닛 쪽은 스탯이 전혀 없으니, 둘을 같이 착용할 이유는 없습니다.",
+      "ja": "State/Maintenance ユニットと同じ全状態異常回復をシールド枠で得られるので、ユニット枠を一つ空けられます。さらに Trap/Search と DFP 180・EVP 180、各種耐性まで付いてきます。ユニット側はステータスが一切付かないため、両方を装備する意味はありません。",
+      "es": "Da la misma cura de todos los estados que la unidad State/Maintenance, pero desde el hueco de escudo, así que te deja libre un hueco de unidad. Además aporta Trap/Search, 180 de DFP y 180 de EVP con resistencias completas, mientras que la unidad no da ninguna estadística. Llevar las dos cosas es desperdiciar el hueco.",
+      "fr": "Apporte la même guérison de tous les états que l'unité State/Maintenance, mais depuis l'emplacement de bouclier, ce qui libère un emplacement d'unité. S'y ajoutent Trap/Search, 180 de DFP et 180 d'EVP avec toutes les résistances, là où l'unité n'offre aucune statistique. Porter les deux ne sert à rien."
+    },
+    "Units:State/Maintenance": {
+      "en": "ASTRAL WINGS gives the same cure-all from the shield slot, along with Trap/Search and defensive stats of its own. If you have the shield, this unit slot is better spent elsewhere.",
+      "ko": "ASTRAL WINGS가 같은 효과를 실드 슬롯에서 내주고, Trap/Search와 자체 방어 스탯까지 함께 붙습니다. 실드를 갖고 있다면 이 유닛 슬롯은 다른 데 쓰는 편이 낫습니다.",
+      "ja": "ASTRAL WINGS が同じ効果をシールド枠で提供し、Trap/Search と自前の防御ステータスも付いてきます。シールドを持っているなら、このユニット枠は別のものに回した方がよいです。",
+      "es": "ASTRAL WINGS ofrece lo mismo desde el hueco de escudo, y encima suma Trap/Search y estadísticas defensivas propias. Si tienes el escudo, este hueco de unidad rinde más con otra cosa.",
+      "fr": "ASTRAL WINGS offre la même chose depuis l'emplacement de bouclier, avec en plus Trap/Search et ses propres statistiques défensives. Si vous avez le bouclier, cet emplacement d'unité est mieux employé ailleurs."
+    }
+  }
+}

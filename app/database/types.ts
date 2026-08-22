@@ -24,6 +24,8 @@ export type DatabaseItem = {
   classes: string[];
   description: string;
   notes: string;
+  /** Written by us in data/item-notes.json, not scraped. Keyed by language. */
+  guideNote: Record<string, string> | null;
   boosts: string;
   /** Parsed numbers used for sorting and range filters. Null when not applicable. */
   atp: number | null;

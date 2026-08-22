@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { LanguageSwitcher, useI18n } from "../i18n/i18n";
 import { HappyHourHeader } from "../components/HappyHourHeader";
 import { useHeaderHeight } from "../components/useHeaderHeight";
+import { WeaponPicker } from "./WeaponPicker";
 import {
   ATTRIBUTE_BLOCK,
   BLOCK_TOKENS,
@@ -206,16 +207,28 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
       <header className={styles.header}>
         <div className={styles.headerInner}>
           <h1 className={styles.siteLogo}>
-            <a href="../index.html" aria-label="Destiny Guide">
+            <a href="../index.html" aria-label={t("header.logo.alt", "Destiny Guide")}>
               <img src="../images/common/rogo.png" alt="Destiny Guide" />
             </a>
           </h1>
-          <nav className={styles.headerMenus} aria-label="Main navigation">
+          <nav className={styles.headerMenus} aria-label={t("db.nav.aria", "Main navigation")}>
             <div>
-              <a href="../beginner_page.html">{t("nav.beginner", "Beginner")}</a>
-              <a href="../item_page.html">{t("nav.items", "Destiny Items")}</a>
-              <a href="../class_builds.html">{t("nav.builds", "Class Builds")}</a>
-              <a href="../Psobb_tool.html">{t("nav.tools", "Tools")}</a>
+              <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
+              <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
+              <a href="../class_builds.html">Class Builds</a>
+              <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
+              <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
+              <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
+              <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
+              <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
+              <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
+              <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
+            </div>
+            <div className={styles.raidMenu}>
+              <a href="../dn.html">Distorted Nightmare [RAID]</a>
+              <a href="../discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
+              <a href="../predator_raid.html">The Ravenous Predator [RAID]</a>
+              <a href="../tpd_page.html">The Phantasmal Dimension</a>
             </div>
           </nav>
           <div className={styles.headerActions}>
@@ -223,16 +236,24 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
               className={styles.themeButton}
               type="button"
               onClick={() => applyTheme(theme === "dark" ? "light" : "dark")}
+              aria-label={theme === "dark" ? t("header.theme.light", "Light mode") : t("header.theme.dark", "Dark mode")}
               aria-pressed={theme === "dark"}
             >
               <span className={styles.themeIcon} aria-hidden="true" />
-              {theme === "dark" ? t("theme.light", "Light") : t("theme.dark", "Dark")}
+              {theme === "dark" ? t("header.theme.lightShort", "Light") : t("header.theme.darkShort", "Dark")}
             </button>
+            <a
+              className={styles.discordLink}
+              href="https://discord.gg/FesaarwjFn"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Destiny Discord"
+            />
             <a className={styles.navLink} href="../drop-tables/">
-              {t("nav.dropTables", "Drop Tables")}
+              {t("header.link.dropTables", "Drop Tables")}
             </a>
             <a className={styles.navLink} href="../database/">
-              {t("nav.database", "Item DB")}
+              {t("header.link.database", "Database")}
             </a>
             <LanguageSwitcher />
             <HappyHourHeader />
@@ -270,15 +291,18 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
                 <div key={row.id} className={`${styles.row} ${hasError ? styles.rowInvalid : ""}`}>
                   <div className={styles.rowHead}>
                     <span className={styles.rowTag}>{entry.label}</span>
-                    <label className={styles.rowName}>
-                      <input
-                        list="redeem-weapons"
-                        placeholder={t("redeem.namePlaceholder", "Weapon name (optional)")}
+                    <div className={styles.rowName}>
+                      <WeaponPicker
                         value={row.name}
-                        onChange={(event) => rename(row.id, event.target.value)}
-                        aria-label={t("redeem.nameLabel", "Weapon name")}
+                        options={weaponNames}
+                        placeholder={t("redeem.namePlaceholder", "Weapon name (optional)")}
+                        label={t("redeem.nameLabel", "Weapon name")}
+                        moreLabel={(count) =>
+                          t("redeem.moreMatches", "{n} more — keep typing").replace("{n}", String(count))
+                        }
+                        onChange={(next) => rename(row.id, next)}
                       />
-                    </label>
+                    </div>
                     <button
                       className={styles.rowDrop}
                       type="button"
@@ -343,12 +367,6 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
           >
             + {t("redeem.addWeapon", "Add another weapon")}
           </button>
-
-          <datalist id="redeem-weapons">
-            {weaponNames.map((name) => (
-              <option key={name} value={name} />
-            ))}
-          </datalist>
 
           <h3 className={styles.subhead}>{t("redeem.rules", "The rules this checks")}</h3>
           <ul className={styles.ruleList}>

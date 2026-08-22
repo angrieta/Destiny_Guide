@@ -4,6 +4,9 @@ import shields from "@/data/database-3.json";
 import units from "@/data/database-4.json";
 import mags from "@/data/database-5.json";
 import syncStatus from "@/data/database-sync-status.json";
+import itemNotes from "@/data/item-notes.json";
+
+const guideNotes = (itemNotes as { notes: Record<string, Record<string, string>> }).notes;
 import type { CategoryMeta, DatabaseItem, DatabasePayload, ItemCategory, StatEntry } from "./types";
 
 type SourceCategory = {
@@ -132,6 +135,7 @@ function buildItem(row: Record<string, string>, category: SourceCategory, seen: 
     classes,
     description: cleanDescription(row.Description ?? ""),
     notes: row.Notes ?? "",
+    guideNote: guideNotes[`${categoryName}:${name}`] ?? null,
     boosts: row.Boosts && row.Boosts !== "None" ? row.Boosts : "",
     atp: toNumber(row["Total ATP"] ?? row.ATP),
     ata: toNumber(row.ATA),

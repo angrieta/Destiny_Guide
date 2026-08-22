@@ -218,6 +218,9 @@
 .detailStats > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 11px 14px; background: var(--surface); }
 .detailStats dt { color: var(--muted); font-size: 12px; font-weight: 700; }
 .detailStats dd { margin: 0; font-size: 14px; font-weight: 750; font-variant-numeric: tabular-nums; text-align: right; }
+/* Written by us rather than mirrored from the source, so it reads as an aside
+   instead of another field. */
+.guideNote { padding: 12px 14px; border-left: 3px solid var(--blue); border-radius: 0 9px 9px 0; background: var(--blue-soft); font-size: 13px; }
 .classList { display: flex; flex-wrap: wrap; gap: 6px; }
 .classList span { padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-soft); font-size: 12px; font-weight: 700; }
 

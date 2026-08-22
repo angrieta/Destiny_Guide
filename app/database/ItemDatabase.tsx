@@ -739,7 +739,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
 }
 
 function ItemDetail({ item, onClose }: { item: DatabaseItem; onClose: () => void }) {
-  const { t } = useI18n();
+  const { lang, t } = useI18n();
   return (
     <div className={styles.detailBackdrop} onClick={onClose} role="presentation">
       <aside
@@ -791,6 +791,13 @@ function ItemDetail({ item, onClose }: { item: DatabaseItem; onClose: () => void
             <section>
               <h4>{t("db.detail.notes", "Notes")}</h4>
               <p>{item.notes}</p>
+            </section>
+          )}
+
+          {item.guideNote && (
+            <section>
+              <h4>{t("db.detail.guideNote", "Guide note")}</h4>
+              <p className={styles.guideNote}>{item.guideNote[lang] ?? item.guideNote.en}</p>
             </section>
           )}
 
