@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "note": "Per-class stats for the Destiny server. `base` is level 200 with no materials and no mag; `max` is the best reachable total with an optimal material and mag plan. `materialCap` is the total number of materials the class may consume. Materials give +2 to their own stat each (Power to ATP, Defense to DFP, Mind to MST, Evade to EVP, Luck to LCK), and mag levels give DEF 1 DFP, POW 2 ATP, DEX 0.5 ATA, MIND 2 MST.",
+  "source": {
+    "url": "https://docs.google.com/spreadsheets/d/1KQ27OkgurNck1whdU9d8fed8isYQa41r7Y2Qt3Cj_T0/edit#gid=606563912",
+    "via": "Linked by Muckbeast in https://playpso.net/forums/topic/1044-humar-hunewearl-hucast-hucaseal/, where the GM confirmed the Shifta/Deband figures derived from it.",
+    "checkedAgainst": "FOmar base DFP 501 and max ATP 1350 / DFP 675 / MST 1384 / ATA 195 / EVP 750 both match measurements taken in game."
+  },
+  "classes": {
+    "humar": {
+      "name": "HUmar",
+      "materialCap": 250,
+      "base": { "ATP": 1046, "DFP": 502, "MST": 594, "ATA": 174.5, "EVP": 725, "LCK": 10 },
+      "max": { "ATP": 1600, "DFP": 760, "MST": 832, "ATA": 210, "EVP": 830, "LCK": 100, "HP": 2194, "TP": 793 }
+    },
+    "hunewearl": {
+      "name": "HUnewearl",
+      "materialCap": 150,
+      "base": { "ATP": 1085, "DFP": 608, "MST": 1189, "ATA": 177.5, "EVP": 816, "LCK": 10 },
+      "max": { "ATP": 1500, "DFP": 720, "MST": 1277, "ATA": 209, "EVP": 900, "LCK": 100, "HP": 1988, "TP": 1084 }
+    },
+    "hucast": {
+      "name": "HUcast",
+      "materialCap": 150,
+      "base": { "ATP": 1389, "DFP": 649, "MST": 0, "ATA": 158.5, "EVP": 705, "LCK": 10 },
+      "max": { "ATP": 1830, "DFP": 880, "MST": 0, "ATA": 201, "EVP": 750, "LCK": 100, "HP": 2350, "TP": 0 }
+    },
+    "hucaseal": {
+      "name": "HUcaseal",
+      "materialCap": 150,
+      "base": { "ATP": 1301, "DFP": 528, "MST": 0, "ATA": 194.5, "EVP": 906, "LCK": 10 },
+      "max": { "ATP": 1700, "DFP": 680, "MST": 0, "ATA": 228, "EVP": 1060, "LCK": 100, "HP": 2118, "TP": 0 }
+    },
+    "ramar": {
+      "name": "RAmar",
+      "materialCap": 250,
+      "base": { "ATP": 806, "DFP": 359, "MST": 505, "ATA": 230, "EVP": 549, "LCK": 10 },
+      "max": { "ATP": 1430, "DFP": 565, "MST": 765, "ATA": 259, "EVP": 650, "LCK": 100, "HP": 1715, "TP": 704 }
+    },
+    "ramarl": {
+      "name": "RAmarl",
+      "materialCap": 250,
+      "base": { "ATP": 743, "DFP": 426, "MST": 832, "ATA": 216.5, "EVP": 718, "LCK": 10 },
+      "max": { "ATP": 1300, "DFP": 585, "MST": 1131, "ATA": 251, "EVP": 800, "LCK": 100, "HP": 1715, "TP": 931 }
+    },
+    "racast": {
+      "name": "RAcast",
+      "materialCap": 150,
+      "base": { "ATP": 1039, "DFP": 455, "MST": 0, "ATA": 199, "EVP": 526, "LCK": 10 },
+      "max": { "ATP": 1500, "DFP": 600, "MST": 0, "ATA": 234, "EVP": 565, "LCK": 100, "HP": 1914, "TP": 0 }
+    },
+    "racaseal": {
+      "name": "RAcaseal",
+      "materialCap": 150,
+      "base": { "ATP": 930, "DFP": 512, "MST": 0, "ATA": 213, "EVP": 694, "LCK": 10 },
+      "max": { "ATP": 1400, "DFP": 625, "MST": 0, "ATA": 245, "EVP": 750, "LCK": 100, "HP": 1860, "TP": 0 }
+    },
+    "fomar": {
+      "name": "FOmar",
+      "materialCap": 250,
+      "base": { "ATP": 917, "DFP": 501, "MST": 990, "ATA": 158.5, "EVP": 611, "LCK": 10 },
+      "max": { "ATP": 1350, "DFP": 675, "MST": 1384, "ATA": 195, "EVP": 750, "LCK": 100, "HP": 1856, "TP": 1783 }
+    },
+    "fomarl": {
+      "name": "FOmarl",
+      "materialCap": 250,
+      "base": { "ATP": 817, "DFP": 451, "MST": 1146, "ATA": 169.5, "EVP": 663, "LCK": 10 },
+      "max": { "ATP": 1250, "DFP": 625, "MST": 1540, "ATA": 205, "EVP": 800, "LCK": 100, "HP": 1753, "TP": 1699 }
+    },
+    "fonewm": {
+      "name": "FOnewm",
+      "materialCap": 150,
+      "base": { "ATP": 613, "DFP": 408, "MST": 1598, "ATA": 138, "EVP": 531, "LCK": 10 },
+      "max": { "ATP": 900, "DFP": 563, "MST": 1800, "ATA": 185, "EVP": 600, "LCK": 100, "HP": 1540, "TP": 1945 }
+    },
+    "fonewearl": {
+      "name": "FOnewearl",
+      "materialCap": 150,
+      "base": { "ATP": 467, "DFP": 334, "MST": 1880, "ATA": 141.5, "EVP": 595, "LCK": 10 },
+      "max": { "ATP": 800, "DFP": 490, "MST": 2050, "ATA": 190, "EVP": 650, "LCK": 100, "HP": 1521, "TP": 2098 }
+    }
+  },
+  "materialRates": { "power": { "stat": "ATP", "per": 2 }, "defense": { "stat": "DFP", "per": 2 }, "mind": { "stat": "MST", "per": 2 }, "evade": { "stat": "EVP", "per": 2 }, "luck": { "stat": "LCK", "per": 2 } }
+}

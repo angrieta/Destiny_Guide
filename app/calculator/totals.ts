@@ -1,5 +1,5 @@
-import type { Equipment, MagStats, Modifiers, ResistKey, StatKey } from "./types";
-import { RESIST_KEYS, STAT_KEYS } from "./types";
+import type { Equipment, MagStats, Materials, Modifiers, ResistKey, StatKey } from "./types";
+import { MATERIAL_KEYS, MATERIAL_PER, MATERIAL_STAT, RESIST_KEYS, STAT_KEYS } from "./types";
 
 /**
  * What a mag hands the character per level, as documented on the Ephinea wiki:
@@ -32,6 +32,18 @@ export function buffPercent(level: number) {
 }
 
 const applyBuff = (value: number, percent: number) => Math.floor(value * (1 + percent / 100));
+
+/** Every material adds 2 to the stat it feeds. */
+export function materialContribution(materials: Materials): Partial<Record<StatKey, number>> {
+  const stats: Partial<Record<StatKey, number>> = {};
+  for (const key of MATERIAL_KEYS) {
+    const count = materials[key];
+    if (!count) continue;
+    const stat = MATERIAL_STAT[key];
+    stats[stat] = (stats[stat] ?? 0) + count * MATERIAL_PER;
+  }
+  return stats;
+}
 
 export function magContribution(mag: MagStats): Partial<Record<StatKey, number>> {
   const stats: Partial<Record<StatKey, number>> = {};
@@ -146,6 +158,7 @@ export function computeTotals(
   level: number,
   mag?: MagStats,
   buffs?: Buffs,
+  materials?: Materials,
 ): Totals {
   const totals: Totals = {
     stats: zeroStats(),
@@ -176,6 +189,14 @@ export function computeTotals(
     for (const [stat, value] of Object.entries(fromMag)) totals.stats[stat as StatKey] += value;
     if (Object.keys(fromMag).length > 0) {
       totals.contributions.push({ label: "Mag", slot: "mag", stats: fromMag });
+    }
+  }
+
+  if (materials) {
+    const fromMaterials = materialContribution(materials);
+    for (const [stat, value] of Object.entries(fromMaterials)) totals.stats[stat as StatKey] += value;
+    if (Object.keys(fromMaterials).length > 0) {
+      totals.contributions.push({ label: "Materials", slot: "materials", stats: fromMaterials });
     }
   }
 

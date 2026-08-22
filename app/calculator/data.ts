@@ -3,6 +3,7 @@ import armor from "@/data/database-2.json";
 import shields from "@/data/database-3.json";
 import units from "@/data/database-4.json";
 import modifierFile from "@/data/item-modifiers.json";
+import classStats from "@/data/class-stats.json";
 import type { CalculatorPayload, Equipment, Modifiers, ResistKey, Slot, StatKey } from "./types";
 import { RESIST_KEYS } from "./types";
 
@@ -53,9 +54,25 @@ const CLASS_LIST: Array<[string, string, "HU" | "RA" | "FO"]> = [
   ["fonewearl", "FOnewearl", "FO"],
 ];
 
+type ClassStatEntry = {
+  materialCap: number;
+  base: Partial<Record<StatKey, number>>;
+  max: Partial<Record<StatKey, number>>;
+};
+const CLASS_STATS = (classStats as { classes: Record<string, ClassStatEntry> }).classes;
+
 const CLASSES: CalculatorPayload["classes"] = CLASS_LIST.map(([id, name, family]) => {
   const [DEF, POW, DEX, MIND] = MAG_PLANS[id];
-  return { id, name, family, mag: { DEF, POW, DEX, MIND } };
+  const stats = CLASS_STATS[id];
+  return {
+    id,
+    name,
+    family,
+    mag: { DEF, POW, DEX, MIND },
+    base: stats.base,
+    max: stats.max,
+    materialCap: stats.materialCap,
+  };
 });
 
 const EMPTY_MODIFIERS: Modifiers = {

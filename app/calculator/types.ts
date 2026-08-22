@@ -54,6 +54,20 @@ export type Equipment = {
 
 export type MagStats = { DEF: number; POW: number; DEX: number; MIND: number };
 
+export const MATERIAL_KEYS = ["power", "defense", "mind", "evade", "luck"] as const;
+export type MaterialKey = (typeof MATERIAL_KEYS)[number];
+export type Materials = Record<MaterialKey, number>;
+
+/** Each material adds 2 to the stat it feeds. */
+export const MATERIAL_STAT: Record<MaterialKey, StatKey> = {
+  power: "ATP",
+  defense: "DFP",
+  mind: "MST",
+  evade: "EVP",
+  luck: "LCK",
+};
+export const MATERIAL_PER = 2;
+
 export type CalculatorPayload = {
   equipment: Equipment[];
   classes: Array<{
@@ -62,6 +76,11 @@ export type CalculatorPayload = {
     family: "HU" | "RA" | "FO";
     /** Mag plan the class build guide recommends, used as the starting value. */
     mag: MagStats;
+    /** Level 200 with no materials and no mag. */
+    base: Partial<Record<StatKey, number>>;
+    /** Best reachable total with an optimal material and mag plan. */
+    max: Partial<Record<StatKey, number>>;
+    materialCap: number;
   }>;
   weaponKinds: string[];
   syncedAt: string;

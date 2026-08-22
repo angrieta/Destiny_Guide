@@ -6,12 +6,13 @@ import { HappyHourHeader } from "../components/HappyHourHeader";
 import { useHeaderHeight } from "../components/useHeaderHeight";
 import { MAX_BUFF_LEVEL, buffPercent, computeTotals } from "./totals";
 import type { BaseStats, Buffs, Loadout } from "./totals";
-import type { CalculatorPayload, Equipment, MagStats, StatKey } from "./types";
-import { RESIST_KEYS, STAT_KEYS } from "./types";
+import type { CalculatorPayload, Equipment, MagStats, Materials, StatKey } from "./types";
+import { MATERIAL_KEYS, RESIST_KEYS, STAT_KEYS } from "./types";
 
 import styles from "./calculator.module.css";
 
 const MAG_KEYS: Array<keyof MagStats> = ["DEF", "POW", "DEX", "MIND"];
+const NO_MATERIALS: Materials = { power: 0, defense: 0, mind: 0, evade: 0, luck: 0 };
 const THEME_KEY = "destiny-guide-theme";
 const UNIT_SLOTS = [0, 1, 2, 3];
 
@@ -51,6 +52,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
   /** Left alone once the player edits the plan, so changing class does not wipe it. */
   const [magTouched, setMagTouched] = useState(false);
   const [buffs, setBuffs] = useState<Buffs>({ shifta: 0, deband: 0 });
+  const [materials, setMaterials] = useState<Materials>(NO_MATERIALS);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
@@ -96,6 +98,10 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     } else {
       setMag(payload.classes.find((entry) => entry.id === startClass)?.mag ?? payload.classes[0].mag);
     }
+    const readMat = params.get("mat")?.split("/").map(Number);
+    if (readMat && readMat.length === MATERIAL_KEYS.length && readMat.every((v) => Number.isFinite(v))) {
+      setMaterials(Object.fromEntries(MATERIAL_KEYS.map((key, i) => [key, Math.max(0, readMat[i])])) as Materials);
+    }
     const readShifta = Number(params.get("sh")) || 0;
     const readDeband = Number(params.get("db")) || 0;
     setBuffs({ shifta: Math.min(MAX_BUFF_LEVEL, Math.max(0, readShifta)), deband: Math.min(MAX_BUFF_LEVEL, Math.max(0, readDeband)) });
@@ -129,6 +135,8 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     if (magTouched) params.set("mag", `${mag.DEF}/${mag.POW}/${mag.DEX}/${mag.MIND}`);
     if (buffs.shifta > 0) params.set("sh", String(buffs.shifta));
     if (buffs.deband > 0) params.set("db", String(buffs.deband));
+    const matTotal = MATERIAL_KEYS.reduce((sum, key) => sum + materials[key], 0);
+    if (matTotal > 0) params.set("mat", MATERIAL_KEYS.map((key) => materials[key]).join("/"));
     for (const [slot, param] of Object.entries(SLOT_PARAM) as Array<[SlotKey, string]>) {
       const value = picked[slot];
       if (value) params.set(param, value);
@@ -139,7 +147,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     }
     const search = params.toString();
     window.history.replaceState(null, "", search ? `?${search}` : window.location.pathname);
-  }, [hydrated, playerClass, level, grind, picked, base, mag, magTouched, buffs]);
+  }, [hydrated, playerClass, level, grind, picked, base, mag, magTouched, buffs, materials]);
 
   const changeClass = (next: string) => {
     setPlayerClass(next);
@@ -162,7 +170,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     [picked, byId, grind],
   );
 
-  const totals = useMemo(() => computeTotals(base, loadout, playerClass, level, mag, buffs), [base, loadout, playerClass, level, mag, buffs]);
+  const totals = useMemo(() => computeTotals(base, loadout, playerClass, level, mag, buffs, materials), [base, loadout, playerClass, level, mag, buffs, materials]);
 
   const reset = useCallback(() => {
     setPicked({});
@@ -173,9 +181,13 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     setMag(payload.classes[0].mag);
     setMagTouched(false);
     setBuffs({ shifta: 0, deband: 0 });
+    setMaterials(NO_MATERIALS);
   }, [payload.classes]);
 
-  const hasSelection = Object.values(picked).some(Boolean) || Object.values(base).some(Boolean);
+  const currentClass = payload.classes.find((entry) => entry.id === playerClass) ?? payload.classes[0];
+  const materialTotal = MATERIAL_KEYS.reduce((sum, key) => sum + materials[key], 0);
+  const hasSelection =
+    Object.values(picked).some(Boolean) || Object.values(base).some(Boolean) || materialTotal > 0;
 
   const equipped = [
     { key: "weapon" as SlotKey, label: t("calc.slot.weapon", "Weapon"), pool: bySlot.weapon },
@@ -290,6 +302,33 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
             {t("calc.magRates", "DEF 1 DFP, POW 2 ATP, DEX 0.5 ATA, MIND 2 MST per level")}
           </p>
 
+          <h3 className={styles.subhead}>{t("calc.materials", "Materials")}</h3>
+          <p className={styles.hint}>
+            {t("calc.materialHint", "Each one adds 2 to its stat.")} {t("calc.materialCap", "This class may use")}{" "}
+            {currentClass.materialCap}.
+          </p>
+          <div className={styles.magInputs}>
+            {MATERIAL_KEYS.map((key) => (
+              <label key={key}>
+                <span>{t(`calc.mat.${key}`, key)}</span>
+                <input
+                  type="number"
+                  min={0}
+                  max={currentClass.materialCap}
+                  value={materials[key]}
+                  onChange={(event) => {
+                    const value = Math.max(0, Number(event.target.value) || 0);
+                    setMaterials((current) => ({ ...current, [key]: value }));
+                  }}
+                />
+              </label>
+            ))}
+          </div>
+          <p className={materialTotal > currentClass.materialCap ? styles.magNoteOver : styles.magNote}>
+            {t("calc.magTotal", "Total")} {materialTotal} / {currentClass.materialCap}
+            {materialTotal > currentClass.materialCap && ` — ${t("calc.overCap", "over the class limit")}`}
+          </p>
+
           <h3 className={styles.subhead}>{t("calc.buffs", "Shifta / Deband")}</h3>
           <p className={styles.hint}>
             {t(
@@ -322,9 +361,17 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
           <p className={styles.hint}>
             {t(
               "calc.baseHint",
-              "Optional, and without the mag since that is counted above. Read these off the character screen with gear removed. Leave blank to see only what the equipment contributes.",
+              "Level 200 with no materials and no mag, since both are counted above. Load the class figures, or type your own.",
             )}
           </p>
+          <div className={styles.actions}>
+            <button type="button" onClick={() => setBase({ ...currentClass.base })}>
+              {t("calc.fillBase", "Class base")}
+            </button>
+            <button type="button" onClick={() => setBase({ ...currentClass.max })}>
+              {t("calc.fillMax", "Class max (incl. mats + mag)")}
+            </button>
+          </div>
           <div className={styles.statInputs}>
             {STAT_KEYS.map((stat) => (
               <label key={stat}>
