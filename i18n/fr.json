@@ -1637,5 +1637,6 @@
   "redeem.total": "Total",
   "redeem.usesLeftover": "Utilise le reste",
   "redeem.weapons": "Armes",
-  "redeem.weaponsHint": "Les pourcentages se lisent Native / A.Beast / Machine / Dark / HIT. Vous pouvez coller une ligne entière comme 0/45/20/25 dans n'importe quelle case, les cinq se remplissent."
+  "redeem.weaponsHint": "Les pourcentages se lisent Native / A.Beast / Machine / Dark / HIT. Vous pouvez coller une ligne entière comme 0/45/20/25 dans n'importe quelle case, les cinq se remplissent.",
+  "header.nav.redeem": "Échange de jetons"
 }

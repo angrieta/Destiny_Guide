@@ -1637,5 +1637,6 @@
   "redeem.total": "Total",
   "redeem.usesLeftover": "Usa el sobrante",
   "redeem.weapons": "Armas",
-  "redeem.weaponsHint": "Los porcentajes van en el orden Native / A.Beast / Machine / Dark / HIT. Puedes pegar una línea entera como 0/45/20/25 en cualquier casilla y se rellenan las cinco."
+  "redeem.weaponsHint": "Los porcentajes van en el orden Native / A.Beast / Machine / Dark / HIT. Puedes pegar una línea entera como 0/45/20/25 en cualquier casilla y se rellenan las cinco.",
+  "header.nav.redeem": "Canje de tokens"
 }

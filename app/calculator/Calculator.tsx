@@ -209,12 +209,25 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
               <img src="../images/common/rogo.png" alt="Destiny Guide" />
             </a>
           </h1>
-          <nav className={styles.headerMenus} aria-label="Main navigation">
+          <nav className={styles.headerMenus} aria-label={t("db.nav.aria", "Main navigation")}>
             <div>
-              <a href="../beginner_page.html">{t("nav.beginner", "Beginner")}</a>
-              <a href="../item_page.html">{t("nav.items", "Destiny Items")}</a>
-              <a href="../class_builds.html">{t("nav.builds", "Class Builds")}</a>
-              <a href="../Psobb_tool.html">{t("nav.tools", "Tools")}</a>
+              <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
+              <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
+              <a href="../class_builds.html">Class Builds</a>
+              <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
+              <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
+              <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
+              <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
+              <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
+              <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
+              <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
+              <a href="../redeem/">{t("header.nav.redeem", "Token Redeem")}</a>
+            </div>
+            <div className={styles.raidMenu}>
+              <a href="../dn.html">Distorted Nightmare [RAID]</a>
+              <a href="../discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
+              <a href="../predator_raid.html">The Ravenous Predator [RAID]</a>
+              <a href="../tpd_page.html">The Phantasmal Dimension</a>
             </div>
           </nav>
           <div className={styles.headerActions}>
@@ -223,10 +236,10 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
               {theme === "dark" ? t("theme.light", "Light") : t("theme.dark", "Dark")}
             </button>
             <a className={styles.navLink} href="../drop-tables/">
-              {t("nav.dropTables", "Drop Tables")}
+              {t("header.link.dropTables", "Drop Tables")}
             </a>
             <a className={styles.navLink} href="../database/">
-              {t("nav.database", "Item DB")}
+              {t("header.link.database", "Database")}
             </a>
             <LanguageSwitcher />
             <HappyHourHeader />

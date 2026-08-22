@@ -60,6 +60,7 @@
 .headerMenus > div { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; min-width: 0; }
 .headerMenus a { padding-bottom: 4px; border-bottom: 1px solid transparent; color: var(--text); font-size: 13px; white-space: nowrap; }
 .headerMenus a:hover { border-bottom-color: var(--text); }
+.headerMenus a[aria-current="page"] { border-bottom-color: var(--blue); color: var(--blue-strong); font-weight: 750; }
 .raidMenu a { color: var(--muted); }
 .headerActions { display: flex; flex: 0 0 auto; align-items: center; gap: 12px; }
 .themeButton { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-width: 72px; min-height: 34px; padding: 5px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-soft); color: var(--text); font-size: 13px; font-weight: 700; cursor: pointer; }
@@ -417,3 +418,16 @@
 }
 .comboActive { background: var(--blue-soft); color: var(--blue-strong) !important; font-weight: 750; }
 .comboMore { color: var(--muted); font-size: 11px !important; cursor: default !important; }
+
+@media (max-width: 520px) {
+  /* Same treatment the database page already needed: eleven main links at 13px
+     push the header past 380px on a phone. Shrinking the logo and the menu text
+     brings it back in line with the other headers. */
+  .headerInner { gap: 10px; padding: 0 15px; }
+  .siteLogo { flex: 0 0 108px; width: 108px; }
+  .headerMenus { gap: 5px 10px; }
+  .headerMenus > div { gap: 4px 8px; }
+  .headerMenus a { padding-bottom: 2px; font-size: 11.5px; }
+  .themeButton { min-width: 34px; padding: 5px 9px; font-size: 11px; }
+  .navLink, .navLinkActive { padding: 4px 8px; font-size: 11px; }
+}

@@ -192,5 +192,6 @@
   "redeem.total": "Total",
   "redeem.usesLeftover": "Uses leftover",
   "redeem.weapons": "Weapons",
-  "redeem.weaponsHint": "Percentages read Native / A.Beast / Machine / Dark / HIT. You can paste a whole line such as 0/45/20/25 into any box and it fills the group."
+  "redeem.weaponsHint": "Percentages read Native / A.Beast / Machine / Dark / HIT. You can paste a whole line such as 0/45/20/25 into any box and it fills the group.",
+  "header.nav.redeem": "Token Redeem"
 }

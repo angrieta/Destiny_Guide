@@ -1637,5 +1637,6 @@
   "redeem.total": "합계",
   "redeem.usesLeftover": "잔여분 사용",
   "redeem.weapons": "무기",
-  "redeem.weaponsHint": "%는 Native / A.Beast / Machine / Dark / HIT 순서입니다. 0/45/20/25 같은 줄을 아무 칸에나 붙여넣으면 다섯 칸이 한 번에 채워집니다."
+  "redeem.weaponsHint": "%는 Native / A.Beast / Machine / Dark / HIT 순서입니다. 0/45/20/25 같은 줄을 아무 칸에나 붙여넣으면 다섯 칸이 한 번에 채워집니다.",
+  "header.nav.redeem": "토큰 교환"
 }

@@ -216,3 +216,16 @@
   .statInputs, .magInputs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .statGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+@media (max-width: 520px) {
+  /* Same treatment the database page already needed: eleven main links at 13px
+     push the header past 380px on a phone. Shrinking the logo and the menu text
+     brings it back in line with the other headers. */
+  .headerInner { gap: 10px; padding: 0 15px; }
+  .siteLogo { flex: 0 0 108px; width: 108px; }
+  .headerMenus { gap: 5px 10px; }
+  .headerMenus > div { gap: 4px 8px; }
+  .headerMenus a { padding-bottom: 2px; font-size: 11.5px; }
+  .themeButton { min-width: 34px; padding: 5px 9px; font-size: 11px; }
+  .navLink, .navLinkActive { padding: 4px 8px; font-size: 11px; }
+}

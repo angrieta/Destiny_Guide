@@ -1637,5 +1637,6 @@
   "redeem.total": "合計",
   "redeem.usesLeftover": "余りを使用",
   "redeem.weapons": "武器",
-  "redeem.weaponsHint": "% は Native / A.Beast / Machine / Dark / HIT の順です。0/45/20/25 のような一行をどの欄に貼っても、五つの欄がまとめて埋まります。"
+  "redeem.weaponsHint": "% は Native / A.Beast / Machine / Dark / HIT の順です。0/45/20/25 のような一行をどの欄に貼っても、五つの欄がまとめて埋まります。",
+  "header.nav.redeem": "トークン交換"
 }

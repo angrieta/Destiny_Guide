@@ -482,6 +482,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
               <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
               <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
               <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
+              <a href="../redeem/">{t("header.nav.redeem", "Token Redeem")}</a>
             </div>
             <div className={styles.raidMenu}>
               <a href="../dn.html">Distorted Nightmare [RAID]</a>
