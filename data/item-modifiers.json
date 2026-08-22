@@ -5,7 +5,7 @@
  "summary": {
   "itemsScanned": 1022,
   "itemsWithModifiers": 369,
-  "unparsedPhrases": 34,
+  "unparsedPhrases": 30,
   "conflicts": 0
  },
  "items": {
@@ -20,6 +20,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -34,6 +35,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -48,6 +50,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -62,6 +65,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -76,6 +80,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -90,6 +95,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -104,6 +110,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -128,6 +135,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -142,6 +150,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -156,6 +165,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -170,6 +180,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -184,6 +195,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -198,6 +210,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -212,6 +225,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -226,6 +240,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -240,6 +255,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -258,6 +274,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -272,6 +289,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -286,6 +304,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -300,6 +319,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -314,6 +334,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -333,6 +354,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -347,6 +369,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -369,6 +392,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -383,6 +407,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -404,6 +429,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -418,6 +444,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -436,6 +463,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -454,6 +482,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -468,6 +497,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -495,6 +525,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -507,6 +538,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Megid Penetration"
     ]
@@ -523,6 +555,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Megid Penetration"
     ]
@@ -554,6 +587,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -568,6 +602,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -582,6 +617,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -596,6 +632,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -618,6 +655,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -632,6 +670,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -646,6 +685,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -660,6 +700,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -674,6 +715,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -695,6 +737,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -716,6 +759,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Megid Penetration"
     ]
@@ -742,6 +786,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -761,6 +806,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -775,6 +821,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -794,6 +841,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -810,6 +858,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Megid Penetration"
     ]
@@ -830,6 +879,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -848,6 +898,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -870,6 +921,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -884,6 +936,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -906,6 +959,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -920,6 +974,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -934,6 +989,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -948,6 +1004,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -962,6 +1019,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -976,6 +1034,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -990,6 +1049,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1004,6 +1064,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1018,6 +1079,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1032,6 +1094,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1046,6 +1109,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1060,6 +1124,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1078,6 +1143,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1097,6 +1163,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1116,6 +1183,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1138,6 +1206,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1157,6 +1226,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1175,6 +1245,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1189,6 +1260,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1213,6 +1285,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1232,6 +1305,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1246,6 +1320,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1260,6 +1335,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1274,6 +1350,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1288,6 +1365,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1316,6 +1394,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1340,6 +1419,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1359,6 +1439,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1388,6 +1469,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1402,6 +1484,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1416,6 +1499,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1430,6 +1514,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1444,6 +1529,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1458,6 +1544,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1472,6 +1559,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1488,6 +1576,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1510,6 +1599,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1524,6 +1614,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1540,6 +1631,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1559,6 +1651,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1581,6 +1674,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1595,6 +1689,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1609,6 +1704,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1623,6 +1719,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1637,6 +1734,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1659,6 +1757,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1673,6 +1772,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1694,6 +1794,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1716,6 +1817,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1740,6 +1842,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1754,6 +1857,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1773,6 +1877,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1789,6 +1894,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1811,6 +1917,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1840,6 +1947,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1862,6 +1970,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1876,6 +1985,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1890,6 +2000,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1904,6 +2015,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1918,6 +2030,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1940,6 +2053,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1954,6 +2068,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1968,6 +2083,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1982,6 +2098,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -1996,6 +2113,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2010,6 +2128,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2024,6 +2143,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2046,6 +2166,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2060,6 +2181,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2074,6 +2196,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2088,6 +2211,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2100,6 +2224,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "HP Recovery"
     ]
@@ -2114,6 +2239,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "TP Recovery"
     ]
@@ -2130,6 +2256,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2144,6 +2271,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2156,6 +2284,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "HP Drain"
     ]
@@ -2170,6 +2299,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "HP Drain"
     ]
@@ -2184,6 +2314,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "HP Drain"
     ]
@@ -2198,6 +2329,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Trap Search"
     ]
@@ -2214,6 +2346,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2226,6 +2359,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "HP Drain"
     ]
@@ -2240,6 +2374,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "TP Drain"
     ]
@@ -2254,6 +2389,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Cure Paralysis"
     ]
@@ -2270,6 +2406,7 @@
      "attack": 10
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2284,6 +2421,7 @@
      "attack": 20
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2298,6 +2436,7 @@
      "attack": 30
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2312,6 +2451,7 @@
      "attack": 40
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2324,6 +2464,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Megid Penetration"
     ]
@@ -2340,6 +2481,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2354,6 +2496,7 @@
     "cost": {
      "tp": -50
     },
+    "regen": {},
     "flags": []
    }
   },
@@ -2368,6 +2511,7 @@
     "cost": {
      "tp": -50
     },
+    "regen": {},
     "flags": []
    }
   },
@@ -2390,6 +2534,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2412,6 +2557,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2434,6 +2580,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2446,6 +2593,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Megid Penetration"
     ]
@@ -2460,6 +2608,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "TP Recovery"
     ]
@@ -2474,6 +2623,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "HP Recovery"
     ]
@@ -2488,6 +2638,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Trap Search"
     ]
@@ -2504,6 +2655,7 @@
      "attack": 20
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2518,6 +2670,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2537,6 +2690,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2551,6 +2705,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2565,6 +2720,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2579,6 +2735,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2593,6 +2750,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2607,6 +2765,7 @@
      "attack": 80
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2619,6 +2778,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Cure Freeze"
     ]
@@ -2635,6 +2795,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Trap Search"
     ]
@@ -2651,6 +2812,7 @@
      "attack": 120
     },
     "cost": {},
+    "regen": {},
     "flags": [
      "Megid Penetration"
     ]
@@ -2667,6 +2829,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2683,6 +2846,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2705,6 +2869,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2717,6 +2882,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "PB/FLOW"
     ]
@@ -2738,6 +2904,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2752,6 +2919,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2786,6 +2954,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2800,6 +2969,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2819,6 +2989,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2833,6 +3004,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2847,6 +3019,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2861,6 +3034,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2875,6 +3049,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2889,6 +3064,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2908,6 +3084,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2922,6 +3099,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2948,6 +3126,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2964,6 +3143,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2980,6 +3160,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -2996,6 +3177,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3012,6 +3194,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3028,6 +3211,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3044,6 +3228,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3060,6 +3245,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3082,6 +3268,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3098,6 +3285,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3114,6 +3302,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3130,6 +3319,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3152,6 +3342,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3168,6 +3359,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3184,6 +3376,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3200,6 +3393,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3222,6 +3416,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3241,6 +3436,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3257,6 +3453,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3275,6 +3472,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3297,6 +3495,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3319,6 +3518,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3337,6 +3537,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3355,6 +3556,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3369,6 +3571,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3392,6 +3595,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3406,6 +3610,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3425,6 +3630,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3439,6 +3645,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3453,6 +3660,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3467,6 +3675,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3491,6 +3700,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3512,6 +3722,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3531,6 +3742,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3552,6 +3764,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3573,6 +3786,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3587,6 +3801,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3609,6 +3824,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3630,6 +3846,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3649,6 +3866,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3670,6 +3888,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3682,6 +3901,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "State/Maintenance",
      "Trap/Search"
@@ -3709,6 +3929,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3733,6 +3954,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3757,6 +3979,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3781,6 +4004,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3805,6 +4029,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3829,6 +4054,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3853,6 +4079,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3877,6 +4104,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3901,6 +4129,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3925,6 +4154,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3937,6 +4167,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "State/Maintenance",
      "Trap/Search"
@@ -3964,6 +4195,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -3985,6 +4217,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Megid Penetration"
     ]
@@ -4009,6 +4242,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4028,6 +4262,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4052,6 +4287,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4076,6 +4312,7 @@
     },
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4090,6 +4327,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4104,6 +4342,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4118,6 +4357,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4132,6 +4372,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4146,6 +4387,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4160,6 +4402,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4174,6 +4417,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4188,6 +4432,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases special attack success rate",
      "Increases ATA for hunters/forces"
@@ -4205,6 +4450,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4219,6 +4465,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4233,6 +4480,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4247,6 +4495,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4263,6 +4512,7 @@
      "cast": 30
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4277,6 +4527,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4291,6 +4542,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4307,6 +4559,7 @@
      "cast": 100
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4321,6 +4574,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4337,6 +4591,7 @@
      "cast": 100
     },
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases success rate of freezing Rabarta and Gibarta"
     ]
@@ -4353,6 +4608,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4367,6 +4623,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4381,6 +4638,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4395,6 +4653,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4409,6 +4668,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4423,6 +4683,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4437,6 +4698,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4451,6 +4713,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4465,6 +4728,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4479,6 +4743,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4493,6 +4758,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4507,6 +4773,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4521,6 +4788,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4535,6 +4803,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4549,6 +4818,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4563,6 +4833,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4577,6 +4848,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4591,6 +4863,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4605,6 +4878,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4619,6 +4893,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4633,6 +4908,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4647,6 +4923,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4661,6 +4938,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4675,6 +4953,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4689,6 +4968,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4703,6 +4983,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4717,6 +4998,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4731,6 +5013,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4745,6 +5028,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4759,6 +5043,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4773,6 +5058,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4787,6 +5073,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4801,6 +5088,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4815,6 +5103,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4829,6 +5118,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4843,6 +5133,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4857,6 +5148,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4871,6 +5163,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4885,6 +5178,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4904,6 +5198,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4923,6 +5218,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4942,6 +5238,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4963,6 +5260,7 @@
      "attack": 40
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -4982,6 +5280,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5001,6 +5300,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5020,6 +5320,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5034,6 +5335,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5048,6 +5350,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5062,6 +5365,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5076,6 +5380,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Empowers certain weapons"
     ]
@@ -5092,6 +5397,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5106,6 +5412,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5120,6 +5427,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5134,6 +5442,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5148,6 +5457,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5162,6 +5472,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5176,6 +5487,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5190,6 +5502,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5204,6 +5517,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5218,6 +5532,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5232,6 +5547,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5246,6 +5562,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5264,6 +5581,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5282,6 +5600,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5300,6 +5619,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5318,6 +5638,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5336,6 +5657,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Empowers certain weapons"
     ]
@@ -5356,6 +5678,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Empowers certain weapons"
     ]
@@ -5376,6 +5699,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Empowers certain weapons"
     ]
@@ -5396,6 +5720,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Empowers certain weapons"
     ]
@@ -5416,6 +5741,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Empowers certain weapons"
     ]
@@ -5430,9 +5756,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "HP Regen 1 per 14 sec"
-    ]
+    "regen": {
+     "hp": {
+      "amount": 1,
+      "intervalSec": 14
+     }
+    },
+    "flags": []
    }
   },
   "Units:HP/Generate": {
@@ -5444,9 +5774,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "HP Regen 1 per 11 sec"
-    ]
+    "regen": {
+     "hp": {
+      "amount": 1,
+      "intervalSec": 11
+     }
+    },
+    "flags": []
    }
   },
   "Units:HP/Revival": {
@@ -5458,9 +5792,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "HP Regen 1 per 8 sec"
-    ]
+    "regen": {
+     "hp": {
+      "amount": 1,
+      "intervalSec": 8
+     }
+    },
+    "flags": []
    }
   },
   "Units:HP/Ressurection": {
@@ -5472,9 +5810,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "HP Regen 1 per 5 sec"
-    ]
+    "regen": {
+     "hp": {
+      "amount": 1,
+      "intervalSec": 5
+     }
+    },
+    "flags": []
    }
   },
   "Units:HP/Flow": {
@@ -5486,9 +5828,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "HP Regen 1 per 1 sec"
-    ]
+    "regen": {
+     "hp": {
+      "amount": 1,
+      "intervalSec": 1
+     }
+    },
+    "flags": []
    }
   },
   "Units:TP/Restorate": {
@@ -5500,9 +5846,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "TP Regen 1 per 15 sec"
-    ]
+    "regen": {
+     "tp": {
+      "amount": 1,
+      "intervalSec": 15
+     }
+    },
+    "flags": []
    }
   },
   "Units:TP/Generate": {
@@ -5514,9 +5864,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "TP Regen 1 per 13 sec"
-    ]
+    "regen": {
+     "tp": {
+      "amount": 1,
+      "intervalSec": 13
+     }
+    },
+    "flags": []
    }
   },
   "Units:TP/Revival": {
@@ -5528,9 +5882,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "TP Regen 1 per 11 sec"
-    ]
+    "regen": {
+     "tp": {
+      "amount": 1,
+      "intervalSec": 11
+     }
+    },
+    "flags": []
    }
   },
   "Units:TP/Ressurection": {
@@ -5542,9 +5900,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "TP Regen 1 per 9 sec"
-    ]
+    "regen": {
+     "tp": {
+      "amount": 1,
+      "intervalSec": 9
+     }
+    },
+    "flags": []
    }
   },
   "Units:TP/Flow": {
@@ -5556,9 +5918,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "TP Regen 1 per 1 sec"
-    ]
+    "regen": {
+     "tp": {
+      "amount": 1,
+      "intervalSec": 1
+     }
+    },
+    "flags": []
    }
   },
   "Units:PB/Amplifier": {
@@ -5570,9 +5936,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "PB Regen 1 per 40 sec"
-    ]
+    "regen": {
+     "pb": {
+      "amount": 1,
+      "intervalSec": 40
+     }
+    },
+    "flags": []
    }
   },
   "Units:PB/Generate": {
@@ -5584,9 +5954,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "PB Regen 1 per 35 sec"
-    ]
+    "regen": {
+     "pb": {
+      "amount": 1,
+      "intervalSec": 35
+     }
+    },
+    "flags": []
    }
   },
   "Units:PB/Create": {
@@ -5598,9 +5972,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "PB Regen 1 per 23 sec"
-    ]
+    "regen": {
+     "pb": {
+      "amount": 1,
+      "intervalSec": 23
+     }
+    },
+    "flags": []
    }
   },
   "Units:PB/Increase": {
@@ -5612,9 +5990,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "PB Regen 1 per 18 sec"
-    ]
+    "regen": {
+     "pb": {
+      "amount": 1,
+      "intervalSec": 18
+     }
+    },
+    "flags": []
    }
   },
   "Units:PB/Flow": {
@@ -5626,9 +6008,13 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "PB Regen 1 per 5 sec"
-    ]
+    "regen": {
+     "pb": {
+      "amount": 1,
+      "intervalSec": 5
+     }
+    },
+    "flags": []
    }
   },
   "Units:Wizard/Technique": {
@@ -5640,9 +6026,9 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "Technique Lv +1"
-    ]
+    "regen": {},
+    "flags": [],
+    "techLevel": 1
    }
   },
   "Units:Devil/Technique": {
@@ -5654,9 +6040,9 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "Technique Lv +2"
-    ]
+    "regen": {},
+    "flags": [],
+    "techLevel": 2
    }
   },
   "Units:God/Technique": {
@@ -5668,9 +6054,9 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "Technique Lv +3"
-    ]
+    "regen": {},
+    "flags": [],
+    "techLevel": 3
    }
   },
   "Units:Heavenly/Technique": {
@@ -5682,9 +6068,9 @@
     "tech": {},
     "speed": {},
     "cost": {},
-    "flags": [
-     "Technique Lv +4"
-    ]
+    "regen": {},
+    "flags": [],
+    "techLevel": 4
    }
   },
   "Units:General/Battle": {
@@ -5698,6 +6084,7 @@
      "attack": 5
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5712,6 +6099,7 @@
      "attack": 10
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5726,6 +6114,7 @@
      "attack": 20
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5740,6 +6129,7 @@
      "attack": 40
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5754,6 +6144,7 @@
      "attack": 120
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5768,6 +6159,7 @@
      "attack": 80
     },
     "cost": {},
+    "regen": {},
     "flags": []
    }
   },
@@ -5780,6 +6172,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Cures All"
     ]
@@ -5794,6 +6187,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Exposes hidden traps"
     ]
@@ -5808,6 +6202,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Cures Poison"
     ]
@@ -5822,6 +6217,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Cures Paralysis"
     ]
@@ -5836,6 +6232,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Cures Shock"
     ]
@@ -5850,6 +6247,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Cures Slow"
     ]
@@ -5864,6 +6262,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Cures Confuse"
     ]
@@ -5878,6 +6277,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Cures Freeze"
     ]
@@ -5892,6 +6292,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "ATA +30 if used with Kusanagi"
     ]
@@ -5906,6 +6307,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases special attack success rate"
     ]
@@ -5920,6 +6322,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases special attack success rate"
     ]
@@ -5934,6 +6337,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Decreases stats and resistances"
     ]
@@ -5948,6 +6352,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases stats, resistances, and cuts TP cost by 25%"
     ]
@@ -5962,6 +6367,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases ATA with certain weapons"
     ]
@@ -5976,6 +6382,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases stats with certain weapons"
     ]
@@ -5990,6 +6397,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases ATA for hunters/forces"
     ]
@@ -6004,6 +6412,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases LCK, EDK and ELT during certain times"
     ]
@@ -6018,6 +6427,7 @@
     "tech": {},
     "speed": {},
     "cost": {},
+    "regen": {},
     "flags": [
      "Increases stats based on guildcards and team members"
     ]
@@ -6044,48 +6454,12 @@
    ]
   },
   {
-   "phrase": "HP Regen <n>",
-   "count": 5,
-   "examples": [
-    "HP/Restorate",
-    "HP/Generate",
-    "HP/Revival"
-   ]
-  },
-  {
-   "phrase": "TP Regen <n>",
-   "count": 5,
-   "examples": [
-    "TP/Restorate",
-    "TP/Generate",
-    "TP/Revival"
-   ]
-  },
-  {
-   "phrase": "PB Regen <n>",
-   "count": 5,
-   "examples": [
-    "PB/Amplifier",
-    "PB/Generate",
-    "PB/Create"
-   ]
-  },
-  {
    "phrase": "HP Drain",
    "count": 4,
    "examples": [
     "PARASITE WEAR:De Rol",
     "PARASITE WEAR:Nelgal",
     "PARASITE WEAR:Vajulla"
-   ]
-  },
-  {
-   "phrase": "Technique Lv <n>",
-   "count": 4,
-   "examples": [
-    "Wizard/Technique",
-    "Devil/Technique",
-    "God/Technique"
    ]
   },
   {

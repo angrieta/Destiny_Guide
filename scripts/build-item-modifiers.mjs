@@ -130,7 +130,7 @@ function applyPhrase(phrase, out) {
 }
 
 function emptyModifiers() {
-  return { flat: {}, resist: {}, tech: {}, speed: {}, cost: {}, flags: [] };
+  return { flat: {}, resist: {}, tech: {}, speed: {}, cost: {}, regen: {}, flags: [] };
 }
 
 function isEmpty(mods) {
@@ -140,8 +140,38 @@ function isEmpty(mods) {
     Object.keys(mods.tech).length === 0 &&
     Object.keys(mods.speed).length === 0 &&
     Object.keys(mods.cost).length === 0 &&
+    Object.keys(mods.regen).length === 0 &&
+    mods.techLevel === undefined &&
     mods.flags.length === 0
   );
+}
+
+/**
+ * Units keep their main effect in Stat Type / Stat Amount rather than in Boosts.
+ * Most are plain stats, but four kinds are not and would otherwise be lost:
+ * the three regen tracks, written as "1 per 14 sec", and the technique level
+ * bonus, which feeds technique damage directly.
+ */
+function applyUnitStat(statType, amount, out) {
+  const regenTrack = statType.match(/^(HP|TP|PB) Regen$/i);
+  if (regenTrack) {
+    const rate = amount.match(/^([\d.]+)\s*per\s*([\d.]+)\s*sec$/i);
+    if (!rate) return false;
+    out.regen[regenTrack[1].toLowerCase()] = {
+      amount: Number(rate[1]),
+      intervalSec: Number(rate[2]),
+    };
+    return true;
+  }
+
+  if (/^Technique Lv$/i.test(statType)) {
+    const level = amount.match(/^([+-])\s*(\d+)$/);
+    if (!level) return false;
+    out.techLevel = num(level[1], level[2]);
+    return true;
+  }
+
+  return applyPhrase(`${statType} ${amount}`, out);
 }
 
 const isBareTech = (phrase) => TECHS.includes(phrase.trim().toLowerCase());
@@ -220,8 +250,7 @@ for (const category of CATEGORIES) {
       const statType = (row["Stat Type"] ?? "").trim();
       const amount = (row["Stat Amount"] ?? "").trim();
       if (statType && statType !== "N/A" && amount) {
-        if (!applyPhrase(`${statType} ${amount}`, mods)) {
-          // HP Regen, TP Regen, PB Regen, Technique Lv: real effects, but not a flat stat.
+        if (!applyUnitStat(statType, amount, mods)) {
           mods.flags.push(`${statType} ${amount}`);
           const key = `${statType} <n>`;
           const entry = unparsed.get(key) ?? { phrase: key, count: 0, examples: [] };
