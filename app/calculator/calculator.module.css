@@ -125,6 +125,8 @@
 /* ---------- Inputs ---------- */
 
 .fieldRow { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 12px; }
+.magInputs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.magNote { margin: 8px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
 .statInputs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 
 .panel label, .picker { display: flex; min-width: 0; flex-direction: column; gap: 6px; }
@@ -209,6 +211,6 @@
      한 줄을 통째로 차지하게 만든 뒤 그 안에서 감기게 한다. */
   .headerActions { flex: 1 1 100%; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
   .grid { grid-template-columns: minmax(0, 1fr); }
-  .statInputs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .statInputs, .magInputs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .statGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

@@ -17,20 +17,46 @@ const SOURCES: Array<{ source: Source; slot: Slot }> = [
   { source: units as Source, slot: "unit" },
 ];
 
-const CLASSES: CalculatorPayload["classes"] = [
-  { id: "humar", name: "HUmar", family: "HU" },
-  { id: "hunewearl", name: "HUnewearl", family: "HU" },
-  { id: "hucast", name: "HUcast", family: "HU" },
-  { id: "hucaseal", name: "HUcaseal", family: "HU" },
-  { id: "ramar", name: "RAmar", family: "RA" },
-  { id: "ramarl", name: "RAmarl", family: "RA" },
-  { id: "racast", name: "RAcast", family: "RA" },
-  { id: "racaseal", name: "RAcaseal", family: "RA" },
-  { id: "fomar", name: "FOmar", family: "FO" },
-  { id: "fomarl", name: "FOmarl", family: "FO" },
-  { id: "fonewm", name: "FOnewm", family: "FO" },
-  { id: "fonewearl", name: "FOnewearl", family: "FO" },
+/**
+ * Starting mag plans, taken from the `plan` field of each class in
+ * scripts/class_builds.js (DEF/POW/DEX/MIND, always totalling 200). The first
+ * variant of each class is used. Kept as literals because that file is a browser
+ * script rather than a module; if the guide changes a plan, update it here too.
+ */
+const MAG_PLANS: Record<string, [number, number, number, number]> = {
+  humar: [0, 129, 71, 0],
+  hunewearl: [0, 137, 63, 0],
+  hucast: [0, 115, 85, 0],
+  hucaseal: [0, 133, 67, 0],
+  ramar: [0, 142, 58, 0],
+  ramarl: [0, 131, 69, 0],
+  racast: [0, 130, 70, 0],
+  racaseal: [5, 139, 56, 0],
+  fomar: [5, 122, 73, 0],
+  fomarl: [0, 129, 71, 0],
+  fonewm: [0, 82, 94, 24],
+  fonewearl: [0, 103, 97, 0],
+};
+
+const CLASS_LIST: Array<[string, string, "HU" | "RA" | "FO"]> = [
+  ["humar", "HUmar", "HU"],
+  ["hunewearl", "HUnewearl", "HU"],
+  ["hucast", "HUcast", "HU"],
+  ["hucaseal", "HUcaseal", "HU"],
+  ["ramar", "RAmar", "RA"],
+  ["ramarl", "RAmarl", "RA"],
+  ["racast", "RAcast", "RA"],
+  ["racaseal", "RAcaseal", "RA"],
+  ["fomar", "FOmar", "FO"],
+  ["fomarl", "FOmarl", "FO"],
+  ["fonewm", "FOnewm", "FO"],
+  ["fonewearl", "FOnewearl", "FO"],
 ];
+
+const CLASSES: CalculatorPayload["classes"] = CLASS_LIST.map(([id, name, family]) => {
+  const [DEF, POW, DEX, MIND] = MAG_PLANS[id];
+  return { id, name, family, mag: { DEF, POW, DEX, MIND } };
+});
 
 const EMPTY_MODIFIERS: Modifiers = {
   flat: {},

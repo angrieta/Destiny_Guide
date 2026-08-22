@@ -50,9 +50,17 @@ export type Equipment = {
   searchText: string;
 };
 
+export type MagStats = { DEF: number; POW: number; DEX: number; MIND: number };
+
 export type CalculatorPayload = {
   equipment: Equipment[];
-  classes: Array<{ id: string; name: string; family: "HU" | "RA" | "FO" }>;
+  classes: Array<{
+    id: string;
+    name: string;
+    family: "HU" | "RA" | "FO";
+    /** Mag plan the class build guide recommends, used as the starting value. */
+    mag: MagStats;
+  }>;
   weaponKinds: string[];
   syncedAt: string;
 };

@@ -1,5 +1,22 @@
-import type { Equipment, Modifiers, ResistKey, StatKey } from "./types";
+import type { Equipment, MagStats, Modifiers, ResistKey, StatKey } from "./types";
 import { RESIST_KEYS, STAT_KEYS } from "./types";
+
+/**
+ * What a mag hands the character per level, as documented on the Ephinea wiki:
+ * DEF gives 1 DFP, POW gives 2 ATP, DEX gives 0.5 ATA, MIND gives 2 MST.
+ * These are core mechanics rather than item tuning, so they hold on this server.
+ */
+export const MAG_RATES = { DEF: 1, POW: 2, DEX: 0.5, MIND: 2 } as const;
+
+export function magContribution(mag: MagStats): Partial<Record<StatKey, number>> {
+  const stats: Partial<Record<StatKey, number>> = {};
+  if (mag.DEF) stats.DFP = mag.DEF * MAG_RATES.DEF;
+  if (mag.POW) stats.ATP = mag.POW * MAG_RATES.POW;
+  // Half a point per level, and the game does not hand out fractional ATA.
+  if (mag.DEX) stats.ATA = Math.floor(mag.DEX * MAG_RATES.DEX);
+  if (mag.MIND) stats.MST = mag.MIND * MAG_RATES.MIND;
+  return stats;
+}
 
 export type Loadout = {
   weapon: Equipment | null;
@@ -81,7 +98,13 @@ function addModifiers(target: Totals, mods: Modifiers, label: string, into: Part
  * produce confident but wrong totals. Equipment-provided technique percentages
  * are reported separately instead of being folded into a stat.
  */
-export function computeTotals(base: BaseStats, loadout: Loadout, playerClass: string, level: number): Totals {
+export function computeTotals(
+  base: BaseStats,
+  loadout: Loadout,
+  playerClass: string,
+  level: number,
+  mag?: MagStats,
+): Totals {
   const totals: Totals = {
     stats: zeroStats(),
     resists: zeroResists(),
@@ -99,6 +122,14 @@ export function computeTotals(base: BaseStats, loadout: Loadout, playerClass: st
   for (const key of STAT_KEYS) totals.stats[key] += base[key] ?? 0;
   if (Object.values(base).some((value) => (value ?? 0) > 0)) {
     totals.contributions.push({ label: "Character", slot: "base", stats: { ...base } });
+  }
+
+  if (mag) {
+    const fromMag = magContribution(mag);
+    for (const [stat, value] of Object.entries(fromMag)) totals.stats[stat as StatKey] += value;
+    if (Object.keys(fromMag).length > 0) {
+      totals.contributions.push({ label: "Mag", slot: "mag", stats: fromMag });
+    }
   }
 
   const pieces: Array<{ item: Equipment | null; slotLabel: string }> = [
