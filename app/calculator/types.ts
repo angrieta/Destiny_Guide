@@ -45,6 +45,8 @@ export type Equipment = {
   targets: number | null;
   range: number | null;
   maxGrind: number;
+  /** ATP added per grind level, derived from Total ATP minus the un-ground max. */
+  grindPerLevel: number;
   atpMin: number | null;
   atpMax: number | null;
   searchText: string;

@@ -46,7 +46,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
   const [level, setLevel] = useState(200);
   const [base, setBase] = useState<BaseStats>({});
   const [picked, setPicked] = useState<Partial<Record<SlotKey, string>>>({});
-  const [grind, setGrind] = useState(0);
+  const [grind, setGrind] = useState<number | null>(null);
   const [mag, setMag] = useState<MagStats>(payload.classes[0].mag);
   /** Left alone once the player edits the plan, so changing class does not wipe it. */
   const [magTouched, setMagTouched] = useState(false);
@@ -101,8 +101,8 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     setBuffs({ shifta: Math.min(MAX_BUFF_LEVEL, Math.max(0, readShifta)), deband: Math.min(MAX_BUFF_LEVEL, Math.max(0, readDeband)) });
     const readLevel = Number(params.get("lv"));
     if (Number.isFinite(readLevel) && readLevel > 0) setLevel(readLevel);
-    const readGrind = Number(params.get("g"));
-    if (Number.isFinite(readGrind) && readGrind > 0) setGrind(readGrind);
+    const rawGrind = params.get("g");
+    if (rawGrind !== null && Number.isFinite(Number(rawGrind))) setGrind(Math.max(0, Number(rawGrind)));
 
     const nextPicked: Partial<Record<SlotKey, string>> = {};
     for (const [slot, param] of Object.entries(SLOT_PARAM) as Array<[SlotKey, string]>) {
@@ -125,7 +125,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     const params = new URLSearchParams();
     if (playerClass !== "humar") params.set("class", playerClass);
     if (level !== 200) params.set("lv", String(level));
-    if (grind > 0) params.set("g", String(grind));
+    if (grind !== null) params.set("g", String(grind));
     if (magTouched) params.set("mag", `${mag.DEF}/${mag.POW}/${mag.DEX}/${mag.MIND}`);
     if (buffs.shifta > 0) params.set("sh", String(buffs.shifta));
     if (buffs.deband > 0) params.set("db", String(buffs.deband));
@@ -167,7 +167,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
   const reset = useCallback(() => {
     setPicked({});
     setBase({});
-    setGrind(0);
+    setGrind(null);
     setLevel(200);
     setPlayerClass("humar");
     setMag(payload.classes[0].mag);

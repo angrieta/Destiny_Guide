@@ -20,8 +20,11 @@ export const MAX_BUFF_LEVEL = 35;
  *   with gear   ATP 1730 -> 2461   (1350 * 1.542 = 2081, + 380 weapon)
  *               DFP  877 -> 1352   ( 877 * 1.542 = 1352.3)
  *
- * Note the asymmetry both runs agree on: Deband scales the whole DFP including
- * armour and shield, while Shifta leaves the weapon's ATP untouched.
+ * Deband scales the whole DFP including armour and shield. Shifta reaches the
+ * character's ATP and the weapon's ATP range, but not the weapon's floor and not
+ * the grind - the measured weapon was Celestial Fusion +30, a fixed 320-320, so
+ * its range was 0 and it read as if untouched. That part is still unconfirmed on
+ * this server; a variable-ATP weapon such as AGITO 200-500 would settle it.
  */
 export function buffPercent(level: number) {
   if (level <= 0) return 0;
@@ -45,8 +48,8 @@ export type Loadout = {
   armor: Equipment | null;
   shield: Equipment | null;
   units: Array<Equipment | null>;
-  /** Extra grind applied to the weapon on top of what the source recorded. */
-  grind: number;
+  /** The weapon's grind level. Null means "fully ground", which is what Total ATP assumes. */
+  grind: number | null;
 };
 
 export type BaseStats = Partial<Record<StatKey, number>>;
@@ -88,6 +91,9 @@ export type Totals = {
     /** The part of ATP Shifta acts on, i.e. everything but the weapon. */
     atpCharacter: number;
     atpWeapon: number;
+    /** The scaled slice of the weapon: max minus min. */
+    atpWeaponRange: number;
+    grindBonus: number;
   } | null;
 };
 
@@ -129,10 +135,9 @@ function addModifiers(target: Totals, mods: Modifiers, label: string, into: Part
 /**
  * Adds a loadout up.
  *
- * Deliberately excludes Shifta / Deband / Zalure multipliers: their scaling is
- * server-tuned and this server is heavily customised, so guessing them would
- * produce confident but wrong totals. Equipment-provided technique percentages
- * are reported separately instead of being folded into a stat.
+ * Zalure and Jellen are left out: they act on the target, so a character sheet
+ * cannot measure them. Equipment-provided technique percentages are reported
+ * separately rather than folded into a stat.
  */
 export function computeTotals(
   base: BaseStats,
@@ -157,6 +162,9 @@ export function computeTotals(
     buffed: null,
   };
   let atpFromWeapon = 0;
+  /** max - min of the weapon's ATP. Shifta scales this part, unlike the rest of the weapon. */
+  let weaponRange = 0;
+  let grindBonus = 0;
 
   for (const key of STAT_KEYS) totals.stats[key] += base[key] ?? 0;
   if (Object.values(base).some((value) => (value ?? 0) > 0)) {
@@ -195,17 +203,19 @@ export function computeTotals(
   const weapon = loadout.weapon;
   if (weapon) {
     const stats: Partial<Record<StatKey, number>> = {};
+    const grind = loadout.grind === null ? weapon.maxGrind : Math.min(loadout.grind, weapon.maxGrind);
+    grindBonus = Math.floor(weapon.grindPerLevel * grind);
+
     for (const [stat, value] of Object.entries(weapon.base)) {
-      totals.stats[stat as StatKey] += value;
-      stats[stat as StatKey] = value;
-      // Tracked separately because Shifta does not scale the weapon's own ATP.
-      if (stat === "ATP") atpFromWeapon += value;
+      // Total ATP is the fully ground figure; rebuild it from the chosen grind.
+      const amount =
+        stat === "ATP" && weapon.atpMax !== null ? weapon.atpMax + grindBonus : value;
+      totals.stats[stat as StatKey] += amount;
+      stats[stat as StatKey] = amount;
+      // Kept apart because Shifta treats the weapon differently from the character.
+      if (stat === "ATP") atpFromWeapon += amount;
     }
-    if (loadout.grind > 0) {
-      totals.stats.ATP += loadout.grind;
-      stats.ATP = (stats.ATP ?? 0) + loadout.grind;
-      atpFromWeapon += loadout.grind;
-    }
+    weaponRange = weapon.atpMax !== null && weapon.atpMin !== null ? weapon.atpMax - weapon.atpMin : 0;
     addModifiers(totals, weapon.modifiers, weapon.name, stats);
     totals.contributions.push({ label: weapon.name, slot: "weapon", stats });
     collectWarnings(totals, weapon, playerClass, level);
@@ -236,6 +246,10 @@ export function computeTotals(
     const shiftaPercent = buffPercent(buffs.shifta);
     const debandPercent = buffPercent(buffs.deband);
     const atpCharacter = totals.stats.ATP - atpFromWeapon;
+    // Shifta reaches the character's ATP and the weapon's ATP range, but not the
+    // weapon's floor and not the grind. With a fixed-ATP weapon the range is 0,
+    // which is why Celestial Fusion +30 measured as if the weapon were untouched.
+    const weaponFloor = atpFromWeapon - weaponRange;
     totals.buffed = {
       shifta: buffs.shifta,
       deband: buffs.deband,
@@ -243,7 +257,10 @@ export function computeTotals(
       debandPercent,
       atpCharacter,
       atpWeapon: atpFromWeapon,
-      ATP: applyBuff(atpCharacter, shiftaPercent) + atpFromWeapon,
+      atpWeaponRange: weaponRange,
+      grindBonus,
+      ATP:
+        applyBuff(atpCharacter, shiftaPercent) + weaponFloor + applyBuff(weaponRange, shiftaPercent),
       DFP: applyBuff(totals.stats.DFP, debandPercent),
     };
   }

@@ -127,6 +127,15 @@ function buildEquipment(row: Row, slot: Slot, categoryName: string, seen: Map<st
   const atpRange = (row.ATP ?? "").match(/(\d+)\s*-\s*(\d+)/);
   const requiredText = row.Required && row.Required !== "-" ? row.Required : null;
 
+  // Total ATP already assumes a fully ground weapon, so the grind bonus is the gap
+  // between it and the un-ground maximum. Celestial Fusion reads 320-320 with
+  // Grind +30 and Total 380, i.e. 2 ATP per grind.
+  const maxGrind = toNumber(row.Grind) ?? 0;
+  const ungroundMax = atpRange ? Number(atpRange[2]) : null;
+  const totalAtp = toNumber(row["Total ATP"]);
+  const grindPerLevel =
+    maxGrind > 0 && ungroundMax !== null && totalAtp !== null ? (totalAtp - ungroundMax) / maxGrind : 0;
+
   return {
     id: occurrence === 1 ? baseSlug : `${baseSlug}-${occurrence}`,
     name,
@@ -145,7 +154,8 @@ function buildEquipment(row: Row, slot: Slot, categoryName: string, seen: Map<st
     special: row.Special && row.Special !== "None" && row.Special !== "-" ? row.Special : null,
     targets: toNumber(row.Targets),
     range: toNumber(row.Range),
-    maxGrind: toNumber(row.Grind) ?? 0,
+    maxGrind,
+    grindPerLevel,
     atpMin: atpRange ? Number(atpRange[1]) : null,
     atpMax: atpRange ? Number(atpRange[2]) : null,
     searchText: `${normalize(name)} ${normalize(row.Type ?? "")} ${normalize(row.Special ?? "")}`.trim(),
