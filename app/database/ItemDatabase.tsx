@@ -516,9 +516,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
             <a className={styles.navLinkActive} href="../database/" aria-current="page">
               {t("header.link.database", "Database")}
             </a>
-            <a className={styles.navLink} href="../calculator/">
-              {t("header.link.calculator", "Calculator")}
-            </a>
+            {/* /calculator/ stays unlisted until its damage model is verified. */}
             <LanguageSwitcher />
             <HappyHourHeader />
           </div>

@@ -346,7 +346,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
             <a className={styles.discordLink} href="https://discord.gg/FesaarwjFn" target="_blank" rel="noreferrer" aria-label="Destiny Discord" />
             <a className={styles.dropTableLink} href="../drop-tables/" aria-current="page">{t("header.link.dropTables", "Drop Tables")}</a>
             <a className={styles.dropTableLink} href="../database/">{t("header.link.database", "Database")}</a>
-            <a className={styles.dropTableLink} href="../calculator/">{t("header.link.calculator", "Calculator")}</a>
+            {/* /calculator/ stays unlisted until its damage model is verified. */}
             <LanguageSwitcher />
             <HappyHourHeader />
           </div>
