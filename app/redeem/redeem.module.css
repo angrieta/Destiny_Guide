@@ -1,0 +1,375 @@
+/* 헤더 블록은 database.module.css 와 같은 규칙을 쓴다. 페이지마다 헤더가
+   미묘하게 달라지면 이동할 때 레이아웃이 튄다. */
+.pageShell {
+  --content-max-width: 1600px;
+  --content-gutter: 24px;
+  --bg: #f3f6fb;
+  --surface: #ffffff;
+  --surface-soft: #f7f9fc;
+  --text: #142033;
+  --muted: #68758a;
+  --border: #dde4ee;
+  --border-strong: #cad4e2;
+  --blue: #1769e0;
+  --blue-strong: #0b4ca6;
+  --blue-soft: #eaf2ff;
+  --shadow: 0 18px 55px rgba(31, 53, 86, 0.1);
+  --shadow-soft: 0 8px 28px rgba(25, 48, 80, 0.06);
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:global(html[data-theme="dark"]) .pageShell {
+  --bg: #07111f;
+  --surface: #0e1b2d;
+  --surface-soft: #132239;
+  --text: #edf4ff;
+  --muted: #9dabc0;
+  --border: #263b59;
+  --border-strong: #365071;
+  --blue: #65a6ff;
+  --blue-strong: #91c1ff;
+  --blue-soft: #142d50;
+  --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.pageShell *, .pageShell *::before, .pageShell *::after { box-sizing: border-box; }
+.pageShell a { color: inherit; text-decoration: none; }
+.pageShell button, .pageShell input, .pageShell select { font: inherit; }
+
+/* ---------- Site header, shared with the drop table page ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  width: 100%;
+  min-height: 100px;
+  background: var(--surface);
+  box-shadow: 1px 1px 7px color-mix(in srgb, var(--text) 16%, transparent);
+}
+.headerInner { display: flex; align-items: center; justify-content: space-between; gap: 32px; width: 100%; max-width: var(--content-max-width); height: 100%; margin: 0 auto; padding: 0 var(--content-gutter); }
+.siteLogo { flex: 0 0 150px; width: 150px; margin: 0; }
+.siteLogo a, .siteLogo img { display: block; width: 100%; }
+/* 감기지 않는 한 줄이라 폭이 부족하면 로고와 버튼 위로 겹쳤다(es 900~1300px).
+   헤더가 높아지더라도 줄을 넘겨 전부 보이게 한다. */
+.headerMenus { display: flex; flex: 1 1 auto; flex-wrap: wrap; justify-content: center; gap: 8px 15px; min-width: 0; }
+.headerMenus > div { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; min-width: 0; }
+.headerMenus a { padding-bottom: 4px; border-bottom: 1px solid transparent; color: var(--text); font-size: 13px; white-space: nowrap; }
+.headerMenus a:hover { border-bottom-color: var(--text); }
+.raidMenu a { color: var(--muted); }
+.headerActions { display: flex; flex: 0 0 auto; align-items: center; gap: 12px; }
+.themeButton { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-width: 72px; min-height: 34px; padding: 5px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface-soft); color: var(--text); font-size: 13px; font-weight: 700; cursor: pointer; }
+.themeButton:hover { border-color: var(--blue); }
+.themeIcon { position: relative; width: 15px; height: 15px; border: 2px solid currentColor; border-radius: 50%; }
+.themeIcon::after { content: ""; position: absolute; top: -3px; right: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--surface-soft); }
+:global(html[data-theme="dark"]) .themeIcon::after { display: none; }
+.discordLink { width: 30px; height: 30px; border-radius: 6px; background: url("/images/header/discord.png") center / cover no-repeat; }
+.discordLink:hover { background-image: url("/images/header/discord_black.png"); }
+:global(html[data-theme="dark"]) .discordLink { background-image: url("/images/header/discord_black.png"); }
+:global(html[data-theme="dark"]) .discordLink:hover { background-image: url("/images/header/discord.png"); }
+.navLink { padding: 5px 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; white-space: nowrap; }
+.navLink:hover { border-color: var(--blue); color: var(--blue); }
+.navLinkActive { padding: 5px 10px; border-radius: 6px; background: #222; color: #fff !important; font-size: 13px; white-space: nowrap; }
+:global(html[data-theme="dark"]) .navLinkActive { background: #dcecff; color: #0a1b31 !important; }
+
+
+/* 정적 페이지 헤더와 같은 구성. 내비를 로고와 액션 사이 좁은 칸에 밀어넣으면
+   메뉴가 14개라 두 줄로 빽빽하게 감긴다. 정적 쪽처럼 내비에 한 줄을 통째로 준다. */
+.headerInner { flex-wrap: wrap; height: auto; row-gap: 12px; padding: 16px var(--content-gutter); }
+.headerActions { margin-left: auto; }
+.headerMenus { order: 3; flex: 1 1 100%; flex-flow: column; justify-content: flex-start; gap: 8px; }
+.headerMenus > div { justify-content: flex-start; }
+
+
+/* ---------- Hero ---------- */
+
+.hero {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 56px var(--content-gutter) 32px;
+}
+.eyebrow { margin: 0 0 14px; color: var(--blue); font-size: 12px; font-weight: 850; letter-spacing: 0.18em; }
+.hero h2 { max-width: 760px; margin: 0; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.05; letter-spacing: -0.04em; }
+.heroCopy { max-width: 700px; margin: 20px 0 0; color: var(--muted); font-size: clamp(14.5px, 1.3vw, 16.5px); line-height: 1.65; }
+
+/* ---------- Layout ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr);
+  align-items: start;
+  gap: 16px;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-gutter) 80px;
+}
+
+.panel, .results {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+.results { position: sticky; top: calc(var(--header-h, 100px) + 16px); }
+
+.panel h3, .results h3 { margin: 0 0 14px; font-size: 15px; font-weight: 850; letter-spacing: -0.01em; }
+.results h4 { margin: 22px 0 10px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
+.subhead { margin-top: 24px !important; }
+.hint { margin: 0 0 12px; color: var(--muted); font-size: 12.5px; line-height: 1.6; }
+
+/* ---------- Inputs ---------- */
+
+.fieldRow { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 12px; }
+.magInputs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.magNote { margin: 8px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+.magNoteOver { margin: 8px 0 0; color: #d9534f; font-size: 11px; font-weight: 750; line-height: 1.55; }
+:global(html[data-theme="dark"]) .magNoteOver { color: #ff9a96; }
+.statInputs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+
+.panel label, .picker { display: flex; min-width: 0; flex-direction: column; gap: 6px; }
+.panel label > span, .picker > span {
+  color: var(--muted);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.panel input, .panel select {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  padding: 0 11px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline: 0;
+  background: var(--surface-soft);
+  color: var(--text);
+  font: inherit;
+}
+.panel input:focus, .panel select:focus { border-color: var(--blue); }
+.picker { margin-bottom: 12px; }
+
+.reset, .resetActive {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 6px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--muted);
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+.reset:disabled { opacity: 0.5; cursor: default; }
+.resetActive { border-color: var(--blue); background: var(--blue-soft); color: var(--blue-strong); }
+
+/* ---------- Results ---------- */
+
+.statGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; overflow: hidden; margin: 0; border: 1px solid var(--border); border-radius: 10px; background: var(--border); }
+.statGrid > div { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; background: var(--surface); }
+.statGrid dt { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; }
+.statGrid dd { margin: 0; font-size: 17px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+
+.factList { display: grid; gap: 1px; overflow: hidden; margin: 0; border: 1px solid var(--border); border-radius: 10px; background: var(--border); }
+.factList > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 9px 12px; background: var(--surface); }
+.factList dt { color: var(--muted); font-size: 12px; font-weight: 700; }
+.factList dd { margin: 0; font-size: 13.5px; font-weight: 750; font-variant-numeric: tabular-nums; }
+
+.effectList { margin: 0; padding-left: 18px; color: var(--text); font-size: 13px; line-height: 1.75; }
+.effectList strong { text-transform: capitalize; }
+
+.warning, .notice { margin-top: 20px; padding: 13px 15px; border-radius: 10px; font-size: 12.5px; line-height: 1.6; }
+.warning { border: 1px solid #d9534f; background: rgba(217, 83, 79, 0.09); color: #b33430; }
+:global(html[data-theme="dark"]) .warning { color: #ff9a96; }
+.notice { border: 1px solid var(--border); background: var(--surface-soft); color: var(--muted); }
+.warning strong, .notice strong { display: block; margin-bottom: 6px; color: inherit; }
+.warning ul, .notice ul { margin: 0; padding-left: 17px; }
+.notice p { margin: 0 0 8px; }
+.notice li strong { display: inline; margin: 0; color: var(--text); }
+
+.disclaimer { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--border); color: var(--muted); font-size: 11.5px; line-height: 1.6; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1180px) {
+  .grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .results { grid-column: 1 / -1; position: static; }
+}
+
+@media (max-width: 860px) {
+  /* 정적 페이지와 동일하게 모바일에서는 sticky를 해제한다. 메뉴를 모두 보여주면
+     헤더가 200px을 넘어서, 고정해두면 화면의 1/4을 잡아먹는다. */
+  .header { position: static; height: auto; padding: 10px 0; }
+  .headerInner { flex-wrap: wrap; gap: 12px; }
+  .headerMenus { order: 3; flex-basis: 100%; justify-content: flex-start; }
+  /* 언어에 따라 칩 문구가 길어지면 한 줄에 안 들어간다.
+     flex: 0 0 auto 상태에서는 폭이 max-content 로 잡혀 flex-wrap 이 동작하지 않으므로
+     한 줄을 통째로 차지하게 만든 뒤 그 안에서 감기게 한다. */
+  .headerActions { flex: 1 1 100%; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .statInputs, .magInputs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .statGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- Redeem order builder ----------
+
+   Two columns rather than the calculator's three: a weapon row needs room for
+   two groups of five number inputs side by side, and the summary is short. */
+
+.grid { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
+
+.rows { display: grid; gap: 12px; }
+
+.row {
+  padding: 14px 16px 12px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface-soft);
+}
+.rowInvalid { border-color: #d9534f; }
+
+.rowHead { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.rowTag {
+  flex: 0 0 auto;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--blue-strong);
+  font-size: 10.5px;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.rowName { flex: 1 1 auto; min-width: 0; }
+.rowName input { width: 100%; min-height: 36px; padding: 0 11px; border: 1px solid var(--border); border-radius: 9px; outline: 0; background: var(--surface); color: var(--text); }
+.rowName input:focus { border-color: var(--blue); }
+.rowDrop {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+}
+.rowDrop:hover { border-color: #d9534f; color: #d9534f; }
+.rowDrop:disabled { opacity: 0.4; cursor: default; }
+
+.pair { display: grid; grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr); align-items: end; gap: 10px; }
+.arrow { grid-column: 2; padding-bottom: 9px; color: var(--muted); text-align: center; font-size: 15px; font-weight: 800; }
+
+.sideNow { grid-column: 1; }
+.sideGoal { grid-column: 3; }
+.sideNow > span, .sideGoal > span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cells { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+.cell { display: flex; min-width: 0; flex-direction: column; gap: 3px; }
+.cell span { color: var(--muted); font-size: 9px; font-weight: 750; letter-spacing: 0.02em; text-align: center; }
+.cell input {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding: 0 4px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: 0;
+  background: var(--surface);
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.cell input:focus { border-color: var(--blue); }
+/* The boxes are 47px wide on a phone. Native spinners eat most of that and
+   the grid is keyboard-driven anyway, so drop them. */
+.cell input::-webkit-outer-spin-button, .cell input::-webkit-inner-spin-button { margin: 0; -webkit-appearance: none; appearance: none; }
+.cell input { -moz-appearance: textfield; appearance: textfield; }
+
+.cellHit input { background: var(--blue-soft); }
+
+.rowFoot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-top: 11px; padding-top: 10px; border-top: 1px solid var(--border); color: var(--muted); font-size: 11.5px; font-weight: 700; }
+.rowFoot b { color: var(--text); font-variant-numeric: tabular-nums; }
+.rowFoot .slotsFull { color: var(--blue-strong); }
+.rowFoot .slotsOver { color: #d9534f; }
+.rowCost { margin-left: auto; color: var(--text); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+.addRow {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 12px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 11px;
+  background: transparent;
+  color: var(--blue-strong);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.addRow:hover { border-color: var(--blue); background: var(--blue-soft); }
+
+.costTable { display: grid; gap: 1px; overflow: hidden; margin: 0 0 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--border); }
+.costTable > div { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: baseline; gap: 12px; padding: 10px 12px; background: var(--surface); }
+.costTable dt { color: var(--muted); font-size: 12px; font-weight: 700; }
+.costTable dd { margin: 0; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.costTable .blocks { color: var(--muted); }
+.costTable .tokens { min-width: 58px; font-weight: 800; text-align: right; }
+.costTotal { background: var(--blue-soft) !important; }
+.costTotal dt, .costTotal dd { color: var(--blue-strong) !important; font-weight: 850; }
+.costTotal dd.tokens { font-size: 16px; }
+
+.leftoverOk { margin: 0; color: var(--muted); font-size: 12px; font-weight: 700; }
+.leftover { margin: 0; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 10px; background: var(--surface-soft); font-size: 12.5px; line-height: 1.6; }
+.leftover strong { display: block; margin-bottom: 7px; }
+.leftoverList { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+.leftoverList button { padding: 5px 10px; border: 1px solid var(--blue); border-radius: 999px; background: var(--blue-soft); color: var(--blue-strong); font: inherit; font-size: 11.5px; font-weight: 780; cursor: pointer; }
+
+.issueList { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.issueError, .issueWarn { padding: 10px 13px; border-radius: 10px; font-size: 12px; line-height: 1.55; }
+.issueError { border: 1px solid #d9534f; background: rgba(217, 83, 79, 0.09); color: #b33430; }
+:global(html[data-theme="dark"]) .issueError { color: #ff9a96; }
+.issueWarn { border: 1px solid #d9a13a; background: rgba(217, 161, 58, 0.11); color: #8a6316; }
+:global(html[data-theme="dark"]) .issueWarn { color: #f2c675; }
+.issueError b, .issueWarn b { font-weight: 850; }
+
+.output { margin: 0; padding: 13px 14px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface-soft); color: var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11.5px; line-height: 1.75; white-space: pre-wrap; word-break: break-word; }
+.outputHead { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 22px 0 10px; }
+.outputHead h4 { margin: 0 !important; }
+.copy { padding: 6px 13px; border: 1px solid var(--blue); border-radius: 999px; background: var(--blue-soft); color: var(--blue-strong); font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
+.copy:disabled { border-color: var(--border); background: var(--surface-soft); color: var(--muted); cursor: default; }
+
+.gcField { margin-top: 14px; }
+.gcField > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 10.5px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+.gcField input { width: 100%; min-height: 40px; padding: 0 11px; border: 1px solid var(--border); border-radius: 9px; outline: 0; background: var(--surface-soft); color: var(--text); font-variant-numeric: tabular-nums; }
+.gcField input:focus { border-color: var(--blue); }
+
+.ruleList { margin: 0; padding-left: 17px; font-size: 12px; line-height: 1.7; }
+.ruleList li + li { margin-top: 5px; }
+
+@media (max-width: 1180px) {
+  .grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 700px) {
+  /* Ten number inputs will not sit on one line at phone width, so the goal
+     group drops below the current one and the arrow turns into a label. */
+  .pair { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .sideNow, .sideGoal { grid-column: 1; }
+  .arrow { display: none; }
+  .cells { gap: 4px; }
+  .cell input { padding: 0 2px; }
+}

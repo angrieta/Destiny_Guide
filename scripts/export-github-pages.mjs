@@ -44,7 +44,7 @@ await rm(outputDirectory, { recursive: true, force: true });
 await mkdir(outputDirectory, { recursive: true });
 await cp(clientDirectory, outputDirectory, { recursive: true });
 
-const routes = ["drop-tables", "database", "calculator"];
+const routes = ["drop-tables", "database", "calculator", "redeem"];
 const server = spawn(process.execPath, [vinextCli, "start", "--port", String(port)], {
   cwd: projectRoot,
   env: { ...process.env, GITHUB_PAGES_BASE_PATH: basePath },
