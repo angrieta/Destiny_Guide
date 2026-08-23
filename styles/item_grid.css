@@ -573,8 +573,24 @@ html[data-theme="dark"] .destiny_priority_badge--unit { color: #c5b2ff; }
     display: flex;
     flex-direction: column;
     height: auto;
-    padding-top: 22px;
+    /* The type tab rises 19px above the image frame. With 22px of padding it
+       sat only 4px below the card border, so the whole image block looked
+       glued to the top. 34px gives the tab a 16px inset and places the actual
+       image about as far from the top as it is from the card sides. */
+    padding-top: 34px;
     padding-bottom: 14px;
+}
+
+/* Keep the spacing below the fixed image frame as deliberate as the new top
+   inset. The shared DARK FLOW frame dimensions remain unchanged. */
+.ig_grid_inner .destiny_item_slide .item_inner .item_title {
+    margin: 12px 0 8px;
+}
+
+/* Stars use the same comfortable top/right inset as the raised type tab. */
+.ig_grid_inner .destiny_item_slide .important_info {
+    top: 14px;
+    right: 14px;
 }
 
 /* 생성형 카드는 예전부터 하단 안내를 위해 46px을 따로 비워 두었다.
