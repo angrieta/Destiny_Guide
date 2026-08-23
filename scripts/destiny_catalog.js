@@ -1711,6 +1711,35 @@
   };
 
   const proseList = (item, field) => (item[field] || []).map((_line, i) => prose(item, field, i));
+  const proseRef = (item, field, index) => ({
+    key: (item[field + "Keys"] || [])[index] || "cat." + item.id + "." + field + "." + index,
+    en: (item[field] || [])[index] || ""
+  });
+
+  const operatorCategoryKeys = {
+    "WEAPON": "catalog.operator.category.weapon",
+    "ARMOR": "catalog.operator.category.armor",
+    "SHIELD": "catalog.operator.category.shield",
+    "ARMOR / SHIELD": "catalog.operator.category.armorShield"
+  };
+
+  const operatorConditionKeys = {
+    "JOINTPARTS AND FORCE": "catalog.operator.condition.jointpartsForce",
+    "PARTY PLAY": "catalog.operator.condition.party",
+    "SOLO PLAY": "catalog.operator.condition.solo",
+    "IGNIS ENGINE": "catalog.operator.condition.ignisEngine",
+    "RADIANT RING": "catalog.operator.condition.radiantRing",
+    "CHAOS ENGINE": "catalog.operator.condition.chaosEngine",
+    "JOINTPARTS": "catalog.operator.condition.jointparts",
+    "ASTEROID ENGINE": "catalog.operator.condition.asteroidEngine",
+    "VECTOR SCOPE": "catalog.operator.condition.vectorScope",
+    "TELLUSIS": "catalog.operator.condition.tellusis",
+    "PARAGON FRAME": "catalog.operator.condition.paragonFrame",
+    "RASTER SCOPE": "catalog.operator.condition.rasterScope"
+  };
+
+  const operatorCategoryLabel = (value) => t(operatorCategoryKeys[normalizeName(value)] || "", value);
+  const operatorConditionLabel = (value) => t(operatorConditionKeys[normalizeName(value)] || "", value);
 
   function operatorBadgeMarkup(name) {
     const meta = getOperatorMeta(name);
@@ -1721,22 +1750,22 @@
     if (overall) {
       const conditional = overall.condition ? "*" : "";
       badges.push('<span class="destiny_priority_badge destiny_priority_badge--overall" title="Operator overall rating' +
-        (overall.condition ? ": requires " + escapeHTML(overall.condition) : "") + '">' +
+        (overall.condition ? ": requires " + escapeHTML(operatorConditionLabel(overall.condition)) : "") + '">' +
         (meta.tradeOnly ? "★ " : "") + escapeHTML(overall.score + conditional) + "</span>");
     }
     if (meta.hit) {
       badges.push('<span class="destiny_priority_badge destiny_priority_badge--hit">Hit ' + escapeHTML(meta.hit) + "</span>");
     }
     if (meta.attribute) {
-      badges.push('<span class="destiny_priority_badge destiny_priority_badge--attribute">Attr ' + escapeHTML(meta.attribute) + "</span>");
+      badges.push('<span class="destiny_priority_badge destiny_priority_badge--attribute"><span data-i18n="catalog.operator.badge.attr">Attr</span> ' + escapeHTML(meta.attribute) + "</span>");
     }
     if (meta.endgameUnit) {
       badges.push('<span class="destiny_priority_badge destiny_priority_badge--unit">' +
-        (meta.tradeOnly ? "★ " : "") + "End-game</span>");
+        (meta.tradeOnly ? "★ " : "") + '<span data-i18n="catalog.operator.badge.endgame">End-game</span></span>');
     }
 
     return badges.length
-      ? '<div class="destiny_priority_badges" aria-label="Operator priority">' + badges.join("") + "</div>"
+      ? '<div class="destiny_priority_badges" aria-label="Operator priority" data-i18n-aria-label="catalog.operator.priorityHeading">' + badges.join("") + "</div>"
       : "";
   }
 
@@ -1775,22 +1804,24 @@
     const overview = document.createElement("aside");
     overview.className = "destiny_priority_overview";
     overview.setAttribute("aria-label", "Operator weapon priority and end-game ratings");
+    overview.setAttribute("data-i18n-aria-label", "catalog.operator.aria");
     overview.innerHTML =
       '<div class="destiny_priority_overview_head">' +
-        '<div><p class="destiny_priority_eyebrow">OPERATOR CURATION</p>' +
-        '<h2>Weapon Priority &amp; End-game Rating</h2></div>' +
-        '<time>Last update: ' + escapeHTML(operatorData.updatedAt || "10/11/2025") + "</time>" +
+        '<div><p class="destiny_priority_eyebrow" data-i18n="catalog.operator.eyebrow">OPERATOR CURATION</p>' +
+        '<h2 data-i18n="catalog.operator.title">Weapon Priority &amp; End-game Rating</h2></div>' +
+        '<time><span data-i18n="catalog.operator.lastUpdate">Last update:</span> ' + escapeHTML(operatorData.updatedAt || "10/11/2025") + "</time>" +
       "</div>" +
       '<div class="destiny_priority_overview_grid">' +
-        '<div><strong>Hit% Priority</strong><span>S → C</span></div>' +
-        '<div><strong>Attribute% Priority</strong><span>S → C</span></div>' +
-        '<div><strong>Overall Rating</strong><span>10 / 9.5 / 9.0</span></div>' +
-        '<div><strong>Rated items</strong><span>' + escapeHTML(ratedItems) + " entries</span></div>" +
+        '<div><strong data-i18n="catalog.operator.hitPriority">Hit% Priority</strong><span>S → C</span></div>' +
+        '<div><strong data-i18n="catalog.operator.attributePriority">Attribute% Priority</strong><span>S → C</span></div>' +
+        '<div><strong data-i18n="catalog.operator.overallRating">Overall Rating</strong><span>10 / 9.5 / 9.0</span></div>' +
+        '<div><strong data-i18n="catalog.operator.ratedItems">Rated items</strong><span>' + escapeHTML(ratedItems) + ' <span data-i18n="catalog.operator.entries">entries</span></span></div>' +
       "</div>" +
-      '<p class="destiny_priority_overview_note">Open a rated item to see its exact priorities and required buff setup. ' +
-        escapeHTML(operatorData.legend?.condition || "") + " " + escapeHTML(operatorData.legend?.trade || "") + "</p>" +
+      '<p class="destiny_priority_overview_note"><span data-i18n="catalog.operator.overviewNote">Open a rated item to see its exact priorities and required buff setup.</span> ' +
+        '<span data-i18n="catalog.operator.legendCondition">' + escapeHTML(operatorData.legend?.condition || "") + '</span> ' +
+        '<span data-i18n="catalog.operator.legendTrade">' + escapeHTML(operatorData.legend?.trade || "") + "</span></p>" +
       ((operatorData.legend?.genericUnits || []).length
-        ? '<p class="destiny_priority_generic"><strong>Generic end-game unit entries:</strong> ' +
+        ? '<p class="destiny_priority_generic"><strong data-i18n="catalog.operator.genericUnits">Generic end-game unit entries:</strong> ' +
           (operatorData.legend.genericUnits || []).map(escapeHTML).join(" · ") + "</p>"
         : "");
 
@@ -1813,12 +1844,12 @@
         '<p class="item_info"><span data-i18n="' + escapeHTML(statKey(entry[0])) + '">' +
         escapeHTML(entry[0]) + "</span>: " + escapeHTML(entry[1]) + "</p>")
       .join("");
-    const combatRefs = (item.combat || []).map((en, i) => ({ key: "cat." + item.id + ".combat." + i, en }));
+    const combatRefs = (item.combat || []).map((_en, i) => proseRef(item, "combat", i));
     const comboDetails = combatRefs.filter((d) => comboPattern.test(d.en)).slice(0, 3);
     const previewDetails = comboDetails.length
       ? comboDetails
       : [combatRefs[0]
-          || ((item.obtain || [])[0] ? { key: "cat." + item.id + ".obtain.0", en: item.obtain[0] } : null)
+          || ((item.obtain || [])[0] ? proseRef(item, "obtain", 0) : null)
           || { key: "cat." + item.id + ".summary", en: item.summary || "" }];
     const authenticImage = hasAuthenticImage(item);
     const cardImage = authenticImage ? item.image : FALLBACK_IMAGE;
@@ -2018,29 +2049,32 @@
   function renderOperatorSection(meta) {
     if (!meta) return "";
     const rows = [];
-    if (meta.hit) rows.push(["Hit% priority", meta.hit]);
-    if (meta.attribute) rows.push(["Attribute% priority", meta.attribute]);
-    if (meta.endgameUnit) rows.push(["End-game unit", "Recommended"]);
+    if (meta.hit) rows.push([t("catalog.operator.hitPriority", "Hit% priority"), meta.hit]);
+    if (meta.attribute) rows.push([t("catalog.operator.attributePriority", "Attribute% priority"), meta.attribute]);
+    if (meta.endgameUnit) rows.push([
+      t("catalog.operator.endgameUnit", "End-game unit"),
+      t("catalog.operator.recommended", "Recommended")
+    ]);
 
     const overall = (meta.overall || []).slice().sort((a, b) => scoreValue(b.score) - scoreValue(a.score));
     const overallMarkup = overall.length
       ? '<ul class="destiny_operator_ratings">' + overall.map((rating) =>
           '<li><strong>' + escapeHTML(rating.score) + "</strong>" +
-          '<span>' + escapeHTML(rating.category) +
-          (rating.condition ? " · Requires " + escapeHTML(rating.condition) : "") + "</span></li>"
+          '<span>' + escapeHTML(operatorCategoryLabel(rating.category)) +
+          (rating.condition ? " · " + escapeHTML(t("catalog.operator.requires", "Requires")) + " " + escapeHTML(operatorConditionLabel(rating.condition)) : "") + "</span></li>"
         ).join("") + "</ul>"
       : "";
 
     return '<section class="destiny_detail_section destiny_operator_section">' +
-      '<div class="destiny_operator_heading"><h3>Operator priority</h3>' +
-      '<span>Updated ' + escapeHTML(operatorData.updatedAt || "10/11/2025") + "</span></div>" +
+      '<div class="destiny_operator_heading"><h3>' + escapeHTML(t("catalog.operator.priorityHeading", "Operator priority")) + "</h3>" +
+      '<span>' + escapeHTML(t("catalog.operator.updated", "Updated")) + " " + escapeHTML(operatorData.updatedAt || "10/11/2025") + "</span></div>" +
       (rows.length ? '<dl class="destiny_operator_stats">' + rows.map((row) =>
         '<div><dt>' + escapeHTML(row[0]) + "</dt><dd>" + escapeHTML(row[1]) + "</dd></div>"
       ).join("") + "</dl>" : "") +
       overallMarkup +
-      (meta.tradeOnly ? '<p class="destiny_operator_note">★ Obtainable from the Trade NPC only.</p>' : "") +
+      (meta.tradeOnly ? '<p class="destiny_operator_note">' + escapeHTML(t("catalog.operator.noteTradeOnly", "★ Obtainable from the Trade NPC only.")) + "</p>" : "") +
       (overall.some((rating) => rating.condition)
-        ? '<p class="destiny_operator_note">* This rating requires the setup shown above.</p>'
+        ? '<p class="destiny_operator_note">' + escapeHTML(t("catalog.operator.noteCondition", "* This rating requires the setup shown above.")) + "</p>"
         : "") +
     "</section>";
   }
@@ -2081,7 +2115,7 @@
         (operatorOverall ? '<span class="destiny_detail_badge destiny_detail_badge--operator">' +
           (operatorMeta.tradeOnly ? "★ " : "") + escapeHTML(operatorOverall.score) + "</span>" : "") +
         (operatorMeta?.endgameUnit ? '<span class="destiny_detail_badge destiny_detail_badge--operator">' +
-          (operatorMeta.tradeOnly ? "★ " : "") + "End-game</span>" : "");
+          (operatorMeta.tradeOnly ? "★ " : "") + escapeHTML(t("catalog.operator.badge.endgame", "End-game")) + "</span>" : "");
       statsElement.innerHTML = renderDefinitionList(item.stats || []);
       sectionsElement.innerHTML =
         renderOperatorSection(operatorMeta) +

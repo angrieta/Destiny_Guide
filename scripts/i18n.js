@@ -77,7 +77,7 @@
   function loadDict(lang) {
     if (lang === DEFAULT_LANG) return Promise.resolve(null); // 영어는 원문 그대로
     if (cache[lang]) return Promise.resolve(cache[lang]);
-    return fetch(dictUrl(lang))
+    return fetch(dictUrl(lang), { cache: "no-cache" })
       .then(function (res) {
         if (!res.ok) throw new Error("dictionary " + res.status);
         return res.json();

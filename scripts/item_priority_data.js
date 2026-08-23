@@ -131,6 +131,7 @@
     ].filter((entry) => entry[1]),
     combat,
     obtain: ["Item data imported from the Destiny item database. Check the current drop table for its latest source."],
+    obtainKeys: ["catalog.import.obtain"],
     required: []
   });
 
@@ -147,6 +148,7 @@
     stats: [["Level", level], ["DFP", dfp], ["EVP", evp], ["Boosts", boosts]].filter((entry) => entry[1]),
     combat: boosts ? [boosts] : [],
     obtain: ["Item data imported from the Destiny item database. Check the current drop table for its latest source."],
+    obtainKeys: ["catalog.import.obtain"],
     required: []
   });
 
@@ -164,6 +166,7 @@
     stats: [["Stat type", statType], ["Stat amount", statAmount]].filter((entry) => entry[1]),
     combat,
     obtain: ["Item data imported from the Destiny item database. Check the current drop table for its latest source."],
+    obtainKeys: ["catalog.import.obtain"],
     required: []
   });
 
