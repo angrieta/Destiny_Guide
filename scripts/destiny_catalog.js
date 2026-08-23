@@ -1,12 +1,12 @@
 (() => {
-  const shieldFallbackImage = "./images/items/gameplay/blast-garment-item.png";
-  const makeShieldItem = ({ id, name, image = shieldFallbackImage, summary, stats, combat = [], obtain = [], required = [] }) => ({
+  const makeShieldItem = ({ id, name, image = "", summary, stats, combat = [], obtain = [], required = [] }) => ({
     id,
     section: "shield",
     category: "Shield",
     type: "Shield",
     name,
     image,
+    imageFallback: !image,
     imagePosition: "center center",
     summary,
     stats,
@@ -51,7 +51,7 @@
       category: "Common",
       type: "Needle",
       name: "VENUS BOW",
-      image: "./images/items/gameplay/rare-unit-box.png",
+      image: "./images/weapon/Venus_Bow.jpg",
       imagePosition: "center center",
       summary: "An anniversary needle whose special deals fixed damage, so it works on enemies that shrug off attack power.",
       stats: [
@@ -1616,6 +1616,15 @@
   /** 아이템 데이터는 영어로 두고, 화면 문구만 사전에서 가져온다. */
   const t = (key, en) => window.DestinyI18n?.t(key, en) ?? en;
 
+  // Never present a red box or another item's screenshot as if it were the selected item.
+  const hasAuthenticImage = (item) => {
+    if (!item.image || item.imageFallback) return false;
+    const path = String(item.image).replace(/\\/g, "/").toLowerCase();
+    if (path.endsWith("/rare-unit-box.png") || path.endsWith("/redbox.png")) return false;
+    if (path.endsWith("/blast-garment-item.png") && normalizeName(item.name) !== "BLAST GARMENT") return false;
+    return true;
+  };
+
   /**
    * 스탯 라벨만 번역한다. 값은 게임 수치이므로 그대로 둔다.
    * ATP 같은 약어는 사전에 키가 없어 영어가 유지된다.
@@ -1681,12 +1690,15 @@
       : [combatRefs[0]
           || ((item.obtain || [])[0] ? { key: "cat." + item.id + ".obtain.0", en: item.obtain[0] } : null)
           || { key: "cat." + item.id + ".summary", en: item.summary || "" }];
+    const imageMarkup = hasAuthenticImage(item)
+      ? '<img src="' + escapeHTML(item.image) + '" alt="' + escapeHTML(item.name) + '" style="object-fit:' + escapeHTML(item.imageFit || "contain") + ';object-position:' + escapeHTML(item.imagePosition || "center center") + ';filter:' + escapeHTML(item.imageFilter || "none") + '">'
+      : '<div class="destiny_catalog_missing_image"><span aria-hidden="true">' + escapeHTML((item.category || "Item").slice(0, 1)) + '</span><small data-i18n="catalog.image.missing">Image coming soon</small></div>';
 
     slide.innerHTML =
       '<button type="button" class="item_section_aria" data-catalog-id="' + escapeHTML(item.id) + '">' +
         '<div class="item_inner">' +
           '<div class="item_img destiny_catalog_image">' +
-            '<img src="' + escapeHTML(item.image) + '" alt="' + escapeHTML(item.name) + '" style="object-fit:' + escapeHTML(item.imageFit || "cover") + ';object-position:' + escapeHTML(item.imagePosition || "center top") + ';filter:' + escapeHTML(item.imageFilter || "none") + '">' +
+            imageMarkup +
             '<span class="item_type">' + escapeHTML(item.type) + "</span>" +
           "</div>" +
           '<h4 class="item_title"><span class="item_name">' + escapeHTML(item.name) + "</span></h4>" +
@@ -1705,9 +1717,22 @@
       const wrapper = document.querySelector('[data-destiny-swiper="' + swiperKey + '"] .swiper-wrapper');
       if (!wrapper) return;
 
+      // The original HTML still owns a number of hand-authored cards. Do not
+      // append a catalog version of the same item (VENUS BOW used to appear
+      // twice, including an obsolete red-box preview).
+      const existingNames = new Set(
+        Array.from(wrapper.querySelectorAll(".item_name"))
+          .map((element) => normalizeName(element.textContent))
+          .filter(Boolean)
+      );
+
       catalogItems
         .filter((item) => item.section === section && item.displayCard !== false)
-        .forEach((item) => wrapper.appendChild(createCatalogCard(item)));
+        .filter((item) => !existingNames.has(normalizeName(item.name)))
+        .forEach((item) => {
+          wrapper.appendChild(createCatalogCard(item));
+          existingNames.add(normalizeName(item.name));
+        });
     });
   }
 
@@ -1860,6 +1885,7 @@
     const imageElement = modal.querySelector(".destiny_detail_image");
     const imageLink = modal.querySelector(".destiny_detail_image_link");
     const imageHint = modal.querySelector(".destiny_detail_image_hint");
+    const missingImageElement = modal.querySelector(".destiny_detail_missing_image");
     const mediaElement = modal.querySelector(".destiny_detail_media");
     let previousFocus = null;
 
@@ -1884,25 +1910,26 @@
         renderSection(t("catalog.detail.required", "Required items"), item.required || []) +
         renderSection(t("catalog.detail.notes", "Additional notes"), proseList(item, "notes"));
 
-      if (item.image) {
+      if (hasAuthenticImage(item)) {
         imageElement.src = item.image;
         imageElement.alt = item.name + " " + t("catalog.detail.imageAlt", "source image");
         imageElement.style.objectPosition = item.imagePosition || "center top";
         imageElement.style.objectFit = item.imageFit || "contain";
         imageElement.style.filter = item.imageFilter || "none";
-        mediaElement.classList.toggle("is-placeholder", Boolean(item.imageFallback));
-        if (item.imageFallback) imageLink.removeAttribute("href");
-        else imageLink.href = item.image;
+        mediaElement.classList.remove("is-missing");
+        imageLink.href = item.image;
         imageLink.hidden = false;
-        imageHint.hidden = Boolean(item.imageFallback);
+        imageHint.hidden = false;
+        missingImageElement.hidden = true;
       } else {
         imageElement.removeAttribute("src");
         imageElement.alt = "";
         imageElement.style.objectFit = "contain";
-        mediaElement.classList.remove("is-placeholder");
+        mediaElement.classList.add("is-missing");
         imageLink.removeAttribute("href");
         imageLink.hidden = true;
         imageHint.hidden = true;
+        missingImageElement.hidden = false;
       }
 
       modal.classList.add("is-open");

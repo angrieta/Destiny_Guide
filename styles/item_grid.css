@@ -277,6 +277,20 @@
     height: auto;
 }
 
+/* Catalog screenshots have mixed aspect ratios (square item renders and wide
+   gameplay captures). Let the frame follow the source ratio so wide images do
+   not leave a large colored gap and square images do not lose their bottom border. */
+.ig_grid_inner .destiny_catalog_card .destiny_catalog_image {
+    height: auto;
+    overflow: visible;
+}
+
+.ig_grid_inner .destiny_catalog_card .destiny_catalog_image img {
+    display: block;
+    height: auto;
+    object-fit: contain;
+}
+
 /* 500px 고정 높이는 내용이 길면 넘쳤다. 높이를 내용에 맞추면 한 행 안에서는
    그리드가 알아서 맞춰 주고, 넘치는 카드도 잘리지 않는다. */
 .ig_grid_inner .item_inner {

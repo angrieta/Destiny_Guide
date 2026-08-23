@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="item.t001">DestinyGuide - Item List</title>
     <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/index.css?v=item-card-20260823">
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/responsive.css">
-    <link rel="stylesheet" href="./styles/item_grid.css">
-    <script src="./scripts/destiny_catalog.js?v=grid-1" defer></script>
+    <link rel="stylesheet" href="./styles/item_grid.css?v=item-card-20260823">
+    <script src="./scripts/destiny_catalog.js?v=item-card-20260823" defer></script>
     <script src="./scripts/item_grid.js?v=grid-1" defer></script>
     <script src="./scripts/index.js?v=grid-1" defer></script>
     <script src="./scripts/i18n.js"></script>
@@ -1346,6 +1346,10 @@
                 <a class="destiny_detail_image_link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open the source image at full size">
                     <img class="destiny_detail_image" src="" alt="">
                 </a>
+                <div class="destiny_detail_missing_image" hidden>
+                    <span aria-hidden="true">?</span>
+                    <p data-i18n="catalog.image.missing">Image coming soon</p>
+                </div>
                 <p class="destiny_detail_image_hint" data-i18n="item.t154">Click the image to view the supplied source at full size.</p>
             </div>
             <div class="destiny_detail_content">
