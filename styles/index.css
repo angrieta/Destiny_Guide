@@ -941,10 +941,27 @@ main .right_contents .best_slide .event-scrollbar {
     position: relative;
     padding-bottom: 18px; /* 하단 진행바 자리 확보 */
 }
-.destiny_item_slide .item_img img{border-radius: 4px; border: 1px solid #fff;}
+.destiny_item_slide .item_img > img{
+    display: block;
+    width: 200px;
+    height: 200px;
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    object-fit: cover;
+    object-position: center center;
+}
 .destiny_item_slide .item_img{
-    width: 210px; margin: 0 auto; padding: 5px; border-radius: 0px 4px 4px 4px;
-    background-color: #4b61aa; position: relative;
+    display: grid;
+    width: 210px;
+    height: 213px;
+    margin: 0 auto;
+    padding: 5px;
+    place-items: center;
+    border-radius: 0px 4px 4px 4px;
+    background-color: #4b61aa;
+    position: relative;
 }
 
 .destiny_item_slide {
@@ -1413,17 +1430,25 @@ html[data-theme="dark"] .beginner_guide .beginner_inner .begineer_btn:hover {
 }
 
 .destiny_catalog_card .destiny_catalog_image {
-    width: calc(100% - 12px);
-    height: auto;
+    width: 210px;
+    height: 213px;
     padding: 5px;
     overflow: visible;
 }
 
 .destiny_catalog_card .destiny_catalog_image img {
     display: block;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
+    width: 200px;
+    height: 200px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.destiny_catalog_card .destiny_catalog_fallback_image {
+    object-fit: cover !important;
+    object-position: center center !important;
+    filter: none !important;
 }
 
 .destiny_catalog_missing_image,
@@ -1471,13 +1496,14 @@ html[data-theme="dark"] .beginner_guide .beginner_inner .begineer_btn:hover {
 
 .destiny_catalog_block[data-category="armor"] .destiny_catalog_card .destiny_catalog_image {
     width: 210px;
+    height: 213px;
     margin-right: auto;
     margin-left: auto;
 }
 
 .unit_recommendation_block .destiny_catalog_card .destiny_catalog_image {
-    width: 128px;
-    height: 128px;
+    width: 210px;
+    height: 213px;
 }
 
 .destiny_catalog_card .important_info {

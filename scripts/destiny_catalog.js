@@ -1616,6 +1616,11 @@
   /** 아이템 데이터는 영어로 두고, 화면 문구만 사전에서 가져온다. */
   const t = (key, en) => window.DestinyI18n?.t(key, en) ?? en;
 
+  // Items without a verified screenshot use the server-style red rare-item box.
+  // It is intentionally treated as a visual fallback rather than the item's
+  // authentic image so detail views never label it as original artwork.
+  const FALLBACK_IMAGE = "./images/items/gameplay/rare-unit-box.png";
+
   // Never present a red box or another item's screenshot as if it were the selected item.
   const hasAuthenticImage = (item) => {
     if (!item.image || item.imageFallback) return false;
@@ -1690,9 +1695,21 @@
       : [combatRefs[0]
           || ((item.obtain || [])[0] ? { key: "cat." + item.id + ".obtain.0", en: item.obtain[0] } : null)
           || { key: "cat." + item.id + ".summary", en: item.summary || "" }];
-    const imageMarkup = hasAuthenticImage(item)
-      ? '<img src="' + escapeHTML(item.image) + '" alt="' + escapeHTML(item.name) + '" style="object-fit:' + escapeHTML(item.imageFit || "contain") + ';object-position:' + escapeHTML(item.imagePosition || "center center") + ';filter:' + escapeHTML(item.imageFilter || "none") + '">'
-      : '<div class="destiny_catalog_missing_image"><span aria-hidden="true">' + escapeHTML((item.category || "Item").slice(0, 1)) + '</span><small data-i18n="catalog.image.missing">Image coming soon</small></div>';
+    const authenticImage = hasAuthenticImage(item);
+    const cardImage = authenticImage ? item.image : FALLBACK_IMAGE;
+    const cardImageFit = authenticImage
+      ? (item.cardImageFit || item.imageFit || "cover")
+      : "cover";
+    const cardImagePosition = authenticImage
+      ? (item.cardImagePosition || item.imagePosition || "center center")
+      : "center center";
+    const cardImageFilter = authenticImage ? (item.imageFilter || "none") : "none";
+    const imageMarkup =
+      '<img class="destiny_catalog_card_image' + (authenticImage ? '' : ' destiny_catalog_fallback_image') +
+      '" src="' + escapeHTML(cardImage) + '" alt="' + (authenticImage ? escapeHTML(item.name) : '') +
+      '" style="object-fit:' + escapeHTML(cardImageFit) +
+      ';object-position:' + escapeHTML(cardImagePosition) +
+      ';filter:' + escapeHTML(cardImageFilter) + '">';
 
     slide.innerHTML =
       '<button type="button" class="item_section_aria" data-catalog-id="' + escapeHTML(item.id) + '">' +
@@ -1922,14 +1939,16 @@
         imageHint.hidden = false;
         missingImageElement.hidden = true;
       } else {
-        imageElement.removeAttribute("src");
-        imageElement.alt = "";
-        imageElement.style.objectFit = "contain";
-        mediaElement.classList.add("is-missing");
-        imageLink.removeAttribute("href");
-        imageLink.hidden = true;
+        imageElement.src = FALLBACK_IMAGE;
+        imageElement.alt = "Rare item box placeholder";
+        imageElement.style.objectPosition = "center center";
+        imageElement.style.objectFit = "cover";
+        imageElement.style.filter = "none";
+        mediaElement.classList.remove("is-missing");
+        imageLink.href = FALLBACK_IMAGE;
+        imageLink.hidden = false;
         imageHint.hidden = true;
-        missingImageElement.hidden = false;
+        missingImageElement.hidden = true;
       }
 
       modal.classList.add("is-open");
