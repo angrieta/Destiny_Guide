@@ -1603,6 +1603,32 @@
     .replace(/[^A-Z0-9]+/g, " ")
     .trim();
 
+  const operatorData = window.DestinyItemPriorityData || {
+    updatedAt: "",
+    legend: { genericUnits: [] },
+    items: [],
+    imports: []
+  };
+
+  // The operator list references several items that were only available in the
+  // item database. Add those database-backed records before the section maps are
+  // built, while still protecting hand-authored cards from duplicate names.
+  const knownCatalogIndexes = new Map(catalogItems.map((item, index) => [normalizeName(item.name), index]));
+  (operatorData.imports || []).forEach((item) => {
+    const key = normalizeName(item.name);
+    if (!key) return;
+    if (knownCatalogIndexes.has(key)) {
+      const index = knownCatalogIndexes.get(key);
+      const current = catalogItems[index];
+      if (current.displayCard === false) {
+        catalogItems[index] = { ...current, ...item, displayCard: true };
+      }
+      return;
+    }
+    catalogItems.push(item);
+    knownCatalogIndexes.set(key, catalogItems.length - 1);
+  });
+
   const escapeHTML = (value) => String(value ?? "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -1612,6 +1638,20 @@
 
   const catalogById = new Map(catalogItems.map((item) => [item.id, item]));
   const catalogByName = new Map(catalogItems.map((item) => [normalizeName(item.name), item]));
+  const operatorByName = new Map();
+
+  (operatorData.items || []).forEach((meta) => {
+    [meta.name].concat(meta.aliases || []).forEach((name) => {
+      const key = normalizeName(name);
+      if (key) operatorByName.set(key, meta);
+    });
+  });
+
+  const getOperatorMeta = (name) => operatorByName.get(normalizeName(name)) || null;
+  const scoreValue = (score) => Number.parseFloat(String(score || "0")) || 0;
+  const bestOverall = (meta) => meta && meta.overall && meta.overall.length
+    ? meta.overall.slice().sort((a, b) => scoreValue(b.score) - scoreValue(a.score))[0]
+    : null;
 
   /** 아이템 데이터는 영어로 두고, 화면 문구만 사전에서 가져온다. */
   const t = (key, en) => window.DestinyI18n?.t(key, en) ?? en;
@@ -1672,6 +1712,91 @@
 
   const proseList = (item, field) => (item[field] || []).map((_line, i) => prose(item, field, i));
 
+  function operatorBadgeMarkup(name) {
+    const meta = getOperatorMeta(name);
+    if (!meta) return "";
+
+    const badges = [];
+    const overall = bestOverall(meta);
+    if (overall) {
+      const conditional = overall.condition ? "*" : "";
+      badges.push('<span class="destiny_priority_badge destiny_priority_badge--overall" title="Operator overall rating' +
+        (overall.condition ? ": requires " + escapeHTML(overall.condition) : "") + '">' +
+        (meta.tradeOnly ? "★ " : "") + escapeHTML(overall.score + conditional) + "</span>");
+    }
+    if (meta.hit) {
+      badges.push('<span class="destiny_priority_badge destiny_priority_badge--hit">Hit ' + escapeHTML(meta.hit) + "</span>");
+    }
+    if (meta.attribute) {
+      badges.push('<span class="destiny_priority_badge destiny_priority_badge--attribute">Attr ' + escapeHTML(meta.attribute) + "</span>");
+    }
+    if (meta.endgameUnit) {
+      badges.push('<span class="destiny_priority_badge destiny_priority_badge--unit">' +
+        (meta.tradeOnly ? "★ " : "") + "End-game</span>");
+    }
+
+    return badges.length
+      ? '<div class="destiny_priority_badges" aria-label="Operator priority">' + badges.join("") + "</div>"
+      : "";
+  }
+
+  function applyOperatorMetadata() {
+    document.querySelectorAll(".destiny_item_slide").forEach((slide) => {
+      const nameElement = slide.querySelector(".item_title .item_name") || slide.querySelector(".item_name");
+      const inner = slide.querySelector(".item_inner");
+      const title = slide.querySelector(".item_title");
+      if (!nameElement || !inner || !title) return;
+
+      const meta = getOperatorMeta(nameElement.textContent.trim());
+      if (!meta) return;
+      if (!inner.querySelector(".destiny_priority_badges")) {
+        const host = document.createElement("div");
+        host.innerHTML = operatorBadgeMarkup(meta.name);
+        const badges = host.firstElementChild;
+        if (badges) title.insertAdjacentElement("afterend", badges);
+      }
+
+      if (meta.hit) slide.dataset.hitPriority = meta.hit;
+      if (meta.attribute) slide.dataset.attributePriority = meta.attribute;
+      const overall = bestOverall(meta);
+      if (overall) slide.dataset.overallRating = overall.score;
+      if (meta.endgameUnit) slide.dataset.endgameUnit = "true";
+    });
+  }
+
+  function mountOperatorPriorityOverview() {
+    const container = document.querySelector(".destiny_item");
+    const filters = container && container.querySelector(".destiny_item_filters");
+    if (!container || !filters || container.querySelector(".destiny_priority_overview")) return;
+
+    const ratedItems = (operatorData.items || []).filter((item) =>
+      item.hit || item.attribute || (item.overall && item.overall.length) || item.endgameUnit
+    ).length;
+    const overview = document.createElement("aside");
+    overview.className = "destiny_priority_overview";
+    overview.setAttribute("aria-label", "Operator weapon priority and end-game ratings");
+    overview.innerHTML =
+      '<div class="destiny_priority_overview_head">' +
+        '<div><p class="destiny_priority_eyebrow">OPERATOR CURATION</p>' +
+        '<h2>Weapon Priority &amp; End-game Rating</h2></div>' +
+        '<time>Last update: ' + escapeHTML(operatorData.updatedAt || "10/11/2025") + "</time>" +
+      "</div>" +
+      '<div class="destiny_priority_overview_grid">' +
+        '<div><strong>Hit% Priority</strong><span>S → C</span></div>' +
+        '<div><strong>Attribute% Priority</strong><span>S → C</span></div>' +
+        '<div><strong>Overall Rating</strong><span>10 / 9.5 / 9.0</span></div>' +
+        '<div><strong>Rated items</strong><span>' + escapeHTML(ratedItems) + " entries</span></div>" +
+      "</div>" +
+      '<p class="destiny_priority_overview_note">Open a rated item to see its exact priorities and required buff setup. ' +
+        escapeHTML(operatorData.legend?.condition || "") + " " + escapeHTML(operatorData.legend?.trade || "") + "</p>" +
+      ((operatorData.legend?.genericUnits || []).length
+        ? '<p class="destiny_priority_generic"><strong>Generic end-game unit entries:</strong> ' +
+          (operatorData.legend.genericUnits || []).map(escapeHTML).join(" · ") + "</p>"
+        : "");
+
+    filters.insertAdjacentElement("afterend", overview);
+  }
+
   function createCatalogCard(item) {
     const slide = document.createElement("div");
     slide.className = "swiper-slide destiny_item_slide destiny_catalog_card";
@@ -1719,6 +1844,7 @@
             '<span class="item_type">' + escapeHTML(item.type) + "</span>" +
           "</div>" +
           '<h4 class="item_title"><span class="item_name">' + escapeHTML(item.name) + "</span></h4>" +
+          operatorBadgeMarkup(item.name) +
           previewStats +
           previewDetails.map((d) => '<p class="item_detail"' + (d.key ? ' data-i18n="' + escapeHTML(d.key) + '"' : "") + ">" + escapeHTML(d.en) + "</p>").join("") +
           '<span class="destiny_card_open_hint" data-i18n="catalog.card.hint">Click for full details</span>' +
@@ -1889,6 +2015,36 @@
     "</section>";
   }
 
+  function renderOperatorSection(meta) {
+    if (!meta) return "";
+    const rows = [];
+    if (meta.hit) rows.push(["Hit% priority", meta.hit]);
+    if (meta.attribute) rows.push(["Attribute% priority", meta.attribute]);
+    if (meta.endgameUnit) rows.push(["End-game unit", "Recommended"]);
+
+    const overall = (meta.overall || []).slice().sort((a, b) => scoreValue(b.score) - scoreValue(a.score));
+    const overallMarkup = overall.length
+      ? '<ul class="destiny_operator_ratings">' + overall.map((rating) =>
+          '<li><strong>' + escapeHTML(rating.score) + "</strong>" +
+          '<span>' + escapeHTML(rating.category) +
+          (rating.condition ? " · Requires " + escapeHTML(rating.condition) : "") + "</span></li>"
+        ).join("") + "</ul>"
+      : "";
+
+    return '<section class="destiny_detail_section destiny_operator_section">' +
+      '<div class="destiny_operator_heading"><h3>Operator priority</h3>' +
+      '<span>Updated ' + escapeHTML(operatorData.updatedAt || "10/11/2025") + "</span></div>" +
+      (rows.length ? '<dl class="destiny_operator_stats">' + rows.map((row) =>
+        '<div><dt>' + escapeHTML(row[0]) + "</dt><dd>" + escapeHTML(row[1]) + "</dd></div>"
+      ).join("") + "</dl>" : "") +
+      overallMarkup +
+      (meta.tradeOnly ? '<p class="destiny_operator_note">★ Obtainable from the Trade NPC only.</p>' : "") +
+      (overall.some((rating) => rating.condition)
+        ? '<p class="destiny_operator_note">* This rating requires the setup shown above.</p>'
+        : "") +
+    "</section>";
+  }
+
   function initDetailModal() {
     const modal = document.getElementById("destinyDetailModal");
     if (!modal) return;
@@ -1915,13 +2071,20 @@
 
     const openModal = (item, trigger) => {
       previousFocus = trigger;
+      const operatorMeta = getOperatorMeta(item.name);
+      const operatorOverall = bestOverall(operatorMeta);
       titleElement.textContent = item.name;
       summaryElement.textContent = prose(item, "summary");
       badgeElement.innerHTML =
         '<span class="destiny_detail_badge">' + escapeHTML(item.category || "Item") + "</span>" +
-        '<span class="destiny_detail_badge destiny_detail_badge--type">' + escapeHTML(item.type || "Item") + "</span>";
+        '<span class="destiny_detail_badge destiny_detail_badge--type">' + escapeHTML(item.type || "Item") + "</span>" +
+        (operatorOverall ? '<span class="destiny_detail_badge destiny_detail_badge--operator">' +
+          (operatorMeta.tradeOnly ? "★ " : "") + escapeHTML(operatorOverall.score) + "</span>" : "") +
+        (operatorMeta?.endgameUnit ? '<span class="destiny_detail_badge destiny_detail_badge--operator">' +
+          (operatorMeta.tradeOnly ? "★ " : "") + "End-game</span>" : "");
       statsElement.innerHTML = renderDefinitionList(item.stats || []);
       sectionsElement.innerHTML =
+        renderOperatorSection(operatorMeta) +
         renderSection(t("catalog.detail.combat", "Special, targets & bonuses"), proseList(item, "combat")) +
         renderSection(t("catalog.detail.obtain", "How to obtain"), proseList(item, "obtain")) +
         renderSection(t("catalog.detail.required", "Required items"), item.required || []) +
@@ -2003,6 +2166,8 @@
 
   mountCatalogSections();
   assignBlockCategories();
+  mountOperatorPriorityOverview();
+  applyOperatorMetadata();
   initFilters();
   const detailModal = initDetailModal();
 
