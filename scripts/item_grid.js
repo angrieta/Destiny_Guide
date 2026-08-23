@@ -82,6 +82,19 @@
             track.querySelectorAll(".destiny_item_slide").forEach(function (slide) {
                 slide.classList.remove("swiper-slide");
                 slide.removeAttribute("style"); /* Swiper 가 남겼을 수 있는 인라인 폭 */
+
+                /* 카탈로그가 동적으로 만든 카드뿐 아니라 기존 HTML 카드도 같은
+                   하단 상세보기 안내를 갖게 한다. 여백을 단순한 빈칸이 아니라
+                   명확한 클릭 영역으로 보이게 만드는 역할도 한다. */
+                var inner = slide.querySelector(".item_inner");
+                if (inner && !inner.querySelector(".destiny_card_open_hint")) {
+                    var hint = document.createElement("span");
+                    hint.className = "destiny_card_open_hint";
+                    hint.dataset.i18n = "catalog.card.hint";
+                    hint.textContent = "Click for full details";
+                    inner.appendChild(hint);
+                }
+
                 cards.push(slide);
             });
 

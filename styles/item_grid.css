@@ -256,8 +256,14 @@
 }
 
 @media screen and (min-width: 560px)  { .ig_grid { --ig-cols: 2; } }
-@media screen and (min-width: 900px)  { .ig_grid { --ig-cols: 3; } }
-@media screen and (min-width: 1280px) { .ig_grid { --ig-cols: 4; } }
+@media screen and (min-width: 900px)  {
+    .ig_grid { --ig-cols: 3; }
+    .ig_grid_inner { gap: 20px; }
+}
+@media screen and (min-width: 1280px) {
+    .ig_grid { --ig-cols: 4; }
+    .ig_grid_inner { gap: 24px; }
+}
 @media screen and (min-width: 1700px) { .ig_grid { --ig-cols: 5; } }
 
 /* Every desktop card uses the DARK FLOW image frame as the shared reference.
@@ -302,7 +308,28 @@
 /* 500px 고정 높이는 내용이 길면 넘쳤다. 높이를 내용에 맞추면 한 행 안에서는
    그리드가 알아서 맞춰 주고, 넘치는 카드도 잘리지 않는다. */
 .ig_grid_inner .item_inner {
+    display: flex;
+    flex-direction: column;
     height: auto;
+    padding-top: 22px;
+    padding-bottom: 14px;
+}
+
+/* 생성형 카드는 예전부터 하단 안내를 위해 46px을 따로 비워 두었다.
+   이제 모든 카드가 flex footer를 공유하므로 중복 여백을 제거한다. */
+.ig_grid_inner .destiny_catalog_card .item_inner {
+    padding-bottom: 14px;
+}
+
+/* 짧은 카드의 남는 공간을 비워 둔 채로 끝내지 않고, 상세보기 안내를
+   카드 하단에 고정해 동일한 시각적 종착점을 만든다. */
+.ig_grid_inner .destiny_card_open_hint {
+    position: static;
+    width: auto;
+    min-height: 27px;
+    margin: auto 14px 0;
+    padding-top: 10px;
+    flex: 0 0 auto;
 }
 
 /* 여러 열이 나란히 설 때만 최소 높이를 준다. 카드 높이가 들쭉날쭉하면
