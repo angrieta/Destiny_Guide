@@ -268,10 +268,12 @@ html[data-theme="dark"] .cb_var.is-active {
     font: inherit;
     cursor: pointer;
     text-align: left;
-    transition: border-color 160ms ease, transform 160ms ease;
+    transition: border-color var(--motion-fast) var(--ease-out), transform var(--motion-ui) var(--ease-out);
 }
 
-.cb_cls:hover { border-color: var(--accent); transform: translateY(-1px); }
+@media (hover: hover) and (pointer: fine) {
+    .cb_cls:hover { border-color: var(--accent); transform: translateY(-1px); }
+}
 
 .cb_cls.is-active {
     border-color: var(--accent);
@@ -484,10 +486,12 @@ html[data-theme="dark"] .cb_flag.is-warn {
     background: var(--surface);
     color: inherit;
     text-decoration: none;
-    transition: border-color 150ms ease, transform 150ms ease;
+    transition: border-color var(--motion-fast) var(--ease-out), transform var(--motion-ui) var(--ease-out);
 }
 
-.cb_chip:hover { border-color: var(--accent); transform: translateY(-1px); }
+@media (hover: hover) and (pointer: fine) {
+    .cb_chip:hover { border-color: var(--accent); transform: translateY(-1px); }
+}
 
 .cb_chip:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
@@ -533,7 +537,6 @@ html[data-theme="dark"] .cb_req { color: #07111f; }
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-
 .cb_chip_note {
     display: block;
     margin-top: 4px;

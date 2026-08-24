@@ -76,7 +76,7 @@ html[data-theme="dark"] {
     border-bottom: 1px solid var(--lab-line);
     color: var(--text);
     text-decoration: none;
-    transition: color 150ms ease, padding-left 150ms ease, background-color 150ms ease;
+    transition: color 150ms var(--ease-out), padding-left 150ms var(--ease-out), background-color 150ms var(--ease-out);
 }
 
 .lab_jump a:hover,

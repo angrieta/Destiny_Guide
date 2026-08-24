@@ -71,6 +71,21 @@
     text-decoration: underline;
 }
 
+.g_head .g_statline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 18px;
+    margin-top: 12px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+.g_head .g_statline b {
+    color: var(--text);
+    font-weight: 750;
+}
+
 /* ── 섹션 목차 (앵커) ─────────────────────────────────────────── */
 
 .g_toc {
@@ -81,8 +96,10 @@
 }
 
 .g_toc a {
-    display: inline-block;
-    padding: 7px 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 13px 0;
     border: 1px solid var(--border);
     border-radius: 999px;
     background: var(--surface-soft);
@@ -90,7 +107,7 @@
     font-size: 13.5px;
     font-weight: 600;
     text-decoration: none;
-    transition: background 140ms ease, border-color 140ms ease;
+    transition: background 140ms var(--ease-out), border-color 140ms var(--ease-out);
 }
 
 .g_toc a:hover {
@@ -125,6 +142,15 @@
     font-size: 17px;
     text-align: center;
     vertical-align: 3px;
+}
+
+.g_skill_mark {
+    margin-right: 0.28em;
+    color: var(--accent-strong);
+    font-size: 0.82em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
 }
 
 .g_sec > p,
@@ -536,11 +562,17 @@
     position: fixed;
     inset: 0;
     z-index: 99999;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms var(--ease-out), visibility 0s linear 160ms;
 }
 
 .g_popup.active {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: 0s;
 }
 
 .g_popup_dim {
@@ -555,6 +587,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: min(94vw, 1180px);
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.98);
+    transition: opacity 160ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+.g_popup.active .g_popup_inner {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .g_popup_inner img {
@@ -580,6 +620,17 @@
     font-size: 19px;
     line-height: 1;
     cursor: pointer;
+    transition: background-color 140ms var(--ease-out), color 140ms var(--ease-out);
+}
+
+.g_popup_close:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.g_popup_close:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
 }
 
 /* ── 반응형 ───────────────────────────────────────────────────── */
@@ -617,7 +668,7 @@
     .g_head .g_lead { font-size: 14.5px; }
     .g_sec > h3 { font-size: 18.5px; }
     .g_sec > h3 .g_sec_num { min-width: 0; margin-right: 7px; padding: 1px 6px; font-size: 13.5px; }
-    .g_toc a { font-size: 12.5px; padding: 6px 11px; }
+    .g_toc a { font-size: 12.5px; padding: 1px 11px 0; }
     .g_card { padding: 13px 14px 15px; }
     .g_card_h b { font-size: 16px; }
     .g_card li { font-size: 13.5px; }
@@ -628,6 +679,14 @@
     .g_video_heading { align-items: flex-start; }
     .g_video_source { display: flex; margin: 4px 0 0; }
     .g_pattern_brief { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .g_popup,
+    .g_popup_inner,
+    .g_popup_close {
+        transition-duration: 0.01ms;
+    }
 }
 
 /* ── 접기 (몬스터 수 상세 등) ─────────────────────────────────── */
@@ -658,7 +717,7 @@
     content: "\25B8";
     font-size: 12px;
     color: var(--text-muted);
-    transition: transform 140ms ease;
+    transition: transform 140ms var(--ease-out);
 }
 
 .g_details[open] > summary::before {

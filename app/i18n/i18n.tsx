@@ -45,7 +45,7 @@ type Dict = Record<string, string>;
 type I18nValue = {
   lang: Lang;
   setLang: (next: Lang) => void;
-  /** t(키, 영어원문) — 사전에 번역이 없으면 영어 원문을 그대로 돌려준다. */
+  /** t(키, 영어원문) - 사전에 번역이 없으면 영어 원문을 그대로 돌려준다. */
   t: (key: string, en: string) => string;
 };
 

@@ -9,422 +9,165 @@
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/responsive.css">
     <link rel="stylesheet" href="./styles/guide.css">
-    <script src="./scripts/i18n.js"></script>
-    <script src="./scripts/index.js" defer></script>
-    <script src="./scripts/item_info.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
-    
-    <style>
-        html{
-        scroll-behavior: smooth;
-        }
-        .item_section{
-            width: 22px;
-            position: relative; top: 3px;}
-        main p{
-            line-height: 1.3;}
-        /* 네비게이션 시작 */
-        .photo_aria img{
-            cursor: zoom-in;
-        }
-        .side_nav{
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 9999;
-            }
-
-            .side_nav a{
-            text-align: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 999px;
-            display: grid;
-            place-items: center;
-            background: rgba(0,0,0,0.55);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 12px;
-            border: 1px solid rgba(255,255,255,0.18);
-            transition: transform 160ms ease, background 160ms ease;
-            }
-
-            .side_nav a:hover{
-            transform: scale(1.08);
-            background: #c442cf;
-            }
-
-            /* 모바일에서는 숨김(선택) */
-            @media (max-width: 768px){
-                .side_nav{ display:none; 
-                }
-                .popup_inner{
-                position: absolute;
-
-                width: 90%;
-            }
-            }
-            /* 네비게이션 종료 */
-            .img_popup{
-                position: fixed;
-                inset: 0;
-                z-index: 99999;
-                display: none;
-            }
-
-                .img_popup.active{
-                display: block;
-            }
-
-                .popup_dim{
-                position: absolute;
-                inset: 0;
-                background: rgba(0,0,0,0.75);
-            }
-
-                .popup_inner{
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                max-width: 600px;
-            }
-
-                .popup_inner img{
-                width: 100%;
-                height: auto;
-                max-height: 90vh;
-                display: block;
-                border-radius: 12px;
-            }
-
-                .popup_close{
-                position: absolute;
-                top: -42px;
-                right: 0;
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                border: 0;
-                background: #fff;
-                font-size: 20px;
-                cursor: pointer;
-            }
-        main{padding: 60px 120px;}
-        main .beginner_title{}
-        main .beginner_title h2{font-size: 40px; font-weight: 700;}
-        main .beginner_title h3{font-size: 18px; font-weight: 500; color: #ff4f4f; padding: 15px 0;}
-        main .beginner_title p{margin-bottom: 5px;}
-        .contents_aria{width: 100%;}
-        .pc_h2{font-size: 30px; font-weight: 700; padding: 40px 0 15px 0; display: flex; align-items: center;}
-
-        .contents_aria .photo_aria{
-            display: grid;
-            gap: 12px;
-            width: 100%;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            position: relative;
-            }
-
-            .contents_aria .photo_aria img{
-            width: 100%;
-            height: 100%;
-            display: block;
-            max-width: 827px;
-            }
-        .contents_aria .photo_aria span{padding: 4px 8px; background-color: #222; color: #fff; position: absolute;
-            box-shadow: 1px 1px 4px #fff;
-        }
-        .title_num{
-            padding: 4px 10px; border: 1px solid #222;
-            position: relative;
-            margin-right: 4px; font-weight: 700;
-        }
-        .youtube_wrap{
-            position: relative;
-            width: 100%;
-            max-width: 826px;
-            padding-bottom: 28%;
-            height: 226px;
-        }
-
-        .youtube_wrap iframe{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .text_high{font-size: 24px; font-weight: 700; }
-        .strong_text{
-            color:#c442cf
-        }
-        .title_number{margin: 0 4px; white-space: nowrap;;}
-        .mobile_h2{
-            display: none;
-        }
-        @media screen and (max-width:780px) {
-            .pc_h2{
-                display: none ;
-            }
-            .mobile_h2{
-                display: block;
-            }
-            .mobile_h2{ display: flex; align-items: center; margin: 30px 0 15px;}
-            .icon-text{
-            font-size: 17px; font-weight: 600;}
-            
-        }
-        @media screen and (max-width: 1250px) {
-            main {
-                padding: 60px 80px;
-            }
-        }
-        @media screen and (max-width: 983px) {
-            main {
-                padding: 60px 15px;
-            }
-            main .beginner_title h2{
-                font-size: 34px;
-            }
-            .contents_aria h2{
-                font-size: 24px;
-                line-height: 1.3;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/guide.js" defer></script>
 </head>
-
-<!-- 헤더시작 -->
+<body class="raid_page">
     <div id="site-header" style="width: 100%;"></div>
     <script src="./scripts/include.js"></script>
-<!-- 헤더종료 -->
 
-<!-- <nav class="side_nav">
-    <a href="#meseta">Check<br>List</a>
-    <a href="#quickslot">Quick<br>slot</a>
-    <a href="#get_mag">Mag</a>
-    <a href="#levelup">Leveling</a>
-    <a href="#cure">Cure</a>
-    <a href="#tech">Disk</a>
-    <a href="#psycho_wand">Psycho<br>Wand</a>
-    <a href="#three_seals">Three<br>seals</a>
-    <a href="#v802">V802</a>
-    <a href="#final">TIP</a>
-</nav> -->
-
-<body>
-<main class="site_content">
-        <div class="beginner_title">
-            <h2>The Discontrolled Tower Raid</h2>
-            <h3>BOSS: Manipulator III / Divine Guard</h3>
-            <p style="color: #c442cf;">HP: 2,180,000</p>
-            <p style="color: #c442cf;">DEF: 2,500</p>
-            <div class="youtube_wrap" style="margin: 30px 0;">
-                <iframe
-                    src="https://www.youtube-nocookie.com/embed/dJzVffLygqk?start=942"
-                    title="YouTube video"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                </iframe>
+    <main class="g_page">
+        <div class="g_head">
+            <h2><span>The Discontrolled Tower Raid</span></h2>
+            <p class="g_lead" data-i18n="tower.t204">A red player is required, and the boss hits hard enough that a full team with good gear (especially Machine%) is expected.</p>
+            <div class="g_statline">
+                <span><b>Boss</b> Manipulator III / Divine Guard</span>
+                <span><b>HP</b> 2,180,000</span>
+                <span><b>DEF</b> 2,500</span>
             </div>
+            <p class="g_source">
+                <a class="g_video_source" href="https://www.youtube.com/watch?v=dJzVffLygqk&t=942s" target="_blank" rel="noopener noreferrer">Open the boss fight video</a>
+            </p>
         </div>
-        <div class="contents_aria meseta_aria" id="meseta">
-            <h2 class="pc_h2"><strong class="title_num" style="padding:4px 3px;">✨</strong> <span data-i18n="tower.t015">Boss Fight Tips</span></h2>
 
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="tower.t016">[○]: Circle shaped hitbox, explosion</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="tower.t017">[●]: Damage is determined by how far from the center of explosion</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="tower.t018">[!]: This attack is inevitable</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="tower.t019">[≪--≫]: Circle AoE, you have to get away from each other</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="tower.t020">[-≫≪-]: Stack Damage, you have to group up</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="tower.t021">[|||]: Straight line attack (vertical)</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="tower.t100">[=]: Straight line attack (horizontal)</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="tower.t022">[＊]: Various direction attac</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="tower.t023">Resist Reset [X]: Reset debuff of [X] attribute</p>
-            <p style="margin-bottom: 15px; font-size: 18px" data-i18n="tower.t024">[Death Sentence]: You have to be fully healed when this ends</p>
+        <nav class="g_toc" aria-label="Guide sections">
+            <a href="#fight-tips" data-i18n="tower.t015">Boss Fight Tips</a>
+            <a href="#explosion">Explosion</a>
+            <a href="#thunder">Thunder Line / Maze α</a>
+            <a href="#duality">Ancient Rafoie - Duality -</a>
+            <a href="#divine">Divine Punishment / Cross</a>
+            <a href="#orbs">4 Orbs / Catastrophe Flame</a>
+            <a href="#cannon">Ultimate Destruction</a>
+            <a href="#boss-data" data-i18n="tower.t201">Boss data</a>
+            <a href="#timeline" data-i18n="tower.t206">Gimmick timeline</a>
+            <a href="#drops" data-i18n="tower.t209">Quest-exclusive drops</a>
+            <a href="#ex-version" data-i18n="tower.t215">The Manipulated Tower [Raid] - the EX version</a>
+        </nav>
 
-            <p style="color: #222; padding: 15px 0 5px; font-size: 18px;" data-i18n="tower.t025">[1] If you drop items inside the boss room, they will remain there the next time you enter.<span class="strong_text" data-i18n="tower.t026"> You can drop Moon Atomizers, healing items, Scape Dolls</span> <span data-i18n="tower.t027">, and other supplies as soon as you enter, and use them in the next run.</span> </p>
-            <p style="color: #222; padding: 5px 0; font-size: 18px;" data-i18n="tower.t028">[2] MAG is unequipped when entering the boss room or after dying. <span class="strong_text" data-i18n="tower.t029">Press F2 to re-equip.</span>  </p>
-            <p style="color: #222; padding: 5px 0 15px 0; font-size: 18px;" data-i18n="tower.t030">[3] Like Epsilon, the boss only takes damage when its shield is open.</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_001.webp" alt=""></div>
-                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/cladding_002.webp" alt=""></div>
-            </div>   
-            <div class="photo_aria" style="margin-top: 15px;">
-                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/cladding_003.webp" alt=""></div>
-                <div class="photo_aria photo_003" style="border: 1px solid #222;"><span>4</span><img src="./images/index/map.jpg" alt=""></div>
-
-            </div>   
-        </div>
-        <div class="contents_aria meseta_aria" id="meseta">
-            <h2 class="pc_h2"><strong class="title_num">1</strong><span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[O]</span> Explosion</h2>
-            <h2 class="mobile_h2">
-                <strong class="title_num">2</strong>
-                <div class="m_text_high" style="display: flex; flex-flow: column;">
-                    <span class="icon-text"style="margin-bottom: 4px;">
-                        <span style="color: #ff4f4f;">[O]</span> Explosion
-                    </span>
-                </div>
-            </h2>
-            <p style="color: #222; padding: 15px 0 15px; font-size: 18px;" data-i18n="tower.t033">[1] When the Explosion text appears, <span class="strong_text" data-i18n="tower.t034">move outside the red marked area.</span></p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_004.webp" alt=""></div>
-            </div>
-        </div>
-        <div class="contents_aria quickslot" id="quickslot">
-            <h2 class="pc_h2"><strong class="title_num">2</strong> <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px; margin-right: 4px;">[lll]</span> Thunder Line / Thunder Maze - α - </h2>
-            <h2 class="mobile_h2">
-                <strong class="title_num">2</strong>
-                <div class="m_text_high" style="display: flex; flex-flow: column;">
-                    <span class="icon-text"style="margin-bottom: 4px;">
-                        <span style="color: #ff4f4f;">[lll]</span> Thunder Line 
-                    </span>
-                    <span class="icon-text"style="margin-bottom: 4px;">
-                        <span style="color: #ff4f4f;">[lll]</span> Thunder Maze - α - 
-                    </span>
-                </div>
-            </h2>
-            <p style="color: #222; padding: 15px 0 5px; font-size: 18px;" data-i18n="tower.t039">[1] Before the lightning attack, an effect shows where it will strike. When the <span class="strong_text" data-i18n="tower.t040">purple effect</span> <span data-i18n="tower.t041">appears, move away from that spot.</span> </p>
-            <p style="color: #222; padding: 5px 0 5px; font-size: 18px;" data-i18n="tower.t042">[2] If you see the text <span class="strong_text" data-i18n="tower.t043">Thunder Line 1 2 3 5, the 4th area is the safe zone.</span> </p>
-            <p style="color: #222; padding: 5px 0 5px; font-size: 18px;" data-i18n="tower.t044">[3] If you see the text <span class="strong_text" data-i18n="tower.t045">Thunder Line 1 2 4 5, the 3th area is the safe zone.</span> / <span class="strong_text" data-i18n="tower.t046">Thunder Line 1 3 5, the 2 4th area is the safe zone.</span> </p>
-            <p style="color: #222; padding: 5px 0 15px 0; font-size: 18px;"><span data-i18n="tower.t101">[4] Thunder Maze - α - alternates danger zones in this order: 2 4 → 1 3 5 → 2 4 → 1, 3 5.</span> <span class="strong_text" data-i18n="tower.t047"> It’s easier if you think of dodging in the  middle area first.</span> </p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_006.webp" alt=""></div>
-                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/cladding_007.webp" alt=""></div>
-            </div>
-            <div class="photo_aria" style="margin-top: 15px;">
-                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/cladding_008.webp" alt=""></div>
-                <div class="photo_aria photo_004"><span>4</span><img src="./images/index/cladding_009.webp" alt=""></div>
-            </div>
-        </div>      
-        <div class="contents_aria quickslot" id="quickslot">
-            <h2 class="pc_h2"><strong class="title_num">3</strong> <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px; margin-right: 4px;">≪--≫ [O] </span>Ancient Rafoie -Duality-</h2>
-            <h2 class="mobile_h2">
-                <strong class="title_num">3</strong>
-                <div class="m_text_high" style="display: flex; flex-flow: column;">
-                    <span class="icon-text"style="margin-bottom: 4px;">
-                        <span style="color: #ff4f4f;">≪--≫ [O]</span> Ancient Rafoie -Duality-
-                    </span>
-                </div>
-            </h2>
-            <p style="color: #222; padding: 15px 0 5px; font-size: 18px;" data-i18n="tower.t050">[Step 1] When the text ≪--≫ [O] Ancient Ratoie -Duality- appears, all players should wait in the corners.</p>
-            <p style="color: #222; padding: 5px 0 5px; font-size: 18px;" data-i18n="tower.t051">[Step 2] Purple light appears in this order: <span class="strong_text">Red → Green → Yellow → Blue</span><span data-i18n="tower.t052">, and each spot explodes.</span></p>
-            <p style="color: #222; padding: 5px 0 15px; font-size: 18px;" data-i18n="tower.t053">[★] Stand at each corner and move only after the purple effect appears.</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_012.webp" alt=""></div>
-            </div>
-        </div>      
-        <div class="contents_aria quickslot" id="quickslot">
-            <h2 class="pc_h2"><strong class="title_num">4</strong> <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[@]</span> Divine Punishment / <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[O][X]</span> Divine Cross</h2>
-            <h2 class="mobile_h2">
-                <strong class="title_num">4</strong>
-                <div class="m_text_high" style="display: flex; flex-flow: column;">
-                    <span class="icon-text"style="margin-bottom: 4px;">
-                    <span style="color: #ff4f4f;">[@]</span> Divine Punishment
-                    </span>
-                    <span class="icon-text">
-                    <span style="color: #ff4f4f;">[O][X]</span> Divine Cross
-                    </span>
-                </div>
-            </h2>
-            <p style="color: #222; padding: 15px 0 5px; font-size: 18px;" data-i18n="tower.t058">[1] When the text <span class="strong_text">Coordinate Charge</span> <span data-i18n="tower.t060">appears, it forces the player to move to the corner of the map.</span> </p>
-            <p style="color: #222; padding: 5px 0 15px 0; font-size: 18px;" data-i18n="tower.t061">[2] Position yourself in the circle near the boss to trigger the explosion (standing too close can cause overlapping damage to players).</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_002"><span>1</span><img src="./images/index/cladding_005.webp" alt=""></div>
-                <div class="photo_aria photo_002"><span>1</span><img src="./images/index/cladding_010.webp" alt=""></div>
-            </div>
-        </div>      
-        <div class="contents_aria levelup" id="levelup">
-            <h2 class="pc_h2"><strong class="title_num">5</strong><div class="text_high"><span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[?]</span>Get the <span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 30px;">4</span> Orbs! /<span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[!][O] </span>Catastrophe Flame</div></h2>
-            <h2 class="mobile_h2">
-                <strong class="title_num">5</strong>
-                <div class="m_text_high" style="display: flex; flex-flow: column;">
-                    <span class="icon-text"style="margin-bottom: 4px;">
-                    <span style="color: #ff4f4f;">[?]</span> <span data-i18n="tower.t066">Get the 4 Orbs!</span>
-                    </span>
-                    <span class="icon-text">
-                    <span style="color: #ff4f4f;">[!!][O]</span> Catastrophe Flame
-                    </span>
-                </div>
-            </h2>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="tower.t068">[1] [?] Get the 4 Orbs! - Go to the designated corner and approach the Orb to pick it up.</p>
-            <p style="margin-bottom: 8px; color: #ff4f4f; font-size: 18px" data-i18n="tower.t069">If your HP is low, heal first before grabbing the Orb, or you might die.</p>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="tower.t070">[2] [!][O] Catastrophe Flame - The closer you are to the boss, the more damage you take. Stay as close to the wall as possible. </p>
-            <p style="margin-bottom: 8px; color: #ff4f4f; font-size: 18px" data-i18n="tower.t071">Staying at the wall deals exactly 2000 HP damage. Good for triggering MAG invincibility.</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_011.webp" alt=""></div>
-                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/cladding_013.webp" alt=""></div>
-            </div>
-        </div>      
-        <div class="contents_aria get_mag" id="get_mag">
-            <h2 class="pc_h2"><strong class="title_num">6</strong><span class="title_number" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[*]</span>Ultimate Destruction [Cannon]</h2>
-            <h2 class="mobile_h2">
-                <strong class="title_num">6</strong>
-                <div class="m_text_high" style="display: flex; flex-flow: column;">
-                    <span class="icon-text"style="margin-bottom: 4px;">
-                    <span style="color: #ff4f4f;">[*]</span> Ultimate Destruction [Cannon]
-                    </span>
-                </div>
-            </h2>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="tower.t102">[1] It fires lasers in this order: 11 o’clock → 1 o’clock → 5 o’clock → 7 o’clock.</p>
-            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px" data-i18n="tower.t073">Check for the laser firing from the center, then dodge.</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/cladding_015.webp" alt=""></div>
-            </div>
-        </div>
-        <div class="contents_aria" id="boss-data">
-            <h2 class="g_added_h2"><strong class="title_num">7</strong> <span data-i18n="tower.t201">Boss data</span></h2>
+        <section class="g_sec" id="fight-tips">
+            <h3><span class="g_sec_num">1</span><span data-i18n="tower.t015">Boss Fight Tips</span></h3>
             <div class="g_scroll">
                 <table class="g_table g_mid">
-                    <thead><tr>
-                        <th data-i18n="tower.t202">Item</th>
-                        <th data-i18n="tower.t203">Value</th>
-                    </tr></thead>
+                    <thead><tr><th data-i18n="prd.t025">Symbol</th><th data-i18n="prd.t026">Meaning</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td class="g_name">Boss</td>
-                            <td>Manipulator III / Divine Guard</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">HP</td>
-                            <td class="g_num">2,180,000</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">DEF</td>
-                            <td class="g_num">2,500</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Weakness</td>
-                            <td>Nothing</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Areas</td>
-                            <td>CCA → Control Tower → BOSS</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Exclusive drop</td>
-                            <td>Cladding of Manipulator III 1/10 (all IDs)</td>
-                        </tr>
+                        <tr><td class="g_name">[O]</td><td data-i18n="tower.t016">[○]: Circle shaped hitbox, explosion</td></tr>
+                        <tr><td class="g_name">[●]</td><td data-i18n="tower.t017">[●]: Damage is determined by how far from the center of explosion</td></tr>
+                        <tr><td class="g_name">[!]</td><td data-i18n="tower.t018">[!]: This attack is inevitable</td></tr>
+                        <tr><td class="g_name">[&lt;&lt;--&gt;&gt;]</td><td data-i18n="tower.t019">[≪--≫]: Circle AoE, you have to get away from each other</td></tr>
+                        <tr><td class="g_name">[-&gt;&gt;&lt;&lt;-]</td><td data-i18n="tower.t020">[-≫≪-]: Stack Damage, you have to group up</td></tr>
+                        <tr><td class="g_name">[|||]</td><td data-i18n="tower.t021">[|||]: Straight line attack (vertical)</td></tr>
+                        <tr><td class="g_name">[=]</td><td data-i18n="tower.t100">[=]: Straight line attack (horizontal)</td></tr>
+                        <tr><td class="g_name">[*]</td><td data-i18n="tower.t022">[＊]: Various direction attack</td></tr>
+                        <tr><td class="g_name">Resist Reset [X]</td><td data-i18n="tower.t023">Resist Reset [X]: Reset debuff of [X] attribute</td></tr>
+                        <tr><td class="g_name">[Death Sentence]</td><td data-i18n="tower.t024">[Death Sentence]: You have to be fully healed when this ends</td></tr>
                     </tbody>
                 </table>
             </div>
-            <p style="margin-bottom: 6px; font-size: 18px; color: #ff4f4f" data-i18n="tower.t204">A red player is required, and the boss hits hard enough that a full team with good gear (especially Machine%) is expected.</p>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="tower.t205">Role challenge — The Manipulator III: clear with no wipe in the boss room and without returning to Pioneer 2 from it, under 25 minutes.</p>
-        </div>
-        <div class="contents_aria" id="timeline">
-            <h2 class="g_added_h2"><strong class="title_num">8</strong> <span data-i18n="tower.t206">Gimmick timeline</span></h2>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="tower.t207">The boss runs its gimmicks in a fixed order. Knowing what comes next is the difference between reacting and guessing. Timeline recorded by VEL(JP).</p>
+            <ul class="g_bullets">
+                <li><span data-i18n="tower.t025">[1] If you drop items inside the boss room, they will remain there the next time you enter.</span> <strong data-i18n="tower.t026">You can drop Moon Atomizers, healing items, Scape Dolls</strong><span data-i18n="tower.t027">, and other supplies as soon as you enter, and use them in the next run.</span></li>
+                <li><span data-i18n="tower.t028">[2] MAG is unequipped when entering the boss room or after dying.</span> <strong data-i18n="tower.t029">Press F2 to re-equip.</strong></li>
+                <li data-i18n="tower.t030">[3] Like Epsilon, the boss only takes damage when its shield is open.</li>
+            </ul>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig"><img src="./images/index/cladding_001.webp" alt="Manipulator III boss room preparation 1" loading="lazy" decoding="async"><figcaption>Boss room preparation 1</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/cladding_002.webp" alt="Manipulator III boss room preparation 2" loading="lazy" decoding="async"><figcaption>Boss room preparation 2</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/cladding_003.webp" alt="Manipulator III boss room preparation 3" loading="lazy" decoding="async"><figcaption>Boss room preparation 3</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/map.jpg" alt="Manipulator III arena map" loading="lazy" decoding="async"><figcaption>Arena map</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="explosion">
+            <h3><span class="g_sec_num">2</span><span class="g_skill_mark">[O]</span>Explosion</h3>
+            <p class="g_note"><span data-i18n="tower.t033">[1] When the Explosion text appears,</span> <strong data-i18n="tower.t034">move outside the red marked area.</strong></p>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig"><img src="./images/index/cladding_004.webp" alt="Explosion safe area" loading="lazy" decoding="async"><figcaption>Move outside the marked explosion area.</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="thunder">
+            <h3><span class="g_sec_num">3</span><span class="g_skill_mark">[|||]</span>Thunder Line / Thunder Maze - α -</h3>
+            <ul class="g_bullets">
+                <li><span data-i18n="tower.t039">[1] Before the lightning attack, an effect shows where it will strike. When the</span> <strong data-i18n="tower.t040">purple effect</strong> <span data-i18n="tower.t041">appears, move away from that spot.</span></li>
+                <li><span data-i18n="tower.t042">[2] If you see the text</span> <strong data-i18n="tower.t043">Thunder Line 1 2 3 5, the 4th area is the safe zone.</strong></li>
+                <li><span data-i18n="tower.t044">[3] If you see the text</span> <strong data-i18n="tower.t045">Thunder Line 1 2 4 5, the 3th area is the safe zone.</strong> / <strong data-i18n="tower.t046">Thunder Line 1 3 5, the 2 4th area is the safe zone.</strong></li>
+            </ul>
+            <p class="g_note"><span data-i18n="tower.t101">[4] Thunder Maze - α - alternates danger zones in this order: 2 4 → 1 3 5 → 2 4 → 1, 3 5.</span> <span data-i18n="tower.t047">It’s easier if you think of dodging in the middle area first.</span></p>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig"><img src="./images/index/cladding_006.webp" alt="Thunder mechanic step 1" loading="lazy" decoding="async"><figcaption>Step 1</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/cladding_007.webp" alt="Thunder mechanic step 2" loading="lazy" decoding="async"><figcaption>Step 2</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/cladding_008.webp" alt="Thunder mechanic step 3" loading="lazy" decoding="async"><figcaption>Step 3</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/cladding_009.webp" alt="Thunder mechanic step 4" loading="lazy" decoding="async"><figcaption>Step 4</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="duality">
+            <h3><span class="g_sec_num">4</span><span class="g_skill_mark">[&lt;&lt;--&gt;&gt;] [O]</span>Ancient Rafoie - Duality -</h3>
+            <p data-i18n="tower.t050">[Step 1] When the text ≪--≫ [O] Ancient Ratoie -Duality- appears, all players should wait in the corners.</p>
+            <p><span data-i18n="tower.t051">[Step 2] Purple light appears in this order:</span> <strong>Red → Green → Yellow → Blue</strong><span data-i18n="tower.t052">, and each spot explodes.</span></p>
+            <p class="g_note g_warn" data-i18n="tower.t053">[★] Stand at each corner and move only after the purple effect appears.</p>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig"><img src="./images/index/cladding_012.webp" alt="Ancient Rafoie Duality positions" loading="lazy" decoding="async"><figcaption>Corner positions and movement order</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="divine">
+            <h3><span class="g_sec_num">5</span><span class="g_skill_mark">[@] [O][X]</span>Divine Punishment / Divine Cross</h3>
+            <ul class="g_bullets">
+                <li><span data-i18n="tower.t058">[1] When the text</span> <strong>Coordinate Charge</strong> <span data-i18n="tower.t060">appears, it forces the player to move to the corner of the map.</span></li>
+                <li data-i18n="tower.t061">[2] Position yourself in the circle near the boss to trigger the explosion (standing too close can cause overlapping damage to players).</li>
+            </ul>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig"><img src="./images/index/cladding_005.webp" alt="Divine Punishment position" loading="lazy" decoding="async"><figcaption>Divine Punishment</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/cladding_010.webp" alt="Divine Cross position" loading="lazy" decoding="async"><figcaption>Divine Cross</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="orbs">
+            <h3><span class="g_sec_num">6</span><span class="g_skill_mark">[?] [!][O]</span><span data-i18n="tower.t066">Get the 4 Orbs!</span> / Catastrophe Flame</h3>
+            <p data-i18n="tower.t068">[1] [?] Get the 4 Orbs! - Go to the designated corner and approach the Orb to pick it up.</p>
+            <p class="g_note g_warn" data-i18n="tower.t069">If your HP is low, heal first before grabbing the Orb, or you might die.</p>
+            <p data-i18n="tower.t070">[2] [!][O] Catastrophe Flame - The closer you are to the boss, the more damage you take. Stay as close to the wall as possible.</p>
+            <p class="g_note" data-i18n="tower.t071">Staying at the wall deals exactly 2000 HP damage. Good for triggering MAG invincibility.</p>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig"><img src="./images/index/cladding_011.webp" alt="Get the 4 Orbs mechanic" loading="lazy" decoding="async"><figcaption>Get the 4 Orbs!</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/cladding_013.webp" alt="Catastrophe Flame safe position" loading="lazy" decoding="async"><figcaption>Catastrophe Flame</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="cannon">
+            <h3><span class="g_sec_num">7</span><span class="g_skill_mark">[*]</span>Ultimate Destruction [Cannon]</h3>
+            <p data-i18n="tower.t102">[1] It fires lasers in this order: 11 o’clock → 1 o’clock → 5 o’clock → 7 o’clock.</p>
+            <p class="g_note g_warn" data-i18n="tower.t073">Check for the laser firing from the center, then dodge.</p>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig"><img src="./images/index/cladding_015.webp" alt="Ultimate Destruction Cannon laser order" loading="lazy" decoding="async"><figcaption>Laser firing order</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="boss-data">
+            <h3><span class="g_sec_num">8</span><span data-i18n="tower.t201">Boss data</span></h3>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr><th data-i18n="tower.t202">Item</th><th data-i18n="tower.t203">Value</th></tr></thead>
+                    <tbody>
+                        <tr><td class="g_name">Boss</td><td>Manipulator III / Divine Guard</td></tr>
+                        <tr><td class="g_name">HP</td><td class="g_num">2,180,000</td></tr>
+                        <tr><td class="g_name">DEF</td><td class="g_num">2,500</td></tr>
+                        <tr><td class="g_name">Weakness</td><td>Nothing</td></tr>
+                        <tr><td class="g_name">Areas</td><td>CCA → Control Tower → BOSS</td></tr>
+                        <tr><td class="g_name">Exclusive drop</td><td>Cladding of Manipulator III 1/10 (all IDs)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note g_warn" data-i18n="tower.t204">A red player is required, and the boss hits hard enough that a full team with good gear (especially Machine%) is expected.</p>
+            <p data-i18n="tower.t205">Role challenge - The Manipulator III: clear with no wipe in the boss room and without returning to Pioneer 2 from it, under 25 minutes.</p>
+        </section>
+
+        <section class="g_sec" id="timeline">
+            <h3><span class="g_sec_num">9</span><span data-i18n="tower.t206">Gimmick timeline</span></h3>
+            <p data-i18n="tower.t207">The boss runs its gimmicks in a fixed order. Knowing what comes next is the difference between reacting and guessing. Timeline recorded by VEL(JP).</p>
             <ol class="g_timeline">
                 <li><span class="g_tl_n">1</span>Anti PB Field</li>
                 <li><span class="g_tl_n">2</span>Explosion</li>
@@ -475,162 +218,62 @@
                 <li><span class="g_tl_n">47</span>Initialize &times;3</li>
                 <li><span class="g_tl_n">48</span>Forced Termination</li>
             </ol>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="tower.t208">Forced Termination repeats until the timer runs out.</p>
-        </div>
-        <div class="contents_aria" id="drops">
-            <h2 class="g_added_h2"><strong class="title_num">9</strong> <span data-i18n="tower.t209">Quest-exclusive drops</span></h2>
+            <p class="g_note" data-i18n="tower.t208">Forced Termination repeats until the timer runs out.</p>
+        </section>
+
+        <section class="g_sec" id="drops">
+            <h3><span class="g_sec_num">10</span><span data-i18n="tower.t209">Quest-exclusive drops</span></h3>
             <div class="g_scroll">
                 <table class="g_table g_mid">
-                    <thead><tr>
-                        <th data-i18n="tower.t210">Enemy</th>
-                        <th data-i18n="tower.t211">Drop</th>
-                    </tr></thead>
+                    <thead><tr><th data-i18n="tower.t210">Enemy</th><th data-i18n="tower.t211">Drop</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td class="g_name">Manipulator III</td>
-                            <td>Cladding of Manipulator III 1/10 (all IDs)</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Mericus</td>
-                            <td>Syncesta 1/787 · State/Maintenance 1/1865</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Astark</td>
-                            <td>Trap/Search 1/787 · Yasminkov 9000M 1/787</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Dorphon Eclair</td>
-                            <td>Photon Token 1/400 · Storm Render 1/787</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Pazuzu</td>
-                            <td>Photon Token 1/400 · Dark Matter 1/900</td>
-                        </tr>
+                        <tr><td class="g_name">Manipulator III</td><td>Cladding of Manipulator III 1/10 (all IDs)</td></tr>
+                        <tr><td class="g_name">Mericus</td><td>Syncesta 1/787 · State/Maintenance 1/1865</td></tr>
+                        <tr><td class="g_name">Astark</td><td>Trap/Search 1/787 · Yasminkov 9000M 1/787</td></tr>
+                        <tr><td class="g_name">Dorphon Eclair</td><td>Photon Token 1/400 · Storm Render 1/787</td></tr>
+                        <tr><td class="g_name">Pazuzu</td><td>Photon Token 1/400 · Dark Matter 1/900</td></tr>
                     </tbody>
                 </table>
             </div>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="tower.t212">Some of these exclude a few Section IDs. Cladding of Manipulator III was raised from 1/12 to 1/10 for all IDs in Ver.0.826.</p>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="tower.t213">Materials from this raid are what the Bazaar FOmar NPC turns into Jointparts, which reworks six weapons. The full effect list is on the Weapon Enhancement page.</p>
+            <p data-i18n="tower.t212">Some of these exclude a few Section IDs. Cladding of Manipulator III was raised from 1/12 to 1/10 for all IDs in Ver.0.826.</p>
+            <p data-i18n="tower.t213">Materials from this raid are what the Bazaar FOmar NPC turns into Jointparts, which reworks six weapons. The full effect list is on the Weapon Enhancement page.</p>
             <div class="g_figs g_figs_wide">
-                <figure class="g_fig">
-                    <img src="./images/guide/tower-jointparts.webp" alt="" loading="lazy" decoding="async">
-                    <figcaption data-i18n="tower.t214">Jointparts, traded with materials from this raid.</figcaption>
-                </figure>
+                <figure class="g_fig"><img src="./images/guide/tower-jointparts.webp" alt="Jointparts" loading="lazy" decoding="async"><figcaption data-i18n="tower.t214">Jointparts, traded with materials from this raid.</figcaption></figure>
             </div>
-        </div>
-        <div class="contents_aria" id="ex-version">
-            <h2 class="g_added_h2"><strong class="title_num">10</strong> <span data-i18n="tower.t215">The Manipulated Tower [Raid] — the EX version</span></h2>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="tower.t216">A boss-only version at ★9. Same fight, higher numbers and changed gimmicks.</p>
+        </section>
+
+        <section class="g_sec" id="ex-version">
+            <h3><span class="g_sec_num">11</span><span data-i18n="tower.t215">The Manipulated Tower [Raid] - the EX version</span></h3>
+            <p data-i18n="tower.t216">A boss-only version at ★9. Same fight, higher numbers and changed gimmicks.</p>
             <div class="g_scroll">
                 <table class="g_table g_mid">
-                    <thead><tr>
-                        <th data-i18n="tower.t202">Item</th>
-                        <th data-i18n="tower.t203">Value</th>
-                    </tr></thead>
+                    <thead><tr><th data-i18n="tower.t202">Item</th><th data-i18n="tower.t203">Value</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td class="g_name">Boss</td>
-                            <td>Manipulator III ver.2 / Divine Guard</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">HP</td>
-                            <td class="g_num">3,270,000</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">DEF</td>
-                            <td class="g_num">2,500</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Weakness</td>
-                            <td>Nothing</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Structure</td>
-                            <td>Boss fight only, no trash mobs</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Drops</td>
-                            <td>GOLDEN HALO 1/39 (all IDs) · Photon Token 1/400 (Ill Gill, Pazuzu)</td>
-                        </tr>
+                        <tr><td class="g_name">Boss</td><td>Manipulator III ver.2 / Divine Guard</td></tr>
+                        <tr><td class="g_name">HP</td><td class="g_num">3,270,000</td></tr>
+                        <tr><td class="g_name">DEF</td><td class="g_num">2,500</td></tr>
+                        <tr><td class="g_name">Weakness</td><td>Nothing</td></tr>
+                        <tr><td class="g_name">Structure</td><td>Boss fight only, no trash mobs</td></tr>
+                        <tr><td class="g_name">Drops</td><td>GOLDEN HALO 1/39 (all IDs) · Photon Token 1/400 (Ill Gill, Pazuzu)</td></tr>
                     </tbody>
                 </table>
             </div>
-            <p style="margin-bottom: 6px; font-size: 18px; color: #ff4f4f" data-i18n="tower.t217">The widescreen client (psobbw.exe) is required. A 4:3 client cannot run it.</p>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="tower.t218">Role challenge — The Manipulator III Ver.2: no wipe in the boss room and no returning from it.</p>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="tower.t219">Community tip: a Resta boost also widens Star Atomizer range, and a Reverser boost widens Moon Atomizer range.</p>
+            <p class="g_note g_warn" data-i18n="tower.t217">The widescreen client (psobbw.exe) is required. A 4:3 client cannot run it.</p>
+            <p data-i18n="tower.t218">Role challenge - The Manipulator III Ver.2: no wipe in the boss room and no returning from it.</p>
+            <p class="g_note" data-i18n="tower.t219">Community tip: a Resta boost also widens Star Atomizer range, and a Reverser boost widens Moon Atomizer range.</p>
             <div class="g_figs g_figs_wide">
-                <figure class="g_fig">
-                    <img src="./images/guide/tower-thunder-maze-b-1.webp" alt="" loading="lazy" decoding="async">
-                    <figcaption data-i18n="tower.t220">Thunder Maze B route, part 1. Made by matha_jp.</figcaption>
-                </figure>
-                <figure class="g_fig">
-                    <img src="./images/guide/tower-thunder-maze-b-2.webp" alt="" loading="lazy" decoding="async">
-                    <figcaption data-i18n="tower.t221">Thunder Maze B route, part 2.</figcaption>
-                </figure>
+                <figure class="g_fig"><img src="./images/guide/tower-thunder-maze-b-1.webp" alt="Thunder Maze B route part 1" loading="lazy" decoding="async"><figcaption data-i18n="tower.t220">Thunder Maze B route, part 1. Made by matha_jp.</figcaption></figure>
+                <figure class="g_fig"><img src="./images/guide/tower-thunder-maze-b-2.webp" alt="Thunder Maze B route part 2" loading="lazy" decoding="async"><figcaption data-i18n="tower.t221">Thunder Maze B route, part 2.</figcaption></figure>
             </div>
-        </div>
+        </section>
     </main>
-</body>
 
-<div class="img_popup" id="imgPopup">
-    <div class="popup_dim"></div>
-    <div class="popup_inner">
-        <button class="popup_close">✕</button>
-        <img src="" alt="">
+    <div class="g_popup" id="gPopup" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image preview">
+        <div class="g_popup_dim"></div>
+        <div class="g_popup_inner">
+            <button class="g_popup_close" type="button" aria-label="Close">&#10005;</button>
+            <img src="" alt="">
+        </div>
     </div>
-</div>
+</body>
 </html>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".contents_aria[id]");
-    const links = document.querySelectorAll(".side_nav a");
-
-    const map = new Map();
-    links.forEach(a => map.set(a.getAttribute("href").slice(1), a));
-
-    const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-        links.forEach(a => a.classList.remove("active"));
-        const id = entry.target.id;
-        const link = map.get(id);
-        if(link) link.classList.add("active");
-        }
-    });
-    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
-
-    sections.forEach(sec => io.observe(sec));
-});
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const popup = document.getElementById("imgPopup");
-    const popupImg = popup.querySelector("img");
-    const closeBtn = popup.querySelector(".popup_close");
-    const dim = popup.querySelector(".popup_dim");
-
-    document.querySelectorAll(".photo_aria img").forEach(img => {
-    img.addEventListener("click", () => {
-        popupImg.src = img.src;
-        popup.classList.add("active");
-        document.body.style.overflow = "hidden";
-    });
-    });
-
-    function closePopup(){
-    popup.classList.remove("active");
-    popupImg.src = "";
-    document.body.style.overflow = "";
-    }
-
-    closeBtn.addEventListener("click", closePopup);
-    dim.addEventListener("click", closePopup);
-});
-document.addEventListener("keydown", e => {
-    if(e.key === "Escape"){
-        closePopup();
-    }
-});
-</script>

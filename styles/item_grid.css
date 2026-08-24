@@ -246,11 +246,11 @@
     margin: 16px 0 0;
     padding: 20px;
     border: 1px solid var(--border);
-    border-radius: 16px;
+    border-radius: var(--radius-card);
     background:
         linear-gradient(135deg, color-mix(in srgb, var(--accent) 11%, transparent), transparent 52%),
         var(--surface);
-    box-shadow: 0 14px 32px rgba(9, 25, 49, 0.08);
+    box-shadow: var(--shadow-sm);
 }
 
 .destiny_priority_overview_head {
@@ -298,7 +298,7 @@
     gap: 3px;
     padding: 11px 12px;
     border: 1px solid var(--border);
-    border-radius: 11px;
+    border-radius: var(--radius-control);
     background: color-mix(in srgb, var(--surface-soft) 86%, transparent);
 }
 
@@ -344,7 +344,7 @@
     align-items: center;
     padding: 3px 8px;
     border: 1px solid transparent;
-    border-radius: 999px;
+    border-radius: var(--radius-pill);
     font-size: 10px;
     font-weight: 900;
     letter-spacing: 0.02em;
@@ -390,7 +390,7 @@ html[data-theme="dark"] .destiny_priority_badge--unit { color: #c5b2ff; }
 .destiny_operator_section {
     padding: 15px;
     border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--border));
-    border-radius: 13px;
+    border-radius: var(--radius-card);
     background: color-mix(in srgb, var(--accent) 7%, var(--surface-soft));
 }
 
@@ -425,7 +425,7 @@ html[data-theme="dark"] .destiny_priority_badge--unit { color: #c5b2ff; }
     gap: 10px;
     padding: 9px 10px;
     border: 1px solid var(--border);
-    border-radius: 9px;
+    border-radius: var(--radius-control);
     background: var(--surface);
 }
 
@@ -456,7 +456,7 @@ html[data-theme="dark"] .destiny_priority_badge--unit { color: #c5b2ff; }
     gap: 10px;
     margin: 0;
     padding: 9px 10px;
-    border-radius: 9px;
+    border-radius: var(--radius-control);
     background: color-mix(in srgb, #f4c84a 10%, var(--surface));
 }
 
@@ -597,6 +597,13 @@ html[data-theme="dark"] .destiny_priority_badge--unit { color: #c5b2ff; }
    이제 모든 카드가 flex footer를 공유하므로 중복 여백을 제거한다. */
 .ig_grid_inner .destiny_catalog_card .item_inner {
     padding-bottom: 14px;
+}
+
+/* Long final notes used to sit only 2px above the footer divider. Keep a
+   deliberate text-to-divider gap without moving the shared footer off the
+   bottom edge of shorter cards. */
+.ig_grid_inner .item_inner > .item_detail:last-of-type {
+    margin-bottom: var(--space-3);
 }
 
 /* 짧은 카드의 남는 공간을 비워 둔 채로 끝내지 않고, 상세보기 안내를
@@ -799,7 +806,7 @@ html[data-theme="dark"] .ig_row_sub {
     font-weight: 700;
     font-family: inherit;
     cursor: pointer;
-    transition: border-color 160ms ease, transform 160ms ease;
+    transition: border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
 }
 
 .ig_more:hover {

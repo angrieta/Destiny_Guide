@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
-    
+
     <style>
         html{
         scroll-behavior: smooth;
@@ -65,7 +65,7 @@
 
             /* 모바일에서는 숨김(선택) */
             @media (max-width: 768px){
-                .side_nav{ display:none; 
+                .side_nav{ display:none;
                 }
                 .popup_inner{
                 position: absolute;
@@ -202,24 +202,24 @@
     user-select: none;
     flex-direction: column;
     line-height: 1.1;
-    transition: all 0.1s ease;
+    transition: background-color 100ms ease, border-color 100ms ease, color 100ms ease, transform 100ms ease;
   }
- 
+
   .key:hover {
     background: #f0f0f0;
   }
- 
+
   .key:active {
     transform: scale(0.95);
   }
- 
+
   /* 키가 눌린 상태 (토글) */
   .key.pressed {
     background: #d6e9ff;
     color: #1a5fb4;
     border-color: #6aaed8;
   }
- 
+
   /* 너비 modifier 클래스 */
   .key.w45  {}
   .key.w50  { min-width: 50px; }
@@ -228,14 +228,14 @@
   .key.w85  { min-width: 85px; }
   .key.w100 { min-width: 70px; }
   .key.wide-space { min-width: 232px; }
- 
+
   /* 숫자패드 + / Enter는 세로로 긴 키 */
   .key.tall { height: 72px; }
- 
+
   /* 두 글자 키 (상단 기호 + 하단 숫자/문자) */
   .key .top { font-size: 10px; }
   .key .bot { font-size: 10px; margin-top: 2px; }
- 
+
    /* 다운로드 버튼 영역 */
     .download_aria {
         display: flex;
@@ -248,7 +248,7 @@
         border: 2px dashed #c442cf;
         border-radius: 12px;
     }
- 
+
     .download_btn {
         display: inline-flex;
         align-items: center;
@@ -261,30 +261,30 @@
         text-decoration: none;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(196, 66, 207, 0.3);
-        transition: all 0.2s ease;
+        transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
     }
- 
+
     .download_btn:hover {
         background: #a835b3;
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(196, 66, 207, 0.45);
     }
- 
+
     .download_btn:active {
         transform: translateY(0);
     }
- 
+
     .download_btn .icon {
         font-size: 22px;
     }
- 
+
     .download_info {
         display: flex;
         gap: 16px;
         font-size: 13px;
         color: #666;
     }
- 
+
     .download_info span {
         display: inline-flex;
         align-items: center;
@@ -314,7 +314,7 @@
             .mobile_h2{ display: flex; align-items: center; margin: 30px 0 15px;}
             .icon-text{
             font-size: 17px; font-weight: 600;}
-            
+
         }
         @media screen and (max-width: 1250px) {
             main {
@@ -334,6 +334,7 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
 </head>
 
 <!-- 헤더시작 -->
@@ -365,11 +366,11 @@
         <div class="beginner_title">
             <h2>PSOBB-Tools</h2>
             <h3 data-i18n="tool.t018">I made this tool to smooth out as many of PSOBB's pain points as possible and make the game more enjoyable to play. </h3>
-            <p style="color: #c442cf;" data-i18n="tool.t019">psobb-tools is based on the structure of RPAS — a huge thank you to Roland, who has since retired. Your work made this possible.</p>
+            <p style="color: #c442cf;" data-i18n="tool.t019">psobb-tools is based on the structure of RPAS - a huge thank you to Roland, who has since retired. Your work made this possible.</p>
         </div>
 
         <!-- =============== HTML (본문에 삽입) =============== -->
- 
+
         <!-- 심플 버전 -->
         <div class="download_aria">
             <a href="images/file/PSOBB-Tools.exe" download class="download_btn">
@@ -381,7 +382,7 @@
                 <span>💻 Windows</span>
             </div>
         </div>
-        
+
 
         <!-- ============ psobb-Tools Features (배포용) ============ -->
         <div class="contents_aria meseta_aria" id="meseta">
@@ -691,16 +692,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closePopup(){
     popup.classList.remove("active");
-    popupImg.src = "";
     document.body.style.overflow = "";
     }
 
     closeBtn.addEventListener("click", closePopup);
     dim.addEventListener("click", closePopup);
-});
-document.addEventListener("keydown", e => {
-    if(e.key === "Escape"){
+    document.addEventListener("keydown", e => {
+    if(e.key === "Escape" && popup.classList.contains("active")){
         closePopup();
     }
+    });
 });
 </script>

@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { DropRecord, DropTablePayload, ItemType, MatrixDrop } from "./types";
 import styles from "./drop-tables.module.css";
-import { LanguageSwitcher, useI18n } from "../i18n/i18n";
-import { HappyHourHeader } from "../components/HappyHourHeader";
+import { useI18n } from "../i18n/i18n";
+import { SiteHeader } from "../components/SiteHeader";
 import { useHeaderHeight } from "../components/useHeaderHeight";
 
 const THEME_KEY = "destiny-guide-theme";
@@ -86,9 +86,33 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const [farmRuns, setFarmRuns] = useState(20);
   const [showQuickControls, setShowQuickControls] = useState(false);
   const [mobileControlsOpen, setMobileControlsOpen] = useState(false);
+  const [mobileControlsClosing, setMobileControlsClosing] = useState(false);
   const controlsAnchorRef = useRef<HTMLDivElement>(null);
   const matrixScrollRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const sectionHeaderRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const mobileCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mobileQuickButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileDrawerCloseRef = useRef<HTMLButtonElement>(null);
+
+  const openMobileControls = useCallback(() => {
+    if (mobileCloseTimerRef.current) window.clearTimeout(mobileCloseTimerRef.current);
+    setMobileControlsClosing(false);
+    setMobileControlsOpen(true);
+  }, []);
+
+  const closeMobileControls = useCallback(() => {
+    if (!mobileControlsOpen || mobileControlsClosing) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setMobileControlsOpen(false);
+      return;
+    }
+    setMobileControlsClosing(true);
+    mobileCloseTimerRef.current = window.setTimeout(() => {
+      setMobileControlsOpen(false);
+      setMobileControlsClosing(false);
+      mobileCloseTimerRef.current = null;
+    }, 180);
+  }, [mobileControlsClosing, mobileControlsOpen]);
 
   useEffect(() => {
     const saved = window.localStorage.getItem(THEME_KEY);
@@ -133,44 +157,53 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   useEffect(() => {
     const anchor = controlsAnchorRef.current;
     if (!anchor) return;
-    let frame = 0;
-    const updateQuickControls = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        // 헤더 높이를 실측한다. 언어에 따라 칩이 감겨 헤더가 두 줄이 될 수 있어서
-        // 뷰포트 폭으로 추측하면 sticky 판정이 어긋난다.
-        const headerOffset = document.querySelector("header")?.getBoundingClientRect().height ?? 110;
-        const passedAboveHeader = anchor.getBoundingClientRect().bottom <= headerOffset;
+    const header = document.querySelector("header");
+    let observer: IntersectionObserver | null = null;
+
+    const connectObserver = () => {
+      observer?.disconnect();
+      const headerOffset = Math.ceil(header?.getBoundingClientRect().height ?? 68);
+      observer = new IntersectionObserver(([entry]) => {
+        const passedAboveHeader = !entry.isIntersecting && entry.boundingClientRect.bottom <= headerOffset;
         setShowQuickControls(passedAboveHeader);
-        if (!passedAboveHeader) setMobileControlsOpen(false);
-      });
+        if (!passedAboveHeader) {
+          setMobileControlsOpen(false);
+          setMobileControlsClosing(false);
+        }
+      }, { rootMargin: `-${headerOffset}px 0px 0px 0px`, threshold: 0 });
+      observer.observe(anchor);
     };
-    const resizeObserver = new ResizeObserver(updateQuickControls);
-    resizeObserver.observe(document.documentElement);
-    window.addEventListener("scroll", updateQuickControls, { passive: true });
-    window.addEventListener("resize", updateQuickControls);
-    updateQuickControls();
+
+    const resizeObserver = new ResizeObserver(connectObserver);
+    if (header) resizeObserver.observe(header);
+    connectObserver();
     return () => {
-      cancelAnimationFrame(frame);
+      observer?.disconnect();
       resizeObserver.disconnect();
-      window.removeEventListener("scroll", updateQuickControls);
-      window.removeEventListener("resize", updateQuickControls);
     };
   }, []);
 
   useEffect(() => {
     if (!mobileControlsOpen) return;
     const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const focusFrame = window.requestAnimationFrame(() => mobileDrawerCloseRef.current?.focus());
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMobileControlsOpen(false);
+      if (event.key === "Escape") closeMobileControls();
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", closeOnEscape);
     return () => {
+      window.cancelAnimationFrame(focusFrame);
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeOnEscape);
+      (previousFocus ?? mobileQuickButtonRef.current)?.focus();
     };
-  }, [mobileControlsOpen]);
+  }, [closeMobileControls, mobileControlsOpen]);
+
+  useEffect(() => () => {
+    if (mobileCloseTimerRef.current) window.clearTimeout(mobileCloseTimerRef.current);
+  }, []);
 
   const visibleRows = useMemo(
     () =>
@@ -313,46 +346,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
 
   return (
     <>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <h1 className={styles.siteLogo}>
-            <a href="../index.html" aria-label={t("header.logo.alt", "Destiny Guide")}><img src="../images/common/rogo.png" alt="Destiny Guide" /></a>
-          </h1>
-          <nav className={styles.headerMenus} aria-label={t("dt.nav.aria", "Main navigation")}>
-            <div>
-              <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
-              <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
-              <a href="../class_builds.html">Class Builds</a>
-              <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
-              <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
-              <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
-              <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
-              <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
-              <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
-              <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
-              <a href="../redeem/">{t("header.nav.redeem", "Token Redeem")}</a>
-            </div>
-            <div className={styles.raidMenu}>
-              <a href="../dn.html">Distorted Nightmare [RAID]</a>
-              <a href="../discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
-              <a href="../predator_raid.html">The Ravenous Predator [RAID]</a>
-              <a href="../tpd_page.html">The Phantasmal Dimension</a>
-            </div>
-          </nav>
-          <div className={styles.headerActions}>
-            <button className={styles.themeButton} type="button" onClick={updateTheme} aria-label={theme === "dark" ? t("header.theme.light", "Light mode") : t("header.theme.dark", "Dark mode")} aria-pressed={theme === "dark"}>
-              <span className={styles.themeIcon} aria-hidden="true" />
-              {theme === "dark" ? "Light" : "Dark"}
-            </button>
-            <a className={styles.discordLink} href="https://discord.gg/FesaarwjFn" target="_blank" rel="noreferrer" aria-label="Destiny Discord" />
-            <a className={styles.dropTableLink} href="../drop-tables/" aria-current="page">{t("header.link.dropTables", "Drop Tables")}</a>
-            <a className={styles.dropTableLink} href="../database/">{t("header.link.database", "Database")}</a>
-            {/* /calculator/ stays unlisted until its damage model is verified. */}
-            <LanguageSwitcher />
-            <HappyHourHeader />
-          </div>
-        </div>
-      </header>
+      <SiteHeader active="drop-tables" theme={theme} onThemeToggle={updateTheme} />
 
       <section className={styles.matrixHero}>
         <p className={styles.eyebrow}>{t("dt.hero.eyebrow", "DESTINY PSOBB DATABASE")}</p>
@@ -516,16 +510,16 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
             <header><div><span>{t("dt.quick.eyebrow", "Quick controls")}</span><strong>{t("dt.quick.title", "Search & filter")}</strong></div><small>{t("dt.quick.note", "All difficulties search")}</small></header>
             <div className={styles.quickPanelBody}>{quickControls()}</div>
           </aside>
-          <button className={styles.mobileQuickButton} type="button" onClick={() => setMobileControlsOpen(true)} aria-label={t("dt.quick.open", "Open search and filters")} aria-expanded={mobileControlsOpen}>
+          <button ref={mobileQuickButtonRef} className={styles.mobileQuickButton} type="button" onClick={openMobileControls} aria-label={t("dt.quick.open", "Open search and filters")} aria-expanded={mobileControlsOpen}>
             <span aria-hidden="true">⌕</span><strong dangerouslySetInnerHTML={{ __html: t("dt.quick.button", "Search<br />& Filter") }} />{activeFilterCount > 0 && <b>{activeFilterCount}</b>}
           </button>
         </>
       )}
 
       {mobileControlsOpen && (
-        <div className={styles.mobileQuickBackdrop} role="presentation" onClick={() => setMobileControlsOpen(false)}>
+        <div className={`${styles.mobileQuickBackdrop} ${mobileControlsClosing ? styles.mobileQuickClosing : ""}`} role="presentation" onClick={closeMobileControls}>
           <aside className={styles.mobileQuickDrawer} role="dialog" aria-modal="true" aria-label={t("dt.drawer.aria", "Search, filters and difficulty")} onClick={(event) => event.stopPropagation()}>
-            <header><div><span>{t("dt.hero.title", "Drop Tables")}</span><h2>{t("dt.drawer.title", "Search & Filter")}</h2></div><button type="button" onClick={() => setMobileControlsOpen(false)} aria-label={t("dt.drawer.close", "Close search and filters")}>×</button></header>
+            <header><div><span>{t("dt.hero.title", "Drop Tables")}</span><h2>{t("dt.drawer.title", "Search & Filter")}</h2></div><button ref={mobileDrawerCloseRef} type="button" onClick={closeMobileControls} aria-label={t("dt.drawer.close", "Close search and filters")}>×</button></header>
             <div className={styles.quickPanelBody}>{quickControls(true)}</div>
           </aside>
         </div>

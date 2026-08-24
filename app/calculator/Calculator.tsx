@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { LanguageSwitcher, useI18n } from "../i18n/i18n";
-import { HappyHourHeader } from "../components/HappyHourHeader";
+import { useI18n } from "../i18n/i18n";
+import { SiteHeader } from "../components/SiteHeader";
 import { useHeaderHeight } from "../components/useHeaderHeight";
 import { MAX_BUFF_LEVEL, buffPercent, computeTotals } from "./totals";
 import type { BaseStats, Buffs, Loadout } from "./totals";
@@ -202,50 +202,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
 
   return (
     <div className={styles.pageShell}>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <h1 className={styles.siteLogo}>
-            <a href="../index.html" aria-label="Destiny Guide">
-              <img src="../images/common/rogo.png" alt="Destiny Guide" />
-            </a>
-          </h1>
-          <nav className={styles.headerMenus} aria-label={t("db.nav.aria", "Main navigation")}>
-            <div>
-              <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
-              <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
-              <a href="../class_builds.html">Class Builds</a>
-              <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
-              <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
-              <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
-              <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
-              <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
-              <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
-              <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
-              <a href="../redeem/">{t("header.nav.redeem", "Token Redeem")}</a>
-            </div>
-            <div className={styles.raidMenu}>
-              <a href="../dn.html">Distorted Nightmare [RAID]</a>
-              <a href="../discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
-              <a href="../predator_raid.html">The Ravenous Predator [RAID]</a>
-              <a href="../tpd_page.html">The Phantasmal Dimension</a>
-            </div>
-          </nav>
-          <div className={styles.headerActions}>
-            <button className={styles.themeButton} type="button" onClick={updateTheme} aria-pressed={theme === "dark"}>
-              <span className={styles.themeIcon} aria-hidden="true" />
-              {theme === "dark" ? t("theme.light", "Light") : t("theme.dark", "Dark")}
-            </button>
-            <a className={styles.navLink} href="../drop-tables/">
-              {t("header.link.dropTables", "Drop Tables")}
-            </a>
-            <a className={styles.navLink} href="../database/">
-              {t("header.link.database", "Database")}
-            </a>
-            <LanguageSwitcher />
-            <HappyHourHeader />
-          </div>
-        </div>
-      </header>
+      <SiteHeader active="calculator" theme={theme} onThemeToggle={updateTheme} />
 
       <section className={styles.hero}>
         <p className={styles.eyebrow}>{t("calc.eyebrow", "STAT CALCULATOR")}</p>
@@ -339,7 +296,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
           </div>
           <p className={materialTotal > currentClass.materialCap ? styles.magNoteOver : styles.magNote}>
             {t("calc.magTotal", "Total")} {materialTotal} / {currentClass.materialCap}
-            {materialTotal > currentClass.materialCap && ` — ${t("calc.overCap", "over the class limit")}`}
+            {materialTotal > currentClass.materialCap && ` - ${t("calc.overCap", "over the class limit")}`}
           </p>
 
           <h3 className={styles.subhead}>{t("calc.buffs", "Shifta / Deband")}</h3>
@@ -600,7 +557,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
               <ul>
                 {totals.uncounted.map((entry, index) => (
                   <li key={index}>
-                    <strong>{entry.item}</strong> — {entry.effect}
+                    <strong>{entry.item}</strong> - {entry.effect}
                   </li>
                 ))}
               </ul>

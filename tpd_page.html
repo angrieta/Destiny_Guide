@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
 </head>
 
 <!-- 헤더시작 -->
@@ -24,7 +25,7 @@
     <script src="./scripts/include.js"></script>
 <!-- 헤더종료 -->
 
-<body>
+<body class="raid_page">
     <main class="g_page">
         <div class="g_head">
             <h2><span>The Phantasmal Dimension</span></h2>
@@ -127,7 +128,7 @@
                             <td class="g_name">Eclipse Dragon</td>
                             <td class="g_num">820,000</td>
                             <td>Clone 112,500 · Breath (ground) 5686 · Breath (air) 4295</td>
-                            <td>—</td>
+                            <td>-</td>
                         </tr>
                     </tbody>
                 </table>
@@ -145,35 +146,35 @@
                     </tr></thead>
                     <tbody>
                         <tr>
-                            <td class="g_name">Lavaross — press</td>
+                            <td class="g_name">Lavaross - press</td>
                             <td class="g_num">1846</td>
                         </tr>
                         <tr>
-                            <td class="g_name">Dark Nebulas — charge</td>
+                            <td class="g_name">Dark Nebulas - charge</td>
                             <td class="g_num">1643</td>
                         </tr>
                         <tr>
-                            <td class="g_name">Pazuzu — gliding</td>
+                            <td class="g_name">Pazuzu - gliding</td>
                             <td class="g_num">1528</td>
                         </tr>
                         <tr>
-                            <td class="g_name">Pazuzu — laser</td>
+                            <td class="g_name">Pazuzu - laser</td>
                             <td class="g_num">1294</td>
                         </tr>
                         <tr>
-                            <td class="g_name">Dubchic — beam</td>
+                            <td class="g_name">Dubchic - beam</td>
                             <td class="g_num">1339</td>
                         </tr>
                         <tr>
-                            <td class="g_name">Varazopt Ver.D — missile (1 hit)</td>
+                            <td class="g_name">Varazopt Ver.D - missile (1 hit)</td>
                             <td class="g_num">1248</td>
                         </tr>
                         <tr>
-                            <td class="g_name">Astark — on spawn</td>
+                            <td class="g_name">Astark - on spawn</td>
                             <td class="g_num">1154</td>
                         </tr>
                         <tr>
-                            <td class="g_name">Epsilon — Rafoie</td>
+                            <td class="g_name">Epsilon - Rafoie</td>
                             <td class="g_num">2105 (EFR 0) · 736 (EFR 65) · 505 (EFR 76)</td>
                         </tr>
                     </tbody>
@@ -186,7 +187,7 @@
             <p data-i18n="tpd.t033">Each circle is one wave seen from above, numbered in spawn order. Red arrows mark enemies that come in from outside the ring. Charts by thanx JP.</p>
             <figure class="g_fig g_fig_full">
                 <img src="./images/guide/tpd-wave-area1.webp" alt="" loading="lazy" decoding="async">
-                <figcaption data-i18n="tpd.t034">FLOOR1 — 24 waves.</figcaption>
+                <figcaption data-i18n="tpd.t034">FLOOR1 - 24 waves.</figcaption>
             </figure>
             <figure class="g_fig g_fig_full">
                 <img src="./images/guide/tpd-wave-area4.webp" alt="" loading="lazy" decoding="async">
@@ -368,7 +369,6 @@
 
         function close() {
             popup.classList.remove("active");
-            img.src = "";
             document.body.style.overflow = "";
         }
         document.querySelectorAll(".g_fig img").forEach(function (el) {

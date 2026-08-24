@@ -14,7 +14,7 @@ header{
 .mid_menu_2{
 margin-left: 15px;}
 header .inner{
-    width: 100%; 
+    width: 100%;
     padding: 0 var(--content-gutter, 24px);
     display: flex;
     gap: 32px;
@@ -71,7 +71,7 @@ header .inner .left_menu{
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;
-    transition: border-color 180ms ease, background-color 180ms ease;
+    transition: border-color 180ms var(--ease-out), background-color 180ms var(--ease-out);
 }
 
 .happy_hour_header:hover,
@@ -350,7 +350,7 @@ body,
 .popup_box,
 .contents_aria,
 .beginner_inner {
-    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+    transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out);
 }
 
 .site-header {
@@ -705,7 +705,7 @@ html[data-theme="dark"] .img_popup .popup_inner {
     letter-spacing: 0.02em;
     line-height: 1;
     cursor: pointer;
-    transition: border-color 180ms ease, background-color 180ms ease;
+    transition: border-color 180ms var(--ease-out), background-color 180ms var(--ease-out);
 }
 
 .lang_switch .lang_switch_button:hover { border-color: var(--accent); }
@@ -753,7 +753,7 @@ html[data-theme="dark"] .img_popup .popup_inner {
     border: 3.5px solid transparent;
     border-top-color: currentColor;
     margin-top: 2px;
-    transition: transform 180ms ease;
+    transition: transform 180ms var(--ease-out);
 }
 .lang_switch[data-open="true"] .lang_switch_caret { transform: rotate(180deg); margin-top: -2px; }
 

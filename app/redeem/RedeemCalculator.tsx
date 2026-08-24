@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { LanguageSwitcher, useI18n } from "../i18n/i18n";
-import { HappyHourHeader } from "../components/HappyHourHeader";
+import { useI18n } from "../i18n/i18n";
+import { SiteHeader } from "../components/SiteHeader";
 import { useHeaderHeight } from "../components/useHeaderHeight";
 import { WeaponPicker } from "./WeaponPicker";
 import {
@@ -204,63 +204,11 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
 
   return (
     <div className={styles.pageShell}>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <h1 className={styles.siteLogo}>
-            <a href="../index.html" aria-label={t("header.logo.alt", "Destiny Guide")}>
-              <img src="../images/common/rogo.png" alt="Destiny Guide" />
-            </a>
-          </h1>
-          <nav className={styles.headerMenus} aria-label={t("db.nav.aria", "Main navigation")}>
-            <div>
-              <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
-              <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
-              <a href="../class_builds.html">Class Builds</a>
-              <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
-              <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
-              <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
-              <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
-              <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
-              <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
-              <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
-              <a href="../redeem/" aria-current="page">{t("header.nav.redeem", "Token Redeem")}</a>
-            </div>
-            <div className={styles.raidMenu}>
-              <a href="../dn.html">Distorted Nightmare [RAID]</a>
-              <a href="../discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
-              <a href="../predator_raid.html">The Ravenous Predator [RAID]</a>
-              <a href="../tpd_page.html">The Phantasmal Dimension</a>
-            </div>
-          </nav>
-          <div className={styles.headerActions}>
-            <button
-              className={styles.themeButton}
-              type="button"
-              onClick={() => applyTheme(theme === "dark" ? "light" : "dark")}
-              aria-label={theme === "dark" ? t("header.theme.light", "Light mode") : t("header.theme.dark", "Dark mode")}
-              aria-pressed={theme === "dark"}
-            >
-              <span className={styles.themeIcon} aria-hidden="true" />
-              {theme === "dark" ? t("header.theme.lightShort", "Light") : t("header.theme.darkShort", "Dark")}
-            </button>
-            <a
-              className={styles.discordLink}
-              href="https://discord.gg/FesaarwjFn"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Destiny Discord"
-            />
-            <a className={styles.navLink} href="../drop-tables/">
-              {t("header.link.dropTables", "Drop Tables")}
-            </a>
-            <a className={styles.navLink} href="../database/">
-              {t("header.link.database", "Database")}
-            </a>
-            <LanguageSwitcher />
-            <HappyHourHeader />
-          </div>
-        </div>
-      </header>
+      <SiteHeader
+        active="redeem"
+        theme={theme}
+        onThemeToggle={() => applyTheme(theme === "dark" ? "light" : "dark")}
+      />
 
       <section className={styles.hero}>
         <p className={styles.eyebrow}>{t("redeem.eyebrow", "REDEEM CALCULATOR")}</p>
@@ -299,7 +247,7 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
                         placeholder={t("redeem.namePlaceholder", "Weapon name (optional)")}
                         label={t("redeem.nameLabel", "Weapon name")}
                         moreLabel={(count) =>
-                          t("redeem.moreMatches", "{n} more — keep typing").replace("{n}", String(count))
+                          t("redeem.moreMatches", "{n} more - keep typing").replace("{n}", String(count))
                         }
                         onChange={(next) => rename(row.id, next)}
                       />
@@ -329,10 +277,10 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
                   <div className={styles.rowFoot}>
                     <span>
                       {t("redeem.attribute", "Attribute")}{" "}
-                      <b>{entry.attributeAdded > 0 ? `+${entry.attributeAdded}%` : "—"}</b>
+                      <b>{entry.attributeAdded > 0 ? `+${entry.attributeAdded}%` : "-"}</b>
                     </span>
                     <span>
-                      {t("redeem.hit", "Hit")} <b>{entry.hitAdded > 0 ? `+${entry.hitAdded}%` : "—"}</b>
+                      {t("redeem.hit", "Hit")} <b>{entry.hitAdded > 0 ? `+${entry.hitAdded}%` : "-"}</b>
                     </span>
                     <span
                       className={
@@ -386,7 +334,7 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
             <li>
               {t(
                 "redeem.rule.deleted",
-                "Percentage you delete is gone. It cannot move to another weapon — unlike percentage left over from a block you paid for.",
+                "Percentage you delete is gone. It cannot move to another weapon - unlike percentage left over from a block you paid for.",
               )}
             </li>
             <li>
@@ -464,7 +412,7 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
             <p className={styles.leftoverOk}>
               {empty
                 ? t("redeem.nothingYet", "Nothing to order yet.")
-                : t("redeem.noWaste", "No leftover — every block you buy lands on a weapon.")}
+                : t("redeem.noWaste", "No leftover - every block you buy lands on a weapon.")}
             </p>
           )}
 
@@ -472,7 +420,7 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
             <ul className={styles.issueList}>
               {issues.map((issue, index) => (
                 <li key={index} className={issue.level === "error" ? styles.issueError : styles.issueWarn}>
-                  <b>{issue.row}</b> — {issue.text}
+                  <b>{issue.row}</b> - {issue.text}
                 </li>
               ))}
             </ul>
@@ -493,7 +441,7 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
           <p className={styles.magNote}>
             {t(
               "redeem.gcNote",
-              "Staff ask for this in the order. It stays in your browser — this page has no server and never puts it in the address bar.",
+              "Staff ask for this in the order. It stays in your browser - this page has no server and never puts it in the address bar.",
             )}
           </p>
 
@@ -518,7 +466,7 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
           <p className={styles.disclaimer}>
             {t(
               "redeem.disclaimer",
-              `Blocks are ${ATTRIBUTE_BLOCK}% attribute or ${HIT_BLOCK}% hit for ${BLOCK_TOKENS} tokens, and one block can be split across weapons in the same order — that is how the staff example reaches +150% attribute and +80% hit for 90 tokens. Staff have the final say on any order.`,
+              `Blocks are ${ATTRIBUTE_BLOCK}% attribute or ${HIT_BLOCK}% hit for ${BLOCK_TOKENS} tokens, and one block can be split across weapons in the same order - that is how the staff example reaches +150% attribute and +80% hit for 90 tokens. Staff have the final say on any order.`,
             )}
           </p>
         </div>

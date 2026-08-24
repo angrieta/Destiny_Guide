@@ -1,39 +1,27 @@
 /* 헤더 블록은 database.module.css 와 같은 규칙을 쓴다. 페이지마다 헤더가
    미묘하게 달라지면 이동할 때 레이아웃이 튄다. */
 .pageShell {
-  --content-max-width: 1600px;
-  --content-gutter: 24px;
-  --bg: #f3f6fb;
-  --surface: #ffffff;
-  --surface-soft: #f7f9fc;
-  --text: #142033;
-  --muted: #68758a;
-  --border: #dde4ee;
-  --border-strong: #cad4e2;
-  --blue: #1769e0;
-  --blue-strong: #0b4ca6;
-  --blue-soft: #eaf2ff;
-  --shadow: 0 18px 55px rgba(31, 53, 86, 0.1);
-  --shadow-soft: 0 8px 28px rgba(25, 48, 80, 0.06);
-  min-height: 100vh;
+  --bg: var(--dg-bg);
+  --surface: var(--dg-surface);
+  --surface-soft: var(--dg-surface-raised);
+  --text: var(--dg-text);
+  --muted: var(--dg-text-soft);
+  --border: var(--dg-border);
+  --border-strong: var(--dg-border-strong);
+  --blue: var(--dg-accent);
+  --blue-strong: var(--dg-accent-hover);
+  --blue-soft: var(--dg-accent-soft);
+  --shadow: var(--shadow-md);
+  --shadow-soft: var(--shadow-sm);
+  min-height: 100dvh;
   background: var(--bg);
   color: var(--text);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
 }
 
 :global(html[data-theme="dark"]) .pageShell {
-  --bg: #07111f;
-  --surface: #0e1b2d;
-  --surface-soft: #132239;
-  --text: #edf4ff;
-  --muted: #9dabc0;
-  --border: #263b59;
-  --border-strong: #365071;
-  --blue: #65a6ff;
-  --blue-strong: #91c1ff;
-  --blue-soft: #142d50;
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
-  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.28);
+  --shadow: var(--shadow-md);
+  --shadow-soft: var(--shadow-sm);
 }
 
 .pageShell *, .pageShell *::before, .pageShell *::after { box-sizing: border-box; }
@@ -91,7 +79,7 @@
 .hero {
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 56px var(--content-gutter) 32px;
+  padding: 48px var(--content-gutter) 36px;
 }
 .eyebrow { margin: 0 0 14px; color: var(--blue); font-size: 12px; font-weight: 850; letter-spacing: 0.18em; }
 .hero h2 { max-width: 760px; margin: 0; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.05; letter-spacing: -0.04em; }
@@ -112,7 +100,7 @@
 .panel, .results {
   padding: 20px;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: var(--radius-card);
   background: var(--surface);
   box-shadow: var(--shadow-soft);
 }
@@ -230,8 +218,11 @@
 .row {
   padding: 14px 16px 12px;
   border: 1px solid var(--border);
-  border-radius: 13px;
+  border-radius: var(--radius-card);
   background: var(--surface-soft);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--motion-ui) var(--ease-out), transform var(--motion-ui) var(--ease-out), border-color var(--motion-fast) var(--ease-out);
 }
 .rowInvalid { border-color: #d9534f; }
 
@@ -248,8 +239,8 @@
   white-space: nowrap;
 }
 .rowName { flex: 1 1 auto; min-width: 0; }
-.rowName input { width: 100%; min-height: 36px; padding: 0 11px; border: 1px solid var(--border); border-radius: 9px; outline: 0; background: var(--surface); color: var(--text); }
-.rowName input:focus { border-color: var(--blue); }
+.rowName input { width: 100%; min-height: 36px; padding: 0 11px; border: 1px solid var(--border); border-radius: var(--radius-control); outline: 0; background: var(--surface); color: var(--text); transition: border-color var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out); }
+.rowName input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent); }
 .rowDrop {
   flex: 0 0 auto;
   width: 32px;
@@ -261,8 +252,8 @@
   font-size: 15px;
   line-height: 1;
   cursor: pointer;
+  transition: border-color var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out), transform var(--motion-press) var(--ease-out);
 }
-.rowDrop:hover { border-color: #d9534f; color: #d9534f; }
 .rowDrop:disabled { opacity: 0.4; cursor: default; }
 
 .pair { display: grid; grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr); align-items: end; gap: 10px; }
@@ -288,14 +279,15 @@
   min-height: 36px;
   padding: 0 4px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   outline: 0;
   background: var(--surface);
   color: var(--text);
   font-variant-numeric: tabular-nums;
   text-align: center;
+  transition: border-color var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out);
 }
-.cell input:focus { border-color: var(--blue); }
+.cell input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent); }
 /* The boxes are 47px wide on a phone. Native spinners eat most of that and
    the grid is keyboard-driven anyway, so drop them. */
 .cell input::-webkit-outer-spin-button, .cell input::-webkit-inner-spin-button { margin: 0; -webkit-appearance: none; appearance: none; }
@@ -320,8 +312,8 @@
   font: inherit;
   font-weight: 800;
   cursor: pointer;
+  transition: border-color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out), transform var(--motion-press) var(--ease-out);
 }
-.addRow:hover { border-color: var(--blue); background: var(--blue-soft); }
 
 .costTable { display: grid; gap: 1px; overflow: hidden; margin: 0 0 14px; border: 1px solid var(--border); border-radius: 10px; background: var(--border); }
 .costTable > div { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: baseline; gap: 12px; padding: 10px 12px; background: var(--surface); }
@@ -337,7 +329,7 @@
 .leftover { margin: 0; padding: 12px 14px; border: 1px solid var(--border-strong); border-radius: 10px; background: var(--surface-soft); font-size: 12.5px; line-height: 1.6; }
 .leftover strong { display: block; margin-bottom: 7px; }
 .leftoverList { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
-.leftoverList button { padding: 5px 10px; border: 1px solid var(--blue); border-radius: 999px; background: var(--blue-soft); color: var(--blue-strong); font: inherit; font-size: 11.5px; font-weight: 780; cursor: pointer; }
+.leftoverList button { padding: 5px 10px; border: 1px solid var(--blue); border-radius: var(--radius-pill); background: var(--blue-soft); color: var(--blue-strong); font: inherit; font-size: 11.5px; font-weight: 780; cursor: pointer; transition: background-color var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out), transform var(--motion-press) var(--ease-out); }
 
 .issueList { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .issueError, .issueWarn { padding: 10px 13px; border-radius: 10px; font-size: 12px; line-height: 1.55; }
@@ -347,16 +339,16 @@
 :global(html[data-theme="dark"]) .issueWarn { color: #f2c675; }
 .issueError b, .issueWarn b { font-weight: 850; }
 
-.output { margin: 0; padding: 13px 14px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface-soft); color: var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11.5px; line-height: 1.75; white-space: pre-wrap; word-break: break-word; }
+.output { margin: 0; padding: 13px 14px; border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--surface-soft); color: var(--text); font-family: var(--font-mono); font-size: 11.5px; line-height: 1.75; white-space: pre-wrap; word-break: break-word; }
 .outputHead { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 22px 0 10px; }
 .outputHead h4 { margin: 0 !important; }
-.copy { padding: 6px 13px; border: 1px solid var(--blue); border-radius: 999px; background: var(--blue-soft); color: var(--blue-strong); font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
+.copy { padding: 6px 13px; border: 1px solid var(--blue); border-radius: var(--radius-pill); background: var(--blue-soft); color: var(--blue-strong); font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; transition: background-color var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out), transform var(--motion-press) var(--ease-out); }
 .copy:disabled { border-color: var(--border); background: var(--surface-soft); color: var(--muted); cursor: default; }
 
 .gcField { display: block; margin-top: 18px; }
 .gcField > span { display: block; margin-bottom: 6px; color: var(--muted); font-size: 10.5px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
-.gcField input { width: 100%; min-height: 40px; padding: 0 11px; border: 1px solid var(--border); border-radius: 9px; outline: 0; background: var(--surface-soft); color: var(--text); font-variant-numeric: tabular-nums; }
-.gcField input:focus { border-color: var(--blue); }
+.gcField input { width: 100%; min-height: 40px; padding: 0 11px; border: 1px solid var(--border); border-radius: var(--radius-control); outline: 0; background: var(--surface-soft); color: var(--text); font-variant-numeric: tabular-nums; transition: border-color var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out); }
+.gcField input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent); }
 
 .ruleList { margin: 0; padding-left: 17px; font-size: 12px; line-height: 1.7; }
 .ruleList li + li { margin-top: 5px; }
@@ -383,13 +375,14 @@
   min-height: 36px;
   padding: 0 11px;
   border: 1px solid var(--border);
-  border-radius: 9px;
+  border-radius: var(--radius-control);
   outline: 0;
   background: var(--surface);
   color: var(--text);
   font: inherit;
+  transition: border-color var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out);
 }
-.combo input:focus { border-color: var(--blue); }
+.combo input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent); }
 
 .comboList {
   position: absolute;
@@ -407,6 +400,10 @@
   box-shadow: var(--shadow);
   list-style: none;
   overscroll-behavior: contain;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transform-origin: 50% 0;
+  transition: opacity var(--motion-fast) var(--ease-out), transform var(--motion-ui) var(--ease-out);
 }
 .comboList li {
   padding: 7px 10px;
@@ -418,6 +415,24 @@
 }
 .comboActive { background: var(--blue-soft); color: var(--blue-strong) !important; font-weight: 750; }
 .comboMore { color: var(--muted); font-size: 11px !important; cursor: default !important; }
+
+@starting-style {
+  .row { opacity: 0; transform: translateY(6px); }
+  .comboList { opacity: 0; transform: translateY(-5px) scale(0.98); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .rowDrop:not(:disabled):hover { border-color: var(--dg-danger); color: var(--dg-danger); }
+  .addRow:hover { border-color: var(--blue); background: var(--blue-soft); }
+  .leftoverList button:hover, .copy:not(:disabled):hover { background: var(--blue); color: var(--surface); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row, .rowDrop, .cell input, .addRow, .leftoverList button, .copy, .gcField input, .combo input, .comboList {
+    transition-duration: 1ms;
+  }
+  .row, .comboList { transform: none; }
+}
 
 @media (max-width: 520px) {
   /* Same treatment the database page already needed: eleven main links at 13px

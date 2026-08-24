@@ -9,419 +9,198 @@
     <link rel="stylesheet" href="./styles/common.css">
     <link rel="stylesheet" href="./styles/responsive.css">
     <link rel="stylesheet" href="./styles/guide.css">
-    <script src="./scripts/i18n.js"></script>
-    <script src="./scripts/index.js" defer></script>
-    <script src="./scripts/item_info.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
-    
-    <style>
-        html{
-        scroll-behavior: smooth;
-        }
-        .item_section{
-            width: 22px;
-            position: relative; top: 3px;}
-        main p{
-            line-height: 1.3;}
-        /* 네비게이션 시작 */
-        .photo_aria img{
-            cursor: zoom-in;
-        }
-        .side_nav{
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 9999;
-            }
-
-            .side_nav a{
-            text-align: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 999px;
-            display: grid;
-            place-items: center;
-            background: rgba(0,0,0,0.55);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 12px;
-            border: 1px solid rgba(255,255,255,0.18);
-            transition: transform 160ms ease, background 160ms ease;
-            }
-
-            .side_nav a:hover{
-            transform: scale(1.08);
-            background: #c442cf;
-            }
-
-            /* 모바일에서는 숨김(선택) */
-            @media (max-width: 768px){
-                .side_nav{ display:none; 
-                }
-                .popup_inner{
-                position: absolute;
-
-                width: 90%;
-            }
-            }
-            /* 네비게이션 종료 */
-            .img_popup{
-                position: fixed;
-                inset: 0;
-                z-index: 99999;
-                display: none;
-            }
-
-                .img_popup.active{
-                display: block;
-            }
-
-                .popup_dim{
-                position: absolute;
-                inset: 0;
-                background: rgba(0,0,0,0.75);
-            }
-
-                .popup_inner{
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                max-width: 600px;
-            }
-
-                .popup_inner img{
-                width: 100%;
-                height: auto;
-                max-height: 90vh;
-                display: block;
-                border-radius: 12px;
-            }
-
-                .popup_close{
-                position: absolute;
-                top: -42px;
-                right: 0;
-                width: 36px;
-                height: 36px;
-                border-radius: 50%;
-                border: 0;
-                background: #fff;
-                font-size: 20px;
-                cursor: pointer;
-            }
-
-        main{padding: 60px 120px;}
-        main .beginner_title{}
-        main .beginner_title h2{font-size: 40px; font-weight: 700;}
-        main .beginner_title h3{font-size: 18px; font-weight: 500; color: #ff4f4f; padding: 15px 0;}
-        main .beginner_title p{margin-bottom: 5px;}
-        .contents_aria{width: 100%;}
-        .contents_aria h2{font-size: 30px; font-weight: 700; padding: 40px 0 15px 0;}
-        .contents_aria .photo_aria{
-            display: grid;
-            gap: 12px;
-            width: 100%;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            position: relative;
-            }
-
-            .contents_aria .photo_aria img{
-            width: 100%;
-            height: 100%;
-            display: block;
-            }
-        .contents_aria .photo_aria span{padding: 4px 8px; background-color: #222; color: #fff; position: absolute;
-            box-shadow: 1px 1px 4px #fff;
-        }
-        .title_num{
-            padding: 4px 10px; border: 1px solid #222;
-            position: relative;
-            bottom: 4px; margin-right: 4px; font-weight: 700
-            ;
-        }
-        .youtube_wrap{
-            position: relative;
-            width: 100%;
-            max-width: 826px;
-            padding-bottom: 28%;
-            height: 0;
-        }
-
-        .youtube_wrap iframe{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        @media screen and (max-width: 1250px) {
-            main {
-                padding: 60px 80px;
-            }
-        }
-        @media screen and (max-width: 983px) {
-            main {
-                padding: 60px 15px;
-            }
-            main .beginner_title h2{
-                font-size: 34px;
-            }
-            .contents_aria h2{
-                font-size: 24px;
-                line-height: 1.3;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/guide.js" defer></script>
 </head>
-
-<!-- 헤더시작 -->
+<body class="raid_page">
     <div id="site-header" style="width: 100%;"></div>
     <script src="./scripts/include.js"></script>
-<!-- 헤더종료 -->
 
-<!-- <nav class="side_nav">
-    <a href="#meseta">Check<br>List</a>
-    <a href="#quickslot">Quick<br>slot</a>
-    <a href="#get_mag">Mag</a>
-    <a href="#levelup">Leveling</a>
-    <a href="#cure">Cure</a>
-    <a href="#tech">Disk</a>
-    <a href="#psycho_wand">Psycho<br>Wand</a>
-    <a href="#three_seals">Three<br>seals</a>
-    <a href="#v802">V802</a>
-    <a href="#final">TIP</a>
-</nav> -->
+    <main class="g_page">
+        <div class="g_head">
+            <h2><span>Distorted Nightmare</span></h2>
+            <p class="g_lead" data-i18n="dn.t015">Support Force is mandatory</p>
+            <p class="g_source" data-i18n="dn.t100">Force gear: PARAGON FRAME + SKYFALL + Glide Divine S + Golden Halo (recommended, not required)</p>
+            <div class="g_statline">
+                <span data-i18n="dn.t017">minimum recommended HP: 2000</span>
+                <span><b>Boss</b> Nightmare Chaser XII</span>
+                <span><b>Rating</b> ★8</span>
+            </div>
+        </div>
 
-<body>
-<main class="site_content">
-        <div class="beginner_title">
-            <h2>Distorted Nightmare</h2>
-            <h3 data-i18n="dn.t015">Support Force is mandatory</h3>
-            <p style="color: #c442cf;" data-i18n="dn.t100">Force gear: PARAGON FRAME + SKYFALL + Glide Divine S + (Golden Halo)</p>
-            <p style="color: #c442cf;" data-i18n="dn.t017">minimum recommended HP: 2000</p>
+        <nav class="g_toc" aria-label="Guide sections">
+            <a href="#checklist" data-i18n="dn.t018">Pre-boss checklist</a>
+            <a href="#blazing-breath">Blazing Burst Breath</a>
+            <a href="#super-explosion">Super Explosion</a>
+            <a href="#toxic-blast">Toxic Blast</a>
+            <a href="#rafoie-round">Ancient Rafoie - Round -</a>
+            <a href="#rafoie-target">Ancient Rafoie - Target -</a>
+            <a href="#razonde">Ancient Razonde</a>
+            <a href="#boss-data" data-i18n="dn.t201">Boss data</a>
+        </nav>
 
-        </div>
-        <div class="contents_aria meseta_aria" id="meseta">
-            <h2><strong class="title_num" style="padding:4px 3px;">✨</strong> <span data-i18n="dn.t018">Pre-boss checklist</span></h2>
-            <p style="color: #c442cf; padding: 15px 0; font-size: 18px; color: #ff4f4f;" data-i18n="dn.t019">(O) and similar symbols represent the boss’s skills. The skill name appears before it is used, so be sure to check it and react accordingly.</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="dn.t020">(O): Circle shaped hitbox, explosion</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="dn.t021">(O): Damage is determined by how far from the center of explosion</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="dn.t022">(!): This attack is inevitable</p>
-            <p style="margin-bottom: 5px; font-size: 18px">((<-- data-i18n="dn.t023">)): Circle AoE, you have to get away from each other</p>
-            <p style="margin-bottom: 5px; font-size: 18px">(-><-): Stack Damage, you have to group up</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="dn.t024">(III): Straight line attack (vertical)</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="dn.t025">(-): Straight attack (horizontal)</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="dn.t026">[*]: Various direction attack</p>
-            <p style="margin-bottom: 5px; font-size: 18px" data-i18n="dn.t027">Resist Down [X]: Increases damage of [X] attribute attack</p>
-            <p style="margin-bottom: 15px; font-size: 18px" data-i18n="dn.t028">Resist Reset [X]: Reset debuff of [X] attribute</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001"><span>1</span><img src="./images/index/dn_002.jpg" alt=""></div>
-                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/dn_001.jpg" alt=""></div>
-                <div class="photo_aria photo_002" style="border: 1px solid #222;"><span>3</span><img src="./images/index/dn_003.jpg" alt=""></div>
-            </div>
-        </div>
-        <div class="contents_aria meseta_aria" id="meseta">
-            <h2><strong class="title_num">1</strong> [ ! ] <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[<<-->>]</span> Blazing Burst Breath</h2>
-            <p style="color: #c442cf; font-size: 18px" data-i18n="dn.t030">If players overlap, the damage stacks and becomes more dangerous.</p>
-            <p style="margin-bottom: 20px; font-size: 18px" data-i18n="dn.t031">All players move to their corners without overlapping</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/dn_004.jpg" alt=""></div>
-                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/dn_006.jpg" alt=""></div>
-                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/dn_005.jpg" alt=""></div>
-            </div>
-        </div>
-        <div class="contents_aria quickslot" id="quickslot">
-            <h2><strong class="title_num">2</strong> <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">(O)</span> Super Explosion</h2>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t033">You can avoid it by standing against the wall on the opposite side of the glowing effect.</p>
-            <p style="margin-bottom: 20px; font-size: 18px" data-i18n="dn.t034">This pattern does not damage nearby players even if someone dies.</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/dn_009.jpg" alt=""></div>
-                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/dn_007.jpg" alt=""></div>
-                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/dn_008.jpg" alt=""></div>
-            </div>
-        </div>      
-        <div class="contents_aria levelup" id="levelup">
-            <h2><strong class="title_num">3</strong>[ ! ] <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">->> << -</span> Toxic Blast</h2>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t036">All players should group at the center wall closest to the boss.</p>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t037">A heart effect will appear upon successful grouping.</p>
-            <p style="margin-bottom: 20px; color: #ff4f4f; font-size: 18px" data-i18n="dn.t038">Force keeps spamming Resta to prevent teammates from dying.</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/dn_013.jpg" alt=""></div>
-                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/dn_011.jpg" alt=""></div>
-                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/dn_012.jpg" alt=""></div>
-
-            </div>
-        </div>      
-        <div class="contents_aria get_mag" id="get_mag">
-            <h2><strong class="title_num">4</strong> <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[O]</span> Ancient Rafoie - Round -</h2>
-            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px" data-i18n="dn.t041">Forces must use Resta to heal players who are hit by explosions or falling rocks during this phase.</p>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t101">Step 1 : The explosions go around in a full circle in this order: Red Warp → Blue Warp → Ill Gill → Green Warp → Red Warp.</p>
-            <p style="margin-bottom: 20px; color: #c442cf; font-size: 18px" data-i18n="dn.t042">Step 2 : After the explosion cycle ends, explosions occur at each player's position. Spread out and stand at different wall centers to avoid stacked damage.</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001 " style="border: 1px solid #222;"><span>1</span><img src="./images/index/moving_001.webp" alt=""></div>
-                <div class="photo_aria photo_001"><span>2</span><img src="./images/index/moving_002.webp" alt=""></div>
-                <div class="photo_aria photo_001"><span>3</span><img src="./images/index/moving_003.webp" alt=""></div>
-            </div>
-        </div>
-        <div class="contents_aria cure" id="cure">
-            <h2><strong class="title_num">5</strong> <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[O]</span> Ancient Rafoie - Target -</h2>
-            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px" data-i18n="dn.t044">Force should use Resta to keep players alive while the boss fires lasers.</p>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t045">Step 1 : Avoid the corners, as the electric fields will instantly kill you.</p>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t102">Step 2 : Bombs appear on each player in the following order: Red → Green → Yellow → Blue, exploding from their character.</p>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t046">Step 3 : Bomb shows a green circle, then turns purple and locks to the ground at that position.</p>
-            <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t047">Step 4 : [★] Do not move during the green effect. Move only after it turns purple.</p>
-            <p style="margin-bottom: 5px; color: #ff4f4f; font-size: 18px" data-i18n="dn.t103">Based on 2 players, the bombs explode in order: Red → Green → Red → Green.</p>
-            <p style="margin-bottom: 20px; color: #ff4f4f; font-size: 18px" data-i18n="dn.t104">Based on 3 players, the bombs explode in order: Red → Green → Yellow → Red.</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/moving_004.webp" alt=""></div>
-                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/moving_005.webp" alt=""></div>
-                <div class="photo_aria photo_003"><span>3</span><img src="./images/index/moving_006.webp" alt=""></div>
-            </div>
-        </div>
-        <div class="contents_aria tech" id="tech">
-            <h2><strong class="title_num">6</strong> [!] <span class="#" style="color: #ff4f4f; font-weight: 700; font-size: 24px;">[III]</span> Ancient Razonde</h2>
-            <p style="margin-bottom: 10px; color: #ff0b0b; font-size: 18px" data-i18n="dn.t105">Based on 4 players: Electric attacks target players in order — Red → Green → Yellow → Blue.</p>
-                <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t050">The attack is always fired 4 times, regardless of the number of players.</p>
-                <p style="margin-bottom: 5px; color: #c442cf; font-size: 18px" data-i18n="dn.t106">Based on 2 players, the laser targets in order: Red → Green → Red → Green.</p>
-                <p style="margin-bottom: 20px; color: #c442cf; font-size: 18px" data-i18n="dn.t107">Based on 3 players, the laser targets in order: Red → Green → yellow → Red</p>
-            <div class="photo_aria">
-                <div class="photo_aria photo_001" style="border: 1px solid #222;"><span>1</span><img src="./images/index/moving_007.webp" alt=""></div>
-                <div class="photo_aria photo_002"><span>2</span><img src="./images/index/moving_008.webp" alt=""></div>
-            </div>
-        </div>           
-        <div class="contents_aria" id="boss-data">
-            <h2><strong class="title_num">7</strong> <span data-i18n="dn.t201">Boss data</span></h2>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="dn.t202">Distorted Nightmare is the EX version of Silent Nightmare: the boss fight only, with a buffed Nightmare Chaser XII. Parts take damage separately, so check which part you are hitting.</p>
+        <section class="g_sec" id="checklist">
+            <h3><span class="g_sec_num">1</span><span data-i18n="dn.t018">Pre-boss checklist</span></h3>
+            <p class="g_note g_warn" data-i18n="dn.t019">(O) and similar symbols represent the boss’s skills. The skill name appears before it is used, so be sure to check it and react accordingly.</p>
             <div class="g_scroll">
                 <table class="g_table g_mid">
-                    <thead><tr>
-                        <th data-i18n="dn.t203">Part</th>
-                        <th data-i18n="dn.t204">HP</th>
-                        <th data-i18n="dn.t205">DEF</th>
-                    </tr></thead>
+                    <thead>
+                        <tr><th data-i18n="prd.t025">Symbol</th><th data-i18n="prd.t026">Meaning</th></tr>
+                    </thead>
                     <tbody>
-                        <tr>
-                            <td class="g_name" data-i18n="dn.t206">Body</td>
-                            <td class="g_num">850,000</td>
-                            <td class="g_num">2,200</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name" data-i18n="dn.t207">Body shell</td>
-                            <td class="g_num">160,000</td>
-                            <td class="g_num">2,500</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name" data-i18n="dn.t208">Mines</td>
-                            <td class="g_num">12,000</td>
-                            <td class="g_num">1,200</td>
-                        </tr>
+                        <tr><td class="g_name">[O]</td><td data-i18n="dn.t020">(O): Circle shaped hitbox, explosion</td></tr>
+                        <tr><td class="g_name">[●]</td><td data-i18n="dn.t021">(O): Damage is determined by how far from the center of explosion</td></tr>
+                        <tr><td class="g_name">[!]</td><td data-i18n="dn.t022">(!): This attack is inevitable</td></tr>
+                        <tr><td class="g_name">[&lt;&lt;--&gt;&gt;]</td><td data-i18n="dn.t023">)): Circle AoE, you have to get away from each other</td></tr>
+                        <tr><td class="g_name">[-&gt;&gt;&lt;&lt;-]</td><td data-i18n="prd.t031">Damage stacks. Group up.</td></tr>
+                        <tr><td class="g_name">[III]</td><td data-i18n="dn.t024">(III): Straight line attack (vertical)</td></tr>
+                        <tr><td class="g_name">[-]</td><td data-i18n="dn.t025">(-): Straight attack (horizontal)</td></tr>
+                        <tr><td class="g_name">[*]</td><td data-i18n="dn.t026">[*]: Various direction attack</td></tr>
+                        <tr><td class="g_name">Resist Down [X]</td><td data-i18n="dn.t027">Resist Down [X]: Increases damage of [X] attribute attack</td></tr>
+                        <tr><td class="g_name">Resist Reset [X]</td><td data-i18n="dn.t028">Resist Reset [X]: Reset debuff of [X] attribute</td></tr>
                     </tbody>
                 </table>
             </div>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="dn.t209">The head takes damage at DEF 2,500.</p>
+            <div class="g_figs">
+                <figure class="g_fig">
+                    <img src="./images/index/dn_002.jpg" alt="Distorted Nightmare skill symbol example 1" loading="lazy" decoding="async">
+                    <figcaption>Skill cue example 1</figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/index/dn_001.jpg" alt="Distorted Nightmare skill symbol example 2" loading="lazy" decoding="async">
+                    <figcaption>Skill cue example 2</figcaption>
+                </figure>
+                <figure class="g_fig">
+                    <img src="./images/index/dn_003.jpg" alt="Distorted Nightmare arena map" loading="lazy" decoding="async">
+                    <figcaption>Arena map and player positions</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="blazing-breath">
+            <h3><span class="g_sec_num">2</span><span class="g_skill_mark">[!] [&lt;&lt;--&gt;&gt;]</span>Blazing Burst Breath</h3>
+            <p class="g_note g_warn" data-i18n="dn.t030">If players overlap, the damage stacks and becomes more dangerous.</p>
+            <p data-i18n="dn.t031">All players move to their corners without overlapping</p>
+            <div class="g_figs">
+                <figure class="g_fig"><img src="./images/index/dn_004.jpg" alt="Blazing Burst Breath step 1" loading="lazy" decoding="async"><figcaption>Step 1</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/dn_006.jpg" alt="Blazing Burst Breath step 2" loading="lazy" decoding="async"><figcaption>Step 2</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/dn_005.jpg" alt="Blazing Burst Breath step 3" loading="lazy" decoding="async"><figcaption>Step 3</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="super-explosion">
+            <h3><span class="g_sec_num">3</span><span class="g_skill_mark">[O]</span>Super Explosion</h3>
+            <p class="g_note" data-i18n="dn.t033">You can avoid it by standing against the wall on the opposite side of the glowing effect.</p>
+            <p data-i18n="dn.t034">This pattern does not damage nearby players even if someone dies.</p>
+            <div class="g_figs">
+                <figure class="g_fig"><img src="./images/index/dn_009.jpg" alt="Super Explosion step 1" loading="lazy" decoding="async"><figcaption>Step 1</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/dn_007.jpg" alt="Super Explosion step 2" loading="lazy" decoding="async"><figcaption>Step 2</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/dn_008.jpg" alt="Super Explosion step 3" loading="lazy" decoding="async"><figcaption>Step 3</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="toxic-blast">
+            <h3><span class="g_sec_num">4</span><span class="g_skill_mark">[!] [-&gt;&gt;&lt;&lt;-]</span>Toxic Blast</h3>
+            <p class="g_note" data-i18n="dn.t036">All players should group at the center wall closest to the boss.</p>
+            <ul class="g_bullets">
+                <li data-i18n="dn.t037">A heart effect will appear upon successful grouping.</li>
+                <li data-i18n="dn.t038">Force keeps spamming Resta to prevent teammates from dying.</li>
+            </ul>
+            <div class="g_figs">
+                <figure class="g_fig"><img src="./images/index/dn_013.jpg" alt="Toxic Blast step 1" loading="lazy" decoding="async"><figcaption>Step 1</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/dn_011.jpg" alt="Toxic Blast step 2" loading="lazy" decoding="async"><figcaption>Step 2</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/dn_012.jpg" alt="Toxic Blast step 3" loading="lazy" decoding="async"><figcaption>Step 3</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="rafoie-round">
+            <h3><span class="g_sec_num">5</span><span class="g_skill_mark">[O]</span>Ancient Rafoie - Round -</h3>
+            <p class="g_note g_warn" data-i18n="dn.t041">Forces must use Resta to heal players who are hit by explosions or falling rocks during this phase.</p>
+            <ul class="g_bullets">
+                <li data-i18n="dn.t101">Step 1 : The explosions go around in a full circle in this order: Red Warp → Blue Warp → Ill Gill → Green Warp → Red Warp.</li>
+                <li data-i18n="dn.t042">Step 2 : After the explosion cycle ends, explosions occur at each player's position. Spread out and stand at different wall centers to avoid stacked damage.</li>
+            </ul>
+            <div class="g_figs">
+                <figure class="g_fig"><img src="./images/index/moving_001.webp" alt="Ancient Rafoie Round step 1" loading="lazy" decoding="async"><figcaption>Step 1</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/moving_002.webp" alt="Ancient Rafoie Round step 2" loading="lazy" decoding="async"><figcaption>Step 2</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/moving_003.webp" alt="Ancient Rafoie Round step 3" loading="lazy" decoding="async"><figcaption>Step 3</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="rafoie-target">
+            <h3><span class="g_sec_num">6</span><span class="g_skill_mark">[O]</span>Ancient Rafoie - Target -</h3>
+            <p class="g_note g_warn" data-i18n="dn.t044">Force should use Resta to keep players alive while the boss fires lasers.</p>
+            <ul class="g_bullets">
+                <li data-i18n="dn.t045">Step 1 : Avoid the corners, as the electric fields will instantly kill you.</li>
+                <li data-i18n="dn.t102">Step 2 : Bombs appear on each player in the following order: Red → Green → Yellow → Blue, exploding from their character.</li>
+                <li data-i18n="dn.t046">Step 3 : Bomb shows a green circle, then turns purple and locks to the ground at that position.</li>
+                <li data-i18n="dn.t047">Step 4 : [★] Do not move during the green effect. Move only after it turns purple.</li>
+            </ul>
+            <p class="g_note">
+                <span data-i18n="dn.t103">Based on 2 players, the bombs explode in order: Red → Green → Red → Green.</span><br>
+                <span data-i18n="dn.t104">Based on 3 players, the bombs explode in order: Red → Green → Yellow → Red.</span>
+            </p>
+            <div class="g_figs">
+                <figure class="g_fig"><img src="./images/index/moving_004.webp" alt="Ancient Rafoie Target step 1" loading="lazy" decoding="async"><figcaption>Step 1</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/moving_005.webp" alt="Ancient Rafoie Target step 2" loading="lazy" decoding="async"><figcaption>Step 2</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/moving_006.webp" alt="Ancient Rafoie Target step 3" loading="lazy" decoding="async"><figcaption>Step 3</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="razonde">
+            <h3><span class="g_sec_num">7</span><span class="g_skill_mark">[!] [III]</span>Ancient Razonde</h3>
+            <p class="g_note g_warn" data-i18n="dn.t105">Based on 4 players: Electric attacks target players in order - Red → Green → Yellow → Blue.</p>
+            <ul class="g_bullets">
+                <li data-i18n="dn.t050">The attack is always fired 4 times, regardless of the number of players.</li>
+                <li data-i18n="dn.t106">Based on 2 players, the laser targets in order: Red → Green → Red → Green.</li>
+                <li data-i18n="dn.t107">Based on 3 players, the laser targets in order: Red → Green → yellow → Red</li>
+            </ul>
+            <div class="g_figs g_figs_wide">
+                <figure class="g_fig"><img src="./images/index/moving_007.webp" alt="Ancient Razonde step 1" loading="lazy" decoding="async"><figcaption>Step 1</figcaption></figure>
+                <figure class="g_fig"><img src="./images/index/moving_008.webp" alt="Ancient Razonde step 2" loading="lazy" decoding="async"><figcaption>Step 2</figcaption></figure>
+            </div>
+        </section>
+
+        <section class="g_sec" id="boss-data">
+            <h3><span class="g_sec_num">8</span><span data-i18n="dn.t201">Boss data</span></h3>
+            <p data-i18n="dn.t202">Distorted Nightmare is the EX version of Silent Nightmare: the boss fight only, with a buffed Nightmare Chaser XII. Parts take damage separately, so check which part you are hitting.</p>
             <div class="g_scroll">
                 <table class="g_table g_mid">
-                    <thead><tr>
-                        <th data-i18n="dn.t210">Item</th>
-                        <th data-i18n="dn.t211">Value</th>
-                    </tr></thead>
+                    <thead><tr><th data-i18n="dn.t203">Part</th><th data-i18n="dn.t204">HP</th><th data-i18n="dn.t205">DEF</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td class="g_name">Rating</td>
-                            <td>★8</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Structure</td>
-                            <td>Boss fight only, no trash mobs</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Exclusive drop</td>
-                            <td>Chaos Engine 1/73 (all IDs)</td>
-                        </tr>
-                        <tr>
-                            <td class="g_name">Client</td>
-                            <td>Widescreen client (psobbw.exe) required</td>
-                        </tr>
+                        <tr><td class="g_name" data-i18n="dn.t206">Body</td><td class="g_num">850,000</td><td class="g_num">2,200</td></tr>
+                        <tr><td class="g_name" data-i18n="dn.t207">Body shell</td><td class="g_num">160,000</td><td class="g_num">2,500</td></tr>
+                        <tr><td class="g_name" data-i18n="dn.t208">Mines</td><td class="g_num">12,000</td><td class="g_num">1,200</td></tr>
                     </tbody>
                 </table>
             </div>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="dn.t212">Role challenge — The Nightmare Chaser: clear without a wipe and without returning to Pioneer 2 during the boss fight.</p>
-            <p style="margin-bottom: 6px; font-size: 18px" data-i18n="dn.t213">Chaos Engine reworks Planet Eater, Mortal Ruin, Ill Gill Reaper and M&amp;A85 Fury. The full effect list is on the Weapon Enhancement page.</p>
-            <p style="margin-bottom: 6px; font-size: 18px; color: #c442cf" data-i18n="dn.t214">Set message speed to 'fastest'. Skill names scroll past before the attack lands, and the faster setting buys you reaction time.</p>
-        </div>
+            <p class="g_note" data-i18n="dn.t209">The head takes damage at DEF 2,500.</p>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead><tr><th data-i18n="dn.t210">Item</th><th data-i18n="dn.t211">Value</th></tr></thead>
+                    <tbody>
+                        <tr><td class="g_name">Rating</td><td>★8</td></tr>
+                        <tr><td class="g_name">Structure</td><td>Boss fight only, no trash mobs</td></tr>
+                        <tr><td class="g_name">Exclusive drop</td><td>Chaos Engine 1/73 (all IDs)</td></tr>
+                        <tr><td class="g_name">Client</td><td>Widescreen client (psobbw.exe) required</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="g_note g_warn" data-i18n="dn.t212">Role challenge - The Nightmare Chaser: clear without a wipe and without returning to Pioneer 2 during the boss fight.</p>
+            <p data-i18n="dn.t213">Chaos Engine reworks Planet Eater, Mortal Ruin, Ill Gill Reaper and M&amp;A85 Fury. The full effect list is on the Weapon Enhancement page.</p>
+            <p class="g_note" data-i18n="dn.t214">Set message speed to 'fastest'. Skill names scroll past before the attack lands, and the faster setting buys you reaction time.</p>
+        </section>
     </main>
-</body>
 
-<div class="img_popup" id="imgPopup">
-    <div class="popup_dim"></div>
-    <div class="popup_inner">
-        <button class="popup_close">✕</button>
-        <img src="" alt="">
+    <div class="g_popup" id="gPopup" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image preview">
+        <div class="g_popup_dim"></div>
+        <div class="g_popup_inner">
+            <button class="g_popup_close" type="button" aria-label="Close">&#10005;</button>
+            <img src="" alt="">
+        </div>
     </div>
-</div>
+</body>
 </html>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".contents_aria[id]");
-    const links = document.querySelectorAll(".side_nav a");
-
-    const map = new Map();
-    links.forEach(a => map.set(a.getAttribute("href").slice(1), a));
-
-    const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-        links.forEach(a => a.classList.remove("active"));
-        const id = entry.target.id;
-        const link = map.get(id);
-        if(link) link.classList.add("active");
-        }
-    });
-    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
-
-    sections.forEach(sec => io.observe(sec));
-});
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const popup = document.getElementById("imgPopup");
-    const popupImg = popup.querySelector("img");
-    const closeBtn = popup.querySelector(".popup_close");
-    const dim = popup.querySelector(".popup_dim");
-
-    document.querySelectorAll(".photo_aria img").forEach(img => {
-    img.addEventListener("click", () => {
-        popupImg.src = img.src;
-        popup.classList.add("active");
-        document.body.style.overflow = "hidden";
-    });
-    });
-
-    function closePopup(){
-    popup.classList.remove("active");
-    popupImg.src = "";
-    document.body.style.overflow = "";
-    }
-
-    closeBtn.addEventListener("click", closePopup);
-    dim.addEventListener("click", closePopup);
-});
-document.addEventListener("keydown", e => {
-    if(e.key === "Escape"){
-        closePopup();
-    }
-});
-</script>

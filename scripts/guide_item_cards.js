@@ -348,9 +348,14 @@ window.DESTINY_GUIDE_CARDS = [
         "text": "It has also capabilities with a full combo to drain your HP under 12.5% which make an effective synergy with Dark Flow"
       },
       {
+        "key": "item.t155",
+        "labels": [],
+        "text": "Without Jointparts: Special range 100.0, angle 26.0, and up to 8 targets."
+      },
+      {
         "key": "item.t048",
         "labels": [],
-        "text": "Jointparts empowers Speed by 15%, ATA+20, can hit EP4 Lizards in the face."
+        "text": "With Jointparts: Special range 135.0, angle 35.0, and up to 10 targets; Speed +15%, ATA +20, and penetrates Episode 4 lizards."
       }
     ],
     "image": "./images/weapon/UDC.jpg",
@@ -444,7 +449,7 @@ window.DESTINY_GUIDE_CARDS = [
       {
         "key": "item.t057",
         "labels": [],
-        "text": "Nightmare features a Dark Flow – like wave attack that inflicts Hell on groups of enemies and has infinite vertical range"
+        "text": "Nightmare features a Dark Flow - like wave attack that inflicts Hell on groups of enemies and has infinite vertical range"
       },
       {
         "key": "",

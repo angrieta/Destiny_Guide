@@ -1,39 +1,27 @@
 /* 헤더 블록은 database.module.css 와 같은 규칙을 쓴다. 페이지마다 헤더가
    미묘하게 달라지면 이동할 때 레이아웃이 튄다. */
 .pageShell {
-  --content-max-width: 1600px;
-  --content-gutter: 24px;
-  --bg: #f3f6fb;
-  --surface: #ffffff;
-  --surface-soft: #f7f9fc;
-  --text: #142033;
-  --muted: #68758a;
-  --border: #dde4ee;
-  --border-strong: #cad4e2;
-  --blue: #1769e0;
-  --blue-strong: #0b4ca6;
-  --blue-soft: #eaf2ff;
-  --shadow: 0 18px 55px rgba(31, 53, 86, 0.1);
-  --shadow-soft: 0 8px 28px rgba(25, 48, 80, 0.06);
-  min-height: 100vh;
+  --bg: var(--dg-bg);
+  --surface: var(--dg-surface);
+  --surface-soft: var(--dg-surface-raised);
+  --text: var(--dg-text);
+  --muted: var(--dg-text-soft);
+  --border: var(--dg-border);
+  --border-strong: var(--dg-border-strong);
+  --blue: var(--dg-accent);
+  --blue-strong: var(--dg-accent-hover);
+  --blue-soft: var(--dg-accent-soft);
+  --shadow: var(--shadow-md);
+  --shadow-soft: var(--shadow-sm);
+  min-height: 100dvh;
   background: var(--bg);
   color: var(--text);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
 }
 
 :global(html[data-theme="dark"]) .pageShell {
-  --bg: #07111f;
-  --surface: #0e1b2d;
-  --surface-soft: #132239;
-  --text: #edf4ff;
-  --muted: #9dabc0;
-  --border: #263b59;
-  --border-strong: #365071;
-  --blue: #65a6ff;
-  --blue-strong: #91c1ff;
-  --blue-soft: #142d50;
-  --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
-  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.28);
+  --shadow: var(--shadow-md);
+  --shadow-soft: var(--shadow-sm);
 }
 
 .pageShell *, .pageShell *::before, .pageShell *::after { box-sizing: border-box; }
@@ -90,7 +78,7 @@
 .hero {
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 56px var(--content-gutter) 32px;
+  padding: 48px var(--content-gutter) 36px;
 }
 .eyebrow { margin: 0 0 14px; color: var(--blue); font-size: 12px; font-weight: 850; letter-spacing: 0.18em; }
 .hero h2 { max-width: 760px; margin: 0; font-size: clamp(30px, 3.8vw, 48px); line-height: 1.05; letter-spacing: -0.04em; }
@@ -111,7 +99,7 @@
 .panel, .results {
   padding: 20px;
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: var(--radius-card);
   background: var(--surface);
   box-shadow: var(--shadow-soft);
 }
@@ -131,6 +119,31 @@
 :global(html[data-theme="dark"]) .magNoteOver { color: #ff9a96; }
 .statInputs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 
+.actions {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.actions button {
+  min-height: 38px;
+  padding: 7px 11px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out), transform var(--motion-press) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .actions button:hover { border-color: var(--blue); background: var(--blue-soft); color: var(--blue-strong); }
+}
+
 .panel label, .picker { display: flex; min-width: 0; flex-direction: column; gap: 6px; }
 .panel label > span, .picker > span {
   color: var(--muted);
@@ -145,13 +158,14 @@
   min-height: 40px;
   padding: 0 11px;
   border: 1px solid var(--border);
-  border-radius: 9px;
+  border-radius: var(--radius-control);
   outline: 0;
   background: var(--surface-soft);
   color: var(--text);
   font: inherit;
+  transition: border-color var(--motion-fast) var(--ease-out), box-shadow var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out);
 }
-.panel input:focus, .panel select:focus { border-color: var(--blue); }
+.panel input:focus, .panel select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue) 17%, transparent); }
 .picker { margin-bottom: 12px; }
 
 .reset, .resetActive {
@@ -159,15 +173,24 @@
   min-height: 42px;
   margin-top: 6px;
   border: 1px solid var(--border);
-  border-radius: 9px;
+  border-radius: var(--radius-control);
   background: var(--surface);
   color: var(--muted);
   font: inherit;
   font-weight: 750;
   cursor: pointer;
+  transition: border-color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out), transform var(--motion-press) var(--ease-out);
 }
 .reset:disabled { opacity: 0.5; cursor: default; }
 .resetActive { border-color: var(--blue); background: var(--blue-soft); color: var(--blue-strong); }
+
+@media (hover: hover) and (pointer: fine) {
+  .resetActive:hover { background: var(--blue); color: var(--surface); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel input, .panel select, .actions button, .reset, .resetActive { transition-duration: 1ms; }
+}
 
 /* ---------- Results ---------- */
 

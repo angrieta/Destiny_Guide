@@ -1,40 +1,58 @@
-<header class="site-header">
-    <div class="inner">
-        <h1 class="logo">
-            <a href="./index.html" class="white" style="display: none;"><img src="./images/common/rogo.png" alt="Destiny Guide home" data-i18n-alt="header.logo.alt"></a>
-            <a href="./index.html" class="black"><img src="./images/common/rogo.png" alt="Destiny Guide home" data-i18n-alt="header.logo.alt"></a>
+<header class="site-header" data-site-header>
+    <div class="inner site_header_inner">
+        <h1 class="logo site_header_logo">
+            <a href="./index.html" class="black">
+                <img src="./images/common/rogo.png" alt="Destiny Guide home" data-i18n-alt="header.logo.alt">
+            </a>
         </h1>
 
-        <a class="happy_hour_header" id="header-hh" href="./player_tools.html#happy-schedule" data-state="loading" aria-label="Open Happy Hour schedule">
+        <nav class="site_nav_panel" id="site-navigation" aria-label="Main navigation">
+            <a href="./beginner_page.html" class="site_nav_link" data-i18n="header.nav.beginner">Beginner</a>
+            <a href="./item_page.html" class="site_nav_link" data-i18n="header.nav.items">Destiny Items</a>
+            <a href="./class_builds.html" class="site_nav_link" data-i18n="header.nav.builds">Class Builds</a>
+
+            <details class="site_nav_group">
+                <summary data-i18n="header.nav.guides">Guides</summary>
+                <div class="site_nav_menu">
+                    <a href="./quest_data_page.html" data-i18n="header.nav.questData">Quest Data</a>
+                    <a href="./enhance_page.html" data-i18n="header.nav.enhance">Enhancement</a>
+                    <a href="./economy_page.html" data-i18n="header.nav.economy">Shops</a>
+                    <a href="./system_page.html" data-i18n="header.nav.systems">Systems</a>
+                    <a href="./dmc_page.html" data-i18n="header.nav.dmc">DMC Guide</a>
+                    <a href="./Psobb_tool.html" data-i18n="header.nav.tools">Tools</a>
+                    <a href="./player_tools.html" data-i18n="lab.t092">Farming tools</a>
+                    <a href="./redeem/" data-i18n="header.nav.redeem">Token Redeem</a>
+                </div>
+            </details>
+
+            <details class="site_nav_group">
+                <summary data-i18n="header.nav.raids">Raids</summary>
+                <div class="site_nav_menu">
+                    <a href="./dn.html" data-i18n="header.nav.dn">Distorted Nightmare [RAID]</a>
+                    <a href="./discontrolled_tower_raid.html" data-i18n="header.nav.tower">The Discontrolled Tower [RAID]</a>
+                    <a href="./predator_raid.html" data-i18n="header.nav.predator">The Ravenous Predator [RAID]</a>
+                    <a href="./tpd_page.html" data-i18n="header.nav.tpd">The Phantasmal Dimension</a>
+                </div>
+            </details>
+
+            <div class="site_header_mobile_links">
+                <a href="./drop-tables/" class="site_nav_link" data-i18n="header.link.dropTables">Drop Tables</a>
+                <a href="./database/" class="site_nav_link" data-i18n="header.link.database">Database</a>
+                <a href="./redeem/" class="site_nav_link" data-i18n="header.nav.redeem">Token Redeem</a>
+                <a href="https://discord.gg/FesaarwjFn" target="_blank" rel="noreferrer" class="site_nav_link">Discord</a>
+            </div>
+        </nav>
+
+        <div class="site_header_actions">
+            <a class="happy_hour_header" id="header-hh" href="./player_tools.html#happy-schedule" data-state="loading" aria-label="Open Happy Hour schedule">
                 <span class="happy_hour_header_dot" aria-hidden="true"></span>
                 <span class="happy_hour_header_label">HH</span>
                 <strong class="happy_hour_header_time">--:--:--</strong>
             </a>
-        <div class="mid_menu_box">
-            <div class="mid_menu">
-                <a href="./beginner_page.html" class="category_menu actice" data-i18n="header.nav.beginner">Beginner</a>
-                <a href="./item_page.html" class="category_menu" data-i18n="header.nav.items">Destiny Items</a>
-                <a href="./class_builds.html" class="category_menu" data-i18n="header.nav.builds">Class Builds</a>
-                <a href="./quest_data_page.html" class="category_menu" data-i18n="header.nav.questData">Quest Data</a>
-                <a href="./enhance_page.html" class="category_menu" data-i18n="header.nav.enhance">Enhancement</a>
-                <a href="./economy_page.html" class="category_menu" data-i18n="header.nav.economy">Shops</a>
-                <a href="./system_page.html" class="category_menu" data-i18n="header.nav.systems">Systems</a>
-                <a href="./dmc_page.html" class="category_menu" data-i18n="header.nav.dmc">DMC Guide</a>
-                <a href="./Psobb_tool.html" class="category_menu" data-i18n="header.nav.tools">Tools</a>
-                <a href="./player_tools.html" class="category_menu" data-i18n="lab.t092">Farming tools</a>
-                <a href="./redeem/" class="category_menu" data-i18n="header.nav.redeem">Token Redeem</a>
-            </div>
-            <div class="mid_menu mid_menu_2">
-                <a href="./dn.html" class="category_menu actice" data-i18n="header.nav.dn">Distorted Nightmare [RAID]</a>
-                <a href="./discontrolled_tower_raid.html" class="category_menu actice" data-i18n="header.nav.tower">The Discontrolled Tower [RAID]</a>
-                <a href="./predator_raid.html" class="category_menu actice" data-i18n="header.nav.predator">The Ravenous Predator [RAID]</a>
-                <a href="./tpd_page.html" class="category_menu actice" data-i18n="header.nav.tpd">The Phantasmal Dimension</a>
-            </div>
-        </div>
-        <div class="left_menu">
+            <a href="./drop-tables/" class="site_header_data_link site_header_external" data-i18n="header.link.dropTables">Drop Tables</a>
+            <a href="./database/" class="site_header_data_link site_header_external" data-i18n="header.link.database">Database</a>
             <div class="lang_switch" data-lang-switch>
                 <button type="button" class="lang_switch_button" aria-haspopup="listbox" aria-expanded="false">
-                    <span class="lang_switch_icon" aria-hidden="true"></span>
                     <span class="lang_switch_code">EN</span>
                     <span class="lang_switch_caret" aria-hidden="true"></span>
                     <span class="sr_only" data-i18n="header.lang.label">Language</span>
@@ -42,19 +60,11 @@
                 <ul class="lang_switch_list" role="listbox" hidden></ul>
             </div>
             <button type="button" class="theme_toggle" aria-label="Switch to dark mode" aria-pressed="false">
-                <span class="theme_toggle_icon" aria-hidden="true"></span>
                 <span class="theme_toggle_label" data-i18n="header.theme.dark">Dark</span>
             </button>
-            <a href="https://discord.gg/FesaarwjFn" target='_blank' class="discord"></a>
-            <div class="drop_table">
-                <a href="./drop-tables/" class="drop_table_inner" data-i18n="header.link.dropTables">Drop Tables</a>
-            </div>
-            <div class="drop_table">
-                <a href="./database/" class="drop_table_inner" data-i18n="header.link.database">Database</a>
-            </div>
-            <!-- /calculator/ is unlisted while the damage model is still being verified.
-                 The page still builds and answers on its direct URL. -->
+            <a href="https://discord.gg/FesaarwjFn" target="_blank" rel="noreferrer" class="discord site_header_external" aria-label="Destiny Discord"></a>
 
+            <button type="button" class="site_nav_toggle" aria-controls="site-navigation" aria-expanded="false" data-i18n="header.nav.menu">Menu</button>
         </div>
     </div>
 </header>

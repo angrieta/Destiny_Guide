@@ -111,6 +111,128 @@ function setupHappyHourHeader(mount) {
     document.addEventListener("destiny-lang-change", render);
 }
 
+function normalizeNavigationPath(url) {
+    const parsed = new URL(url, window.location.href);
+    return parsed.pathname
+        .replace(/\/index\.html$/, "/")
+        .replace(/\/$/, "") || "/";
+}
+
+function setupSiteNavigation(mount) {
+    const header = mount.querySelector("[data-site-header]");
+    const toggle = mount.querySelector(".site_nav_toggle");
+    const navigation = mount.querySelector(".site_nav_panel");
+    if (!header || !toggle || !navigation) return;
+    const compactNavigation = window.matchMedia("(max-width: 1160px)");
+
+    const setMenuOpen = (open) => {
+        header.dataset.menuOpen = String(open);
+        toggle.setAttribute("aria-expanded", String(open));
+        navigation.toggleAttribute("inert", compactNavigation.matches && !open);
+        navigation.setAttribute("aria-hidden", String(compactNavigation.matches && !open));
+        if (!open) {
+            navigation.querySelectorAll("details[open]").forEach((details) => details.removeAttribute("open"));
+        }
+    };
+
+    const currentPath = normalizeNavigationPath(window.location.href);
+    navigation.querySelectorAll("a[href]").forEach((link) => {
+        if (normalizeNavigationPath(link.href) === currentPath) {
+            link.setAttribute("aria-current", "page");
+            link.closest("details")?.setAttribute("data-current", "true");
+        }
+    });
+    mount.querySelectorAll(".site_header_data_link[href]").forEach((link) => {
+        if (normalizeNavigationPath(link.href) === currentPath) link.setAttribute("aria-current", "page");
+    });
+
+    toggle.addEventListener("click", () => setMenuOpen(header.dataset.menuOpen !== "true"));
+    navigation.addEventListener("click", (event) => {
+        if (event.target instanceof Element && event.target.closest("a")) setMenuOpen(false);
+    });
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setMenuOpen(false);
+    });
+    document.addEventListener("click", (event) => {
+        if (!header.contains(event.target)) {
+            setMenuOpen(false);
+            navigation.querySelectorAll("details[open]").forEach((details) => details.removeAttribute("open"));
+        }
+    });
+    compactNavigation.addEventListener("change", () => {
+        setMenuOpen(false);
+    });
+
+    navigation.querySelectorAll(".site_nav_group").forEach((group) => {
+        group.addEventListener("toggle", () => {
+            if (!group.open) return;
+            navigation.querySelectorAll(".site_nav_group[open]").forEach((other) => {
+                if (other !== group) other.removeAttribute("open");
+            });
+        });
+    });
+
+    setMenuOpen(false);
+}
+function setupImageDialogs() {
+    const configs = [
+        { dialog: ".img_popup", openClass: "active", triggers: ".photo_aria img, .tool_img img" },
+        { dialog: ".g_popup", openClass: "active", triggers: ".g_fig img" },
+    ];
+
+    configs.forEach(({ dialog: selector, openClass, triggers: triggerSelector }) => {
+        document.querySelectorAll(selector).forEach((dialog) => {
+            const closeButton = dialog.querySelector(".popup_close, .g_popup_close");
+            let previousFocus = null;
+
+            dialog.setAttribute("role", "dialog");
+            dialog.setAttribute("aria-modal", "true");
+            dialog.setAttribute("aria-hidden", String(!dialog.classList.contains(openClass)));
+
+            const syncState = () => {
+                const open = dialog.classList.contains(openClass);
+                dialog.setAttribute("aria-hidden", String(!open));
+                if (open) {
+                    closeButton?.focus({ preventScroll: true });
+                } else if (previousFocus instanceof HTMLElement) {
+                    previousFocus.focus({ preventScroll: true });
+                }
+            };
+
+            const close = () => {
+                if (!dialog.classList.contains(openClass)) return;
+                dialog.classList.remove(openClass);
+                document.body.style.overflow = "";
+            };
+
+            const observer = new MutationObserver(syncState);
+            observer.observe(dialog, { attributes: true, attributeFilter: ["class"] });
+
+            document.querySelectorAll(triggerSelector).forEach((trigger) => {
+                trigger.setAttribute("role", "button");
+                trigger.setAttribute("tabindex", "0");
+                trigger.setAttribute("aria-haspopup", "dialog");
+                trigger.addEventListener("click", () => {
+                    previousFocus = trigger;
+                }, { capture: true });
+                trigger.addEventListener("keydown", (event) => {
+                    if (event.key !== "Enter" && event.key !== " ") return;
+                    event.preventDefault();
+                    trigger.click();
+                });
+            });
+
+            closeButton?.addEventListener("click", close);
+            dialog.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") close();
+            });
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") close();
+            });
+        });
+    });
+}
+
 applyTheme(getPreferredTheme());
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -128,6 +250,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         // i18n.js 가 먼저 로드되지 않았더라도(순서 문제) 아래에서 안전하게 넘어간다.
         window.DestinyI18n?.hydrate(mount);
         setupHappyHourHeader(mount);
+        setupSiteNavigation(mount);
+        setupImageDialogs();
 
         const toggle = mount.querySelector(".theme_toggle");
         toggle?.addEventListener("click", () => {

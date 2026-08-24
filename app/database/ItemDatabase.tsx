@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { DatabaseItem, DatabasePayload, ItemCategory } from "./types";
 import styles from "./database.module.css";
-import { LanguageSwitcher, useI18n } from "../i18n/i18n";
-import { HappyHourHeader } from "../components/HappyHourHeader";
+import { useI18n } from "../i18n/i18n";
+import { SiteHeader } from "../components/SiteHeader";
 import { useHeaderHeight } from "../components/useHeaderHeight";
 
 const THEME_KEY = "destiny-guide-theme";
@@ -130,9 +130,55 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [filtersClosing, setFiltersClosing] = useState(false);
+  const [detailClosing, setDetailClosing] = useState(false);
   const [liveCheckedAt, setLiveCheckedAt] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
   const resultsRef = useRef<HTMLDivElement>(null);
+  const filterToggleRef = useRef<HTMLButtonElement>(null);
+  const filterCloseRef = useRef<HTMLButtonElement>(null);
+  const filtersCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const detailCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openFilters = useCallback(() => {
+    if (filtersCloseTimerRef.current) window.clearTimeout(filtersCloseTimerRef.current);
+    setFiltersClosing(false);
+    setFiltersOpen(true);
+  }, []);
+
+  const closeFilters = useCallback(() => {
+    if (!filtersOpen || filtersClosing) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setFiltersOpen(false);
+      return;
+    }
+    setFiltersClosing(true);
+    filtersCloseTimerRef.current = window.setTimeout(() => {
+      setFiltersOpen(false);
+      setFiltersClosing(false);
+      filtersCloseTimerRef.current = null;
+    }, 180);
+  }, [filtersClosing, filtersOpen]);
+
+  const openDetail = useCallback((id: string) => {
+    if (detailCloseTimerRef.current) window.clearTimeout(detailCloseTimerRef.current);
+    setDetailClosing(false);
+    setSelectedId(id);
+  }, []);
+
+  const closeDetail = useCallback(() => {
+    if (!selectedId || detailClosing) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setSelectedId(null);
+      return;
+    }
+    setDetailClosing(true);
+    detailCloseTimerRef.current = window.setTimeout(() => {
+      setSelectedId(null);
+      setDetailClosing(false);
+      detailCloseTimerRef.current = null;
+    }, 180);
+  }, [detailClosing, selectedId]);
 
   useEffect(() => {
     const saved = window.localStorage.getItem(THEME_KEY);
@@ -308,13 +354,35 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
   );
 
   useEffect(() => {
-    if (!selected) return;
+    if (!filtersOpen && !selected) return;
+    const previousOverflow = document.body.style.overflow;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelectedId(null);
+      if (event.key !== "Escape") return;
+      if (filtersOpen) closeFilters();
+      else closeDetail();
     };
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [selected]);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [closeDetail, closeFilters, filtersOpen, selected]);
+
+  useEffect(() => {
+    if (!filtersOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const focusFrame = window.requestAnimationFrame(() => filterCloseRef.current?.focus());
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      (previousFocus ?? filterToggleRef.current)?.focus();
+    };
+  }, [filtersOpen]);
+
+  useEffect(() => () => {
+    if (filtersCloseTimerRef.current) window.clearTimeout(filtersCloseTimerRef.current);
+    if (detailCloseTimerRef.current) window.clearTimeout(detailCloseTimerRef.current);
+  }, []);
 
   const resetFilters = useCallback(() => {
     setQuery(DEFAULTS.q);
@@ -463,66 +531,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
 
   return (
     <div className={styles.pageShell}>
-      <header className={styles.header}>
-        <div className={styles.headerInner}>
-          <h1 className={styles.siteLogo}>
-            <a href="../index.html" aria-label={t("header.logo.alt", "Destiny Guide")}>
-              <img src="../images/common/rogo.png" alt="Destiny Guide" />
-            </a>
-          </h1>
-          <nav className={styles.headerMenus} aria-label={t("db.nav.aria", "Main navigation")}>
-            <div>
-              <a href="../beginner_page.html">{t("header.nav.beginner", "Beginner")}</a>
-              <a href="../item_page.html">{t("header.nav.items", "Destiny Items")}</a>
-              <a href="../class_builds.html">Class Builds</a>
-              <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
-              <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
-              <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
-              <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
-              <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
-              <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
-              <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
-              <a href="../redeem/">{t("header.nav.redeem", "Token Redeem")}</a>
-            </div>
-            <div className={styles.raidMenu}>
-              <a href="../dn.html">Distorted Nightmare [RAID]</a>
-              <a href="../discontrolled_tower_raid.html">The Discontrolled Tower [RAID]</a>
-              <a href="../predator_raid.html">The Ravenous Predator [RAID]</a>
-              <a href="../tpd_page.html">The Phantasmal Dimension</a>
-            </div>
-          </nav>
-          <div className={styles.headerActions}>
-            <button
-              className={styles.themeButton}
-              type="button"
-              onClick={updateTheme}
-              aria-label={theme === "dark" ? t("header.theme.light", "Light mode") : t("header.theme.dark", "Dark mode")}
-              aria-pressed={theme === "dark"}
-            >
-              <span className={styles.themeIcon} aria-hidden="true" />
-              <span className={styles.themeLabel}>
-                {theme === "dark" ? t("header.theme.lightShort", "Light") : t("header.theme.darkShort", "Dark")}
-              </span>
-            </button>
-            <a
-              className={styles.discordLink}
-              href="https://discord.gg/FesaarwjFn"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Destiny Discord"
-            />
-            <a className={styles.navLink} href="../drop-tables/">
-              {t("header.link.dropTables", "Drop Tables")}
-            </a>
-            <a className={styles.navLinkActive} href="../database/" aria-current="page">
-              {t("header.link.database", "Database")}
-            </a>
-            {/* /calculator/ stays unlisted until its damage model is verified. */}
-            <LanguageSwitcher />
-            <HappyHourHeader />
-          </div>
-        </div>
-      </header>
+      <SiteHeader active="database" theme={theme} onThemeToggle={updateTheme} />
 
       <section className={styles.hero}>
         <div>
@@ -566,10 +575,12 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
             )}
           </div>
           <button
+            ref={filterToggleRef}
             className={styles.filterToggle}
             type="button"
-            onClick={() => setFiltersOpen(true)}
+            onClick={openFilters}
             aria-label={t("db.filters.open", "Open filters")}
+            aria-expanded={filtersOpen}
           >
             {t("db.filters.label", "Filters")}
             {activeFilterCount > 0 && <em>{activeFilterCount}</em>}
@@ -650,7 +661,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
             <ul className={styles.itemList}>
               {results.slice(0, visible).map((item) => (
                 <li key={item.id}>
-                  <button type="button" onClick={() => setSelectedId(item.id)}>
+                  <button type="button" onClick={() => openDetail(item.id)}>
                     <div className={styles.itemHead}>
                       <strong>{item.name}</strong>
                       <div className={styles.itemMeta}>
@@ -707,7 +718,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
       </main>
 
       {filtersOpen && (
-        <div className={styles.sheetBackdrop} onClick={() => setFiltersOpen(false)} role="presentation">
+        <div className={`${styles.sheetBackdrop} ${filtersClosing ? styles.isClosing : ""}`} onClick={closeFilters} role="presentation">
           <div
             className={styles.sheet}
             role="dialog"
@@ -717,7 +728,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
           >
             <header>
               <h3>{t("db.filters.label", "Filters")}</h3>
-              <button type="button" onClick={() => setFiltersOpen(false)} aria-label={t("db.filters.close", "Close filters")}>
+              <button ref={filterCloseRef} type="button" onClick={closeFilters} aria-label={t("db.filters.close", "Close filters")}>
                 ×
               </button>
             </header>
@@ -726,7 +737,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
               <button type="button" onClick={resetFilters} disabled={activeFilterCount === 0}>
                 {t("db.filters.resetShort", "Reset")}
               </button>
-              <button type="button" className={styles.sheetPrimary} onClick={() => setFiltersOpen(false)}>
+              <button type="button" className={styles.sheetPrimary} onClick={closeFilters}>
                 {t("db.filters.show", "Show {n} results").replace("{n}", results.length.toLocaleString("en-US"))}
               </button>
             </div>
@@ -734,15 +745,25 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
         </div>
       )}
 
-      {selected && <ItemDetail item={selected} onClose={() => setSelectedId(null)} />}
+      {selected && <ItemDetail item={selected} onClose={closeDetail} closing={detailClosing} />}
     </div>
   );
 }
 
-function ItemDetail({ item, onClose }: { item: DatabaseItem; onClose: () => void }) {
+function ItemDetail({ item, onClose, closing }: { item: DatabaseItem; onClose: () => void; closing: boolean }) {
   const { lang, t } = useI18n();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const focusFrame = window.requestAnimationFrame(() => closeButtonRef.current?.focus());
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      previousFocus?.focus();
+    };
+  }, []);
   return (
-    <div className={styles.detailBackdrop} onClick={onClose} role="presentation">
+    <div className={`${styles.detailBackdrop} ${closing ? styles.isClosing : ""}`} onClick={onClose} role="presentation">
       <aside
         className={styles.detail}
         role="dialog"
@@ -759,7 +780,7 @@ function ItemDetail({ item, onClose }: { item: DatabaseItem; onClose: () => void
             </p>
             <h3>{item.name}</h3>
           </div>
-          <button type="button" onClick={onClose} aria-label={t("db.detail.close", "Close item details")}>
+          <button ref={closeButtonRef} type="button" onClick={onClose} aria-label={t("db.detail.close", "Close item details")}>
             ×
           </button>
         </header>

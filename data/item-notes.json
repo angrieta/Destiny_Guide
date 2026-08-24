@@ -14,6 +14,13 @@
       "ja": "ASTRAL WINGS が同じ効果をシールド枠で提供し、Trap/Search と自前の防御ステータスも付いてきます。シールドを持っているなら、このユニット枠は別のものに回した方がよいです。",
       "es": "ASTRAL WINGS ofrece lo mismo desde el hueco de escudo, y encima suma Trap/Search y estadísticas defensivas propias. Si tienes el escudo, este hueco de unidad rinde más con otra cosa.",
       "fr": "ASTRAL WINGS offre la même chose depuis l'emplacement de bouclier, avec en plus Trap/Search et ses propres statistiques défensives. Si vous avez le bouclier, cet emplacement d'unité est mieux employé ailleurs."
+    },
+    "Weapons:ULTIMATE DOUBLE CANNON": {
+      "en": "Its special has 100.0 range, a 26.0 angle and up to 8 targets without Jointparts. With Jointparts, those values rise to 135.0 range, a 35.0 angle and up to 10 targets; it also gains Speed +15%, ATA +20 and penetration against Episode 4 lizards.",
+      "ko": "특수 공격은 Jointparts 미장착 시 사거리 100.0, 각도 26.0, 최대 8타깃입니다. 장착 시 사거리 135.0, 각도 35.0, 최대 10타깃으로 강화되며 공격 속도 +15%, ATA +20을 얻고 Episode 4 리자드를 관통합니다.",
+      "ja": "特殊攻撃は Jointparts なしで射程 100.0、角度 26.0、最大 8 体です。装備時は射程 135.0、角度 35.0、最大 10 体になり、攻撃速度 +15%、ATA +20、エピソード4のリザード貫通も得られます。",
+      "es": "Sin Jointparts, el especial tiene 100.0 de alcance, 26.0 de ángulo y hasta 8 objetivos. Con Jointparts sube a 135.0 de alcance, 35.0 de ángulo y hasta 10 objetivos; además obtiene velocidad de ataque +15%, ATA +20 y atraviesa a los Lizards del Episodio 4.",
+      "fr": "Sans Jointparts, le spécial a une portée de 100.0, un angle de 26.0 et jusqu’à 8 cibles. Avec Jointparts, il passe à une portée de 135.0, un angle de 35.0 et jusqu’à 10 cibles ; il gagne aussi vitesse d’attaque +15 %, ATA +20 et traverse les Lizards de l’épisode 4."
     }
   }
 }

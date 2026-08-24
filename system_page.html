@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
 </head>
 
 <!-- 헤더시작 -->
@@ -165,7 +166,7 @@
             </div>
         </section>
         <section class="g_sec" id="area-percent">
-            <h3><span class="g_sec_num">3</span><span data-i18n="sys.t051">Area% — where high percentages come from</span></h3>
+            <h3><span class="g_sec_num">3</span><span data-i18n="sys.t051">Area% - where high percentages come from</span></h3>
             <p data-i18n="sys.t052">A weapon's attribute and Hit percentage are decided by the area it drops in, not by the monster. Every area carries three Area% levels, and each level caps how high a roll can go.</p>
             <div class="g_scroll">
                 <table class="g_table">
@@ -652,7 +653,6 @@
 
         function close() {
             popup.classList.remove("active");
-            img.src = "";
             document.body.style.overflow = "";
         }
         document.querySelectorAll(".g_fig img").forEach(function (el) {

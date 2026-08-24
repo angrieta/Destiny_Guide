@@ -21,13 +21,13 @@
   "item.t042": "The wave does not trigger DMC.",
   "item.t045": "combo unlocked here",
   "item.t047": "It has also capabilities with a full combo to drain your HP under 12.5% which make an effective synergy with Dark Flow",
-  "item.t048": "Jointparts empowers Speed by 15%, ATA+20, can hit EP4 Lizards in the face.",
+  "item.t048": "With Jointparts: Special range 135.0, angle 35.0, and up to 10 targets; Speed +15%, ATA +20, and penetrates Episode 4 lizards.",
   "item.t050": "Explodes on contact with enemies, walls, and traps",
   "item.t051": "Slightly longer sword range",
   "item.t053": "Humans can freeze monsters, and CASTs use fewer Freeze Traps.",
   "item.t054": "Twin Cyclone special can hit lizards in the face.",
   "item.t055": "I recommend prioritizing Hit, Dark, and Machine for % choices",
-  "item.t057": "Nightmare features a Dark Flow – like wave attack that inflicts Hell on groups of enemies and has infinite vertical range",
+  "item.t057": "Nightmare features a Dark Flow - like wave attack that inflicts Hell on groups of enemies and has infinite vertical range",
   "item.t060": "Useful with Mag invincibility trigger",
   "item.t062": "Handgun-range special, consumes HP",
   "item.t063": "Best for HUcast / HUcaseal",
@@ -68,5 +68,6 @@
   "item.t149": "Carry one or two when your core setup has spare unit slots.",
   "item.t151": "A defining Destiny unit for faster Hunter, Ranger, and battle-Force combat.",
   "item.t152": "Available year-round and commonly treated as an endgame core slot.",
-  "item.t154": "Click the image to view the supplied source at full size."
+  "item.t154": "Click the image to view the supplied source at full size.",
+  "item.t155": "Without Jointparts: Special range 100.0, angle 26.0, and up to 8 targets."
 }

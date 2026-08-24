@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "../styles/design-system.css";
 import { I18nProvider } from "./i18n/i18n";
 
 // next.config.ts 와 같은 값을 쓴다. 절대 경로로 두면 GitHub Pages 의

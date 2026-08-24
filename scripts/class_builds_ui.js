@@ -93,7 +93,7 @@
         if (statBits.length) a.appendChild(el("span", "cb_chip_stat", statBits.join(" · ")));
         else if (item.unresolved) a.appendChild(label("span", "cb_chip_stat", "ui.notInDb"));
 
-        /* 대체 장비 — 이름은 게임 데이터, "or" 만 번역 */
+        /* 대체 장비 - 이름은 게임 데이터, "or" 만 번역 */
         if (item.alt && item.alt.length) {
             var alt = el("span", "cb_chip_stat");
             var or = el("span", null, t("ui.or"));
@@ -126,7 +126,7 @@
     }
 
     /* ----------------------------------------------------------------------
-       2층 — 원문 이후 추가된 후보
+       2층 - 원문 이후 추가된 후보
        ---------------------------------------------------------------------- */
     function newLayer(classId) {
         var rows = (DATA.newLayer || []).filter(function (n) {
@@ -181,7 +181,7 @@
                 var m = el("span", "cb_plan_mats");
                 var ml = label("span", null, "ui.mats");
                 m.appendChild(ml);
-                m.appendChild(document.createTextNode(" — " + v.mats));
+                m.appendChild(document.createTextNode(" - " + v.mats));
                 plan.appendChild(m);
             }
             wrap.appendChild(plan);
@@ -258,7 +258,7 @@
     }
 
     /* ----------------------------------------------------------------------
-       검색 — 어떤 빌드가 이 아이템을 쓰는지
+       검색 - 어떤 빌드가 이 아이템을 쓰는지
        ---------------------------------------------------------------------- */
     /** classId -> 그 클래스에서 검색어와 일치하는 변형 개수 */
     function countHits(q) {
@@ -510,11 +510,29 @@
             input.focus();
         });
 
-        legendBtn.addEventListener("click", function () {
-            legend.hidden = !legend.hidden;
-            legendBtn.setAttribute("aria-expanded", String(!legend.hidden));
-        });
+        var legendCloseTimer;
+        legendBtn.addEventListener("click", function (event) {
+            if (legend.hidden) {
+                window.clearTimeout(legendCloseTimer);
+                legend.dataset.state = "open";
+                legend.hidden = false;
+                legendBtn.setAttribute("aria-expanded", "true");
+                return;
+            }
 
+            legendBtn.setAttribute("aria-expanded", "false");
+            if (event.detail === 0 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                legend.hidden = true;
+                delete legend.dataset.state;
+                return;
+            }
+
+            legend.dataset.state = "closing";
+            legendCloseTimer = window.setTimeout(function () {
+                legend.hidden = true;
+                delete legend.dataset.state;
+            }, 150);
+        });
         window.addEventListener("hashchange", function () { readHash(); render(); });
     }
 

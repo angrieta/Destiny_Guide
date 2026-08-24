@@ -148,7 +148,7 @@
         "Dual Bird: hits 4\u20134\u20134 on Normal/Heavy/Special, longer range. ATA requirement lowered to 190.",
         "Celestial Fusion: Dual Casting \u2014 Jellen and Zalure together at technique Lv30, ATA +20, longer range.",
         "Twin Rika's Claw: 5 targets, dagger animation, wider angle.",
-        "Ultimate Double Cannon: ATA +20, better special range and angle, hits lizards, Speed +15%.",
+        "Ultimate Double Cannon: special range 100.0, angle 26.0 and 8 targets; with JOINTPARTS, range 135.0, angle 35.0, 10 targets, Speed +15%, ATA +20 and EP4 lizard penetration.",
         "Jointparts + Celestial Fusion + Blue Phantom Field pushes Jellen and Zalure to 400%."
       ],
       obtain: [
@@ -263,7 +263,7 @@
       stats: [
         ["Class", "Force only"],
         ["Requirement", "MST 1200"],
-        ["ATP", "800–850"],
+        ["ATP", "800-850"],
         ["ATA", "55"],
         ["Special", "Berserk"],
         ["Targets", "4"],
@@ -304,10 +304,10 @@
       summary: "A multi-shot firearm that fires dark energy rounds and uses Arrest to paralyze enemies.",
       stats: [
         ["Class", "All"],
-        ["ATP", "220–250"],
+        ["ATP", "220-250"],
         ["ATA", "52"],
         ["Special", "Arrest"],
-        ["Shots", "3–3–3 bullets"]
+        ["Shots", "3-3-3 bullets"]
       ],
       combat: [
         "Fires like Master Raven / Last Swan.",
@@ -364,7 +364,7 @@
       ],
       obtain: [
         "Final boss in Toward the Multiverse [Lv.III]: 1/32 on all IDs.",
-        "Dark Falz in Toward the Multiverse [Lv.II]: 1/204 on Pinkal–Whitill."
+        "Dark Falz in Toward the Multiverse [Lv.II]: 1/204 on Pinkal-Whitill."
       ],
       required: []
     },
@@ -379,10 +379,10 @@
       summary: "A Hunter weapon that uses melee claw attacks and unleashes a piercing energy laser.",
       stats: [
         ["Class", "Hunter"],
-        ["ATP", "500–520"],
+        ["ATP", "500-520"],
         ["ATA", "50"],
         ["Bonus", "HP +100"],
-        ["Normal / Heavy", "2–2–3, Claw animation"],
+        ["Normal / Heavy", "2-2-3, Claw animation"],
         ["Special", "Piercing laser, Rifle animation"]
       ],
       combat: [
@@ -412,9 +412,9 @@
         ["Obtain type", "NPC trade"]
       ],
       combat: [
-        "Prophet of Motav: Hits 1–2–3.",
-        "The Sigh of a God: expanded range and Hits 3–3–3.",
-        "Gal Wind: ATP +350, ATA +30, Normal/Heavy hits 3–3–3, Special hits 3–3–4."
+        "Prophet of Motav: Hits 1-2-3.",
+        "The Sigh of a God: expanded range and Hits 3-3-3.",
+        "Gal Wind: ATP +350, ATA +30, Normal/Heavy hits 3-3-3, Special hits 3-3-4."
       ],
       obtain: [
         "Trade with the NPC Paganini in Pioneer 2 while in Hallowed World [Master]."
@@ -448,7 +448,7 @@
       ],
       combat: [],
       obtain: [
-        "Quest: Save the Pioneer 2! — EP1 Special, Beyond the Mainframe [Extreme].",
+        "Quest: Save the Pioneer 2! - EP1 Special, Beyond the Mainframe [Extreme].",
         "Quest-exclusive drop from The Prophet at 1/45."
       ],
       required: []
@@ -706,8 +706,8 @@
       stats: [
         ["Class", "All"],
         ["Level", "190"],
-        ["DFP", "408–508"],
-        ["EVP", "244–284"],
+        ["DFP", "408-508"],
+        ["EVP", "244-284"],
         ["Resists", "30 / 30 / 30 / 34 / 34"]
       ],
       combat: [
@@ -831,8 +831,8 @@
       stats: [
         ["Class", "All"],
         ["Level", "180"],
-        ["DFP", "230–280"],
-        ["EVP", "148–170"],
+        ["DFP", "230-280"],
+        ["EVP", "148-170"],
         ["Resists", "20 / 20 / 20 / 28 / 28"],
         ["Bonus", "All stats +15"]
       ],
@@ -856,8 +856,8 @@
       stats: [
         ["Class", "All"],
         ["Level", "160"],
-        ["DFP", "288–330"],
-        ["EVP", "260–280"],
+        ["DFP", "288-330"],
+        ["EVP", "260-280"],
         ["Resists", "30 / 30 / 30 / 30 / 30"],
         ["Bonus", "HP +100"]
       ],
@@ -882,7 +882,7 @@
         ["Class", "All"],
         ["Level", "177"],
         ["DFP", "370"],
-        ["EVP", "180–260"],
+        ["EVP", "180-260"],
         ["Resists", "0 / 0 / 0 / 50 / 0"]
       ],
       combat: [
@@ -955,7 +955,7 @@
       stats: [
         ["Class", "All"],
         ["Level", "80"],
-        ["DFP", "235–285"]
+        ["DFP", "235-285"]
       ],
       combat: [
         "A strong leveling armor that bridges characters into high-level gear."
@@ -998,8 +998,8 @@
       stats: [
         ["Class", "All"],
         ["Level", "200"],
-        ["DFP", "180–230"],
-        ["EVP", "200–250"],
+        ["DFP", "180-230"],
+        ["EVP", "200-250"],
         ["Resists", "32 / 32 / 32 / 24 / 24"]
       ],
       combat: [
@@ -1023,8 +1023,8 @@
       stats: [
         ["Class", "All"],
         ["Level", "200"],
-        ["DFP", "180–230"],
-        ["EVP", "200–250"],
+        ["DFP", "180-230"],
+        ["EVP", "200-250"],
         ["Resists", "32 / 40 / 32 / 20 / 40"],
         ["Bonus", "ATA +35"]
       ],
@@ -1049,8 +1049,8 @@
       stats: [
         ["Class", "All"],
         ["Level", "200"],
-        ["DFP", "200–250"],
-        ["EVP", "180–230"],
+        ["DFP", "200-250"],
+        ["EVP", "180-230"],
         ["Resists", "40 / 32 / 32 / 20 / 40"],
         ["Bonus", "ATA +35"]
       ],
@@ -1106,13 +1106,13 @@
       stats: [
         ["Class", "All"],
         ["Level", "150"],
-        ["DFP", "150–200"],
-        ["EVP", "150–200"],
+        ["DFP", "150-200"],
+        ["EVP", "150-200"],
         ["Resists", "32 / 32 / 32 / 24 / 24"],
         ["Bonus", "ATA +30"]
       ],
       combat: [
-        "Combo bonus with Last Emperor: Special Attack hits 3–3–3."
+        "Combo bonus with Last Emperor: Special Attack hits 3-3-3."
       ],
       obtain: [
         "The supplied source image does not list a drop or crafting route."
@@ -1131,8 +1131,8 @@
       stats: [
         ["Class", "All"],
         ["Level", "200"],
-        ["DFP", "150–200"],
-        ["EVP", "150–200"],
+        ["DFP", "150-200"],
+        ["EVP", "150-200"],
         ["Resists", "33 / 33 / 33 / 33 / 33"]
       ],
       combat: [
@@ -1221,7 +1221,7 @@
       name: "RED PHANTOM FIELD",
       summary: "An attack-focused phantom field with expanded Jellen range.",
       stats: [
-        ["Class", "All"], ["Level", "180"], ["DFP", "165–180"], ["EVP", "170–190"],
+        ["Class", "All"], ["Level", "180"], ["DFP", "165-180"], ["EVP", "170-190"],
         ["Resists", "25 / 25 / 25 / 15 / 15"], ["Bonus", "ATP +60"]
       ],
       combat: ["Jellen range +300%."],
@@ -1232,7 +1232,7 @@
       name: "BLUE PHANTOM FIELD",
       summary: "An accuracy-focused phantom field with expanded Zalure range.",
       stats: [
-        ["Class", "All"], ["Level", "180"], ["DFP", "145–160"], ["EVP", "190–210"],
+        ["Class", "All"], ["Level", "180"], ["DFP", "145-160"], ["EVP", "190-210"],
         ["Resists", "25 / 25 / 25 / 15 / 15"], ["Bonus", "ATA +30"]
       ],
       combat: ["Zalure range +300%."],
@@ -1275,7 +1275,7 @@
       name: "RAINBOW SHIELD",
       summary: "A high-EVP shield that adds all stats and strengthens Grants.",
       stats: [
-        ["Class", "All"], ["Level", "135"], ["DFP", "170–190"], ["EVP", "230–255"],
+        ["Class", "All"], ["Level", "135"], ["DFP", "170-190"], ["EVP", "230-255"],
         ["Resists", "15 / 15 / 15 / 32 / 32"], ["Bonus", "All stats +15"]
       ],
       combat: ["Grants +50%."],
@@ -1287,7 +1287,7 @@
       image: "./images/items/shields/bat-wing-forum.webp",
       summary: "Mysterious wings for aggressive support play.",
       stats: [
-        ["Class", "All"], ["Level", "150"], ["DFP", "160–200"], ["EVP", "160–180"],
+        ["Class", "All"], ["Level", "150"], ["DFP", "160-200"], ["EVP", "160-180"],
         ["Resists", "20 / 20 / 20 / 25 / 25"], ["Bonus", "ATP +60"]
       ],
       combat: ["Jellen and Zalure range +100%. Demon Wing and Cursed Wing are alternate skins with identical stats."],
@@ -1299,7 +1299,7 @@
       image: "./images/items/shields/golden-bat-wing-forum.webp",
       summary: "A golden bat-wing variant for attack-focused support builds.",
       stats: [
-        ["Class", "All"], ["Level", "150"], ["DFP", "160–200"], ["EVP", "160–180"],
+        ["Class", "All"], ["Level", "150"], ["DFP", "160-200"], ["EVP", "160-180"],
         ["Resists", "20 / 20 / 20 / 25 / 25"], ["Bonus", "ATP +60"]
       ],
       combat: ["Jellen and Zalure range +100%."],
@@ -1311,7 +1311,7 @@
       image: "./images/items/shields/wings-of-life-forum.webp",
       summary: "Holy wings that extend healing and revival support.",
       stats: [
-        ["Class", "All"], ["Level", "150"], ["DFP", "160–200"], ["EVP", "160–180"],
+        ["Class", "All"], ["Level", "150"], ["DFP", "160-200"], ["EVP", "160-180"],
         ["Resists", "20 / 20 / 20 / 25 / 25"]
       ],
       combat: ["Resta +100%; Reverser and Moon Atomizer range +100%."],
@@ -1323,7 +1323,7 @@
       image: "./images/items/shields/valentine-wings-forum.webp",
       summary: "A Valentine wing variant that extends healing and revival support.",
       stats: [
-        ["Class", "All"], ["Level", "150"], ["DFP", "160–200"], ["EVP", "160–180"],
+        ["Class", "All"], ["Level", "150"], ["DFP", "160-200"], ["EVP", "160-180"],
         ["Resists", "20 / 20 / 20 / 25 / 25"]
       ],
       combat: ["Resta +100%; Reverser and Moon Atomizer range +100%."],
@@ -1376,7 +1376,7 @@
       name: "RED RING",
       summary: "A classic high-variable shield with a strong all-stat bonus.",
       stats: [
-        ["Class", "All"], ["Level", "150"], ["DFP", "130–215"], ["EVP", "212–237"],
+        ["Class", "All"], ["Level", "150"], ["DFP", "130-215"], ["EVP", "212-237"],
         ["Resists", "30 / 30 / 30 / 5 / 5"], ["Bonus", "All stats +20"]
       ],
       obtain: ["Check the current Destiny drop table for its active source."]
@@ -1410,7 +1410,7 @@
       name: "GRATIA",
       summary: "A Cast-only shield with high evasion and strong elemental resistances.",
       stats: [
-        ["Class", "Cast"], ["Level", "101"], ["DFP", "130–150"], ["EVP", "200–215"],
+        ["Class", "Cast"], ["Level", "101"], ["DFP", "130-150"], ["EVP", "200-215"],
         ["Resists", "34 / 34 / 34 / 24 / 24"]
       ],
       obtain: ["Also required for the Halloween Astral Wings trade."]
@@ -1420,7 +1420,7 @@
       name: "RANGER WALL",
       summary: "An early Ranger shield with low defenses but useful accuracy.",
       stats: [
-        ["Class", "Ranger"], ["Level", "41"], ["DFP", "70–80"], ["EVP", "145–155"],
+        ["Class", "Ranger"], ["Level", "41"], ["DFP", "70-80"], ["EVP", "145-155"],
         ["Resists", "15 / 15 / 18 / 0 / 0"], ["Bonus", "ATA +20"]
       ],
       obtain: ["Check the current Destiny drop table for its active source."]
@@ -1430,7 +1430,7 @@
       name: "DE ROL LE SHIELD",
       summary: "A human-only shield with highly variable defense and solid evasion.",
       stats: [
-        ["Class", "Humans"], ["Level", "102"], ["DFP", "180–255"], ["EVP", "120–195"],
+        ["Class", "Humans"], ["Level", "102"], ["DFP", "180-255"], ["EVP", "120-195"],
         ["Resists", "5 / 20 / 15 / 0 / 20"]
       ],
       obtain: ["Check the current Destiny drop table for its active source."]
@@ -1484,9 +1484,9 @@
         ["Affected weapons", "3"]
       ],
       combat: [
-        "Apocalypse Bowgun: ATP +100; Normal/Heavy hits 3–3–3, Special hits 1–2–3 with adjusted special angle.",
+        "Apocalypse Bowgun: ATP +100; Normal/Heavy hits 3-3-3, Special hits 1-2-3 with adjusted special angle.",
         "Snow Queen: ATP +150, ATA +30, shoots 3 bullets at once like Master Raven while combo remains locked.",
-        "Power Maser: Hits 4–4–4, MST +150, range 185.0 and angle 60.0."
+        "Power Maser: Hits 4-4-4, MST +150, range 185.0 and angle 60.0."
       ],
       obtain: [
         "Create or trade the item with the required components shown in the supplied source.",
@@ -1521,7 +1521,7 @@
         ["Affected weapons", "4"]
       ],
       combat: [
-        "Planet Eater: Hits 1–2–2 → 2–2–3, Twin Sword custom animation, ATA +20.",
+        "Planet Eater: Hits 1-2-2 → 2-2-3, Twin Sword custom animation, ATA +20.",
         "M&A85 Fury: ATP +100, piercing bullet, range 170.0→210.0.",
         "Mortal Ruin: targets 3→10, ATP +100, auto-aim Megid special.",
         "Ill Gill Reaper: custom Partisan animation, targets 10→6, Speed +15%, buffed angle and expanded hit patterns."
@@ -1546,9 +1546,9 @@
       ],
       combat: [
         "Yasminkov 9000M: Range +40.0, ATP +50, ATA +20.",
-        "Yasminkov 2000H: Range +70.0, Hits 3–3–3.",
+        "Yasminkov 2000H: Range +70.0, Hits 3-3-3.",
         "Yasminkov 7000V: ATP +300, Range +55.0.",
-        "Yasminkov 3000R: Normal/Heavy hits 3–3–3, Special hits 1–1–3, special range +75.0 and angle +35."
+        "Yasminkov 3000R: Normal/Heavy hits 3-3-3, Special hits 1-1-3, special range +75.0 and angle +35."
       ],
       obtain: [
         "Epsilon: Raster Scope at 1/2100, as listed in the supplied drop-table update."
@@ -1570,7 +1570,7 @@
       ],
       combat: [
         "Arrest Needle / Hell Needle: Range +105, ATA +20.",
-        "Gush Needle: Range +105, special hits 1–1–3, ATA +20.",
+        "Gush Needle: Range +105, special hits 1-1-3, ATA +20.",
         "Grave Digger / Nefarious Needle: ATP +60, ATA +30."
       ],
       obtain: [
@@ -1822,7 +1822,7 @@
         '<span data-i18n="catalog.operator.legendTrade">' + escapeHTML(operatorData.legend?.trade || "") + "</span></p>" +
       ((operatorData.legend?.genericUnits || []).length
         ? '<p class="destiny_priority_generic"><strong data-i18n="catalog.operator.genericUnits">Generic end-game unit entries:</strong> ' +
-          (operatorData.legend.genericUnits || []).map(escapeHTML).join(" · ") + "</p>"
+          (operatorData.legend.genericUnits || []).map(escapeHTML).join(", ") + "</p>"
         : "");
 
     filters.insertAdjacentElement("afterend", overview);
@@ -1832,7 +1832,7 @@
     const slide = document.createElement("div");
     slide.className = "swiper-slide destiny_item_slide destiny_catalog_card";
 
-    const comboPattern = /\b(hits?|shots?|combo)\b|\d\s*[–-]\s*\d\s*[–-]\s*\d/i;
+    const comboPattern = /\b(hits?|shots?|combo)\b|\d\s*[--]\s*\d\s*[--]\s*\d/i;
     const previewEntries = item.stats.slice(0, 4);
     const comboEntry = item.stats.find((entry) => comboPattern.test(entry.join(" ")));
     if (comboEntry && !previewEntries.includes(comboEntry)) previewEntries.push(comboEntry);
@@ -2061,7 +2061,7 @@
       ? '<ul class="destiny_operator_ratings">' + overall.map((rating) =>
           '<li><strong>' + escapeHTML(rating.score) + "</strong>" +
           '<span>' + escapeHTML(operatorCategoryLabel(rating.category)) +
-          (rating.condition ? " · " + escapeHTML(t("catalog.operator.requires", "Requires")) + " " + escapeHTML(operatorConditionLabel(rating.condition)) : "") + "</span></li>"
+          (rating.condition ? " - " + escapeHTML(t("catalog.operator.requires", "Requires")) + " " + escapeHTML(operatorConditionLabel(rating.condition)) : "") + "</span></li>"
         ).join("") + "</ul>"
       : "";
 

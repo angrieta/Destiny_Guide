@@ -1,4 +1,4 @@
-/* 자동 생성 — scratchpad/gen_builds2.py
+/* 자동 생성 - scratchpad/gen_builds2.py
    원문: playpso.net forums/topic/745 (Depassage / 마테리얼 플랜 Orgodermirk)
    슬롯별 장비와 요구 %% 만 구조화했다. 수치는 data/database-*.json 에서 붙였다.
    손으로 고치지 말고 생성기를 고칠 것. */
@@ -7981,7 +7981,7 @@ window.DESTINY_BUILDS = {
    "racaseal"
   ],
   "body": "A setup that only comes together optimally on RAcast and RAcaseal. It pushes resistances and DFP to an extreme, but you cannot swap any unit or shield, and you give up both Immortal/Battle and V503.",
-  "result": "EFR 102 · EIC 102 · ETH 102 · EDK 92 · ELT 92 — and D-Virus Armor with Gratia adds DFP +730 to +750 and EVP +400 to +415",
+  "result": "EFR 102 · EIC 102 · ETH 102 · EDK 92 · ELT 92 - and D-Virus Armor with Gratia adds DFP +730 to +750 and EVP +400 to +415",
   "warn": "The pieces are hard to get. Heavenly/Resist only comes from Anniversary Crates. On RAcaseal, the Immortal/Ability all-stats plan leaves everything except ATA 40 short, so use the ATP, DFP, ATA and LCK plan with this setup instead.",
   "credit": "Found by Orgodermirk",
   "items": [

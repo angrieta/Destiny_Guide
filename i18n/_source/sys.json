@@ -49,7 +49,7 @@
   "sys.t048": "Using Demon's on an immune enemy shows the text IMMUNE in purple, so you can confirm it in the middle of a fight.",
   "sys.t049": "A purple name means the enemy is immune.",
   "sys.t050": "The IMMUNE text shown when the special is blocked.",
-  "sys.t051": "Area% — where high percentages come from",
+  "sys.t051": "Area% - where high percentages come from",
   "sys.t052": "A weapon's attribute and Hit percentage are decided by the area it drops in, not by the monster. Every area carries three Area% levels, and each level caps how high a roll can go.",
   "sys.t053": "Area% level",
   "sys.t054": "Range you can roll",

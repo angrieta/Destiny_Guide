@@ -262,9 +262,9 @@
         var source = document.getElementById("hh-source");
 
         if (!hhData) {
-            observed.textContent = "—";
-            remaining.textContent = "—";
-            source.textContent = "—";
+            observed.textContent = "-";
+            remaining.textContent = "-";
+            source.textContent = "-";
             status.dataset.state = hhLoadState;
             status.textContent = hhLoadState === "error"
                 ? t("lab.t065", "Schedule data could not be loaded")
