@@ -19,14 +19,36 @@ Phantasy Star Online Blue Burst - Destiny 서버 공략 사이트입니다.
 | `/database` | 무기·방어구·실드·유닛·마그 통합 검색 (PlayPSO Item Database 미러) |
 | `header.html` | 공통 헤더 (`scripts/include.js`가 런타임에 주입) |
 
+## 헤더 검색
+
+모든 페이지의 헤더에 검색 버튼이 있습니다. `Ctrl`/`⌘` + `K` 또는 `/` 로도 열립니다.
+사이트 안의 페이지와 아이템 1000여 개를 한 번에 찾고, 아이템은 상세 화면으로 바로 보냅니다.
+
+- Destiny 전용 아이템 → `item_page.html?item=<id>` (도감 상세창이 열립니다)
+- 그 외 아이템 → `/database/?item=<id>`
+
+검색 인덱스는 `scripts/build-search-index.mjs` 가 `data/database-*.json` 과
+`scripts/destiny_catalog.js` 에서 뽑아 `data/search-index.json` 으로 만듭니다.
+`pnpm dev` / `pnpm build` 가 `build/prepare-static.mjs` 를 거치며 매번 다시 만들기 때문에
+아이템 데이터를 동기화한 뒤 따로 챙길 것은 없습니다. 직접 만들려면:
+
+```bash
+node scripts/build-search-index.mjs
+```
+
+UI 는 정적 페이지(`scripts/site_search.js`)와 React 라우트(`app/components/SiteSearch.tsx`)에
+한 벌씩 있습니다. 헤더 자체가 `header.html` 과 `app/components/SiteHeader.tsx` 로 나뉘어 있어
+같은 구조를 따랐습니다. **한쪽을 고치면 반대쪽도 고쳐야 합니다.** 인덱스와
+스타일(`styles/search.css`)은 공유하므로 결과 모양과 순위는 저절로 같이 갑니다.
+
 ## 디렉터리
 
 ```
 app/       Next.js(vinext) 진입점 — /index.html 로 리다이렉트
 build/     정적 파일 준비 스크립트 및 Vite 플러그인
 images/    이미지 에셋
-scripts/   페이지별 클라이언트 스크립트, 헤더 인클루드, 테마 토글
-styles/    reset / common / index / responsive CSS
+scripts/   페이지별 클라이언트 스크립트, 헤더 인클루드, 테마 토글, 헤더 검색
+styles/    reset / common / index / responsive / search CSS
 worker/    Cloudflare Worker 엔트리
 ```
 

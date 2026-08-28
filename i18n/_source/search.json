@@ -1,0 +1,17 @@
+{
+  "search.trigger": "Search",
+  "search.dialog.label": "Search the site",
+  "search.placeholder": "Search items, guides, raids…",
+  "search.loading": "Loading…",
+  "search.empty": "Nothing matched. Try an item name, a class, or a special.",
+  "search.recent": "Recent",
+  "search.jumpTo": "Jump to",
+  "search.hint.move": "to move",
+  "search.hint.open": "to open",
+  "search.group.guide": "Guides",
+  "search.group.raid": "Raids",
+  "search.group.tool": "Tools",
+  "search.group.data": "Data",
+  "search.page.home": "Home",
+  "search.page.happyHour": "Happy Hour schedule"
+}

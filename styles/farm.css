@@ -1,0 +1,399 @@
+/*
+ * 조합 브라우저 / Section ID 파밍 추천
+ *
+ * 두 페이지가 성격이 비슷해서 스타일을 공유한다. 색은 전부 design-system.css 의
+ * --dg-* 토큰이라 다크 테마는 따로 손댈 것이 없다.
+ */
+
+/* ── 검색 · 칩 ────────────────────────────────────────────────────────── */
+
+.fm_controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-5);
+    padding: var(--space-4);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-card);
+    background: var(--dg-surface-raised);
+}
+
+.fm_search {
+    flex: 1 1 260px;
+    min-width: 0;
+    height: 38px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface);
+    color: var(--dg-text);
+    font-size: var(--text-sm);
+}
+
+.fm_search:focus {
+    outline: none;
+    border-color: var(--dg-accent);
+}
+
+.fm_group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.fm_label {
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.fm_chip {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-pill);
+    background: var(--dg-surface);
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+    font-weight: 680;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color var(--motion-fast) var(--ease-out), background-color var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out);
+}
+
+.fm_chip:hover {
+    border-color: var(--dg-accent);
+    color: var(--dg-accent-hover);
+}
+
+.fm_chip[aria-pressed="true"] {
+    border-color: var(--dg-accent);
+    background: var(--dg-accent);
+    color: #f7faff;
+}
+
+html[data-theme="dark"] .fm_chip[aria-pressed="true"] {
+    color: #0b1727;
+}
+
+.fm_count {
+    margin-left: auto;
+    color: var(--dg-text-faint);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Section ID 칩은 실제 게임 색을 쓴다. 이름만으로는 구분이 잘 안 된다. */
+.fm_chip[data-sid]::before {
+    content: "";
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: var(--sid, var(--dg-text-faint));
+    vertical-align: middle;
+}
+
+.fm_chip[data-sid="Viridia"] { --sid: #4bbf7a; }
+.fm_chip[data-sid="Greenill"] { --sid: #8fd94a; }
+.fm_chip[data-sid="Skyly"] { --sid: #57b7e8; }
+.fm_chip[data-sid="Bluefull"] { --sid: #2f6fdf; }
+.fm_chip[data-sid="Purplenum"] { --sid: #9b6ede; }
+.fm_chip[data-sid="Pinkal"] { --sid: #f07fc0; }
+.fm_chip[data-sid="Redria"] { --sid: #e05555; }
+.fm_chip[data-sid="Oran"] { --sid: #e8963c; }
+.fm_chip[data-sid="Yellowboze"] { --sid: #e0c94a; }
+.fm_chip[data-sid="Whitill"] { --sid: #dfe6ef; }
+
+/* ── 레시피 카드 ──────────────────────────────────────────────────────── */
+
+.fm_cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-4);
+}
+
+.fm_card {
+    padding: var(--space-4);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-card);
+    background: var(--dg-surface);
+}
+
+.fm_card_head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--dg-border);
+}
+
+.fm_card_name {
+    margin: 0;
+    font-size: var(--text-lg);
+    font-weight: 780;
+}
+
+.fm_badge {
+    padding: 2px 8px;
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-pill);
+    color: var(--dg-text-faint);
+    font-size: 10px;
+    font-weight: 750;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.fm_ing {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--dg-border);
+    font-size: var(--text-sm);
+}
+
+.fm_ing:last-of-type {
+    border-bottom: 0;
+}
+
+.fm_ing_name {
+    color: var(--dg-text-soft);
+}
+
+/* 여러 레시피에 들어가는 재료는 눈에 띄어야 한다. 파밍 우선순위가 여기서 갈린다. */
+.fm_ing_name.is_shared {
+    color: var(--dg-text);
+    font-weight: 700;
+}
+
+.fm_ing_shared {
+    margin-left: 6px;
+    padding: 1px 6px;
+    border-radius: var(--radius-pill);
+    background: var(--dg-accent-soft);
+    color: var(--dg-accent-hover);
+    font-size: 10px;
+    font-weight: 750;
+}
+
+.fm_qty {
+    flex: 0 0 auto;
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+}
+
+.fm_obtain {
+    margin: var(--space-3) 0 0;
+    padding-left: var(--space-3);
+    border-left: 2px solid var(--dg-border);
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    line-height: 1.6;
+}
+
+/* ── 역검색 ───────────────────────────────────────────────────────────── */
+
+.fm_reverse {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-3);
+}
+
+.fm_rev_item {
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface);
+}
+
+.fm_rev_name {
+    margin: 0 0 var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: 750;
+}
+
+.fm_rev_uses {
+    margin: 0;
+    color: var(--dg-text-soft);
+    font-size: var(--text-xs);
+    line-height: 1.7;
+}
+
+.fm_rev_uses strong {
+    color: var(--dg-text);
+}
+
+/* ── Section ID 표 ────────────────────────────────────────────────────── */
+
+.fm_excl {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--dg-success) 20%, transparent);
+    color: var(--dg-success);
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.fm_rate {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.fm_where {
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+}
+
+.fm_empty {
+    padding: var(--space-8) var(--space-4);
+    color: var(--dg-text-faint);
+    text-align: center;
+}
+
+@media screen and (max-width: 760px) {
+    .fm_count {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .fm_cards,
+    .fm_reverse {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── 포럼 조합표 ──────────────────────────────────────────────────────── */
+
+.fm_group_title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: var(--space-6) 0 var(--space-3);
+    font-size: var(--text-base);
+    font-weight: 780;
+}
+
+.fm_group_title:first-child {
+    margin-top: 0;
+}
+
+.fm_group_n {
+    padding: 1px 8px;
+    border-radius: var(--radius-pill);
+    background: var(--dg-surface-muted);
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-weight: 750;
+    font-variant-numeric: tabular-nums;
+}
+
+.fm_badge_soft {
+    border-color: var(--dg-accent);
+    color: var(--dg-accent-hover);
+}
+
+.fm_combo_table td {
+    vertical-align: top;
+}
+
+/* 재료 두 개가 "A + B" 로 읽히게 둔다. 조합식은 문장보다 식으로 보는 게 빠르다. */
+.fm_parts {
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+}
+
+.fm_part.is_shared {
+    color: var(--dg-text);
+    font-weight: 700;
+}
+
+.fm_plus {
+    margin: 0 6px;
+    color: var(--dg-text-faint);
+    font-weight: 750;
+}
+
+.fm_needs {
+    white-space: nowrap;
+}
+
+.fm_lv,
+.fm_only {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.fm_lv {
+    background: var(--dg-surface-muted);
+    color: var(--dg-text-soft);
+    font-variant-numeric: tabular-nums;
+}
+
+/* 성별·클래스 제한은 놓치면 재료를 날린다. 경고색을 쓴다. */
+.fm_only {
+    background: color-mix(in srgb, var(--dg-warning) 18%, transparent);
+    color: var(--dg-warning);
+}
+
+.fm_note {
+    display: block;
+    margin-top: 3px;
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* ── Section ID 표의 표시들 ───────────────────────────────────────────── */
+
+.fm_score,
+.fm_hit,
+.fm_tag {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.fm_score {
+    background: var(--dg-accent-soft);
+    color: var(--dg-accent-hover);
+    font-variant-numeric: tabular-nums;
+}
+
+.fm_hit {
+    border: 1px solid var(--dg-border);
+    color: var(--dg-text-soft);
+}
+
+.fm_tag {
+    background: var(--dg-surface-muted);
+    color: var(--dg-text-soft);
+}
+
+/* 재료로 무엇이 되는지. 아이템 이름 아래 한 줄로 붙는다. */
+.fm_makes {
+    display: block;
+    margin-top: 3px;
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    line-height: 1.5;
+}

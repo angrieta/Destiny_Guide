@@ -10,12 +10,16 @@
             <a href="./beginner_page.html" class="site_nav_link" data-i18n="header.nav.beginner">Beginner</a>
             <a href="./item_page.html" class="site_nav_link" data-i18n="header.nav.items">Destiny Items</a>
             <a href="./class_builds.html" class="site_nav_link" data-i18n="header.nav.builds">Class Builds</a>
+            <a href="./event_page.html" class="site_nav_link" data-i18n="header.nav.events">Events</a>
+            <a href="./endgame_page.html" class="site_nav_link" data-i18n="header.nav.endgame">Endgame</a>
 
             <details class="site_nav_group">
                 <summary data-i18n="header.nav.guides">Guides</summary>
                 <div class="site_nav_menu">
                     <a href="./quest_data_page.html" data-i18n="header.nav.questData">Quest Data</a>
                     <a href="./enhance_page.html" data-i18n="header.nav.enhance">Enhancement</a>
+                    <a href="./recipe_page.html" data-i18n="header.nav.recipes">Item Combinations</a>
+                    <a href="./sectionid_page.html" data-i18n="header.nav.sectionid">Section ID Hunting</a>
                     <a href="./economy_page.html" data-i18n="header.nav.economy">Shops</a>
                     <a href="./system_page.html" data-i18n="header.nav.systems">Systems</a>
                     <a href="./dmc_page.html" data-i18n="header.nav.dmc">DMC Guide</a>
@@ -44,6 +48,18 @@
         </nav>
 
         <div class="site_header_actions">
+            <!-- 누르면 화면 가운데 검색창이 열린다. scripts/site_search.js 가 연결한다.
+                 여기에 입력창을 바로 두면 1160px 부근에서 내비가 밀려 버튼으로 뒀다. -->
+            <button type="button" class="ds_search_trigger" data-search-trigger
+                    aria-label="Search" data-i18n-aria-label="search.trigger">
+                <svg class="ds_search_trigger_icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <circle cx="7" cy="7" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"></circle>
+                    <path d="M10.6 10.6 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path>
+                </svg>
+                <span class="ds_search_trigger_label" data-i18n="search.trigger">Search</span>
+                <!-- 표기는 site_search.js 가 OS 에 맞춰 ⌘K / Ctrl K 로 바꾼다. -->
+                <kbd class="ds_search_trigger_key">Ctrl K</kbd>
+            </button>
             <a class="happy_hour_header" id="header-hh" href="./player_tools.html#happy-schedule" data-state="loading" aria-label="Open Happy Hour schedule">
                 <span class="happy_hour_header_dot" aria-hidden="true"></span>
                 <span class="happy_hour_header_label">HH</span>

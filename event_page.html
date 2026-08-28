@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="ev.title">DestinyGuide - Events</title>
+    <meta name="description" content="Seasonal event archive for Destiny PSOBB: periods, new items, event quests, drop rates and shop trades.">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <link rel="stylesheet" href="./styles/event.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/event.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+    <script src="./scripts/site_search.js"></script>
+<!-- 헤더종료 -->
+
+<body class="event_page">
+<main class="g_page">
+    <div class="g_head">
+        <h2><span data-i18n="ev.heading">Events</span></h2>
+        <p class="g_lead" data-i18n="ev.lead">Destiny runs a seasonal event every few weeks, and each one adds items, a limited quest, or a shop trade that disappears when it ends. This page collects what each event contained, when it ran, and how its rewards were obtained.</p>
+        <p class="g_source"><span data-i18n="ev.source">Source: the event announcement channels on the Destiny Discord, posted by GM VEL(JP). Drop rates are the values announced at the time and may have been adjusted since.</span></p>
+    </div>
+
+    <!-- 이벤트 주기. 탭보다 위에 둔다. 어느 탭을 보든 "다음은 언제"가 먼저 눈에 들어와야 한다. -->
+    <section class="ev_cycle_sec">
+        <h3 data-i18n="ev.cycle.title">The yearly cycle</h3>
+        <p class="ev_cycle_lead" data-i18n="ev.cycle.lead">Events repeat on a rough annual pattern, so you can plan around them. Dates shift year to year, and revival runs are sometimes slotted between the regular ones.</p>
+        <ul class="ev_cycle">
+            <li><strong>12</strong> XMAS</li>
+            <li><strong>02</strong> Valentine</li>
+            <li><strong>03</strong> White Day</li>
+            <li><strong>04</strong> Easter</li>
+            <li><strong>05</strong> Anniversary</li>
+            <li><strong>07</strong> Summer</li>
+            <li><strong>10</strong> Halloween</li>
+        </ul>
+    </section>
+
+    <!-- 탭 시작 -->
+    <div class="ev_tabs">
+        <div class="ev_tablist" role="tablist" data-event-tablist aria-label="Event list" data-i18n-aria-label="ev.tablist">
+            <button type="button" class="ev_tab" role="tab" data-event-tab="summer-2026" aria-selected="true" aria-controls="panel-summer-2026" id="tab-summer-2026">
+                Summer <span class="ev_tab_year">2026</span>
+            </button>
+            <button type="button" class="ev_tab" role="tab" data-event-tab="anniv-8th" aria-selected="false" aria-controls="panel-anniv-8th" id="tab-anniv-8th" tabindex="-1">
+                8th Anniversary <span class="ev_tab_year">2026</span>
+            </button>
+            <button type="button" class="ev_tab" role="tab" data-event-tab="halloween-revival" aria-selected="false" aria-controls="panel-halloween-revival" id="tab-halloween-revival" tabindex="-1">
+                Halloween <span class="ev_tab_year">2026</span>
+            </button>
+            <button type="button" class="ev_tab" role="tab" data-event-tab="easter-2026" aria-selected="false" aria-controls="panel-easter-2026" id="tab-easter-2026" tabindex="-1">
+                Easter <span class="ev_tab_year">2026</span>
+            </button>
+            <button type="button" class="ev_tab" role="tab" data-event-tab="valentine-2026" aria-selected="false" aria-controls="panel-valentine-2026" id="tab-valentine-2026" tabindex="-1">
+                Valentine <span class="ev_tab_year">2026</span>
+            </button>
+            <button type="button" class="ev_tab" role="tab" data-event-tab="xmas-2025" aria-selected="false" aria-controls="panel-xmas-2025" id="tab-xmas-2025" tabindex="-1">
+                XMAS <span class="ev_tab_year">2025</span>
+            </button>
+        </div>
+    </div>
+    <!-- 탭 종료 -->
+
+    <!-- ========== Summer 2026 ========== -->
+    <section class="ev_panel" role="tabpanel" data-event-panel="summer-2026" id="panel-summer-2026" aria-labelledby="tab-summer-2026" tabindex="0">
+        <div class="ev_head">
+            <h3>Summer Event 2026</h3>
+            <div class="ev_meta">
+                <span class="ev_period">2026.07.16 ~ <span data-i18n="ev.weeks4">4 weeks</span></span>
+                <span class="ev_status" data-state="ended" data-i18n="ev.status.ended">Ended</span>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.summary">Summary</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.summer26.a">Ran for four weeks from 16 July 2026.</li>
+                <li><strong data-i18n="ev.sameAs2025">Contents are the same as the 2025 run</strong> — <span data-i18n="ev.sameAsNote">everything below is from that event, which is what the 2026 announcement points to.</span></li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.boost">Server-wide boosts</h4>
+            <ul class="ev_list">
+                <li><strong>×10 XP</strong> <span data-i18n="ev.summer.boost1">and free Section ID changes for the whole event — use /sectionid in game to switch.</span></li>
+                <li data-i18n="ev.summer.token">Photon Tokens drop from any monster and are spent in the Phantastic Bazaar quest (EP2 &gt; Shop) to add hit to a weapon, up to a maximum of 80.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.recipe">Event item — Astral Dragon</h4>
+            <ul class="ev_list">
+                <li><strong>Blueprint: Astral Dragon</strong> + <strong>Final Egg Blaster</strong> = <strong>Astral Dragon</strong></li>
+                <li data-i18n="ev.summer.bpNote">From the 2025 run onward, every Section ID can drop the Blueprint.</li>
+            </ul>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.item">Item</th>
+                            <th data-i18n="ev.th.enemy">Enemy</th>
+                            <th data-i18n="ev.th.quest">Quest</th>
+                            <th data-i18n="ev.th.rate">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Blueprint: Astral Dragon</td>
+                            <td>Dorphon Divine</td>
+                            <td>Ult. EP4 &gt; Summer &gt; Summer Vacation Tragedy</td>
+                            <td>1/1170</td>
+                        </tr>
+                        <tr>
+                            <td>Paragon Frame</td>
+                            <td>—</td>
+                            <td>Ult. EP2 &gt; Summer &gt; The Eternal Age</td>
+                            <td>1/1170</td>
+                        </tr>
+                        <tr>
+                            <td>Dr. Robotonik’s Plan B</td>
+                            <td>—</td>
+                            <td>Ult. EP2 &gt; Summer &gt; Phantasmal World 3</td>
+                            <td>1/1170</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="ev_list">
+                <li data-i18n="ev.summer.dorphon">Dorphon Divine appears only in Summer Vacation Tragedy.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.quest">New quest — Phantasmal World #3 [Extreme]</h4>
+            <ul class="ev_list">
+                <li>Ultimate EP2 &gt; Summer &gt; Phantasmal World 3 [Extreme] — <strong data-i18n="ev.summer.diff9">difficulty 9</strong></li>
+                <li><strong data-i18n="ev.summer.roleLabel">Special role</strong> @Dr. Robotonik — <span data-i18n="ev.summer.role">clear with under 20 deaths and within 40 minutes.</span></li>
+            </ul>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.enemy">Enemy</th>
+                            <th data-i18n="ev.th.item">Item</th>
+                            <th data-i18n="ev.th.rate">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Dr. Robotniks</td><td>Millennium Photon Core</td><td>1/475</td></tr>
+                        <tr><td>Sinow Azure</td><td>Millennium Photon Core</td><td>1/475</td></tr>
+                        <tr><td>Sinow Gore</td><td>Millennium Photon Core</td><td>1/475</td></tr>
+                        <tr><td>D-Virus Morphos</td><td>Millennium Photon Core</td><td>1/475</td></tr>
+                        <tr><td>Dark Nebulas</td><td>Millennium Photon Core</td><td>1/475</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.counts">Monster counts — PW3 [Extreme]</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.enemy">Enemy</th>
+                            <th data-i18n="ev.th.count">Count</th>
+                            <th data-i18n="ev.th.enemy">Enemy</th>
+                            <th data-i18n="ev.th.count">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Dolmolm</td><td>107</td><td>Recobox</td><td>56</td></tr>
+                        <tr><td>Dolmdarl</td><td>61</td><td>D-Virus Morphos</td><td>54</td></tr>
+                        <tr><td>Dr. Robotonik</td><td>44</td><td>Sinow Azure</td><td>38</td></tr>
+                        <tr><td>Yowie</td><td>31</td><td>Sinow Gore</td><td>30</td></tr>
+                        <tr><td>Dark Nebulas</td><td>29</td><td>Gibbles</td><td>15</td></tr>
+                        <tr><td>Girtablulu</td><td>12</td><td>Ill Gill</td><td>8</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.tips">Good to know</h4>
+            <ul class="ev_list">
+                <li><strong data-i18n="ev.summer.purple">Purple enemy name</strong> — <span data-i18n="ev.summer.purpleNote">immune to Demon’s and Hell.</span></li>
+                <li><strong data-i18n="ev.summer.red">Red enemy name</strong> — <span data-i18n="ev.summer.redNote">immune to Demon’s and Hell, and carries a damage-cut barrier unless it is a boss.</span></li>
+                <li data-i18n="ev.summer.yearRound">Beyond the Nightmare (★8) and Beyond the Mainframe (★3) were introduced during this event as year-round quests.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ========== 8th Anniversary ========== -->
+    <section class="ev_panel" role="tabpanel" data-event-panel="anniv-8th" id="panel-anniv-8th" aria-labelledby="tab-anniv-8th" tabindex="0" hidden>
+        <div class="ev_head">
+            <h3>Destiny 8th Anniversary Event</h3>
+            <div class="ev_meta">
+                <span class="ev_period">2026.05.08 19:00 ~ 2026.05.22 18:59</span>
+                <span class="ev_status" data-state="ended" data-i18n="ev.status.ended">Ended</span>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.newItem">New item</h4>
+            <div class="ev_item">
+                <div class="ev_item_media">
+                    <img src="./images/items/updates/radiant-ring.png" alt="RADIANT RING">
+                </div>
+                <div>
+                    <h5 class="ev_item_name">RADIANT RING</h5>
+                    <span class="ev_item_type">Shield</span>
+                    <dl class="ev_stats">
+                        <div><dt data-i18n="ev.stat.class">Class</dt><dd>All</dd></div>
+                        <div><dt data-i18n="ev.stat.level">Req. Lv</dt><dd>150</dd></div>
+                        <div><dt>DFP</dt><dd>150-200</dd></div>
+                        <div><dt>EVP</dt><dd>150-200</dd></div>
+                        <div><dt data-i18n="ev.stat.resists">Resists</dt><dd>32-32-32-24-24</dd></div>
+                        <div><dt data-i18n="ev.stat.bonus">Bonus</dt><dd>ATA +30</dd></div>
+                    </dl>
+                    <ul class="ev_list">
+                        <li><strong data-i18n="ev.stat.combo">Combo Bonus</strong> — Last Emperor (Special Attack hit: 3-3-3)</li>
+                    </ul>
+                    <p class="ev_flavor">“A relic of forgotten royalty. Its radiance empowers Last Emperor’s full potential.”</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.quest">Event quest</h4>
+            <ul class="ev_list">
+                <li><strong>Radiant Destiny!</strong> — EP2 &gt; Anniversary <span data-i18n="ev.anniv8.questDiff">(8th Anniv. version, difficulty 7)</span></li>
+                <li data-i18n="ev.anniv8.q1">Some enemy spawns were modified from the regular version.</li>
+                <li data-i18n="ev.anniv8.q2">Secret bosses dropped RADIANT RING in place of their usual drop.</li>
+                <li data-i18n="ev.anniv8.q3">The secret room was made harder to reach than in the 7th Anniversary version.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.drops">Drop table — Radiant Destiny!</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.enemy">Enemy</th>
+                            <th data-i18n="ev.th.item">Item</th>
+                            <th data-i18n="ev.th.rate">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Olga Flow</td><td>RADIANT RING</td><td>1/51</td></tr>
+                        <tr><td>Gol Dragon</td><td>RADIANT RING</td><td>1/64</td></tr>
+                        <tr><td>Gal Gryphon</td><td>RADIANT RING</td><td>1/64</td></tr>
+                        <tr><td>Tormentorr</td><td>RADIANT RING</td><td>1/264</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.trade">Trades and shop</h4>
+            <ul class="ev_list">
+                <li><strong>Bazaar Quest (Anniversary version)</strong> — RADIANT RING <span data-i18n="ev.anniv8.t1">for Anniversary Crate ×60, during the event only</span></li>
+                <li data-i18n="ev.anniv8.t2">A dedicated trade NPC accepted Anniversary Crates, and was available only while the event ran.</li>
+                <li data-i18n="ev.anniv8.t3">The Anniversary Crate item list was adjusted for this run.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.after">After the event</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.anniv8.after">RADIANT RING was announced for the regular drop table later on, but at a lower rate than during the event.</li>
+                <li data-i18n="ev.anniv8.leaderboard">SS rank clear teams were recorded on the Discord leaderboard channel.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ========== Halloween (revival) ========== -->
+    <section class="ev_panel" role="tabpanel" data-event-panel="halloween-revival" id="panel-halloween-revival" aria-labelledby="tab-halloween-revival" tabindex="0" hidden>
+        <div class="ev_head">
+            <h3>Halloween Event (Revival)</h3>
+            <div class="ev_meta">
+                <span class="ev_period">2026.04.29 ~ 2026.05.08</span>
+                <span class="ev_status" data-state="ended" data-i18n="ev.status.ended">Ended</span>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.summary">Summary</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.hw.a">A revival run held between the Easter event and the 8th Anniversary event.</li>
+                <li data-i18n="ev.hw.b">It started after a server restart and ran until the 8th Anniversary event began.</li>
+                <li><strong data-i18n="ev.sameAs2025">Contents are the same as the 2025 run</strong> — <span data-i18n="ev.sameAsNote">everything below is from that event, which is what the revival announcement points to.</span></li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.drops">Where the event bosses are</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.enemy">Enemy</th>
+                            <th data-i18n="ev.th.quest">Quest</th>
+                            <th data-i18n="ev.th.item">Item</th>
+                            <th data-i18n="ev.th.rate">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Headless Horseman</td>
+                            <td>EP1 &gt; Halloween &gt; Path to Salvation [Event]</td>
+                            <td>BAT WING</td>
+                            <td>1/730</td>
+                        </tr>
+                        <tr>
+                            <td>Headless Horseman</td>
+                            <td>EP1 &gt; Halloween &gt; Harmony of Despair II [Event]</td>
+                            <td>BAT WING</td>
+                            <td>1/730</td>
+                        </tr>
+                        <tr>
+                            <td>Grim Reaper</td>
+                            <td>EP2 &gt; Halloween &gt; Walking through Flames</td>
+                            <td>ILL GILL REAPER / LAST EMPEROR</td>
+                            <td>1/930</td>
+                        </tr>
+                        <tr>
+                            <td>Grim Reaper</td>
+                            <td>EP2 &gt; Halloween &gt; Hallowed World [Extreme]</td>
+                            <td>ASTRAL ESSENCE</td>
+                            <td>1/1400</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="ev_list">
+                <li data-i18n="ev.hw.rates">Rates shown are the adjusted values. During the run BAT WING went from 1/930 to 1/730, Astral Essence from 1/1760 to 1/1400, and Ill Gill Reaper from 1/1024 to 1/930.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.contents">What was added in 2025</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.hw.new1">Harmony of Despair II [Halloween] was added, giving Headless Horseman a second quest to farm BAT WINGS in.</li>
+                <li data-i18n="ev.hw.new2">Grim Reaper’s Ethereal Armor drop was replaced with LAST EMPEROR.</li>
+                <li data-i18n="ev.hw.new3">Room IDs for some enemies in the Halloween Path to Salvation were corrected, so it spawns more enemies than the regular version.</li>
+                <li data-i18n="ev.hw.new4">A bank was added to Path to Salvation [Halloween] and the laser fence in Ruins 1 was removed.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ========== Easter 2026 ========== -->
+    <section class="ev_panel" role="tabpanel" data-event-panel="easter-2026" id="panel-easter-2026" aria-labelledby="tab-easter-2026" tabindex="0" hidden>
+        <div class="ev_head">
+            <h3>Destiny Easter 2026</h3>
+            <div class="ev_meta">
+                <span class="ev_period">2026.04.01 00:00 ~ <span data-i18n="ev.weeks4">4 weeks</span></span>
+                <span class="ev_status" data-state="ended" data-i18n="ev.status.ended">Ended</span>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.newItem">New item</h4>
+            <div class="ev_item">
+                <div class="ev_item_media">
+                    <img src="./images/items/updates/berserk-needle.png" alt="BERSERK NEEDLE">
+                </div>
+                <div>
+                    <h5 class="ev_item_name">BERSERK NEEDLE</h5>
+                    <span class="ev_item_type">Needle</span>
+                    <dl class="ev_stats">
+                        <div><dt>ATP</dt><dd>520</dd></div>
+                        <div><dt>ATA</dt><dd>40</dd></div>
+                        <div><dt data-i18n="ev.stat.special">Special</dt><dd>Berserk</dd></div>
+                    </dl>
+                    <ul class="ev_list">
+                        <li><strong data-i18n="ev.easter26.combo">With VECTOR SCOPE equipped</strong> — Range +105, ATA +20</li>
+                    </ul>
+                    <p class="ev_flavor">“A custom shotgun that shoots countless needles. Its special attack deals more damage by sacrificing HP.”</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.drops">Where it dropped</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.enemy">Enemy</th>
+                            <th data-i18n="ev.th.quest">Quest</th>
+                            <th data-i18n="ev.th.rate">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gal Gryphon (Stronger)</td>
+                            <td>Gal Da Val’s Darkness [Easter] (★7)</td>
+                            <td>1/55 <span data-i18n="ev.easter26.allIds">(all IDs)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="ev_list">
+                <li data-i18n="ev.easter26.rateAdj">The rate started at 1/64 and was raised to 1/55 partway through the event.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.contents">Event contents</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.easter26.c1">Easter versions of quests were available under EP1 / EP2 &gt; Easter.</li>
+                <li data-i18n="ev.easter26.c2">Egg Rappy appeared in Episode 2.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.trade">Easter Shop — Phantastic Bazaar (EP2 &gt; Shop)</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.item">Item</th>
+                            <th data-i18n="ev.th.cost">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>D-Virus Armor</td><td>Easter Egg ×30</td></tr>
+                        <tr><td>D-Virus Launcher (all 0%)</td><td>Easter Egg ×30</td></tr>
+                        <tr><td>BERSERK NEEDLE (all 0%)</td><td>Easter Egg ×60</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.other">Other changes made during the event</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.easter26.o1">DIVINE FIELD was added to the Millennium Shop.</li>
+                <li data-i18n="ev.easter26.o2">The Add Special NPC now warns you before applying a special that would not work — for example when making a Hell Dark Flow.</li>
+                <li data-i18n="ev.easter26.o3">BERSERK NEEDLE was announced for the regular drop table later on, at a lower rate.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ========== Valentine 2026 ========== -->
+    <section class="ev_panel" role="tabpanel" data-event-panel="valentine-2026" id="panel-valentine-2026" aria-labelledby="tab-valentine-2026" tabindex="0" hidden>
+        <div class="ev_head">
+            <h3>Valentine 2026</h3>
+            <div class="ev_meta">
+                <span class="ev_period">2026.01.31 ~ 2026.02.22 23:30 GMT</span>
+                <span class="ev_status" data-state="ended" data-i18n="ev.status.ended">Ended</span>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.trade">New trade NPC — Phantastic Bazaar (EP2 &gt; Shop)</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.item">Item</th>
+                            <th data-i18n="ev.th.cost">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Wings of Life</td><td>Flower Bouquet ×150</td></tr>
+                        <tr><td>Weapon Crystal Badge ×5</td><td>Flower Bouquet ×25</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="ev_list">
+                <li><strong data-i18n="ev.valentine26.yearRound">This NPC stays available year-round</strong> — <span data-i18n="ev.valentine26.yearRoundNote">unlike the rest of the event, it did not disappear when the event ended.</span></li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.other">Other changes</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.valentine26.o1">The Valentine Crate item list was adjusted.</li>
+                <li data-i18n="ev.valentine26.o2">Bubbles had its DFP and EFR lowered.</li>
+                <li data-i18n="ev.valentine26.o3">Adding a special by redeeming Flower Bouquets was disabled for this run.</li>
+                <li data-i18n="ev.valentine26.o4">The event was extended by one day to make up for a server restart and hotfixes.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ========== XMAS 2025 ========== -->
+    <section class="ev_panel" role="tabpanel" data-event-panel="xmas-2025" id="panel-xmas-2025" aria-labelledby="tab-xmas-2025" tabindex="0" hidden>
+        <div class="ev_head">
+            <h3>Destiny XMAS Event 2025</h3>
+            <div class="ev_meta">
+                <span class="ev_period">2025.12.02 ~ 2026.01.01 <span data-i18n="ev.weeks4paren">(4 weeks)</span></span>
+                <span class="ev_status" data-state="ended" data-i18n="ev.status.ended">Ended</span>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.boost">Server-wide boosts</h4>
+            <ul class="ev_list">
+                <li><strong>×10 XP</strong> <span data-i18n="ev.xmas25.b1">and free Section ID changes, for the entire event.</span></li>
+                <li data-i18n="ev.xmas25.b2">Parasitic Gene ‘Flow’ dropped at an improved rate of 1/146.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.currency">Photon Tokens and Presents</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.xmas25.c1">Every monster in Ragol had a chance to drop Christmas Presents and Photon Tokens.</li>
+                <li><strong>Photon Tokens</strong> — <span data-i18n="ev.xmas25.c2">used to add hit to weapons by speaking to Paganini in the Phantastic Bazaar quest.</span></li>
+                <li><strong>Christmas Presents</strong> — <span data-i18n="ev.xmas25.c3">could contain limited edition Xmas apparel, certain Type Weapons with a special, or a Yasminkov 9000m with a special.</span></li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.newItem">Limited items</h4>
+            <div class="ev_item">
+                <div class="ev_item_media">
+                    <img src="./images/weapon/ChristmasSpirit.jpg" alt="Christmas Spirit">
+                </div>
+                <div>
+                    <h5 class="ev_item_name">Christmas Spirit</h5>
+                    <span class="ev_item_type" data-i18n="ev.xmas25.limited">Xmas limited</span>
+                    <ul class="ev_list">
+                        <li data-i18n="ev.xmas25.s1">Launches a volley of 3 candy canes per shot at a single target.</li>
+                        <li><strong>Spirit</strong> <span data-i18n="ev.xmas25.s2">special — hits moving and flying targets without missing.</span></li>
+                        <li data-i18n="ev.xmas25.s3">Equippable by Hunter, Ranger and Force.</li>
+                    </ul>
+                    <p class="ev_flavor">“It’s that special time of the year. Time to spread the love!”</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.drops">Limited item drops</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.item">Item</th>
+                            <th data-i18n="ev.th.enemy">Enemy</th>
+                            <th data-i18n="ev.th.quest">Quest</th>
+                            <th data-i18n="ev.th.rate">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Christmas Spirit</td>
+                            <td>Dark Falz</td>
+                            <td>EP1 &gt; Xmas &gt; Toward The Future</td>
+                            <td>1/64</td>
+                        </tr>
+                        <tr>
+                            <td>ORB OF ILLUSIONS</td>
+                            <td>Saint Million / Kondrieu</td>
+                            <td>EP4 &gt; Xmas &gt; Brink of Oblivion</td>
+                            <td>1/64</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="ev_list">
+                <li><strong>ORB OF ILLUSIONS</strong> — <span data-i18n="ev.xmas25.orb">can be used on certain gear to change its appearance and name. Everything else about the item stays identical to the original.</span></li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.quest">Event quest</h4>
+            <ul class="ev_list">
+                <li><strong>Christmas Catastrophe</strong> — EP1 &gt; Xmas</li>
+                <li data-i18n="ev.xmas25.q1">A Mines 1-2 quest with a good number of enemies.</li>
+                <li data-i18n="ev.xmas25.q2">Clear reward: any three materials, including TP and Luck materials.</li>
+                <li data-i18n="ev.xmas25.q3">Remember to activate all four consoles in Mines 1.</li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+</body>
+</html>

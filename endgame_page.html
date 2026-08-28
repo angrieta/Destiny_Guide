@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="eg.title">DestinyGuide - Quest Difficulty</title>
+    <meta name="description" content="Every Destiny PSOBB quest and raid with its official star difficulty, episode and availability, filterable and sortable.">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <link rel="stylesheet" href="./styles/endgame.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/endgame.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+    <script src="./scripts/site_search.js"></script>
+<!-- 헤더종료 -->
+
+<body class="endgame_page">
+<main class="g_page">
+    <div class="g_head">
+        <h2><span data-i18n="eg.heading">Quest Difficulty</span></h2>
+        <p class="g_lead" data-i18n="eg.lead">Destiny rates every quest from ★1 to ★10. This is that whole list in one place, so you can find the next step up instead of guessing which quest your party can hold. Filter by episode or availability, and sort by difficulty or name.</p>
+        <p class="g_source"><span data-i18n="eg.source">Source: the difficulty-of-quests channel on the Destiny Discord, maintained by GM VEL(JP).</span> <span data-i18n="eg.updated">Original list last updated</span> <strong data-endgame-updated>—</strong>.</p>
+    </div>
+
+    <div class="eg_controls">
+        <div class="eg_group">
+            <span class="eg_group_label" data-i18n="eg.filter.tier">Difficulty</span>
+            <button type="button" class="eg_chip" data-endgame-tier="all" aria-pressed="true" data-i18n="eg.type.all">All</button>
+            <button type="button" class="eg_chip" data-endgame-tier="high" aria-pressed="false">★9-10</button>
+            <button type="button" class="eg_chip" data-endgame-tier="mid" aria-pressed="false">★6-8</button>
+            <button type="button" class="eg_chip" data-endgame-tier="low" aria-pressed="false">★3-5</button>
+            <button type="button" class="eg_chip" data-endgame-tier="starter" aria-pressed="false">★1-2</button>
+        </div>
+        <div class="eg_group">
+            <span class="eg_group_label" data-i18n="eg.filter.ep">Episode</span>
+            <button type="button" class="eg_chip" data-endgame-ep="all" aria-pressed="true" data-i18n="eg.type.all">All</button>
+            <button type="button" class="eg_chip" data-endgame-ep="EP1" aria-pressed="false">EP1</button>
+            <button type="button" class="eg_chip" data-endgame-ep="EP2" aria-pressed="false">EP2</button>
+            <button type="button" class="eg_chip" data-endgame-ep="EP4" aria-pressed="false">EP4</button>
+        </div>
+        <div class="eg_group">
+            <span class="eg_group_label" data-i18n="eg.filter.kind">Availability</span>
+            <button type="button" class="eg_chip" data-endgame-kind="all" aria-pressed="true" data-i18n="eg.type.all">All</button>
+            <button type="button" class="eg_chip" data-endgame-kind="year" aria-pressed="false" data-i18n="eg.type.year">Year-round</button>
+            <button type="button" class="eg_chip" data-endgame-kind="raid" aria-pressed="false" data-i18n="eg.type.raid">Raid</button>
+            <button type="button" class="eg_chip" data-endgame-kind="event" aria-pressed="false" data-i18n="eg.type.event">Event</button>
+            <button type="button" class="eg_chip" data-endgame-kind="guide" aria-pressed="false" data-i18n="eg.filter.hasGuide">Has a guide</button>
+            <button type="button" class="eg_chip" data-endgame-kind="video" aria-pressed="false" data-i18n="eg.filter.hasVideo">Has a video</button>
+        </div>
+        <span class="eg_count" data-endgame-count>—</span>
+    </div>
+
+    <!-- 표는 scripts/endgame.js 가 data/quest-difficulty.json 에서 그린다. -->
+    <div data-endgame-mount>
+        <p class="eg_empty" data-i18n="eg.loading">Loading the difficulty table…</p>
+    </div>
+
+    <section class="g_sec" id="videos">
+        <h3><span data-i18n="eg.video.title">Community videos</span></h3>
+        <p class="g_lead"><span data-i18n="eg.video.lead">The Video column links to run recordings shared by players. There are</span> <strong data-video-count>—</strong> <span data-i18n="eg.video.lead2">clips indexed, covering 14 contents. They are uploaded straight to Discord, so the links open a Discord message rather than a video page &mdash; you need to be in the Destiny server to watch them.</span> <span data-i18n="eg.video.credit">Recordings by tihaya_jp, thanx JP, VEL(JP), Nyanchi JP, Oguri Cap, matha_jp, Shiida, Roland, karlito68 and Wut.</span> <span data-i18n="eg.video.updated">Index last updated</span> <strong data-video-updated>&mdash;</strong>.</p>
+    </section>
+
+    <section class="g_sec" id="reading">
+        <h3><span data-i18n="eg.reading.title">How to read this</span></h3>
+        <ul class="ev_list">
+            <li><strong data-i18n="eg.reading.sameName">The same quest name can appear twice</strong> — <span data-i18n="eg.reading.sameNameNote">an event version is usually rated higher than the year-round one. Walking through Flame is ★5 normally and ★7 in its Halloween version, and Gal Da Val’s Darkness goes from ★3 to ★7 at Easter.</span></li>
+            <li><strong data-i18n="eg.reading.event">Event rows are not playable right now</strong> — <span data-i18n="eg.reading.eventNote">they only open while that event runs. The Events page has the periods and rewards.</span></li>
+            <li><strong data-i18n="eg.reading.raid">Raid rows need a full party</strong> — <span data-i18n="eg.reading.raidNote">and most of them award a Discord role for clearing under a condition.</span></li>
+        </ul>
+    </section>
+
+    <section class="g_sec" id="enemy-colors">
+        <h3><span data-i18n="eg.colors.title">Enemy and item colours</span></h3>
+        <p class="g_lead" data-i18n="eg.colors.lead">Higher-rated quests use recoloured enemies, and the colour tells you what will not work before you waste a special.</p>
+        <div class="g_scroll">
+            <table class="g_table g_mid">
+                <thead>
+                    <tr>
+                        <th data-i18n="eg.colors.th.colour">Colour</th>
+                        <th data-i18n="eg.colors.th.meaning">What it means</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong data-i18n="eg.colors.purple">Purple enemy name</strong></td>
+                        <td data-i18n="eg.colors.purpleNote">Immune to Demon’s and Hell. Some of these also have higher HP than normal.</td>
+                    </tr>
+                    <tr>
+                        <td><strong data-i18n="eg.colors.red">Red enemy name</strong></td>
+                        <td data-i18n="eg.colors.redNote">Immune to Demon’s and Hell, and on top of that either much higher HP or a damage-cut barrier.</td>
+                    </tr>
+                    <tr>
+                        <td><strong data-i18n="eg.colors.flash">Flashing item description</strong></td>
+                        <td data-i18n="eg.colors.flashNote">A particularly rare item, unless it is a tool type.</td>
+                    </tr>
+                    <tr>
+                        <td><strong data-i18n="eg.colors.yellow">Yellow item description</strong></td>
+                        <td data-i18n="eg.colors.yellowNote">A custom skinned item.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="g_sec" id="references">
+        <h3><span data-i18n="eg.ref.title">Community references</span></h3>
+        <p class="g_lead" data-i18n="eg.ref.lead">Longer write-ups that live on the Destiny forum. These are the sources the Discord guide channel points new players to.</p>
+        <ul class="ev_list">
+            <li><a href="https://playpso.net/forums/topic/1326-list-difficulty-of-quests-custom-enemies/" target="_blank" rel="noreferrer">List: Difficulty of Quests &amp; Custom Enemies</a> — <span data-i18n="eg.ref.difficulty">the forum version of this table, with notes on the custom enemies each quest uses.</span></li>
+            <li><a href="https://playpso.net/forums/topic/1252-tutorial-of-destiny-for-new-players-in-progress/" target="_blank" rel="noreferrer">Tutorial of Destiny for new players</a> — <span data-i18n="eg.ref.tutorial">what to do first on this server if you come from vanilla PSOBB.</span></li>
+            <li><a href="https://playpso.net/forums/topic/745-collaborative-weapon-gear-and-class-build-end-of-2020-revision/" target="_blank" rel="noreferrer">Collaborative weapon, gear and class build</a> — <span data-i18n="eg.ref.builds">community build reference.</span></li>
+            <li><a href="https://playpso.net/forums/topic/1411-list-of-modifiedbuffed-gear/" target="_blank" rel="noreferrer">List of modified / buffed gear</a> — <span data-i18n="eg.ref.buffed">which vanilla items this server changed.</span></li>
+            <li><a href="https://playpso.net/forums/topic/804-item-combinations/" target="_blank" rel="noreferrer">Item combinations</a> — <span data-i18n="eg.ref.combos">crafting and combination recipes.</span></li>
+            <li><a href="https://playpso.net/forums/topic/552-how-to-feed-0-def-mags/" target="_blank" rel="noreferrer">How to feed 0 DEF mags</a></li>
+            <li><a href="https://playpso.net/forums/topic/53-commands/" target="_blank" rel="noreferrer">In-game commands</a></li>
+        </ul>
+    </section>
+
+    <section class="g_sec" id="todo">
+        <h3><span data-i18n="eg.todo.title">Still missing</span></h3>
+        <p class="g_lead" data-i18n="eg.todo.lead">Per-quest strategy pages exist for four contents so far — The Phantasmal Dimension, Distorted Nightmare, The Discontrolled Tower and The Ravenous Predator. The rest of this table links nowhere yet. Recommended level, party size, monster counts and video walkthroughs are being collected from the individual quest channels.</p>
+    </section>
+</main>
+</body>
+</html>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { LanguageSwitcher, useI18n } from "../i18n/i18n";
 import { HappyHourHeader } from "./HappyHourHeader";
+import { SiteSearch } from "./SiteSearch";
 
 type SiteHeaderProps = {
   active?: "drop-tables" | "database" | "redeem" | "calculator";
@@ -67,6 +68,8 @@ export function SiteHeader({ active, theme, onThemeToggle }: SiteHeaderProps) {
           <a href="../beginner_page.html" className="site_nav_link">{t("header.nav.beginner", "Beginner")}</a>
           <a href="../item_page.html" className="site_nav_link">{t("header.nav.items", "Destiny Items")}</a>
           <a href="../class_builds.html" className="site_nav_link">{t("header.nav.builds", "Class Builds")}</a>
+          <a href="../event_page.html" className="site_nav_link">{t("header.nav.events", "Events")}</a>
+          <a href="../endgame_page.html" className="site_nav_link">{t("header.nav.endgame", "Endgame")}</a>
 
           <details className="site_nav_group" data-current={active === "redeem" ? "true" : undefined} onClick={(event) => event.stopPropagation()} onToggle={(event) => {
             if (!event.currentTarget.open) return;
@@ -78,6 +81,8 @@ export function SiteHeader({ active, theme, onThemeToggle }: SiteHeaderProps) {
             <div className="site_nav_menu" onClick={() => setMenuOpen(false)}>
               <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
               <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
+              <a href="../recipe_page.html">{t("header.nav.recipes", "Item Combinations")}</a>
+              <a href="../sectionid_page.html">{t("header.nav.sectionid", "Section ID Hunting")}</a>
               <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
               <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
               <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
@@ -111,6 +116,8 @@ export function SiteHeader({ active, theme, onThemeToggle }: SiteHeaderProps) {
         </nav>
 
         <div className="site_header_actions">
+          {/* 정적 페이지의 header.html 과 같은 자리. 순서도 맞춰 둔다. */}
+          <SiteSearch />
           <HappyHourHeader />
           <a href="../drop-tables/" className="site_header_data_link site_header_external" aria-current={active === "drop-tables" ? "page" : undefined}>{t("header.link.dropTables", "Drop Tables")}</a>
           <a href="../database/" className="site_header_data_link site_header_external" aria-current={active === "database" ? "page" : undefined}>{t("header.link.database", "Database")}</a>

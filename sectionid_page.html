@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="fm.s.title">DestinyGuide - Section ID Hunting</title>
+    <meta name="description" content="What each Section ID should hunt in Destiny PSOBB: exclusive drops, best rates, and which enemy and area to farm.">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <link rel="stylesheet" href="./styles/farm.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/farm.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+    <script src="./scripts/site_search.js"></script>
+<!-- 헤더종료 -->
+
+<body class="sectionid_page">
+<main class="g_page">
+    <div class="g_head">
+        <h2><span data-i18n="fm.s.heading">Section ID Hunting</span></h2>
+        <p class="g_lead" data-i18n="fm.s.lead">The drop tables tell you what falls where, but not what is worth your time on the ID you already have. This flips it around: pick your Section ID and it lists what only you can get, best rate first, with the enemy and area to farm.</p>
+        <p class="g_source" data-i18n="fm.s.source">Calculated from the drop tables this site already mirrors. Materials and consumables are filtered out, and when an item drops from several enemies only the best rate is kept.</p>
+    </div>
+
+    <div class="fm_controls">
+        <div class="fm_group">
+            <span class="fm_label" data-i18n="fm.s.difficulty">Difficulty</span>
+            <button type="button" class="fm_chip" data-fm-difficulty="Normal" aria-pressed="false">Normal</button>
+            <button type="button" class="fm_chip" data-fm-difficulty="Hard" aria-pressed="false">Hard</button>
+            <button type="button" class="fm_chip" data-fm-difficulty="Very Hard" aria-pressed="false">Very Hard</button>
+            <button type="button" class="fm_chip" data-fm-difficulty="Ultimate" aria-pressed="true">Ultimate</button>
+        </div>
+        <span class="fm_count" data-section-count>—</span>
+    </div>
+
+    <div class="fm_controls">
+        <div class="fm_group">
+            <span class="fm_label" data-i18n="fm.s.id">Section ID</span>
+            <button type="button" class="fm_chip" data-fm-sid="Viridia" data-sid="Viridia" aria-pressed="true">Viridia</button>
+            <button type="button" class="fm_chip" data-fm-sid="Greenill" data-sid="Greenill" aria-pressed="false">Greenill</button>
+            <button type="button" class="fm_chip" data-fm-sid="Skyly" data-sid="Skyly" aria-pressed="false">Skyly</button>
+            <button type="button" class="fm_chip" data-fm-sid="Bluefull" data-sid="Bluefull" aria-pressed="false">Bluefull</button>
+            <button type="button" class="fm_chip" data-fm-sid="Purplenum" data-sid="Purplenum" aria-pressed="false">Purplenum</button>
+            <button type="button" class="fm_chip" data-fm-sid="Pinkal" data-sid="Pinkal" aria-pressed="false">Pinkal</button>
+            <button type="button" class="fm_chip" data-fm-sid="Redria" data-sid="Redria" aria-pressed="false">Redria</button>
+            <button type="button" class="fm_chip" data-fm-sid="Oran" data-sid="Oran" aria-pressed="false">Oran</button>
+            <button type="button" class="fm_chip" data-fm-sid="Yellowboze" data-sid="Yellowboze" aria-pressed="false">Yellowboze</button>
+            <button type="button" class="fm_chip" data-fm-sid="Whitill" data-sid="Whitill" aria-pressed="false">Whitill</button>
+        </div>
+        <div class="fm_group">
+            <button type="button" class="fm_chip" data-fm-exclusive aria-pressed="false" data-i18n="fm.s.onlyExclusive">Only what is exclusive to this ID</button>
+        </div>
+    </div>
+
+    <div class="fm_controls">
+        <input type="text" class="fm_search" data-section-search
+               placeholder="Search an item, an enemy or an area…" data-i18n-placeholder="fm.s.search">
+        <div class="fm_group">
+            <span class="fm_label" data-i18n="fm.s.cat">Kind</span>
+            <button type="button" class="fm_chip" data-fm-cat="all" aria-pressed="true" data-i18n="fm.s.cat.all">All</button>
+            <button type="button" class="fm_chip" data-fm-cat="Weapons" aria-pressed="false" data-i18n="fm.s.cat.weapons">Weapons</button>
+            <button type="button" class="fm_chip" data-fm-cat="Armor" aria-pressed="false" data-i18n="fm.s.cat.armor">Armor</button>
+            <button type="button" class="fm_chip" data-fm-cat="Shields" aria-pressed="false" data-i18n="fm.s.cat.shields">Shields</button>
+            <button type="button" class="fm_chip" data-fm-cat="Units" aria-pressed="false" data-i18n="fm.s.cat.units">Units</button>
+            <button type="button" class="fm_chip" data-fm-cat="Mags" aria-pressed="false" data-i18n="fm.s.cat.mags">Mags</button>
+            <button type="button" class="fm_chip" data-fm-cat="Materials" aria-pressed="false" data-i18n="fm.s.cat.materials">Materials</button>
+        </div>
+    </div>
+
+    <div class="fm_controls">
+        <div class="fm_group">
+            <span class="fm_label" data-i18n="fm.s.focus">Worth it first</span>
+            <button type="button" class="fm_chip" data-fm-focus="all" aria-pressed="true" data-i18n="fm.s.focus.all">Everything</button>
+            <button type="button" class="fm_chip" data-fm-focus="top" aria-pressed="false" data-i18n="fm.s.focus.top">Top rated (9.5+)</button>
+            <button type="button" class="fm_chip" data-fm-focus="rated" aria-pressed="false" data-i18n="fm.s.focus.rated">Rated at all</button>
+            <button type="button" class="fm_chip" data-fm-focus="hit" aria-pressed="false" data-i18n="fm.s.focus.hit">Worth Hit%</button>
+            <button type="button" class="fm_chip" data-fm-focus="endgame" aria-pressed="false" data-i18n="fm.s.focus.endgame">Endgame units</button>
+            <button type="button" class="fm_chip" data-fm-focus="makes" aria-pressed="false" data-i18n="fm.s.focus.makes">Combination material</button>
+        </div>
+    </div>
+
+    <div data-section-mount>
+        <p class="fm_empty" data-i18n="fm.loading">Loading…</p>
+    </div>
+
+    <section class="g_sec" id="how">
+        <h3><span data-i18n="fm.s.how.title">How to read this</span></h3>
+        <ul class="ev_list">
+            <li><strong data-i18n="fm.s.how.excl">ID only</strong> — <span data-i18n="fm.s.how.exclNote">at this difficulty nobody else can get it. If you want one of these, this is the ID to be on, and if you already are, this is your list.</span></li>
+            <li><strong data-i18n="fm.s.how.rate">The rate is the best one available</strong> — <span data-i18n="fm.s.how.rateNote">when several enemies drop the same item, only the best is shown, so the enemy column is where you should actually go.</span></li>
+            <li><strong data-i18n="fm.s.how.score">The number badge</strong> — <span data-i18n="fm.s.how.scoreNote">the rating this item has on the operator priority list, out of 10. When an item is rated higher only with a specific unit, the higher figure is shown; the item page has the condition.</span></li>
+            <li><strong>Hit</strong> — <span data-i18n="fm.s.how.hit">how much this weapon wants Hit%, S down to C. A C-grade weapon is fine to keep without Hit.</span></li>
+            <li><strong data-i18n="fm.s.how.makes">The arrow</strong> — <span data-i18n="fm.s.how.makesNote">this item is a material. What it turns into is listed after the arrow, so it is worth picking up even when it looks plain.</span></li>
+            <li><strong>DAR</strong> — <span data-i18n="fm.s.how.dar">the chance that enemy drops anything at all. A high rare rate on a low-DAR enemy is worse than it looks.</span></li>
+            <li data-i18n="fm.s.how.party">Remember that drop rates are divided by the number of players in the room, so a full party sees each rate roughly halved compared with going alone.</li>
+        </ul>
+    </section>
+
+    <section class="g_sec" id="also">
+        <h3><span data-i18n="fm.s.also.title">Also useful</span></h3>
+        <ul class="ev_list">
+            <li><a href="./drop-tables/" data-i18n="fm.s.also.drops">Drop Tables</a> — <span data-i18n="fm.s.also.dropsNote">the full table, searchable by item, enemy, area and episode.</span></li>
+            <li><a href="./recipe_page.html" data-i18n="fm.s.also.recipes">Item Combinations</a> — <span data-i18n="fm.s.also.recipesNote">what the things you farm are actually used for.</span></li>
+            <li><a href="./player_tools.html" data-i18n="fm.s.also.tools">Farming tools</a> — <span data-i18n="fm.s.also.toolsNote">monster counts per quest and the Happy Hour schedule.</span></li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>

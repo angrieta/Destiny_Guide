@@ -1,0 +1,223 @@
+/*
+ * 엔드게임 콘텐츠 인덱스
+ *
+ * 서버의 엔드게임 콘텐츠는 20개가 넘고 난이도(★)가 매겨져 있다. 목적은 하나다.
+ * "지금 내 실력에서 다음에 뭘 도전하지?" 에 한 화면으로 답하는 것.
+ * 그래서 정렬과 필터가 본문보다 중요하다.
+ */
+
+.eg_controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-5);
+    padding: var(--space-4);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-card);
+    background: var(--dg-surface-raised);
+}
+
+.eg_group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.eg_group_label {
+    margin-right: var(--space-1);
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.eg_chip {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-pill);
+    background: var(--dg-surface);
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+    font-weight: 680;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        border-color var(--motion-fast) var(--ease-out),
+        background-color var(--motion-fast) var(--ease-out),
+        color var(--motion-fast) var(--ease-out);
+}
+
+.eg_chip:hover {
+    border-color: var(--dg-accent);
+    color: var(--dg-accent-hover);
+}
+
+.eg_chip[aria-pressed="true"] {
+    border-color: var(--dg-accent);
+    background: var(--dg-accent);
+    color: #f7faff;
+}
+
+html[data-theme="dark"] .eg_chip[aria-pressed="true"] {
+    color: #0b1727;
+}
+
+.eg_count {
+    margin-left: auto;
+    color: var(--dg-text-faint);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── 표 ───────────────────────────────────────────────────────────────── */
+
+.eg_table th[data-sort] {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.eg_table th[data-sort]::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 6px;
+    vertical-align: middle;
+    /* 정렬 방향 삼각형. 정렬 기준이 아닐 때는 흐리게 둔다. */
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid currentColor;
+    opacity: 0.25;
+}
+
+.eg_table th[data-sort][aria-sort="ascending"]::after {
+    border-top: 0;
+    border-bottom: 5px solid currentColor;
+    opacity: 1;
+}
+
+.eg_table th[data-sort][aria-sort="descending"]::after {
+    opacity: 1;
+}
+
+.eg_row[hidden] {
+    display: none;
+}
+
+/* ★ 등급. 숫자만 두면 비교가 안 되니 색으로 구간을 나눈다. */
+.eg_star {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    padding: 2px 8px;
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+.eg_star[data-tier="high"] {
+    background: color-mix(in srgb, var(--dg-danger) 18%, transparent);
+    color: var(--dg-danger);
+}
+
+.eg_star[data-tier="mid"] {
+    background: color-mix(in srgb, var(--dg-warning) 20%, transparent);
+    color: var(--dg-warning);
+}
+
+.eg_star[data-tier="low"] {
+    background: color-mix(in srgb, var(--dg-success) 18%, transparent);
+    color: var(--dg-success);
+}
+
+.eg_star[data-tier="unknown"] {
+    background: var(--dg-surface-muted);
+    color: var(--dg-text-faint);
+}
+
+.eg_type {
+    padding: 2px 8px;
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.eg_name {
+    font-weight: 700;
+}
+
+.eg_note {
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+}
+
+.eg_link {
+    color: var(--dg-accent);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.eg_link:hover {
+    text-decoration: underline;
+}
+
+.eg_empty {
+    padding: var(--space-8) var(--space-4);
+    color: var(--dg-text-faint);
+    text-align: center;
+}
+
+.eg_empty[hidden] {
+    display: none;
+}
+
+@media screen and (max-width: 760px) {
+    .eg_count {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* 영상 링크. 디스코드 메시지로 나가므로 새 탭에서 열린다. */
+.eg_clips {
+    max-width: 260px;
+}
+
+.eg_clip {
+    display: inline-block;
+    margin: 1px 3px 1px 0;
+    padding: 2px 8px;
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-pill);
+    color: var(--dg-accent);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.eg_clip:hover {
+    border-color: var(--dg-accent);
+    background: var(--dg-accent-soft);
+}
+
+.eg_type_raid {
+    border-color: var(--dg-accent);
+    color: var(--dg-accent-hover);
+}
+
+.eg_type_event {
+    border-color: var(--dg-warning);
+    color: var(--dg-warning);
+}

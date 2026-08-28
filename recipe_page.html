@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="fm.r.title">DestinyGuide - Item Combinations</title>
+    <meta name="description" content="Destiny PSOBB crafting recipes with full material lists, and a reverse lookup showing what each material is used for.">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <link rel="stylesheet" href="./styles/farm.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/farm.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+    <script src="./scripts/site_search.js"></script>
+<!-- 헤더종료 -->
+
+<body class="recipe_page">
+<main class="g_page">
+    <div class="g_head">
+        <h2><span data-i18n="fm.r.heading">Item Combinations</span></h2>
+        <p class="g_lead" data-i18n="fm.r.lead">The item database lists what a combined item does, but not what it costs. These are the recipes with their full material lists, plus the reverse question: you are holding a material, so what is it for? Every item has to be at max grind before it can be combined.</p>
+        <p class="g_source" data-i18n="fm.r.source">Source: the material lists published with each item announcement. A few were posted as images with the list cut off, and those are marked in the card.</p>
+    </div>
+
+    <div class="fm_controls">
+        <input type="text" class="fm_search" data-recipe-search
+               placeholder="Search a result or a material…" data-i18n-placeholder="fm.r.search">
+        <span class="fm_count" data-recipe-count>—</span>
+    </div>
+
+    <p class="g_source" data-i18n="fm.r.badgeNote">The small number beside a material is how many combinations use it — not how many you need. Quantities are the ×N on the right of each row.</p>
+
+    <div data-recipe-mount>
+        <p class="fm_empty" data-i18n="fm.loading">Loading…</p>
+    </div>
+
+    <section class="g_sec" id="materials">
+        <h3><span data-i18n="fm.r.reverse.title">What is this material for?</span></h3>
+        <p class="g_lead" data-i18n="fm.r.reverse.lead">Materials that feed more than one recipe, sorted by how many. This is the farming priority list — the item at the top is the one you will need again.</p>
+        <div data-reverse-mount></div>
+    </section>
+
+    <section class="g_sec" id="obtain">
+        <h3><span data-i18n="fm.r.obtain.title">Traded, not crafted</span></h3>
+        <p class="g_lead" data-i18n="fm.r.obtain.lead">These do not have a published material list, but they are not plain drops either — they come from an NPC trade or a shop. Where to find that NPC is noted below.</p>
+        <div data-obtain-mount></div>
+    </section>
+
+    <section class="g_sec" id="combos">
+        <h3><span data-i18n="fm.r.forum.title">Every other combination</span></h3>
+        <p class="g_lead" data-i18n="fm.r.forum.lead">The classic PSOBB combinations plus the server's own, 77 of them. These take two items rather than a material list, and the search box at the top of the page filters them too — type a material and you get everything it can become.</p>
+        <p class="g_source" data-i18n="fm.r.forum.source">Source: the pinned forum list, topic 804. Every item involved has to be at max grind, and a level requirement assumes the strongest weapon of that series.</p>
+
+        <div class="fm_controls">
+            <div class="fm_group">
+                <button type="button" class="fm_chip" data-fm-group="all" aria-pressed="true" data-i18n="fm.r.forum.all">All</button>
+                <button type="button" class="fm_chip" data-fm-group="weapon" aria-pressed="false" data-i18n="fm.r.forum.weapon">Weapons</button>
+                <button type="button" class="fm_chip" data-fm-group="armor" aria-pressed="false" data-i18n="fm.r.forum.armor">Armor / Shield</button>
+                <button type="button" class="fm_chip" data-fm-group="cosmetic" aria-pressed="false" data-i18n="fm.r.forum.cosmetic">Cosmetics</button>
+                <button type="button" class="fm_chip" data-fm-group="mag" aria-pressed="false" data-i18n="fm.r.forum.mag">Mags</button>
+            </div>
+            <span class="fm_count" data-forum-count>—</span>
+        </div>
+
+        <p class="g_source" data-i18n="fm.r.forum.badgeNote">Here too, the small number beside a material is how many of these combinations use it. Parasitic Gene "Flow" carries a 3 because it makes Dark Flow, Dark Meteor or Dark Bridge depending on what you feed it.</p>
+
+        <div data-forum-mount>
+            <p class="fm_empty" data-i18n="fm.loading">Loading…</p>
+        </div>
+    </section>
+
+    <section class="g_sec" id="combo-materials">
+        <h3><span data-i18n="fm.r.forum.reverse.title">Materials that feed several of them</span></h3>
+        <p class="g_lead" data-i18n="fm.r.forum.reverse.lead">Same question as above, for the list you just scrolled: one Orb of Illusions is seven different results, so it is never the thing to sell first.</p>
+        <div data-forum-reverse-mount></div>
+    </section>
+
+    <section class="g_sec" id="source">
+        <h3><span data-i18n="fm.r.source.title">Where this came from</span></h3>
+        <ul class="ev_list">
+            <li><a href="https://playpso.net/forums/topic/804-list-of-item-combinations/" target="_blank" rel="noreferrer">List of Item Combinations (forum topic 804)</a> — <span data-i18n="fm.r.source.note">written by Vapid Dominance, completed by Orgodemirk with the merge family and kept up to date by VEL(JP). If something here is wrong, that topic is where it gets fixed.</span></li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>

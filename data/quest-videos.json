@@ -1,0 +1,52 @@
+{
+  "_comment": "커뮤니티 영상 공략 색인. 원본은 디스코드 #video-index 채널이고, 실제 영상은 ep1/ep2/ep4 채널에 첨부파일로 올라가 있다. 그래서 링크는 디스코드 메시지로 가는 점프 링크뿐이다. 디스코드 CDN 주소는 서명이 붙고 만료되므로 사이트에 직접 임베드할 수 없다. 서버 멤버만 볼 수 있지만 이 사이트의 독자가 곧 그 멤버들이다. quest 는 data/quest-difficulty.json 의 name 과 맞춰 두어야 표에서 이어진다.",
+  "source": "https://discord.com/channels/363947585154580480/1296850072713232435",
+  "indexUpdated": "2025-10-06",
+  "channels": {
+    "ep1": "1296850094229815370",
+    "ep2": "1296850115763507230",
+    "ep4": "1296850145778077736"
+  },
+  "videos": [
+    { "quest": "Distorted Nightmare [Raid]", "label": "Solo", "credit": "tihaya_jp", "ch": "ep1", "msg": "1410287100917715036" },
+    { "quest": "Beyond the Mainframe", "label": "4P", "credit": "matha_jp", "ch": "ep1", "msg": "1413831048999211008" },
+    { "quest": "Beyond the Mainframe", "label": "4P", "credit": "Nyanchi JP", "ch": "ep1", "msg": "1414488794769657908" },
+
+    { "quest": "The Phantasmal Dimension", "label": "Last floor solo", "credit": "tihaya_jp", "ch": "ep2", "msg": "1400395914132328490" },
+    { "quest": "Phantasmal World #3 [Extreme]", "label": "4P role clear", "credit": "", "ch": "ep2", "msg": "1404026575640330313" },
+    { "quest": "Phantasmal World #3 [Extreme]", "label": "Solo", "credit": "tihaya_jp", "ch": "ep2", "msg": "1398331858176970782" },
+    { "quest": "The Manipulated Tower [Raid]", "label": "3P POV", "credit": "tihaya_jp", "ch": "ep2", "msg": "1409069745151672452" },
+    { "quest": "The Manipulated Tower [Raid]", "label": "4P POV", "credit": "thanx JP", "ch": "ep2", "msg": "1416599964619898963" },
+    { "quest": "The Discontrolled Tower [Raid]", "label": "BOSS battle", "credit": "VEL(JP)", "ch": "ep2", "msg": "1350717515541643324" },
+    { "quest": "The Discontrolled Tower [Raid]", "label": "Hunl solo", "credit": "tihaya_jp", "ch": "ep2", "msg": "1354654888801468517" },
+    { "quest": "The Discontrolled Tower [Raid]", "label": "3P 16'02 POV", "credit": "thanx JP", "ch": "ep2", "msg": "1358371284999868437" },
+
+    { "quest": "Hallowed World [Extreme]", "label": "Solo 1st Grim Reaper hunt", "credit": "Oguri Cap", "ch": "ep2", "msg": "1311131865632997426" },
+    { "quest": "Hallowed World [Extreme]", "label": "Solo 1st Tower", "credit": "Shiida", "ch": "ep2", "msg": "1314390401872039986" },
+    { "quest": "Hallowed World [Extreme]", "label": "Solo x2 Grim Reapers, for new players", "credit": "Roland", "ch": "ep2", "msg": "1314422222017794100" },
+
+    { "quest": "Radiant Destiny!", "label": "4P POV", "credit": "VEL(JP)", "ch": "ep2", "msg": "1296851393172344874" },
+    { "quest": "Love Research", "label": "2P from seabed", "credit": "VEL(JP), thanx JP", "ch": "ep2", "msg": "1296851534482768016" },
+    { "quest": "Love Research", "label": "2024 solo RAmarl", "credit": "thanx JP", "ch": "ep2", "msg": "1339720713870774313" },
+    { "quest": "Love Research", "label": "2025 solo RAmarl", "credit": "thanx JP", "ch": "ep2", "msg": "1344687208157675691" },
+
+    { "quest": "Respective Tomorrow", "label": "PGF hunt, solo RAmar", "credit": "thanx JP", "ch": "ep2", "msg": "1303617134785724469" },
+    { "quest": "Respective Tomorrow", "label": "Solo RAmar", "credit": "", "ch": "ep2", "msg": "1343077485189009468" },
+    { "quest": "Respective Tomorrow", "label": "Solo 14'58", "credit": "thanx JP", "ch": "ep2", "msg": "1409048589866369103" },
+
+    { "quest": "Defend the main room!", "label": "Ill Gill 11, solo FOnewm", "credit": "VEL(JP)", "ch": "ep2", "msg": "1299684460157079574" },
+    { "quest": "VR Test Destiny: Seabed", "label": "Full run", "credit": "Wut", "ch": "ep2", "msg": "1395246522039533630" },
+    { "quest": "Phantasmal World #3 #4", "label": "#4 Gi Gue 5, solo HUcast", "credit": "VEL(JP)", "ch": "ep2", "msg": "1296850244985950208" },
+    { "quest": "Phantasmal World #3 #4", "label": "#4 Gi Gue 5, solo HUnewearl", "credit": "Oguri Cap", "ch": "ep2", "msg": "1301376687153614888" },
+
+    { "quest": "Summer Vacation Tragedy", "label": "4P POV", "credit": "VEL(JP)", "ch": "ep4", "msg": "1296851254646935693" }
+  ],
+  "hunts": [
+    { "topic": "8-3 Purple Lamplight", "label": "Solo HUnewearl", "credit": "thanx JP", "ch": "ep2", "msg": "1297115779850043464" },
+    { "topic": "8-3 Purple Lamplight", "label": "Solo RAcast", "credit": "Nyanchi JP", "ch": "ep2", "msg": "1414488869633527841" },
+    { "topic": "8-3 Purple Lamplight", "label": "Solo HUnewearl", "credit": "Oguri Cap", "ch": "ep2", "msg": "1297937156593029211" },
+    { "topic": "8-3 Purple Lamplight", "label": "PGF hunt with buffed NEI CLAW", "credit": "karlito68", "ch": "ep2", "msg": "1324028995582300272" },
+    { "topic": "Gal Gryphon", "label": "1 combo kill", "credit": "", "ch": "ep2", "msg": "1330681715181621249" },
+    { "topic": "Ano Rifle hunt 8-2", "label": "Full hunt", "credit": "Nyanchi JP", "ch": "ep2", "msg": "1335704392996753552" }
+  ]
+}

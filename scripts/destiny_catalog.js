@@ -2226,4 +2226,18 @@
   // 카드와 섹션 헤더는 이 스크립트가 만들기 때문에 i18n.js 의 첫 적용 대상에 없다.
   // 만든 뒤 한 번 hydrate 해 주면 이후 언어 변경은 i18n.js 가 알아서 처리한다.
   window.DestinyI18n?.hydrate(document.querySelector(".destiny_item") || document);
+
+  // 헤더 검색이 item_page.html?item=<id> 로 보낸 아이템을 바로 펼친다.
+  // 카드를 찾으면 그것을 trigger 로 넘긴다. 상세를 닫았을 때 초점이 그 카드로
+  // 돌아가서, 어디를 보고 있었는지 놓치지 않는다.
+  // 없는 id 면 아무 일도 하지 않고 목록을 그대로 보여준다.
+  const requestedId = new URLSearchParams(window.location.search).get("item");
+  const requestedItem = requestedId ? catalogById.get(requestedId) : null;
+  if (detailModal && requestedItem) {
+    const card = document.querySelector(
+      '.destiny_item_slide .item_section_aria[data-catalog-id="' + CSS.escape(requestedId) + '"]'
+    );
+    if (card) card.scrollIntoView({ block: "center" });
+    detailModal.open(requestedItem, card);
+  }
 })();

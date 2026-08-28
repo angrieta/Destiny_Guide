@@ -21,6 +21,62 @@
       "ja": "特殊攻撃は Jointparts なしで射程 100.0、角度 26.0、最大 8 体です。装備時は射程 135.0、角度 35.0、最大 10 体になり、攻撃速度 +15%、ATA +20、エピソード4のリザード貫通も得られます。",
       "es": "Sin Jointparts, el especial tiene 100.0 de alcance, 26.0 de ángulo y hasta 8 objetivos. Con Jointparts sube a 135.0 de alcance, 35.0 de ángulo y hasta 10 objetivos; además obtiene velocidad de ataque +15%, ATA +20 y atraviesa a los Lizards del Episodio 4.",
       "fr": "Sans Jointparts, le spécial a une portée de 100.0, un angle de 26.0 et jusqu’à 8 cibles. Avec Jointparts, il passe à une portée de 135.0, un angle de 35.0 et jusqu’à 10 cibles ; il gagne aussi vitesse d’attaque +15 %, ATA +20 et traverse les Lizards de l’épisode 4."
+    },
+    "Mags:ELENOR": {
+      "en": "An Elenor from a crate or a rare drop comes with no Photon Blasts at all. The only way to get one that has them is the trade in the Phantasmal Bazaar: hand in an Elenor plus a Proof of Sonic Team and you get an Elenor back. That is the whole point of a trade that looks like it gives you the same mag — what you receive is the version with PBs.",
+      "ko": "상자나 레어 드랍으로 얻은 Elenor에는 포톤 블래스트가 하나도 없습니다. PB가 붙은 Elenor를 얻는 방법은 Phantasmal Bazaar의 교환뿐입니다. Elenor + Proof of Sonic Team을 넘기면 Elenor를 돌려받는데, 같은 마그를 주고받는 것처럼 보이는 이 교환의 이유가 바로 이것입니다. 받는 쪽이 PB가 있는 버전입니다.",
+      "ja": "クレートやレアドロップで手に入る Elenor にはフォトンブラストが一切ありません。PB 付きを得る唯一の方法が Phantasmal Bazaar の交換です。Elenor と Proof of Sonic Team を渡すと Elenor が返ってきます。同じマグをやり取りしているように見える交換の理由はここにあり、受け取る側が PB 付きの個体です。",
+      "es": "Un Elenor de una caja o de un drop raro no trae ningún Photon Blast. La única forma de conseguir uno con PB es el intercambio del Phantasmal Bazaar: entregas un Elenor más un Proof of Sonic Team y recibes un Elenor. Ese es el sentido de un intercambio que parece darte el mismo mag: el que recibes es la versión con PB.",
+      "fr": "Un Elenor obtenu dans une caisse ou en drop rare n'a aucun Photon Blast. Le seul moyen d'en avoir un qui en possède est l'échange du Phantasmal Bazaar : vous donnez un Elenor et un Proof of Sonic Team, et vous recevez un Elenor. C'est tout l'intérêt d'un échange qui semble rendre le même mag : celui que vous recevez est la version avec PB."
+    },
+    "Weapons:BERSERK NEEDLE": {
+      "en": "Its special buys damage with your own HP, so it is not a weapon you fire blindly. It is also built around VECTOR SCOPE: with that unit equipped it gains Range +105 and ATA +20, which is most of what makes 40 ATA workable. Added in the 2026 Easter event, where it dropped from Gal Gryphon (Stronger) at 1/55 on every Section ID.",
+      "ko": "스페셜이 자기 HP를 대가로 데미지를 내므로 아무 때나 쓰는 무기가 아닙니다. 그리고 VECTOR SCOPE를 전제로 설계됐습니다 — 그 유닛을 끼면 Range +105, ATA +20이 붙는데, ATA 40으로 쓸 만해지는 이유가 여기에 있습니다. 2026년 부활절 이벤트에서 추가됐고, Gal Gryphon (Stronger)에게서 전 Section ID 1/55로 드랍됐습니다.",
+      "ja": "スペシャルは自分の HP と引き換えにダメージを出すため、無闇に撃つ武器ではありません。また VECTOR SCOPE 前提の設計です。そのユニットを装備すると Range +105、ATA +20 が付き、ATA 40 でも実用になる理由がここにあります。2026 年イースターイベントで追加され、Gal Gryphon (Stronger) から全 Section ID 1/55 でドロップしました。",
+      "es": "Su especial cambia daño por tu propia HP, así que no es un arma para disparar sin pensar. Además está diseñada en torno al VECTOR SCOPE: con esa unidad equipada gana Range +105 y ATA +20, que es lo que hace viables sus 40 de ATA. Se añadió en el evento de Pascua de 2026, con drop de Gal Gryphon (Stronger) a 1/55 en todas las Section ID.",
+      "fr": "Son spécial échange des dégâts contre vos propres PV : ce n'est pas une arme que l'on tire à l'aveugle. Elle est aussi pensée autour du VECTOR SCOPE : avec cette unité équipée, elle gagne Range +105 et ATA +20, ce qui rend ses 40 d'ATA jouables. Ajoutée lors de l'événement de Pâques 2026, où elle tombait de Gal Gryphon (Stronger) à 1/55 sur toutes les Section ID."
+    },
+    "Weapons:DARK FLOW": {
+      "en": "Do not spend materials adding a special to it. The server treats a special applied to DARK FLOW as a fake special, and since the 2026 Easter update the Add Special NPC warns you before you go through with it. A Hell Dark Flow is the example the staff themselves use.",
+      "ko": "스페셜을 붙이려고 재료를 쓰지 마세요. 서버는 DARK FLOW에 붙인 스페셜을 가짜 스페셜(fake special)로 처리하며, 2026년 부활절 업데이트부터 Add Special NPC가 진행 전에 경고합니다. Hell Dark Flow가 운영진이 직접 든 예시입니다.",
+      "ja": "スペシャルを付けるために素材を使わないでください。サーバーは DARK FLOW に付けたスペシャルを fake special として扱い、2026 年イースターのアップデート以降は Add Special NPC が実行前に警告します。Hell Dark Flow は運営自身が挙げた例です。",
+      "es": "No gastes materiales en añadirle un especial. El servidor trata un especial aplicado a DARK FLOW como un especial falso, y desde la actualización de Pascua de 2026 el NPC Add Special te avisa antes de completarlo. El propio equipo pone el Hell Dark Flow como ejemplo.",
+      "fr": "N'utilisez pas de matériaux pour lui ajouter un spécial. Le serveur considère un spécial appliqué à DARK FLOW comme un faux spécial, et depuis la mise à jour de Pâques 2026 le PNJ Add Special vous prévient avant de valider. Le Hell Dark Flow est l'exemple donné par l'équipe elle-même."
+    },
+    "Units:VECTOR SCOPE": {
+      "en": "This unit does not hand out flat stats — it modifies specific weapons. BERSERK NEEDLE is the clear case: equipping VECTOR SCOPE gives it Range +105 and ATA +20. Check the weapon before you judge the unit, because on anything it does not modify it does very little.",
+      "ko": "이 유닛은 스탯을 그냥 올려주지 않고 특정 무기를 강화합니다. 대표적인 것이 BERSERK NEEDLE로, VECTOR SCOPE를 끼면 Range +105, ATA +20이 붙습니다. 강화 대상이 아닌 무기에는 거의 의미가 없으니, 유닛을 평가하기 전에 무기를 먼저 확인하세요.",
+      "ja": "このユニットはステータスを一律に上げるのではなく、特定の武器を強化します。代表例が BERSERK NEEDLE で、VECTOR SCOPE を装備すると Range +105、ATA +20 が付きます。対象外の武器ではほとんど効果がないため、ユニットを評価する前に武器を確認してください。",
+      "es": "Esta unidad no da estadísticas planas: modifica armas concretas. El caso claro es BERSERK NEEDLE, que con VECTOR SCOPE equipado gana Range +105 y ATA +20. Comprueba el arma antes de juzgar la unidad, porque en lo que no modifica apenas hace nada.",
+      "fr": "Cette unité ne donne pas de statistiques brutes : elle modifie des armes précises. Le cas net est BERSERK NEEDLE, qui gagne Range +105 et ATA +20 avec le VECTOR SCOPE équipé. Vérifiez l'arme avant de juger l'unité, car sur ce qu'elle ne modifie pas elle n'apporte presque rien."
+    },
+    "Weapons:ASTRAL DRAGON": {
+      "en": "Not a drop you hunt directly. You craft it from Blueprint: Astral Dragon plus a FINAL EGG BLASTER, so keep a spare Final Egg Blaster rather than selling it. The blueprint comes from Dorphon Divine in Summer Vacation Tragedy at 1/1170, and Dorphon Divine appears in no other quest. Since the 2025 summer run every Section ID can get the blueprint.",
+      "ko": "직접 사냥해서 얻는 아이템이 아닙니다. Blueprint: Astral Dragon과 FINAL EGG BLASTER를 합쳐 만들기 때문에, Final Egg Blaster를 팔지 말고 하나 남겨두세요. 설계도는 Summer Vacation Tragedy의 Dorphon Divine에게서 1/1170으로 나오며, Dorphon Divine은 다른 퀘스트에는 등장하지 않습니다. 2025년 여름 회차부터 전 Section ID에서 설계도가 나옵니다.",
+      "ja": "直接狩って手に入るアイテムではありません。Blueprint: Astral Dragon と FINAL EGG BLASTER を合成して作るので、Final Egg Blaster は売らずに残しておいてください。設計図は Summer Vacation Tragedy の Dorphon Divine から 1/1170 で出ます。Dorphon Divine は他のクエストには出現しません。2025 年サマー回から全 Section ID で設計図が出ます。",
+      "es": "No es un drop que caces directamente. Se fabrica con Blueprint: Astral Dragon más un FINAL EGG BLASTER, así que guarda uno en lugar de venderlo. El plano cae de Dorphon Divine en Summer Vacation Tragedy a 1/1170, y Dorphon Divine no aparece en ninguna otra misión. Desde la edición de verano de 2025, todas las Section ID pueden conseguirlo.",
+      "fr": "Ce n'est pas un drop que l'on chasse directement. On le fabrique à partir du Blueprint: Astral Dragon et d'un FINAL EGG BLASTER : gardez-en un au lieu de le vendre. Le plan tombe de Dorphon Divine dans Summer Vacation Tragedy à 1/1170, et Dorphon Divine n'apparaît dans aucune autre quête. Depuis l'édition d'été 2025, toutes les Section ID peuvent l'obtenir."
+    },
+    "Weapons:FINAL EGG BLASTER": {
+      "en": "Worth keeping one in the bank. It is the base item for ASTRAL DRAGON — you combine it with Blueprint: Astral Dragon from the summer event. Selling your only copy means farming the blaster again before you can use a blueprint you already own.",
+      "ko": "은행에 하나 넣어두는 편이 좋습니다. ASTRAL DRAGON의 재료가 되는 무기로, 여름 이벤트의 Blueprint: Astral Dragon과 합칩니다. 하나뿐인 것을 팔면, 설계도를 이미 갖고 있어도 블래스터를 다시 파밍해야 합니다.",
+      "ja": "銀行に一つ残しておく価値があります。ASTRAL DRAGON の素材となる武器で、サマーイベントの Blueprint: Astral Dragon と合成します。唯一の一本を売ってしまうと、設計図を持っていても再度ブラスターを掘り直すことになります。",
+      "es": "Conviene guardar uno en el banco. Es el objeto base de ASTRAL DRAGON: se combina con el Blueprint: Astral Dragon del evento de verano. Vender tu única copia significa volver a farmear el blaster aunque ya tengas el plano.",
+      "fr": "Mieux vaut en garder un en banque. C'est l'objet de base d'ASTRAL DRAGON : on le combine avec le Blueprint: Astral Dragon de l'événement d'été. Vendre votre seul exemplaire vous oblige à refarmer le blaster alors que vous possédez déjà le plan."
+    },
+    "Weapons:CHRISTMAS SPIRIT": {
+      "en": "Xmas limited, so it only appears while that event is running. Its Spirit special hits moving and flying targets without missing, which is the reason to keep one even after the season. Fires three candy canes per shot at a single target and all three classes can equip it. Dropped from Dark Falz in the Xmas version of Toward The Future at 1/64 on all IDs.",
+      "ko": "크리스마스 한정이라 해당 이벤트 기간에만 등장합니다. Spirit 스페셜이 움직이거나 나는 대상을 빗나가지 않고 맞히기 때문에, 시즌이 끝나도 하나 남겨둘 이유가 됩니다. 단일 대상에게 한 발당 캔디케인 3개를 발사하고 세 클래스 모두 장착할 수 있습니다. EP1 Xmas 버전 Toward The Future의 Dark Falz에게서 전 ID 1/64로 드랍됐습니다.",
+      "ja": "クリスマス限定のため、そのイベント期間中しか出現しません。Spirit スペシャルが動く敵・飛ぶ敵に外さず命中するので、シーズンが終わっても一本残す価値があります。単体に 1 射あたりキャンディケイン 3 本を発射し、3 クラスすべてが装備できます。EP1 Xmas 版 Toward The Future の Dark Falz から全 ID 1/64 でドロップしました。",
+      "es": "Edición navideña, así que solo aparece mientras dura ese evento. Su especial Spirit acierta a objetivos en movimiento y voladores sin fallar, razón suficiente para guardar uno fuera de temporada. Dispara tres bastones de caramelo por disparo a un solo objetivo y las tres clases pueden equiparla. Caía de Dark Falz en la versión navideña de Toward The Future a 1/64 en todas las ID.",
+      "fr": "Édition Noël : elle n'apparaît que pendant cet événement. Son spécial Spirit touche les cibles mobiles et volantes sans rater, ce qui justifie d'en garder une hors saison. Elle envoie trois sucres d'orge par tir sur une seule cible et les trois classes peuvent l'équiper. Elle tombait de Dark Falz dans la version Noël de Toward The Future à 1/64 sur toutes les ID."
+    },
+    "Weapons:LAST EMPEROR": {
+      "en": "Pairs with RADIANT RING, the 8th Anniversary shield, which carries a combo bonus written for this weapon: Special Attack hit 3-3-3. If you are building around Last Emperor, that shield is the piece to look for. Grim Reaper also drops it during Halloween, where it replaced the older Ethereal Armor drop.",
+      "ko": "8주년 실드인 RADIANT RING과 짝입니다. 그 실드에 이 무기를 위한 콤보 보너스가 붙어 있습니다 — Special Attack hit 3-3-3. Last Emperor를 중심으로 세팅한다면 그 실드를 노려야 합니다. 할로윈 기간에는 Grim Reaper에게서도 드랍되며, 기존 Ethereal Armor 드랍을 대체했습니다.",
+      "ja": "8 周年シールド RADIANT RING と組み合わせます。あのシールドにはこの武器向けのコンボボーナス、Special Attack hit 3-3-3 が付いています。Last Emperor を軸に組むならそのシールドが狙い目です。ハロウィン期間は Grim Reaper からもドロップし、以前の Ethereal Armor ドロップを置き換えました。",
+      "es": "Se combina con RADIANT RING, el escudo del 8.º aniversario, que lleva un bonus de combo escrito para esta arma: Special Attack hit 3-3-3. Si montas alrededor de Last Emperor, ese escudo es la pieza a buscar. Grim Reaper también lo suelta en Halloween, donde sustituyó al antiguo drop de Ethereal Armor.",
+      "fr": "Se marie avec RADIANT RING, le bouclier du 8e anniversaire, qui porte un bonus de combo écrit pour cette arme : Special Attack hit 3-3-3. Si vous construisez autour de Last Emperor, c'est la pièce à chercher. Grim Reaper le lâche aussi à Halloween, où il a remplacé l'ancien drop d'Ethereal Armor."
     }
   }
 }

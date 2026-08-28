@@ -251,6 +251,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         window.DestinyI18n?.hydrate(mount);
         setupHappyHourHeader(mount);
         setupSiteNavigation(mount);
+        // 검색 버튼도 헤더와 같이 들어오므로 여기서 연결한다.
+        // site_search.js 가 없어도(로드 실패) 헤더의 나머지는 그대로 동작해야 한다.
+        window.DestinySearch?.mount(mount);
         setupImageDialogs();
 
         const toggle = mount.querySelector(".theme_toggle");
