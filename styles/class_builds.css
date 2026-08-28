@@ -845,3 +845,59 @@ html[data-theme="dark"] .cb_source a { color: #07111f; }
         text-overflow: ellipsis;
     }
 }
+
+/* ── 등급 · 획득 배지 ─────────────────────────────────────────────────────
+   두 배지는 서로 다른 축이라 모양도 달라야 한다. 등급은 채운 알약, 획득은
+   테두리만. 나란히 놓아도 같은 것의 두 값으로 읽히지 않게 하려는 것이다. */
+
+.cb_badges {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 4px;
+}
+
+/* 요구 % 가 있는 칩에서는 .cb_req 가 이미 오른쪽으로 밀려 있다. */
+.cb_badges.is-first {
+    margin-left: auto;
+}
+
+.cb_score {
+    padding: 2px 7px;
+    border-radius: 5px;
+    background: var(--accent-soft, rgba(60, 110, 220, 0.16));
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.cb_acq {
+    padding: 2px 7px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0.85;
+}
+
+/* 재료가 드는 교환이 제일 무겁다. 확률은 숫자 자체가 설명이라 담백하게 둔다. */
+.cb_acq.is-trade { color: #b4731d; }
+.cb_acq.is-raid { color: #a4479a; }
+.cb_acq.is-drop { color: #4a7bd0; font-variant-numeric: tabular-nums; }
+
+html[data-theme="dark"] .cb_acq.is-trade { color: #e2a94f; }
+html[data-theme="dark"] .cb_acq.is-raid { color: #d98ad0; }
+html[data-theme="dark"] .cb_acq.is-drop { color: #86b0f0; }
+
+.cb_legend_badges {
+    display: block;
+    line-height: 2.1;
+}
+
+.cb_legend_badges .cb_score,
+.cb_legend_badges .cb_acq {
+    margin-right: 6px;
+}

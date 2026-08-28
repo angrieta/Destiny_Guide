@@ -74,6 +74,100 @@
     }
 
     /* ----------------------------------------------------------------------
+       등급 · 획득 배지
+       ----------------------------------------------------------------------
+       두 배지 모두 자료에서 끌어온다. 성능은 scripts/item_priority_data.js 의
+       운영진 평가표, 획득은 scripts/destiny_catalog.js 의 obtain / required 다.
+       근거가 없으면 배지도 없다 — 손으로 다는 순간 "왜 이게 중요하냐"가 시작된다.
+
+       두 축을 나눈 이유: 쉬운데 좋은 것도 있고(Behemoth Armor), 어렵지만 이
+       빌드에는 안 맞는 것도 있다. 하나로 합치면 둘 다 흐려진다.
+       ---------------------------------------------------------------------- */
+
+    function itemKey(name) {
+        return String(name == null ? "" : name).toUpperCase().replace(/[^A-Z0-9]+/g, " ").trim();
+    }
+
+    /** 아이템 이름 -> 10점 만점 평가. 조건부로 더 높은 점수가 있으면 높은 쪽을 쓴다. */
+    var SCORES = {};
+    /** 평가표가 엔드게임 유닛으로 표시한 것들. 유닛은 점수가 아니라 이 표시로 갈린다. */
+    var ENDGAME = {};
+    (function () {
+        var data = window.DestinyItemPriorityData;
+        if (!data || !data.items) return;
+        data.items.forEach(function (entry) {
+            var best = null;
+            (entry.overall || []).forEach(function (row) {
+                var value = parseFloat(String(row.score));
+                if (!isNaN(value) && (best === null || value > best)) best = value;
+            });
+            [entry.name].concat(entry.aliases || []).forEach(function (name) {
+                var key = itemKey(name);
+                if (!key) return;
+                if (best !== null && (SCORES[key] == null || best > SCORES[key])) SCORES[key] = best;
+                if (entry.endgameUnit) ENDGAME[key] = true;
+            });
+        });
+    })();
+
+    function lookup(table, item) {
+        var direct = table[itemKey(item.name)];
+        return direct != null ? direct : table[itemKey(item.dbName)];
+    }
+
+    function scoreOf(item) {
+        return lookup(SCORES, item) || 0;
+    }
+
+    /**
+     * 정렬용 순위. 유닛에는 10점 만점 평가가 아예 없어서 점수만으로 줄을 세우면
+     * 유닛 칸은 순서가 그대로다. 평가표의 엔드게임 표시를 점수 아래 등급으로 쓴다.
+     */
+    function rankOf(item) {
+        return scoreOf(item) || (lookup(ENDGAME, item) ? 1 : 0);
+    }
+
+    /**
+     * 획득 경로. 재료가 걸린 교환이 제일 무거우니 먼저 본다.
+     * 확률을 아는 것은 숫자를 그대로 보여 준다 — "레어" 보다 1/136 이 정확하다.
+     */
+    function acquisitionOf(item) {
+        var api = window.DestinyItemCatalog;
+        if (!api || !api.findByName) return null;
+        var record = api.findByName(item.dbName || item.name) || api.findByName(item.name);
+        if (!record) return null;
+
+        if (record.required && record.required.length) {
+            return { cls: "is-trade", key: "ui.acqTrade", text: null };
+        }
+        var obtain = (record.obtain || []).join(" ");
+        // 숫자로 끝나야 한다. [\d.]+ 로 두면 문장 끝 마침표까지 물어서 "1/45." 가 된다.
+        var rate = obtain.match(/1\s*\/\s*\d+(?:\.\d+)?/);
+        if (rate) return { cls: "is-drop", key: null, text: rate[0].replace(/\s+/g, "") };
+        if (/\btrade|exchange|shop|bazaar\b/i.test(obtain)) {
+            return { cls: "is-trade", key: "ui.acqTrade", text: null };
+        }
+        if (/\braid\b|boss only|\[extreme\]|tower\b/i.test(obtain)) {
+            return { cls: "is-raid", key: "ui.acqRaid", text: null };
+        }
+        return null;
+    }
+
+    /**
+     * 평가가 높은 것부터. 점수가 같거나 없는 것끼리는 원문 순서를 지킨다 —
+     * 2020 원문의 나열 순서 자체가 그 빌드의 추천 순서라서 버릴 이유가 없다.
+     */
+    function byPriority(items) {
+        return items
+            .map(function (item, index) { return { item: item, index: index, rank: rankOf(item) }; })
+            .sort(function (a, b) {
+                if (a.rank !== b.rank) return b.rank - a.rank;
+                return a.index - b.index;
+            })
+            .map(function (row) { return row.item; });
+    }
+
+    /* ----------------------------------------------------------------------
        장비 칩
        ---------------------------------------------------------------------- */
     function chip(item) {
@@ -84,6 +178,25 @@
         var top = el("span", "cb_chip_top");
         top.appendChild(el("span", "cb_chip_name", item.name));
         if (item.req) top.appendChild(el("span", "cb_req", item.req));
+
+        /* 요구 % 가 없는 슬롯에서는 배지 묶음이 오른쪽 정렬을 대신 맡는다. */
+        var badges = el("span", "cb_badges" + (item.req ? "" : " is-first"));
+
+        var score = scoreOf(item);
+        if (score) {
+            var scoreBadge = el("span", "cb_score", String(score));
+            scoreBadge.title = t("ui.scoreTitle").replace("#", String(score));
+            badges.appendChild(scoreBadge);
+        }
+
+        var acquisition = acquisitionOf(item);
+        if (acquisition) {
+            badges.appendChild(acquisition.key
+                ? label("span", "cb_acq " + acquisition.cls, acquisition.key)
+                : el("span", "cb_acq " + acquisition.cls, acquisition.text));
+        }
+
+        if (badges.childNodes.length) top.appendChild(badges);
         a.appendChild(top);
 
         /* DB 수치 + 태그. 둘 다 게임 데이터라 번역하지 않는다. */
@@ -110,7 +223,7 @@
 
     function chips(items) {
         var wrap = el("div", "cb_chips");
-        items.forEach(function (i) { wrap.appendChild(chip(i)); });
+        byPriority(items).forEach(function (i) { wrap.appendChild(chip(i)); });
         return wrap;
     }
 
@@ -416,6 +529,18 @@
                 grid.appendChild(d);
             });
         legend.appendChild(grid);
+
+        /* 배지 설명. 무엇을 세는 숫자인지 적어 두지 않으면 등급과 확률이 섞여 읽힌다. */
+        var badgeP = el("p", "cb_legend_badges");
+        badgeP.appendChild(el("span", "cb_score", "9.5"));
+        badgeP.appendChild(label("span", null, "ui.legendScore"));
+        badgeP.appendChild(el("br"));
+        badgeP.appendChild(label("span", "cb_acq is-trade", "ui.acqTrade"));
+        badgeP.appendChild(label("span", "cb_acq is-raid", "ui.acqRaid"));
+        badgeP.appendChild(el("span", "cb_acq is-drop", "1/136"));
+        badgeP.appendChild(label("span", null, "ui.legendAcq"));
+        legend.appendChild(badgeP);
+
         var areaP = el("p");
         areaP.appendChild(label("span", null, "ui.legendArea"));
         areaP.appendChild(document.createTextNode(" "));
