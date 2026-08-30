@@ -1316,10 +1316,10 @@ html[data-theme="dark"] .download_btn {
         padding-inline: 7px;
     }
 
-    /* 마지막 안전장치. 어떤 언어에서 또 넘치더라도 이웃 위에 글자가 겹치지는 않게 한다. */
-    .site_nav_panel {
-        overflow: clip;
-    }
+    /* 여기에 overflow 를 걸면 안 된다.
+       가이드·레이드 드롭다운은 패널(높이 54px) 아래로 펼쳐지는 절대 배치 요소라,
+       넘침을 막으려고 clip 을 주면 메뉴가 통째로 잘려 안 보인다. 넘침 자체는
+       위의 breakpoint 로 막는다. */
 }
 
 @media screen and (max-width: 760px) {
