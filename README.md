@@ -11,6 +11,7 @@ Phantasy Star Online Blue Burst - Destiny 서버 공략 사이트입니다.
 | `beginner_page.html` | 초보자 가이드 / 육성 루트 |
 | `character_aria.html` | 캐릭터별 정보 |
 | `item_page.html` | 아이템 도감 |
+| `updates_page.html` | Discord 공지 기반 최신 패치 / 다음 업데이트 허브 |
 | `dn.html` | Destiny 던전 공략 |
 | `discontrolled_tower_raid.html` | Discontrolled Tower 레이드 공략 |
 | `dmc_page.html` | DMC 페이지 |
@@ -98,3 +99,13 @@ pnpm import:snapshot ~/Downloads/playpso-database-snapshot.json
 
 검증에 걸리면 기존 파일을 그대로 두고 거부합니다.
 자세한 내용은 [docs/playpso-sync.md](docs/playpso-sync.md)를 참고하세요.
+
+## Discord 콘텐츠 감사 자료
+
+- [전체 120개 채널 근거표](docs/discord-channel-inventory-2026-08-29.md)
+- [왼쪽 사이드바 83개 채널 교차검증](docs/discord-sidebar-crosscheck-2026-08-29.md)
+- [정보형 포럼 본문·답글 보강](docs/discord-forum-deep-dive-2026-08-29.md)
+- [사이트에 사용할 정보 요약](docs/discord-content-audit-2026-08-29.md)
+- [페이지별 소재 배치표](docs/discord-page-materials-2026-08-29.md)
+- [선별 원본 이미지 목록](images/discord/README.md)
+- [기계 판독용 감사 데이터](data/discord-channel-audit-2026-08-29.json)

@@ -1,0 +1,453 @@
+{
+  "schemaVersion": 1,
+  "note": "Copied from Discord #game-modifications (2022-10-03 to 2026-08-26, 994 messages). Includes mods attached directly to Discord as well as ones linked to external hosts. Files are never re-hosted. See docs/discord-trade-main-2026-08-29.md section 5.",
+  "collectedAt": "2026-08-29",
+  "sources": [
+    {
+      "label": "Cherry's Mods & Customization",
+      "url": "https://playpso.net/forums/topic/1198-cherrys-mods-customization/",
+      "noteKey": "mod.src.cherry",
+      "note": "Cherry's mods gathered onto the forum. Start here when a Discord link is dead.",
+      "primary": true
+    },
+    {
+      "label": "Univers-PS Skin List",
+      "url": "http://universps.online.fr/pso/bb/skin/listeSkinUS.php5",
+      "noteKey": "mod.src.univers",
+      "note": "A PSOBB skin archive, and the external site this channel points at most often."
+    },
+    {
+      "label": "Pioneer2.net — Skins & Mods",
+      "url": "https://www.pioneer2.net/community/forums/skins-and-mods.11/",
+      "noteKey": "mod.src.pioneer2",
+      "note": "Another external archive."
+    },
+    {
+      "label": "ogg Loop Request Thread",
+      "url": "https://playpso.net/forums/topic/1187-ogg-loop-request-thread/",
+      "noteKey": "mod.src.ogg",
+      "note": "Ask here and someone will make you a custom BGM loop. Opened by EtchYourSketch in 2022-11."
+    },
+    {
+      "label": "PSOBB Development Forum",
+      "url": "https://playpso.net/forums/forum/12-development/",
+      "noteKey": "mod.src.dev",
+      "note": "Where people are sent when they ask how to start reskinning."
+    }
+  ],
+  "categories": [
+    {
+      "key": "character",
+      "label": "Character skins",
+      "labelKey": "mod.cat.character"
+    },
+    {
+      "key": "effect",
+      "label": "Effects",
+      "labelKey": "mod.cat.effect"
+    },
+    {
+      "key": "sound",
+      "label": "Sound",
+      "labelKey": "mod.cat.sound"
+    },
+    {
+      "key": "ui",
+      "label": "UI / HUD",
+      "labelKey": "mod.cat.ui"
+    },
+    {
+      "key": "object",
+      "label": "Objects",
+      "labelKey": "mod.cat.object"
+    },
+    {
+      "key": "background",
+      "label": "Backgrounds",
+      "labelKey": "mod.cat.background"
+    },
+    {
+      "key": "tool",
+      "label": "Tools",
+      "labelKey": "mod.cat.tool"
+    }
+  ],
+  "mods": [
+    {
+      "name": "Transparent Dark Flow Wave",
+      "cat": "effect",
+      "author": "Cherry",
+      "date": "2023-01-25",
+      "featured": true,
+      "note": "Makes the Dark Flow wave transparent. The most requested mod in the channel — reposted in 2024-03 \"in case new players need it\" and singled out in the forum thread.",
+      "noteKey": "mod.n.dfwave",
+      "url": "https://www.mediafire.com/file/hbctn0hzt2typx0/Dark_Flow_Wave.zip/file",
+      "image": "./images/mods/df-wave.jpg"
+    },
+    {
+      "name": "Transparent Flow + MA85 Fury bullets",
+      "cat": "effect",
+      "author": "Cherry",
+      "date": "2025-02-06",
+      "note": "A later fix of the above, covering the Dark Flow wave and M&A85 Fury bullets together.",
+      "noteKey": "mod.n.dfmafury",
+      "url": "https://www.mediafire.com/file/dvzsxibuaa057ef/Transparent_Flow_MA85Fury.zip/file",
+      "image": "./images/mods/df-mafury.jpg"
+    },
+    {
+      "name": "Dark Flow Emerald Wave",
+      "cat": "effect",
+      "author": "Cherry",
+      "date": "2023-01-25",
+      "note": "The same wave in emerald.",
+      "noteKey": "mod.n.dfemerald",
+      "url": "https://www.mediafire.com/file/2ck90s0o8ea6nkg/Dark_Flow_Eemerald_Wave.zip/file",
+      "image": "./images/mods/df-emerald.jpg"
+    },
+    {
+      "name": "Updated Cherry Efx Version 3",
+      "cat": "effect",
+      "author": "Cherry",
+      "date": "2024-03-24",
+      "note": "Third revision of the effects pack, with pipes and loading screens fixed.",
+      "noteKey": "mod.n.efx3",
+      "url": "https://www.mediafire.com/file/0p1e1ws0bmp8efj/Updated_Cherry_Efx_Version_3.zip/file",
+      "image": ""
+    },
+    {
+      "name": "Cherry's PSOBB Effects",
+      "cat": "effect",
+      "author": "Cherry",
+      "date": "2022-10-04",
+      "note": "Effects, with the Momoka outfit and HUD files bundled in.",
+      "noteKey": "mod.n.efxpack",
+      "url": "https://www.mediafire.com/file/fafoepiect460we/Cherry%27s_PSOBB_Effects.zip/file",
+      "image": "./images/mods/df-effects-pack.webp"
+    },
+    {
+      "name": "Alternate effects + techs",
+      "cat": "effect",
+      "author": "Cherry",
+      "date": "2022-10-11",
+      "note": "Recolours the technique effects.",
+      "noteKey": "mod.n.efxtech",
+      "url": "https://www.mediafire.com/file/jhzlaeexvts0kjb/Effects_%2B_tech.zip/file",
+      "image": "./images/mods/df-alt-tech.webp"
+    },
+    {
+      "name": "Cherry PSOBB Ice Pack",
+      "cat": "effect",
+      "author": "Cherry",
+      "date": "2023-06-05",
+      "note": "Ice-themed effects.",
+      "noteKey": "mod.n.icepack",
+      "url": "https://www.mediafire.com/file/i3q0qqda7tyeem1/Cherry_PSOBB_Ice_Pack.rar/file",
+      "image": "./images/mods/ice-pack.webp"
+    },
+    {
+      "name": "Momoka — Red / Black",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2022-10-03",
+      "note": "The first post in the channel. A single plRtex.afs swap.",
+      "noteKey": "mod.n.momokaRed",
+      "url": "https://www.mediafire.com/file/dm2nyngmevuvnmb/plRtex.afs/file",
+      "image": "./images/mods/momoka-red.webp"
+    },
+    {
+      "name": "Momoka — Yin / Yang",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2022-10-04",
+      "note": "",
+      "url": "https://www.mediafire.com/file/pinlphadp0td556/plRtex.afs/file",
+      "image": "./images/mods/momoka-yinyang.webp"
+    },
+    {
+      "name": "Momoka — White / Black (dark dress)",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2022-10-04",
+      "note": "",
+      "url": "https://www.mediafire.com/file/y4g5m7j1foi58q0/plRtex.afs/file",
+      "image": "./images/mods/momoka-white.webp"
+    },
+    {
+      "name": "Momoka — Purple / Black",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2022-10-04",
+      "note": "",
+      "url": "https://www.mediafire.com/file/c7xvdqfdl2pqdgl/plRtex.afs/file",
+      "image": "./images/mods/momoka-purple.webp"
+    },
+    {
+      "name": "Momoka — Dark Purple",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2022-10-09",
+      "note": "",
+      "url": "https://www.mediafire.com/file/oyvd5f92it66s03/Dark_Purple_momoka.zip/file",
+      "image": "./images/mods/momoka-darkpurple.jpg"
+    },
+    {
+      "name": "Momoka — Fire Orange",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2023-02-23",
+      "note": "",
+      "url": "https://www.mediafire.com/file/19r0qgq9kq6jsjs/Fire_Orange_Momoka.zip/file",
+      "image": "./images/mods/momoka-fireorange.jpg"
+    },
+    {
+      "name": "Momoka — Pink Recolor",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2024-03-30",
+      "note": "",
+      "url": "https://www.mediafire.com/file/cvme4z293rkzxgv/Momoka_Pink_Recolor.rar/file",
+      "image": "./images/mods/momoka-pink.jpg"
+    },
+    {
+      "name": "Nurse — Blue / Red Recolor",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2022-10-04",
+      "note": "",
+      "url": "https://www.mediafire.com/file/fg0nrqo9dpbp21n/Blue-Red_Nurse.zip/file",
+      "image": "./images/mods/nurse-bluered.jpg"
+    },
+    {
+      "name": "Bloody Nurse",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2023-05-29",
+      "note": "",
+      "url": "https://www.mediafire.com/file/v2c8cnroxvpujcr/Bloody_Nurse.zip/file",
+      "image": "./images/mods/nurse-bloody.jpg"
+    },
+    {
+      "name": "HUcaseal — Magma",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2022-12-09",
+      "note": "A red HUcaseal skin.",
+      "noteKey": "mod.n.magma",
+      "url": "https://www.mediafire.com/file/xdd1iss4b40793f/Magma_hucaseal_skin.rar/file",
+      "image": "./images/mods/hucaseal-magma.webp"
+    },
+    {
+      "name": "HUcaseal — Violet",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2023-10-30",
+      "note": "",
+      "url": "https://www.mediafire.com/file/7jfte60wy7lnyi2/Violet_Hucaseal.rar/file",
+      "image": "./images/mods/hucaseal-violet.jpg"
+    },
+    {
+      "name": "HUnewearl — Galaxy Outfit",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2024-10-18",
+      "note": "",
+      "url": "https://www.mediafire.com/file/8kvu4b99yqaqh6l/Hunewearl_Galaxy_Outfit.zip/file",
+      "image": "./images/mods/hunewearl-galaxy.jpg"
+    },
+    {
+      "name": "HUnewearl — Red Summer",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2024-10-25",
+      "note": "",
+      "url": "https://www.mediafire.com/file/im0n8qqg9xqafya/Huney_Red_Summer.rar/file",
+      "image": "./images/mods/hunewearl-summer.jpg"
+    },
+    {
+      "name": "FOnewearl — Foney Skin 01",
+      "cat": "character",
+      "author": "Cherry",
+      "date": "2024-10-02",
+      "note": "One archive, two skins.",
+      "noteKey": "mod.n.foney",
+      "url": "https://www.mediafire.com/file/62bfzbno3q7py4h/Foney_Skin_01.zip/file",
+      "image": "./images/mods/foney-01.jpg"
+    },
+    {
+      "name": "Custom HD HUD",
+      "cat": "ui",
+      "author": "Cherry",
+      "date": "2022-11-12",
+      "note": "A high-resolution HUD, Rainbow Text included.",
+      "noteKey": "mod.n.hdhud",
+      "url": "https://www.mediafire.com/file/jbl1vl4ocxdtjiu/custom_HD_Hud.zip/file",
+      "image": "./images/mods/hd-hud.jpg"
+    },
+    {
+      "name": "Episode 3 Custom HUD + Member Numbers",
+      "cat": "ui",
+      "author": "Roland",
+      "date": "2025-01-01",
+      "note": "Univers-PS's Episode 3 HUD with numbers added to the coloured team member insignias. The post includes a vanilla copy so you can put the original back.",
+      "noteKey": "mod.n.ep3hud",
+      "url": "https://discord.com/channels/363947585154580480/1026388013762236446/1323850816951681114",
+      "image": ""
+    },
+    {
+      "name": "PSOBB Font Recolor",
+      "cat": "ui",
+      "author": "Cherry",
+      "date": "2024-03-31",
+      "note": "",
+      "url": "https://www.mediafire.com/file/rdllm51zwc10xgt/PSOBB_Font_Recolor.rar/file",
+      "image": "./images/mods/font-recolor.jpg"
+    },
+    {
+      "name": "Mosaic Boxes",
+      "cat": "object",
+      "author": "Cherry",
+      "date": "2022-11-27",
+      "note": "A box skin rebuilt for the Destiny server at Depassage's request.",
+      "noteKey": "mod.n.mosaic",
+      "url": "https://www.mediafire.com/file/mt891wdhihce8d0/Mosaic_Boxes.zip/file",
+      "image": "./images/mods/mosaic-boxes.jpg"
+    },
+    {
+      "name": "Item Boxes",
+      "cat": "object",
+      "author": "Cherry",
+      "date": "2023-01-06",
+      "note": "",
+      "url": "https://www.mediafire.com/file/mnm4h3u7cltgwdu/item_boxes.zip/file",
+      "image": "./images/mods/item-boxes.webp"
+    },
+    {
+      "name": "Galaxy Item Pack",
+      "cat": "object",
+      "author": "Cherry",
+      "date": "2024-03-31",
+      "note": "",
+      "url": "https://www.mediafire.com/file/gcrfhwg5q2zogyp/Galaxy_Item_Pack.rar/file",
+      "image": "./images/mods/galaxy-item.gif"
+    },
+    {
+      "name": "PSO Splash Screen",
+      "cat": "background",
+      "author": "Cherry",
+      "date": "2023-04-25",
+      "note": "",
+      "url": "https://www.mediafire.com/file/0fcjbe4qarvxjjg/f256_backtext.rar/file",
+      "image": "./images/mods/splash.jpg"
+    },
+    {
+      "name": "Lofi PSOBB Background",
+      "cat": "background",
+      "author": "Cherry",
+      "date": "2024-04-20",
+      "note": "",
+      "url": "https://www.mediafire.com/file/9gak529yworvkh0/Lofi_PSOBB_Background.rar/file",
+      "image": "./images/mods/lofi-bg.jpg"
+    },
+    {
+      "name": "Castle Courtyard Lobby",
+      "cat": "background",
+      "author": "Cherry",
+      "date": "2024-10-19",
+      "note": "Turns the lobby into a castle courtyard.",
+      "noteKey": "mod.n.castle",
+      "url": "https://www.mediafire.com/file/bjnr7wpzce5roly/Castle_Courtyard_Lobby.zip/file",
+      "image": "./images/mods/castle-lobby.jpg"
+    },
+    {
+      "name": "Lossless Scaling",
+      "cat": "tool",
+      "author": "External utility (Steam)",
+      "authorKey": "mod.a.external",
+      "date": "2026-08-01",
+      "note": "Not a game mod but an external upscaler, shared in the channel for running the low-resolution client on a large display. Paid.",
+      "noteKey": "mod.n.lossless",
+      "url": "https://store.steampowered.com/app/993090/Lossless_Scaling/",
+      "image": ""
+    },
+    {
+      "name": "RAcast Footstep Audio Mod",
+      "cat": "tool",
+      "author": "Reddit r/PSO",
+      "authorKey": "mod.a.reddit",
+      "date": "2024-03-24",
+      "note": "Changes RAcast footstep audio. Shared with the caveat that nobody confirmed what else it touches.",
+      "noteKey": "mod.n.footstep",
+      "url": "https://www.reddit.com/r/PSO/comments/10pbvjy/racast_footstep_audio_mod/",
+      "image": ""
+    },
+    {
+      "name": "Phantasy Star Universe Sound Pack",
+      "cat": "sound",
+      "author": "Linis",
+      "date": "2026-07-01",
+      "note": "Replaces the game sounds with Phantasy Star Universe ones. An earlier pack by the same author drew on Blue Reflection, PSO2 and PG3D. Drop city.pac and common.pac into data/sound — back up your originals first.",
+      "noteKey": "mod.n.psuSound",
+      "url": "https://discord.com/channels/363947585154580480/1026388013762236446/1521972968199159909",
+      "image": ""
+    },
+    {
+      "name": "Ill Gill NPC Skin",
+      "cat": "character",
+      "author": "sunagimo",
+      "date": "2023-09-14",
+      "note": "Turns NPC number 1 into Ill Gill. Built on Shiva's original skin, credited by the author.",
+      "noteKey": "mod.n.illgil",
+      "url": "https://discord.com/channels/363947585154580480/1026388013762236446/1151856622520504442",
+      "image": ""
+    },
+    {
+      "name": "RAcaseal / RAcast Night Blue Outfits",
+      "cat": "character",
+      "author": "Roland",
+      "date": "2025-02-09",
+      "note": "Night Blue for RAcaseal, Night Blue and Royal Purple for RAcast. This re-upload adds the head textures the first version was missing.",
+      "noteKey": "mod.n.nightblue",
+      "url": "https://discord.com/channels/363947585154580480/1026388013762236446/1338192934452985867",
+      "image": ""
+    },
+    {
+      "name": "Bubble Particle Textures",
+      "cat": "effect",
+      "author": "Blue",
+      "date": "2025-04-30",
+      "note": "Shipped as loose textures with instructions rather than a ready-made effect_nt.xvm, so that you learn to apply your own and do not overwrite effects you already have.",
+      "noteKey": "mod.n.bubble",
+      "url": "https://discord.com/channels/363947585154580480/1026388013762236446/1367004073433370654",
+      "image": ""
+    },
+    {
+      "name": "SEGA → Destiny Logo",
+      "cat": "ui",
+      "author": "thanx JP",
+      "date": "2025-05-16",
+      "note": "Replaces the SEGA boot logo with the Destiny one.",
+      "noteKey": "mod.n.logo",
+      "url": "https://discord.com/channels/363947585154580480/1026388013762236446/1372902539132932186",
+      "image": "./images/mods/logo.jpg"
+    },
+    {
+      "name": "Custom Cursor",
+      "cat": "ui",
+      "author": "thanx JP",
+      "date": "2025-11-01",
+      "note": "",
+      "url": "https://discord.com/channels/363947585154580480/1026388013762236446/1434164382505504909",
+      "image": "./images/mods/cursor.jpg"
+    },
+    {
+      "name": "Dark Flow HP Marker (HUD)",
+      "cat": "ui",
+      "author": "Rang3r",
+      "date": "2026-08-26",
+      "note": "The small marker showing the HP percentage at which Dark Flow activates. The author noted the texture compression made this far harder to edit than expected.",
+      "noteKey": "mod.n.dfmarker",
+      "url": "https://discord.com/channels/363947585154580480/1026388013762236446/1542221635392766112",
+      "image": "./images/mods/df-marker.jpg"
+    }
+  ]
+}

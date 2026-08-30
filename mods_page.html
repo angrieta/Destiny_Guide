@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="mod.title">DestinyGuide - Mods and Skins</title>
+    <meta name="description" content="Client mods and skins shared by the Destiny PSOBB community: character skins, effects, HUD, item boxes and lobby backgrounds, with the original download links and credits.">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <link rel="stylesheet" href="./styles/mods.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/mods.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/design-system.css?v=20260824">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+    <script src="./scripts/site_search.js"></script>
+<!-- 헤더종료 -->
+
+<body class="mods_page">
+<main class="g_page">
+    <div class="g_head">
+        <h2><span data-i18n="mod.heading">Mods and Skins</span></h2>
+        <p class="g_lead" data-i18n="mod.lead">The community has been reskinning this client since 2022, and the results are scattered across four years of one Discord channel. This is that channel turned into a list: what exists, who made it, and where the file actually is.</p>
+        <p class="g_source" data-i18n="mod.source">Collected from the server's game-modifications channel on 2026-08-29 (994 messages, 2022-10 to 2026-08). Nothing is re-hosted here — every button goes to the author's own upload.</p>
+    </div>
+
+    <div class="md_controls">
+        <input type="text" class="md_search" data-mods-search
+               placeholder="Search a mod, an author or a description…" data-i18n-placeholder="mod.search">
+        <span class="md_count" data-mods-count>—</span>
+    </div>
+
+    <div class="md_controls">
+        <div class="md_cats" data-mods-cats></div>
+    </div>
+
+    <div data-mods-mount>
+        <p class="md_empty" data-i18n="mod.loading">Loading…</p>
+    </div>
+
+    <!-- 카드의 미리보기는 16:9 로 잘라 보여준다. 원본 비율로 보려면 이 뷰어를 연다. -->
+    <div class="md_lb" data-mods-lightbox hidden>
+        <button type="button" class="md_lb_dim" data-lb-close aria-label="Close" tabindex="-1"></button>
+        <figure class="md_lb_box" role="dialog" aria-modal="true" aria-labelledby="md-lb-title">
+            <button type="button" class="md_lb_close" data-lb-close aria-label="Close">&times;</button>
+            <img class="md_lb_img" alt="">
+            <figcaption class="md_lb_cap"><b id="md-lb-title"></b><span></span></figcaption>
+        </figure>
+    </div>
+
+    <section class="g_sec" id="install">
+        <h3><span data-i18n="mod.install.title">Before you install anything</span></h3>
+        <ul class="ev_list">
+            <li><strong data-i18n="mod.install.backup">Back up the file you are replacing</strong> — <span data-i18n="mod.install.backupNote">a skin is a straight file swap, so keeping the original is the only way back. Most of these are a single archive you unpack into the game folder.</span></li>
+            <li><strong data-i18n="mod.install.scene">Skin packs go in the scene folder</strong> — <span data-i18n="mod.install.sceneNote">this is the one placement the staff has stated outright. Other mods vary by file: a loose plRtex.afs is a character texture, while a .zip or .rar usually carries its own folder layout.</span></li>
+            <li><strong data-i18n="mod.install.crash">If the game crashes after a mod</strong> — <span data-i18n="mod.install.crashNote">put the original file back first, then report it. The staff have asked people to confirm a mod is not the cause before filing a bug.</span></li>
+            <li><strong data-i18n="mod.install.macro">Remapping keys is allowed, automating play is not</strong> — <span data-i18n="mod.install.macroNote">tools such as AutoHotkey may be used to remap keys. Automating gameplay in any way is not permitted.</span></li>
+        </ul>
+    </section>
+
+    <section class="g_sec" id="sources">
+        <h3><span data-i18n="mod.sources.title">Where these came from</span></h3>
+        <p class="g_lead" data-i18n="mod.sources.lead">These files are hosted on the authors' own accounts, so links do break. If one is dead, the forum thread is the place to look before asking in Discord.</p>
+        <ul class="md_sources" data-mods-sources></ul>
+    </section>
+
+    <section class="g_sec" id="credit">
+        <h3><span data-i18n="mod.credit.title">Credits and caveats</span></h3>
+        <ul class="ev_list">
+            <li data-i18n="mod.credit.cherry"><strong>Cherry</strong> made most of what is on this page, over four years. Roland, Linis, thanx JP, Blue, sunagimo, Rang3r, Shiva and EtchYourSketch each released their own.</li>
+            <li data-i18n="mod.credit.deleted">The earliest posts, from October 2022, came from an <strong>account that has since been deleted</strong>. The effects pack from that run is named "Cherry's_PSOBB_Effects.zip" and the same Momoka series continues later under Cherry, so they are credited to Cherry as the same person.</li>
+            <li data-i18n="mod.credit.discord">Mods uploaded straight to Discord link to the <strong>original post</strong> rather than the file, because attachment links expire. You need to be in the server to open them.</li>
+            <li data-i18n="mod.credit.host">Nothing here is re-hosted. Every download button leads to the author's original upload, and this page claims no ownership over any of it.</li>
+            <li data-i18n="mod.credit.shots">31 of the previews are the original screenshots posted in the channel; a few effect mods were only ever shown as video, so a single frame was taken from it. The remaining eight are sound packs or external tools, where a screenshot says nothing, or never had a preview posted — they keep a placeholder rather than an unrelated image.</li>
+            <li data-i18n="mod.credit.report">If you made something on this page and want it removed or corrected, say so in the server and it will be changed.</li>
+        </ul>
+    </section>
+
+    <section class="g_sec" id="also">
+        <h3><span data-i18n="mod.also.title">Also useful</span></h3>
+        <ul class="ev_list">
+            <li><a href="./player_tools.html" data-i18n="mod.also.tools">Farming tools</a> — <span data-i18n="mod.also.toolsNote">monster counts per quest and the Happy Hour schedule.</span></li>
+            <li><a href="./beginner_page.html" data-i18n="mod.also.beginner">Beginner's guide</a> — <span data-i18n="mod.also.beginnerNote">install the game first, then come back and dress it up.</span></li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>

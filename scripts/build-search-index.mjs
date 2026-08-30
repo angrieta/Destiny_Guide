@@ -114,6 +114,7 @@ const PAGES = [
   { u: "item_page.html", g: "guide", t: "Destiny Items", k: "header.nav.items", d: "Destiny-only item catalog with filters" },
   { u: "class_builds.html", g: "guide", t: "Class Builds", k: "header.nav.builds", d: "Gear and unit setups for every class" },
   { u: "event_page.html", g: "guide", t: "Events", k: "header.nav.events", d: "Seasonal event archive: periods, new items, event quests, drop rates, shop trades, anniversary easter valentine halloween xmas summer" },
+  { u: "updates_page.html", g: "guide", t: "Latest Updates", d: "Current patch 0.944 September roadmap Soul Eraser Miracle Chain Aegis of Isolation Madam's Bracelet Lightning Garment" },
   { u: "endgame_page.html", g: "guide", t: "Quest Difficulty", k: "header.nav.endgame", d: "Quest difficulty list star rating raid VR test episode event, endgame contents" },
   { u: "quest_data_page.html", g: "guide", t: "Quest Data", k: "header.nav.questData", d: "Quest rewards, monster counts, and layouts" },
   { u: "enhance_page.html", g: "guide", t: "Enhancement", k: "header.nav.enhance", d: "Grinding, attributes, and weapon upgrades" },
