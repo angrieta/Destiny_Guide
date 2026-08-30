@@ -1163,7 +1163,14 @@ html[data-theme="dark"] .download_btn {
    Responsive rules
    -------------------------------------------------------------------------- */
 
-@media screen and (max-width: 1160px) {
+/* 데스크톱 내비는 1440px 부터만 펼친다.
+ *
+ * 헤더 안쪽 폭은 --content-max-width(1440px) 로 묶여 있는데, 로고 132 + 액션 묶음 +
+ * 내비 링크를 모두 늘어놓으면 그 폭을 넘는다. 링크에 white-space: nowrap 이 걸려 있고
+ * 패널이 justify-content: center 라, 넘친 만큼이 좌우로 똑같이 삐져나와 로고와 검색창
+ * 위에 글자가 겹쳐 찍혔다. 5개 언어 전부에서 났고 프랑스어가 가장 심했다.
+ * 아래 min-width: 1440px 블록의 정리와 함께 봐야 한다. */
+@media screen and (max-width: 1439px) {
     :root {
         --header-height: 62px;
     }
@@ -1280,9 +1287,38 @@ html[data-theme="dark"] .download_btn {
         display: none;
     }
 
+}
+
+/* 헤더와 무관한 규칙이라 원래 breakpoint 를 그대로 둔다. */
+@media screen and (max-width: 1160px) {
     .lab_hero {
         grid-template-columns: 1fr;
         gap: var(--space-8);
+    }
+}
+
+/* 내비를 펼치는 구간에서 헤더가 자기 폭 안에 들어오게 정리한다.
+ * 안쪽 폭이 1440px 로 고정이라 화면이 아무리 넓어도 여유가 더 생기지 않는다. */
+@media screen and (min-width: 1440px) {
+    /* 드랍 테이블 · 아이템 DB 는 내비에도 같은 링크가 있다. 헤더에 두 번 둘 폭이 없다. */
+    .site_header_actions .site_header_data_link {
+        display: none;
+    }
+
+    /* 테마 버튼은 라벨이 곧 내용이다. 이 버튼에는 아이콘 요소가 없어서
+       라벨을 숨기면 빈 상자만 남는다. 대신 좌우 여백만 줄인다. */
+    .site_header_actions .theme_toggle {
+        padding-inline: 10px;
+    }
+
+    .site_nav_link,
+    .site_nav_group > summary {
+        padding-inline: 7px;
+    }
+
+    /* 마지막 안전장치. 어떤 언어에서 또 넘치더라도 이웃 위에 글자가 겹치지는 않게 한다. */
+    .site_nav_panel {
+        overflow: clip;
     }
 }
 
