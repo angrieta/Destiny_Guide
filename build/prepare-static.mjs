@@ -18,6 +18,8 @@ const publicFiles = [
   // 조합 레시피 / Section ID 추천. 아래에서 매번 다시 만든다.
   "data/item-recipes.json",
   "data/section-id.json",
+  // 모드·스킨 목록. mods_page.html 이 런타임에 받아 그린다.
+  "data/mods.json",
   "data/database-1.json",
   "data/database-2.json",
   "data/database-3.json",
