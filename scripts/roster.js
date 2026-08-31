@@ -57,6 +57,98 @@
     return messages[code] || t("rst.err.generic", "That did not work. Try again in a moment.");
   }
 
+  /** PSOBB 의 열두 클래스. 서버(api/src/index.ts)의 CLASSES 와 순서까지 같아야 한다. */
+  var CLASSES = [
+    "HUmar", "HUnewearl", "HUcast", "HUcaseal",
+    "RAmar", "RAmarl", "RAcast", "RAcaseal",
+    "FOmar", "FOmarl", "FOnewm", "FOnewearl",
+  ];
+
+  var MAX_WINDOWS = 3;
+
+  /** 브라우저가 아는 이 사람의 시간대. 변환의 기준점이다. */
+  function viewerZone() {
+    try { return Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC"; }
+    catch (error) { return "UTC"; }
+  }
+
+  /**
+   * 어떤 시각(UTC ms)에 그 시간대가 UTC 와 몇 밀리초 차이 나는지.
+   *
+   * 고정값을 표로 들고 있지 않는 이유는 서머타임 때문이다. 같은 도시라도 계절에
+   * 따라 한 시간이 움직여서, 반드시 "그 날짜의" 차이를 물어봐야 한다.
+   */
+  function zoneOffset(utcMs, zone) {
+    var dtf = new Intl.DateTimeFormat("en-US", {
+      timeZone: zone, hour12: false,
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit",
+    });
+    var parts = {};
+    dtf.formatToParts(new Date(utcMs)).forEach(function (p) { parts[p.type] = p.value; });
+    var asUtc = Date.UTC(
+      Number(parts.year), Number(parts.month) - 1, Number(parts.day),
+      Number(parts.hour) % 24, Number(parts.minute), Number(parts.second),
+    );
+    return asUtc - utcMs;
+  }
+
+  /**
+   * "그 사람 시간대의 오늘 hh:mm" 이 실제로 몇 시(UTC)인지.
+   *
+   * 한 번 어림잡고 그 시점의 차이로 보정한다. 서머타임이 바뀌는 날 근처에서는
+   * 첫 어림이 한 시간 어긋날 수 있어서 한 번 더 돌린다.
+   */
+  function wallTimeToUtc(minutes, zone, baseDate) {
+    var y = baseDate.getUTCFullYear(), m = baseDate.getUTCMonth(), d = baseDate.getUTCDate();
+    var guess = Date.UTC(y, m, d, Math.floor(minutes / 60), minutes % 60);
+    for (var i = 0; i < 2; i += 1) guess = Date.UTC(y, m, d, Math.floor(minutes / 60), minutes % 60) - zoneOffset(guess, zone);
+    return guess;
+  }
+
+  function pad2(n) { return String(n).padStart(2, "0"); }
+
+  var minutesToHhmm = function (minutes) {
+    return pad2(Math.floor(minutes / 60)) + ":" + pad2(minutes % 60);
+  };
+
+  /** "HH:MM" -> 자정으로부터 몇 분. 못 읽으면 null. */
+  function hhmmToMinutes(value) {
+    var m = /^(\d{1,2}):(\d{2})$/.exec(String(value || "").trim());
+    if (!m) return null;
+    var h = Number(m[1]), mi = Number(m[2]);
+    if (h > 23 || mi > 59) return null;
+    return h * 60 + mi;
+  }
+
+  /**
+   * 남이 적은 시간을 보는 사람 시계로 옮긴다.
+   *
+   * 날짜가 밀리는 경우가 흔하다 — 한국 저녁 9시는 유럽에서는 같은 날 낮이지만
+   * 미국 서부에서는 전날 새벽이다. 그래서 며칠 밀렸는지도 같이 돌려준다.
+   */
+  function convertWindow(win, fromZone, toZone) {
+    var base = new Date();
+    var startUtc = wallTimeToUtc(win.start, fromZone, base);
+    // 끝이 시작보다 이르면 자정을 넘긴 것이다 (22:00~02:00).
+    var endUtc = wallTimeToUtc(win.end, fromZone, base) + (win.end <= win.start ? 86400000 : 0);
+
+    function inViewer(utcMs) {
+      var shifted = utcMs + zoneOffset(utcMs, toZone);
+      var d = new Date(shifted);
+      return { minutes: d.getUTCHours() * 60 + d.getUTCMinutes(), dayMs: Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) };
+    }
+
+    var a = inViewer(startUtc), b = inViewer(endUtc);
+    var today = inViewer(wallTimeToUtc(0, toZone, base)).dayMs;
+    return {
+      start: a.minutes,
+      end: b.minutes,
+      // 시작이 보는 사람 기준 어제/내일이면 알려 준다.
+      dayShift: Math.round((a.dayMs - today) / 86400000),
+    };
+  }
+
   function formatDate(ms) {
     var date = new Date(ms);
     if (isNaN(date.getTime())) return "";
@@ -70,10 +162,11 @@
 
     var form = document.querySelector("[data-rs-form]");
     var discordInput = document.querySelector("[data-rs-discord]");
-    var characterInput = document.querySelector("[data-rs-character]");
+    var charsBox = document.querySelector("[data-rs-chars]");
     var guildInput = document.querySelector("[data-rs-guild]");
-    var hoursInput = document.querySelector("[data-rs-hours]");
-    var countryInput = document.querySelector("[data-rs-country]");
+    var zoneSelect = document.querySelector("[data-rs-timezone]");
+    var windowsBox = document.querySelector("[data-rs-windows]");
+    var windowsPreview = document.querySelector("[data-rs-windows-preview]");
     var noteInput = document.querySelector("[data-rs-note]");
     var passwordInput = document.querySelector("[data-rs-password]");
     var submitButton = document.querySelector("[data-rs-submit]");
@@ -104,6 +197,137 @@
     /** 비밀번호 창이 무엇을 하려는 중인지. { id, action, entry } */
     var pending = null;
 
+
+    var zone = viewerZone();
+
+    /* ── 폼 조립 ───────────────────────────────────────────────────────── */
+
+    /** 클래스 열두 칸. 서버가 아는 키와 같아야 해서 CLASSES 로만 만든다. */
+    function buildCharacterInputs() {
+      charsBox.innerHTML = CLASSES.map(function (cls) {
+        return '<label class="rs_char_cell"><span>' + cls + "</span>" +
+          '<input type="text" maxlength="24" autocomplete="off" data-rs-char="' + cls + '"></label>';
+      }).join("");
+    }
+
+    function readCharacters() {
+      var out = {};
+      Array.prototype.forEach.call(charsBox.querySelectorAll("[data-rs-char]"), function (input) {
+        var name = input.value.trim();
+        if (name) out[input.getAttribute("data-rs-char")] = name;
+      });
+      return out;
+    }
+
+    function writeCharacters(characters) {
+      Array.prototype.forEach.call(charsBox.querySelectorAll("[data-rs-char]"), function (input) {
+        input.value = (characters && characters[input.getAttribute("data-rs-char")]) || "";
+      });
+    }
+
+    /**
+     * 시간대 목록.
+     *
+     * 브라우저가 아는 IANA 목록을 그대로 쓴다. 직접 표를 들고 있으면 서머타임 규칙이
+     * 바뀔 때마다 낡는다. 목록을 못 주는 브라우저는 자기 시간대 하나만 고를 수 있다.
+     */
+    function buildZoneSelect() {
+      var zones = [];
+      try { zones = Intl.supportedValuesOf("timeZone") || []; } catch (error) { zones = []; }
+      if (zones.indexOf(zone) < 0) zones.unshift(zone);
+
+      /*
+       * 대부분 자기 시간대를 고른다. 미리 맞춰 두면 손이 덜 간다.
+       *
+       * value 로만 맞추면 안 된다 — 등록 뒤 form.reset() 이 마크업의 기본 선택으로
+       * 되돌려서, 두 번째 사람은 시간대가 "안 밝힘" 인 채로 올리게 된다.
+       * selected 속성을 박아 두어야 reset 후에도 남는다.
+       */
+      zoneSelect.innerHTML = '<option value="">' +
+        escapeHtml(t("rst.form.timezoneNone", "Not saying")) + "</option>" +
+        zones.map(function (z) {
+          return '<option value="' + escapeHtml(z) + '"' + (z === zone ? " selected" : "") + ">" +
+            escapeHtml(z.replace(/_/g, " ")) + "</option>";
+        }).join("");
+    }
+
+    function buildWindowRows() {
+      var rows = [];
+      for (var i = 0; i < MAX_WINDOWS; i += 1) {
+        rows.push(
+          '<div class="rs_window_row">' +
+          '<input type="time" data-rs-win-start="' + i + '">' +
+          '<span class="rs_window_dash">–</span>' +
+          '<input type="time" data-rs-win-end="' + i + '">' +
+          '<button type="button" class="rs_link_btn" data-rs-win-clear="' + i + '" ' +
+          'data-i18n="rst.form.clearRow">Clear</button>' +
+          "</div>",
+        );
+      }
+      windowsBox.innerHTML = rows.join("");
+    }
+
+    function readWindows() {
+      var out = [];
+      for (var i = 0; i < MAX_WINDOWS; i += 1) {
+        var start = hhmmToMinutes(windowsBox.querySelector('[data-rs-win-start="' + i + '"]').value);
+        var end = hhmmToMinutes(windowsBox.querySelector('[data-rs-win-end="' + i + '"]').value);
+        // 한쪽만 적힌 줄은 무시한다. 반쪽짜리 구간은 뜻이 없다.
+        if (start === null || end === null || start === end) continue;
+        out.push({ start: start, end: end });
+      }
+      return out;
+    }
+
+    function writeWindows(windows) {
+      for (var i = 0; i < MAX_WINDOWS; i += 1) {
+        var win = (windows || [])[i];
+        windowsBox.querySelector('[data-rs-win-start="' + i + '"]').value = win ? minutesToHhmm(win.start) : "";
+        windowsBox.querySelector('[data-rs-win-end="' + i + '"]').value = win ? minutesToHhmm(win.end) : "";
+      }
+    }
+
+    /** 적는 동안 "남들에게는 이렇게 보입니다" 를 미리 알려 준다. */
+    function refreshWindowPreview() {
+      var chosen = zoneSelect.value;
+      var windows = readWindows();
+      if (!chosen || !windows.length) { windowsPreview.textContent = ""; return; }
+      if (chosen === zone) {
+        windowsPreview.textContent = t("rst.form.sameZone", "Visitors in other zones will see these converted to their own clock.");
+        return;
+      }
+      windowsPreview.textContent = t("rst.form.yourClock", "On your own clock right now") + ": " +
+        windows.map(function (w) { return describeWindow(w, chosen); }).join(", ");
+    }
+
+    /* ── 시간 표시 ─────────────────────────────────────────────────────── */
+
+    /**
+     * 캐릭터를 클래스별로 그린다.
+     *
+     * characters 가 비어 있는 줄은 컬럼을 붙이기 전에 올라온 것이다. 그런 줄은
+     * 예전 평문(character_name)을 그대로 보여 준다 — 지우거나 고치지 않는다.
+     */
+    function renderCharacters(entry) {
+      var names = entry.characters || {};
+      var listed = CLASSES.filter(function (cls) { return names[cls]; });
+      if (!listed.length) return escapeHtml(entry.characterName || "");
+      return listed.map(function (cls) {
+        return '<span class="rs_one_char">' + escapeHtml(names[cls]) +
+          '<em class="rs_cls">' + cls + "</em></span>";
+      }).join("");
+    }
+
+    /** 한 구간을 보는 사람 시계로 옮겨 문장으로. 날짜가 밀리면 그것도 붙인다. */
+    function describeWindow(win, fromZone) {
+      if (!fromZone || fromZone === zone) return minutesToHhmm(win.start) + "–" + minutesToHhmm(win.end);
+      var moved = convertWindow(win, fromZone, zone);
+      var text = minutesToHhmm(moved.start) + "–" + minutesToHhmm(moved.end);
+      if (moved.dayShift < 0) text += " " + t("rst.row.dayBefore", "(prev day)");
+      if (moved.dayShift > 0) text += " " + t("rst.row.dayAfter", "(next day)");
+      return text;
+    }
+
     function say(target, message, kind) {
       target.textContent = message || "";
       target.dataset.kind = kind || "";
@@ -121,9 +345,22 @@
 
     function row(entry) {
       /* 선택 항목은 적은 사람만 나온다. 빈 칸을 자리만 잡아 두면 목록이 성기게 보인다. */
+      var windows = entry.playWindows || [];
+      var hours = windows.length
+        ? windows.map(function (w) { return describeWindow(w, entry.timezone); }).join(", ")
+        : "";
+      // 남의 시간대를 내 시계로 바꿔 보여줬다면, 원래 시간도 같이 남긴다.
+      var converted = hours && entry.timezone && entry.timezone !== zone;
+
       var facts = [
-        entry.country ? '<span class="rs_fact">' + escapeHtml(entry.country) + "</span>" : "",
-        entry.playHours ? '<span class="rs_fact">' + escapeHtml(entry.playHours) + "</span>" : "",
+        entry.timezone ? '<span class="rs_fact">' + escapeHtml(entry.timezone.replace(/_/g, " ")) + "</span>" : "",
+        hours
+          ? '<span class="rs_fact rs_fact_time">' + escapeHtml(hours) +
+            (converted
+              ? '<em class="rs_fact_src">' + escapeHtml(t("rst.row.yourTime", "your time")) + "</em>"
+              : "") +
+            "</span>"
+          : "",
         entry.guildCard
           ? '<span class="rs_fact rs_fact_card"><b data-i18n="rst.row.card">Guild card</b> ' +
             escapeHtml(entry.guildCard) + "</span>"
@@ -133,7 +370,7 @@
       return (
         '<li class="rs_row">' +
         '<div class="rs_row_main">' +
-        '<p class="rs_char">' + escapeHtml(entry.characterName) + "</p>" +
+        '<p class="rs_char">' + renderCharacters(entry) + "</p>" +
         '<p class="rs_discord"><span class="rs_at">@</span>' + escapeHtml(entry.discordName) + "</p>" +
         (facts ? '<p class="rs_facts">' + facts + "</p>" : "") +
         (entry.note ? '<p class="rs_note">' + escapeHtml(entry.note) + "</p>" : "") +
@@ -197,6 +434,8 @@
     function leaveEditMode() {
       editing = null;
       form.reset();
+      // 앞사람 시간이 미리보기에 남아 있으면 다음 사람이 자기 것으로 읽는다.
+      refreshWindowPreview();
       cancelButton.hidden = true;
       passwordInput.parentElement.hidden = false;
       passwordInput.required = true;
@@ -208,15 +447,15 @@
       event.preventDefault();
       var payload = {
         discordName: discordInput.value.trim(),
-        characterName: characterInput.value.trim(),
+        characters: readCharacters(),
         guildCard: guildInput.value.trim(),
-        playHours: hoursInput.value.trim(),
-        country: countryInput.value.trim(),
+        timezone: zoneSelect.value,
+        playWindows: readWindows(),
         note: noteInput.value.trim(),
       };
 
       if (!payload.discordName) { say(formMessage, explain("discord_required"), "bad"); return; }
-      if (!payload.characterName) { say(formMessage, explain("character_required"), "bad"); return; }
+      if (!Object.keys(payload.characters).length) { say(formMessage, explain("character_required"), "bad"); return; }
 
       var path;
       if (editing) {
@@ -294,11 +533,12 @@
         var entry = data.entry;
         editing = { id: entry.id, password: password };
         discordInput.value = entry.discordName;
-        characterInput.value = entry.characterName;
+        writeCharacters(entry.characters);
         guildInput.value = entry.guildCard || "";
-        hoursInput.value = entry.playHours || "";
-        countryInput.value = entry.country || "";
+        zoneSelect.value = entry.timezone || "";
+        writeWindows(entry.playWindows);
         noteInput.value = entry.note || "";
+        refreshWindowPreview();
         passwordInput.value = "";
         passwordInput.required = false;
         passwordInput.parentElement.hidden = true;
@@ -307,7 +547,7 @@
         submitButton.dataset.i18n = "rst.form.save";
         closeAsk();
         form.scrollIntoView({ block: "center", behavior: "smooth" });
-        characterInput.focus();
+        charsBox.querySelector("input").focus();
       }).catch(function (error) {
         say(askMessage, explain(error.code), "bad");
       }).then(function () {
@@ -354,6 +594,22 @@
     });
 
     document.addEventListener("destiny-lang-change", function () { render(); });
+
+    buildCharacterInputs();
+    buildZoneSelect();
+    buildWindowRows();
+    applyI18n(form);
+
+    zoneSelect.addEventListener("change", refreshWindowPreview);
+    windowsBox.addEventListener("input", refreshWindowPreview);
+    windowsBox.addEventListener("click", function (event) {
+      var clear = event.target.closest && event.target.closest("[data-rs-win-clear]");
+      if (!clear) return;
+      var i = clear.getAttribute("data-rs-win-clear");
+      windowsBox.querySelector('[data-rs-win-start="' + i + '"]').value = "";
+      windowsBox.querySelector('[data-rs-win-end="' + i + '"]').value = "";
+      refreshWindowPreview();
+    });
 
     load(true);
   });

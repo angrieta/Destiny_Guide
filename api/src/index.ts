@@ -32,12 +32,25 @@ export interface Env {
 /* ── 한도 ────────────────────────────────────────────────────────────────── */
 
 const MAX_DISCORD_NAME = 40;
-// 캐릭터를 여러 개 적는 칸이다. "Foney(FOnewearl), Huma(HUmar)" 처럼 죽 쓴다.
-const MAX_CHARACTER_NAME = 160;
+/** 클래스 한 칸에 들어가는 이름 길이. 게임 표기 한도보다 넉넉하다. */
+const MAX_ONE_NAME = 24;
+/** characters 에서 만들어 내는 검색용 평문. 12칸이 다 차도 넉넉하도록. */
+const MAX_CHARACTER_NAME = 480;
 const MAX_GUILD_CARD = 24;
-const MAX_PLAY_HOURS = 80;
-const MAX_COUNTRY = 32;
 const MAX_NOTE = 120;
+const MAX_TIMEZONE = 64;
+/** 시간대를 몇 구간까지 적을 수 있는지. 아침·저녁이면 둘이면 되고, 셋이면 충분하다. */
+const MAX_WINDOWS = 3;
+
+/**
+ * PSOBB 의 열두 클래스. 순서가 곧 화면에 그려지는 순서다.
+ * 여기 없는 키는 통째로 버린다 — 폼에 없는 값을 넣어 두는 통로가 되면 안 된다.
+ */
+const CLASSES = [
+  "HUmar", "HUnewearl", "HUcast", "HUcaseal",
+  "RAmar", "RAmarl", "RAcast", "RAcaseal",
+  "FOmar", "FOmarl", "FOnewm", "FOnewearl",
+] as const;
 const MIN_PASSWORD = 4;
 const MAX_PASSWORD = 72;
 
@@ -157,6 +170,67 @@ function clean(value: unknown, limit: number): string {
 /** 비밀번호는 앞뒤 공백만 턴다. 가운데 공백도 사람이 정한 값이다. */
 const cleanPassword = (value: unknown) => (typeof value === "string" ? value.trim() : "");
 
+/* ── 캐릭터 · 시간대 ─────────────────────────────────────────────────────── */
+
+/** 클래스별 이름. 아는 클래스만 남기고, 빈 칸은 버린다. */
+function cleanCharacters(value: unknown): Record<string, string> {
+  const out: Record<string, string> = {};
+  if (!value || typeof value !== "object") return out;
+  for (const key of CLASSES) {
+    const name = clean((value as Record<string, unknown>)[key], MAX_ONE_NAME);
+    if (name) out[key] = name;
+  }
+  return out;
+}
+
+/**
+ * 검색과 옛 화면이 쓰는 평문을 만든다.
+ * characters 가 참이고 이 값은 거기서 파생된다 — 따로 받지 않는다.
+ */
+const flattenCharacters = (characters: Record<string, string>) =>
+  CLASSES.filter((c) => characters[c])
+    .map((c) => `${characters[c]}(${c})`)
+    .join(", ")
+    .slice(0, MAX_CHARACTER_NAME);
+
+/**
+ * IANA 시간대인지 확인한다.
+ *
+ * 목록을 들고 있지 않고 런타임에 물어본다. 아무 문자열이나 통과시키면 보는 사람
+ * 브라우저에서 변환이 터지고, 그 사람 화면만 깨진다.
+ */
+function cleanTimezone(value: unknown): string {
+  const zone = clean(value, MAX_TIMEZONE);
+  if (!zone) return "";
+  try {
+    new Intl.DateTimeFormat("en-US", { timeZone: zone });
+    return zone;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * 노는 시간대. 자정으로부터 몇 분인지로만 담는다.
+ *
+ * 문자열로 두면 보는 사람 시간대로 계산할 수가 없다. 끝이 시작보다 이르면
+ * 자정을 넘긴 것으로 본다(예: 22:00~02:00) — 그건 그대로 두고 화면에서 푼다.
+ */
+function cleanWindows(value: unknown): Array<{ start: number; end: number }> {
+  if (!Array.isArray(value)) return [];
+  const out: Array<{ start: number; end: number }> = [];
+  for (const item of value.slice(0, MAX_WINDOWS)) {
+    if (!item || typeof item !== "object") continue;
+    const start = Number((item as Record<string, unknown>).start);
+    const end = Number((item as Record<string, unknown>).end);
+    if (!Number.isInteger(start) || !Number.isInteger(end)) continue;
+    if (start < 0 || start > 1439 || end < 0 || end > 1439) continue;
+    if (start === end) continue;
+    out.push({ start, end });
+  }
+  return out;
+}
+
 /* ── 도배 · 무차별 대입 막기 ─────────────────────────────────────────────── */
 
 const clientIp = (request: Request) => request.headers.get("CF-Connecting-IP") ?? "unknown";
@@ -181,6 +255,9 @@ type Row = {
   id: number;
   discord_name: string;
   character_name: string;
+  characters: string;
+  timezone: string;
+  play_windows: string;
   guild_card: string;
   play_hours: string;
   country: string;
@@ -191,14 +268,31 @@ type Row = {
   updated_at: number;
 };
 
+/**
+ * JSON 으로 담아 둔 열을 되읽는다.
+ *
+ * 컬럼을 나중에 붙였기 때문에 옛 줄에는 기본값('{}' · '[]')이 들어 있고, 손으로
+ * 만진 줄이 있으면 깨진 값도 있을 수 있다. 한 줄 때문에 목록 전체가 실패하지
+ * 않도록 조용히 기본값으로 떨어뜨린다.
+ */
+function safeParse<T>(raw: string, fallback: T): T {
+  try {
+    const parsed = JSON.parse(raw);
+    return parsed ?? fallback;
+  } catch {
+    return fallback;
+  }
+}
+
 /** 비밀번호 관련 열은 밖으로 절대 내보내지 않는다. */
 const shape = (row: Row) => ({
   id: row.id,
   discordName: row.discord_name,
   characterName: row.character_name,
+  characters: safeParse(row.characters, {}),
+  timezone: row.timezone,
+  playWindows: safeParse(row.play_windows, []),
   guildCard: row.guild_card,
-  playHours: row.play_hours,
-  country: row.country,
   note: row.note,
   createdAt: row.created_at,
   updatedAt: row.updated_at,
@@ -245,14 +339,16 @@ async function listEntries(request: Request, env: Env): Promise<Response> {
 
 async function createEntry(request: Request, env: Env, body: Record<string, unknown>): Promise<Response> {
   const discordName = clean(body.discordName, MAX_DISCORD_NAME);
-  const characterName = clean(body.characterName, MAX_CHARACTER_NAME);
+  const characters = cleanCharacters(body.characters);
+  const characterName = flattenCharacters(characters);
+  const timezone = cleanTimezone(body.timezone);
+  const windows = cleanWindows(body.playWindows);
   const guildCard = clean(body.guildCard, MAX_GUILD_CARD);
-  const playHours = clean(body.playHours, MAX_PLAY_HOURS);
-  const country = clean(body.country, MAX_COUNTRY);
   const memo = clean(body.note, MAX_NOTE);
   const password = cleanPassword(body.password);
 
   if (!discordName) return fail(400, "discord_required", request, env);
+  // 캐릭터 이름은 최소 하나. 없으면 이 명부에 남길 내용이 없는 것과 같다.
   if (!characterName) return fail(400, "character_required", request, env);
   if (password.length < MIN_PASSWORD) return fail(400, "password_short", request, env);
   if (password.length > MAX_PASSWORD) return fail(400, "password_long", request, env);
@@ -271,11 +367,14 @@ async function createEntry(request: Request, env: Env, body: Record<string, unkn
 
   const row = await env.DB.prepare(
     `INSERT INTO entries
-       (discord_name, character_name, guild_card, play_hours, country, note,
+       (discord_name, character_name, characters, timezone, play_windows, guild_card, note,
         pw_hash, pw_salt, created_at, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING *`,
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING *`,
   )
-    .bind(discordName, characterName, guildCard, playHours, country, memo, hash, salt, now, now)
+    .bind(
+      discordName, characterName, JSON.stringify(characters), timezone, JSON.stringify(windows),
+      guildCard, memo, hash, salt, now, now,
+    )
     .first<Row>();
 
   await mark(env, ip, "write");
@@ -305,10 +404,9 @@ async function unlock(
 
 async function updateEntry(row: Row, request: Request, env: Env, body: Record<string, unknown>) {
   const discordName = clean(body.discordName, MAX_DISCORD_NAME) || row.discord_name;
-  const characterName = clean(body.characterName, MAX_CHARACTER_NAME) || row.character_name;
 
   /*
-   * 선택 항목은 "안 보냈다" 와 "비웠다" 를 구분해야 한다. 문자열이 왔으면 비운 것도
+   * 선택 항목은 "안 보냈다" 와 "비웠다" 를 구분해야 한다. 값이 왔으면 비운 것도
    * 뜻대로 반영하고, 아예 없으면 원래 값을 지킨다. 그러지 않으면 지우고 싶어도
    * 계속 되살아난다.
    */
@@ -316,18 +414,31 @@ async function updateEntry(row: Row, request: Request, env: Env, body: Record<st
     typeof value === "string" ? clean(value, limit) : current;
 
   const guildCard = optional(body.guildCard, row.guild_card, MAX_GUILD_CARD);
-  const playHours = optional(body.playHours, row.play_hours, MAX_PLAY_HOURS);
-  const country = optional(body.country, row.country, MAX_COUNTRY);
   const memo = optional(body.note, row.note, MAX_NOTE);
+  const timezone = typeof body.timezone === "string" ? cleanTimezone(body.timezone) : row.timezone;
+  const windows = Array.isArray(body.playWindows)
+    ? JSON.stringify(cleanWindows(body.playWindows))
+    : row.play_windows;
+
+  // 캐릭터는 보냈을 때만 갈아 끼운다. 갈아 끼운다면 하나는 남아 있어야 한다.
+  let characters = row.characters;
+  let characterName = row.character_name;
+  if (body.characters && typeof body.characters === "object") {
+    const parsed = cleanCharacters(body.characters);
+    const flat = flattenCharacters(parsed);
+    if (!flat) return fail(400, "character_required", request, env);
+    characters = JSON.stringify(parsed);
+    characterName = flat;
+  }
 
   const ip = clientIp(request);
   if ((await countRecent(env, ip, "write")) >= WRITES_PER_HOUR) return fail(429, "slow_down", request, env);
 
   const updated = await env.DB.prepare(
-    `UPDATE entries SET discord_name = ?, character_name = ?, guild_card = ?, play_hours = ?,
-       country = ?, note = ?, updated_at = ? WHERE id = ? RETURNING *`,
+    `UPDATE entries SET discord_name = ?, character_name = ?, characters = ?, timezone = ?,
+       play_windows = ?, guild_card = ?, note = ?, updated_at = ? WHERE id = ? RETURNING *`,
   )
-    .bind(discordName, characterName, guildCard, playHours, country, memo, Date.now(), row.id)
+    .bind(discordName, characterName, characters, timezone, windows, guildCard, memo, Date.now(), row.id)
     .first<Row>();
 
   await mark(env, ip, "write");

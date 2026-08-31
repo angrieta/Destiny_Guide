@@ -1,7 +1,6 @@
 -- 닉네임 명부 (디스코드 닉 ↔ 캐릭터명)
 --
--- 한 사람이 한 줄이다. 캐릭터를 여러 개 쓰는 게 보통이라 character_name 에
--- "Foney(FOnewearl), Huma(HUmar)" 처럼 죽 적는다.
+-- 한 사람이 한 줄이다. 캐릭터를 여러 개 쓰는 게 보통이라 클래스별로 characters 에 담는다.
 -- 로그인이 없으므로 "내 글" 을 증명하는 것은 등록할 때 정한 비밀번호뿐이다.
 --
 -- 처음 설치할 때:
@@ -17,12 +16,18 @@ CREATE TABLE entries (
   id              INTEGER PRIMARY KEY AUTOINCREMENT,
 
   discord_name    TEXT    NOT NULL,
+
+  -- 클래스별 이름을 담은 JSON. {"HUmar":"Huma","FOnewearl":"Foney"} 꼴.
+  characters      TEXT    NOT NULL DEFAULT '{}',
+  -- 위에서 만들어 내는 검색·표시용 평문. 서버가 채우며 따로 받지 않는다.
   character_name  TEXT    NOT NULL,
 
-  -- 아래 셋은 전부 선택. 안 적으면 빈 문자열로 남고 화면에도 안 나온다.
+  -- 아래 셋은 전부 선택. 안 적으면 비어 있고 화면에도 안 나온다.
   guild_card      TEXT    NOT NULL DEFAULT '',
-  play_hours      TEXT    NOT NULL DEFAULT '',
-  country         TEXT    NOT NULL DEFAULT '',
+  -- IANA 시간대(예: Asia/Seoul). 보는 사람 시계로 바꾸는 데 쓴다.
+  timezone        TEXT    NOT NULL DEFAULT '',
+  -- [{"start":600,"end":720}] — 자정으로부터 몇 분인지. 문자열로 두면 변환이 안 된다.
+  play_windows    TEXT    NOT NULL DEFAULT '[]',
 
   note            TEXT    NOT NULL DEFAULT '',
 

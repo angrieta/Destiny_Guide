@@ -38,12 +38,12 @@
             <input id="rs-discord" type="text" maxlength="40" autocomplete="off" required
                    data-rs-discord placeholder="e.g. angrieta" data-i18n-placeholder="rst.form.discordHint">
         </div>
-        <div class="rs_field rs_field_wide">
-            <label for="rs-character" data-i18n="rst.form.character">Character names</label>
-            <input id="rs-character" type="text" maxlength="160" autocomplete="off" required
-                   data-rs-character placeholder="Foney(FOnewearl), Huma(HUmar)" data-i18n-placeholder="rst.form.characterHint">
-            <small class="rs_warn" data-i18n="rst.form.characterNote">List every character you play, with its class in brackets. Separate them with commas.</small>
-        </div>
+        <!-- 클래스별 칸. roster.js 가 채운다. 최소 하나는 적어야 한다. -->
+        <fieldset class="rs_chars rs_field_wide">
+            <legend data-i18n="rst.form.character">Your characters</legend>
+            <p class="rs_warn" data-i18n="rst.form.characterNote">Fill in the classes you actually play — at least one. Leave the rest blank.</p>
+            <div class="rs_chars_grid" data-rs-chars></div>
+        </fieldset>
 
         <div class="rs_field">
             <label for="rs-guild" data-i18n="rst.form.guild">Guild card you use most (optional)</label>
@@ -51,16 +51,19 @@
                    data-rs-guild placeholder="e.g. 42110778" data-i18n-placeholder="rst.form.guildHint">
         </div>
         <div class="rs_field">
-            <label for="rs-hours" data-i18n="rst.form.hours">When you usually play (optional)</label>
-            <input id="rs-hours" type="text" maxlength="80" autocomplete="off"
-                   data-rs-hours placeholder="e.g. weeknights 21:00–01:00 KST" data-i18n-placeholder="rst.form.hoursHint">
+            <label for="rs-timezone" data-i18n="rst.form.timezone">Your time zone (optional)</label>
+            <select id="rs-timezone" data-rs-timezone></select>
+            <small class="rs_warn" data-i18n="rst.form.timezoneNote">Used to show your hours in each visitor's own clock.</small>
         </div>
-        <div class="rs_field">
-            <label for="rs-country" data-i18n="rst.form.country">Where you are (optional)</label>
-            <input id="rs-country" type="text" maxlength="32" autocomplete="off"
-                   data-rs-country placeholder="e.g. Korea" data-i18n-placeholder="rst.form.countryHint">
-        </div>
-        <div class="rs_field">
+
+        <!-- 노는 시간대. 자기 시계로 적으면 보는 사람 시계로 바뀌어 보인다. -->
+        <fieldset class="rs_windows rs_field_wide">
+            <legend data-i18n="rst.form.hours">When you usually play (optional)</legend>
+            <div class="rs_windows_rows" data-rs-windows></div>
+            <p class="rs_warn" data-rs-windows-preview></p>
+        </fieldset>
+
+        <div class="rs_field rs_field_wide">
             <label for="rs-note" data-i18n="rst.form.note">Anything else (optional)</label>
             <input id="rs-note" type="text" maxlength="120" autocomplete="off"
                    data-rs-note placeholder="e.g. happy to help with Ultimate runs" data-i18n-placeholder="rst.form.noteHint">
@@ -116,6 +119,7 @@
             <li><strong data-i18n="rst.rules.pw">The password is the only key</strong> — <span data-i18n="rst.rules.pwNote">there is no account and no recovery. If you forget it, staff can remove the entry for you but nobody can tell you what it was. It is stored as a one-way hash, never as text.</span></li>
             <li><strong data-i18n="rst.rules.throwaway">Make one up for this page</strong> — <span data-i18n="rst.rules.throwawayNote">it guards a line on a public list, nothing more. Never reuse a password you use anywhere that matters.</span></li>
             <li><strong data-i18n="rst.rules.many">One entry per person, all your characters in it</strong> — <span data-i18n="rst.rules.manyNote">most people here run several, which is the whole reason this page exists. Put them all in the one field and the search will find you by any of them.</span></li>
+            <li><strong data-i18n="rst.rules.time">Times show in each visitor's own clock</strong> — <span data-i18n="rst.rules.timeNote">pick your zone and write your hours on your own clock; everyone else sees them converted to theirs, with (prev day) or (next day) when the date shifts.</span></li>
             <li><strong data-i18n="rst.rules.trust">Anyone can type any Discord name</strong> — <span data-i18n="rst.rules.trustNote">the password stops others editing your entry, but it cannot prove the Discord name is yours. Treat the list as helpful, not as proof. Staff can remove entries that impersonate someone.</span></li>
         </ul>
     </section>
