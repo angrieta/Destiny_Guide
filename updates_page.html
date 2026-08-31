@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./styles/design-system.css">
     <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/updates.js" defer></script>
 </head>
 <body class="updates_page">
     <div id="site-header" style="width: 100%;"></div>
@@ -27,7 +28,7 @@
                 <h2>지금 적용된 것과<br>다음 업데이트를 한눈에</h2>
                 <p>Destiny Discord의 패치노트, announcements, 퀘스트·아이템 채널을 2026년 8월 29일 기준으로 대조했다. 확정된 내용과 예고 단계 정보를 분리해, 지금 무엇을 파밍하고 무엇을 준비할지 바로 판단할 수 있게 정리했다.</p>
                 <div class="up_hero_actions">
-                    <a class="up_primary" href="#next-update">9월 1일 업데이트 보기</a>
+                    <a class="up_primary" href="#v0945">Ver.0.945 패치노트 보기</a>
                     <a class="up_secondary" href="./item_page.html">아이템 도감 열기</a>
                 </div>
             </div>
@@ -45,67 +46,60 @@
         </aside>
 
         <nav class="g_toc" aria-label="페이지 목차">
-            <a href="#live-now">현재 적용</a>
-            <a href="#next-update">9월 1일</a>
+            <a href="#patch-notes">패치노트</a>
             <a href="#anniversary">9주년 예고</a>
             <a href="#future-crafts">향후 제작 아이템</a>
             <a href="#farming-plan">파밍 준비</a>
-            <a href="#timeline">최근 타임라인</a>
         </nav>
 
-        <section class="g_sec" id="live-now">
-            <div class="up_section_head">
-                <div>
-                    <span class="up_badge is-live">현재 적용</span>
-                    <h3>Ver.0.944 핵심 변경</h3>
-                </div>
-                <time datetime="2026-08-11">2026.08.11</time>
+        <!-- 버전 아카이브.
+             패치노트는 버전 단위로 읽는 물건이라 한 페이지에 늘어놓지 않고, 버전을 골라
+             그 버전만 보여준다. 주소의 #v0945 로 특정 버전을 바로 열 수 있다. -->
+        <section class="up_archive" id="patch-notes">
+            <div class="up_archive_head">
+                <h3>패치 버전별 노트</h3>
+                <p>버전을 고르면 그 버전의 변경만 표시됩니다.</p>
             </div>
-
-            <div class="up_grid up_grid_three">
-                <article class="up_card">
-                    <span class="up_card_label">NEW DROP</span>
-                    <h4>MADAM'S BRACELET</h4>
-                    <div class="up_card_media up_card_media_tall">
-                        <img src="./images/discord/2026-08/v0944-madams-bracelet-model.png" alt="Madam's Bracelet 착용 모습">
-                    </div>
-                    <dl class="up_stats">
-                        <div><dt>획득</dt><dd>New MSB · Olga Flow</dd></div>
-                        <div><dt>드롭률</dt><dd>1/64 · All IDs · Ultimate</dd></div>
-                        <div><dt>보너스</dt><dd>ATA +25</dd></div>
-                        <div><dt>테크</dt><dd>Resta/Anti +100%, Rabarta +70%</dd></div>
-                    </dl>
-                    <a class="up_text_link" href="./item_page.html?item=madams-bracelet">도감 상세 →</a>
-                </article>
-
-                <article class="up_card">
-                    <span class="up_card_label">BAZAAR TRADE</span>
-                    <h4>LIGHTNING GARMENT</h4>
-                    <p class="up_flavor">올레지보다 Light/Dark 저항과 Grants 강화에 초점을 맞춘 전 클래스용 교환 방어구.</p>
-                    <dl class="up_stats">
-                        <div><dt>교환 NPC</dt><dd>Phantastic Bazaar · RAcaseal</dd></div>
-                        <div><dt>재료</dt><dd>Secret Ticket ×99</dd></div>
-                        <div><dt>수치</dt><dd>DFP 210 · EVP 170 · ATA +20</dd></div>
-                        <div><dt>효과</dt><dd>Grants +50%</dd></div>
-                    </dl>
-                    <p class="up_small">Secret Ticket: Simulator 2.0 또는 Random Attack Xrd Stage의 secret clear 보상.</p>
-                    <a class="up_text_link" href="./item_page.html?item=lightning-garment">도감 상세 →</a>
-                </article>
-
-                <article class="up_card">
-                    <span class="up_card_label">QUEST / QOL</span>
-                    <h4>퀘스트와 무기 변경</h4>
-                    <ul class="up_list">
-                        <li><strong>New MSB</strong>가 EP2 &gt; Destiny에 추가.</li>
-                        <li><strong>Simulator 2.0</strong>에서 사망해도 도시로 강제 귀환하지 않음. 동료의 부활 또는 Scape Doll 사용 가능.</li>
-                        <li><strong>Phantastic Bazaar</strong>에 Valentine, Easter, Halloween, Xmas, Other Shop 추가.</li>
-                        <li><strong>NUG-2000 BAZOOKA</strong> 콤보 해금, special 부여 가능.</li>
-                    </ul>
-                </article>
+            <div class="up_vers" role="tablist" aria-label="패치 버전">
+                <button type="button" class="up_ver_tab is-on" role="tab"
+                        id="tab-0945" data-ver="0945" aria-controls="v0945"
+                        aria-selected="true" tabindex="0">
+                    <b>Ver.0.945</b>
+                    <span class="up_ver_state is-next">예정</span>
+                    <time>ETA 09.01</time>
+                </button>
+                <button type="button" class="up_ver_tab" role="tab"
+                        id="tab-0944" data-ver="0944" aria-controls="v0944"
+                        aria-selected="false" tabindex="-1">
+                    <b>Ver.0.944</b>
+                    <span class="up_ver_state is-live">적용 중</span>
+                    <time>2026.08.11</time>
+                </button>
+                <button type="button" class="up_ver_tab" role="tab"
+                        id="tab-0943" data-ver="0943" aria-controls="v0943"
+                        aria-selected="false" tabindex="-1">
+                    <b>Ver.0.943</b>
+                    <span class="up_ver_state is-past">지난 버전</span>
+                    <time></time>
+                </button>
+                <button type="button" class="up_ver_tab" role="tab"
+                        id="tab-0942" data-ver="0942" aria-controls="v0942"
+                        aria-selected="false" tabindex="-1">
+                    <b>Ver.0.942</b>
+                    <span class="up_ver_state is-past">지난 버전</span>
+                    <time></time>
+                </button>
+                <button type="button" class="up_ver_tab" role="tab"
+                        id="tab-0941" data-ver="0941" aria-controls="v0941"
+                        aria-selected="false" tabindex="-1">
+                    <b>Ver.0.941</b>
+                    <span class="up_ver_state is-past">지난 버전</span>
+                    <time></time>
+                </button>
             </div>
         </section>
 
-        <section class="g_sec" id="next-update">
+        <section class="g_sec up_ver" id="v0945" data-ver="0945" role="tabpanel" aria-labelledby="tab-0945">
             <div class="up_section_head">
                 <div>
                     <span class="up_badge is-next">확정 예고</span>
@@ -179,7 +173,7 @@
                     <span class="up_card_label">QUEST</span>
                     <h4>퀘스트 변경</h4>
                     <ul class="up_list">
-                        <li><strong>World of Illusion [EP2]</strong> — Olga Flow가 SOUL ERASER 드랍(전 ID 1/73). <strong>사망해도 도시로 강제 귀환하지 않습니다</strong>(동료 부활 또는 Scape Doll 사용 가능). 단, <strong>Anniversary 버전은 기존 사망 페널티 유지</strong>.</li>
+                        <li><strong>World of Illusion [EP2]</strong> — Olga Flow가 SOUL ERASER 드랍(전 ID 1/73). <strong>사망해도 도시로 강제 귀환하지 않습니다</strong>(동료 부활 또는 Scape Doll 사용 가능). 단, <strong>Anniversary 버전은 기존 사망 페널티 유지</strong>. 그 밖의 자잘한 문제도 함께 수정됩니다.</li>
                         <li><strong>Lost RIOT RAYGUN [EP2]</strong> — 시간 제한 제거. Gol Dragon이 <strong>Fragments of Orb [Yellow]</strong> 드랍 (Yellow · White, 1/20).</li>
                         <li><strong>Lost Devil's SCEPTER [EP2]</strong> — 시간 제한 제거. Gal Gryphon이 <strong>Fragments of Orb [Green]</strong> 드랍 (Viridia · Greenill, 1/16).</li>
                         <li><strong>The Phantastic Bazaar [EP2]</strong> — Another Shop에 MIRACLE CHAIN 추가, 안내 NPC 배치.</li>
@@ -211,6 +205,109 @@
                     </ul>
                 </article>
             </div>
+        </section>
+
+        <section class="g_sec up_ver" id="v0944" data-ver="0944" role="tabpanel" aria-labelledby="tab-0944" hidden>
+            <div class="up_section_head">
+                <div>
+                    <span class="up_badge is-live">현재 적용</span>
+                    <h3>Ver.0.944 핵심 변경</h3>
+                </div>
+                <time datetime="2026-08-11">2026.08.11</time>
+            </div>
+
+            <div class="up_grid up_grid_three">
+                <article class="up_card">
+                    <span class="up_card_label">NEW DROP</span>
+                    <h4>MADAM'S BRACELET</h4>
+                    <div class="up_card_media up_card_media_tall">
+                        <img src="./images/discord/2026-08/v0944-madams-bracelet-model.png" alt="Madam's Bracelet 착용 모습">
+                    </div>
+                    <dl class="up_stats">
+                        <div><dt>획득</dt><dd>New MSB · Olga Flow</dd></div>
+                        <div><dt>드롭률</dt><dd>1/64 · All IDs · Ultimate</dd></div>
+                        <div><dt>보너스</dt><dd>ATA +25</dd></div>
+                        <div><dt>테크</dt><dd>Resta/Anti +100%, Rabarta +70%</dd></div>
+                    </dl>
+                    <a class="up_text_link" href="./item_page.html?item=madams-bracelet">도감 상세 →</a>
+                </article>
+
+                <article class="up_card">
+                    <span class="up_card_label">BAZAAR TRADE</span>
+                    <h4>LIGHTNING GARMENT</h4>
+                    <p class="up_flavor">올레지보다 Light/Dark 저항과 Grants 강화에 초점을 맞춘 전 클래스용 교환 방어구.</p>
+                    <dl class="up_stats">
+                        <div><dt>교환 NPC</dt><dd>Phantastic Bazaar · RAcaseal</dd></div>
+                        <div><dt>재료</dt><dd>Secret Ticket ×99</dd></div>
+                        <div><dt>수치</dt><dd>DFP 210 · EVP 170 · ATA +20</dd></div>
+                        <div><dt>효과</dt><dd>Grants +50%</dd></div>
+                    </dl>
+                    <p class="up_small">Secret Ticket: Simulator 2.0 또는 Random Attack Xrd Stage의 secret clear 보상.</p>
+                    <a class="up_text_link" href="./item_page.html?item=lightning-garment">도감 상세 →</a>
+                </article>
+
+                <article class="up_card">
+                    <span class="up_card_label">QUEST / QOL</span>
+                    <h4>퀘스트와 무기 변경</h4>
+                    <ul class="up_list">
+                        <li><strong>New MSB</strong>가 EP2 &gt; Destiny에 추가.</li>
+                        <li><strong>Simulator 2.0</strong>에서 사망해도 도시로 강제 귀환하지 않음. 동료의 부활 또는 Scape Doll 사용 가능.</li>
+                        <li><strong>Phantastic Bazaar</strong>에 Valentine, Easter, Halloween, Xmas, Other Shop 추가.</li>
+                        <li><strong>NUG-2000 BAZOOKA</strong> 콤보 해금, special 부여 가능.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="g_sec up_ver" id="v0943" data-ver="0943" role="tabpanel" aria-labelledby="tab-0943" hidden>
+            <div class="up_section_head">
+                <div>
+                    <span class="up_badge is-past">지난 버전</span>
+                    <h3>Ver.0.943 — Toward the Multiverse Lv.III</h3>
+                </div>
+            </div>
+
+            <article class="up_card up_card_wide">
+                <span class="up_card_label">SUMMARY</span>
+                <h4>Toward the Multiverse Lv.III</h4>
+                <p class="up_flavor">★9 보스 러시 퀘스트가 추가되고, MA&amp;X76 OMEGA 와 신규 희귀 유닛이 보상으로 들어왔습니다.</p>
+                <p class="up_note up_thin">이 버전은 <strong>요약만 기록해 두었습니다.</strong> 항목별 원문은 Discord <code>#destiny-0943-toward-the-multiverse-lv3-and-new-item</code> 채널에 그대로 남아 있습니다.</p>
+            </article>
+
+        </section>
+
+        <section class="g_sec up_ver" id="v0942" data-ver="0942" role="tabpanel" aria-labelledby="tab-0942" hidden>
+            <div class="up_section_head">
+                <div>
+                    <span class="up_badge is-past">지난 버전</span>
+                    <h3>Ver.0.942 — VR Test OMEGA: Oblivion</h3>
+                </div>
+            </div>
+
+            <article class="up_card up_card_wide">
+                <span class="up_card_label">SUMMARY</span>
+                <h4>VR Test OMEGA: Oblivion</h4>
+                <p class="up_flavor">MATRIX SCOPE 와 Star Eulogy 가 추가되고, Astral Claw / Astral Saber 가 개선, Samurai Armor 가 상향됐습니다.</p>
+                <p class="up_note up_thin">이 버전은 <strong>요약만 기록해 두었습니다.</strong> 항목별 원문은 Discord <code>#destiny-0942-matrix-scope-and-star-eulogy</code> 채널에 그대로 남아 있습니다.</p>
+            </article>
+
+        </section>
+
+        <section class="g_sec up_ver" id="v0941" data-ver="0941" role="tabpanel" aria-labelledby="tab-0941" hidden>
+            <div class="up_section_head">
+                <div>
+                    <span class="up_badge is-past">지난 버전</span>
+                    <h3>Ver.0.941 — VR Test Destiny: Sandstorm</h3>
+                </div>
+            </div>
+
+            <article class="up_card up_card_wide">
+                <span class="up_card_label">SUMMARY</span>
+                <h4>VR Test Destiny: Sandstorm</h4>
+                <p class="up_flavor">Red / Blue / Yellow / Green Crystal 체계가 자리를 잡고, Astral Saber 와 Fragments of Orb 가 예고됐습니다.</p>
+                <p class="up_note up_thin">이 버전은 <strong>요약만 기록해 두었습니다.</strong> 항목별 원문은 Discord <code>#destiny-0941-newquest-and-newitem</code> 채널에 그대로 남아 있습니다.</p>
+            </article>
+
         </section>
 
         <section class="g_sec" id="anniversary">
@@ -297,22 +394,6 @@
                     </tbody>
                 </table>
             </div>
-        </section>
-
-        <section class="g_sec" id="timeline">
-            <div class="up_section_head">
-                <div>
-                    <span class="up_badge is-live">검증 완료</span>
-                    <h3>최근 업데이트 타임라인</h3>
-                </div>
-            </div>
-            <ol class="up_timeline">
-                <li><time>0.941</time><div><strong>VR Test Destiny: Sandstorm</strong><span>Red/Blue/Yellow/Green Crystal 체계, Astral Saber, Fragments of Orb 예고.</span></div></li>
-                <li><time>0.942</time><div><strong>VR Test OMEGA: Oblivion</strong><span>MATRIX SCOPE, Star Eulogy, Astral Claw/Saber 개선, Samurai Armor 상향.</span></div></li>
-                <li><time>0.943</time><div><strong>Toward the Multiverse Lv.III</strong><span>★9 보스 러시, MA&amp;X76 OMEGA 및 신규 희귀 유닛 보상.</span></div></li>
-                <li class="is-current"><time>0.944</time><div><strong>New MSB & Bazaar</strong><span>Madam's Bracelet, Lightning Garment, 계절 상점 통합, NUG-2000 콤보 해금.</span></div></li>
-                <li class="is-future"><time>09.01</time><div><strong>Soul Eraser & 시스템 업데이트</strong><span>Spirit 판정, HP Material reset, Yellow/Green Fragments, Miracle Chain.</span></div></li>
-            </ol>
         </section>
 
         <footer class="up_source">
