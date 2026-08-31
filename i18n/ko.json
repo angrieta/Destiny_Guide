@@ -2128,5 +2128,7 @@
   "mod.src.nexus": "규모는 작지만 대형 텍스처 팩이 있는 곳. 받으려면 무료 계정이 필요합니다.",
   "mod.credit.outside": "네 개는 이 디스코드 밖에서 왔습니다",
   "mod.credit.outsideNote": "Echelon 과 Lilyzavoqth 는 Ephinea 위키와 Pioneer2 포럼에 올리고 채널이 계속 그쪽으로 사람을 보냅니다. ReShade 는 게임과 무관한 범용 도구입니다. 일부는 Ephinea 클라이언트 기준으로 쓰였고, 그런 카드에는 표시를 달고 설치법 버튼 안에 무엇을 조심해야 하는지 적어 뒀습니다. 받고 나서 알면 늦습니다.",
-  "mod.warnBadge": "설치 전 확인"
+  "mod.warnBadge": "설치 전 확인",
+  "header.nav.data": "데이터",
+  "header.link.calculator": "데미지 계산기"
 }

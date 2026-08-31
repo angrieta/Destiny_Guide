@@ -142,9 +142,6 @@ function setupSiteNavigation(mount) {
             link.closest("details")?.setAttribute("data-current", "true");
         }
     });
-    mount.querySelectorAll(".site_header_data_link[href]").forEach((link) => {
-        if (normalizeNavigationPath(link.href) === currentPath) link.setAttribute("aria-current", "page");
-    });
 
     toggle.addEventListener("click", () => setMenuOpen(header.dataset.menuOpen !== "true"));
     navigation.addEventListener("click", (event) => {

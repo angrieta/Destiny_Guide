@@ -2128,5 +2128,7 @@
   "mod.src.nexus": "規模は小さいものの、大きなテクスチャパックがあるのはここ。ダウンロードには無料アカウントが要ります。",
   "mod.credit.outside": "4 件はこの Discord の外から来ています",
   "mod.credit.outsideNote": "Echelon と Lilyzavoqth は Ephinea Wiki と Pioneer2 フォーラムに公開しており、チャンネルは今もそちらへ案内しています。ReShade はゲームを問わない汎用ツールです。いくつかは Ephinea クライアント前提で書かれているため、該当カードには印を付け、導入方法ボタンの中に注意点を明記しました。落としてから気づいては遅いからです。",
-  "mod.warnBadge": "導入前に確認"
+  "mod.warnBadge": "導入前に確認",
+  "header.nav.data": "データ",
+  "header.link.calculator": "ダメージ計算"
 }

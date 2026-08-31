@@ -398,8 +398,7 @@ header.site-header .site_header_logo,
 
 .site_header_actions .happy_hour_header,
 .site_header_actions .lang_switch_button,
-.site_header_actions .theme_toggle,
-.site_header_data_link {
+.site_header_actions .theme_toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -449,20 +448,9 @@ header.site-header .site_header_logo,
 
 .site_header_actions .happy_hour_header:hover,
 .site_header_actions .lang_switch_button:hover,
-.site_header_actions .theme_toggle:hover,
-.site_header_data_link:hover,
-.site_header_data_link[aria-current="page"] {
+.site_header_actions .theme_toggle:hover {
     border-color: var(--dg-accent);
     color: var(--dg-accent-hover);
-}
-
-.site_header_data_link[aria-current="page"] {
-    background: var(--dg-accent);
-    color: #f7faff;
-}
-
-html[data-theme="dark"] .site_header_data_link[aria-current="page"] {
-    color: #0b1727;
 }
 
 .site_header_actions .lang_switch_icon,
@@ -1300,8 +1288,9 @@ html[data-theme="dark"] .download_btn {
 /* 내비를 펼치는 구간에서 헤더가 자기 폭 안에 들어오게 정리한다.
  * 안쪽 폭이 1440px 로 고정이라 화면이 아무리 넓어도 여유가 더 생기지 않는다. */
 @media screen and (min-width: 1440px) {
-    /* 드랍 테이블 · 아이템 DB 는 내비에도 같은 링크가 있다. 헤더에 두 번 둘 폭이 없다. */
-    .site_header_actions .site_header_data_link {
+    /* 단축키 표기는 힌트일 뿐이고 단축키 자체는 그대로 동작한다. 버튼에 "Search"
+       라벨이 남는다. 이걸 접지 않으면 프랑스어에서 내비가 검색 버튼 위로 8px 넘친다. */
+    .ds_search_trigger_key {
         display: none;
     }
 

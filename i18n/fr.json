@@ -2128,5 +2128,7 @@
   "mod.src.nexus": "Petit, mais c'est là que vivent les gros packs de textures. Le téléchargement demande un compte gratuit.",
   "mod.credit.outside": "Quatre entrées viennent de l'extérieur de ce Discord",
   "mod.credit.outsideNote": "Echelon et Lilyzavoqth publient sur le wiki d'Ephinea et le forum Pioneer2, et le salon continue d'y renvoyer ; ReShade est un outil généraliste. Plusieurs sont écrits pour le client d'Ephinea : ces fiches portent un avertissement et détaillent ce à quoi faire attention derrière le bouton d'installation — l'apprendre après le téléchargement est trop tard.",
-  "mod.warnBadge": "À lire avant"
+  "mod.warnBadge": "À lire avant",
+  "header.nav.data": "Données",
+  "header.link.calculator": "Calculateur de dégâts"
 }
