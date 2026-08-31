@@ -32,7 +32,11 @@ export interface Env {
 /* ── 한도 ────────────────────────────────────────────────────────────────── */
 
 const MAX_DISCORD_NAME = 40;
-const MAX_CHARACTER_NAME = 24;
+// 캐릭터를 여러 개 적는 칸이다. "Foney(FOnewearl), Huma(HUmar)" 처럼 죽 쓴다.
+const MAX_CHARACTER_NAME = 160;
+const MAX_GUILD_CARD = 24;
+const MAX_PLAY_HOURS = 80;
+const MAX_COUNTRY = 32;
 const MAX_NOTE = 120;
 const MIN_PASSWORD = 4;
 const MAX_PASSWORD = 72;
@@ -177,6 +181,9 @@ type Row = {
   id: number;
   discord_name: string;
   character_name: string;
+  guild_card: string;
+  play_hours: string;
+  country: string;
   note: string;
   pw_hash: string;
   pw_salt: string;
@@ -189,6 +196,9 @@ const shape = (row: Row) => ({
   id: row.id,
   discordName: row.discord_name,
   characterName: row.character_name,
+  guildCard: row.guild_card,
+  playHours: row.play_hours,
+  country: row.country,
   note: row.note,
   createdAt: row.created_at,
   updatedAt: row.updated_at,
@@ -236,6 +246,9 @@ async function listEntries(request: Request, env: Env): Promise<Response> {
 async function createEntry(request: Request, env: Env, body: Record<string, unknown>): Promise<Response> {
   const discordName = clean(body.discordName, MAX_DISCORD_NAME);
   const characterName = clean(body.characterName, MAX_CHARACTER_NAME);
+  const guildCard = clean(body.guildCard, MAX_GUILD_CARD);
+  const playHours = clean(body.playHours, MAX_PLAY_HOURS);
+  const country = clean(body.country, MAX_COUNTRY);
   const memo = clean(body.note, MAX_NOTE);
   const password = cleanPassword(body.password);
 
@@ -257,10 +270,12 @@ async function createEntry(request: Request, env: Env, body: Record<string, unkn
   const now = Date.now();
 
   const row = await env.DB.prepare(
-    `INSERT INTO entries (discord_name, character_name, note, pw_hash, pw_salt, created_at, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING *`,
+    `INSERT INTO entries
+       (discord_name, character_name, guild_card, play_hours, country, note,
+        pw_hash, pw_salt, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING *`,
   )
-    .bind(discordName, characterName, memo, hash, salt, now, now)
+    .bind(discordName, characterName, guildCard, playHours, country, memo, hash, salt, now, now)
     .first<Row>();
 
   await mark(env, ip, "write");
@@ -291,16 +306,28 @@ async function unlock(
 async function updateEntry(row: Row, request: Request, env: Env, body: Record<string, unknown>) {
   const discordName = clean(body.discordName, MAX_DISCORD_NAME) || row.discord_name;
   const characterName = clean(body.characterName, MAX_CHARACTER_NAME) || row.character_name;
-  const memo = typeof body.note === "string" ? clean(body.note, MAX_NOTE) : row.note;
+
+  /*
+   * 선택 항목은 "안 보냈다" 와 "비웠다" 를 구분해야 한다. 문자열이 왔으면 비운 것도
+   * 뜻대로 반영하고, 아예 없으면 원래 값을 지킨다. 그러지 않으면 지우고 싶어도
+   * 계속 되살아난다.
+   */
+  const optional = (value: unknown, current: string, limit: number) =>
+    typeof value === "string" ? clean(value, limit) : current;
+
+  const guildCard = optional(body.guildCard, row.guild_card, MAX_GUILD_CARD);
+  const playHours = optional(body.playHours, row.play_hours, MAX_PLAY_HOURS);
+  const country = optional(body.country, row.country, MAX_COUNTRY);
+  const memo = optional(body.note, row.note, MAX_NOTE);
 
   const ip = clientIp(request);
   if ((await countRecent(env, ip, "write")) >= WRITES_PER_HOUR) return fail(429, "slow_down", request, env);
 
   const updated = await env.DB.prepare(
-    `UPDATE entries SET discord_name = ?, character_name = ?, note = ?, updated_at = ?
-       WHERE id = ? RETURNING *`,
+    `UPDATE entries SET discord_name = ?, character_name = ?, guild_card = ?, play_hours = ?,
+       country = ?, note = ?, updated_at = ? WHERE id = ? RETURNING *`,
   )
-    .bind(discordName, characterName, memo, Date.now(), row.id)
+    .bind(discordName, characterName, guildCard, playHours, country, memo, Date.now(), row.id)
     .first<Row>();
 
   await mark(env, ip, "write");

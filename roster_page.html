@@ -38,15 +38,32 @@
             <input id="rs-discord" type="text" maxlength="40" autocomplete="off" required
                    data-rs-discord placeholder="e.g. angrieta" data-i18n-placeholder="rst.form.discordHint">
         </div>
-        <div class="rs_field">
-            <label for="rs-character" data-i18n="rst.form.character">Character name</label>
-            <input id="rs-character" type="text" maxlength="24" autocomplete="off" required
-                   data-rs-character placeholder="e.g. Rico" data-i18n-placeholder="rst.form.characterHint">
-        </div>
         <div class="rs_field rs_field_wide">
-            <label for="rs-note" data-i18n="rst.form.note">One line about them (optional)</label>
+            <label for="rs-character" data-i18n="rst.form.character">Character names</label>
+            <input id="rs-character" type="text" maxlength="160" autocomplete="off" required
+                   data-rs-character placeholder="Foney(FOnewearl), Huma(HUmar)" data-i18n-placeholder="rst.form.characterHint">
+            <small class="rs_warn" data-i18n="rst.form.characterNote">List every character you play, with its class in brackets. Separate them with commas.</small>
+        </div>
+
+        <div class="rs_field">
+            <label for="rs-guild" data-i18n="rst.form.guild">Guild card you use most (optional)</label>
+            <input id="rs-guild" type="text" maxlength="24" autocomplete="off"
+                   data-rs-guild placeholder="e.g. 42110778" data-i18n-placeholder="rst.form.guildHint">
+        </div>
+        <div class="rs_field">
+            <label for="rs-hours" data-i18n="rst.form.hours">When you usually play (optional)</label>
+            <input id="rs-hours" type="text" maxlength="80" autocomplete="off"
+                   data-rs-hours placeholder="e.g. weeknights 21:00–01:00 KST" data-i18n-placeholder="rst.form.hoursHint">
+        </div>
+        <div class="rs_field">
+            <label for="rs-country" data-i18n="rst.form.country">Where you are (optional)</label>
+            <input id="rs-country" type="text" maxlength="32" autocomplete="off"
+                   data-rs-country placeholder="e.g. Korea" data-i18n-placeholder="rst.form.countryHint">
+        </div>
+        <div class="rs_field">
+            <label for="rs-note" data-i18n="rst.form.note">Anything else (optional)</label>
             <input id="rs-note" type="text" maxlength="120" autocomplete="off"
-                   data-rs-note placeholder="e.g. HUcaseal, mostly Ultimate seabed" data-i18n-placeholder="rst.form.noteHint">
+                   data-rs-note placeholder="e.g. happy to help with Ultimate runs" data-i18n-placeholder="rst.form.noteHint">
         </div>
         <div class="rs_field">
             <label for="rs-password" data-i18n="rst.form.password">Password</label>
@@ -98,7 +115,7 @@
         <ul class="ev_list">
             <li><strong data-i18n="rst.rules.pw">The password is the only key</strong> — <span data-i18n="rst.rules.pwNote">there is no account and no recovery. If you forget it, staff can remove the entry for you but nobody can tell you what it was. It is stored as a one-way hash, never as text.</span></li>
             <li><strong data-i18n="rst.rules.throwaway">Make one up for this page</strong> — <span data-i18n="rst.rules.throwawayNote">it guards a line on a public list, nothing more. Never reuse a password you use anywhere that matters.</span></li>
-            <li><strong data-i18n="rst.rules.many">One line per character</strong> — <span data-i18n="rst.rules.manyNote">add as many as you play. Most people here run several, which is the whole reason this page exists.</span></li>
+            <li><strong data-i18n="rst.rules.many">One entry per person, all your characters in it</strong> — <span data-i18n="rst.rules.manyNote">most people here run several, which is the whole reason this page exists. Put them all in the one field and the search will find you by any of them.</span></li>
             <li><strong data-i18n="rst.rules.trust">Anyone can type any Discord name</strong> — <span data-i18n="rst.rules.trustNote">the password stops others editing your entry, but it cannot prove the Discord name is yours. Treat the list as helpful, not as proof. Staff can remove entries that impersonate someone.</span></li>
         </ul>
     </section>

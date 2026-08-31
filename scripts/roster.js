@@ -71,6 +71,9 @@
     var form = document.querySelector("[data-rs-form]");
     var discordInput = document.querySelector("[data-rs-discord]");
     var characterInput = document.querySelector("[data-rs-character]");
+    var guildInput = document.querySelector("[data-rs-guild]");
+    var hoursInput = document.querySelector("[data-rs-hours]");
+    var countryInput = document.querySelector("[data-rs-country]");
     var noteInput = document.querySelector("[data-rs-note]");
     var passwordInput = document.querySelector("[data-rs-password]");
     var submitButton = document.querySelector("[data-rs-submit]");
@@ -117,11 +120,22 @@
     /* ── 목록 ──────────────────────────────────────────────────────────── */
 
     function row(entry) {
+      /* 선택 항목은 적은 사람만 나온다. 빈 칸을 자리만 잡아 두면 목록이 성기게 보인다. */
+      var facts = [
+        entry.country ? '<span class="rs_fact">' + escapeHtml(entry.country) + "</span>" : "",
+        entry.playHours ? '<span class="rs_fact">' + escapeHtml(entry.playHours) + "</span>" : "",
+        entry.guildCard
+          ? '<span class="rs_fact rs_fact_card"><b data-i18n="rst.row.card">Guild card</b> ' +
+            escapeHtml(entry.guildCard) + "</span>"
+          : "",
+      ].join("");
+
       return (
         '<li class="rs_row">' +
         '<div class="rs_row_main">' +
         '<p class="rs_char">' + escapeHtml(entry.characterName) + "</p>" +
         '<p class="rs_discord"><span class="rs_at">@</span>' + escapeHtml(entry.discordName) + "</p>" +
+        (facts ? '<p class="rs_facts">' + facts + "</p>" : "") +
         (entry.note ? '<p class="rs_note">' + escapeHtml(entry.note) + "</p>" : "") +
         "</div>" +
         '<div class="rs_row_side">' +
@@ -195,6 +209,9 @@
       var payload = {
         discordName: discordInput.value.trim(),
         characterName: characterInput.value.trim(),
+        guildCard: guildInput.value.trim(),
+        playHours: hoursInput.value.trim(),
+        country: countryInput.value.trim(),
         note: noteInput.value.trim(),
       };
 
@@ -278,6 +295,9 @@
         editing = { id: entry.id, password: password };
         discordInput.value = entry.discordName;
         characterInput.value = entry.characterName;
+        guildInput.value = entry.guildCard || "";
+        hoursInput.value = entry.playHours || "";
+        countryInput.value = entry.country || "";
         noteInput.value = entry.note || "";
         passwordInput.value = "";
         passwordInput.required = false;
