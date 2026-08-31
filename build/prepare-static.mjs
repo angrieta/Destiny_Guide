@@ -66,7 +66,7 @@ async function assetVersion(relativePath) {
   if (assetHashes.has(relativePath)) return assetHashes.get(relativePath);
   let version = null;
   try {
-    const contents = await readFile(resolve(projectRoot, relativePath));
+    const contents = await readFile(resolve(outputDir, relativePath));
     version = createHash("sha1").update(contents).digest("hex").slice(0, 8);
   } catch {
     // 없는 파일은 건드리지 않는다. 링크가 깨진 건 캐시가 아니라 별개의 문제다.
@@ -74,6 +74,24 @@ async function assetVersion(relativePath) {
   }
   assetHashes.set(relativePath, version);
   return version;
+}
+
+// 헤더 조각은 링크가 아니라 include.js 안의 fetch 로 들어온다. 같은 해시를 그 주소에도
+// 붙여, 헤더를 고쳤을 때 방문자가 옛 헤더를 계속 보지 않게 한다.
+const headerVersion = createHash("sha1")
+  .update(await readFile(resolve(projectRoot, "header.html")))
+  .digest("hex")
+  .slice(0, 8);
+{
+  const includePath = resolve(outputDir, "scripts/include.js");
+  const source = await readFile(includePath, "utf8");
+  const stamped = source.replace('fetch("./header.html")', `fetch("./header.html?v=${headerVersion}")`);
+  if (stamped === source) {
+    console.warn("cache key: include.js 의 header.html fetch 를 찾지 못했습니다");
+  } else {
+    await writeFile(includePath, stamped, "utf8");
+    console.log(`cache keys: header.html -> ?v=${headerVersion}`);
+  }
 }
 
 // 손으로 붙여 둔 ?v= 가 있으면 해시로 갈아끼운다. 두 방식이 섞이면 어느 쪽이 진짜인지 알 수 없다.
