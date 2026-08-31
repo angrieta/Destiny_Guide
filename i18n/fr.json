@@ -2380,5 +2380,7 @@
   "rst.view.label": "Afficher les heures en",
   "rst.view.reset": "Revenir au mien",
   "rst.view.mine": "le vôtre",
-  "rst.row.written": "Tel qu'écrit"
+  "rst.row.written": "Tel qu'écrit",
+  "rst.row.machine": "traduction auto",
+  "rst.row.showOriginal": "voir l'original"
 }

@@ -2380,5 +2380,7 @@
   "rst.view.label": "시간 표시 기준",
   "rst.view.reset": "내 시간대로",
   "rst.view.mine": "내 시간대",
-  "rst.row.written": "적힌 시간"
+  "rst.row.written": "적힌 시간",
+  "rst.row.machine": "자동 번역",
+  "rst.row.showOriginal": "원문 보기"
 }

@@ -23,6 +23,7 @@
 
 export interface Env {
   DB: D1Database;
+  AI: { run: (model: string, input: unknown) => Promise<unknown> };
   /** 아무 글이나 지울 수 있는 비밀번호. `wrangler secret put ADMIN_PASSWORD` 로 넣는다. */
   ADMIN_PASSWORD: string;
   /** 페이지를 띄울 수 있는 출처. 쉼표로 구분. */
@@ -231,6 +232,65 @@ function cleanWindows(value: unknown): Array<{ start: number; end: number }> {
   return out;
 }
 
+/* ── 한 줄 소개 번역 ─────────────────────────────────────────────────────── */
+
+/** 사이트가 쓰는 다섯 언어. m2m100 이 알아듣는 이름을 같이 들고 있는다. */
+const LANGS: Record<string, string> = {
+  en: "english",
+  ko: "korean",
+  ja: "japanese",
+  fr: "french",
+  es: "spanish",
+};
+
+/**
+ * 어느 언어로 쓴 글인지 짐작한다.
+ *
+ * 한글과 가나는 글자만 봐도 확실하다. 나머지(영어·프랑스어·스페인어)는 글자가 겹쳐서
+ * 구분이 안 되므로, 페이지가 알려준 지금 보고 있는 언어를 믿는다 — 사람은 대개 자기가
+ * 읽고 있는 언어로 쓴다.
+ */
+function guessLang(text: string, hint: unknown): string {
+  if (/[가-힣]/.test(text)) return "ko";
+  if (/[぀-ヿ]/.test(text)) return "ja";
+  const asked = typeof hint === "string" ? hint : "";
+  return LANGS[asked] ? asked : "en";
+}
+
+/**
+ * 한 줄 소개를 나머지 언어로 옮겨 둔다.
+ *
+ * 읽을 때가 아니라 쓸 때 한 번만 돌린다. 보는 사람마다 부르면 같은 문장을 수백 번
+ * 번역하게 되고, 목록이 뜨는 속도도 그만큼 느려진다.
+ *
+ * 실패는 조용히 넘긴다. 번역이 안 됐다고 글이 안 올라가면 안 되고, 그런 줄은
+ * 원문만 보이면 그만이다.
+ */
+async function translateNote(env: Env, text: string, from: string): Promise<Record<string, string>> {
+  if (!text) return {};
+
+  const targets = Object.keys(LANGS).filter((lang) => lang !== from);
+  const done = await Promise.all(
+    targets.map(async (lang) => {
+      try {
+        const result = (await env.AI.run("@cf/meta/m2m100-1.2b", {
+          text,
+          source_lang: LANGS[from],
+          target_lang: LANGS[lang],
+        })) as { translated_text?: string };
+        const out = clean(result?.translated_text, MAX_NOTE * 2);
+        return out ? ([lang, out] as const) : null;
+      } catch {
+        return null;
+      }
+    }),
+  );
+
+  const map: Record<string, string> = {};
+  for (const pair of done) if (pair) map[pair[0]] = pair[1];
+  return map;
+}
+
 /* ── 도배 · 무차별 대입 막기 ─────────────────────────────────────────────── */
 
 const clientIp = (request: Request) => request.headers.get("CF-Connecting-IP") ?? "unknown";
@@ -262,6 +322,8 @@ type Row = {
   play_hours: string;
   country: string;
   note: string;
+  note_i18n: string;
+  note_lang: string;
   pw_hash: string;
   pw_salt: string;
   created_at: number;
@@ -294,6 +356,8 @@ const shape = (row: Row) => ({
   playWindows: safeParse(row.play_windows, []),
   guildCard: row.guild_card,
   note: row.note,
+  noteI18n: safeParse(row.note_i18n, {}),
+  noteLang: row.note_lang,
   createdAt: row.created_at,
   updatedAt: row.updated_at,
 });
@@ -361,6 +425,9 @@ async function createEntry(request: Request, env: Env, body: Record<string, unkn
     .bind(characterName.toLowerCase())
     .first<{ id: number }>();
 
+  const noteLang = memo ? guessLang(memo, body.noteLang) : "";
+  const noteI18n = await translateNote(env, memo, noteLang);
+
   const salt = toHex(crypto.getRandomValues(new Uint8Array(16)).buffer);
   const hash = await hashPassword(password, salt);
   const now = Date.now();
@@ -368,12 +435,12 @@ async function createEntry(request: Request, env: Env, body: Record<string, unkn
   const row = await env.DB.prepare(
     `INSERT INTO entries
        (discord_name, character_name, characters, timezone, play_windows, guild_card, note,
-        pw_hash, pw_salt, created_at, updated_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING *`,
+        note_i18n, note_lang, pw_hash, pw_salt, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING *`,
   )
     .bind(
       discordName, characterName, JSON.stringify(characters), timezone, JSON.stringify(windows),
-      guildCard, memo, hash, salt, now, now,
+      guildCard, memo, JSON.stringify(noteI18n), noteLang, hash, salt, now, now,
     )
     .first<Row>();
 
@@ -431,14 +498,24 @@ async function updateEntry(row: Row, request: Request, env: Env, body: Record<st
     characterName = flat;
   }
 
+  // 문장이 그대로면 다시 번역하지 않는다. 같은 결과에 값을 치를 이유가 없다.
+  let noteI18n = row.note_i18n;
+  let noteLang = row.note_lang;
+  if (memo !== row.note) {
+    noteLang = memo ? guessLang(memo, body.noteLang) : "";
+    noteI18n = JSON.stringify(await translateNote(env, memo, noteLang));
+  }
+
   const ip = clientIp(request);
   if ((await countRecent(env, ip, "write")) >= WRITES_PER_HOUR) return fail(429, "slow_down", request, env);
 
   const updated = await env.DB.prepare(
     `UPDATE entries SET discord_name = ?, character_name = ?, characters = ?, timezone = ?,
-       play_windows = ?, guild_card = ?, note = ?, updated_at = ? WHERE id = ? RETURNING *`,
+       play_windows = ?, guild_card = ?, note = ?, note_i18n = ?, note_lang = ?, updated_at = ?
+       WHERE id = ? RETURNING *`,
   )
-    .bind(discordName, characterName, characters, timezone, windows, guildCard, memo, Date.now(), row.id)
+    .bind(discordName, characterName, characters, timezone, windows, guildCard, memo,
+      noteI18n, noteLang, Date.now(), row.id)
     .first<Row>();
 
   await mark(env, ip, "write");

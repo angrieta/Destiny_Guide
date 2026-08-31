@@ -14,6 +14,11 @@
   /** api/README.md 5번 단계에서 받은 Worker 주소로 바꿀 것. 끝에 슬래시 없이. */
   var API_BASE = "https://destiny-roster.weba44.workers.dev";
 
+  /** 지금 화면이 쓰는 언어. 사전이 아직 안 붙었으면 영어로 본다. */
+  function uiLang() {
+    return (window.DestinyI18n && window.DestinyI18n.lang) || "en";
+  }
+
   function t(key, fallback) {
     return (window.DestinyI18n && window.DestinyI18n.t(key, fallback)) || fallback;
   }
@@ -347,6 +352,27 @@
       }).join("");
     }
 
+    /**
+     * 한 줄 소개를 지금 보고 있는 언어로.
+     *
+     * 기계 번역이라 어색할 때가 있다. 그래서 번역본만 두지 않고, 번역했다는 표시와
+     * 원문을 함께 붙인다 — 이상하면 원문을 볼 수 있어야 한다.
+     */
+    function renderNote(entry) {
+      if (!entry.note) return "";
+      var lang = uiLang();
+      var translated = (entry.noteI18n || {})[lang];
+      var showTranslation = translated && entry.noteLang && entry.noteLang !== lang;
+
+      if (!showTranslation) return '<p class="rs_note">' + escapeHtml(entry.note) + "</p>";
+
+      return '<p class="rs_note">' + escapeHtml(translated) +
+        '<button type="button" class="rs_note_src" data-rs-original="' + entry.id + '" ' +
+        'title="' + escapeHtml(entry.note) + '">' +
+        escapeHtml(t("rst.row.machine", "auto-translated") + " · " + t("rst.row.showOriginal", "original")) +
+        "</button></p>";
+    }
+
     /** 한 구간을 보는 사람 시계로 옮겨 문장으로. 날짜가 밀리면 그것도 붙인다. */
     function describeWindow(win, fromZone) {
       if (!fromZone || fromZone === viewZone) return minutesToHhmm(win.start) + "–" + minutesToHhmm(win.end);
@@ -445,7 +471,7 @@
         '<p class="rs_char">' + renderCharacters(entry) + "</p>" +
         '<p class="rs_discord"><span class="rs_at">@</span>' + escapeHtml(entry.discordName) + "</p>" +
         (facts ? '<p class="rs_facts">' + facts + "</p>" : "") +
-        (entry.note ? '<p class="rs_note">' + escapeHtml(entry.note) + "</p>" : "") +
+        renderNote(entry) +
         "</div>" +
         '<div class="rs_row_side">' +
         '<time class="rs_date">' + escapeHtml(formatDate(entry.createdAt)) + "</time>" +
@@ -524,6 +550,8 @@
         timezone: zoneSelect.value,
         playWindows: readWindows(),
         note: noteInput.value.trim(),
+        // 무슨 언어로 썼는지 서버가 짐작하는 데 쓰는 힌트. 한글·가나는 서버가 직접 안다.
+        noteLang: uiLang(),
       };
 
       if (!payload.discordName) { say(formMessage, explain("discord_required"), "bad"); return; }
@@ -638,6 +666,19 @@
     /* ── 목록에서 누른 것 ──────────────────────────────────────────────── */
 
     mount.addEventListener("click", function (event) {
+      // 번역문 옆의 작은 단추. 누르면 그 자리에서 원문으로 바뀐다.
+      var original = event.target.closest && event.target.closest("[data-rs-original]");
+      if (original) {
+        var id = original.getAttribute("data-rs-original");
+        var found = entries.filter(function (item) { return String(item.id) === id; })[0];
+        if (found) {
+          var box = original.parentElement;
+          box.textContent = found.note;
+          box.className = "rs_note is_original";
+        }
+        return;
+      }
+
       var target = event.target.closest && event.target.closest("[data-rs-edit], [data-rs-delete]");
       if (!target) return;
 
@@ -665,6 +706,7 @@
       load(false).then(function () { moreButton.disabled = false; });
     });
 
+    // 언어를 바꾸면 소개문도 그 언어본으로 바뀌어야 한다.
     document.addEventListener("destiny-lang-change", function () { render(); });
 
     buildViewZoneSelect();

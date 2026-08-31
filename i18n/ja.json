@@ -2380,5 +2380,7 @@
   "rst.view.label": "時間の表示基準",
   "rst.view.reset": "自分のタイムゾーンに",
   "rst.view.mine": "あなた",
-  "rst.row.written": "書かれた時間"
+  "rst.row.written": "書かれた時間",
+  "rst.row.machine": "自動翻訳",
+  "rst.row.showOriginal": "原文を見る"
 }

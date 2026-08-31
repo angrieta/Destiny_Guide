@@ -2380,5 +2380,7 @@
   "rst.view.label": "Mostrar horas en",
   "rst.view.reset": "Volver a la mía",
   "rst.view.mine": "la tuya",
-  "rst.row.written": "Según lo escrito"
+  "rst.row.written": "Según lo escrito",
+  "rst.row.machine": "traducción automática",
+  "rst.row.showOriginal": "ver original"
 }
