@@ -2358,7 +2358,7 @@
   "rst.rules.throwawayNote": "il protège une ligne d'une liste publique, rien de plus. Ne réutilisez jamais un mot de passe qui compte ailleurs.",
   "rst.rules.trust": "N'importe qui peut saisir n'importe quel nom Discord",
   "rst.rules.trustNote": "le mot de passe empêche les autres de modifier votre entrée, mais il ne prouve pas que le nom Discord est le vôtre. Voyez la liste comme une aide, pas comme une preuve. L'équipe peut retirer les usurpations.",
-  "rst.form.characterNote": "Remplissez seulement les classes que vous jouez — au moins une. Laissez le reste vide.",
+  "rst.form.characterNote": "Au moins un est obligatoire — mais listez de préférence tous vos personnages, pas seulement votre principal.",
   "rst.form.guild": "Carte de guilde principale (facultatif)",
   "rst.form.guildHint": "ex. 42110778",
   "rst.form.hours": "Quand vous jouez d'habitude (facultatif)",
@@ -2376,5 +2376,9 @@
   "rst.row.dayBefore": "(veille)",
   "rst.row.dayAfter": "(lendemain)",
   "rst.rules.time": "Les horaires s'affichent à l'heure de chacun",
-  "rst.rules.timeNote": "choisissez votre fuseau et saisissez vos horaires à votre heure : chaque visiteur les verra à la sienne. Si le jour change, c'est indiqué par (veille) ou (lendemain)."
+  "rst.rules.timeNote": "choisissez votre fuseau et saisissez vos horaires à votre heure : chaque visiteur les verra à la sienne. Si le jour change, c'est indiqué par (veille) ou (lendemain).",
+  "rst.view.label": "Afficher les heures en",
+  "rst.view.reset": "Revenir au mien",
+  "rst.view.mine": "le vôtre",
+  "rst.row.written": "Tel qu'écrit"
 }

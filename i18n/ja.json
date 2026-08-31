@@ -2358,7 +2358,7 @@
   "rst.rules.throwawayNote": "公開一覧の 1 行を守るだけのものです。大事な場所で使っているパスワードは絶対に流用しないでください。",
   "rst.rules.trust": "Discord 名は誰でも書けます",
   "rst.rules.trustNote": "パスワードは他人が自分の投稿を編集するのを防ぐだけで、その Discord 名が本人のものだとは証明できません。参考として見てください。なりすましは運営が削除できます。",
-  "rst.form.characterNote": "実際に遊ぶクラスだけ埋めてください — 最低ひとつ。残りは空欄で構いません。",
+  "rst.form.characterNote": "最低ひとつは必須です。できれば持っているキャラを全部書いてください。",
   "rst.form.guild": "よく使うギルドカード (任意)",
   "rst.form.guildHint": "例: 42110778",
   "rst.form.hours": "だいたい遊ぶ時間 (任意)",
@@ -2376,5 +2376,9 @@
   "rst.row.dayBefore": "(前日)",
   "rst.row.dayAfter": "(翌日)",
   "rst.rules.time": "時間はそれぞれの時計で表示されます",
-  "rst.rules.timeNote": "タイムゾーンを選んで自分の時計で書けば、見る人にはその人の時計に直って出ます。日付がずれる場合は (前日)・(翌日) と付きます。"
+  "rst.rules.timeNote": "タイムゾーンを選んで自分の時計で書けば、見る人にはその人の時計に直って出ます。日付がずれる場合は (前日)・(翌日) と付きます。",
+  "rst.view.label": "時間の表示基準",
+  "rst.view.reset": "自分のタイムゾーンに",
+  "rst.view.mine": "あなた",
+  "rst.row.written": "書かれた時間"
 }

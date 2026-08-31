@@ -438,6 +438,39 @@ body.rs_ask_open {
     border-color: var(--dg-accent);
 }
 
+/* ── 보기 기준 시간대 ───────────────────────────────────────────────────── */
+
+.rs_viewzone {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    margin: 0 0 var(--space-4);
+    padding: 0 var(--space-1);
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+}
+
+.rs_viewzone select {
+    height: 30px;
+    max-width: 100%;
+    padding: 0 var(--space-2);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface);
+    color: var(--dg-text);
+    font-size: var(--text-xs);
+}
+
+.rs_viewzone select:focus {
+    outline: none;
+    border-color: var(--dg-accent);
+}
+
+.rs_viewzone [hidden] {
+    display: none;
+}
+
 /* ── 목록의 캐릭터 표시 ─────────────────────────────────────────────────── */
 
 .rs_one_char {

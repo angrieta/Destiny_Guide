@@ -2358,7 +2358,7 @@
   "rst.rules.throwawayNote": "공개된 목록의 한 줄을 지키는 용도일 뿐입니다. 중요한 곳에서 쓰는 비밀번호를 절대 재사용하지 마세요.",
   "rst.rules.trust": "디스코드 이름은 아무나 적을 수 있습니다",
   "rst.rules.trustNote": "비밀번호는 남이 내 글을 고치는 것만 막아 줍니다. 그 디스코드 이름이 정말 본인인지는 증명하지 못합니다. 참고용으로 보시고, 사칭 글은 운영자가 지울 수 있습니다.",
-  "rst.form.characterNote": "실제로 하는 클래스만 채우세요 — 최소 하나. 나머지는 비워 두면 됩니다.",
+  "rst.form.characterNote": "최소 하나는 입력해야 하고, 웬만하면 가지고 있는 캐릭터를 전부 적어 주세요.",
   "rst.form.guild": "자주 쓰는 길드카드 (선택)",
   "rst.form.guildHint": "예: 42110778",
   "rst.form.hours": "주로 하는 시간 (선택)",
@@ -2376,5 +2376,9 @@
   "rst.row.dayBefore": "(전날)",
   "rst.row.dayAfter": "(다음날)",
   "rst.rules.time": "시간은 각자 시계로 보입니다",
-  "rst.rules.timeNote": "시간대를 고르고 내 시계 기준으로 적으면, 보는 사람에게는 그 사람 시계로 바뀌어 나옵니다. 날짜가 밀리면 (전날)·(다음날)로 알려 줍니다."
+  "rst.rules.timeNote": "시간대를 고르고 내 시계 기준으로 적으면, 보는 사람에게는 그 사람 시계로 바뀌어 나옵니다. 날짜가 밀리면 (전날)·(다음날)로 알려 줍니다.",
+  "rst.view.label": "시간 표시 기준",
+  "rst.view.reset": "내 시간대로",
+  "rst.view.mine": "내 시간대",
+  "rst.row.written": "적힌 시간"
 }

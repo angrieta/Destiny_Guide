@@ -2358,7 +2358,7 @@
   "rst.rules.throwawayNote": "protege una línea de una lista pública, nada más. Nunca reutilices una contraseña que importe en otro sitio.",
   "rst.rules.trust": "Cualquiera puede escribir cualquier nombre de Discord",
   "rst.rules.trustNote": "la contraseña impide que otros editen tu entrada, pero no prueba que el nombre de Discord sea tuyo. Tómalo como una ayuda, no como una prueba. El staff puede retirar suplantaciones.",
-  "rst.form.characterNote": "Rellena solo las clases que juegas de verdad — al menos una. Deja el resto en blanco.",
+  "rst.form.characterNote": "Al menos uno es obligatorio, pero pon a ser posible todos los personajes que tengas, no solo el principal.",
   "rst.form.guild": "Tarjeta de gremio que más usas (opcional)",
   "rst.form.guildHint": "p. ej. 42110778",
   "rst.form.hours": "Cuándo sueles jugar (opcional)",
@@ -2376,5 +2376,9 @@
   "rst.row.dayBefore": "(día anterior)",
   "rst.row.dayAfter": "(día siguiente)",
   "rst.rules.time": "Las horas se ven en el reloj de cada uno",
-  "rst.rules.timeNote": "elige tu zona y escribe las horas en tu reloj: cada visitante las verá en el suyo. Si cambia el día se indica con (día anterior) o (día siguiente)."
+  "rst.rules.timeNote": "elige tu zona y escribe las horas en tu reloj: cada visitante las verá en el suyo. Si cambia el día se indica con (día anterior) o (día siguiente).",
+  "rst.view.label": "Mostrar horas en",
+  "rst.view.reset": "Volver a la mía",
+  "rst.view.mine": "la tuya",
+  "rst.row.written": "Según lo escrito"
 }

@@ -41,7 +41,7 @@
         <!-- 클래스별 칸. roster.js 가 채운다. 최소 하나는 적어야 한다. -->
         <fieldset class="rs_chars rs_field_wide">
             <legend data-i18n="rst.form.character">Your characters</legend>
-            <p class="rs_warn" data-i18n="rst.form.characterNote">Fill in the classes you actually play — at least one. Leave the rest blank.</p>
+            <p class="rs_warn" data-i18n="rst.form.characterNote">At least one is required — but please list every character you have, not just the one you main.</p>
             <div class="rs_chars_grid" data-rs-chars></div>
         </fieldset>
 
@@ -87,6 +87,14 @@
         <input type="text" class="rs_search" data-rs-search
                placeholder="Search a character or a Discord name…" data-i18n-placeholder="rst.search">
         <span class="rs_count" data-rs-count>—</span>
+    </div>
+
+    <!-- 시간을 어느 시계로 볼지. 기본은 이 브라우저의 시간대다. -->
+    <div class="rs_viewzone">
+        <label for="rs-viewzone" data-i18n="rst.view.label">Show times in</label>
+        <select id="rs-viewzone" data-rs-viewzone></select>
+        <button type="button" class="rs_link_btn" data-rs-viewzone-reset hidden
+                data-i18n="rst.view.reset">Back to my own</button>
     </div>
 
     <div data-rs-mount>

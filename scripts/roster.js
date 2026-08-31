@@ -66,6 +66,25 @@
 
   var MAX_WINDOWS = 3;
 
+  var VIEW_ZONE_KEY = "destiny-guide-roster-viewzone";
+
+  function readViewZone() {
+    try {
+      var saved = window.localStorage.getItem(VIEW_ZONE_KEY);
+      if (!saved) return "";
+      // 저장해 둔 값이 더 이상 유효하지 않을 수 있다. 그대로 쓰면 변환이 터진다.
+      new Intl.DateTimeFormat("en-US", { timeZone: saved });
+      return saved;
+    } catch (error) { return ""; }
+  }
+
+  function writeViewZone(value) {
+    try {
+      if (value) window.localStorage.setItem(VIEW_ZONE_KEY, value);
+      else window.localStorage.removeItem(VIEW_ZONE_KEY);
+    } catch (error) { /* 사생활 보호 모드. 이번 방문에만 유지된다. */ }
+  }
+
   /** 브라우저가 아는 이 사람의 시간대. 변환의 기준점이다. */
   function viewerZone() {
     try { return Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC"; }
@@ -175,6 +194,8 @@
     var searchInput = document.querySelector("[data-rs-search]");
     var countLabel = document.querySelector("[data-rs-count]");
     var moreButton = document.querySelector("[data-rs-more]");
+    var viewZoneSelect = document.querySelector("[data-rs-viewzone]");
+    var viewZoneReset = document.querySelector("[data-rs-viewzone-reset]");
 
     var ask = document.querySelector("[data-rs-ask]");
     var askForm = document.querySelector("[data-rs-ask-form]");
@@ -198,7 +219,15 @@
     var pending = null;
 
 
+    /** 이 브라우저가 있는 곳. 기본 보기 기준이자 "내 시간" 의 뜻. */
     var zone = viewerZone();
+    /**
+     * 실제로 시간을 그릴 때 쓰는 기준.
+     *
+     * 보통은 zone 과 같지만, 보는 사람이 다른 시계로 보고 싶을 때가 있다 — 기기 시계가
+     * 안 맞거나, 곧 갈 지역 기준으로 미리 보고 싶거나. 그래서 따로 둔다.
+     */
+    var viewZone = readViewZone() || zone;
 
     /* ── 폼 조립 ───────────────────────────────────────────────────────── */
 
@@ -292,11 +321,11 @@
       var chosen = zoneSelect.value;
       var windows = readWindows();
       if (!chosen || !windows.length) { windowsPreview.textContent = ""; return; }
-      if (chosen === zone) {
+      if (chosen === viewZone) {
         windowsPreview.textContent = t("rst.form.sameZone", "Visitors in other zones will see these converted to their own clock.");
         return;
       }
-      windowsPreview.textContent = t("rst.form.yourClock", "On your own clock right now") + ": " +
+      windowsPreview.textContent = t("rst.form.yourClock", "On your own clock right now") + " (" + viewZone + "): " +
         windows.map(function (w) { return describeWindow(w, chosen); }).join(", ");
     }
 
@@ -320,13 +349,46 @@
 
     /** 한 구간을 보는 사람 시계로 옮겨 문장으로. 날짜가 밀리면 그것도 붙인다. */
     function describeWindow(win, fromZone) {
-      if (!fromZone || fromZone === zone) return minutesToHhmm(win.start) + "–" + minutesToHhmm(win.end);
-      var moved = convertWindow(win, fromZone, zone);
+      if (!fromZone || fromZone === viewZone) return minutesToHhmm(win.start) + "–" + minutesToHhmm(win.end);
+      var moved = convertWindow(win, fromZone, viewZone);
       var text = minutesToHhmm(moved.start) + "–" + minutesToHhmm(moved.end);
       if (moved.dayShift < 0) text += " " + t("rst.row.dayBefore", "(prev day)");
       if (moved.dayShift > 0) text += " " + t("rst.row.dayAfter", "(next day)");
       return text;
     }
+
+
+    /* ── 보기 기준 시간대 ─────────────────────────────────────────────── */
+
+    function buildViewZoneSelect() {
+      var zones = [];
+      try { zones = Intl.supportedValuesOf("timeZone") || []; } catch (error) { zones = []; }
+      if (zones.indexOf(zone) < 0) zones.unshift(zone);
+      if (viewZone !== zone && zones.indexOf(viewZone) < 0) zones.unshift(viewZone);
+
+      viewZoneSelect.innerHTML = zones.map(function (z) {
+        return '<option value="' + escapeHtml(z) + '"' + (z === viewZone ? " selected" : "") + ">" +
+          escapeHtml(z.replace(/_/g, " ")) + (z === zone ? " · " + t("rst.view.mine", "yours") : "") + "</option>";
+      }).join("");
+      viewZoneReset.hidden = viewZone === zone;
+    }
+
+    viewZoneSelect.addEventListener("change", function () {
+      viewZone = viewZoneSelect.value || zone;
+      writeViewZone(viewZone === zone ? "" : viewZone);
+      viewZoneReset.hidden = viewZone === zone;
+      render();
+      refreshWindowPreview();
+    });
+
+    viewZoneReset.addEventListener("click", function () {
+      viewZone = zone;
+      writeViewZone("");
+      viewZoneSelect.value = zone;
+      viewZoneReset.hidden = true;
+      render();
+      refreshWindowPreview();
+    });
 
     function say(target, message, kind) {
       target.textContent = message || "";
@@ -350,14 +412,24 @@
         ? windows.map(function (w) { return describeWindow(w, entry.timezone); }).join(", ")
         : "";
       // 남의 시간대를 내 시계로 바꿔 보여줬다면, 원래 시간도 같이 남긴다.
-      var converted = hours && entry.timezone && entry.timezone !== zone;
+      var converted = hours && entry.timezone && entry.timezone !== viewZone;
+      // 바뀐 값만 보이면 원래 몇 시라고 적었는지 알 수 없다. 마우스를 올리면 나오게 둔다.
+      var original = windows.map(function (w) {
+        return minutesToHhmm(w.start) + "–" + minutesToHhmm(w.end);
+      }).join(", ");
 
       var facts = [
         entry.timezone ? '<span class="rs_fact">' + escapeHtml(entry.timezone.replace(/_/g, " ")) + "</span>" : "",
         hours
-          ? '<span class="rs_fact rs_fact_time">' + escapeHtml(hours) +
+          ? '<span class="rs_fact rs_fact_time"' +
             (converted
-              ? '<em class="rs_fact_src">' + escapeHtml(t("rst.row.yourTime", "your time")) + "</em>"
+              ? ' title="' + escapeHtml(t("rst.row.written", "As written") + ": " + original + " " + entry.timezone) + '"'
+              : "") + ">" + escapeHtml(hours) +
+            (converted
+              // 보는 기준을 다른 시간대로 바꿔 놓았다면 "내 시간" 이 아니다. 그 이름을 적는다.
+              ? '<em class="rs_fact_src">' + escapeHtml(
+                  viewZone === zone ? t("rst.row.yourTime", "your time") : viewZone.replace(/_/g, " "),
+                ) + "</em>"
               : "") +
             "</span>"
           : "",
@@ -595,6 +667,7 @@
 
     document.addEventListener("destiny-lang-change", function () { render(); });
 
+    buildViewZoneSelect();
     buildCharacterInputs();
     buildZoneSelect();
     buildWindowRows();
