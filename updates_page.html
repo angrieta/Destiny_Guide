@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>DestinyGuide - 최신 업데이트</title>
-    <meta name="description" content="Destiny PSOBB Discord 공지를 기준으로 정리한 현재 버전, 다음 업데이트, 신규 아이템과 파밍 준비 목록.">
+    <title data-i18n="up.meta.title">DestinyGuide - Patch Notes</title>
+    <meta name="description" content="Current version, the next update, new items and a farming checklist for Destiny PSOBB, compiled from the server's own Discord announcements.">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="stylesheet" href="./styles/common.css">
@@ -25,31 +25,31 @@
         <header class="up_hero">
             <div class="up_hero_copy">
                 <div class="up_kicker"><span class="up_live_dot"></span> LIVE · VER 0.944</div>
-                <h2>지금 적용된 것과<br>다음 업데이트를 한눈에</h2>
-                <p>Destiny Discord의 패치노트, announcements, 퀘스트·아이템 채널을 2026년 8월 29일 기준으로 대조했다. 확정된 내용과 예고 단계 정보를 분리해, 지금 무엇을 파밍하고 무엇을 준비할지 바로 판단할 수 있게 정리했다.</p>
+                <h2><span data-i18n="up.01">What is live now, and</span><br><span data-i18n="up.02">what lands next</span></h2>
+                <p data-i18n="up.03">Checked against the patch notes, announcements and quest/item channels of the Destiny Discord as of 2026-08-29. Confirmed changes are kept apart from previews, so you can tell at a glance what to farm now and what to hold for later.</p>
                 <div class="up_hero_actions">
-                    <a class="up_primary" href="#v0945">Ver.0.945 패치노트 보기</a>
-                    <a class="up_secondary" href="./item_page.html">아이템 도감 열기</a>
+                    <a class="up_primary" href="#v0945" data-i18n="up.04">Read the Ver.0.945 notes</a>
+                    <a class="up_secondary" href="./item_page.html" data-i18n="up.05">Open the item catalog</a>
                 </div>
             </div>
             <figure class="up_hero_media">
-                <img src="./images/discord/2026-08/v0944-bazaar-racaseal.png" alt="Phantastic Bazaar의 RAcaseal 상점 메뉴">
-                <figcaption>Ver.0.944 · Phantastic Bazaar에 계절/기타 상점 추가</figcaption>
+                <img src="./images/discord/2026-08/v0944-bazaar-racaseal.png" alt="The RAcaseal shop menu in the Phantastic Bazaar" data-i18n-alt="up.alt.bazaar">
+                <figcaption data-i18n="up.06">Ver.0.944 · seasonal and other shops added to the Phantastic Bazaar</figcaption>
             </figure>
         </header>
 
-        <aside class="up_notice" aria-label="정보 상태 안내">
-            <strong>읽는 법</strong>
-            <span><b class="up_badge is-live">적용</b> 게임에 반영된 내용</span>
-            <span><b class="up_badge is-next">확정 예고</b> 날짜와 항목이 공지된 내용</span>
-            <span><b class="up_badge is-preview">개발 예고</b> 수치·재료가 바뀔 수 있는 내용</span>
+        <aside class="up_notice" aria-label="How information is marked" data-i18n-aria-label="up.aria.legend">
+            <strong data-i18n="up.07">How to read this</strong>
+            <span><b class="up_badge is-live" data-i18n="up.08">Live</b> <span data-i18n="up.09">already in the game</span></span>
+            <span><b class="up_badge is-next" data-i18n="up.10">Announced</b> <span data-i18n="up.11">date and contents have been posted</span></span>
+            <span><b class="up_badge is-preview" data-i18n="up.12">Preview</b> <span data-i18n="up.13">numbers and materials can still change</span></span>
         </aside>
 
-        <nav class="g_toc" aria-label="페이지 목차">
-            <a href="#patch-notes">패치노트</a>
-            <a href="#anniversary">9주년 예고</a>
-            <a href="#future-crafts">향후 제작 아이템</a>
-            <a href="#farming-plan">파밍 준비</a>
+        <nav class="g_toc" aria-label="On this page" data-i18n-aria-label="up.aria.toc">
+            <a href="#patch-notes" data-i18n="up.14">Patch notes</a>
+            <a href="#anniversary" data-i18n="up.15">9th anniversary</a>
+            <a href="#future-crafts" data-i18n="up.16">Upcoming crafts</a>
+            <a href="#farming-plan" data-i18n="up.17">Farming plan</a>
         </nav>
 
         <!-- 버전 아카이브.
@@ -57,43 +57,43 @@
              그 버전만 보여준다. 주소의 #v0945 로 특정 버전을 바로 열 수 있다. -->
         <section class="up_archive" id="patch-notes">
             <div class="up_archive_head">
-                <h3>패치 버전별 노트</h3>
-                <p>버전을 고르면 그 버전의 변경만 표시됩니다.</p>
+                <h3 data-i18n="up.patchnotes.01">Notes by version</h3>
+                <p data-i18n="up.patchnotes.02">Pick a version and only that version's changes are shown.</p>
             </div>
-            <div class="up_vers" role="tablist" aria-label="패치 버전">
+            <div class="up_vers" role="tablist" aria-label="Patch versions" data-i18n-aria-label="up.aria.versions">
                 <button type="button" class="up_ver_tab is-on" role="tab"
                         id="tab-0945" data-ver="0945" aria-controls="v0945"
                         aria-selected="true" tabindex="0">
                     <b>Ver.0.945</b>
-                    <span class="up_ver_state is-next">예정</span>
+                    <span class="up_ver_state is-next" data-i18n="up.patchnotes.03">Upcoming</span>
                     <time>ETA 09.01</time>
                 </button>
                 <button type="button" class="up_ver_tab" role="tab"
                         id="tab-0944" data-ver="0944" aria-controls="v0944"
                         aria-selected="false" tabindex="-1">
                     <b>Ver.0.944</b>
-                    <span class="up_ver_state is-live">적용 중</span>
+                    <span class="up_ver_state is-live" data-i18n="up.patchnotes.04">Live</span>
                     <time>2026.08.11</time>
                 </button>
                 <button type="button" class="up_ver_tab" role="tab"
                         id="tab-0943" data-ver="0943" aria-controls="v0943"
                         aria-selected="false" tabindex="-1">
                     <b>Ver.0.943</b>
-                    <span class="up_ver_state is-past">지난 버전</span>
+                    <span class="up_ver_state is-past" data-i18n="up.patchnotes.05">Past version</span>
                     <time></time>
                 </button>
                 <button type="button" class="up_ver_tab" role="tab"
                         id="tab-0942" data-ver="0942" aria-controls="v0942"
                         aria-selected="false" tabindex="-1">
                     <b>Ver.0.942</b>
-                    <span class="up_ver_state is-past">지난 버전</span>
+                    <span class="up_ver_state is-past" data-i18n="up.patchnotes.06">Past version</span>
                     <time></time>
                 </button>
                 <button type="button" class="up_ver_tab" role="tab"
                         id="tab-0941" data-ver="0941" aria-controls="v0941"
                         aria-selected="false" tabindex="-1">
                     <b>Ver.0.941</b>
-                    <span class="up_ver_state is-past">지난 버전</span>
+                    <span class="up_ver_state is-past" data-i18n="up.patchnotes.07">Past version</span>
                     <time></time>
                 </button>
             </div>
@@ -102,51 +102,51 @@
         <section class="g_sec up_ver" id="v0945" data-ver="0945" role="tabpanel" aria-labelledby="tab-0945">
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-next">확정 예고</span>
-                    <h3>Ver.0.945 — 9월 1일 업데이트</h3>
+                    <span class="up_badge is-next" data-i18n="up.v0945.01">Announced</span>
+                    <h3 data-i18n="up.v0945.02">Ver.0.945 — the September 1 update</h3>
                 </div>
                 <time datetime="2026-09-01">ETA 2026.09.01</time>
             </div>
 
-            <p class="up_lead">2026-08-30 공개된 정식 패치노트입니다. 정기 서버 재시작 이후 적용됩니다.</p>
+            <p class="up_lead" data-i18n="up.v0945.03">The official patch note published on 2026-08-30. It goes live after the scheduled server restart.</p>
 
             <!-- 파티 DAR 완화는 이 패치에서 가장 체감이 큰 변경이라 맨 앞에 둔다.
                  드랍 테이블의 계산식도 이 값으로 바꿔 두었다. -->
             <article class="up_card up_card_wide">
                 <span class="up_card_label">DROP RATE</span>
-                <h4>파티 DAR 페널티 완화</h4>
-                <p class="up_flavor">인원이 늘수록 깎이던 DAR(무언가라도 떨어질 확률) 감소 폭이 줄어듭니다. 4인 기준 <strong>60% → 80%</strong>로, 파티 사냥의 손해가 크게 줄어듭니다.</p>
+                <h4 data-i18n="up.v0945.04">The party DAR penalty is eased</h4>
+                <p class="up_flavor"><span data-i18n="up.v0945.05">DAR — the chance anything drops at all — used to fall sharply as the party grew. That cut is now much smaller: at four players it goes from</span> <strong>60% → 80%</strong><span data-i18n="up.v0945.06">, so hunting in a group costs far less than it did.</span></p>
                 <div class="g_scroll">
                     <table class="g_table g_mid">
                         <thead>
-                            <tr><th>인원</th><th>1P</th><th>2P</th><th>3P</th><th>4P</th></tr>
+                            <tr><th data-i18n="up.v0945.07">Players</th><th>1P</th><th>2P</th><th>3P</th><th>4P</th></tr>
                         </thead>
                         <tbody>
-                            <tr><th scope="row">이전</th><td>100%</td><td>80%</td><td>70%</td><td>60%</td></tr>
+                            <tr><th scope="row" data-i18n="up.v0945.08">Before</th><td>100%</td><td>80%</td><td>70%</td><td>60%</td></tr>
                             <tr><th scope="row">0.945</th><td>100%</td><td><strong>90%</strong></td><td><strong>85%</strong></td><td><strong>80%</strong></td></tr>
                         </tbody>
                     </table>
                 </div>
-                <a class="up_text_link" href="./drop-tables/">드랍 테이블에서 계산해 보기 →</a>
+                <a class="up_text_link" href="./drop-tables/" data-i18n="up.v0945.09">Try it in the drop tables →</a>
             </article>
 
             <div class="up_feature">
                 <figure class="up_feature_media">
-                    <img src="./images/discord/2026-08/v0945-soul-eraser.jpg" alt="Soul Eraser의 녹색 투사체 시연">
+                    <img src="./images/discord/2026-08/v0945-soul-eraser.jpg" alt="Soul Eraser firing its green projectile" data-i18n-alt="up.alt.soulEraser">
                 </figure>
                 <div class="up_feature_copy">
                     <span class="up_card_label">NEW WEAPON</span>
                     <h4>SOUL ERASER</h4>
-                    <p class="up_flavor">“혼돈의 에메랄드가 박힌 마성의 지팡이. 단 한 발로 적을 소멸시킬 수 있다고 전해진다.”</p>
+                    <p class="up_flavor" data-i18n="up.v0945.10">“A demonic cane embedded with chaos emerald. It's said to be able to obliterate foes only with one shot.”</p>
                     <dl class="up_stats up_stats_compact">
-                        <div><dt>타입</dt><dd>Slicer</dd></div>
-                        <div><dt>클래스</dt><dd>Human / Newman</dd></div>
+                        <div><dt data-i18n="up.v0945.11">Type</dt><dd>Slicer</dd></div>
+                        <div><dt data-i18n="up.v0945.12">Class</dt><dd>Human / Newman</dd></div>
                         <div><dt>ATP</dt><dd>550 – 700</dd></div>
                         <div><dt>ATA</dt><dd>45</dd></div>
                         <div><dt>Special</dt><dd>Hell</dd></div>
-                        <div><dt>사거리</dt><dd>130.0</dd></div>
-                        <div><dt>타깃</dt><dd>7</dd></div>
-                        <div><dt>획득</dt><dd>World of Illusion · Olga Flow · 전 ID <strong>1/73</strong></dd></div>
+                        <div><dt data-i18n="up.v0945.13">Range</dt><dd>130.0</dd></div>
+                        <div><dt data-i18n="up.v0945.14">Targets</dt><dd>7</dd></div>
+                        <div><dt data-i18n="up.v0945.15">Source</dt><dd><span data-i18n="up.v0945.16">World of Illusion · Olga Flow · all IDs</span> <strong>1/73</strong></dd></div>
                     </dl>
                 </div>
             </div>
@@ -155,29 +155,29 @@
                 <article class="up_card">
                     <span class="up_card_label">BAZAAR TRADE</span>
                     <h4>MIRACLE CHAIN</h4>
-                    <p class="up_flavor">“지원 테크닉을 시전할 수 있는 특별한 검. 여성만 사용할 수 있다.”</p>
+                    <p class="up_flavor" data-i18n="up.v0945.17">“A special sword that can cast support techniques. Only female can use this weapon.”</p>
                     <dl class="up_stats up_stats_compact">
-                        <div><dt>타입</dt><dd>Cane</dd></div>
-                        <div><dt>클래스</dt><dd>여성 캐릭터 전용</dd></div>
+                        <div><dt data-i18n="up.v0945.18">Type</dt><dd>Cane</dd></div>
+                        <div><dt data-i18n="up.v0945.19">Class</dt><dd data-i18n="up.v0945.20">Female characters only</dd></div>
                         <div><dt>ATP</dt><dd>700 – 750</dd></div>
                         <div><dt>ATA</dt><dd>45</dd></div>
                         <div><dt>Special</dt><dd>Lv6 Shifta / Deband</dd></div>
-                        <div><dt>사거리</dt><dd>14.0 · 타깃 1</dd></div>
-                        <div><dt>테크 보정</dt><dd>Resta / Shifta / Deband 범위 +100%</dd></div>
-                        <div><dt>교환처</dt><dd>Phantastic Bazaar · Another Shop (RAcaseal)</dd></div>
+                        <div><dt data-i18n="up.v0945.21">Range</dt><dd data-i18n="up.v0945.22">14.0 · 1 target</dd></div>
+                        <div><dt data-i18n="up.v0945.23">Tech boost</dt><dd data-i18n="up.v0945.24">Resta / Shifta / Deband range +100%</dd></div>
+                        <div><dt data-i18n="up.v0945.25">Traded at</dt><dd>Phantastic Bazaar · Another Shop (RAcaseal)</dd></div>
                     </dl>
-                    <p class="up_note">재료: Fragments of Orb [Yellow] ×1 · [Green] ×1 · Weapon Crystal Badge ×10</p>
+                    <p class="up_note" data-i18n="up.v0945.26">Materials: Fragments of Orb [Yellow] ×1 · [Green] ×1 · Weapon Crystal Badge ×10</p>
                 </article>
 
                 <article class="up_card">
                     <span class="up_card_label">QUEST</span>
-                    <h4>퀘스트 변경</h4>
+                    <h4 data-i18n="up.v0945.27">Quest changes</h4>
                     <ul class="up_list">
-                        <li><strong>World of Illusion [EP2]</strong> — Olga Flow가 SOUL ERASER 드랍(전 ID 1/73). <strong>사망해도 도시로 강제 귀환하지 않습니다</strong>(동료 부활 또는 Scape Doll 사용 가능). 단, <strong>Anniversary 버전은 기존 사망 페널티 유지</strong>. 그 밖의 자잘한 문제도 함께 수정됩니다.</li>
-                        <li><strong>Lost RIOT RAYGUN [EP2]</strong> — 시간 제한 제거. Gol Dragon이 <strong>Fragments of Orb [Yellow]</strong> 드랍 (Yellow · White, 1/20).</li>
-                        <li><strong>Lost Devil's SCEPTER [EP2]</strong> — 시간 제한 제거. Gal Gryphon이 <strong>Fragments of Orb [Green]</strong> 드랍 (Viridia · Greenill, 1/16).</li>
-                        <li><strong>The Phantastic Bazaar [EP2]</strong> — Another Shop에 MIRACLE CHAIN 추가, 안내 NPC 배치.</li>
-                        <li class="up_prior"><strong>Lost Soul Ripper [Extreme]</strong> — 9월 1일부터 2주간 복각 예정. <em>0.945 패치노트가 아니라 그 이전 공지에 있던 내용이라, 이번 노트에서는 다시 언급되지 않았습니다.</em></li>
+                        <li><strong>World of Illusion [EP2]</strong> <span data-i18n="up.v0945.28">— Olga Flow drops SOUL ERASER (all IDs, 1/73).</span> <strong data-i18n="up.v0945.29">dying no longer sends you back to the city</strong><span data-i18n="up.v0945.30">(a teammate can revive you, or use a Scape Doll). However,</span> <strong data-i18n="up.v0945.31">the Anniversary version keeps the old death penalty</strong><span data-i18n="up.v0945.32">. Minor issues are fixed as well.</span></li>
+                        <li><strong>Lost RIOT RAYGUN [EP2]</strong> <span data-i18n="up.v0945.33">— time limit removed. Gol Dragon drops</span> <strong>Fragments of Orb [Yellow]</strong> <span data-i18n="up.v0945.34">(Yellow · White, 1/20).</span></li>
+                        <li><strong>Lost Devil's SCEPTER [EP2]</strong> <span data-i18n="up.v0945.35">— time limit removed. Gal Gryphon drops</span> <strong>Fragments of Orb [Green]</strong> <span data-i18n="up.v0945.36">(Viridia · Greenill, 1/16).</span></li>
+                        <li><strong>The Phantastic Bazaar [EP2]</strong> <span data-i18n="up.v0945.37">— MIRACLE CHAIN added to Another Shop, and a guide NPC is placed there.</span></li>
+                        <li class="up_prior"><strong>Lost Soul Ripper [Extreme]</strong> <span data-i18n="up.v0945.38">— returning for two weeks from September 1.</span> <em data-i18n="up.v0945.39">This came from an earlier announcement rather than the 0.945 note, so the note does not mention it again.</em></li>
                     </ul>
                 </article>
             </div>
@@ -185,23 +185,23 @@
             <div class="up_grid up_grid_two up_followups">
                 <article class="up_card">
                     <span class="up_card_label">QOL</span>
-                    <h4>그 밖의 시스템 변경</h4>
+                    <h4 data-i18n="up.v0945.40">Other system changes</h4>
                     <ul class="up_list">
-                        <li><code>/matreset</code> 명령어로 <strong>HP Material 초기화</strong>.</li>
-                        <li><code>/lobby</code> 명령어를 <strong>퀘스트 밖에서도</strong> 사용 가능.</li>
-                        <li>TP가 낮아도 <strong>Spirit special이 miss 처리되지 않습니다</strong>.</li>
+                        <li><code>/matreset</code> <span data-i18n="up.v0945.41">resets your</span> <strong data-i18n="up.v0945.42">HP Materials</strong>.</li>
+                        <li><code>/lobby</code> <span data-i18n="up.v0945.43">now works</span> <strong data-i18n="up.v0945.44">outside a quest</strong> <span data-i18n="up.v0945.45">as well.</span></li>
+                        <li><span data-i18n="up.v0945.46">Even on low TP,</span> <strong data-i18n="up.v0945.47">the Spirit special no longer misses</strong>.</li>
                     </ul>
                 </article>
 
                 <article class="up_card">
                     <span class="up_card_label">ITEM</span>
-                    <h4>무기 사거리 · 타깃 상향</h4>
+                    <h4 data-i18n="up.v0945.48">Weapon range and target buffs</h4>
                     <ul class="up_list">
-                        <li>타깃 <strong>1 → 3</strong>, 사거리 확장 — Double Cannon · Girasole · Flamberge · Vivienne · Monkey King Bar · Black King Bar · Claw of Elements</li>
-                        <li>S-Berill's Hands #0 — 타깃 1 → 3</li>
-                        <li>S-Berill's Hands #1 — 타깃 1 → 3, <strong>ATP +200</strong></li>
-                        <li>Sacred Duster — 타깃 <strong>1 → 5</strong></li>
-                        <li>Daisy Chain — <strong>전 클래스 착용 가능</strong> (획득 경로는 추후 공개)</li>
+                        <li><span data-i18n="up.v0945.49">Targets</span> <strong>1 → 3</strong><span data-i18n="up.v0945.50">, extended range — Double Cannon · Girasole · Flamberge · Vivienne · Monkey King Bar · Black King Bar · Claw of Elements</span></li>
+                        <li data-i18n="up.v0945.51">S-Berill's Hands #0 — targets 1 → 3</li>
+                        <li><span data-i18n="up.v0945.52">S-Berill's Hands #1 — targets 1 → 3,</span> <strong>ATP +200</strong></li>
+                        <li><span data-i18n="up.v0945.53">Sacred Duster — targets</span> <strong>1 → 5</strong></li>
+                        <li>Daisy Chain — <strong data-i18n="up.v0945.54">equippable by every class</strong> <span data-i18n="up.v0945.55">(how to get it will be announced later)</span></li>
                     </ul>
                 </article>
             </div>
@@ -210,8 +210,8 @@
         <section class="g_sec up_ver" id="v0944" data-ver="0944" role="tabpanel" aria-labelledby="tab-0944" hidden>
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-live">현재 적용</span>
-                    <h3>Ver.0.944 핵심 변경</h3>
+                    <span class="up_badge is-live" data-i18n="up.v0944.01">Live now</span>
+                    <h3 data-i18n="up.v0944.02">Ver.0.944 — the main changes</h3>
                 </div>
                 <time datetime="2026-08-11">2026.08.11</time>
             </div>
@@ -221,39 +221,39 @@
                     <span class="up_card_label">NEW DROP</span>
                     <h4>MADAM'S BRACELET</h4>
                     <div class="up_card_media up_card_media_tall">
-                        <img src="./images/discord/2026-08/v0944-madams-bracelet-model.png" alt="Madam's Bracelet 착용 모습">
+                        <img src="./images/discord/2026-08/v0944-madams-bracelet-model.png" alt="Madam's Bracelet as worn in game" data-i18n-alt="up.alt.madams">
                     </div>
                     <dl class="up_stats">
-                        <div><dt>획득</dt><dd>New MSB · Olga Flow</dd></div>
-                        <div><dt>드롭률</dt><dd>1/64 · All IDs · Ultimate</dd></div>
-                        <div><dt>보너스</dt><dd>ATA +25</dd></div>
-                        <div><dt>테크</dt><dd>Resta/Anti +100%, Rabarta +70%</dd></div>
+                        <div><dt data-i18n="up.v0944.03">Source</dt><dd>New MSB · Olga Flow</dd></div>
+                        <div><dt data-i18n="up.v0944.04">Drop rate</dt><dd>1/64 · All IDs · Ultimate</dd></div>
+                        <div><dt data-i18n="up.v0944.05">Bonus</dt><dd>ATA +25</dd></div>
+                        <div><dt data-i18n="up.v0944.06">Techs</dt><dd>Resta/Anti +100%, Rabarta +70%</dd></div>
                     </dl>
-                    <a class="up_text_link" href="./item_page.html?item=madams-bracelet">도감 상세 →</a>
+                    <a class="up_text_link" href="./item_page.html?item=madams-bracelet" data-i18n="up.v0944.07">See it in the catalog →</a>
                 </article>
 
                 <article class="up_card">
                     <span class="up_card_label">BAZAAR TRADE</span>
                     <h4>LIGHTNING GARMENT</h4>
-                    <p class="up_flavor">올레지보다 Light/Dark 저항과 Grants 강화에 초점을 맞춘 전 클래스용 교환 방어구.</p>
+                    <p class="up_flavor" data-i18n="up.v0944.08">Trade armor for every class. Where an Aura Field spreads its stats, this one concentrates on Light/Dark resistance and a stronger Grants.</p>
                     <dl class="up_stats">
-                        <div><dt>교환 NPC</dt><dd>Phantastic Bazaar · RAcaseal</dd></div>
-                        <div><dt>재료</dt><dd>Secret Ticket ×99</dd></div>
-                        <div><dt>수치</dt><dd>DFP 210 · EVP 170 · ATA +20</dd></div>
-                        <div><dt>효과</dt><dd>Grants +50%</dd></div>
+                        <div><dt data-i18n="up.v0944.09">Trade NPC</dt><dd>Phantastic Bazaar · RAcaseal</dd></div>
+                        <div><dt data-i18n="up.v0944.10">Cost</dt><dd>Secret Ticket ×99</dd></div>
+                        <div><dt data-i18n="up.v0944.11">Stats</dt><dd>DFP 210 · EVP 170 · ATA +20</dd></div>
+                        <div><dt data-i18n="up.v0944.12">Effect</dt><dd>Grants +50%</dd></div>
                     </dl>
-                    <p class="up_small">Secret Ticket: Simulator 2.0 또는 Random Attack Xrd Stage의 secret clear 보상.</p>
-                    <a class="up_text_link" href="./item_page.html?item=lightning-garment">도감 상세 →</a>
+                    <p class="up_small" data-i18n="up.v0944.13">Secret Ticket: the secret clear reward from Simulator 2.0 or Random Attack Xrd Stage.</p>
+                    <a class="up_text_link" href="./item_page.html?item=lightning-garment" data-i18n="up.v0944.14">See it in the catalog →</a>
                 </article>
 
                 <article class="up_card">
                     <span class="up_card_label">QUEST / QOL</span>
-                    <h4>퀘스트와 무기 변경</h4>
+                    <h4 data-i18n="up.v0944.15">Quest and weapon changes</h4>
                     <ul class="up_list">
-                        <li><strong>New MSB</strong>가 EP2 &gt; Destiny에 추가.</li>
-                        <li><strong>Simulator 2.0</strong>에서 사망해도 도시로 강제 귀환하지 않음. 동료의 부활 또는 Scape Doll 사용 가능.</li>
-                        <li><strong>Phantastic Bazaar</strong>에 Valentine, Easter, Halloween, Xmas, Other Shop 추가.</li>
-                        <li><strong>NUG-2000 BAZOOKA</strong> 콤보 해금, special 부여 가능.</li>
+                        <li><strong>New MSB</strong><span data-i18n="up.v0944.16">is added under EP2 &gt; Destiny.</span></li>
+                        <li><strong>Simulator 2.0</strong><span data-i18n="up.v0944.17">no longer sends you back to the city on death. A teammate can revive you, or use a Scape Doll.</span></li>
+                        <li><strong>Phantastic Bazaar</strong><span data-i18n="up.v0944.18">gains the Valentine, Easter, Halloween, Xmas and Other shops.</span></li>
+                        <li><strong>NUG-2000 BAZOOKA</strong> <span data-i18n="up.v0944.19">has its combo unlocked and can take a special.</span></li>
                     </ul>
                 </article>
             </div>
@@ -262,7 +262,7 @@
         <section class="g_sec up_ver" id="v0943" data-ver="0943" role="tabpanel" aria-labelledby="tab-0943" hidden>
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-past">지난 버전</span>
+                    <span class="up_badge is-past" data-i18n="up.v0943.01">Past version</span>
                     <h3>Ver.0.943 — Toward the Multiverse Lv.III</h3>
                 </div>
             </div>
@@ -270,8 +270,8 @@
             <article class="up_card up_card_wide">
                 <span class="up_card_label">SUMMARY</span>
                 <h4>Toward the Multiverse Lv.III</h4>
-                <p class="up_flavor">★9 보스 러시 퀘스트가 추가되고, MA&amp;X76 OMEGA 와 신규 희귀 유닛이 보상으로 들어왔습니다.</p>
-                <p class="up_note up_thin">이 버전은 <strong>요약만 기록해 두었습니다.</strong> 항목별 원문은 Discord <code>#destiny-0943-toward-the-multiverse-lv3-and-new-item</code> 채널에 그대로 남아 있습니다.</p>
+                <p class="up_flavor" data-i18n="up.v0943.02">A ★9 boss rush quest was added, with MA&amp;X76 OMEGA and new rare units as rewards.</p>
+                <p class="up_note up_thin"><span data-i18n="up.v0943.03">For this version</span> <strong data-i18n="up.v0943.04">only a summary was recorded.</strong> <span data-i18n="up.v0943.05">The original, item by item, is still in the Discord channel</span> <code>#destiny-0943-toward-the-multiverse-lv3-and-new-item</code> <span data-i18n="up.v0943.06">.</span></p>
             </article>
 
         </section>
@@ -279,7 +279,7 @@
         <section class="g_sec up_ver" id="v0942" data-ver="0942" role="tabpanel" aria-labelledby="tab-0942" hidden>
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-past">지난 버전</span>
+                    <span class="up_badge is-past" data-i18n="up.v0942.01">Past version</span>
                     <h3>Ver.0.942 — VR Test OMEGA: Oblivion</h3>
                 </div>
             </div>
@@ -287,8 +287,8 @@
             <article class="up_card up_card_wide">
                 <span class="up_card_label">SUMMARY</span>
                 <h4>VR Test OMEGA: Oblivion</h4>
-                <p class="up_flavor">MATRIX SCOPE 와 Star Eulogy 가 추가되고, Astral Claw / Astral Saber 가 개선, Samurai Armor 가 상향됐습니다.</p>
-                <p class="up_note up_thin">이 버전은 <strong>요약만 기록해 두었습니다.</strong> 항목별 원문은 Discord <code>#destiny-0942-matrix-scope-and-star-eulogy</code> 채널에 그대로 남아 있습니다.</p>
+                <p class="up_flavor" data-i18n="up.v0942.02">MATRIX SCOPE and Star Eulogy were added, Astral Claw and Astral Saber were improved, and Samurai Armor was buffed.</p>
+                <p class="up_note up_thin"><span data-i18n="up.v0942.03">For this version</span> <strong data-i18n="up.v0942.04">only a summary was recorded.</strong> <span data-i18n="up.v0942.05">The original, item by item, is still in the Discord channel</span> <code>#destiny-0942-matrix-scope-and-star-eulogy</code> <span data-i18n="up.v0942.06">.</span></p>
             </article>
 
         </section>
@@ -296,7 +296,7 @@
         <section class="g_sec up_ver" id="v0941" data-ver="0941" role="tabpanel" aria-labelledby="tab-0941" hidden>
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-past">지난 버전</span>
+                    <span class="up_badge is-past" data-i18n="up.v0941.01">Past version</span>
                     <h3>Ver.0.941 — VR Test Destiny: Sandstorm</h3>
                 </div>
             </div>
@@ -304,8 +304,8 @@
             <article class="up_card up_card_wide">
                 <span class="up_card_label">SUMMARY</span>
                 <h4>VR Test Destiny: Sandstorm</h4>
-                <p class="up_flavor">Red / Blue / Yellow / Green Crystal 체계가 자리를 잡고, Astral Saber 와 Fragments of Orb 가 예고됐습니다.</p>
-                <p class="up_note up_thin">이 버전은 <strong>요약만 기록해 두었습니다.</strong> 항목별 원문은 Discord <code>#destiny-0941-newquest-and-newitem</code> 채널에 그대로 남아 있습니다.</p>
+                <p class="up_flavor" data-i18n="up.v0941.02">The Red / Blue / Yellow / Green Crystal system settled into place, and Astral Saber and Fragments of Orb were announced.</p>
+                <p class="up_note up_thin"><span data-i18n="up.v0941.03">For this version</span> <strong data-i18n="up.v0941.04">only a summary was recorded.</strong> <span data-i18n="up.v0941.05">The original, item by item, is still in the Discord channel</span> <code>#destiny-0941-newquest-and-newitem</code> <span data-i18n="up.v0941.06">.</span></p>
             </article>
 
         </section>
@@ -313,28 +313,28 @@
         <section class="g_sec" id="anniversary">
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-preview">개발 예고</span>
-                    <h3>9주년 아이템 선공개</h3>
+                    <span class="up_badge is-preview" data-i18n="up.anniversary.01">Preview</span>
+                    <h3 data-i18n="up.anniversary.02">9th anniversary item preview</h3>
                 </div>
-                <time datetime="2026-09">2026.09 예정</time>
+                <time datetime="2026-09" data-i18n="up.anniversary.03">Expected 2026.09</time>
             </div>
 
             <div class="up_feature up_feature_reverse">
                 <figure class="up_feature_media up_feature_media_small">
-                    <img src="./images/discord/2026-08/announcements-aegis-preview.png" alt="Aegis of Isolation 아이템 박스 미리보기">
+                    <img src="./images/discord/2026-08/announcements-aegis-preview.png" alt="Preview of the Aegis of Isolation item box" data-i18n-alt="up.alt.aegis">
                 </figure>
                 <div class="up_feature_copy">
                     <span class="up_card_label">9TH ANNIVERSARY</span>
                     <h4>AEGIS OF ISOLATION</h4>
-                    <p class="up_flavor">“착용자를 고립시키는 저주받은 희귀 실드. 어떤 기능을 비활성화하는 대신, 사용한 모든 회복약의 효율을 극대화한다.”</p>
+                    <p class="up_flavor" data-i18n="up.anniversary.04">“A cursed rare shield that isolates its wearer. It disables certain functions, but in exchange it maximises the effect of every recovery item used.”</p>
                     <ul class="up_list">
-                        <li>Shield · Class ALL · 요구 레벨 150.</li>
+                        <li data-i18n="up.anniversary.05">Shield · Class ALL · requires level 150.</li>
                         <li>Resists 32-32-32-24-24.</li>
-                        <li>Monomate와 Dimate의 회복량을 Trimate 수준으로 최대화.</li>
-                        <li>두 가지 전용 기능 중 나머지 효과와 정확한 DFP/EVP·보너스는 아직 비공개.</li>
-                        <li>이벤트 종료 후 일반 퀘스트에도 추가되지만 더 낮은 드롭률로 예정.</li>
+                        <li data-i18n="up.anniversary.06">Monomate and Dimate heal as much as a Trimate.</li>
+                        <li data-i18n="up.anniversary.07">It has two exclusive effects; the second one, and the exact DFP/EVP and bonuses, have not been revealed.</li>
+                        <li data-i18n="up.anniversary.08">After the event it also enters the normal quests, but at a lower drop rate.</li>
                     </ul>
-                    <p class="up_note">예고 수치다. 패치노트가 공개되면 확정 정보로 교체해야 한다.</p>
+                    <p class="up_note" data-i18n="up.anniversary.09">These are preview numbers. They must be replaced with the confirmed ones once the patch note is out.</p>
                 </div>
             </div>
         </section>
@@ -342,55 +342,55 @@
         <section class="g_sec" id="future-crafts">
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-preview">개발 예고</span>
-                    <h3>Millennium Shop 향후 제작 아이템</h3>
+                    <span class="up_badge is-preview" data-i18n="up.futurecrafts.01">Preview</span>
+                    <h3 data-i18n="up.futurecrafts.02">Upcoming Millennium Shop crafts</h3>
                 </div>
-                <span>9월 말~10월 목표</span>
+                <span data-i18n="up.futurecrafts.03">Targeted for late September to October</span>
             </div>
             <div class="up_grid up_grid_two">
                 <article class="up_card">
                     <span class="up_card_label">TOOL → WEAPON</span>
                     <h4>PHANTASMAL ORE “SYNCESTA”</h4>
-                    <p><strong>DOUBLE CANNON</strong>을 <strong>ALTERNATIVE CANNON</strong>으로 변환.</p>
+                    <p><strong>DOUBLE CANNON</strong><span data-i18n="up.futurecrafts.04">into</span> <strong>ALTERNATIVE CANNON</strong><span data-i18n="up.futurecrafts.05">.</span></p>
                     <dl class="up_stats">
-                        <div><dt>결과 타입</dt><dd>Slicer</dd></div>
-                        <div><dt>클래스</dt><dd>HU</dd></div>
-                        <div><dt>공개 재료</dt><dd>Chaos Engine ×1 · Syncesta ×2 · Proof of Sword Saint ×1</dd></div>
+                        <div><dt data-i18n="up.futurecrafts.06">Result type</dt><dd>Slicer</dd></div>
+                        <div><dt data-i18n="up.futurecrafts.07">Class</dt><dd>HU</dd></div>
+                        <div><dt data-i18n="up.futurecrafts.08">Known materials</dt><dd>Chaos Engine ×1 · Syncesta ×2 · Proof of Sword Saint ×1</dd></div>
                     </dl>
                 </article>
                 <article class="up_card">
                     <span class="up_card_label">TOOL → WEAPON</span>
                     <h4>ASTRAL ORE “IRITISTA”</h4>
-                    <p><strong>LAST EMPEROR</strong>를 <strong>ASTRAL BLADE</strong>로 변환.</p>
+                    <p><strong>LAST EMPEROR</strong><span data-i18n="up.futurecrafts.09">into</span> <strong>ASTRAL BLADE</strong><span data-i18n="up.futurecrafts.10">.</span></p>
                     <dl class="up_stats">
-                        <div><dt>결과 타입</dt><dd>Twin Sword</dd></div>
-                        <div><dt>클래스</dt><dd>FO</dd></div>
-                        <div><dt>공개 재료</dt><dd>Magic Stone “Iritista” ×2 · Red Crystal ×1 · Luminous Field ×2</dd></div>
+                        <div><dt data-i18n="up.futurecrafts.11">Result type</dt><dd>Twin Sword</dd></div>
+                        <div><dt data-i18n="up.futurecrafts.12">Class</dt><dd>FO</dd></div>
+                        <div><dt data-i18n="up.futurecrafts.13">Known materials</dt><dd>Magic Stone “Iritista” ×2 · Red Crystal ×1 · Luminous Field ×2</dd></div>
                     </dl>
                 </article>
             </div>
-            <p class="up_note">두 레시피 모두 Millennium Photon Core 수량과 일부 재료가 아직 가려져 있다. 지금은 공개된 재료만 선행 파밍하고, 확정 공지 전 소비하지 않는 편이 안전하다.</p>
+            <p class="up_note" data-i18n="up.futurecrafts.14">Both recipes still hide the Millennium Photon Core count and some of the materials. Farm only what has been named, and it is safer not to spend any of it before the final announcement.</p>
         </section>
 
         <section class="g_sec" id="farming-plan">
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-live">준비 체크</span>
-                    <h3>지금 해둘 파밍</h3>
+                    <span class="up_badge is-live" data-i18n="up.farmingplan.01">Checklist</span>
+                    <h3 data-i18n="up.farmingplan.02">What to farm now</h3>
                 </div>
             </div>
             <div class="g_scroll">
                 <table class="g_table g_wide">
                     <thead>
-                        <tr><th>우선도</th><th>목표</th><th>파밍 위치</th><th>준비 이유</th></tr>
+                        <tr><th data-i18n="up.farmingplan.03">Priority</th><th data-i18n="up.farmingplan.04">Goal</th><th data-i18n="up.farmingplan.05">Where</th><th data-i18n="up.farmingplan.06">Why now</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="g_num">S</td><td class="g_name">Madam's Bracelet</td><td>New MSB · Olga Flow · 1/64</td><td>이미 적용된 전 클래스 지원 실드. Resta/Anti 사거리와 Rabarta 강화.</td></tr>
-                        <tr><td class="g_num">S</td><td class="g_name">Secret Ticket ×99</td><td>Simulator 2.0 / Random Attack Xrd Stage secret clear</td><td>Lightning Garment 즉시 교환.</td></tr>
-                        <tr><td class="g_num">A</td><td class="g_name">World of Illusion 준비</td><td>EP2 · Special</td><td>9월 1일 Soul Eraser 드롭 및 사망 판정 개선 예정.</td></tr>
-                        <tr><td class="g_num">A</td><td class="g_name">Red / Blue Fragments</td><td>Christmas Fiasco EP2 Delbiter / EP1 Dark Bringer</td><td>현재 MATRIX SCOPE 재료이며, Yellow/Green Fragment 계열 확장 예정.</td></tr>
-                        <tr><td class="g_num">A</td><td class="g_name">Chaos Engine / Syncesta</td><td>Distorted Nightmare·Silent Nightmare / 일반 드롭</td><td>Alternative Cannon 예고 레시피의 공개 재료.</td></tr>
-                        <tr><td class="g_num">B</td><td class="g_name">Iritista / Red Crystal / Luminous Field</td><td>VR Sandstorm 및 일반 드롭</td><td>Astral Blade 예고 레시피의 공개 재료.</td></tr>
+                        <tr><td class="g_num">S</td><td class="g_name">Madam's Bracelet</td><td>New MSB · Olga Flow · 1/64</td><td data-i18n="up.farmingplan.07">An all-class support shield that is already live. It extends Resta/Anti range and strengthens Rabarta.</td></tr>
+                        <tr><td class="g_num">S</td><td class="g_name">Secret Ticket ×99</td><td>Simulator 2.0 / Random Attack Xrd Stage secret clear</td><td data-i18n="up.farmingplan.08">Trade for a Lightning Garment right away.</td></tr>
+                        <tr><td class="g_num">A</td><td class="g_name" data-i18n="up.farmingplan.09">Get ready for World of Illusion</td><td>EP2 · Special</td><td data-i18n="up.farmingplan.10">From September 1 it drops Soul Eraser, and the death rule is relaxed.</td></tr>
+                        <tr><td class="g_num">A</td><td class="g_name">Red / Blue Fragments</td><td>Christmas Fiasco EP2 Delbiter / EP1 Dark Bringer</td><td data-i18n="up.farmingplan.11">Currently a MATRIX SCOPE material, and the Yellow/Green Fragment line is set to expand.</td></tr>
+                        <tr><td class="g_num">A</td><td class="g_name">Chaos Engine / Syncesta</td><td data-i18n="up.farmingplan.12">Distorted Nightmare · Silent Nightmare / normal drops</td><td data-i18n="up.farmingplan.13">A named material in the announced Alternative Cannon recipe.</td></tr>
+                        <tr><td class="g_num">B</td><td class="g_name">Iritista / Red Crystal / Luminous Field</td><td data-i18n="up.farmingplan.14">VR Sandstorm and normal drops</td><td data-i18n="up.farmingplan.15">A named material in the announced Astral Blade recipe.</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -398,12 +398,12 @@
 
         <footer class="up_source">
             <strong>Source &amp; verification</strong>
-            <p>Destiny PSOBB Discord의 <code>#announcements</code>, <code>#destiny-0944-madams-bracelet</code>, <code>#destiny-0943-toward-the-multiverse-lv3-and-new-item</code>, <code>#destiny-0942-matrix-scope-and-star-eulogy</code>, <code>#about-bazaar-quest-and-currency</code>, 퀘스트·레이드·이벤트 안내 채널을 2026-08-29에 직접 확인했다. 개발 예고는 출시 전 변경될 수 있다.</p>
+            <p><span data-i18n="up.farmingplan.16">Checked directly on 2026-08-29 in the Destiny PSOBB Discord:</span> <code>#announcements</code>, <code>#destiny-0944-madams-bracelet</code>, <code>#destiny-0943-toward-the-multiverse-lv3-and-new-item</code>, <code>#destiny-0942-matrix-scope-and-star-eulogy</code>, <code>#about-bazaar-quest-and-currency</code><span data-i18n="up.farmingplan.17">, along with the quest, raid and event channels. Anything still in preview can change before release.</span></p>
             <div class="up_source_links">
-                <a href="./event_page.html">이벤트 아카이브</a>
-                <a href="./endgame_page.html">퀘스트 난이도</a>
-                <a href="./quest_data_page.html">퀘스트 데이터</a>
-                <a href="./economy_page.html">상점·재화</a>
+                <a href="./event_page.html" data-i18n="up.farmingplan.18">Event archive</a>
+                <a href="./endgame_page.html" data-i18n="up.farmingplan.19">Quest difficulty</a>
+                <a href="./quest_data_page.html" data-i18n="up.farmingplan.20">Quest data</a>
+                <a href="./economy_page.html" data-i18n="up.farmingplan.21">Shops and currencies</a>
             </div>
         </footer>
     </main>
