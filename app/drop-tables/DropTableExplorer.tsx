@@ -274,7 +274,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     <div className={compact ? styles.quickPartyDar : styles.partyDarControl}>
       <div className={styles.partyDarLabel}>
         <span>{t("dt.party.title", "Party size")}</span>
-        <small>DAR multiplier: {Math.round(partyDarMultiplier * 100)}%</small>
+        <small>{t("dt.party.dar", "DAR multiplier")}: {Math.round(partyDarMultiplier * 100)}%</small>
       </div>
       <div className={styles.partyButtons} role="group" aria-label={compact ? t("dt.party.aria.quick", "Quick party size") : t("dt.party.aria", "Party size for drop rate calculation")}>
         {PARTY_SIZES.map((value) => (

@@ -2298,5 +2298,6 @@
   "up.alt.aegis": "Aperçu de la boîte d'objet de l'Aegis of Isolation",
   "up.aria.legend": "Comment l'information est marquée",
   "up.aria.toc": "Sur cette page",
-  "up.aria.versions": "Versions du patch"
+  "up.aria.versions": "Versions du patch",
+  "dt.party.dar": "Multiplicateur DAR"
 }

@@ -22,7 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // translate="no" 는 브라우저 자동 번역을 막는다. 사이트가 en/ko/ja/es/fr 사전을
+    // 직접 들고 있어 중복이기도 하지만, 진짜 이유는 따로 있다: 구글 번역은 텍스트 노드를
+    // <font> 로 갈아끼우는데 그러면 React 가 자기 노드를 잃어버려 갱신이 먹지 않는다.
+    // 파티 인원을 4P 로 바꿔도 DAR 표시가 100% 에서 굳던 증상이 그것이었다.
+    <html lang="en" translate="no">
       <body>
         <I18nProvider>{children}</I18nProvider>
       </body>
