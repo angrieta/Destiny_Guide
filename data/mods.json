@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "note": "Copied from Discord #game-modifications (2022-10-03 to 2026-08-26, 994 messages). Includes mods attached directly to Discord as well as ones linked to external hosts. Files are never re-hosted. See docs/discord-trade-main-2026-08-29.md section 5.",
-  "collectedAt": "2026-08-29",
+  "note": "Copied from Discord #game-modifications (2022-10-03 to 2026-08-26, 994 messages), plus a 2026-08-31 pass over the wider PSOBB modding scene (Ephinea wiki, Pioneer2 forum, Nexus Mods). Files are never re-hosted. See docs/discord-trade-main-2026-08-29.md section 5 and docs/mods-candidates-2026-08-31.md.",
+  "collectedAt": "2026-08-31",
   "sources": [
     {
       "label": "Cherry's Mods & Customization",
@@ -33,6 +33,18 @@
       "url": "https://playpso.net/forums/forum/12-development/",
       "noteKey": "mod.src.dev",
       "note": "Where people are sent when they ask how to start reskinning."
+    },
+    {
+      "label": "Ephinea Wiki — Skin repository",
+      "url": "https://wiki.pioneer2.net/w/Skin:Main_Page",
+      "noteKey": "mod.src.wiki",
+      "note": "Skins the Ephinea staff accepted and now host themselves, sorted by what they change. The one archive here whose links do not rot."
+    },
+    {
+      "label": "Nexus Mods — Phantasy Star Online",
+      "url": "https://www.nexusmods.com/phantasystaronline",
+      "noteKey": "mod.src.nexus",
+      "note": "Small, but it is where the large texture packs live. Downloading needs a free account."
     }
   ],
   "categories": [
@@ -448,6 +460,231 @@
       "noteKey": "mod.n.dfmarker",
       "url": "https://discord.com/channels/363947585154580480/1026388013762236446/1542221635392766112",
       "image": "./images/mods/df-marker.jpg"
+    },
+    {
+      "name": "Modern Glass HUD",
+      "cat": "ui",
+      "author": "Echelon",
+      "date": "2023-08-27",
+      "note": "The HUD most PSOBB players settle on: a translucent glass frame in ten colours, with an optional HD interface font. It sits in the Ephinea wiki's skin repository rather than on a file host, so the link does not rot.",
+      "noteKey": "mod.n.glasshud",
+      "warn": "Written against the Ephinea client. The two HUD files are stock PSOBB and should carry over, but the optional font is written to an Ephinea-only path — skip that file if the folder is not there.",
+      "warnKey": "mod.w.glasshud",
+      "install": [
+        "Back up data\\f256_hyouji.prs and data\\radermapframe.xvm before anything else.",
+        "Download one colour. They overwrite the same files, so only one can be installed at a time.",
+        "Extract the archive into your game folder and let it merge and replace."
+      ],
+      "installKey": "mod.i.glasshud",
+      "files": [
+        "data\\f256_hyouji.prs",
+        "data\\radermapframe.xvm",
+        "data\\ephinea\\custom\\texturejapanese.xvm — optional interface font"
+      ],
+      "url": "https://wiki.pioneer2.net/w/Skin:Modern_Glass_HUD",
+      "links": [
+        {
+          "label": "Dim Gray",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Dim%20Gray).zip"
+        },
+        {
+          "label": "Dark Sand",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Dark%20Sand).zip"
+        },
+        {
+          "label": "Olive Green",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Olive%20Green).zip"
+        },
+        {
+          "label": "Sea Green",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Sea%20Green).zip"
+        },
+        {
+          "label": "Dark Cyan",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Dark%20Cyan).zip"
+        },
+        {
+          "label": "Prussian Blue",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Prussian%20Blue).zip"
+        },
+        {
+          "label": "Midnight Blue",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Midnight%20Blue).zip"
+        },
+        {
+          "label": "Rebecca Purple",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Rebecca%20Purple).zip"
+        },
+        {
+          "label": "Dark Magenta",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Dark%20Magenta).zip"
+        },
+        {
+          "label": "Black",
+          "url": "https://wiki.pioneer2.net/files/hud/Modern%20Glass%20HUD%20(Black).zip"
+        }
+      ],
+      "image": "./images/mods/glass-hud.jpg",
+      "imageBy": "Echelon, from the Ephinea wiki"
+    },
+    {
+      "name": "Echelon's skins & modifications",
+      "cat": "background",
+      "author": "Echelon",
+      "date": "2016-11-22",
+      "note": "The most linked thread in PSOBB skinning, running since 2016. Over 25 separate releases — HD remakes of Forest, Jungle, Seaside and Pioneer 2, PSO2-styled zones and lobbies, custom effects and techniques, weapon and mag skins, and a full menu overhaul. Everything downloads on its own; the MediaFire folder holds the lot.",
+      "noteKey": "mod.n.echelon",
+      "warn": "Aimed at the Ephinea client. Area, lobby and effect files are ordinary PSOBB textures, but the weapon and mag downloads are marked (Ephinea) because they rely on that client's custom-texture loader.",
+      "warnKey": "mod.w.echelon",
+      "install": [
+        "Unless a release says otherwise, copy its \"data\" folder into the game folder and choose merge and replace.",
+        "Lobby skins are the exception — their files go into data\\ephinea\\custom\\lobby.",
+        "Back up whatever you are about to overwrite; there is no uninstaller."
+      ],
+      "installKey": "mod.i.echelon",
+      "url": "https://www.pioneer2.net/community/threads/echelons-skins-modifications.4357/",
+      "links": [
+        {
+          "label": "All of it — MediaFire folder",
+          "url": "http://www.mediafire.com/folder/l9ea03ibkizor/PSOBB_Skins_&_Mods"
+        },
+        {
+          "label": "Forest HD Upscaled",
+          "url": "http://www.mediafire.com/file/zrerc41wxqbsgb3/AREA_-_Forest_HD_Upscaled.rar/file"
+        },
+        {
+          "label": "Jungle HD Remake",
+          "url": "http://www.mediafire.com/file/5c5daeb6vs6l55n/Echelon%27s_Jungle_HD_Remake.rar/file"
+        },
+        {
+          "label": "Seaside HD Remake",
+          "url": "http://www.mediafire.com/file/23b6cgvu0gxykxo/Echelon%27s_Seaside_HD_Remake.rar/file"
+        },
+        {
+          "label": "Pioneer II HD Screens",
+          "url": "http://www.mediafire.com/file/fz3vdj7a129q64z/AREA_-_Pioneer_II_HD_Screens.rar/file"
+        },
+        {
+          "label": "HD Custom Effects & Technics",
+          "url": "http://www.mediafire.com/file/n3788s0lr6y8fal/PARTICLES_-_HD_Custom_Effects_%26_Technics.rar/file"
+        },
+        {
+          "label": "PSO2 HUD & Icons",
+          "url": "http://www.mediafire.com/file/hl6ifcat14n4p5i/PSO2_HUD_%26_Icons.rar/file"
+        },
+        {
+          "label": "PSO2 Menu Screens",
+          "url": "http://www.mediafire.com/file/9je3aea6zjjqzkc/Menus.rar"
+        },
+        {
+          "label": "Spaceport Lobby 01",
+          "url": "http://www.mediafire.com/file/4u6ms9yzieuxszk/Echelon%27s_Spaceport_Lobby_01.rar/file"
+        },
+        {
+          "label": "Gothic Lobby 11",
+          "url": "http://www.mediafire.com/file/7nvell59n3c6te2/AREA_-_Lobby_11.rar/file"
+        },
+        {
+          "label": "Luxury Lobby 12",
+          "url": "http://www.mediafire.com/file/w9mjqj1rkz6ryrk/AREA_-_Luxury_Lobby_12.rar/file"
+        },
+        {
+          "label": "PSO2 Rappy",
+          "url": "http://www.mediafire.com/file/kdxc3rb80l0szqw/ENEMIES_-_PSO2_Rappy.rar/file"
+        },
+        {
+          "label": "Translucent Photon Chair",
+          "url": "http://www.mediafire.com/file/85o4csjk6brc6qb/Echelon%27s+Translucent+photon+chair.rar"
+        }
+      ],
+      "image": "./images/mods/echelon-jungle.jpg",
+      "imageBy": "Echelon — Jungle HD Remake, from the Ephinea wiki"
+    },
+    {
+      "name": "Lilyzavoqth's Skins",
+      "cat": "object",
+      "author": "Lilyzavoqth",
+      "date": "2026-02-16",
+      "note": "68 weapon, frame and mag reskins and still growing. The Dark Flow set is what people come for — Cyan, Pink, a slimmer blade, and a Less Blinding Special Attack version that dims the flash. Also Kingdom Hearts keyblades, Dark Souls greatswords, and a long run of Nidra, Striker Unit and Tellusis mags.",
+      "noteKey": "mod.n.lily",
+      "warn": "Posted to the Ephinea forum. Most files are ordinary weapon textures, but the Tsumikiri J-Sword has a separate \"Ephinea Skins Fix\" download that only matters there.",
+      "warnKey": "mod.w.lily",
+      "install": [
+        "Unzip the download and merge its data folder with the one in your game folder.",
+        "One skin per weapon — two skins for the same weapon overwrite each other."
+      ],
+      "installKey": "mod.i.lily",
+      "url": "https://www.pioneer2.net/community/threads/lilyzavoqths-skins.32734/",
+      "links": [
+        {
+          "label": "Dark Flow — Cyan",
+          "url": "https://www.mediafire.com/file/kfpr8xwlto5lyw0/Lilyzavoqth_Dark_Flow_Cyan.zip/file"
+        },
+        {
+          "label": "Dark Flow — Pink",
+          "url": "https://www.mediafire.com/file/dqndr4wl0bkov4d/Lilyzavoqth_Dark_Flow_Pink.zip/file"
+        },
+        {
+          "label": "Dark Flow — Slim",
+          "url": "https://www.mediafire.com/file/d9dbb71mvcrdv41/Lilyzavoqth_Dark_Flow_Slim.zip/file"
+        },
+        {
+          "label": "Dark Flow — Less Blinding Special Attack",
+          "url": "https://www.mediafire.com/file/cehtyj1kxhlu23v/Lilyzavoqth_Dark_Flow_Less_Blinding_Special_Attack.zip/file"
+        },
+        {
+          "label": "Dark Flow → Greatsword of Artorias",
+          "url": "https://www.mediafire.com/file/9r4mfxbocv3tj45/Lilyzavoqth_Dark_Flow_to_Greatsword_of_Artorias.zip/file"
+        },
+        {
+          "label": "Dark Flow → Moonlight Greatsword",
+          "url": "https://www.mediafire.com/file/07gzmryfk98vuej/Lilyzavoqth_Dark_Flow_to_Moonlight_Greatsword_DS1.zip/file"
+        },
+        {
+          "label": "Jizai → Oblivion & Oathkeeper keyblades",
+          "url": "https://www.mediafire.com/file/bo1daxhlr01ir2i/Lilyzavoqth_Jizai_to_Oblivion_and_Oathkeeper_Keyblades.zip/file"
+        },
+        {
+          "label": "Striker Unit → Arctic Wings",
+          "url": "https://www.mediafire.com/file/fqblf990yn818au/Lilyzavoqth_Striker_Unit_to_Arctic_Wings.zip/file"
+        }
+      ],
+      "image": "./images/mods/lily-skins.jpg",
+      "imageBy": "Lilyzavoqth, from the Pioneer2 thread"
+    },
+    {
+      "name": "ReShade + d3d8to9",
+      "cat": "tool",
+      "author": "crosire · guide by Echelon",
+      "date": "2019-04-28",
+      "note": "Not a skin. It grades the whole rendered frame — bloom, sharpening, colour, ambient occlusion — and you tune it live in-game. PSOBB draws in Direct3D 8, so d3d8to9 has to sit in the folder first for ReShade to attach at all. Echelon's Modern PSO preset is the usual starting point.",
+      "noteKey": "mod.n.reshade",
+      "warn": "The shaders sit on top of everything, so the HUD and Lua addons get graded too and addon text can become hard to read. Turn off any compatibility mode on PSOBB.exe first — it stops ReShade attaching, and a few people have hit crashes from the renderer setting in the launcher.",
+      "warnKey": "mod.w.reshade",
+      "install": [
+        "Put d3d8to9's d3d8.dll in your game folder.",
+        "Run the ReShade installer, point it at PSOBB.exe and pick Direct3D 9.",
+        "Choose the effect packs you want when it asks.",
+        "Launch the game and press Home to open the ReShade menu. Load Echelon's preset if you would rather not tune it yourself."
+      ],
+      "installKey": "mod.i.reshade",
+      "url": "https://www.pioneer2.net/community/threads/reshade-tutorial-thread-post-processing.14234/",
+      "links": [
+        {
+          "label": "ReShade",
+          "url": "https://reshade.me/"
+        },
+        {
+          "label": "d3d8to9 releases",
+          "url": "https://github.com/crosire/d3d8to9/releases"
+        },
+        {
+          "label": "Echelon's Modern PSO preset",
+          "url": "http://www.mediafire.com/file/n452ghw9cn2eze2/RESHADE_-_Modern_PSO_Preset.rar/file"
+        }
+      ],
+      "image": "./images/mods/reshade-echelon.jpg",
+      "imageBy": "Echelon, from the Pioneer2 thread"
     }
   ]
 }

@@ -29,7 +29,7 @@
     <div class="g_head">
         <h2><span data-i18n="mod.heading">Mods and Skins</span></h2>
         <p class="g_lead" data-i18n="mod.lead">The community has been reskinning this client since 2022, and the results are scattered across four years of one Discord channel. This is that channel turned into a list: what exists, who made it, and where the file actually is.</p>
-        <p class="g_source" data-i18n="mod.source">Collected from the server's game-modifications channel on 2026-08-29 (994 messages, 2022-10 to 2026-08). Nothing is re-hosted here — every button goes to the author's own upload.</p>
+        <p class="g_source" data-i18n="mod.source">Collected from the server's game-modifications channel on 2026-08-29 (994 messages, 2022-10 to 2026-08), then widened on 2026-08-31 to the mods this channel keeps pointing at from outside. Nothing is re-hosted here — every button goes to the author's own upload.</p>
     </div>
 
     <div class="md_controls">
@@ -56,6 +56,18 @@
         </figure>
     </div>
 
+    <!-- 설치법·주의·전체 링크. 카드에 두면 높이가 제각각이 되어 격자가 어긋난다. -->
+    <div class="md_dt" data-mods-detail hidden>
+        <button type="button" class="md_lb_dim" data-dt-close aria-label="Close" tabindex="-1"></button>
+        <section class="md_dt_box" role="dialog" aria-modal="true" aria-labelledby="md-dt-title">
+            <button type="button" class="md_dt_close" data-dt-close aria-label="Close">&times;</button>
+            <h3 class="md_dt_title" id="md-dt-title"></h3>
+            <p class="md_dt_meta"></p>
+            <div class="md_dt_body"></div>
+            <a class="md_dt_get md_get" href="#" target="_blank" rel="noreferrer"></a>
+        </section>
+    </div>
+
     <section class="g_sec" id="install">
         <h3><span data-i18n="mod.install.title">Before you install anything</span></h3>
         <ul class="ev_list">
@@ -79,7 +91,8 @@
             <li data-i18n="mod.credit.deleted">The earliest posts, from October 2022, came from an <strong>account that has since been deleted</strong>. The effects pack from that run is named "Cherry's_PSOBB_Effects.zip" and the same Momoka series continues later under Cherry, so they are credited to Cherry as the same person.</li>
             <li data-i18n="mod.credit.discord">Mods uploaded straight to Discord link to the <strong>original post</strong> rather than the file, because attachment links expire. You need to be in the server to open them.</li>
             <li data-i18n="mod.credit.host">Nothing here is re-hosted. Every download button leads to the author's original upload, and this page claims no ownership over any of it.</li>
-            <li data-i18n="mod.credit.shots">31 of the previews are the original screenshots posted in the channel; a few effect mods were only ever shown as video, so a single frame was taken from it. The remaining eight are sound packs or external tools, where a screenshot says nothing, or never had a preview posted — they keep a placeholder rather than an unrelated image.</li>
+            <li><strong data-i18n="mod.credit.outside">Four entries come from outside this Discord</strong> — <span data-i18n="mod.credit.outsideNote">Echelon and Lilyzavoqth publish on the Ephinea wiki and the Pioneer2 forum, and the channel keeps sending people there; ReShade is a general tool. Several are written against the Ephinea client, so those cards carry a warning badge and spell out what to watch for behind the install button — finding that out after downloading is too late.</span></li>
+            <li data-i18n="mod.credit.shots">35 of the previews are the mod author's own screenshot: 31 posted in the channel, four taken from the page the mod lives on. A few effect mods were only ever shown as video, so a single frame was taken from it. The remaining eight are sound packs or external tools, where a screenshot says nothing, or never had a preview posted — they keep a placeholder rather than an unrelated image.</li>
             <li data-i18n="mod.credit.report">If you made something on this page and want it removed or corrected, say so in the server and it will be changed.</li>
         </ul>
     </section>

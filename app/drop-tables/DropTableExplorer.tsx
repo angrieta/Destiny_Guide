@@ -14,7 +14,13 @@ const ITEM_TYPES: Array<"All" | ItemType> = ["All", "Weapon", "Armor", "Shield",
 const EPISODES = [1, 2, 4];
 type PartySize = 1 | 2 | 3 | 4;
 const PARTY_SIZES: PartySize[] = [1, 2, 3, 4];
-const PARTY_DAR_MULTIPLIERS: Record<PartySize, number> = { 1: 1, 2: 0.8, 3: 0.7, 4: 0.6 };
+/**
+ * 인원이 늘면 DAR 이 깎인다. Ver.0.945 (2026-09-01) 에서 그 폭이 완화됐다.
+ *   이전  1P 100% · 2P 80% · 3P 70% · 4P 60%
+ *   현재  1P 100% · 2P 90% · 3P 85% · 4P 80%
+ * 출처: Discord #destiny-0945-game-update-and-new-item, VEL(JP), 2026-08-30.
+ */
+const PARTY_DAR_MULTIPLIERS: Record<PartySize, number> = { 1: 1, 2: 0.9, 3: 0.85, 4: 0.8 };
 type DropRateMultiplier = 1 | 2 | 3;
 const DROP_RATE_MULTIPLIERS: DropRateMultiplier[] = [1, 2, 3];
 

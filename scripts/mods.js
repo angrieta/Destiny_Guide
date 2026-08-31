@@ -37,7 +37,12 @@
       if (/discord\.com/.test(host)) return t("mod.onDiscord", "Discord post");
       if (/playpso/.test(host)) return "PlayPSO";
       if (/universps/.test(host)) return "Univers-PS";
+      // 위키는 파일을 직접 들고 있고 포럼은 글이라, 어느 쪽으로 나가는지 구분해 준다.
+      if (/^wiki\.pioneer2/.test(host)) return "Ephinea wiki";
       if (/pioneer2/.test(host)) return "Pioneer2";
+      if (/nexusmods/.test(host)) return "Nexus Mods";
+      if (/github/.test(host)) return "GitHub";
+      if (/reshade/.test(host)) return "ReShade";
       if (/steampowered/.test(host)) return "Steam";
       if (/reddit/.test(host)) return "Reddit";
       return host;
@@ -56,11 +61,55 @@
     var data = null;
     var category = "all";
 
+    /**
+     * 설치법은 한 줄씩 번역 키를 따로 준다.
+     *
+     * 사전이 평평한 키/값이라 배열을 통째로 번역할 수가 없다. installKey 가 "mod.i.reshade"
+     * 면 각 줄은 "mod.i.reshade.1", ".2" … 를 쓴다. 키가 없으면 영어 원문이 그대로 남는다.
+     */
+    function steps(mod) {
+      if (!mod.install || !mod.install.length) return "";
+      return '<ol class="md_steps">' + mod.install.map(function (line, i) {
+        var key = mod.installKey ? mod.installKey + "." + (i + 1) : "";
+        return "<li" + (key ? ' data-i18n="' + escapeHtml(key) + '"' : "") + ">" + escapeHtml(line) + "</li>";
+      }).join("") + "</ol>";
+    }
+
+    function fileList(mod) {
+      if (!mod.files || !mod.files.length) return "";
+      // 덮어쓰는 경로는 번역하지 않는다. 게임 파일명이라 원문 그대로가 맞다.
+      return '<p class="md_sub" data-i18n="mod.files">Files it replaces</p>' +
+        '<ul class="md_files">' + mod.files.map(function (f) {
+          return "<li><code>" + escapeHtml(f) + "</code></li>";
+        }).join("") + "</ul>";
+    }
+
+    function linkList(mod) {
+      if (!mod.links || !mod.links.length) return "";
+      return '<p class="md_sub" data-i18n="mod.moreLinks">Every download</p>' +
+        '<ul class="md_links">' + mod.links.map(function (l) {
+          return '<li><a href="' + escapeHtml(l.url) + '" target="_blank" rel="noreferrer">' +
+            escapeHtml(l.label) + "</a></li>";
+        }).join("") + "</ul>";
+    }
+
+    /**
+     * 카드에 자세한 내용을 펼쳐 두면 목록이 망가진다.
+     *
+     * 외부 모드 몇 개는 설치가 3~4단계이고 받을 링크가 열 개가 넘는다. 그걸 카드
+     * 안에 그대로 넣었더니 카드 높이가 제각각이 되어 격자가 어긋났다. 이제는
+     * 카드에 버튼만 두고, 내용은 아래 상세창에서 보여 준다.
+     */
+    function hasDetail(mod) {
+      return Boolean(mod.warn || (mod.install && mod.install.length) ||
+                     (mod.files && mod.files.length) || (mod.links && mod.links.length));
+    }
+
     function card(mod, labels) {
       /* 미리보기는 카드에서 16:9 로 잘리므로, 눌러서 원본 비율로 볼 수 있게 버튼으로 감싼다. */
       var media = mod.image
         ? '<button type="button" class="md_shot_btn" data-full="' + escapeHtml(mod.image) +
-          '" data-name="' + escapeHtml(mod.name) + '" data-by="' + escapeHtml(mod.author) +
+          '" data-name="' + escapeHtml(mod.name) + '" data-by="' + escapeHtml(mod.imageBy || mod.author) +
           '" title="' + escapeHtml(t("mod.viewFull", "View the full image")) + '">' +
           '<img class="md_shot" src="' + escapeHtml(mod.image) + '" alt="' + escapeHtml(mod.name) + '" loading="lazy">' +
           "</button>"
@@ -71,6 +120,16 @@
           escapeHtml(mod.note) + "</p>"
         : "";
 
+      /* 서버가 다르면 안 도는 것들이 있다. 카드에는 표시만 하고 내용은 상세창에서 읽힌다. */
+      var flag = mod.warn
+        ? '<span class="md_flag" data-i18n="mod.warnBadge">Read before installing</span>'
+        : "";
+
+      var detail = hasDetail(mod)
+        ? '<button type="button" class="md_detail_btn" data-detail="' + escapeHtml(mod.name) + '" ' +
+          'data-i18n="mod.more">How to install</button>'
+        : "";
+
       return (
         '<article class="md_card' + (mod.featured ? " is_featured" : "") + '">' +
         media +
@@ -79,11 +138,13 @@
         (mod.featured ? '<span class="md_star" title="' + escapeHtml(t("mod.featuredHint", "Most asked for in the channel")) + '">★</span>' : "") +
         "</h3>" +
         '<p class="md_meta"><span class="md_author"' + (mod.authorKey ? ' data-i18n="' + escapeHtml(mod.authorKey) + '"' : "") + ">" +
-        escapeHtml(mod.author) + "</span><span class=\"md_date\">" + escapeHtml(mod.date) + "</span></p>" +
+        escapeHtml(mod.author) + '</span><span class="md_date">' + escapeHtml(mod.date) + "</span>" + flag + "</p>" +
         note +
+        '<div class="md_actions">' +
+        detail +
         '<a class="md_get" href="' + escapeHtml(mod.url) + '" target="_blank" rel="noreferrer">' +
         escapeHtml(t("mod.get", "Get it")) + " · " + escapeHtml(hostLabel(mod.url)) +
-        "</a>" +
+        "</a></div>" +
         "</div></article>"
       );
     }
@@ -211,6 +272,66 @@
         var trigger = event.target.closest && event.target.closest(".md_shot_btn");
         if (trigger) { open(trigger); return; }
         if (event.target.closest && event.target.closest("[data-lb-close]")) close();
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !box.hidden) close();
+      });
+    })();
+
+    /* ── 상세창 ─────────────────────────────────────────────────────────
+       설치 단계와 받을 링크는 여기서만 보여 준다. 카드에 두면 격자가 어긋난다. */
+    (function setupDetail() {
+      var box = document.querySelector("[data-mods-detail]");
+      if (!box) return;
+
+      var title = box.querySelector(".md_dt_title");
+      var meta = box.querySelector(".md_dt_meta");
+      var body = box.querySelector(".md_dt_body");
+      var get = box.querySelector(".md_dt_get");
+      var closeButton = box.querySelector(".md_dt_close");
+      var lastFocus = null;
+
+      function open(name, trigger) {
+        var mod = data && data.mods.filter(function (m) { return m.name === name; })[0];
+        if (!mod) return;
+
+        lastFocus = trigger;
+        title.textContent = mod.name;
+        meta.textContent = mod.author + " · " + mod.date;
+
+        var warn = mod.warn
+          ? '<p class="md_warn"><b data-i18n="mod.warnLabel">Before you download</b> ' +
+            '<span' + (mod.warnKey ? ' data-i18n="' + escapeHtml(mod.warnKey) + '"' : "") + ">" +
+            escapeHtml(mod.warn) + "</span></p>"
+          : "";
+        var desc = mod.note
+          ? '<p class="md_dt_note"' + (mod.noteKey ? ' data-i18n="' + escapeHtml(mod.noteKey) + '"' : "") + ">" +
+            escapeHtml(mod.note) + "</p>"
+          : "";
+
+        body.innerHTML = warn + desc + steps(mod) + fileList(mod) + linkList(mod);
+        get.href = mod.url;
+        get.textContent = t("mod.get", "Get it") + " · " + hostLabel(mod.url);
+
+        applyI18n(box);
+        box.hidden = false;
+        document.body.classList.add("md_lb_open");
+        closeButton.focus();
+      }
+
+      function close() {
+        box.hidden = true;
+        body.innerHTML = "";
+        document.body.classList.remove("md_lb_open");
+        if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+        lastFocus = null;
+      }
+
+      document.addEventListener("click", function (event) {
+        var trigger = event.target.closest && event.target.closest("[data-detail]");
+        if (trigger) { open(trigger.getAttribute("data-detail"), trigger); return; }
+        if (event.target.closest && event.target.closest("[data-dt-close]")) close();
       });
 
       document.addEventListener("keydown", function (event) {

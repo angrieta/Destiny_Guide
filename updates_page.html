@@ -109,14 +109,36 @@
             <div class="up_section_head">
                 <div>
                     <span class="up_badge is-next">확정 예고</span>
-                    <h3>9월 1일 업데이트</h3>
+                    <h3>Ver.0.945 — 9월 1일 업데이트</h3>
                 </div>
                 <time datetime="2026-09-01">ETA 2026.09.01</time>
             </div>
 
+            <p class="up_lead">2026-08-30 공개된 정식 패치노트입니다. 정기 서버 재시작 이후 적용됩니다.</p>
+
+            <!-- 파티 DAR 완화는 이 패치에서 가장 체감이 큰 변경이라 맨 앞에 둔다.
+                 드랍 테이블의 계산식도 이 값으로 바꿔 두었다. -->
+            <article class="up_card up_card_wide">
+                <span class="up_card_label">DROP RATE</span>
+                <h4>파티 DAR 페널티 완화</h4>
+                <p class="up_flavor">인원이 늘수록 깎이던 DAR(무언가라도 떨어질 확률) 감소 폭이 줄어듭니다. 4인 기준 <strong>60% → 80%</strong>로, 파티 사냥의 손해가 크게 줄어듭니다.</p>
+                <div class="g_scroll">
+                    <table class="g_table g_mid">
+                        <thead>
+                            <tr><th>인원</th><th>1P</th><th>2P</th><th>3P</th><th>4P</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row">이전</th><td>100%</td><td>80%</td><td>70%</td><td>60%</td></tr>
+                            <tr><th scope="row">0.945</th><td>100%</td><td><strong>90%</strong></td><td><strong>85%</strong></td><td><strong>80%</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a class="up_text_link" href="./drop-tables/">드랍 테이블에서 계산해 보기 →</a>
+            </article>
+
             <div class="up_feature">
                 <figure class="up_feature_media">
-                    <img src="./images/discord/2026-08/v0944-soul-eraser-preview.png" alt="Soul Eraser의 녹색 투사체 시연">
+                    <img src="./images/discord/2026-08/v0945-soul-eraser.jpg" alt="Soul Eraser의 녹색 투사체 시연">
                 </figure>
                 <div class="up_feature_copy">
                     <span class="up_card_label">NEW WEAPON</span>
@@ -125,32 +147,67 @@
                     <dl class="up_stats up_stats_compact">
                         <div><dt>타입</dt><dd>Slicer</dd></div>
                         <div><dt>클래스</dt><dd>Human / Newman</dd></div>
+                        <div><dt>ATP</dt><dd>550 – 700</dd></div>
+                        <div><dt>ATA</dt><dd>45</dd></div>
                         <div><dt>Special</dt><dd>Hell</dd></div>
                         <div><dt>사거리</dt><dd>130.0</dd></div>
                         <div><dt>타깃</dt><dd>7</dd></div>
-                        <div><dt>획득</dt><dd>World of Illusion · Olga Flow</dd></div>
+                        <div><dt>획득</dt><dd>World of Illusion · Olga Flow · 전 ID <strong>1/73</strong></dd></div>
                     </dl>
                 </div>
             </div>
 
             <div class="up_grid up_grid_two up_followups">
                 <article class="up_card">
-                    <h4>같이 적용될 시스템 변경</h4>
+                    <span class="up_card_label">BAZAAR TRADE</span>
+                    <h4>MIRACLE CHAIN</h4>
+                    <p class="up_flavor">“지원 테크닉을 시전할 수 있는 특별한 검. 여성만 사용할 수 있다.”</p>
+                    <dl class="up_stats up_stats_compact">
+                        <div><dt>타입</dt><dd>Cane</dd></div>
+                        <div><dt>클래스</dt><dd>여성 캐릭터 전용</dd></div>
+                        <div><dt>ATP</dt><dd>700 – 750</dd></div>
+                        <div><dt>ATA</dt><dd>45</dd></div>
+                        <div><dt>Special</dt><dd>Lv6 Shifta / Deband</dd></div>
+                        <div><dt>사거리</dt><dd>14.0 · 타깃 1</dd></div>
+                        <div><dt>테크 보정</dt><dd>Resta / Shifta / Deband 범위 +100%</dd></div>
+                        <div><dt>교환처</dt><dd>Phantastic Bazaar · Another Shop (RAcaseal)</dd></div>
+                    </dl>
+                    <p class="up_note">재료: Fragments of Orb [Yellow] ×1 · [Green] ×1 · Weapon Crystal Badge ×10</p>
+                </article>
+
+                <article class="up_card">
+                    <span class="up_card_label">QUEST</span>
+                    <h4>퀘스트 변경</h4>
                     <ul class="up_list">
-                        <li>TP가 부족해도 <strong>Spirit special이 miss 처리되지 않도록</strong> 변경.</li>
-                        <li>명령어로 <strong>HP Material 초기화</strong> 지원 예정.</li>
-                        <li><strong>Fragments of Orb [Yellow] / [Green]</strong>을 기존 퀘스트에 추가.</li>
-                        <li>World of Illusion도 사망 시 도시 귀환 판정을 제거할 계획.</li>
-                        <li>일부 무기 업데이트 포함.</li>
+                        <li><strong>World of Illusion [EP2]</strong> — Olga Flow가 SOUL ERASER 드랍(전 ID 1/73). <strong>사망해도 도시로 강제 귀환하지 않습니다</strong>(동료 부활 또는 Scape Doll 사용 가능). 단, <strong>Anniversary 버전은 기존 사망 페널티 유지</strong>.</li>
+                        <li><strong>Lost RIOT RAYGUN [EP2]</strong> — 시간 제한 제거. Gol Dragon이 <strong>Fragments of Orb [Yellow]</strong> 드랍 (Yellow · White, 1/20).</li>
+                        <li><strong>Lost Devil's SCEPTER [EP2]</strong> — 시간 제한 제거. Gal Gryphon이 <strong>Fragments of Orb [Green]</strong> 드랍 (Viridia · Greenill, 1/16).</li>
+                        <li><strong>The Phantastic Bazaar [EP2]</strong> — Another Shop에 MIRACLE CHAIN 추가, 안내 NPC 배치.</li>
+                        <li class="up_prior"><strong>Lost Soul Ripper [Extreme]</strong> — 9월 1일부터 2주간 복각 예정. <em>0.945 패치노트가 아니라 그 이전 공지에 있던 내용이라, 이번 노트에서는 다시 언급되지 않았습니다.</em></li>
                     </ul>
                 </article>
+            </div>
+
+            <div class="up_grid up_grid_two up_followups">
                 <article class="up_card">
-                    <h4>MIRACLE CHAIN & 한정 복각</h4>
+                    <span class="up_card_label">QOL</span>
+                    <h4>그 밖의 시스템 변경</h4>
                     <ul class="up_list">
-                        <li><strong>MIRACLE CHAIN</strong>이 Other Shop에 추가.</li>
-                        <li>여성 전용 무기.</li>
-                        <li>Special attack이 <strong>Lv6 Shifta / Deband</strong>를 시전.</li>
-                        <li><strong>Lost Soul Ripper [Extreme]</strong>이 9월 1일부터 2주간 플레이 가능 예정.</li>
+                        <li><code>/matreset</code> 명령어로 <strong>HP Material 초기화</strong>.</li>
+                        <li><code>/lobby</code> 명령어를 <strong>퀘스트 밖에서도</strong> 사용 가능.</li>
+                        <li>TP가 낮아도 <strong>Spirit special이 miss 처리되지 않습니다</strong>.</li>
+                    </ul>
+                </article>
+
+                <article class="up_card">
+                    <span class="up_card_label">ITEM</span>
+                    <h4>무기 사거리 · 타깃 상향</h4>
+                    <ul class="up_list">
+                        <li>타깃 <strong>1 → 3</strong>, 사거리 확장 — Double Cannon · Girasole · Flamberge · Vivienne · Monkey King Bar · Black King Bar · Claw of Elements</li>
+                        <li>S-Berill's Hands #0 — 타깃 1 → 3</li>
+                        <li>S-Berill's Hands #1 — 타깃 1 → 3, <strong>ATP +200</strong></li>
+                        <li>Sacred Duster — 타깃 <strong>1 → 5</strong></li>
+                        <li>Daisy Chain — <strong>전 클래스 착용 가능</strong> (획득 경로는 추후 공개)</li>
                     </ul>
                 </article>
             </div>
