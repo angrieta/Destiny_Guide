@@ -17,6 +17,12 @@
  *   POST /api/entries/:id/update   수정
  *   POST /api/entries/:id/delete   삭제
  *
+ *   GET  /api/suggestions?sort=&status=&cursor=   건의사항 목록 (공개)
+ *   POST /api/suggestions                         등록
+ *   POST /api/suggestions/:id/verify|update|delete  본인 비밀번호
+ *   POST /api/suggestions/:id/vote                공감 (비밀번호 없음)
+ *   POST /api/suggestions/:id/status              처리 상태 — 운영자만
+ *
  * 수정·삭제까지 POST 인 이유는 비밀번호를 본문에 담아야 하기 때문이다. 주소에 실으면
  * 브라우저 기록과 서버 로그에 그대로 남고, DELETE 의 본문은 떼어 버리는 중간 장비가 있다.
  */
@@ -522,6 +528,251 @@ async function updateEntry(row: Row, request: Request, env: Env, body: Record<st
   return ok({ entry: shape(updated as Row) }, request, env);
 }
 
+/* ── 건의사항 ────────────────────────────────────────────────────────────── */
+
+const MAX_NICKNAME = 24;
+const MAX_TITLE = 80;
+const MAX_BODY = 1000;
+/** 운영자만 바꿀 수 있는 처리 상태. 여기 없는 값은 받지 않는다. */
+const STATUSES = ["open", "planned", "done", "declined"] as const;
+const MAX_REPLY = 300;
+
+type Suggestion = {
+  id: number;
+  nickname: string;
+  title: string;
+  body: string;
+  lang: string;
+  title_i18n: string;
+  body_i18n: string;
+  status: string;
+  reply: string;
+  votes: number;
+  pw_hash: string;
+  pw_salt: string;
+  created_at: number;
+  updated_at: number;
+};
+
+const shapeSuggestion = (row: Suggestion, voted: boolean) => ({
+  id: row.id,
+  nickname: row.nickname,
+  title: row.title,
+  body: row.body,
+  lang: row.lang,
+  titleI18n: safeParse(row.title_i18n, {}),
+  bodyI18n: safeParse(row.body_i18n, {}),
+  status: row.status,
+  reply: row.reply,
+  votes: row.votes,
+  voted,
+  createdAt: row.created_at,
+  updatedAt: row.updated_at,
+});
+
+const isAdmin = (password: string, env: Env) =>
+  Boolean(env.ADMIN_PASSWORD) && sameSecret(password, env.ADMIN_PASSWORD);
+
+async function listSuggestions(request: Request, env: Env): Promise<Response> {
+  const url = new URL(request.url);
+  const cursor = Math.max(0, Number(url.searchParams.get("cursor") ?? "0") || 0);
+  const status = clean(url.searchParams.get("status"), 12);
+  const top = url.searchParams.get("sort") === "top";
+
+  const where = STATUSES.includes(status as typeof STATUSES[number]) ? `WHERE status = ?3` : "";
+  const order = top ? "votes DESC, created_at DESC" : "created_at DESC";
+
+  const statement = where
+    ? env.DB.prepare(`SELECT * FROM suggestions ${where} ORDER BY ${order} LIMIT ?1 OFFSET ?2`)
+        .bind(PAGE_SIZE + 1, cursor, status)
+    : env.DB.prepare(`SELECT * FROM suggestions ORDER BY ${order} LIMIT ?1 OFFSET ?2`)
+        .bind(PAGE_SIZE + 1, cursor);
+
+  const { results } = await statement.all<Suggestion>();
+  const rows = results ?? [];
+  const hasMore = rows.length > PAGE_SIZE;
+  const page = rows.slice(0, PAGE_SIZE);
+
+  /*
+   * 내가 이미 누른 글이 어느 것인지 표시해야 한다. 한 건씩 물으면 쿼리가 쉰 번
+   * 나가므로, 이 화면에 있는 것만 한 번에 물어 온다.
+   */
+  const ip = clientIp(request);
+  const mine = new Set<number>();
+  if (page.length) {
+    const marks = page.map(() => "?").join(",");
+    const { results: voted } = await env.DB.prepare(
+      `SELECT suggestion_id FROM votes WHERE ip = ? AND suggestion_id IN (${marks})`,
+    )
+      .bind(ip, ...page.map((r) => r.id))
+      .all<{ suggestion_id: number }>();
+    for (const v of voted ?? []) mine.add(v.suggestion_id);
+  }
+
+  const total = await env.DB.prepare(`SELECT count(*) AS n FROM suggestions`).first<{ n: number }>();
+
+  return ok(
+    {
+      suggestions: page.map((row) => shapeSuggestion(row, mine.has(row.id))),
+      nextCursor: hasMore ? cursor + PAGE_SIZE : null,
+      total: total?.n ?? 0,
+    },
+    request,
+    env,
+  );
+}
+
+async function createSuggestion(request: Request, env: Env, body: Record<string, unknown>) {
+  const nickname = clean(body.nickname, MAX_NICKNAME);
+  const title = clean(body.title, MAX_TITLE);
+  // 본문은 줄바꿈을 살린다. clean() 은 공백을 하나로 합치므로 줄 단위로 손질한다.
+  const text = typeof body.body === "string"
+    ? body.body.split(/\r?\n/).map((line) => clean(line, MAX_BODY)).join("\n").trim().slice(0, MAX_BODY)
+    : "";
+  const password = cleanPassword(body.password);
+
+  if (!title) return fail(400, "title_required", request, env);
+  if (!text) return fail(400, "body_required", request, env);
+  if (password.length < MIN_PASSWORD) return fail(400, "password_short", request, env);
+  if (password.length > MAX_PASSWORD) return fail(400, "password_long", request, env);
+
+  const ip = clientIp(request);
+  if ((await countRecent(env, ip, "write")) >= WRITES_PER_HOUR) return fail(429, "slow_down", request, env);
+
+  const lang = guessLang(title + " " + text, body.lang);
+  const [titleI18n, bodyI18n] = await Promise.all([
+    translateNote(env, title, lang),
+    translateNote(env, text, lang),
+  ]);
+
+  const salt = toHex(crypto.getRandomValues(new Uint8Array(16)).buffer);
+  const hash = await hashPassword(password, salt);
+  const now = Date.now();
+
+  const row = await env.DB.prepare(
+    `INSERT INTO suggestions
+       (nickname, title, body, lang, title_i18n, body_i18n, pw_hash, pw_salt, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING *`,
+  )
+    .bind(nickname, title, text, lang, JSON.stringify(titleI18n), JSON.stringify(bodyI18n), hash, salt, now, now)
+    .first<Suggestion>();
+
+  await mark(env, ip, "write");
+  return json({ suggestion: shapeSuggestion(row as Suggestion, false) }, 201, request, env);
+}
+
+/** 수정·삭제·상태변경이 거치는 관문. 운영자 비밀번호도 통과한다. */
+async function unlockSuggestion(
+  id: number,
+  request: Request,
+  env: Env,
+  body: Record<string, unknown>,
+): Promise<Suggestion | Response> {
+  const ip = clientIp(request);
+  if ((await countRecent(env, ip, "fail")) >= FAILS_PER_HOUR) return fail(429, "too_many_tries", request, env);
+
+  const row = await env.DB.prepare(`SELECT * FROM suggestions WHERE id = ?`).bind(id).first<Suggestion>();
+  if (!row) return fail(404, "not_found", request, env);
+
+  const password = cleanPassword(body.password);
+  if (!password) { await mark(env, ip, "fail"); return fail(403, "wrong_password", request, env); }
+  if (isAdmin(password, env)) return row;
+
+  const attempt = await hashPassword(password, row.pw_salt);
+  if (!sameSecret(attempt, row.pw_hash)) {
+    await mark(env, ip, "fail");
+    return fail(403, "wrong_password", request, env);
+  }
+  return row;
+}
+
+async function updateSuggestion(row: Suggestion, request: Request, env: Env, body: Record<string, unknown>) {
+  const nickname = typeof body.nickname === "string" ? clean(body.nickname, MAX_NICKNAME) : row.nickname;
+  const title = clean(body.title, MAX_TITLE) || row.title;
+  const text = typeof body.body === "string"
+    ? body.body.split(/\r?\n/).map((line) => clean(line, MAX_BODY)).join("\n").trim().slice(0, MAX_BODY) || row.body
+    : row.body;
+
+  const ip = clientIp(request);
+  if ((await countRecent(env, ip, "write")) >= WRITES_PER_HOUR) return fail(429, "slow_down", request, env);
+
+  // 글이 그대로면 다시 번역하지 않는다.
+  let lang = row.lang;
+  let titleI18n = row.title_i18n;
+  let bodyI18n = row.body_i18n;
+  if (title !== row.title || text !== row.body) {
+    lang = guessLang(title + " " + text, body.lang ?? row.lang);
+    const [tt, bb] = await Promise.all([translateNote(env, title, lang), translateNote(env, text, lang)]);
+    titleI18n = JSON.stringify(tt);
+    bodyI18n = JSON.stringify(bb);
+  }
+
+  const updated = await env.DB.prepare(
+    `UPDATE suggestions SET nickname = ?, title = ?, body = ?, lang = ?, title_i18n = ?, body_i18n = ?,
+       updated_at = ? WHERE id = ? RETURNING *`,
+  )
+    .bind(nickname, title, text, lang, titleI18n, bodyI18n, Date.now(), row.id)
+    .first<Suggestion>();
+
+  await mark(env, ip, "write");
+  return ok({ suggestion: shapeSuggestion(updated as Suggestion, false) }, request, env);
+}
+
+/** 처리 상태와 운영자 한 줄. 운영자 비밀번호로만 된다. */
+async function setStatus(request: Request, env: Env, id: number, body: Record<string, unknown>) {
+  const password = cleanPassword(body.password);
+  if (!isAdmin(password, env)) {
+    await mark(env, clientIp(request), "fail");
+    return fail(403, "admin_only", request, env);
+  }
+
+  const status = clean(body.status, 12);
+  if (!STATUSES.includes(status as typeof STATUSES[number])) return fail(400, "bad_status", request, env);
+  const reply = typeof body.reply === "string" ? clean(body.reply, MAX_REPLY) : "";
+
+  const row = await env.DB.prepare(
+    `UPDATE suggestions SET status = ?, reply = ?, updated_at = ? WHERE id = ? RETURNING *`,
+  )
+    .bind(status, reply, Date.now(), id)
+    .first<Suggestion>();
+  if (!row) return fail(404, "not_found", request, env);
+
+  return ok({ suggestion: shapeSuggestion(row, false) }, request, env);
+}
+
+/**
+ * 공감 누르기. 누른 것을 다시 누르면 취소된다.
+ *
+ * 표를 세는 값과 누른 기록을 따로 두면 어긋날 수 있어서, 둘을 한 batch 로 묶는다.
+ */
+async function toggleVote(request: Request, env: Env, id: number) {
+  const ip = clientIp(request);
+  const row = await env.DB.prepare(`SELECT id FROM suggestions WHERE id = ?`).bind(id).first<{ id: number }>();
+  if (!row) return fail(404, "not_found", request, env);
+
+  const already = await env.DB.prepare(`SELECT 1 AS n FROM votes WHERE suggestion_id = ? AND ip = ?`)
+    .bind(id, ip)
+    .first<{ n: number }>();
+
+  if (already) {
+    await env.DB.batch([
+      env.DB.prepare(`DELETE FROM votes WHERE suggestion_id = ? AND ip = ?`).bind(id, ip),
+      // 어떤 이유로든 0 밑으로 내려가지 않게 한다.
+      env.DB.prepare(`UPDATE suggestions SET votes = max(0, votes - 1) WHERE id = ?`).bind(id),
+    ]);
+  } else {
+    await env.DB.batch([
+      env.DB.prepare(`INSERT INTO votes (suggestion_id, ip, at) VALUES (?, ?, ?)`).bind(id, ip, Date.now()),
+      env.DB.prepare(`UPDATE suggestions SET votes = votes + 1 WHERE id = ?`).bind(id),
+    ]);
+  }
+
+  const after = await env.DB.prepare(`SELECT votes FROM suggestions WHERE id = ?`)
+    .bind(id)
+    .first<{ votes: number }>();
+  return ok({ votes: after?.votes ?? 0, voted: !already }, request, env);
+}
+
 /* ── 라우팅 ──────────────────────────────────────────────────────────────── */
 
 export default {
@@ -534,12 +785,36 @@ export default {
     }
 
     if (path === "/api/entries" && request.method === "GET") return listEntries(request, env);
+    if (path === "/api/suggestions" && request.method === "GET") return listSuggestions(request, env);
 
     if (request.method === "POST") {
       const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
       if (!body) return fail(400, "bad_body", request, env);
 
       if (path === "/api/entries") return createEntry(request, env, body);
+      if (path === "/api/suggestions") return createSuggestion(request, env, body);
+
+      const sugg = path.match(/^\/api\/suggestions\/(\d+)\/(verify|update|delete|status|vote)$/);
+      if (sugg) {
+        const id = Number(sugg[1]);
+        const action = sugg[2];
+
+        // 공감은 비밀번호가 없다. 아무나 한 번씩 누를 수 있어야 한다.
+        if (action === "vote") return toggleVote(request, env, id);
+        if (action === "status") return setStatus(request, env, id, body);
+
+        const found = await unlockSuggestion(id, request, env, body);
+        if (found instanceof Response) return found;
+
+        if (action === "verify") return ok({ suggestion: shapeSuggestion(found, false) }, request, env);
+        if (action === "update") return updateSuggestion(found, request, env, body);
+
+        await env.DB.batch([
+          env.DB.prepare(`DELETE FROM votes WHERE suggestion_id = ?`).bind(id),
+          env.DB.prepare(`DELETE FROM suggestions WHERE id = ?`).bind(id),
+        ]);
+        return ok({ deleted: id }, request, env);
+      }
 
       const match = path.match(/^\/api\/entries\/(\d+)\/(verify|update|delete)$/);
       if (match) {

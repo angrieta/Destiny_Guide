@@ -127,6 +127,7 @@ export function SiteHeader({ active, theme, onThemeToggle }: SiteHeaderProps) {
               <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
               <a href="../mods_page.html">{t("header.nav.mods", "Mods and Skins")}</a>
               <a href="../roster_page.html">{t("header.nav.roster", "Name Directory")}</a>
+              <a href="../suggest_page.html">{t("header.nav.suggest", "Suggestions")}</a>
               <a href="../redeem/" aria-current={current("redeem")}>{t("header.nav.redeem", "Token Redeem")}</a>
             </div>
           </details>

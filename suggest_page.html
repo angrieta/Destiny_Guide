@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="sug.title">DestinyGuide - Suggestions</title>
+    <meta name="description" content="Ask for something on the Destiny PSOBB guide: post an idea, see what other players want, and follow what the staff decided.">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <link rel="stylesheet" href="./styles/roster.css">
+    <link rel="stylesheet" href="./styles/suggest.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/suggest.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/design-system.css">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+    <script src="./scripts/site_search.js"></script>
+<!-- 헤더종료 -->
+
+<body class="suggest_page">
+<main class="g_page">
+    <div class="g_head">
+        <h2><span data-i18n="sug.heading">Suggestions</span></h2>
+        <p class="g_lead" data-i18n="sug.lead">Something missing, something wrong, something you keep wishing this site did. Write it here rather than losing it in a Discord scroll. Other players can back the ones they want too.</p>
+        <p class="g_source" data-i18n="sug.source">Write in your own language — every post is shown to each reader in theirs. You pick a password when you post, and only that password can edit or delete it.</p>
+    </div>
+
+    <form class="rs_form sg_form" data-sg-form>
+        <div class="rs_field rs_field_wide">
+            <label for="sg-title" data-i18n="sug.form.title">What would you like?</label>
+            <input id="sg-title" type="text" maxlength="80" autocomplete="off" required
+                   data-sg-title placeholder="One line — the request itself" data-i18n-placeholder="sug.form.titleHint">
+        </div>
+        <div class="rs_field rs_field_wide">
+            <label for="sg-body" data-i18n="sug.form.body">Tell us a bit more</label>
+            <textarea id="sg-body" maxlength="1000" rows="4" required
+                      data-sg-body placeholder="What you were doing, and what got in the way." data-i18n-placeholder="sug.form.bodyHint"></textarea>
+        </div>
+        <div class="rs_field">
+            <label for="sg-nickname" data-i18n="sug.form.nickname">Your name (optional)</label>
+            <input id="sg-nickname" type="text" maxlength="24" autocomplete="off"
+                   data-sg-nickname placeholder="Leave blank to post anonymously" data-i18n-placeholder="sug.form.nicknameHint">
+        </div>
+        <div class="rs_field">
+            <label for="sg-password" data-i18n="sug.form.password">Password</label>
+            <input id="sg-password" type="password" maxlength="72" autocomplete="new-password" required
+                   data-sg-password placeholder="4+ characters" data-i18n-placeholder="sug.form.passwordHint">
+            <!-- 사람들은 쓰던 비밀번호를 그대로 넣는다. 넣기 전에 말려야 한다. -->
+            <small class="rs_warn" data-i18n="sug.form.passwordWarn">Make something up. Do not reuse a password you use anywhere else.</small>
+        </div>
+
+        <div class="rs_form_actions">
+            <button type="submit" class="rs_primary" data-sg-submit data-i18n="sug.form.post">Post it</button>
+            <button type="button" class="rs_link_btn" data-sg-cancel hidden data-i18n="sug.form.cancel">Cancel</button>
+            <span class="rs_form_msg" data-sg-form-msg role="status"></span>
+        </div>
+    </form>
+
+    <div class="sg_controls">
+        <div class="sg_tabs" role="group" aria-label="Filter" data-sg-filters></div>
+        <div class="sg_sort">
+            <button type="button" class="sg_sort_btn is_on" data-sg-sort="top" data-i18n="sug.sort.top">Most wanted</button>
+            <button type="button" class="sg_sort_btn" data-sg-sort="new" data-i18n="sug.sort.new">Newest</button>
+        </div>
+        <span class="rs_count" data-sg-count>—</span>
+    </div>
+
+    <div data-sg-mount>
+        <p class="rs_empty" data-i18n="sug.loading">Loading…</p>
+    </div>
+
+    <div class="rs_more_wrap">
+        <button type="button" class="rs_more" data-sg-more hidden data-i18n="sug.more">Show more</button>
+    </div>
+
+    <!-- 수정·삭제·상태변경 전에 비밀번호를 묻는 창. -->
+    <div class="rs_ask" data-sg-ask hidden>
+        <button type="button" class="rs_ask_dim" data-sg-ask-close aria-label="Close" tabindex="-1"></button>
+        <form class="rs_ask_box" role="dialog" aria-modal="true" aria-labelledby="sg-ask-title" data-sg-ask-form>
+            <h3 id="sg-ask-title" data-sg-ask-title></h3>
+            <p class="rs_ask_target" data-sg-ask-target></p>
+
+            <!-- 운영자만 쓰는 칸. 상태 변경일 때만 보인다. -->
+            <div class="sg_admin_fields" data-sg-admin-fields hidden>
+                <label for="sg-status" data-i18n="sug.ask.status">Mark it as</label>
+                <!-- 목록의 "운영자" 버튼도 data-sg-status 를 쓴다. 이름이 겹치면
+                     querySelector 가 그 버튼을 집어 이 칸을 못 찾는다. -->
+                <select id="sg-status" data-sg-status-select></select>
+                <label for="sg-reply" data-i18n="sug.ask.reply">A line back to them (optional)</label>
+                <input id="sg-reply" type="text" maxlength="300" autocomplete="off" data-sg-reply>
+            </div>
+
+            <label for="sg-ask-password" data-sg-ask-pw-label data-i18n="sug.ask.label">Password for this post</label>
+            <input id="sg-ask-password" type="password" maxlength="72" autocomplete="off" data-sg-ask-password>
+            <p class="rs_ask_msg" data-sg-ask-msg role="status"></p>
+            <div class="rs_ask_actions">
+                <button type="button" class="rs_link_btn" data-sg-ask-close data-i18n="sug.ask.cancel">Cancel</button>
+                <button type="submit" class="rs_primary" data-sg-ask-go></button>
+            </div>
+        </form>
+    </div>
+
+    <section class="g_sec" id="rules">
+        <h3><span data-i18n="sug.rules.title">How this works</span></h3>
+        <ul class="ev_list">
+            <li><strong data-i18n="sug.rules.lang">Write in your own language</strong> — <span data-i18n="sug.rules.langNote">every post is machine-translated into the site's five languages when you post it. Translations are labelled, and one click shows what the author actually wrote.</span></li>
+            <li><strong data-i18n="sug.rules.vote">Back the ones you want</strong> — <span data-i18n="sug.rules.voteNote">the count is what gets looked at first. One per person per post, and pressing again takes it back.</span></li>
+            <li><strong data-i18n="sug.rules.pw">The password is the only key</strong> — <span data-i18n="sug.rules.pwNote">there is no account and no recovery. Make one up for this page; never reuse a password that matters. It is stored as a one-way hash, never as text.</span></li>
+            <li><strong data-i18n="sug.rules.status">Staff mark what they decided</strong> — <span data-i18n="sug.rules.statusNote">open, planned, done or declined, with a line saying why. A declined idea stays up rather than quietly disappearing.</span></li>
+        </ul>
+    </section>
+
+    <section class="g_sec" id="also">
+        <h3><span data-i18n="sug.also.title">Also useful</span></h3>
+        <ul class="ev_list">
+            <li><a href="./roster_page.html" data-i18n="sug.also.roster">Name directory</a> — <span data-i18n="sug.also.rosterNote">who is who, and when they play.</span></li>
+            <li><a href="./updates_page.html" data-i18n="sug.also.updates">Updates</a> — <span data-i18n="sug.also.updatesNote">what actually changed on the server.</span></li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>

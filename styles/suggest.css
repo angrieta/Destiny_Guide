@@ -1,0 +1,292 @@
+/*
+ * 건의사항
+ *
+ * 폼·비밀번호 창·링크 버튼은 roster.css 를 그대로 쓴다 (두 파일 다 불러온다).
+ * 여기에는 이 페이지에만 있는 것 — 공감 버튼, 상태 배지, 정렬 탭 — 만 둔다.
+ */
+
+.sg_form textarea {
+    min-height: 96px;
+    padding: var(--space-3);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface-raised);
+    color: var(--dg-text);
+    font-family: inherit;
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.sg_form textarea:focus {
+    outline: none;
+    border-color: var(--dg-accent);
+}
+
+/* ── 정렬 · 거르기 ──────────────────────────────────────────────────────── */
+
+.sg_controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-card);
+    background: var(--dg-surface-raised);
+}
+
+.sg_tabs,
+.sg_sort {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.sg_tab,
+.sg_sort_btn {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-pill);
+    background: var(--dg-surface);
+    color: var(--dg-text-soft);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.sg_tab:hover,
+.sg_sort_btn:hover {
+    border-color: var(--dg-accent);
+    color: var(--dg-accent-hover);
+}
+
+.sg_tab.is_on,
+.sg_sort_btn.is_on {
+    border-color: var(--dg-accent);
+    background: var(--dg-accent);
+    color: #0b1727;
+}
+
+/* 정렬은 오른쪽으로 밀어 거르기와 구분한다. 하는 일이 다르다. */
+.sg_sort {
+    margin-left: auto;
+}
+
+/* ── 목록 ───────────────────────────────────────────────────────────────── */
+
+.sg_list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.sg_card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-card);
+    background: var(--dg-surface);
+}
+
+.sg_card_main {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* ── 공감 ───────────────────────────────────────────────────────────────── */
+
+.sg_vote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    flex: 0 0 auto;
+    width: 52px;
+    padding: var(--space-2) 0;
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface-raised);
+    color: var(--dg-text-soft);
+    cursor: pointer;
+    transition: border-color var(--motion-fast) var(--ease-out), color var(--motion-fast) var(--ease-out);
+}
+
+.sg_vote:hover {
+    border-color: var(--dg-accent);
+    color: var(--dg-accent-hover);
+}
+
+/* 내가 누른 것. 훑을 때 바로 구분돼야 한다. */
+.sg_vote.is_on {
+    border-color: var(--dg-accent);
+    background: var(--dg-accent);
+    color: #0b1727;
+}
+
+.sg_vote[disabled] {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.sg_vote_mark {
+    font-size: var(--text-xs);
+    line-height: 1;
+}
+
+.sg_vote_n {
+    font-size: var(--text-base);
+    font-weight: 780;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+}
+
+/* ── 글 ─────────────────────────────────────────────────────────────────── */
+
+.sg_title {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    color: var(--dg-text);
+    font-size: var(--text-base);
+    font-weight: 780;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.sg_body {
+    margin: var(--space-2) 0 0;
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.sg_body.is_original {
+    padding-left: var(--space-3);
+    border-left: 2px solid var(--dg-border);
+}
+
+.sg_marks {
+    margin: var(--space-2) 0 0;
+}
+
+/* 운영자가 남긴 답. 본문과 섞이면 누가 쓴 말인지 알 수 없다. */
+.sg_reply {
+    margin: var(--space-3) 0 0;
+    padding: var(--space-3);
+    border-left: 3px solid var(--dg-accent);
+    border-radius: 0 var(--radius-control) var(--radius-control) 0;
+    background: var(--dg-surface-muted);
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+}
+
+.sg_reply b {
+    margin-right: 6px;
+    color: var(--dg-accent);
+    font-weight: 780;
+}
+
+.sg_meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin: var(--space-3) 0 0;
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+}
+
+.sg_who {
+    font-weight: 750;
+    color: var(--dg-text-soft);
+}
+
+/* ── 처리 상태 ──────────────────────────────────────────────────────────── */
+
+.sg_status {
+    padding: 2px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--dg-border);
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+/* 아직 아무도 안 본 것은 조용히 둔다. 색은 결정이 난 것에만 쓴다. */
+.sg_status.is_planned {
+    border-color: var(--dg-accent);
+    color: var(--dg-accent);
+}
+
+.sg_status.is_done {
+    border-color: #4ec98a;
+    color: #4ec98a;
+}
+
+.sg_status.is_declined {
+    border-color: #f2708a;
+    color: #f2708a;
+}
+
+/* ── 운영자 칸 ──────────────────────────────────────────────────────────── */
+
+.sg_admin_fields {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: var(--space-3);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface-raised);
+}
+
+.sg_admin_fields[hidden] {
+    display: none;
+}
+
+.sg_admin_fields select,
+.sg_admin_fields input {
+    height: 34px;
+    padding: 0 var(--space-2);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface);
+    color: var(--dg-text);
+    font-size: var(--text-sm);
+}
+
+.sg_admin_fields select:focus,
+.sg_admin_fields input:focus {
+    outline: none;
+    border-color: var(--dg-accent);
+}
+
+@media screen and (max-width: 760px) {
+    .sg_sort {
+        margin-left: 0;
+    }
+
+    /* 좁은 화면에서는 공감 버튼을 가로로 눕혀 본문 폭을 지킨다. */
+    .sg_card {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .sg_vote {
+        flex-direction: row;
+        gap: var(--space-2);
+        width: auto;
+        align-self: flex-start;
+        padding: var(--space-2) var(--space-3);
+    }
+}
