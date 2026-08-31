@@ -1,0 +1,410 @@
+/*
+ * 닉네임 명부
+ *
+ * 색은 전부 design-system.css 의 --dg-* 토큰이라 다크 테마는 따로 손댈 것이 없다.
+ * 목록은 카드가 아니라 줄로 쌓는다 — 이름을 훑어 찾는 페이지라 한 화면에
+ * 많이 들어오는 편이 낫다.
+ */
+
+/*
+ * hidden 속성이 이겨야 한다.
+ *
+ * reset.css 의 [hidden]{display:none} 과 아래의 .rs_form{display:grid} 은 명시도가
+ * 같아서, 나중에 오는 이 파일이 이긴다. 그대로 두면 로그아웃 상태인데도 등록 폼과
+ * 로그인 정보가 그려진다 — 실제로 그렇게 나왔다.
+ */
+.rs_form[hidden],
+.rs_more[hidden],
+.rs_field[hidden],
+.rs_ask[hidden] {
+    display: none;
+}
+
+.rs_link_btn {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.rs_link_btn:hover {
+    color: var(--dg-accent-hover);
+}
+
+.rs_link_btn.is_danger:hover {
+    color: #f2708a;
+}
+
+/* ── 등록 폼 ─────────────────────────────────────────────────────────────── */
+
+.rs_form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--space-3) var(--space-4);
+    margin: 0 0 var(--space-5);
+    padding: var(--space-4);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-card);
+    background: var(--dg-surface);
+}
+
+.rs_field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.rs_field label {
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-weight: 750;
+}
+
+.rs_field input {
+    height: 38px;
+    min-width: 0;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface-raised);
+    color: var(--dg-text);
+    font-size: var(--text-sm);
+}
+
+.rs_field input:focus {
+    outline: none;
+    border-color: var(--dg-accent);
+}
+
+.rs_form_actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    grid-column: 1 / -1;
+}
+
+.rs_primary {
+    padding: var(--space-2) var(--space-5);
+    border: 1px solid var(--dg-accent);
+    border-radius: var(--radius-control);
+    background: var(--dg-accent);
+    color: #0b1727;
+    font-size: var(--text-sm);
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.rs_primary:hover {
+    background: var(--dg-accent-hover);
+}
+
+.rs_primary[disabled] {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.rs_form_msg {
+    font-size: var(--text-xs);
+    font-weight: 700;
+}
+
+.rs_form_msg[data-kind="good"] { color: var(--dg-accent); }
+.rs_form_msg[data-kind="bad"]  { color: #f2708a; }
+
+/* 메모 칸만 두 칸을 다 쓴다. 나머지는 짧아서 반씩 나눠도 넉넉하다. */
+.rs_field_wide {
+    grid-column: 1 / -1;
+}
+
+/* 쓰던 비밀번호를 넣지 말라는 경고. 입력칸 바로 아래에 있어야 읽힌다. */
+.rs_warn {
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    line-height: 1.5;
+}
+
+/* ── 비밀번호 묻는 창 ────────────────────────────────────────────────────── */
+
+.rs_ask {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: var(--space-5);
+}
+
+.rs_ask_dim {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    padding: 0;
+    background: rgba(6, 12, 22, 0.82);
+    cursor: pointer;
+}
+
+.rs_ask_box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    width: min(380px, 100%);
+    padding: var(--space-5);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-card);
+    background: var(--dg-surface);
+}
+
+.rs_ask_box h3 {
+    margin: 0;
+    font-size: var(--text-base);
+    font-weight: 780;
+}
+
+.rs_ask_target {
+    margin: 0 0 var(--space-2);
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+    overflow-wrap: anywhere;
+}
+
+.rs_ask_box label {
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-weight: 750;
+}
+
+.rs_ask_box input {
+    height: 38px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface-raised);
+    color: var(--dg-text);
+    font-size: var(--text-sm);
+}
+
+.rs_ask_box input:focus {
+    outline: none;
+    border-color: var(--dg-accent);
+}
+
+.rs_ask_msg {
+    margin: 0;
+    min-height: 1.2em;
+    font-size: var(--text-xs);
+    font-weight: 700;
+}
+
+.rs_ask_msg[data-kind="bad"] { color: #f2708a; }
+
+.rs_ask_actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+}
+
+/* 삭제는 되돌릴 수 없다. 버튼 색으로 한 번 더 알린다. */
+.rs_primary.is_danger_btn {
+    border-color: #f2708a;
+    background: #f2708a;
+    color: #2a0710;
+}
+
+/* 뒤 목록이 같이 스크롤되지 않게 한다. */
+body.rs_ask_open {
+    overflow: hidden;
+}
+
+/* ── 검색 ────────────────────────────────────────────────────────────────── */
+
+.rs_controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-4);
+    padding: var(--space-4);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-card);
+    background: var(--dg-surface-raised);
+}
+
+.rs_search {
+    flex: 1 1 260px;
+    min-width: 0;
+    height: 38px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface);
+    color: var(--dg-text);
+    font-size: var(--text-sm);
+}
+
+.rs_search:focus {
+    outline: none;
+    border-color: var(--dg-accent);
+}
+
+.rs_count {
+    margin-left: auto;
+    color: var(--dg-text-faint);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── 목록 ────────────────────────────────────────────────────────────────── */
+
+.rs_list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+}
+
+.rs_row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    background: var(--dg-surface);
+}
+
+.rs_row + .rs_row {
+    border-top: 1px solid var(--dg-border);
+}
+
+/* 내 줄은 훑을 때 바로 찾을 수 있어야 한다. */
+.rs_row.is_mine {
+    background: var(--dg-surface-raised);
+    box-shadow: inset 3px 0 0 var(--dg-accent);
+}
+
+.rs_row_main {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.rs_char {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    color: var(--dg-text);
+    font-size: var(--text-base);
+    font-weight: 780;
+    overflow-wrap: anywhere;
+}
+
+.rs_mine_tag {
+    padding: 1px 7px;
+    border-radius: var(--radius-pill);
+    background: var(--dg-accent);
+    color: #0b1727;
+    font-size: var(--text-xs);
+    font-weight: 780;
+    text-transform: uppercase;
+}
+
+.rs_discord {
+    margin: 2px 0 0;
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+    overflow-wrap: anywhere;
+}
+
+.rs_at {
+    color: var(--dg-text-faint);
+}
+
+.rs_note {
+    margin: var(--space-2) 0 0;
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.rs_row_side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-2);
+    flex: 0 0 auto;
+}
+
+.rs_date {
+    color: var(--dg-text-faint);
+    font-size: var(--text-xs);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.rs_row_actions {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.rs_empty {
+    padding: var(--space-8) var(--space-4);
+    color: var(--dg-text-faint);
+    text-align: center;
+}
+
+.rs_more_wrap {
+    display: flex;
+    justify-content: center;
+    margin: var(--space-4) 0 var(--space-6);
+}
+
+.rs_more {
+    padding: var(--space-2) var(--space-5);
+    border: 1px solid var(--dg-border);
+    border-radius: var(--radius-control);
+    background: var(--dg-surface);
+    color: var(--dg-text);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.rs_more:hover {
+    border-color: var(--dg-accent);
+    color: var(--dg-accent-hover);
+}
+
+@media screen and (max-width: 760px) {
+    .rs_form {
+        grid-template-columns: 1fr;
+    }
+
+    .rs_count {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* 좁은 화면에서는 날짜·버튼을 아래로 내린다. 옆에 두면 이름이 눌린다. */
+    .rs_row {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .rs_row_side {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+}

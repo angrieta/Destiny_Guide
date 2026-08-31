@@ -1,0 +1,21 @@
+# 닉네임 명부 API
+#
+# 사이트(GitHub Pages)와 따로 배포한다. 사이트 빌드에는 관여하지 않는다.
+# 자세한 순서는 README.md 참고.
+
+name = "destiny-roster"
+main = "src/index.ts"
+compatibility_date = "2026-08-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "destiny-roster"
+# ↓ `wrangler d1 create destiny-roster` 가 출력한 값으로 바꿀 것
+database_id = "f4ad0c72-7760-4ed3-8316-3bbb9c9cdeb2"
+
+[vars]
+# 이 페이지를 띄울 수 있는 출처. 여기 없는 곳에서 부르면 브라우저가 막는다.
+ALLOWED_ORIGINS = "https://angrieta.github.io,http://localhost:5173"
+
+# ADMIN_PASSWORD 는 여기 적지 말 것. 이 파일은 저장소에 올라간다.
+#   npx.cmd wrangler secret put ADMIN_PASSWORD

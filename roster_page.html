@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="rst.title">DestinyGuide - Name Directory</title>
+    <meta name="description" content="Who is who on Destiny PSOBB: a directory linking Discord names to the character names people actually play, kept by the players themselves.">
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/guide.css">
+    <link rel="stylesheet" href="./styles/roster.css">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/roster.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/design-system.css">
+</head>
+
+<!-- 헤더시작 -->
+    <div id="site-header" style="width: 100%;"></div>
+    <script src="./scripts/include.js"></script>
+    <script src="./scripts/site_search.js"></script>
+<!-- 헤더종료 -->
+
+<body class="roster_page">
+<main class="g_page">
+    <div class="g_head">
+        <h2><span data-i18n="rst.heading">Name Directory</span></h2>
+        <p class="g_lead" data-i18n="rst.lead">Half the server knows you by your Discord name and the other half by a character name you made up at 3am. This is the list that connects the two. Add your own, as many characters as you play.</p>
+        <p class="g_source" data-i18n="rst.source">You pick a password when you add an entry, and only that password can change or delete it later. There is no account and nothing to sign up for.</p>
+    </div>
+
+    <form class="rs_form" data-rs-form>
+        <div class="rs_field">
+            <label for="rs-discord" data-i18n="rst.form.discord">Discord name</label>
+            <input id="rs-discord" type="text" maxlength="40" autocomplete="off" required
+                   data-rs-discord placeholder="e.g. angrieta" data-i18n-placeholder="rst.form.discordHint">
+        </div>
+        <div class="rs_field">
+            <label for="rs-character" data-i18n="rst.form.character">Character name</label>
+            <input id="rs-character" type="text" maxlength="24" autocomplete="off" required
+                   data-rs-character placeholder="e.g. Rico" data-i18n-placeholder="rst.form.characterHint">
+        </div>
+        <div class="rs_field rs_field_wide">
+            <label for="rs-note" data-i18n="rst.form.note">One line about them (optional)</label>
+            <input id="rs-note" type="text" maxlength="120" autocomplete="off"
+                   data-rs-note placeholder="e.g. HUcaseal, mostly Ultimate seabed" data-i18n-placeholder="rst.form.noteHint">
+        </div>
+        <div class="rs_field">
+            <label for="rs-password" data-i18n="rst.form.password">Password</label>
+            <input id="rs-password" type="password" maxlength="72" autocomplete="new-password" required
+                   data-rs-password placeholder="4+ characters" data-i18n-placeholder="rst.form.passwordHint">
+            <!-- 사람들은 쓰던 비밀번호를 그대로 넣는다. 넣기 전에 말려야 한다. -->
+            <small class="rs_warn" data-i18n="rst.form.passwordWarn">Make something up. Do not reuse a password you use anywhere else.</small>
+        </div>
+
+        <div class="rs_form_actions">
+            <button type="submit" class="rs_primary" data-rs-submit data-i18n="rst.form.add">Add to the list</button>
+            <button type="button" class="rs_link_btn" data-rs-cancel hidden data-i18n="rst.form.cancel">Cancel</button>
+            <span class="rs_form_msg" data-rs-form-msg role="status"></span>
+        </div>
+    </form>
+
+    <div class="rs_controls">
+        <input type="text" class="rs_search" data-rs-search
+               placeholder="Search a character or a Discord name…" data-i18n-placeholder="rst.search">
+        <span class="rs_count" data-rs-count>—</span>
+    </div>
+
+    <div data-rs-mount>
+        <p class="rs_empty" data-i18n="rst.loading">Loading…</p>
+    </div>
+
+    <div class="rs_more_wrap">
+        <button type="button" class="rs_more" data-rs-more hidden data-i18n="rst.more">Show more</button>
+    </div>
+
+    <!-- 수정·삭제 전에 비밀번호를 묻는 창. -->
+    <div class="rs_ask" data-rs-ask hidden>
+        <button type="button" class="rs_ask_dim" data-rs-ask-close aria-label="Close" tabindex="-1"></button>
+        <form class="rs_ask_box" role="dialog" aria-modal="true" aria-labelledby="rs-ask-title" data-rs-ask-form>
+            <h3 id="rs-ask-title" data-rs-ask-title></h3>
+            <p class="rs_ask_target" data-rs-ask-target></p>
+            <label for="rs-ask-password" data-i18n="rst.ask.label">Password for this entry</label>
+            <input id="rs-ask-password" type="password" maxlength="72" autocomplete="off" data-rs-ask-password>
+            <p class="rs_ask_msg" data-rs-ask-msg role="status"></p>
+            <div class="rs_ask_actions">
+                <button type="button" class="rs_link_btn" data-rs-ask-close data-i18n="rst.ask.cancel">Cancel</button>
+                <button type="submit" class="rs_primary" data-rs-ask-go></button>
+            </div>
+        </form>
+    </div>
+
+    <section class="g_sec" id="rules">
+        <h3><span data-i18n="rst.rules.title">How this works</span></h3>
+        <ul class="ev_list">
+            <li><strong data-i18n="rst.rules.pw">The password is the only key</strong> — <span data-i18n="rst.rules.pwNote">there is no account and no recovery. If you forget it, staff can remove the entry for you but nobody can tell you what it was. It is stored as a one-way hash, never as text.</span></li>
+            <li><strong data-i18n="rst.rules.throwaway">Make one up for this page</strong> — <span data-i18n="rst.rules.throwawayNote">it guards a line on a public list, nothing more. Never reuse a password you use anywhere that matters.</span></li>
+            <li><strong data-i18n="rst.rules.many">One line per character</strong> — <span data-i18n="rst.rules.manyNote">add as many as you play. Most people here run several, which is the whole reason this page exists.</span></li>
+            <li><strong data-i18n="rst.rules.trust">Anyone can type any Discord name</strong> — <span data-i18n="rst.rules.trustNote">the password stops others editing your entry, but it cannot prove the Discord name is yours. Treat the list as helpful, not as proof. Staff can remove entries that impersonate someone.</span></li>
+        </ul>
+    </section>
+
+    <section class="g_sec" id="also">
+        <h3><span data-i18n="rst.also.title">Also useful</span></h3>
+        <ul class="ev_list">
+            <li><a href="./player_tools.html" data-i18n="rst.also.tools">Farming tools</a> — <span data-i18n="rst.also.toolsNote">monster counts per quest and the Happy Hour schedule.</span></li>
+            <li><a href="./mods_page.html" data-i18n="rst.also.mods">Mods and skins</a> — <span data-i18n="rst.also.modsNote">if you cannot recognise someone, it may be their skin.</span></li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>
