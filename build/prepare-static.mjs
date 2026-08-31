@@ -1,4 +1,5 @@
-import { cp, mkdir, readdir, rm } from "node:fs/promises";
+import { cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { dirname, resolve } from "node:path";
 import { buildSearchIndex } from "../scripts/build-search-index.mjs";
 import { buildFarmData } from "../scripts/build-farm-data.mjs";
@@ -53,7 +54,52 @@ for (const file of publicFiles) {
   await cp(resolve(projectRoot, file), destination);
 }
 
+// 브라우저 캐시 무효화.
+// GitHub Pages 는 css/js 를 max-age=600 으로 내보내므로, 손으로 ?v= 를 붙이지 않으면
+// 배포 직후 한동안 낡은 파일이 그대로 쓰인다. 실제로 헤더 CSS 가 이 때문에 한 번 깨져
+// 보였고, 그 뒤 붙인 키는 다음 수정 때 갱신하는 걸 잊어 또 낡았다.
+// 그래서 키를 손으로 관리하지 않는다 — 파일 내용의 해시를 빌드가 매번 붙인다.
+// 내용이 그대로면 키도 그대로라 캐시는 계속 살아 있고, 바뀌면 주소가 달라져 즉시 새로 받는다.
+const assetHashes = new Map();
+
+async function assetVersion(relativePath) {
+  if (assetHashes.has(relativePath)) return assetHashes.get(relativePath);
+  let version = null;
+  try {
+    const contents = await readFile(resolve(projectRoot, relativePath));
+    version = createHash("sha1").update(contents).digest("hex").slice(0, 8);
+  } catch {
+    // 없는 파일은 건드리지 않는다. 링크가 깨진 건 캐시가 아니라 별개의 문제다.
+    console.warn(`cache key: ${relativePath} 를 찾지 못해 건너뜁니다`);
+  }
+  assetHashes.set(relativePath, version);
+  return version;
+}
+
+// 손으로 붙여 둔 ?v= 가 있으면 해시로 갈아끼운다. 두 방식이 섞이면 어느 쪽이 진짜인지 알 수 없다.
+const ASSET_REFERENCE = /(href|src)="\.\/((?:styles|scripts)\/[^"?]+\.(?:css|js))(?:\?[^"]*)?"/g;
+
+let stampedPages = 0;
+let stampedRefs = 0;
+
 for (const entry of await readdir(projectRoot, { withFileTypes: true })) {
   if (!entry.isFile() || !entry.name.endsWith(".html") || excludedHtml.has(entry.name)) continue;
-  await cp(resolve(projectRoot, entry.name), resolve(outputDir, entry.name));
+
+  const html = await readFile(resolve(projectRoot, entry.name), "utf8");
+  const versions = new Map();
+  for (const [, , assetPath] of html.matchAll(ASSET_REFERENCE)) {
+    versions.set(assetPath, await assetVersion(assetPath));
+  }
+
+  const stamped = html.replace(ASSET_REFERENCE, (whole, attribute, assetPath) => {
+    const version = versions.get(assetPath);
+    if (!version) return whole;
+    stampedRefs += 1;
+    return `${attribute}="./${assetPath}?v=${version}"`;
+  });
+
+  if (stamped !== html) stampedPages += 1;
+  await writeFile(resolve(outputDir, entry.name), stamped, "utf8");
 }
+
+console.log(`cache keys: ${stampedRefs} refs stamped across ${stampedPages} pages`);
