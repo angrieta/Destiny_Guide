@@ -24,9 +24,9 @@
     <main class="g_page up_page">
         <header class="up_hero">
             <div class="up_hero_copy">
-                <div class="up_kicker"><span class="up_live_dot"></span> LIVE · VER 0.944</div>
+                <div class="up_kicker"><span class="up_live_dot"></span> LIVE · VER 0.945</div>
                 <h2><span data-i18n="up.01">What is live now, and</span><br><span data-i18n="up.02">what lands next</span></h2>
-                <p data-i18n="up.03">Checked against the patch notes, announcements and quest/item channels of the Destiny Discord as of 2026-08-29. Confirmed changes are kept apart from previews, so you can tell at a glance what to farm now and what to hold for later.</p>
+                <p data-i18n="up.03">Checked against the patch notes, announcements and quest/item channels of the Destiny Discord as of 2026-09-04. Confirmed changes are kept apart from previews, so you can tell at a glance what to farm now and what to hold for later.</p>
                 <div class="up_hero_actions">
                     <a class="up_primary" href="#v0945" data-i18n="up.04">Read the Ver.0.945 notes</a>
                     <a class="up_secondary" href="./item_page.html" data-i18n="up.05">Open the item catalog</a>
@@ -49,6 +49,7 @@
             <a href="#patch-notes" data-i18n="up.14">Patch notes</a>
             <a href="#anniversary" data-i18n="up.15">9th anniversary</a>
             <a href="#future-crafts" data-i18n="up.16">Upcoming crafts</a>
+            <a href="#eternal-dimension" data-i18n="up.18">Long-term previews</a>
             <a href="#farming-plan" data-i18n="up.17">Farming plan</a>
         </nav>
 
@@ -65,14 +66,14 @@
                         id="tab-0945" data-ver="0945" aria-controls="v0945"
                         aria-selected="true" tabindex="0">
                     <b>Ver.0.945</b>
-                    <span class="up_ver_state is-next" data-i18n="up.patchnotes.03">Upcoming</span>
-                    <time>ETA 09.01</time>
+                    <span class="up_ver_state is-live" data-i18n="up.patchnotes.03">Live</span>
+                    <time>2026.09.01</time>
                 </button>
                 <button type="button" class="up_ver_tab" role="tab"
                         id="tab-0944" data-ver="0944" aria-controls="v0944"
                         aria-selected="false" tabindex="-1">
                     <b>Ver.0.944</b>
-                    <span class="up_ver_state is-live" data-i18n="up.patchnotes.04">Live</span>
+                    <span class="up_ver_state is-past" data-i18n="up.patchnotes.04">Past version</span>
                     <time>2026.08.11</time>
                 </button>
                 <button type="button" class="up_ver_tab" role="tab"
@@ -102,13 +103,13 @@
         <section class="g_sec up_ver" id="v0945" data-ver="0945" role="tabpanel" aria-labelledby="tab-0945">
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-next" data-i18n="up.v0945.01">Announced</span>
+                    <span class="up_badge is-live" data-i18n="up.v0945.01">Live now</span>
                     <h3 data-i18n="up.v0945.02">Ver.0.945 — the September 1 update</h3>
                 </div>
-                <time datetime="2026-09-01">ETA 2026.09.01</time>
+                <time datetime="2026-09-01">2026.09.01</time>
             </div>
 
-            <p class="up_lead" data-i18n="up.v0945.03">The official patch note published on 2026-08-30. It goes live after the scheduled server restart.</p>
+            <p class="up_lead" data-i18n="up.v0945.03">The official patch note was published on 2026-08-30 and went live after the September 1 server restart.</p>
 
             <!-- 파티 DAR 완화는 이 패치에서 가장 체감이 큰 변경이라 맨 앞에 둔다.
                  드랍 테이블의 계산식도 이 값으로 바꿔 두었다. -->
@@ -313,10 +314,10 @@
         <section class="g_sec" id="anniversary">
             <div class="up_section_head">
                 <div>
-                    <span class="up_badge is-preview" data-i18n="up.anniversary.01">Preview</span>
-                    <h3 data-i18n="up.anniversary.02">9th anniversary item preview</h3>
+                    <span class="up_badge is-next" data-i18n="up.anniversary.01">Confirmed</span>
+                    <h3 data-i18n="up.anniversary.02">9th anniversary new item</h3>
                 </div>
-                <time datetime="2026-09" data-i18n="up.anniversary.03">Expected 2026.09</time>
+                <time datetime="2026-09-18" data-i18n="up.anniversary.03">Event starts 2026.09.18</time>
             </div>
 
             <div class="up_feature up_feature_reverse">
@@ -326,15 +327,15 @@
                 <div class="up_feature_copy">
                     <span class="up_card_label">9TH ANNIVERSARY</span>
                     <h4>AEGIS OF ISOLATION</h4>
-                    <p class="up_flavor" data-i18n="up.anniversary.04">“A cursed rare shield that isolates its wearer. It disables certain functions, but in exchange it maximises the effect of every recovery item used.”</p>
+                    <p class="up_flavor" data-i18n="up.anniversary.04">“A cursed rare shield that isolates its wearer. It disables healing from allies, but in exchange it maximises the effect of every recovery item used by the bearer.”</p>
                     <ul class="up_list">
                         <li data-i18n="up.anniversary.05">Shield · Class ALL · requires level 150.</li>
-                        <li>Resists 32-32-32-24-24.</li>
-                        <li data-i18n="up.anniversary.06">Monomate and Dimate heal as much as a Trimate.</li>
-                        <li data-i18n="up.anniversary.07">It has two exclusive effects; the second one, and the exact DFP/EVP and bonuses, have not been revealed.</li>
-                        <li data-i18n="up.anniversary.08">After the event it also enters the normal quests, but at a lower drop rate.</li>
+                        <li data-i18n="up.anniversary.06">DFP 120–170 · EVP 180–230 · Resists 32-32-32-24-24 · ATP +60.</li>
+                        <li data-i18n="up.anniversary.07">Healing from other party members is blocked. The wearer can still heal other players and can be revived.</li>
+                        <li data-i18n="up.anniversary.08">Monomate and Dimate heal as much as a Trimate.</li>
+                        <li data-i18n="up.anniversary.10">After the event it is planned to enter normal quests too, but at a lower drop rate.</li>
                     </ul>
-                    <p class="up_note" data-i18n="up.anniversary.09">These are preview numbers. They must be replaced with the confirmed ones once the patch note is out.</p>
+                    <p class="up_note" data-i18n="up.anniversary.09">The full stats were confirmed on September 3. When another player tries to heal the wearer, a red “+0” is displayed.</p>
                 </div>
             </div>
         </section>
@@ -372,6 +373,39 @@
             <p class="up_note" data-i18n="up.futurecrafts.14">Both recipes still hide the Millennium Photon Core count and some of the materials. Farm only what has been named, and it is safer not to spend any of it before the final announcement.</p>
         </section>
 
+        <section class="g_sec" id="eternal-dimension">
+            <div class="up_section_head">
+                <div>
+                    <span class="up_badge is-preview" data-i18n="up.eternal.01">In development</span>
+                    <h3 data-i18n="up.eternal.02">The Eternal Dimension</h3>
+                </div>
+                <span data-i18n="up.eternal.03">Progress update · 2026.09.04</span>
+            </div>
+            <div class="up_grid up_grid_two">
+                <article class="up_card">
+                    <span class="up_card_label">QUEST PREVIEW</span>
+                    <h4>THE ETERNAL DIMENSION</h4>
+                    <p class="up_flavor" data-i18n="up.eternal.04">“A realm beyond The Phantasmal Dimension, where time loops endlessly and only the strongest return.”</p>
+                    <ul class="up_list">
+                        <li data-i18n="up.eternal.05">EP2 &gt; Special · difficulty 10 · a one-room arena with many waves.</li>
+                        <li data-i18n="up.eternal.06">A new currency is planned and will be used to obtain a new item.</li>
+                        <li data-i18n="up.eternal.07">Clearing is optional unless you are pursuing the special role, like The Phantasmal Dimension.</li>
+                        <li data-i18n="up.eternal.08">Main development is planned after VR:OMEGA.</li>
+                    </ul>
+                    <p class="up_note" data-i18n="up.eternal.09">As of September 4, the barebones quest and several future items are complete. The blue armor shown in announcements is one of those items; its name and stats have not been revealed.</p>
+                </article>
+                <article class="up_card">
+                    <span class="up_card_label">MAG PREVIEW</span>
+                    <h4 data-i18n="up.eternal.10">A new animated Mag</h4>
+                    <p class="up_flavor" data-i18n="up.eternal.11">Release was held back for an issue that still needs work. Development is continuing.</p>
+                    <ul class="up_list">
+                        <li data-i18n="up.eternal.12">Its movement animation is similar to Recon.</li>
+                        <li data-i18n="up.eternal.13">Its name, stats, acquisition route and release date have not been announced.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
         <section class="g_sec" id="farming-plan">
             <div class="up_section_head">
                 <div>
@@ -387,7 +421,7 @@
                     <tbody>
                         <tr><td class="g_num">S</td><td class="g_name">Madam's Bracelet</td><td>New MSB · Olga Flow · 1/64</td><td data-i18n="up.farmingplan.07">An all-class support shield that is already live. It extends Resta/Anti range and strengthens Rabarta.</td></tr>
                         <tr><td class="g_num">S</td><td class="g_name">Secret Ticket ×99</td><td>Simulator 2.0 / Random Attack Xrd Stage secret clear</td><td data-i18n="up.farmingplan.08">Trade for a Lightning Garment right away.</td></tr>
-                        <tr><td class="g_num">A</td><td class="g_name" data-i18n="up.farmingplan.09">Get ready for World of Illusion</td><td>EP2 · Special</td><td data-i18n="up.farmingplan.10">From September 1 it drops Soul Eraser, and the death rule is relaxed.</td></tr>
+                        <tr><td class="g_num">A</td><td class="g_name" data-i18n="up.farmingplan.09">Get ready for World of Illusion</td><td>EP2 · Special</td><td data-i18n="up.farmingplan.10">Soul Eraser now drops there, and the death rule has been relaxed since September 1.</td></tr>
                         <tr><td class="g_num">A</td><td class="g_name">Red / Blue Fragments</td><td>Christmas Fiasco EP2 Delbiter / EP1 Dark Bringer</td><td data-i18n="up.farmingplan.11">Currently a MATRIX SCOPE material, and the Yellow/Green Fragment line is set to expand.</td></tr>
                         <tr><td class="g_num">A</td><td class="g_name">Chaos Engine / Syncesta</td><td data-i18n="up.farmingplan.12">Distorted Nightmare · Silent Nightmare / normal drops</td><td data-i18n="up.farmingplan.13">A named material in the announced Alternative Cannon recipe.</td></tr>
                         <tr><td class="g_num">B</td><td class="g_name">Iritista / Red Crystal / Luminous Field</td><td data-i18n="up.farmingplan.14">VR Sandstorm and normal drops</td><td data-i18n="up.farmingplan.15">A named material in the announced Astral Blade recipe.</td></tr>
@@ -398,7 +432,7 @@
 
         <footer class="up_source">
             <strong>Source &amp; verification</strong>
-            <p><span data-i18n="up.farmingplan.16">Checked directly on 2026-08-29 in the Destiny PSOBB Discord:</span> <code>#announcements</code>, <code>#destiny-0944-madams-bracelet</code>, <code>#destiny-0943-toward-the-multiverse-lv3-and-new-item</code>, <code>#destiny-0942-matrix-scope-and-star-eulogy</code>, <code>#about-bazaar-quest-and-currency</code><span data-i18n="up.farmingplan.17">, along with the quest, raid and event channels. Anything still in preview can change before release.</span></p>
+            <p><span data-i18n="up.farmingplan.16">Checked directly on 2026-09-04 in the Destiny PSOBB Discord:</span> <code>#announcements</code>, <code>#destiny-0945-game-update-and-new-item</code>, <code>#destiny-0944-madams-bracelet</code>, <code>#item-combination</code>, <code>#mystery-in-destiny-completed</code>, <code>#about-bazaar-quest-and-currency</code><span data-i18n="up.farmingplan.17">, along with the quest, raid and event channels. Anything still in preview can change before release.</span></p>
             <div class="up_source_links">
                 <a href="./event_page.html" data-i18n="up.farmingplan.18">Event archive</a>
                 <a href="./endgame_page.html" data-i18n="up.farmingplan.19">Quest difficulty</a>

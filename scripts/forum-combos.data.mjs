@@ -1,7 +1,8 @@
 /**
  * 원작 PSOBB + Destiny 서버의 조합 목록.
  *
- * 출처: playpso 포럼 topic/804 "List of Item Combinations" (Vapid Dominance 작성,
+ * 현재 출처: Destiny Discord #item-combination (2026-09-04 확인).
+ * 기존 출처: playpso 포럼 topic/804 "List of Item Combinations" (Vapid Dominance 작성,
  * Orgodemirk 가 머지 계열 18개 보완, VEL(JP) 갱신). 손으로 옮긴 자료다.
  * destiny_catalog.js 는 서버 자체 아이템의 재료 목록만 갖고 있어서 이쪽이 빈칸이었다.
  *
@@ -52,6 +53,8 @@ export const FORUM_COMBO_GROUPS = [
       { result: "Celestial Fusion", parts: ["Taste of Affection", "Passion Haze"], note: "Either order works." },
       { result: "Dual Bird", parts: ["Master Raven", "Last Swan"] },
       { result: "Striker of Chao", parts: ["Branch of Paku Paku", "Chao (Mag)"], level: 100 },
+      { result: "Alternative Cannon", parts: ["Double Cannon", "Phantasmal Ore 'Syncesta'"], note: "Announced; not available yet.", noteKey: "fm.note.announced" },
+      { result: "Astral Blade", parts: ["Last Emperor", "Astral Ore 'Iritista'"], note: "Announced; not available yet.", noteKey: "fm.note.announced" },
     ],
   },
   {

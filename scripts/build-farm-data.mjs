@@ -94,7 +94,7 @@ async function buildRecipes() {
     }
   }
 
-  // 포럼 topic/804 의 조합. 출처와 모양이 달라서(수량이 없고 항상 2개짜리다) 따로 담는다.
+  // Discord #item-combination 에서 확인한 조합. 출처와 모양이 달라서(수량이 없고 항상 2개짜리다) 따로 담는다.
   const forumGroups = FORUM_COMBO_GROUPS.map((group) => ({
     key: group.key,
     label: group.label,
@@ -119,7 +119,7 @@ async function buildRecipes() {
     note:
       "서버 자체 아이템은 scripts/destiny_catalog.js 의 required / obtain 필드에서 뽑았다. 원본이 " +
       "서버 공지 이미지라 재료 목록이 잘려 있는 항목이 있다(IGNIS ENGINE 등). 원작 PSOBB 와 서버 " +
-      "조합은 playpso 포럼 topic/804 에서 옮겨 scripts/forum-combos.data.mjs 에 두었다.",
+      "조합은 Destiny Discord #item-combination 에서 2026-09-04 확인했으며, 기존 playpso 포럼 topic/804 출처와 함께 scripts/forum-combos.data.mjs 에 두었다.",
     recipes,
     obtainNotes,
     usedIn,

@@ -51,7 +51,7 @@
 
     /**
      * 포럼 조합표. 서버 자체 레시피와 달리 재료 수량이 없고 항상 두 개짜리라
-     * 카드가 아니라 표로 둔다. 77줄이라 카드로 깔면 화면이 끝없이 길어진다.
+     * 카드가 아니라 표로 둔다. 79줄이라 카드로 깔면 화면이 끝없이 길어진다.
      */
     function renderForum() {
       if (!forumMount || !data || !data.forumGroups) return;
@@ -122,7 +122,7 @@
               return (
                 "<tr>" +
                 "<td><strong>" + escapeHtml(combo.result) + "</strong>" +
-                (combo.note ? '<span class="fm_note">' + escapeHtml(combo.note) + "</span>" : "") +
+                (combo.note ? '<span class="fm_note">' + escapeHtml(t(combo.noteKey, combo.note)) + "</span>" : "") +
                 "</td>" +
                 '<td class="fm_parts">' + parts + "</td>" +
                 '<td class="fm_needs">' + (needs.length ? needs.join(" ") : "—") + "</td>" +
