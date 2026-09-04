@@ -24,6 +24,10 @@ const PARTY_DAR_MULTIPLIERS: Record<PartySize, number> = { 1: 1, 2: 0.9, 3: 0.85
 type DropRateMultiplier = 1 | 2 | 3;
 const DROP_RATE_MULTIPLIERS: DropRateMultiplier[] = [1, 2, 3];
 
+function defaultDropRateMultiplier(difficulty: string): DropRateMultiplier {
+  return difficulty === "Ultimate" ? 2 : 1;
+}
+
 const normalize = (value: string) =>
   value
     .normalize("NFKD")
@@ -87,7 +91,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const [itemQuery, setItemQuery] = useState("");
   const [enemyQuery, setEnemyQuery] = useState("");
   const [partySize, setPartySize] = useState<PartySize>(1);
-  const [dropRateMultiplier, setDropRateMultiplier] = useState<DropRateMultiplier>(2);
+  const [dropRateMultiplier, setDropRateMultiplier] = useState<DropRateMultiplier>(1);
   const [farmTargetsPerRun, setFarmTargetsPerRun] = useState(1);
   const [farmRuns, setFarmRuns] = useState(20);
   const [showQuickControls, setShowQuickControls] = useState(false);
@@ -141,8 +145,20 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const selectedEpisode = episode === "All" ? null : Number(episode);
   const displayedSections = sectionId === "All" ? SECTION_IDS : [sectionId];
   const partyDarMultiplier = PARTY_DAR_MULTIPLIERS[partySize];
-  const serverDropMultiplier = (targetDifficulty: string) => targetDifficulty === "Ultimate" ? dropRateMultiplier : 1;
+  const availableDropRateMultipliers = difficulty === "Ultimate"
+    ? DROP_RATE_MULTIPLIERS
+    : DROP_RATE_MULTIPLIERS.filter((value) => value !== 2);
+  const serverDropMultiplier = (targetDifficulty: string) => {
+    if (dropRateMultiplier === 3) return 3;
+    if (targetDifficulty === difficulty) return dropRateMultiplier;
+    return defaultDropRateMultiplier(targetDifficulty);
+  };
   const combinedDropMultiplier = (targetDifficulty: string) => partyDarMultiplier * serverDropMultiplier(targetDifficulty);
+
+  const selectDifficulty = (nextDifficulty: string) => {
+    setDifficulty(nextDifficulty);
+    setDropRateMultiplier((current) => current === 3 ? 3 : defaultDropRateMultiplier(nextDifficulty));
+  };
 
   const areas = useMemo(
     () =>
@@ -255,7 +271,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     return Array.from(groups.values()).sort((a, b) => a.item.localeCompare(b.item));
   }, [searchResults]);
 
-  const activeFilterCount = [sectionId, episode, area, itemType].filter((value) => value !== "All").length + Number(Boolean(itemQuery)) + Number(Boolean(enemyQuery)) + Number(partySize !== 1) + Number(dropRateMultiplier !== 2) + Number(farmTargetsPerRun !== 1) + Number(farmRuns !== 20);
+  const activeFilterCount = [sectionId, episode, area, itemType].filter((value) => value !== "All").length + Number(Boolean(itemQuery)) + Number(Boolean(enemyQuery)) + Number(partySize !== 1) + Number(dropRateMultiplier !== defaultDropRateMultiplier(difficulty)) + Number(farmTargetsPerRun !== 1) + Number(farmRuns !== 20);
 
   const resetFilters = () => {
     setSectionId("All");
@@ -265,7 +281,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     setItemQuery("");
     setEnemyQuery("");
     setPartySize(1);
-    setDropRateMultiplier(2);
+    setDropRateMultiplier(defaultDropRateMultiplier(difficulty));
     setFarmTargetsPerRun(1);
     setFarmRuns(20);
   };
@@ -289,11 +305,11 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const dropRateSelector = (compact = false) => (
     <div className={compact ? styles.quickDropRate : styles.dropRateControl}>
       <div className={styles.partyDarLabel}>
-        <span>{t("dt.rate.title", "Ultimate drop rate")}</span>
-        <small>{t("dt.rate.note", "N/H/VH always x1 · x2 standard · x3 Happy Hour")}</small>
+        <span>{t("dt.rate.title", "Server drop rate")}</span>
+        <small>{t("dt.rate.note", "N/H/VH x1 standard · Ultimate x2 standard · x3 Happy Hour")}</small>
       </div>
-      <div className={`${styles.partyButtons} ${styles.dropRateButtons}`} role="group" aria-label={compact ? t("dt.rate.aria.quick", "Quick Ultimate drop rate multiplier") : t("dt.rate.aria", "Ultimate server drop rate multiplier")}>
-        {DROP_RATE_MULTIPLIERS.map((value) => (
+      <div className={`${styles.partyButtons} ${styles.dropRateButtons} ${availableDropRateMultipliers.length === 2 ? styles.dropRateButtonsTwo : ""}`} role="group" aria-label={compact ? t("dt.rate.aria.quick", "Quick server drop rate multiplier") : t("dt.rate.aria", "Server drop rate multiplier")}>
+        {availableDropRateMultipliers.map((value) => (
           <button key={value} type="button" className={dropRateMultiplier === value ? styles.partyActive : ""} aria-pressed={dropRateMultiplier === value} onClick={() => setDropRateMultiplier(value)}>
             {value === 3 ? t("dt.rate.hh", "x3 HH") : `x${value}`}
           </button>
@@ -341,7 +357,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
       </div>
       <div className={styles.quickDifficulty} aria-label={mobile ? t("dt.filter.difficulty.aria.mobile", "Mobile difficulty") : t("dt.filter.difficulty.aria.quick", "Quick difficulty")}>
         <span>{t("dt.filter.difficulty", "Table difficulty")}</span>
-        <div>{DIFFICULTIES.map((value) => <button key={value} type="button" className={difficulty === value ? styles.quickDifficultyActive : ""} onClick={() => setDifficulty(value)}>{value}</button>)}</div>
+        <div>{DIFFICULTIES.map((value) => <button key={value} type="button" className={difficulty === value ? styles.quickDifficultyActive : ""} onClick={() => selectDifficulty(value)}>{value}</button>)}</div>
       </div>
       {partySelector(true)}
       {dropRateSelector(true)}
@@ -389,11 +405,11 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
 
           <div className={styles.browseDifficulty}>
             <span>{t("dt.browse.title", "Browse original table")}</span>
-            <p>{t("dt.browse.note", "N/H/VH use x1. Ultimate uses the selected x1/x2/x3 rate. Search always covers every difficulty.")}</p>
+            <p>{t("dt.browse.note", "N/H/VH use x1 or x3 Happy Hour. Ultimate keeps x1/x2/x3. Search always covers every difficulty.")}</p>
           </div>
           <div className={styles.difficultyBar} aria-label={t("dt.browse.aria", "Browse table by difficulty")}>
             {DIFFICULTIES.map((value) => (
-              <button key={value} type="button" className={difficulty === value ? styles.difficultyActive : ""} onClick={() => setDifficulty(value)}>
+              <button key={value} type="button" className={difficulty === value ? styles.difficultyActive : ""} onClick={() => selectDifficulty(value)}>
                 {value}
               </button>
             ))}
