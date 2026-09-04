@@ -431,7 +431,8 @@
     @media screen and (max-width: 780px) {
         .update_note { padding: 20px 18px; }
         .update_note_body { gap: 20px; }
-        .update_note_shot { flex-basis: 100%; }
+        /* 원본이 362px 이라 그보다 넓히면 흐려진다 */
+        .update_note_shot { flex-basis: 100%; max-width: 360px; }
     }
     .rapidfire_aira {max-width: 400px;}
     .rapidfire_aira img{width: 100%;}
