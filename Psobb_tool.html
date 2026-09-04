@@ -290,6 +290,149 @@
         align-items: center;
         gap: 4px;
     }
+   /* 업데이트 안내. 다운로드 바로 아래에 붙어 최신 기능을 먼저 알린다.
+      색은 --dg-* 토큰만 써서 라이트/다크 테마 양쪽에서 그대로 읽힌다. */
+    .update_note {
+        margin: 0 0 30px;
+        padding: 24px 26px;
+        background: var(--dg-surface-raised);
+        border: 1px solid var(--dg-border);
+        border-left: 4px solid var(--dg-accent);
+        border-radius: 12px;
+    }
+
+    .update_note_head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .update_note_badge {
+        padding: 3px 10px;
+        background: var(--dg-accent);
+        color: #f7faff;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+    }
+
+    html[data-theme="dark"] .update_note_badge { color: #0b1727; }
+
+    .update_note_head h3 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--dg-text);
+    }
+
+    .update_note_date {
+        font-size: 13px;
+        color: var(--dg-text-faint);
+    }
+
+    .update_note > p { color: var(--dg-text-soft); }
+
+    .update_note .kb-row { margin-bottom: 0; }
+
+    .update_note_body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        margin-top: 20px;
+    }
+
+    .update_note_shot {
+        /* figure 는 브라우저 기본 margin 이 좌우 40px 이라 모바일에서 넘친다 */
+        margin: 0;
+        flex: 0 0 300px;
+        max-width: 100%;
+    }
+
+    .update_note_shot img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--dg-border);
+        border-radius: 10px;
+        cursor: zoom-in;
+    }
+
+    .update_note_shot figcaption {
+        margin-top: 8px;
+        font-size: 12px;
+        line-height: 1.4;
+        color: var(--dg-text-faint);
+        text-align: center;
+    }
+
+    .update_note_text {
+        flex: 1 1 340px;
+        min-width: 0;
+    }
+
+    .update_note_text h4 {
+        margin: 0 0 10px;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--dg-text);
+    }
+
+    .update_note_text h4 + ul + h4 { margin-top: 22px; }
+
+    .update_note_list li {
+        position: relative;
+        margin-bottom: 7px;
+        padding-left: 26px;
+        font-size: 15px;
+        line-height: 1.5;
+        color: var(--dg-text-soft);
+        list-style: none;
+    }
+
+    .update_note_list li::before {
+        content: "•";
+        position: absolute;
+        left: 8px;
+        color: var(--dg-accent);
+        font-weight: 700;
+    }
+
+    /* 순서가 중요한 목록은 같은 자리에 번호 배지를 그린다 */
+    .update_note_list.is-steps { counter-reset: step; }
+
+    .update_note_list.is-steps li::before {
+        counter-increment: step;
+        content: counter(step);
+        left: 0;
+        top: 3px;
+        display: grid;
+        place-items: center;
+        width: 18px;
+        height: 18px;
+        background: var(--dg-accent-soft);
+        color: var(--dg-accent);
+        border-radius: 999px;
+        font-size: 11px;
+    }
+
+    .update_note_list b { color: var(--dg-text); font-weight: 700; }
+
+    .update_note_list code {
+        padding: 1px 5px;
+        background: var(--dg-surface-muted);
+        border-radius: 4px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        word-break: break-all;
+    }
+
+    @media screen and (max-width: 780px) {
+        .update_note { padding: 20px 18px; }
+        .update_note_body { gap: 20px; }
+        .update_note_shot { flex-basis: 100%; }
+    }
     .rapidfire_aira {max-width: 400px;}
     .rapidfire_aira img{width: 100%;}
     @media screen and (max-width: 780px) {
@@ -379,10 +522,58 @@
                 <span data-i18n="tool.t020">Download PSOBB-Tools.exe</span>
             </a>
             <div class="download_info">
-                <span>📦 Version 1.0</span>
+                <span>📦 Version 1.1</span>
                 <span>💻 Windows</span>
+                <span>🆕 <span data-i18n="tool.t096">Updated</span> 2026.09.04</span>
             </div>
         </div>
+
+        <!-- =============== 업데이트 안내: 룸 카운터 =============== -->
+        <section class="update_note" aria-labelledby="room-counter-update">
+            <div class="update_note_head">
+                <span class="update_note_badge" data-i18n="tool.t075">UPDATE</span>
+                <h3 id="room-counter-update" data-i18n="tool.t076">Room Counter</h3>
+                <span class="update_note_date">2026.09.04</span>
+            </div>
+
+            <div class="kb-row" style="margin-bottom: 12px;">
+                <p style="font-size: 16px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t077">Show / hide the counter -&nbsp;</p>
+                <div class="key w45">Win</div> +
+                <div class="key w45" style="background-color: yellow;">0</div>
+                <p style="font-size: 14px; color: #666; margin-left: 6px;">(Numpad)</p>
+            </div>
+
+            <p data-i18n="tool.t078">Rooms you create with the room shortcuts are now counted for you. The overlay parks itself in the top-right corner of the game window and keeps a separate tally for EP1, EP2 and EP4, so you can farm a run without keeping score in your head.</p>
+
+            <div class="update_note_body">
+                <figure class="update_note_shot">
+                    <img src="./images/tools/room_counter.png" alt="PSOBB Room Counter overlay showing per-episode counts, an opacity slider and reset buttons" data-i18n-alt="tool.t079">
+                    <figcaption data-i18n="tool.t080">The window Win + Numpad0 opens.</figcaption>
+                </figure>
+
+                <div class="update_note_text">
+                    <h4 data-i18n="tool.t081">How to use it</h4>
+                    <ul class="update_note_list is-steps">
+                        <li data-i18n="tool.t082">Run PSOBB-Tools.exe from your PSO folder and allow the admin prompt. The hotkey only fires while the PHANTASY STAR ONLINE Blue Burst window is active.</li>
+                        <li data-i18n="tool.t083">Press Win + Numpad0 in-game to show or hide the counter. The tray icon carries the same toggle under Show/Hide Room Counter.</li>
+                        <li data-i18n="tool.t084">Create rooms the usual way with Win + Numpad4 (EP1), Win + Numpad5 (EP2) or Win + Numpad6 (EP4). Each room adds +1 to that episode on its own - there is nothing extra to press.</li>
+                        <li data-i18n="tool.t085">Every count also flashes as a small EP badge in the top-right of the game window for two seconds, so you can confirm a room registered without opening the window at all.</li>
+                    </ul>
+
+                    <h4 data-i18n="tool.t086">Reading the window</h4>
+                    <ul class="update_note_list">
+                        <li><b>CURRENT</b> <span data-i18n="tool.t087">is your run counter. It moves only when you create a room or press Reset Current, so you can keep one farming session in it.</span></li>
+                        <li><b>TODAY</b> <span data-i18n="tool.t088">is a daily tally. It clears itself the moment the date changes, so you never reset it by hand.</span></li>
+                        <li><b>TOTAL</b> <span data-i18n="tool.t089">adds EP1, EP2 and EP4 together for each column.</span></li>
+                        <li><b>OVERLAY OPACITY</b> <span data-i18n="tool.t090">sets the window between 30% and 100%. The value saves the instant you move the slider, and the flash badge uses it too.</span></li>
+                        <li><b>PINNED: ON</b> <span data-i18n="tool.t091">keeps the overlay on screen and brings it back a few seconds after the script starts. Press it to switch to OFF and the overlay hides itself five seconds later.</span></li>
+                        <li><b>Undo Last</b> <span data-i18n="tool.t092">takes back the newest +1 - handy when a room creation misfires. It remembers a single step, so use it right away.</span></li>
+                        <li><b>Reset Current</b> / <b>Reset Today</b> <span data-i18n="tool.t093">each zero out only their own column.</span></li>
+                        <li><span data-i18n="tool.t094">Counts are written to your user folder, so closing the tool or rebooting does not lose them:</span> <code>%UserProfile%\PSOBB-AHK\config.ini</code></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
 
         <!-- ============ psobb-Tools Features (배포용) ============ -->
@@ -476,6 +667,12 @@
                 <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t038">Room settings (name / password / difficulty) -&nbsp;</p>
                 <div class="key w45">Win</div> +
                 <div class="key">H</div>
+            </div>
+            <div class="kb-row">
+                <p style="font-size: 18px; font-weight: 600; display: flex; align-items: center;" data-i18n="tool.t095">Room counter -&nbsp;</p>
+                <div class="key w45">Win</div> +
+                <div class="key w45" style="background-color: yellow;">0</div>
+                <p style="font-size: 14px; color: #666; margin-left: 6px;">(Numpad)</p>
             </div>
             <div class="rapidfire_aira" style="margin-top: 30px;">
                 <img src="./images/tools/room_popup.png" alt="">
@@ -683,7 +880,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = popup.querySelector(".popup_close");
     const dim = popup.querySelector(".popup_dim");
 
-    document.querySelectorAll(".photo_aria img").forEach(img => {
+    document.querySelectorAll(".photo_aria img, .update_note_shot img").forEach(img => {
     img.addEventListener("click", () => {
         popupImg.src = img.src;
         popup.classList.add("active");
