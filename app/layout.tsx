@@ -28,9 +28,9 @@ export default function RootLayout({
     // 파티 인원을 4P 로 바꿔도 DAR 표시가 100% 에서 굳던 증상이 그것이었다.
     <html lang="en" translate="no">
       <body>
+        <script src={`${basePath}/scripts/analytics.js`} defer />
         <I18nProvider>{children}</I18nProvider>
       </body>
     </html>
   );
 }
-

@@ -55,5 +55,6 @@
   "bz.pop.bonusDfp": "Bonus: DFP +300 · Speed +15%",
   "bz.pop.required": "Required items",
   "bz.pop.paganini": "Paganini Trade",
-  "beginner.t201": "Windows Security → Virus & Threat Protection → Virus & threat protection settings → Add or Remove Exclusions → PSOBB Destiny Folder"
+  "beginner.t201": "Windows Security → Virus & Threat Protection → Virus & threat protection settings → Add or Remove Exclusions → PSOBB Destiny Folder",
+  "header.link.analytics": "Usage"
 }

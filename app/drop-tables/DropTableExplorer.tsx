@@ -103,6 +103,49 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const mobileCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const mobileQuickButtonRef = useRef<HTMLButtonElement>(null);
   const mobileDrawerCloseRef = useRef<HTMLButtonElement>(null);
+  const [urlReady,setUrlReady] = useState(false);
+
+  // Header search links carry the actual route, not only a link to an empty table.
+  useEffect(() => {
+    const restore = () => {
+      const params = new URLSearchParams(window.location.search);
+      const canonical = (value:string|null,options:string[],fallback:string) => options.find(option=>option.toLowerCase()===value?.toLowerCase()) || fallback;
+      const nextDifficulty=canonical(params.get("difficulty"),DIFFICULTIES,"Normal");
+      const nextEpisode=canonical(params.get("episode"),["All","1","2","4"],"All");
+      const allowedAreas=Array.from(new Set(payload.matrixRows.filter(row=>nextEpisode==="All" || String(row.episode)===nextEpisode).map(row=>row.area)));
+      setDifficulty(nextDifficulty);
+      setSectionId(canonical(params.get("section"),["All",...SECTION_IDS],"All"));
+      setEpisode(nextEpisode);
+      setArea(canonical(params.get("area"),["All",...allowedAreas],"All"));
+      setItemType(canonical(params.get("type"),ITEM_TYPES,"All") as "All" | ItemType);
+      setItemQuery((params.get("item") || "").slice(0,160));
+      setEnemyQuery((params.get("enemy") || "").slice(0,160));
+      const party=Number(params.get("party"));
+      setPartySize(PARTY_SIZES.includes(party as PartySize) ? party as PartySize : 1);
+      const rate=Number(params.get("rate"));
+      const validRate=rate===1 || rate===3 || (rate===2 && nextDifficulty==="Ultimate");
+      setDropRateMultiplier(validRate ? rate as DropRateMultiplier : defaultDropRateMultiplier(nextDifficulty));
+      setUrlReady(true);
+    };
+    restore();
+    window.addEventListener("popstate",restore);
+    return ()=>window.removeEventListener("popstate",restore);
+  },[payload.matrixRows]);
+
+  useEffect(()=>{
+    if(!urlReady) return;
+    const url=new URL(window.location.href);
+    const values:Record<string,string>={
+      difficulty:difficulty==="Normal"?"":difficulty, section:sectionId==="All"?"":sectionId,
+      episode:episode==="All"?"":episode,area:area==="All"?"":area,type:itemType==="All"?"":itemType,
+      item:itemQuery,enemy:enemyQuery,party:partySize===1?"":String(partySize),
+      rate:dropRateMultiplier===defaultDropRateMultiplier(difficulty)?"":String(dropRateMultiplier)
+    };
+    for(const [key,value] of Object.entries(values)) {
+      if(value) url.searchParams.set(key,value);else url.searchParams.delete(key);
+    }
+    if(url.href!==window.location.href) window.history.replaceState(null,"",url);
+  },[urlReady,difficulty,sectionId,episode,area,itemType,itemQuery,enemyQuery,partySize,dropRateMultiplier]);
 
   const openMobileControls = useCallback(() => {
     if (mobileCloseTimerRef.current) window.clearTimeout(mobileCloseTimerRef.current);
@@ -376,7 +419,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
         <p>{t("dt.hero.lead", "Choose a difficulty, then read each monster across the ten Section IDs. Search results are highlighted and summarized above the original table layout.")}</p>
       </section>
 
-      <section className={`${styles.explorer} ${showQuickControls ? styles.explorerQuickOpen : ""}`}>
+      <section data-usage-id="drop-explorer" className={`${styles.explorer} ${showQuickControls ? styles.explorerQuickOpen : ""}`}>
         <div className={styles.controlsAnchor} ref={controlsAnchorRef}>
           <div className={styles.filterPanel}>
             <div className={styles.searchGrid}>

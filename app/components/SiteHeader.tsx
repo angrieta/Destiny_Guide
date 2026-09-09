@@ -122,6 +122,7 @@ export function SiteHeader({ active, theme, onThemeToggle }: SiteHeaderProps) {
               <a href="../sectionid_page.html">{t("header.nav.sectionid", "Section ID Hunting")}</a>
               <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
               <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
+              <a href="../pb_guide.html">{t("header.nav.pb", "PB Management")}</a>
               <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
               <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
               <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
@@ -157,6 +158,7 @@ export function SiteHeader({ active, theme, onThemeToggle }: SiteHeaderProps) {
               <a href="../drop-tables/" aria-current={current("drop-tables")}>{t("header.link.dropTables", "Drop Tables")}</a>
               <a href="../database/" aria-current={current("database")}>{t("header.link.database", "Database")}</a>
               <a href="../calculator/" aria-current={current("calculator")}>{t("header.link.calculator", "Damage Calculator")}</a>
+              <a href="../analytics_page.html">{t("header.link.analytics", "Usage")}</a>
             </div>
           </details>
 

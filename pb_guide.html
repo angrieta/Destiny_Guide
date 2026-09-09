@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pb.title">PB management: time your next invincibility</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/common.css">
+    <link rel="stylesheet" href="./styles/responsive.css">
+    <link rel="stylesheet" href="./styles/design-system.css">
+    <link rel="stylesheet" href="./styles/pb_guide.css">
+    <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
+    <script src="./scripts/i18n.js"></script>
+    <script src="./scripts/guide_revision_copy.js" defer></script>
+    <script src="./scripts/pb_guide.js" defer></script>
+</head>
+<body>
+    <div id="site-header" style="width:100%"></div>
+    <script src="./scripts/include.js"></script>
+    <script src="./scripts/site_search.js"></script>
+    <main class="pb_page">
+        <header class="pb_head">
+            <p class="pb_eyebrow" data-i18n="pb.community">Community practice guide · timing is approximate</p>
+            <h1 data-i18n="pb.title">PB management: time your next invincibility</h1><p class="pb_lead" data-i18n="pb.lead">The goal is not to reach 100 PB as fast as possible. Build PB, hold just below 100, then reach 100 after the current invincibility ends.</p>
+            <nav class="pb_jump" aria-label="PB guide contents" data-i18n-aria-label="header.nav.pb">
+                <a href="#pb-basics" data-i18n="pb.basics">01 / Before you start</a>
+<a href="#pb-cycle" data-i18n="pb.cycle">02 / The repeatable cycle</a>
+<a href="#pb-spend" data-i18n="pb.spend">03 / Lower PB with a weapon special</a>
+<a href="#pb-troubleshoot" data-i18n="pb.troubleshoot">04 / When the cycle breaks</a>
+            </nav>
+        </header>
+        <section id="pb-basics" class="pb_section" data-usage-id="pb-basics">
+            <h2  data-i18n="pb.basics">01 / Before you start</h2>
+            <div class="pb_basics">
+                <article><h3 data-i18n="pb.mag">Check your MAG first</h3><p data-i18n="pb.magBody">Your MAG must have an invincibility response to the PB-full trigger. Check the MAG's trigger and activation chance in the database. This technique is not a guarantee of permanent invincibility.</p><a href="./database/?cat=Mags" class="pb_link" data-i18n="pb.dbLink">Check MAGs and units in the database</a></article>
+                <article><h3  data-i18n="pb.flow">PB/Flow: start with spare slots</h3><p  data-i18n="pb.flowBody">The database lists +1 PB per 5 seconds per PB/Flow. At low damage, the community recommends multiple units. Keep essential speed and survival units; add PB/Flow in available slots, then remove one if PB fills too early.</p><a class="pb_link" href="./database/?item=pb-flow">PB/Flow ↗</a></article>
+            </div>
+        </section>
+        <section id="pb-cycle" class="pb_section" data-usage-id="pb-cycle">
+            <h2  data-i18n="pb.cycle">02 / The repeatable cycle</h2><p class="pb_muted" data-i18n="pb.stepHelp">Select a step to see the action. This is a teaching diagram, not a live game timer.</p>
+            <div class="pb_steps" role="group" aria-label="PB cycle steps" data-i18n-aria-label="pb.cycle">
+                <button type="button" data-step="1" aria-controls="pb-step-detail" aria-pressed="true" class="is-active"><span class="pb_step_number">01</span><span  data-i18n="pb.step1">Build PB</span></button>
+<button type="button" data-step="2" aria-controls="pb-step-detail" aria-pressed="false"><span class="pb_step_number">02</span><span  data-i18n="pb.step2">Hold 97–99</span></button>
+<button type="button" data-step="3" aria-controls="pb-step-detail" aria-pressed="false"><span class="pb_step_number">03</span><span  data-i18n="pb.step3">Watch the MAG</span></button>
+<button type="button" data-step="4" aria-controls="pb-step-detail" aria-pressed="false"><span class="pb_step_number">04</span><span  data-i18n="pb.step4">Allow the next tick</span></button>
+            </div>
+            <div class="pb_step_detail" id="pb-step-detail" aria-live="polite" aria-atomic="true">
+                <h3 id="pb-step-title">Build PB</h3><p id="pb-step-body">While invincible, build PB through normal combat and PB/Flow. Start by aiming for 97–99 PB about 5–10 seconds before invincibility ends. Adjust unit count to your damage output; do not assume a fixed combat gain.</p>
+            </div>
+            <figure class="pb_timeline">
+                <figcaption  data-i18n="pb.timingLabel">Timing reference: current invincibility → gap → next trigger attempt</figcaption>
+                <ol><li  data-i18n="pb.timing1">~5–10 s before end · 97–99 PB</li><li  data-i18n="pb.timing2">End · check MAG movement</li><li  data-i18n="pb.timing3">~1–2 s after · next Flow tick</li></ol>
+            </figure>
+            <noscript><ol class="pb_nojs"><li>While invincible, build PB through normal combat and PB/Flow. Start by aiming for 97–99 PB about 5–10 seconds before invincibility ends. Adjust unit count to your damage output; do not assume a fixed combat gain.</li><li>At 97–99 PB, use quick weapon swaps to reset PB/Flow's timer, as described by the community. This delays the next automatic gain; it does not freeze PB gained from combat. Avoid accidentally reaching 100 while the old invincibility is still active.</li><li>Keep watching for the MAG's quick movement when invincibility ends. Do not treat the exact end frame as safe: the reported same-frame hit / 100 PB edge case can prevent a new invincibility trigger. Position safely during the gap.</li><li>After the old invincibility ends, let PB/Flow tick toward 100. With practice, aim for the next tick roughly 1–2 seconds after the end. This is an advanced timing target, not a guaranteed safe delay. Confirm the next invincibility before committing to risky damage.</li></ol></noscript>
+        </section>
+        <section id="pb-spend" class="pb_section" data-usage-id="pb-spend">
+            <h2  data-i18n="pb.spend">03 / Lower PB with a weapon special</h2><p class="pb_combo" data-i18n="pb.combo">Normal attack → Special attack → quick weapon swap</p><p  data-i18n="pb.spendBody">The reported sequence leaves about 63 PB when started from a full gauge. It is a community reference, not a fixed outcome: timing, interruption and combat gains can change the remainder. Practise the sequence in a safe situation first.</p>
+            <div class="pb_table_wrap" role="region" tabindex="0" aria-label="PB spending weapons" data-i18n-aria-label="pb.spend">
+                <table class="pb_table">
+                    <thead><tr><th scope="col" data-i18n="pb.weapon">Weapon</th><th scope="col" data-i18n="pb.requirement">Who can equip / requirement</th><th scope="col" data-i18n="pb.note">Practice notes</th></tr></thead>
+                    <tbody>
+                        <tr><th scope="row"><a href="./database/?item=berdysh">BERDYSH</a></th><td>HU / RA<br>ATP 710</td><td  data-i18n="pb.berdysh">Reported faster than TJS. Caution: the local database lists Special: None; PB-drain behavior needs in-game confirmation before relying on it.</td></tr>
+                        <tr><th scope="row"><a href="./database/?item=dragon-sword">DRAGON SWORD</a></th><td>HU<br>ATP 1000</td><td  data-i18n="pb.dragon">Reported faster than TJS; the database confirms Energy Wave (PB).</td></tr>
+                        <tr><th scope="row"><a href="./database/?item=tsumikiri-j-sword">TSUMIKIRI J-SWORD<br>(TJS)</a></th><td>HU<br>ATP 910</td><td  data-i18n="pb.tjs">Slower swaps in the community comparison, but useful burst damage. DB notes a custom animation and 6–1–1 special hits with 5 targets.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section id="pb-troubleshoot" class="pb_section" data-usage-id="pb-troubleshoot">
+            <h2  data-i18n="pb.troubleshoot">04 / When the cycle breaks</h2>
+            <dl class="pb_problems"><div><dt  data-i18n="pb.early">100 PB too early</dt><dd  data-i18n="pb.earlyBody">Remove one PB/Flow and try again. Strong gear such as Ignis or a completed Dark Flow setup may need only one PB/Flow; tune it to your combos rather than copying a fixed count.</dd></div>
+<div><dt  data-i18n="pb.late">PB arrives too late</dt><dd  data-i18n="pb.lateBody">Add a PB/Flow in a spare slot or stop resetting its timer so often. Recheck the 97–99 PB checkpoint before trying to shorten the gap.</dd></div>
+<div><dt  data-i18n="pb.failed">100 PB, but no invincibility</dt><dd  data-i18n="pb.failedBody">Check the MAG's trigger and chance. Community reports warn that a hit at the invincibility-end frame or reaching 100 at that same moment can miss the new trigger. Do not assume the gauge alone proves protection.</dd></div>
+<div><dt  data-i18n="pb.lowHp">100 PB and below 10% HP together</dt><dd  data-i18n="pb.lowHpBody">VEL(JP) reports that the game prioritizes the low-HP trigger when both conditions happen together. Its response or activation chance may differ from PB-full. Avoid relying on this overlap for invincibility.</dd></div>
+<div><dt  data-i18n="pb.interrupt">A hit interrupts the spending animation</dt><dd  data-i18n="pb.interruptBody">An interruption may permit an earlier swap and leave roughly 70–77 PB, according to the discussion. This also means you were exposed to damage: it is not a safe PB-control technique to aim for.</dd></div></dl>
+            <details class="pb_advanced"><summary  data-i18n="pb.advanced">Advanced / area-warp PB spending</summary><p  data-i18n="pb.advancedBody">VEL(JP) reports that using the special during an area warp can limit spending to about 5–6 PB. A boss teleporter version is much harder. Timing is not documented precisely here: treat it as an optional experiment after you can perform the normal cycle, not a beginner requirement.</p></details>
+        </section>
+        <aside class="pb_farm">
+            <h2  data-i18n="pb.farm">Where to get PB/Flow</h2><p  data-i18n="pb.farmBody">Ultimate · EP1 · Whitill · Vol Opt ver. 2 · 1/102.4. This is a boss hunt, not a mandatory early-level detour. Use the class roadmap to secure basic units first; a listed rate does not guarantee a drop after that many runs.</p>
+            <a href="./class_builds.html" class="pb_link" data-i18n="pb.buildLink">Open the beginner gear roadmap</a>
+            <a class="pb_link" href="./drop-tables/" data-i18n="header.link.dropTables">Drop tables</a>
+        </aside>
+        <footer class="pb_sources">
+            <h2  data-i18n="pb.sources">Sources and limits</h2><p  data-i18n="pb.sourcesBody">Timing and swap techniques summarize the conversation supplied by the site owner (Rang3r, Tio Mario and VEL(JP)). Numeric item effects, equip requirements and the PB/Flow drop route use the site's PlayPSO snapshots dated 2026-08-19. Live server behavior has not been independently tested. Report inconsistencies through Suggestions.</p>
+            <a href="./suggest_page.html" data-i18n="header.nav.suggest">Suggestions</a>
+        </footer>
+    </main>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "analytics.pageTitle": "DestinyGuide - Usage",
+  "analytics.title": "Guide usage",
+  "analytics.lead": "Anonymous page views show which guides help visitors most. No IP address, cookie, or device fingerprint is stored.",
+  "analytics.periodAria": "Reporting period",
+  "analytics.days7": "7 days",
+  "analytics.days30": "30 days",
+  "analytics.days90": "90 days",
+  "analytics.totalViews": "Page views",
+  "analytics.popularPages": "Most viewed pages",
+  "analytics.popularClasses": "Most selected classes",
+  "analytics.popularLevels": "Most selected level guides",
+  "analytics.privacy": "A page is counted once per browser tab session. Class and level selections are stored only as daily totals.",
+  "analytics.home": "Home",
+  "analytics.empty": "No data yet.",
+  "analytics.range": "Since",
+  "analytics.loading": "Loading usage totals...",
+  "analytics.error": "Usage totals are unavailable. The guide still works normally."
+}

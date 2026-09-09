@@ -557,7 +557,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
         </div>
       </section>
 
-      <main className={styles.explorer}>
+      <main data-usage-id="item-explorer" className={styles.explorer}>
         <div className={styles.searchBar}>
           <div className={styles.searchInput}>
             <span aria-hidden="true">⌕</span>

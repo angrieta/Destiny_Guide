@@ -1,0 +1,1073 @@
+{
+  "header.nav.pb": [
+    "PB Management",
+    "PB 관리",
+    "PB管理",
+    "Gestión de PB",
+    "Gestion du PB"
+  ],
+  "b2.unit": [
+    "Progression unit",
+    "성장용 유닛",
+    "育成ユニット",
+    "Unidad de progreso",
+    "Unité de progression"
+  ],
+  "b2.lead": [
+    "Start with missing core gear, even at level 200. Follow the farming order only while the runs remain comfortable.",
+    "200레벨이어도 빠진 기초 장비부터 채우세요. 안전하게 반복할 수 있는 사냥터를 기준으로 순서대로 파밍합니다.",
+    "レベル200でも不足する基礎装備から。安全に周回できる範囲で優先順に集めましょう。",
+    "Incluso al nivel 200, completa primero el equipo básico. Sigue el orden mientras puedas repetir las rutas con seguridad.",
+    "Même au niveau 200, complétez d’abord les bases. Suivez l’ordre tant que les parcours restent sûrs."
+  ],
+  "b2.keep": [
+    "Core gear to keep using",
+    "계속 사용할 기본 장비",
+    "使い続ける基本装備",
+    "Equipo básico que conservar",
+    "Équipement de base à conserver"
+  ],
+  "b2.next": [
+    "Farm in this order",
+    "이 순서로 파밍하세요",
+    "この順番で集める",
+    "Farmea en este orden",
+    "Farmez dans cet ordre"
+  ],
+  "b2.slotsTitle": [
+    "Example: four unit slots",
+    "4슬롯 유닛 구성 예시",
+    "4スロットの構成例",
+    "Ejemplo: cuatro ranuras",
+    "Exemple : quatre emplacements"
+  ],
+  "b2.slotRule": [
+    "Keep one attack-speed unit and one V50x unit at most. Upgrade by replacing the old unit. V801/V802 help techniques; V501/V502 do not increase Charge or Demon's damage. Adapt Cure units to the enemies.",
+    "공격속도 유닛과 V50x는 각각 하나만 쓰고 상위 유닛을 구하면 교체하세요. V801/V802는 테크닉용이며 V501/V502는 Charge나 Demon's의 피해를 높이지 않습니다. Cure는 적의 상태이상에 맞춥니다.",
+    "攻撃速度ユニットとV50xは各1個を目安に、上位品へ交換。V801/V802はテクニック用。V501/V502はChargeやDemon'sのダメージを増やしません。Cureは敵に合わせます。",
+    "Usa como máximo una unidad de velocidad y una V50x; sustituye la anterior al mejorar. V801/V802 son para técnicas. V501/V502 no aumentan el daño de Charge ni Demon's. Adapta Cure al enemigo.",
+    "Gardez au plus une unité de vitesse et une V50x, puis remplacez-les. V801/V802 servent aux techniques ; V501/V502 n’augmentent pas les dégâts de Charge ou Demon's. Adaptez Cure aux ennemis."
+  ],
+  "b2.rare": [
+    "Rare enemy: this rate applies after it appears, not once per run.",
+    "레어 몬스터: 표시 확률은 출현 후의 드롭률이며, 1회 플레이당 확률이 아닙니다.",
+    "レア敵：出現後のドロップ率であり、1周ごとの確率ではありません。",
+    "Enemigo raro: la tasa se aplica tras su aparición, no por partida.",
+    "Ennemi rare : ce taux s’applique après son apparition, pas par partie."
+  ],
+  "b2.v101": [
+    "Hunt ordinary Zu in Very Hard EP4. It gives the same +40% attack speed as Heavenly/Battle plus stats, so keep whichever you get first. Avoid the harder Epsilon route just because its listed rate is better.",
+    "Very Hard EP4의 일반 Zu를 반복 처치하세요. Heavenly/Battle과 같은 공격속도 +40%에 스탯도 더해 주므로 먼저 구한 쪽을 씁니다. 표의 확률만 보고 더 어려운 Epsilon부터 잡을 필요는 없습니다.",
+    "Very Hard EP4の通常Zuを周回。Heavenly/Battleと同じ攻撃速度+40%に能力値も付きます。先に取れた方を使い、確率だけで難しいEpsilonを優先しないこと。",
+    "Caza Zu normales en Very Hard EP4. Ofrece el mismo +40% de velocidad que Heavenly/Battle y estadísticas extra: usa el primero que consigas. No priorices Epsilon solo por su tasa.",
+    "Farmez les Zu ordinaires en Very Hard EP4. Même vitesse +40% que Heavenly/Battle, avec des stats en plus : utilisez le premier obtenu. Ne privilégiez pas Epsilon uniquement pour son taux."
+  ],
+  "b2.heavenlyBattle": [
+    "Use an inexpensive trade or a lucky rare drop as an alternative to V101. Also drops in Very Hard from Dorphon Eclair on Bluefull/Yellowboze (1/3.2). Do not stall leveling waiting for a rare spawn.",
+    "V101 대안으로 저렴하게 거래하거나 레어 출현 때 얻으면 사용하세요. Very Hard Bluefull/Yellowboze Dorphon Eclair도 1/3.2입니다. 레어가 나올 때까지 레벨업을 멈추지는 마세요.",
+    "V101の代用として安価な交換品や偶然のレアドロップを使用。Very HardのBluefull/Yellowboze Dorphon Eclairも1/3.2。出現待ちで育成を止めないこと。",
+    "Alternativa a V101 por intercambio económico o suerte. También cae de Dorphon Eclair en Very Hard Bluefull/Yellowboze (1/3.2). No detengas el progreso esperando un raro.",
+    "Alternative à V101 via échange abordable ou drop chanceux. Dorphon Eclair en Very Hard Bluefull/Yellowboze donne aussi 1/3.2. Ne bloquez pas votre progression en attendant un rare."
+  ],
+  "b2.v801": [
+    "First casting-speed target for Forces. Repeat safe Astark groups in the Crater on Very Hard; stop before dangerous waves. Redria Pazuzu (Very Hard, 1/3.2) is a rare-spawn alternative, not a guaranteed shortcut.",
+    "포스의 첫 캐스팅 속도 목표입니다. Very Hard Crater의 안전한 Astark 무리를 반복하고 위험한 웨이브 전에 나오세요. Redria Pazuzu(Very Hard 1/3.2)는 레어 출현 때의 대안이지 확정 지름길은 아닙니다.",
+    "FO最初の詠唱速度目標。Very Hard Craterの安全なAstark群を周回し、危険な波の前に退出。Redria Pazuzu（Very Hard、1/3.2）はレア出現時の代案です。",
+    "Primer objetivo de velocidad de lanzamiento para FO. Repite grupos seguros de Astark en Crater Very Hard. Redria Pazuzu (Very Hard, 1/3.2) es una alternativa rara, no un atajo garantizado.",
+    "Premier objectif de vitesse d’incantation pour FO. Répétez les groupes sûrs d’Astark au Crater en Very Hard. Redria Pazuzu (Very Hard, 1/3.2) reste une alternative rare."
+  ],
+  "b2.v501": [
+    "A bridge for Hell, Arrest, Blizzard and Chaos specials. Hunt Merissa A in the Very Hard desert. Skip this hunt if V502 is already affordable or your current weapons mainly use Charge/Demon's.",
+    "Hell·Arrest·Blizzard·Chaos 스페셜용 징검다리입니다. Very Hard 사막의 Merissa A를 잡으세요. V502를 이미 구했거나 현재 무기가 주로 Charge/Demon's라면 이 파밍은 건너뜁니다.",
+    "Hell・Arrest・Blizzard・Chaos用のつなぎ。Very Hard砂漠のMerissa Aを狙います。V502が入手済み、またはCharge/Demon's主体なら省略できます。",
+    "Paso previo para Hell, Arrest, Blizzard y Chaos. Caza Merissa A en el desierto Very Hard. Sáltalo si ya tienes V502 o usas sobre todo Charge/Demon's.",
+    "Étape pour Hell, Arrest, Blizzard et Chaos. Ciblez Merissa A dans le désert Very Hard. Ignorez-la si vous avez V502 ou jouez surtout Charge/Demon's."
+  ],
+  "b2.v502": [
+    "For Hell users, upgrade V501 here. Redria Garanz in Very Hard Mines avoids Ultimate enemies. Other option: Very Hard EP4 Saint Million, Skyly/Oran/Whitill, 1/16, only if boss clears are comfortable.",
+    "Hell을 쓴다면 V501에서 교체합니다. Very Hard Redria Mines의 Garanz부터 노리세요. 보스를 편하게 잡는다면 Very Hard EP4 Skyly/Oran/Whitill Saint Million 1/16도 대안입니다.",
+    "Hell使用時にV501から交換。Very Hard Redria MinesのGaranzを優先。ボスが楽ならVery Hard EP4 Skyly/Oran/Whitill Saint Million（1/16）も候補。",
+    "Mejora de V501 para Hell. Empieza por Garanz en Mines Very Hard Redria. Si el jefe es fácil: Saint Million de EP4 Very Hard Skyly/Oran/Whitill, 1/16.",
+    "Remplace V501 pour Hell. Priorité à Garanz, Mines Very Hard Redria. Si le boss est facile : Saint Million EP4 Very Hard Skyly/Oran/Whitill, 1/16."
+  ],
+  "b2.arms": [
+    "Use ATA +25 while Charge combos still miss. The Very Hard Caves boss drops it on every ID listed; Yellowboze is excluded. Replace it once your MAG and base ATA make combos reliable.",
+    "Charge 콤보가 빗나갈 때 ATA +25를 활용합니다. Very Hard Caves 보스에서 표시된 ID 모두 드롭하며 Yellowboze는 제외입니다. MAG와 기본 ATA가 충분해지면 다른 유닛으로 교체하세요.",
+    "Chargeが外れる間はATA+25を使用。Very Hard Cavesボスの掲載IDで入手、Yellowbozeは対象外。MAGと基礎ATAが育ったら交換します。",
+    "Usa ATA +25 si fallan los combos Charge. Cae del jefe de Caves Very Hard en los ID indicados, excepto Yellowboze. Sustitúyelo cuando tu precisión sea suficiente.",
+    "Utilisez ATA +25 tant que Charge manque sa cible. Boss des Caves Very Hard sur les ID indiqués, hors Yellowboze. Remplacez-le quand votre précision suffit."
+  ],
+  "b2.smartlink": [
+    "For Hunters and battle Forces using ranged weapons. Hunt Oran Garanz on Very Hard. Rangers do not need this unit. V503 later includes Smartlink, freeing this slot.",
+    "원거리 무기를 쓰는 헌터·전투 포스용입니다. Very Hard Oran Garanz를 노리세요. 레인저에는 불필요하며 나중에 V503을 쓰면 Smartlink가 내장되어 이 슬롯을 비울 수 있습니다.",
+    "遠隔武器を使うHUと戦闘FO用。Very Hard Oran Garanzを狙います。RAには不要。V503取得後は内蔵Smartlinkでこの枠を空けられます。",
+    "Para HU y FO de combate con armas a distancia. Caza Garanz Oran Very Hard. RA no lo necesita. V503 lo incorpora y libera la ranura.",
+    "Pour HU et FO de combat à distance. Ciblez Garanz Oran Very Hard. Inutile pour RA. V503 l’intègre et libère cet emplacement."
+  ],
+  "b2.v503": [
+    "A later upgrade, not an entry requirement. Farm ordinary Goran Detonators on Ultimate Pinkal/Redria when reliable; replace V501/V502. Do not chase rare Kondrieu just for the better displayed rate.",
+    "입문 필수가 아닌 후반 교체품입니다. Ultimate Pinkal/Redria Goran Detonator를 안정적으로 잡을 때 V501/V502에서 바꾸세요. 표시 확률 때문에 레어 Kondrieu부터 쫓을 필요는 없습니다.",
+    "入門必須ではなく後半の更新品。Ultimate Pinkal/Redria Goran Detonatorを安定して倒せたらV501/V502から交換。数字だけでレアKondrieuを追わないこと。",
+    "Mejora posterior, no requisito inicial. Caza Goran Detonator Ultimate Pinkal/Redria cuando sea fiable y reemplaza V501/V502. No persigas Kondrieu solo por su tasa.",
+    "Amélioration tardive, pas un prérequis. Farmez Goran Detonator Ultimate Pinkal/Redria quand c’est fiable, puis remplacez V501/V502. Ne chassez pas Kondrieu seulement pour son taux."
+  ],
+  "b2.immortalBattle": [
+    "Keep V101 or Heavenly/Battle until you can repeat Ultimate Saint Million safely. Replace your speed unit after the drop; do not require this upgrade to start level-200 farming.",
+    "Ultimate Saint Million을 안전하게 반복할 수 있을 때까지 V101이나 Heavenly/Battle을 유지하세요. 얻으면 공격속도 슬롯을 교체합니다. 이것이 있어야만 200레벨 파밍을 시작하는 것은 아닙니다.",
+    "Ultimate Saint Millionを安全に周回できるまではV101かHeavenly/Battleを維持。入手後に速度枠を交換。レベル200の周回開始に必須ではありません。",
+    "Conserva V101 o Heavenly/Battle hasta poder repetir Saint Million Ultimate con seguridad. Reemplaza la unidad al obtenerla; no es requisito para empezar a farmear al 200.",
+    "Gardez V101 ou Heavenly/Battle jusqu’à pouvoir répéter Saint Million Ultimate sans danger. Remplacez l’unité après le drop ; elle n’est pas obligatoire pour commencer au niveau 200."
+  ],
+  "b2.maintenance": [
+    "Consolidates status protection into one slot. Farm Ultimate Oran Gal Gryphon once comfortable; until then carry the Cure units needed for each quest.",
+    "상태이상 방어를 한 슬롯으로 합칩니다. Ultimate Oran Gal Gryphon을 편하게 잡을 때 파밍하고, 그전에는 퀘스트에 맞는 Cure를 쓰세요.",
+    "状態異常対策を1枠に集約。Ultimate Oran Gal Gryphonを楽に倒せる段階で狙い、それまでは必要なCureを使います。",
+    "Reúne la protección de estados en una ranura. Caza Gal Gryphon Ultimate Oran cuando sea cómodo; antes usa Cure según la misión.",
+    "Regroupe la protection des états en un emplacement. Farmez Gal Gryphon Ultimate Oran quand il devient facile ; avant cela, adaptez les Cure."
+  ],
+  "b2.pbFlow": [
+    "Optional once a 100 PB invincibility MAG is ready. Start with the PB management guide and tune the number of units to your damage, rather than filling every free slot blindly.",
+    "100 PB 무적 MAG가 준비된 뒤의 선택 유닛입니다. PB 관리 가이드를 읽고 자신의 화력에 맞춰 개수를 조정하세요. 남는 슬롯을 무조건 채우는 방식은 아닙니다.",
+    "100 PB無敵MAGの準備後に選ぶユニット。PB管理ガイドを読み、火力に応じて個数を調整します。空き枠を無条件で埋めないこと。",
+    "Opcional con un MAG de invulnerabilidad a 100 PB. Consulta la guía y ajusta la cantidad a tu daño; no llenes todas las ranuras sin criterio.",
+    "Optionnel avec un MAG d’invincibilité à 100 PB. Lisez le guide et adaptez le nombre à vos dégâts, sans remplir tous les emplacements par défaut."
+  ],
+  "b2.graveDigger": [
+    "Longer upgrade after Tormentor. The confirmed ordinary-enemy drop is Bluefull Goran Detonator. Try the supplied Mop Up Operation 3 early-room loop and only repeat rooms containing that enemy. Greenill Kondrieu 1/32 is a separate boss alternative, not this quest's rate.",
+    "Tormentor 다음의 장기 목표입니다. 확인된 일반 몬스터 드롭은 Bluefull Goran Detonator입니다. 제공된 Mop Up Operation 3 초반 방 경로에서 해당 적이 있는 방만 반복하세요. Greenill Kondrieu 1/32는 별도의 보스 경로이며 이 퀘스트의 드롭률이 아닙니다.",
+    "Tormentor後の長期目標。通常敵の確認済みドロップはBluefull Goran Detonator。提供されたMop Up Operation 3序盤ループは該当敵のいる部屋を反復。Greenill Kondrieu 1/32は別のボスルートです。",
+    "Objetivo largo tras Tormentor. El drop normal confirmado es Goran Detonator Bluefull. En el recorrido inicial aportado de Mop Up Operation 3, repite solo salas con ese enemigo. Kondrieu Greenill 1/32 es otra ruta de jefe.",
+    "Objectif plus long après Tormentor. Drop ordinaire confirmé : Goran Detonator Bluefull. Dans la boucle fournie de Mop Up Operation 3, répétez les salles avec cet ennemi. Kondrieu Greenill 1/32 est une autre route de boss."
+  ],
+  "b2.v802": [
+    "Replace V801 only after your technique weapon and defense work. The supplied Lost SOUL BLADE loop targets four Sinow Blues; check the drops and reset. Keep V801 if this Ultimate loop is still unsafe.",
+    "테크닉 무기와 방어가 갖춰진 뒤 V801에서 교체하세요. 제공된 Lost SOUL BLADE의 Sinow Blue 네 마리 방을 정리하고 드롭 확인 후 재시작합니다. 아직 위험하면 V801을 계속 쓰세요.",
+    "テクニック武器と防御が整ってからV801を更新。提供されたLost SOUL BLADEのSinow Blue 4体部屋を反復。危険ならV801を継続。",
+    "Reemplaza V801 después de tener arma técnica y defensa. El recorrido aportado de Lost SOUL BLADE busca cuatro Sinow Blue y reinicia. Mantén V801 si aún es peligroso.",
+    "Remplacez V801 après avoir une arme technique et une défense solides. La boucle fournie de Lost SOUL BLADE cible quatre Sinow Blue puis recommence. Gardez V801 si c’est encore dangereux."
+  ],
+  "b2.cure": [
+    "Very Hard Pouilly Slime: Greenill = Cure/Paralysis, Yellowboze = Cure/Shock, Whitill = Cure/Freeze. The high displayed rate is conditional on a rare slime appearing. Trade for the needed Cure if that is quicker.",
+    "Very Hard Pouilly Slime: Greenill은 Cure/Paralysis, Yellowboze는 Cure/Shock, Whitill은 Cure/Freeze입니다. 레어 슬라임이 나온 뒤의 확률이라는 점에 주의하세요. 필요한 Cure만 거래로 먼저 구해도 됩니다.",
+    "Very Hard Pouilly Slime：GreenillはCure/Paralysis、YellowbozeはCure/Shock、WhitillはCure/Freeze。レア出現後の確率です。必要品を先に交換しても構いません。",
+    "Pouilly Slime Very Hard: Greenill = Cure/Paralysis, Yellowboze = Cure/Shock, Whitill = Cure/Freeze. La tasa depende de que aparezca el raro. Compra el Cure necesario si es más rápido.",
+    "Pouilly Slime Very Hard : Greenill = Cure/Paralysis, Yellowboze = Cure/Shock, Whitill = Cure/Freeze. Le taux suppose l’apparition du rare. Échangez le Cure utile si c’est plus rapide."
+  ],
+  "b2.bluePhantom": [
+    "The first-room Zol Gibbon reset in Maximum Attack 4th Stage 2A/B/C is short, but 1/2127.8 is still a long hunt. Keep Rainbow Shield or your current shield while farming.",
+    "Maximum Attack 4th Stage 2A/B/C 첫 방의 Zol Gibbon만 잡고 재시작하면 동선은 짧습니다. 그래도 1/2127.8은 긴 파밍이므로 Rainbow Shield나 현재 실드를 계속 사용하세요.",
+    "Maximum Attack 4th Stage 2A/B/Cの最初の部屋のZol Gibbonだけなら短い周回。ただし1/2127.8は長期狩りなのでRainbow Shield等を継続使用。",
+    "El reinicio de la primera sala de Zol Gibbon en Maximum Attack 4th Stage 2A/B/C es corto, pero 1/2127.8 sigue siendo largo. Mantén Rainbow Shield u otro escudo.",
+    "La boucle de la première salle de Zol Gibbon de Maximum Attack 4th Stage 2A/B/C est courte, mais 1/2127.8 reste long. Gardez Rainbow Shield ou votre bouclier actuel."
+  ],
+  "b2.supportOptional": [
+    "Optional for human Hunters / Rangers: support casting",
+    "인간 헌터·레인저 선택: 지원 캐스팅",
+    "人間HU・RA向け：支援詠唱（任意）",
+    "Opcional para HU/RA humanos: apoyo",
+    "Option pour HU/RA humains : soutien"
+  ],
+  "b2.battleOptional": [
+    "Only if switching to battle Force",
+    "전투 포스로 전환할 때만",
+    "戦闘FOへ移行する場合のみ",
+    "Solo al pasar a FO de combate",
+    "Seulement pour passer FO de combat"
+  ],
+  "b2.pbLink": [
+    "PB/Flow and MAG invincibility: learn PB management",
+    "PB/Flow와 MAG 무적: PB 관리 배우기",
+    "PB/FlowとMAG無敵：PB管理ガイド",
+    "PB/Flow e invulnerabilidad del MAG: guía",
+    "PB/Flow et invincibilité du MAG : guide"
+  ],
+  "b2.source": [
+    "Drop rates: site snapshot dated 19 Aug 2026. Source refresh is blocked, so live rates may differ. Rates do not promise a drop within that many kills. Use the Drop Tables for party and Happy Hour adjustments.",
+    "드롭률: 2026-08-19 사이트 저장 데이터 기준. 원본 갱신이 차단되어 현재 서버와 다를 수 있습니다. 분모 횟수 안에 반드시 드롭한다는 뜻은 아닙니다. 파티·Happy Hour 보정은 드롭 테이블에서 확인하세요.",
+    "ドロップ率は2026-08-19保存データ。更新がブロックされており現行サーバーと異なる可能性があります。分母の討伐数以内を保証しません。PT・Happy Hour補正はドロップ表で確認。",
+    "Tasas de la copia del 19-08-2026. La actualización está bloqueada y pueden diferir del servidor. El denominador no garantiza el drop. Ajusta grupo y Happy Hour en Drop Tables.",
+    "Taux de la copie du 19-08-2026. La mise à jour est bloquée et le serveur peut différer. Le dénominateur ne garantit pas le drop. Ajustez groupe et Happy Hour dans Drop Tables."
+  ],
+  "b2.hu100": [
+    "LV 100-149: accuracy, one speed unit, then Vjaya. A Hit Charge weapon is enough to begin.",
+    "LV 100~149: 명중 → 공격속도 유닛 하나 → Vjaya 순서입니다. Hit Charge 무기로 시작해도 충분합니다.",
+    "LV 100〜149：命中→速度ユニット1個→Vjaya。Hit付きCharge武器で開始できます。",
+    "LV 100-149: precisión, una unidad de velocidad y Vjaya. Basta un arma Charge con Hit para empezar.",
+    "LV 100-149 : précision, une unité de vitesse, puis Vjaya. Une arme Charge avec Hit suffit pour débuter."
+  ],
+  "b2.hu150": [
+    "LV 150-179: protect against status effects and improve ranged accuracy. Only add V501 if your specials need it. Yunchang is optional Berserk damage.",
+    "LV 150~179: 상태이상 대책과 원거리 명중을 먼저 보강하세요. V501은 해당 스페셜을 쓸 때만 추가하며 Yunchang은 선택형 Berserk 무기입니다.",
+    "LV 150〜179：状態対策と遠隔命中を優先。V501は対象スペシャル使用時のみ。Yunchangは任意のBerserk武器。",
+    "LV 150-179: protección de estados y precisión a distancia. V501 solo para especiales compatibles. Yunchang es Berserk opcional.",
+    "LV 150-179 : protection des états et précision à distance. V501 seulement pour les spéciaux adaptés. Yunchang reste optionnel."
+  ],
+  "b2.hu180": [
+    "LV 180-199: strengthen a working kit. V502 is mainly a Hell upgrade; the shield and Twin Cyclone hunts can take time.",
+    "LV 180~199: 갖춘 세트를 안정화합니다. V502는 주로 Hell 강화용이며 실드와 Twin Cyclone은 시간이 걸리는 파밍입니다.",
+    "LV 180〜199：基礎セットを安定化。V502は主にHell強化。盾やTwin Cycloneの狩りは長期になります。",
+    "LV 180-199: consolida el equipo. V502 mejora sobre todo Hell; el escudo y Twin Cyclone pueden tardar.",
+    "LV 180-199 : consolidez votre équipement. V502 améliore surtout Hell ; bouclier et Twin Cyclone peuvent prendre du temps."
+  ],
+  "b2.hu200": [
+    "LV 200: finish missing basics first, then replace one unit at a time. Raid weapons and a maxed Dark Flow set are later goals.",
+    "LV 200: 빠진 기본 장비를 먼저 채운 뒤 유닛을 하나씩 교체하세요. 레이드 무기와 완성형 Dark Flow 세트는 이후 목표입니다.",
+    "LV 200：不足する基本装備を補い、ユニットを1個ずつ更新。レイド武器や完成Dark Flowセットは後の目標。",
+    "LV 200: completa las bases y reemplaza una unidad cada vez. Armas de raid y Dark Flow al máximo son metas posteriores.",
+    "LV 200 : complétez les bases, puis remplacez les unités une par une. Armes de raid et Dark Flow optimisé viennent ensuite."
+  ],
+  "b2.ra100": [
+    "LV 100-149: Charge, accuracy and speed first. V501/V502 do not improve Charge damage, so do not chase them yet.",
+    "LV 100~149: Charge → 명중 → 공격속도가 우선입니다. V501/V502는 Charge 피해를 올리지 않으므로 먼저 쫓을 필요가 없습니다.",
+    "LV 100〜149：Charge・命中・速度が先。V501/V502はChargeの威力を増やさないため後回し。",
+    "LV 100-149: Charge, precisión y velocidad primero. V501/V502 no mejoran Charge; déjalos para después.",
+    "LV 100-149 : Charge, précision et vitesse d’abord. V501/V502 n’améliorent pas Charge, attendez."
+  ],
+  "b2.ra150": [
+    "LV 150-179: freezing makes fights safer, then Tormentor supplies Demon's. V501/V502 become useful when you actually equip Hell or status specials.",
+    "LV 150~179: 빙결로 안전을 확보하고 Tormentor로 Demon's 역할을 채우세요. Hell·상태이상 스페셜 무기를 실제로 쓸 때 V501/V502를 준비합니다.",
+    "LV 150〜179：凍結で安全を確保し、TormentorでDemon'sを追加。Hell・状態異常スペシャルを使う時にV501/V502を用意。",
+    "LV 150-179: congela para jugar seguro y añade Tormentor para Demon's. Prepara V501/V502 al usar Hell o especiales de estado.",
+    "LV 150-179 : sécurisez les combats avec le gel puis Tormentor pour Demon's. Préparez V501/V502 quand vous utilisez Hell ou les effets d’état."
+  ],
+  "b2.ra180": [
+    "LV 180-199: keep Tormentor while improving defense. Grave Digger is a long replacement hunt, not a prerequisite for normal farming.",
+    "LV 180~199: Tormentor를 유지하며 방어를 보강합니다. Grave Digger는 오래 걸리는 교체 파밍이며 일반 파밍의 선행 조건이 아닙니다.",
+    "LV 180〜199：Tormentorを使いながら防御強化。Grave Diggerは長期の更新目標で、周回開始の必須条件ではありません。",
+    "LV 180-199: conserva Tormentor mientras mejoras defensa. Grave Digger es una mejora larga, no un requisito para farmear.",
+    "LV 180-199 : gardez Tormentor tout en renforçant la défense. Grave Digger est une amélioration longue, pas un prérequis."
+  ],
+  "b2.ra200": [
+    "LV 200: upgrade speed, then fill the remaining control tools. Keep inexpensive Charge weapons until expensive boss weapons are ready.",
+    "LV 200: 공격속도를 올리고 부족한 제어 수단을 채우세요. 고가 보스 무기를 얻기 전에는 저렴한 Charge를 계속 쓰면 됩니다.",
+    "LV 200：速度を更新して制御手段を補充。高価なボス武器が揃うまで安価なChargeを継続。",
+    "LV 200: mejora velocidad y completa el control. Conserva Charge económico hasta conseguir armas de jefe más caras.",
+    "LV 200 : améliorez la vitesse et complétez le contrôle. Gardez Charge jusqu’à obtenir les armes de boss coûteuses."
+  ],
+  "b2.fo100": [
+    "LV 100-149: technique disks and MIND MAG, then V801 and Cure units. Mother Garb+ requires level 101, so farm it at 100 and equip it afterward.",
+    "LV 100~149: 테크닉 디스크·MIND MAG → V801 → Cure 순서입니다. Mother Garb+는 장착 레벨 101이므로 100에 구했다면 101부터 사용하세요.",
+    "LV 100〜149：ディスク・MIND MAG→V801→Cure。Mother Garb+は装備LV101なので、100で入手しても101から使用。",
+    "LV 100-149: discos y MAG MIND, luego V801 y Cure. Mother Garb+ requiere LV101; puedes buscarla al 100 y equiparla después.",
+    "LV 100-149 : disques et MAG MIND, puis V801 et Cure. Mother Garb+ demande LV101 ; cherchez-la au 100 puis équipez-la ensuite."
+  ],
+  "b2.fo150": [
+    "LV 150-179: keep V801. Add support range and a technique shield before the harder Psycho Wand loop. Attack-speed and V50x units are optional for battle builds.",
+    "LV 150~179: V801을 유지합니다. 어려운 Psycho Wand 반복 전에 지원 범위와 테크닉 실드를 확보하세요. 공격속도·V50x는 전투형에서만 선택합니다.",
+    "LV 150〜179：V801を維持。難しいPsycho Wand周回の前に支援範囲とテクニック盾を追加。速度・V50xは戦闘型向け。",
+    "LV 150-179: conserva V801. Consigue alcance de apoyo y escudo técnico antes de Psycho Wand. Velocidad física y V50x son opcionales para combate.",
+    "LV 150-179 : gardez V801. Obtenez portée de soutien et bouclier technique avant Psycho Wand. Vitesse physique et V50x sont des options de combat."
+  ],
+  "b2.fo180": [
+    "LV 180-199: replace V801 with V802 when safe. Farm Primal Nexus in advance, but it cannot be equipped before level 200.",
+    "LV 180~199: 안전하게 돌 수 있을 때 V801을 V802로 바꾸세요. Primal Nexus는 미리 구해 두되 200레벨 전에는 장착할 수 없습니다.",
+    "LV 180〜199：安全に回れるならV801をV802へ。Primal Nexusは先に掘れますが、装備はLV200から。",
+    "LV 180-199: sustituye V801 por V802 cuando sea seguro. Puedes buscar Primal Nexus antes, pero exige nivel 200.",
+    "LV 180-199 : remplacez V801 par V802 quand c’est sûr. Primal Nexus peut être farmé à l’avance mais exige le niveau 200."
+  ],
+  "b2.fo200": [
+    "LV 200: Mother Garb+ remains usable while farming Primal Nexus. Skyfall and Dark Bridge are later upgrades; the core can already fund another character.",
+    "LV 200: Primal Nexus 파밍 중에는 Mother Garb+를 계속 쓰세요. Skyfall·Dark Bridge는 후순위이며 기본 세트로도 다음 캐릭터 장비를 마련할 수 있습니다.",
+    "LV 200：Primal Nexusを掘る間はMother Garb+を継続。Skyfall・Dark Bridgeは後。基礎セットで別キャラの装備を集められます。",
+    "LV 200: usa Mother Garb+ mientras buscas Primal Nexus. Skyfall y Dark Bridge vienen después; el equipo básico ya financia otro personaje.",
+    "LV 200 : gardez Mother Garb+ en farmant Primal Nexus. Skyfall et Dark Bridge viennent après ; la base peut déjà équiper un autre personnage."
+  ],
+  "b2.slotsHu100": [
+    "V101 or Heavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock",
+    "V101 또는 Heavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock",
+    "V101またはHeavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock",
+    "V101 o Heavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock",
+    "V101 ou Heavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock"
+  ],
+  "b2.slotsHu150": [
+    "V101 | Heavenly/Arms | Smartlink | one Cure unit",
+    "V101 | Heavenly/Arms | Smartlink | 필요한 Cure 하나",
+    "V101 | Heavenly/Arms | Smartlink | 必要なCure",
+    "V101 | Heavenly/Arms | Smartlink | un Cure",
+    "V101 | Heavenly/Arms | Smartlink | un Cure"
+  ],
+  "b2.slotsHu180": [
+    "V101 | V501 or V502 if needed | Smartlink | State/Maintenance or Cure",
+    "V101 | 필요 시 V501 또는 V502 | Smartlink | State/Maintenance 또는 Cure",
+    "V101 | 必要ならV501かV502 | Smartlink | State/MaintenanceまたはCure",
+    "V101 | V501 o V502 si hace falta | Smartlink | State/Maintenance o Cure",
+    "V101 | V501 ou V502 si utile | Smartlink | State/Maintenance ou Cure"
+  ],
+  "b2.slotsHu200": [
+    "Immortal/Battle (V101 fallback) | V503 (V502 fallback) | State/Maintenance | PB/Flow. Human Hunters may swap the last slot for support V801.",
+    "Immortal/Battle(대체 V101) | V503(대체 V502) | State/Maintenance | PB/Flow. 인간 Hunter만 마지막 칸을 지원 테크닉용 V801로 바꿀 수 있습니다.",
+    "Immortal/Battle（代用V101）| V503（代用V502）| State/Maintenance | PB/Flow。人間Hunterは最後を支援用V801に変更可。",
+    "Immortal/Battle (V101) | V503 (V502) | State/Maintenance | PB/Flow. Solo Hunters humanos pueden cambiar el último por V801 de apoyo.",
+    "Immortal/Battle (sinon V101) | V503 (sinon V502) | State/Maintenance | PB/Flow. Seuls les Hunters humains peuvent remplacer le dernier par V801 de soutien."
+  ],
+  "b2.slotsRa100": [
+    "V101 or Heavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock",
+    "V101 또는 Heavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock",
+    "V101またはHeavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock",
+    "V101 o Heavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock",
+    "V101 ou Heavenly/Battle | Heavenly/Arms | Cure/Freeze | Cure/Shock"
+  ],
+  "b2.slotsRa150": [
+    "V101 | Heavenly/Arms | V501 or V502 only for matching specials | one Cure unit",
+    "V101 | Heavenly/Arms | 해당 스페셜 사용 시 V501 또는 V502 | 필요한 Cure 하나",
+    "V101 | Heavenly/Arms | 対応スペシャル用V501かV502 | 必要なCure",
+    "V101 | Heavenly/Arms | V501 o V502 para especiales compatibles | un Cure",
+    "V101 | Heavenly/Arms | V501 ou V502 pour spéciaux adaptés | un Cure"
+  ],
+  "b2.slotsRa180": [
+    "V101 | V502 for Hell | Heavenly/Arms if still needed | State/Maintenance or Cure",
+    "V101 | Hell용 V502 | 명중이 부족하면 Heavenly/Arms | State/Maintenance 또는 Cure",
+    "V101 | Hell用V502 | 命中不足ならHeavenly/Arms | State/MaintenanceまたはCure",
+    "V101 | V502 para Hell | Heavenly/Arms si hace falta | State/Maintenance o Cure",
+    "V101 | V502 pour Hell | Heavenly/Arms si nécessaire | State/Maintenance ou Cure"
+  ],
+  "b2.slotsRa200": [
+    "Immortal/Battle (or V101) | V503 (or V502) | State/Maintenance | PB/Flow; human Rangers may use V801 for support",
+    "Immortal/Battle(또는 V101) | V503(또는 V502) | State/Maintenance | PB/Flow, 인간 레인저는 지원용 V801도 선택",
+    "Immortal/Battle（またはV101）| V503（またはV502）| State/Maintenance | PB/Flow、人間RAは支援用V801も可",
+    "Immortal/Battle (o V101) | V503 (o V502) | State/Maintenance | PB/Flow; RA humanos pueden elegir V801",
+    "Immortal/Battle (ou V101) | V503 (ou V502) | State/Maintenance | PB/Flow ; V801 possible pour RA humains"
+  ],
+  "b2.slotsFo100": [
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze",
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze",
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze",
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze",
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze"
+  ],
+  "b2.slotsFo150": [
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze; replace unneeded protection with a MIND unit",
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze, 불필요한 면역 슬롯은 MIND 유닛으로 교체",
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze。不要な耐性枠はMINDへ",
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze; cambia protección innecesaria por MIND",
+    "V801 | Cure/Paralysis | Cure/Shock | Cure/Freeze ; remplacez une protection inutile par MIND"
+  ],
+  "b2.slotsFo180": [
+    "V802 (or V801) | State/Maintenance or required Cure units | MIND or resistance units in remaining slots",
+    "V802(또는 V801) | State/Maintenance 또는 필요한 Cure | 나머지는 MIND·저항 유닛",
+    "V802（またはV801）| State/Maintenanceまたは必要なCure | 残りはMIND・耐性",
+    "V802 (o V801) | State/Maintenance o Cure necesarios | MIND o resistencia en el resto",
+    "V802 (ou V801) | State/Maintenance ou Cure nécessaires | MIND ou résistances dans les places restantes"
+  ],
+  "b2.slotsFo200": [
+    "V802 | State/Maintenance | MIND or resistance unit | flexible unit. Pure casters do not need V101/V502.",
+    "V802 | State/Maintenance | MIND 또는 저항 유닛 | 자유 슬롯. 순수 테크닉 포스는 V101/V502가 필요 없습니다.",
+    "V802 | State/Maintenance | MINDまたは耐性 | 自由枠。純テクニックFOにV101/V502は不要。",
+    "V802 | State/Maintenance | MIND o resistencia | ranura libre. FO puramente técnico no necesita V101/V502.",
+    "V802 | State/Maintenance | MIND ou résistance | libre. Un FO purement technique n’a pas besoin de V101/V502."
+  ],
+  "usage.lead": [
+    "See which content is opened and used, including pages with no recorded views. Use this evidence to review content, not to delete it automatically.",
+    "어떤 콘텐츠를 열고 사용하는지, 조회 기록이 없는 페이지까지 확인합니다. 삭제를 자동 결정하지 않고 콘텐츠 정리의 근거로 사용하세요.",
+    "開かれた・操作された内容と、閲覧記録のないページを確認できます。自動削除ではなく見直しの判断材料です。",
+    "Consulta qué contenido se abre y utiliza, incluidas las páginas sin visitas registradas. Sirve para revisar contenido, no para borrarlo automáticamente.",
+    "Identifiez les contenus ouverts et utilisés, y compris les pages sans vue enregistrée. Une aide à la révision, pas une suppression automatique."
+  ],
+  "usage.pages": [
+    "Pages",
+    "페이지",
+    "ページ",
+    "Páginas",
+    "Pages"
+  ],
+  "usage.sections": [
+    "Features / sections",
+    "기능·세부 콘텐츠",
+    "機能・セクション",
+    "Funciones / secciones",
+    "Fonctions / sections"
+  ],
+  "usage.viewed": [
+    "Pages with views",
+    "조회된 페이지",
+    "閲覧されたページ",
+    "Páginas visitadas",
+    "Pages consultées"
+  ],
+  "usage.zero": [
+    "Pages with 0 views",
+    "조회 0인 페이지",
+    "閲覧数0のページ",
+    "Páginas con 0 visitas",
+    "Pages à 0 vue"
+  ],
+  "usage.coverage": [
+    "Collection started (UTC)",
+    "수집 시작일 (UTC)",
+    "集計開始日（UTC）",
+    "Inicio de registro (UTC)",
+    "Début du suivi (UTC)"
+  ],
+  "usage.inventory": [
+    "Content inventory",
+    "전체 콘텐츠 이용 현황",
+    "コンテンツ利用状況",
+    "Uso de todo el contenido",
+    "Utilisation des contenus"
+  ],
+  "usage.search": [
+    "Find content",
+    "콘텐츠 찾기",
+    "コンテンツを検索",
+    "Buscar contenido",
+    "Rechercher un contenu"
+  ],
+  "usage.sort": [
+    "Sort by",
+    "정렬 기준",
+    "並び順",
+    "Ordenar por",
+    "Trier par"
+  ],
+  "usage.desc": [
+    "Most views first",
+    "조회 많은 순",
+    "閲覧数が多い順",
+    "Más visitas primero",
+    "Plus de vues"
+  ],
+  "usage.asc": [
+    "Fewest views first",
+    "조회 적은 순",
+    "閲覧数が少ない順",
+    "Menos visitas primero",
+    "Moins de vues"
+  ],
+  "usage.usesSort": [
+    "Most interactions first",
+    "기능 사용 많은 순",
+    "操作数が多い順",
+    "Más interacciones",
+    "Plus d’interactions"
+  ],
+  "usage.low": [
+    "Only 0–5 views",
+    "조회 0~5만 보기",
+    "閲覧数0〜5のみ",
+    "Solo 0–5 visitas",
+    "Seulement 0–5 vues"
+  ],
+  "usage.csv": [
+    "Download CSV",
+    "CSV 내려받기",
+    "CSVを保存",
+    "Descargar CSV",
+    "Télécharger le CSV"
+  ],
+  "usage.content": [
+    "Content",
+    "콘텐츠",
+    "コンテンツ",
+    "Contenido",
+    "Contenu"
+  ],
+  "usage.views": [
+    "Views",
+    "조회",
+    "閲覧",
+    "Vistas",
+    "Vues"
+  ],
+  "usage.engaged": [
+    "15s foreground",
+    "15초 머무름",
+    "前面で15秒",
+    "15 s en primer plano",
+    "15 s au premier plan"
+  ],
+  "usage.uses": [
+    "Interactions",
+    "기능 사용",
+    "操作",
+    "Interacciones",
+    "Interactions"
+  ],
+  "usage.activeDays": [
+    "Active days",
+    "조회 발생일 수",
+    "閲覧のあった日数",
+    "Días con visitas",
+    "Jours avec vues"
+  ],
+  "usage.last": [
+    "Last view (UTC)",
+    "마지막 조회 (UTC)",
+    "最終閲覧（UTC）",
+    "Última visita (UTC)",
+    "Dernière vue (UTC)"
+  ],
+  "usage.change": [
+    "vs. prior period",
+    "이전 기간 대비",
+    "前期間比",
+    "Frente al período anterior",
+    "Période précédente"
+  ],
+  "usage.noResults": [
+    "No content matches these filters.",
+    "조건에 맞는 콘텐츠가 없습니다.",
+    "条件に合うコンテンツはありません。",
+    "Ningún contenido coincide con los filtros.",
+    "Aucun contenu ne correspond aux filtres."
+  ],
+  "usage.noData": [
+    "No recorded traffic yet. Zero means no recorded views, not that the content is unnecessary.",
+    "아직 수집된 방문 기록이 없습니다. 0은 조회 기록이 없다는 뜻이지 불필요한 콘텐츠라는 뜻은 아닙니다.",
+    "まだ閲覧記録がありません。0は記録がないことを示し、不要という意味ではありません。",
+    "Aún no hay tráfico registrado. Cero no significa que el contenido sea innecesario.",
+    "Aucune visite enregistrée. Zéro ne signifie pas que le contenu est inutile."
+  ],
+  "usage.notice": [
+    "Compare at least a full observation period before pruning. New pages, niche guides, blocked tracking and interrupted collection can all produce low counts. A dash means unavailable, not zero.",
+    "정리 전 충분한 관찰 기간을 확보하세요. 신규 페이지·소수 이용자를 위한 가이드·집계 차단·수집 중단 때문에 수치가 낮을 수 있습니다. ‘—’는 0이 아니라 측정 불가입니다.",
+    "整理前に十分な観察期間を確保してください。新規ページ、専門的なガイド、集計ブロックや停止は低い数値の原因になります。「—」は未計測で、0ではありません。",
+    "Observa un período completo antes de retirar contenido. Las páginas nuevas, guías de nicho o bloqueos del seguimiento pueden dar cifras bajas. «—» significa no disponible, no cero.",
+    "Observez une période complète avant de retirer du contenu. Nouveautés, guides spécialisés et interruptions du suivi peuvent expliquer de faibles chiffres. «—» signifie indisponible, pas zéro."
+  ],
+  "usage.definitions": [
+    "How these counts work",
+    "집계 기준 알아보기",
+    "集計基準",
+    "Cómo se cuentan",
+    "Comment sont calculés les chiffres"
+  ],
+  "usage.definitionText": [
+    "Each page, feature view and action is counted at most once per browser tab session. Views are not unique people. Foreground means 15 seconds with the tab visible; section views mean at least 2 seconds intersecting the viewport, not proof of reading. Interactions include links, filters, searches and controls; input values are never sent. Feature counts are not additive. Dates are UTC.",
+    "페이지·기능 조회·조작은 브라우저 탭 세션마다 각각 최대 1회 집계합니다. 고유 방문자 수가 아닙니다. 머무름은 탭을 앞에 둔 시간 15초, 세부 콘텐츠 조회는 화면에 2초 이상 노출된 경우로 완독을 뜻하지 않습니다. 링크·필터·검색·버튼 조작을 사용으로 기록하며 입력 내용은 전송하지 않습니다. 기능별 수치를 합쳐 방문자 수로 볼 수 없습니다. 날짜는 UTC입니다.",
+    "各ページ・機能の閲覧と操作はブラウザのタブセッションごとに最大1回です。ユニーク人数ではありません。前面15秒、セクションは画面に2秒以上表示された記録で、読了の証明ではありません。リンク・絞り込み・検索・操作を数え、入力内容は送信しません。機能別の数値は合算できません。日付はUTCです。",
+    "Cada página, sección y acción se cuenta como máximo una vez por sesión de pestaña, no por persona única. Permanencia: 15 s con la pestaña visible; sección: 2 s en pantalla, no lectura confirmada. Se cuentan enlaces, filtros, búsquedas y controles, sin enviar lo escrito. No sumes las funciones como visitantes. Fechas UTC.",
+    "Chaque page, section et action compte au plus une fois par session d’onglet, pas par personne unique. Présence : 15 s avec l’onglet visible ; section : 2 s à l’écran, sans preuve de lecture. Liens, filtres, recherches et commandes sont comptés sans transmettre les saisies. Les fonctions ne s’additionnent pas en visiteurs. Dates UTC."
+  ],
+  "usage.privacy": [
+    "The analytics database stores only daily totals by page and fixed action label, without IP addresses, cookies or device identifiers. Network providers may process normal request metadata. Public counters are approximate and can be inflated; they are not an audited audience measurement.",
+    "집계 DB에는 IP·쿠키·기기 식별자 없이 페이지·정해진 행동별 일일 합계만 저장합니다. 네트워크 제공자는 일반 요청 정보를 처리할 수 있습니다. 공개 집계는 부풀려질 수 있는 참고 수치이며 검증된 방문자 측정이 아닙니다.",
+    "集計DBにはIP・Cookie・端末IDを保存せず、ページと固定操作名ごとの日次合計のみを保存します。通信事業者は通常のリクエスト情報を処理する場合があります。公開カウンターは水増し可能な参考値で、監査済みの人数ではありません。",
+    "La base guarda solo totales diarios por página y acción fija, sin IP, cookies ni identificadores. Los proveedores de red pueden procesar metadatos normales. Los contadores públicos son aproximados y pueden inflarse; no son una medición auditada.",
+    "La base stocke uniquement les totaux quotidiens par page et action fixe, sans IP, cookie ni identifiant. Les opérateurs réseau peuvent traiter les métadonnées habituelles. Ces compteurs publics sont approximatifs et peuvent être gonflés ; ce n’est pas une mesure auditée."
+  ],
+  "usage.upgrade": [
+    "The new analytics API is not connected yet. Publish the API and apply its analytics migration to start real collection. No sample counts are displayed.",
+    "새 통계 API가 아직 연결되지 않았습니다. API 배포와 통계용 DB 적용 후 실제 수집이 시작됩니다. 예시 숫자를 실측처럼 표시하지 않습니다.",
+    "新しい集計APIは未接続です。APIの公開と集計DBの適用後に実測を開始します。サンプル数値は表示しません。",
+    "La nueva API no está conectada. Publica la API y aplica su migración para registrar datos reales. No se muestran cifras de ejemplo.",
+    "La nouvelle API n’est pas connectée. Publiez-la et appliquez sa migration pour lancer la collecte réelle. Aucun chiffre fictif n’est affiché."
+  ],
+  "usage.signalsStart": [
+    "Feature measurement started",
+    "세부 기능 측정 시작",
+    "機能計測の開始",
+    "Inicio de medición de funciones",
+    "Début du suivi des fonctions"
+  ],
+  "usage.partial": [
+    "Partial observation: comparisons are hidden until both periods have collection coverage. The current day is still in progress.",
+    "부분 수집: 양쪽 기간의 수집 범위가 확보될 때까지 증감 비교를 숨깁니다. 오늘 수치는 아직 집계 중입니다.",
+    "部分集計：両期間の集計範囲がそろうまで増減は表示しません。本日は集計中です。",
+    "Observación parcial: se ocultan comparaciones hasta cubrir ambos períodos. El día actual no ha terminado.",
+    "Observation partielle : comparaisons masquées tant que les deux périodes ne sont pas couvertes. La journée actuelle est en cours."
+  ],
+  "usage.classDetails": [
+    "Class / level selections",
+    "클래스·레벨 선택 현황",
+    "クラス・レベルの選択",
+    "Selecciones de clase / nivel",
+    "Sélections de classe / niveau"
+  ],
+  "usage.endgame": [
+    "Endgame builds",
+    "엔드게임 빌드",
+    "エンドゲームビルド",
+    "Builds finales",
+    "Builds de fin de jeu"
+  ],
+  "usage.range": [
+    "Reporting window (UTC)",
+    "집계 기간 (UTC)",
+    "集計期間（UTC）",
+    "Período (UTC)",
+    "Période (UTC)"
+  ],
+  "usage.rows": [
+    "Listed content",
+    "표시 콘텐츠 수",
+    "表示コンテンツ数",
+    "Contenidos mostrados",
+    "Contenus affichés"
+  ],
+  "pb.title": [
+    "PB management: time your next invincibility",
+    "PB 관리: 다음 무적 타이밍 맞추기",
+    "PB管理：次の無敵にタイミングを合わせる",
+    "Gestión de PB: prepara la próxima invencibilidad",
+    "Gestion des PB : préparer la prochaine invincibilité"
+  ],
+  "pb.lead": [
+    "The goal is not to reach 100 PB as fast as possible. Build PB, hold just below 100, then reach 100 after the current invincibility ends.",
+    "목표는 무조건 빨리 100PB를 만드는 것이 아닙니다. PB를 채우고 100 직전에서 조절한 뒤, 현재 무적이 끝난 후 100에 도달하는 흐름을 익히세요.",
+    "最速で100PBにすることが目的ではありません。100直前までためて調整し、現在の無敵が切れてから100に到達する流れを覚えましょう。",
+    "No se trata de llegar a 100 PB lo antes posible. Acumula, espera justo por debajo de 100 y llega a 100 después de que termine la invencibilidad actual.",
+    "Le but n’est pas d’atteindre 100 PB au plus vite. Accumulez, restez juste sous 100, puis atteignez 100 après la fin de l’invincibilité actuelle."
+  ],
+  "pb.community": [
+    "Community practice guide · timing is approximate",
+    "커뮤니티 실전 가이드 · 시간·잔여 PB는 참고값",
+    "コミュニティ実践ガイド・時間と残量は目安",
+    "Guía práctica comunitaria · tiempos aproximados",
+    "Guide pratique communautaire · timings approximatifs"
+  ],
+  "pb.basics": [
+    "01 / Before you start",
+    "01 / 시작 전 준비",
+    "01 / 始める前に",
+    "01 / Antes de empezar",
+    "01 / Avant de commencer"
+  ],
+  "pb.mag": [
+    "Check your MAG first",
+    "MAG부터 확인하세요",
+    "まずMAGを確認",
+    "Primero comprueba tu MAG",
+    "Vérifiez d’abord votre MAG"
+  ],
+  "pb.magBody": [
+    "Your MAG must have an invincibility response to the PB-full trigger. Check the MAG's trigger and activation chance in the database. This technique is not a guarantee of permanent invincibility.",
+    "100PB 조건에서 무적 반응이 있는 MAG가 필요합니다. DB에서 해당 MAG의 발동 조건과 확률을 확인하세요. 이 운용법이 상시 무적을 보장하지는 않습니다.",
+    "PB満タン時に無敵を発動するMAGが必要です。DBで発動条件と確率を確認してください。この操作で常時無敵が保証されるわけではありません。",
+    "Tu MAG debe responder con invencibilidad al llenar PB. Revisa el disparador y la probabilidad en la base de datos. No garantiza invencibilidad permanente.",
+    "Votre MAG doit pouvoir déclencher l’invincibilité à PB plein. Vérifiez ses conditions et sa probabilité dans la base. Cette technique ne garantit pas une invincibilité permanente."
+  ],
+  "pb.flow": [
+    "PB/Flow: start with spare slots",
+    "PB/Flow: 여유 슬롯부터 사용",
+    "PB/Flow：空きスロットから",
+    "PB/Flow: empieza con huecos libres",
+    "PB/Flow : utilisez les emplacements libres"
+  ],
+  "pb.flowBody": [
+    "The database lists +1 PB per 5 seconds per PB/Flow. At low damage, the community recommends multiple units. Keep essential speed and survival units; add PB/Flow in available slots, then remove one if PB fills too early.",
+    "DB 기준 PB/Flow 1개는 5초마다 PB +1입니다. 화력이 낮을 때는 여러 개 사용이 권장됩니다. 필수 공속·생존 유닛은 유지하고 여유 칸을 활용하세요. 너무 일찍 가득 차면 한 개씩 줄입니다.",
+    "DB表記はPB/Flow 1個につき5秒ごとにPB+1。火力が低い間は複数装備が推奨されています。必須の速度・生存ユニットを残し、空きに追加。早く満タンになるなら1個ずつ減らします。",
+    "La base indica +1 PB cada 5 s por unidad. Con poco daño, la comunidad recomienda varias. Conserva las unidades esenciales de velocidad y supervivencia; usa huecos libres y quita una si se llena demasiado pronto.",
+    "La base indique +1 PB toutes les 5 s par unité. À faible puissance, plusieurs unités sont conseillées. Gardez celles de vitesse et de survie indispensables ; remplissez les places libres, puis retirez-en une si les PB montent trop vite."
+  ],
+  "pb.cycle": [
+    "02 / The repeatable cycle",
+    "02 / 반복 운용 순서",
+    "02 / 繰り返しの流れ",
+    "02 / El ciclo repetible",
+    "02 / Le cycle à répéter"
+  ],
+  "pb.stepHelp": [
+    "Select a step to see the action. This is a teaching diagram, not a live game timer.",
+    "단계를 누르면 행동 요령이 나옵니다. 게임과 연동된 타이머가 아닌 설명용 흐름도입니다.",
+    "手順を選ぶと操作の説明が表示されます。ゲーム連動タイマーではなく学習用の図です。",
+    "Selecciona un paso para ver la acción. Es un esquema educativo, no un temporizador conectado al juego.",
+    "Choisissez une étape pour voir l’action. Il s’agit d’un schéma pédagogique, pas d’un minuteur connecté au jeu."
+  ],
+  "pb.step1": [
+    "Build PB",
+    "PB 채우기",
+    "PBをためる",
+    "Acumula PB",
+    "Accumuler"
+  ],
+  "pb.step2": [
+    "Hold 97–99",
+    "97~99에서 조절",
+    "97〜99で調整",
+    "Mantén 97–99",
+    "Rester à 97–99"
+  ],
+  "pb.step3": [
+    "Watch the MAG",
+    "MAG 움직임 확인",
+    "MAGの動きを見る",
+    "Observa el MAG",
+    "Observer le MAG"
+  ],
+  "pb.step4": [
+    "Allow the next tick",
+    "다음 회복 허용",
+    "次の回復を許可",
+    "Permite el siguiente tick",
+    "Laisser le prochain tick"
+  ],
+  "pb.step1Body": [
+    "While invincible, build PB through normal combat and PB/Flow. Start by aiming for 97–99 PB about 5–10 seconds before invincibility ends. Adjust unit count to your damage output; do not assume a fixed combat gain.",
+    "무적 중 전투와 PB/Flow로 PB를 채웁니다. 우선 무적 종료 약 5~10초 전에 97~99PB가 되도록 맞춰보세요. 전투 중 PB 획득량은 일정하지 않으므로 자신의 화력에 맞춰 유닛 수를 조절합니다.",
+    "無敵中は戦闘とPB/Flowでためます。まず無敵終了の約5〜10秒前に97〜99PBを目指します。戦闘での増加量は一定ではないため、火力に合わせて個数を調整します。",
+    "Durante la invencibilidad, acumula con combate y PB/Flow. Intenta llegar a 97–99 PB unos 5–10 s antes del final. Ajusta las unidades a tu daño: la ganancia en combate no es fija.",
+    "Pendant l’invincibilité, accumulez par le combat et PB/Flow. Visez 97–99 PB environ 5–10 s avant la fin. Adaptez le nombre d’unités à vos dégâts : le gain en combat varie."
+  ],
+  "pb.step2Body": [
+    "At 97–99 PB, use quick weapon swaps to reset PB/Flow's timer, as described by the community. This delays the next automatic gain; it does not freeze PB gained from combat. Avoid accidentally reaching 100 while the old invincibility is still active.",
+    "97~99PB에서 빠르게 무기를 바꾸면 PB/Flow 타이머를 초기화할 수 있다는 것이 커뮤니티 요령입니다. 자동 회복을 늦추는 것이지 전투로 얻는 PB까지 멈추는 것은 아닙니다. 기존 무적 중 실수로 100이 되지 않게 주의하세요.",
+    "97〜99PBで素早く武器を切り替えるとPB/Flowのタイマーをリセットできる、というコミュニティの手法です。自動回復を遅らせますが戦闘でのPB増加は止まりません。無敵中の100到達に注意してください。",
+    "Con 97–99 PB, los cambios rápidos de arma reinician el temporizador de PB/Flow según la comunidad. Retrasan la ganancia automática, no la del combate. Evita llegar a 100 con la invencibilidad anterior activa.",
+    "À 97–99 PB, les changements rapides d’arme réinitialisent le délai de PB/Flow selon la communauté. Ils retardent le gain automatique, pas celui du combat. Évitez d’atteindre 100 pendant l’invincibilité précédente."
+  ],
+  "pb.step3Body": [
+    "Keep watching for the MAG's quick movement when invincibility ends. Do not treat the exact end frame as safe: the reported same-frame hit / 100 PB edge case can prevent a new invincibility trigger. Position safely during the gap.",
+    "무적이 끝날 때 MAG가 빠르게 움직이는 신호를 확인하세요. 종료 순간을 안전하다고 생각하면 안 됩니다. 종료·피격·100PB가 같은 프레임에 겹치면 다음 무적이 발동하지 않을 수 있다는 제보가 있습니다. 틈에는 안전한 위치를 확보하세요.",
+    "無敵終了時のMAGの素早い動きを確認します。終了フレームを安全と考えないでください。終了・被弾・100PBが同時だと次の無敵が発動しない場合が報告されています。隙間は安全な位置で過ごしましょう。",
+    "Observa el movimiento rápido del MAG al terminar la invencibilidad. El instante exacto no es seguro: un golpe o 100 PB en el mismo fotograma puede impedir la nueva activación. Busca una posición segura durante el intervalo.",
+    "Repérez le mouvement rapide du MAG à la fin de l’invincibilité. L’instant exact n’est pas sûr : un coup ou 100 PB sur la même image peut empêcher le déclenchement suivant. Placez-vous à l’abri pendant l’intervalle."
+  ],
+  "pb.step4Body": [
+    "After the old invincibility ends, let PB/Flow tick toward 100. With practice, aim for the next tick roughly 1–2 seconds after the end. This is an advanced timing target, not a guaranteed safe delay. Confirm the next invincibility before committing to risky damage.",
+    "기존 무적이 끝난 뒤 PB/Flow가 100을 향해 회복되도록 합니다. 익숙해지면 종료 약 1~2초 후 다음 회복이 들어오도록 맞출 수 있습니다. 숙련자를 위한 타이밍 목표이지 안전 보장 시간이 아닙니다. 위험한 공격을 하기 전 새 무적이 켜졌는지 확인하세요.",
+    "終了後にPB/Flowを回復させ100を目指します。慣れたら終了約1〜2秒後の回復を狙います。これは熟練者の目安で、安全を保証する待ち時間ではありません。危険な攻撃の前に新しい無敵を確認してください。",
+    "Al terminar la invencibilidad anterior, deja que PB/Flow avance hacia 100. Con práctica, busca el siguiente tick unos 1–2 s después. Es una meta avanzada, no un retraso seguro garantizado. Confirma la nueva invencibilidad antes de arriesgarte.",
+    "Après la fin, laissez PB/Flow progresser vers 100. Avec l’habitude, visez un tick environ 1–2 s après. C’est un objectif avancé, pas un délai sûr garanti. Confirmez la nouvelle invincibilité avant de prendre des risques."
+  ],
+  "pb.timingLabel": [
+    "Timing reference: current invincibility → gap → next trigger attempt",
+    "타이밍 참고: 현재 무적 → 빈틈 → 다음 발동 시도",
+    "目安：現在の無敵 → 隙間 → 次の発動を狙う",
+    "Referencia: invencibilidad actual → intervalo → nuevo intento",
+    "Repère : invincibilité actuelle → intervalle → nouveau déclenchement"
+  ],
+  "pb.timing1": [
+    "~5–10 s before end · 97–99 PB",
+    "종료 약 5~10초 전 · 97~99PB",
+    "終了約5〜10秒前・97〜99PB",
+    "~5–10 s antes · 97–99 PB",
+    "~5–10 s avant · 97–99 PB"
+  ],
+  "pb.timing2": [
+    "End · check MAG movement",
+    "종료 · MAG 움직임 확인",
+    "終了・MAGの動きを確認",
+    "Final · observa el MAG",
+    "Fin · observer le MAG"
+  ],
+  "pb.timing3": [
+    "~1–2 s after · next Flow tick",
+    "종료 약 1~2초 후 · 다음 Flow 회복",
+    "終了約1〜2秒後・次のFlow回復",
+    "~1–2 s después · siguiente tick",
+    "~1–2 s après · prochain tick"
+  ],
+  "pb.spend": [
+    "03 / Lower PB with a weapon special",
+    "03 / 무기 스페셜로 PB 낮추기",
+    "03 / 武器スペシャルでPBを下げる",
+    "03 / Reduce PB con un especial",
+    "03 / Réduire les PB avec un spécial"
+  ],
+  "pb.combo": [
+    "Normal attack → Special attack → quick weapon swap",
+    "일반 공격 → 스페셜 공격 → 빠른 무기 교체",
+    "通常攻撃 → スペシャル → 素早く武器切り替え",
+    "Ataque normal → especial → cambio rápido de arma",
+    "Attaque normale → spéciale → changement rapide d’arme"
+  ],
+  "pb.spendBody": [
+    "The reported sequence leaves about 63 PB when started from a full gauge. It is a community reference, not a fixed outcome: timing, interruption and combat gains can change the remainder. Practise the sequence in a safe situation first.",
+    "100PB에서 시작했을 때 약 63PB를 남긴다는 커뮤니티 요령입니다. 확정 결과는 아니며 교체 시점·공격 끊김·전투 중 PB 획득에 따라 달라집니다. 먼저 안전한 상황에서 동작을 익히세요.",
+    "100PBから開始して約63PB残すという報告です。確定値ではなく、切り替えタイミング・中断・戦闘での増加で変わります。まず安全な状況で練習してください。",
+    "La secuencia reportada deja unos 63 PB desde una barra llena. No es un resultado fijo: el momento, las interrupciones y las ganancias en combate cambian el resto. Practícala primero en una situación segura.",
+    "La séquence rapportée laisse environ 63 PB depuis une jauge pleine. Ce n’est pas fixe : timing, interruption et gains en combat changent le reste. Entraînez-vous d’abord en sécurité."
+  ],
+  "pb.weapon": [
+    "Weapon",
+    "무기",
+    "武器",
+    "Arma",
+    "Arme"
+  ],
+  "pb.requirement": [
+    "Who can equip / requirement",
+    "사용 클래스·착용 조건",
+    "装備クラス・条件",
+    "Clase / requisito",
+    "Classes / condition"
+  ],
+  "pb.note": [
+    "Practice notes",
+    "운용 참고",
+    "運用メモ",
+    "Notas prácticas",
+    "Conseils pratiques"
+  ],
+  "pb.berdysh": [
+    "Reported faster than TJS. Caution: the local database lists Special: None; PB-drain behavior needs in-game confirmation before relying on it.",
+    "TJS보다 빠르다는 제보. 단, 로컬 DB에는 Special: None으로 표기되어 있어 실제 PB 소모 동작을 게임에서 확인한 뒤 사용하세요.",
+    "TJSより速いとの報告。ただしローカルDBはSpecial: None表記のため、PB消費をゲーム内で確認してから使ってください。",
+    "Se reporta más rápida que TJS. La base local dice Special: None; confirma en el juego el consumo de PB antes de depender de ella.",
+    "Signalée plus rapide que TJS. La base locale indique Special: None ; confirmez la consommation de PB en jeu avant de vous y fier."
+  ],
+  "pb.dragon": [
+    "Reported faster than TJS; the database confirms Energy Wave (PB).",
+    "TJS보다 빠르다는 제보. DB에서 Energy Wave (PB) 확인.",
+    "TJSより速いとの報告。DBはEnergy Wave (PB)を確認。",
+    "Se reporta más rápida que TJS; la base confirma Energy Wave (PB).",
+    "Signalée plus rapide que TJS ; la base confirme Energy Wave (PB)."
+  ],
+  "pb.tjs": [
+    "Slower swaps in the community comparison, but useful burst damage. DB notes a custom animation and 6–1–1 special hits with 5 targets.",
+    "커뮤니티 비교상 교체는 느리지만 순간 화력이 장점입니다. DB에는 전용 모션·스페셜 6–1–1타·5대상으로 안내됩니다.",
+    "比較では切り替えが遅めですが瞬間火力が利点。DB表記は専用モーション・スペシャル6–1–1ヒット・5体対象です。",
+    "Cambios más lentos según la comunidad, pero buen daño explosivo. La base indica animación propia y especial de 6–1–1 golpes a 5 objetivos.",
+    "Changement plus lent selon la communauté, mais bons dégâts instantanés. La base indique une animation spécifique et un spécial de 6–1–1 coups sur 5 cibles."
+  ],
+  "pb.troubleshoot": [
+    "04 / When the cycle breaks",
+    "04 / 잘 안 될 때 확인할 것",
+    "04 / うまく回らないとき",
+    "04 / Si el ciclo falla",
+    "04 / Si le cycle échoue"
+  ],
+  "pb.early": [
+    "100 PB too early",
+    "너무 일찍 100PB",
+    "100PBが早すぎる",
+    "100 PB demasiado pronto",
+    "100 PB trop tôt"
+  ],
+  "pb.earlyBody": [
+    "Remove one PB/Flow and try again. Strong gear such as Ignis or a completed Dark Flow setup may need only one PB/Flow; tune it to your combos rather than copying a fixed count.",
+    "PB/Flow를 한 개 빼고 다시 맞춰보세요. Ignis나 완성된 Dark Flow 세팅처럼 화력이 강해지면 1개만으로도 충분할 수 있습니다. 고정 개수를 복사하기보다 자신의 콤보에 맞추세요.",
+    "PB/Flowを1個外して再調整。Ignisや完成したDark Flow装備など高火力なら1個で足りる場合があります。固定個数ではなく自分のコンボに合わせましょう。",
+    "Quita un PB/Flow y prueba. Con Ignis o un set completo de Dark Flow, una unidad puede bastar. Ajústalo a tus combos, no a una cifra fija.",
+    "Retirez un PB/Flow et réessayez. Avec Ignis ou un set Dark Flow complet, une unité peut suffire. Adaptez à vos combos plutôt qu’à un nombre fixe."
+  ],
+  "pb.late": [
+    "PB arrives too late",
+    "PB가 너무 늦게 참",
+    "PBが遅すぎる",
+    "PB llega tarde",
+    "Les PB arrivent trop tard"
+  ],
+  "pb.lateBody": [
+    "Add a PB/Flow in a spare slot or stop resetting its timer so often. Recheck the 97–99 PB checkpoint before trying to shorten the gap.",
+    "여유 칸에 PB/Flow를 추가하거나 타이머를 너무 자주 초기화하고 있지 않은지 확인하세요. 빈틈을 줄이기 전에 97~99PB 체크 지점부터 다시 맞춥니다.",
+    "空きにPB/Flowを追加するか、タイマーをリセットしすぎていないか確認。隙間を縮める前に97〜99PBの到達地点を再調整しましょう。",
+    "Añade PB/Flow en un hueco libre o deja de reiniciar tan a menudo. Revisa primero el punto de 97–99 PB antes de acortar el intervalo.",
+    "Ajoutez PB/Flow dans un emplacement libre ou réinitialisez moins souvent. Recalez d’abord le point 97–99 PB avant de raccourcir l’intervalle."
+  ],
+  "pb.failed": [
+    "100 PB, but no invincibility",
+    "100PB인데 무적이 안 켜짐",
+    "100PBなのに無敵にならない",
+    "100 PB, sin invencibilidad",
+    "100 PB, mais pas d’invincibilité"
+  ],
+  "pb.failedBody": [
+    "Check the MAG's trigger and chance. Community reports warn that a hit at the invincibility-end frame or reaching 100 at that same moment can miss the new trigger. Do not assume the gauge alone proves protection.",
+    "MAG의 발동 조건·확률을 확인하세요. 무적 종료 프레임의 피격 또는 종료와 동시에 100PB 도달 시 새 무적이 누락될 수 있다는 제보가 있습니다. 게이지만 보고 보호받고 있다고 판단하지 마세요.",
+    "MAGの条件と確率を確認。無敵終了フレームの被弾や同時の100PB到達で新しい発動を逃す場合があるとの報告です。ゲージだけで安全と判断しないでください。",
+    "Comprueba el disparador y la probabilidad del MAG. Según los reportes, recibir un golpe o llegar a 100 justo al terminar la invencibilidad puede impedir la nueva activación. La barra no demuestra protección.",
+    "Vérifiez les conditions et la probabilité du MAG. Selon les retours, un coup ou 100 PB à l’instant de fin peut empêcher le nouveau déclenchement. La jauge seule ne prouve pas la protection."
+  ],
+  "pb.lowHp": [
+    "100 PB and below 10% HP together",
+    "100PB와 HP 10% 미만이 겹침",
+    "100PBとHP10%未満が同時",
+    "100 PB y menos del 10% de HP",
+    "100 PB et moins de 10 % de HP"
+  ],
+  "pb.lowHpBody": [
+    "VEL(JP) reports that the game prioritizes the low-HP trigger when both conditions happen together. Its response or activation chance may differ from PB-full. Avoid relying on this overlap for invincibility.",
+    "VEL(JP) 제보에 따르면 두 조건이 동시에 발생하면 게임은 저체력 발동을 우선합니다. PB 가득 참과 반응·확률이 다를 수 있으므로 이 상황에서 무적을 확신하면 안 됩니다.",
+    "VEL(JP)の報告では両条件が同時だと低HPトリガーが優先されます。PB満タン時と反応・確率が異なる場合があるため、無敵を当てにしないでください。",
+    "VEL(JP) indica que el juego prioriza el disparador de HP bajo si coinciden. Su respuesta o probabilidad puede ser distinta a PB lleno. No dependas de esta coincidencia.",
+    "Selon VEL(JP), le jeu privilégie le déclencheur de HP faibles si les deux coïncident. Sa réponse ou sa probabilité peut différer de PB plein. Ne comptez pas sur cette coïncidence."
+  ],
+  "pb.interrupt": [
+    "A hit interrupts the spending animation",
+    "PB 소모 동작 중 피격으로 끊김",
+    "PB消費動作が被弾で中断",
+    "Un golpe interrumpe la animación",
+    "Un coup interrompt l’animation"
+  ],
+  "pb.interruptBody": [
+    "An interruption may permit an earlier swap and leave roughly 70–77 PB, according to the discussion. This also means you were exposed to damage: it is not a safe PB-control technique to aim for.",
+    "공격이 끊기면 더 빨리 교체되어 약 70~77PB가 남을 수 있다는 경험담입니다. 하지만 피격이 가능했다는 뜻이기도 하므로 일부러 노릴 안전한 조절법이 아닙니다.",
+    "中断で早く切り替わり約70〜77PB残ることがあるとの体験談です。ただし被弾可能だったことも意味します。意図的に狙う安全な調整法ではありません。",
+    "Una interrupción puede permitir un cambio antes y dejar unos 70–77 PB según la conversación. También significa que estabas expuesto: no es una técnica segura que debas buscar.",
+    "Une interruption peut permettre un changement plus tôt et laisser environ 70–77 PB selon la discussion. Vous étiez aussi exposé aux dégâts : ce n’est pas une technique sûre à rechercher."
+  ],
+  "pb.advanced": [
+    "Advanced / area-warp PB spending",
+    "고급 / 워프를 이용한 PB 소모",
+    "上級／ワープでPB消費を調整",
+    "Avanzado / gasto de PB con teletransporte",
+    "Avancé / dépenser des PB avec un passage de zone"
+  ],
+  "pb.advancedBody": [
+    "VEL(JP) reports that using the special during an area warp can limit spending to about 5–6 PB. A boss teleporter version is much harder. Timing is not documented precisely here: treat it as an optional experiment after you can perform the normal cycle, not a beginner requirement.",
+    "VEL(JP)는 구역 워프 중 스페셜을 사용하면 약 5~6PB만 소모하도록 조절할 수 있다고 설명합니다. 보스 텔레포터에서는 훨씬 어렵다고 합니다. 정확한 입력 타이밍은 제공되지 않았으므로 기본 순환에 익숙해진 뒤 시도할 선택 기술이며 초보 필수 과정이 아닙니다.",
+    "VEL(JP)によるとエリア移動中のスペシャルで約5〜6PBだけ消費でき、ボステレポーター版はかなり難しいとのことです。正確な入力タイミングは未提示。基本の循環に慣れた後の任意の練習で、初心者の必須項目ではありません。",
+    "VEL(JP) reporta que usar el especial durante un cambio de zona puede gastar solo unos 5–6 PB. En un teletransportador de jefe es mucho más difícil. No se dio un timing preciso: es una prueba opcional tras dominar el ciclo normal.",
+    "Selon VEL(JP), utiliser le spécial pendant un changement de zone peut ne dépenser qu’environ 5–6 PB. La variante au téléporteur de boss est bien plus difficile. Le timing exact n’est pas documenté : expérience facultative après maîtrise du cycle normal."
+  ],
+  "pb.farm": [
+    "Where to get PB/Flow",
+    "PB/Flow 파밍 위치",
+    "PB/Flowの入手先",
+    "Dónde conseguir PB/Flow",
+    "Où obtenir PB/Flow"
+  ],
+  "pb.farmBody": [
+    "Ultimate · EP1 · Whitill · Vol Opt ver. 2 · 1/102.4. This is a boss hunt, not a mandatory early-level detour. Use the class roadmap to secure basic units first; a listed rate does not guarantee a drop after that many runs.",
+    "Ultimate · EP1 · Whitill · Vol Opt ver. 2 · 1/102.4. 보스 파밍이므로 저레벨 필수 코스로 삼지 마세요. 클래스별 성장표에서 기본 유닛부터 확보합니다. 표기 횟수만큼 돌면 확정 드롭된다는 뜻은 아닙니다.",
+    "Ultimate・EP1・Whitill・Vol Opt ver. 2・1/102.4。ボス周回であり低レベルの必須寄り道ではありません。まずクラス進行表で基本ユニットを確保。表記回数での確定ドロップではありません。",
+    "Ultimate · EP1 · Whitill · Vol Opt ver. 2 · 1/102.4. Es una caza de jefe, no un desvío obligatorio a nivel bajo. Consigue primero las unidades básicas. La tasa no garantiza un drop tras ese número de intentos.",
+    "Ultimate · EP1 · Whitill · Vol Opt ver. 2 · 1/102.4. C’est une chasse de boss, pas un détour obligatoire à bas niveau. Obtenez d’abord les unités de base. Le taux ne garantit pas un drop après autant d’essais."
+  ],
+  "pb.sources": [
+    "Sources and limits",
+    "출처와 확인 범위",
+    "出典と確認範囲",
+    "Fuentes y límites",
+    "Sources et limites"
+  ],
+  "pb.sourcesBody": [
+    "Timing and swap techniques summarize the conversation supplied by the site owner (Rang3r, Tio Mario and VEL(JP)). Numeric item effects, equip requirements and the PB/Flow drop route use the site's PlayPSO snapshots dated 2026-08-19. Live server behavior has not been independently tested. Report inconsistencies through Suggestions.",
+    "타이밍·무기 교체 요령은 운영자가 제공한 Rang3r·Tio Mario·VEL(JP)의 대화를 정리했습니다. 아이템 수치·착용 조건·PB/Flow 드롭 경로는 2026-08-19자 사이트 PlayPSO 스냅샷 기준입니다. 실제 서버에서 독립 실험한 결과는 아닙니다. 다른 점은 건의하기로 알려주세요.",
+    "タイミングと切り替えは運営提供のRang3r・Tio Mario・VEL(JP)の会話を要約。数値・装備条件・PB/Flowドロップは2026-08-19のPlayPSOスナップショット基準。実サーバーで独立検証していません。相違は提案ページへ。",
+    "Los tiempos y cambios resumen la conversación facilitada por el propietario (Rang3r, Tio Mario y VEL(JP)). Efectos, requisitos y drop de PB/Flow usan las instantáneas PlayPSO del 2026-08-19. No se probó independientemente en el servidor. Informa diferencias en Sugerencias.",
+    "Les timings et changements résument la conversation fournie par le propriétaire (Rang3r, Tio Mario et VEL(JP)). Effets, conditions et drop de PB/Flow proviennent des instantanés PlayPSO du 2026-08-19. Aucun test indépendant sur le serveur. Signalez les écarts via Suggestions."
+  ],
+  "pb.dbLink": [
+    "Check MAGs and units in the database",
+    "DB에서 MAG·유닛 확인",
+    "DBでMAG・ユニットを確認",
+    "Ver MAGs y unidades en la base",
+    "Voir les MAGs et unités dans la base"
+  ],
+  "pb.buildLink": [
+    "Open the beginner gear roadmap",
+    "초보 장비 성장표 보기",
+    "初心者装備の進行表へ",
+    "Abrir la ruta de equipo inicial",
+    "Ouvrir le parcours d’équipement débutant"
+  ],
+  "usage.connection": [
+    "Unable to load real usage data. Check the network, analytics API deployment and database migration. Missing data is not shown as zero.",
+    "실측 통계를 불러오지 못했습니다. 네트워크·통계 API 배포·DB 적용 여부를 확인하세요. 불러오지 못한 데이터를 0으로 표시하지 않습니다.",
+    "実測データを取得できません。通信・集計APIの公開・DB適用を確認してください。取得失敗を0とは表示しません。",
+    "No se pudieron cargar los datos reales. Comprueba la red, la API y su migración. Los datos ausentes no se muestran como cero.",
+    "Impossible de charger les données réelles. Vérifiez le réseau, l’API et sa migration. Les données manquantes ne sont pas affichées à zéro."
+  ],
+  "b2.missingCore": [
+    "Missing basics? Open the early farming routes",
+    "기초 장비가 없다면? 초반 파밍 경로 보기",
+    "基礎装備がない場合：序盤の入手先",
+    "¿Faltan básicos? Ver rutas iniciales",
+    "Il manque les bases ? Voir les premiers parcours"
+  ],
+  "b2.castEffect": [
+    "Technique cast speed",
+    "테크닉 시전 속도",
+    "テクニック詠唱速度",
+    "Velocidad de técnicas",
+    "Vitesse d’incantation"
+  ],
+  "b2.speedEffect": [
+    "Attack speed",
+    "공격 속도",
+    "攻撃速度",
+    "Velocidad de ataque",
+    "Vitesse d’attaque"
+  ],
+  "b2.specialEffect": [
+    "Special success bonus",
+    "스페셜 성공률 보너스",
+    "スペシャル成功率補正",
+    "Bonificación de éxito del especial",
+    "Bonus de réussite du spécial"
+  ],
+  "search.placeholder": [
+    "Search items, effects, monsters, Section IDs…",
+    "아이템·효과·몬스터·섹션 ID 검색…",
+    "アイテム・効果・モンスター・IDを検索…",
+    "Busca objetos, efectos, monstruos, Section IDs…",
+    "Objets, effets, monstres, Section IDs…"
+  ],
+  "search.empty": [
+    "No matches. Try an item, effect, monster or Section ID, or change the search category.",
+    "검색 결과가 없습니다. 아이템·효과·몬스터·섹션 ID를 입력하거나 검색 범위를 바꿔보세요.",
+    "該当なし。アイテム・効果・モンスター・Section IDや検索範囲を変えてください。",
+    "Sin resultados. Prueba un objeto, efecto, monstruo o Section ID, o cambia la categoría.",
+    "Aucun résultat. Essayez un objet, effet, monstre ou Section ID, ou changez de catégorie."
+  ],
+  "search.scope.all": [
+    "All",
+    "전체",
+    "すべて",
+    "Todo",
+    "Tout"
+  ],
+  "search.scope.items": [
+    "Items / DB",
+    "아이템·DB",
+    "アイテム・DB",
+    "Objetos / BD",
+    "Objets / BD"
+  ],
+  "search.scope.drops": [
+    "Drop routes",
+    "드롭 경로",
+    "ドロップ先",
+    "Rutas de drops",
+    "Sources de drops"
+  ],
+  "search.scope.pages": [
+    "Guides / pages",
+    "가이드·페이지",
+    "ガイド・ページ",
+    "Guías / páginas",
+    "Guides / pages"
+  ],
+  "search.scope.label": [
+    "Search category",
+    "검색 범위",
+    "検索範囲",
+    "Categoría de búsqueda",
+    "Catégorie de recherche"
+  ],
+  "search.group.drops": [
+    "Drops",
+    "드롭",
+    "ドロップ",
+    "Drops",
+    "Drops"
+  ],
+  "search.group.database": [
+    "Item DB",
+    "아이템 DB",
+    "アイテムDB",
+    "BD objetos",
+    "BD objets"
+  ],
+  "search.more": [
+    "Show more results",
+    "결과 더 보기",
+    "さらに表示",
+    "Ver más resultados",
+    "Afficher plus de résultats"
+  ],
+  "search.count": [
+    "{shown} of {total} results",
+    "전체 {total}건 중 {shown}건",
+    "全{total}件中{shown}件",
+    "{shown} de {total} resultados",
+    "{shown} sur {total} résultats"
+  ],
+  "search.error": [
+    "Search data could not be loaded. Close and reopen to retry.",
+    "검색 자료를 불러오지 못했습니다. 닫았다가 다시 열어 재시도하세요.",
+    "検索データを取得できません。閉じて開き直すと再試行します。",
+    "No se cargaron los datos. Cierra y vuelve a abrir para reintentar.",
+    "Les données n’ont pas pu être chargées. Fermez puis rouvrez pour réessayer."
+  ],
+  "search.dropNote": [
+    "Drops show the saved table's base rates. Open a route to check the difficulty and rate modifiers.",
+    "드롭은 저장된 표의 기본 확률입니다. 경로를 열어 난이도와 배율 보정을 확인하세요.",
+    "保存済み表の基本確率です。開いて難易度と倍率補正を確認してください。",
+    "Se muestran las tasas base de las tablas guardadas. Abre una ruta para revisar dificultad y modificadores.",
+    "Les taux de base des tables enregistrées sont affichés. Ouvrez une source pour vérifier difficulté et multiplicateurs."
+  ]
+}

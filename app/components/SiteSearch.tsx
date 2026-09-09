@@ -17,33 +17,22 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useI18n } from "../i18n/i18n";
+import { searchIndex, type IndexPage, type SearchIndex, type SearchResult } from "../../scripts/search-engine.mjs";
 
-/** [이름, 링크, 뱃지, 부가정보, 검색어, Destiny 전용 여부, 약칭] */
-type IndexItem = [string, string, string, string, string, number, string];
+type Result = SearchResult;
 
-type IndexPage = {
-  u: string;
-  g: "guide" | "raid" | "tool" | "data";
-  t: string;
-  k: string;
-  d: string;
-};
-
-type SearchIndex = { pages: IndexPage[]; items: IndexItem[] };
-
-type Result = {
-  name: string;
-  meta: string;
-  badge: string;
-  url: string;
-  exclusive: boolean;
-};
-
-const INDEX_URL = "../data/search-index.json";
+const INDEX_URL = "data/search-index.json";
+function siteHref(path:string) {
+  if(typeof document === "undefined") return "../"+path;
+  const here=new URL(document.baseURI);
+  if(!here.pathname.endsWith("/")) here.pathname+="/";
+  return new URL("../"+path,here).toString();
+}
 const RECENT_KEY = "destiny-guide-recent-search";
 const RECENT_LIMIT = 5;
-const MAX_PAGE_RESULTS = 5;
-const MAX_ITEM_RESULTS = 24;
+const PAGE_SIZE = 24;
+const SCOPES = ["all","items","drops","pages"] as const;
+const SCOPE_LABELS = {all:"All",items:"Items / DB",drops:"Drop routes",pages:"Guides / pages"};
 
 /**
  * 검색어가 없고 최근 기록도 없을 때 보여줄 목록.
@@ -69,47 +58,6 @@ const GROUP_LABELS: Record<IndexPage["g"], [string, string]> = {
   data: ["search.group.data", "Data"],
 };
 
-/** 인덱스를 만들 때 쓴 normalize 와 같아야 점수가 맞는다. */
-const normalize = (value: string) =>
-  String(value ?? "")
-    .normalize("NFKD")
-    .toLowerCase()
-    .replace(/[’']/g, "")
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-
-/**
- * 점수 규칙. 위에서부터 강한 일치다.
- *   정확히 같음 > 앞에서부터 일치 > 단어 첫머리 일치 > 어딘가 포함 > 낱말 전부 포함
- * 마지막 단계 덕분에 "charge dagger" 처럼 이름에 없는 조합도 찾힌다.
- * 짧은 이름을 조금 우대해서 DARK FLOW 가 DARK FLOW REPLICA 보다 위로 온다.
- * scripts/site_search.js 의 score() 와 같은 규칙이다.
- */
-function score(name: string, searchText: string, aliases: string, query: string, tokens: string[]) {
-  if (!query) return 0;
-  if (name === query) return 1000;
-
-  // 약칭이 검색어와 통째로 같으면 이름을 그대로 친 것이나 다름없다.
-  // PSOBB 는 줄여 부르는 장비가 많다("df" = DARK FLOW). 이름 앞부분이 우연히
-  // 겹치는 DF FIELD 보다 이쪽이 위로 와야 찾는 물건이 먼저 보인다.
-  if (aliases && (" " + aliases + " ").includes(" " + query + " ")) {
-    return 950 - Math.min(name.length, 60) * 0.5;
-  }
-
-  let found = 0;
-  if (name.indexOf(query) === 0) found = 700;
-  else if ((" " + name).includes(" " + query)) found = 520;
-  else if (name.indexOf(query) > 0) found = 340;
-  else if (searchText.includes(query)) found = 220;
-
-  if (!found) {
-    if (!tokens.every((token) => searchText.includes(token))) return 0;
-    found = 120;
-  }
-
-  return found - Math.min(name.length, 60) * 0.5;
-}
-
 function readRecent(): Result[] {
   // 서버 렌더에서도 불린다. localStorage 가 없으면 빈 목록으로 시작한다.
   if (typeof window === "undefined") return [];
@@ -118,6 +66,7 @@ function readRecent(): Result[] {
     const parsed = raw ? JSON.parse(raw) : [];
     if (!Array.isArray(parsed)) return [];
     return parsed.slice(0, RECENT_LIMIT).map((entry) => ({
+      kind: entry.kind || (String(entry.u).startsWith("drop-tables/?") ? "drop" : "item"),
       name: entry.n,
       meta: entry.m,
       badge: entry.b,
@@ -132,10 +81,10 @@ function readRecent(): Result[] {
 function pushRecent(result: Result) {
   try {
     // 정적 페이지 쪽과 같은 저장 형식이어야 최근 목록이 이어진다.
-    const stored = { n: result.name, m: result.meta, b: result.badge, u: result.url, x: result.exclusive ? 1 : 0 };
+    const stored = { kind:result.kind, n: result.name, m: result.meta, b: result.badge, u: result.url, x: result.exclusive ? 1 : 0 };
     const list = readRecent()
       .filter((entry) => entry.url !== result.url)
-      .map((entry) => ({ n: entry.name, m: entry.meta, b: entry.badge, u: entry.url, x: entry.exclusive ? 1 : 0 }));
+      .map((entry) => ({ kind:entry.kind, n: entry.name, m: entry.meta, b: entry.badge, u: entry.url, x: entry.exclusive ? 1 : 0 }));
     list.unshift(stored);
     window.localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, RECENT_LIMIT)));
   } catch {
@@ -167,6 +116,8 @@ export function SiteSearch() {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [scope,setScope] = useState<string>("all");
+  const [limit,setLimit] = useState(PAGE_SIZE);
   const [index, setIndex] = useState<SearchIndex | null>(null);
   const [failed, setFailed] = useState(false);
   const [active, setActive] = useState(0);
@@ -187,12 +138,16 @@ export function SiteSearch() {
   const loadIndex = useCallback(() => {
     if (index || loadingRef.current) return;
     loadingRef.current = true;
-    fetch(INDEX_URL, { cache: "force-cache" })
+    setFailed(false);
+    fetch(siteHref(INDEX_URL), { cache: "no-cache" })
       .then((response) => {
         if (!response.ok) throw new Error("search index " + response.status);
         return response.json() as Promise<SearchIndex>;
       })
-      .then(setIndex)
+      .then((payload)=>{
+        if(payload.schemaVersion !== 3 || !Array.isArray(payload.drops)) throw new Error("Outdated search index");
+        setIndex(payload);
+      })
       .catch((error) => {
         console.warn("[search] 인덱스를 불러오지 못했습니다.", error);
         setFailed(true);
@@ -205,6 +160,7 @@ export function SiteSearch() {
   const openSearch = useCallback(() => {
     lastFocusRef.current = document.activeElement as HTMLElement | null;
     setQuery("");
+    setScope("all"); setLimit(PAGE_SIZE);
     setActive(0);
     setOpen(true);
     loadIndex();
@@ -248,7 +204,7 @@ export function SiteSearch() {
     return () => document.documentElement.classList.remove("ds_search_open");
   }, [open]);
 
-  const results = useMemo<Result[]>(() => {
+  const allResults = useMemo<Result[]>(() => {
     if (!index) return [];
     const trimmed = query.trim();
 
@@ -259,7 +215,8 @@ export function SiteSearch() {
       return QUICK_LINKS.map((url) => index.pages.find((page) => page.u === url))
         .filter((page): page is IndexPage => Boolean(page))
         .map((page) => ({
-          name: t(page.k, page.t),
+          kind:"page",
+          name: page.k ? t(page.k, page.t) : page.t,
           meta: "",
           badge: t(...GROUP_LABELS[page.g]),
           url: page.u,
@@ -267,46 +224,16 @@ export function SiteSearch() {
         }));
     }
 
-    const normalized = normalize(trimmed);
-    const tokens = normalized.split(" ").filter(Boolean);
+    return searchIndex(index,trimmed,t,scope);
+  }, [index, query, t, scope]);
 
-    const pages = index.pages
-      .map((page) => {
-        const title = t(page.k, page.t);
-        // page.d 는 화면에 쓰지 않고 검색어로만 쓴다. 번역이 필요한 문장을 19줄 ×
-        // 5개 언어로 늘리는 대신, 제목과 분류 뱃지만 보여준다.
-        const haystack = normalize(title + " " + page.t + " " + page.d + " " + page.g);
-        return { page, title, value: score(normalize(title), haystack, "", normalized, tokens) + 60 };
-      })
-      .filter((entry) => entry.value > 60)
-      .sort((a, b) => b.value - a.value)
-      .slice(0, MAX_PAGE_RESULTS)
-      .map(({ page, title }) => ({
-        name: title,
-        meta: "",
-        badge: t(...GROUP_LABELS[page.g]),
-        url: page.u,
-        exclusive: false,
-      }));
-
-    const items = index.items
-      .map((row) => ({
-        row,
-        // Destiny 전용 아이템은 이 서버에서 찾는 빈도가 훨씬 높아 위로 올린다.
-        value: score(normalize(row[0]), row[4], row[6], normalized, tokens) + (row[5] ? 90 : 0),
-      }))
-      .filter((entry) => entry.value > (entry.row[5] ? 90 : 0))
-      .sort((a, b) => b.value - a.value)
-      .slice(0, MAX_ITEM_RESULTS)
-      .map(({ row }) => ({ name: row[0], meta: row[3], badge: row[2], url: row[1], exclusive: Boolean(row[5]) }));
-
-    return pages.concat(items);
-  }, [index, query, t]);
+  const results=allResults.slice(0,limit);
 
   useEffect(() => {
     setActive(0);
     if (listRef.current) listRef.current.scrollTop = 0;
-  }, [query]);
+    setLimit(PAGE_SIZE);
+  }, [query,scope,t,index]);
 
   // scrollIntoView 는 뒤 페이지까지 같이 움직여서 쓰지 않는다.
   useEffect(() => {
@@ -321,7 +248,7 @@ export function SiteSearch() {
 
   const go = (result: Result) => {
     pushRecent(result);
-    window.location.href = "../" + result.url;
+    window.location.href = siteHref(result.url);
   };
 
   const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -348,7 +275,14 @@ export function SiteSearch() {
   const overlay = (
     <div className="ds_search">
       <div className="ds_search_dim" onClick={closeSearch} />
-      <div className="ds_search_panel" role="dialog" aria-modal="true" aria-label={t("search.dialog.label", "Search the site")}>
+      <div className="ds_search_panel" role="dialog" aria-modal="true" aria-label={t("search.dialog.label", "Search the site")} onKeyDown={event=>{
+        if(event.key==="Escape") { event.preventDefault();closeSearch(); }
+        if(event.key!=="Tab") return;
+        const nodes=Array.from(event.currentTarget.querySelectorAll<HTMLElement>("input,button,a[href]")).filter(node=>!node.hidden && node.getClientRects().length);
+        const first=nodes[0],last=nodes[nodes.length-1];
+        if(event.shiftKey && document.activeElement===first) { event.preventDefault();last?.focus(); }
+        else if(!event.shiftKey && document.activeElement===last) { event.preventDefault();first?.focus(); }
+      }}>
         <div className="ds_search_field">
           <SearchIcon className="ds_search_icon" />
           <input
@@ -362,7 +296,8 @@ export function SiteSearch() {
             aria-controls="ds-search-results"
             aria-autocomplete="list"
             aria-activedescendant={results.length ? `ds-result-${active}` : undefined}
-            placeholder={t("search.placeholder", "Search items, guides, raids…")}
+            aria-label={t("search.dialog.label","Search the site")}
+            placeholder={t("search.placeholder", "Search items, effects, monsters, Section IDs…")}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             onKeyDown={onInputKeyDown}
@@ -372,12 +307,16 @@ export function SiteSearch() {
           </button>
         </div>
 
+        <div className="ds_search_scopes" role="group" aria-label={t("search.scope.label","Search category")}>
+          {SCOPES.map(name=><button key={name} type="button" data-scope={name} aria-pressed={scope===name} onClick={()=>setScope(name)}>{t("search.scope."+name,SCOPE_LABELS[name])}</button>)}
+        </div>
+        {!showingDefault && results.some(result=>result.kind==="drop") && <p className="ds_search_info">{t("search.dropNote","Drops show the saved table's base rates. Open a route to check the difficulty and rate modifiers.")}</p>}
         <div className="ds_search_results" id="ds-search-results" role="listbox" ref={listRef}>
-          {!index && !failed ? (
+          {!index && failed ? <p className="ds_search_note">{t("search.error","Search data could not be loaded. Close and reopen to retry.")}</p> : !index ? (
             <p className="ds_search_note">{t("search.loading", "Loading…")}</p>
           ) : !results.length ? (
             <p className="ds_search_note">
-              {t("search.empty", "Nothing matched. Try an item name, a class, or a special.")}
+              {t("search.empty", "No matches. Try an item, effect, monster or Section ID, or change the search category.")}
             </p>
           ) : (
             <>
@@ -390,7 +329,7 @@ export function SiteSearch() {
                   id={`ds-result-${position}`}
                   aria-selected={position === active}
                   data-result={position}
-                  href={"../" + result.url}
+                  href={siteHref(result.url)}
                   onPointerMove={() => position !== active && setActive(position)}
                   onClick={() => pushRecent(result)}
                 >
@@ -409,6 +348,7 @@ export function SiteSearch() {
           )}
         </div>
 
+        {!showingDefault && results.length<allResults.length && <button type="button" className="ds_search_more" onClick={()=>setLimit(value=>value+PAGE_SIZE)}>{t("search.more","Show more results")}</button>}
         <div className="ds_search_foot">
           <span>
             <kbd>↑</kbd>
@@ -418,7 +358,7 @@ export function SiteSearch() {
             <kbd>Enter</kbd> {t("search.hint.open", "to open")}
           </span>
           <span className="ds_search_count">
-            {showingDefault ? "" : `${results.length}${results.length >= MAX_ITEM_RESULTS ? "+" : ""}`}
+            {showingDefault ? "" : t("search.count","{shown} of {total} results").replace("{shown}",String(results.length)).replace("{total}",String(allResults.length))}
           </span>
         </div>
       </div>
@@ -430,6 +370,7 @@ export function SiteSearch() {
       <button
         type="button"
         className="ds_search_trigger"
+        disabled={!mounted}
         aria-label={t("search.trigger", "Search")}
         onPointerEnter={loadIndex}
         onFocus={loadIndex}

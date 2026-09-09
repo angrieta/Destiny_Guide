@@ -14,10 +14,11 @@
     "use strict";
 
     var DATA = window.DESTINY_BUILDS;
+    var LEVEL = window.DESTINY_LEVELING || { ui: {}, materials: {}, focus: {}, routes: {}, families: {} };
     var root = document.getElementById("cb-root");
     if (!DATA || !root) return;
 
-    var UI = DATA.ui || {};
+    var UI = Object.assign({}, DATA.ui || {}, LEVEL.ui || {});
 
     /** UI 문구: 사전이 늦게 와도 영어가 먼저 보인다. */
     function t(key) {
@@ -239,6 +240,192 @@
     }
 
     /* ----------------------------------------------------------------------
+       마테리얼 배분
+       ---------------------------------------------------------------------- */
+    function materialPlan(cls, variant) {
+        /* 원문이 변형별 수치를 직접 준 경우에는 그 값을 우선한다. */
+        if (variant.mats) return null;
+        var plan = (LEVEL.materials || {})[cls.id];
+        if (!plan) return null;
+
+        var box = el("section", "cb_materials");
+        var head = el("div", "cb_materials_head");
+        head.appendChild(label("h3", null, "ui.materialTitle"));
+        head.appendChild(label("p", null, "ui.materialLead"));
+        box.appendChild(head);
+
+        var list = el("div", "cb_materials_list");
+        [
+            ["power", "ui.matPower"],
+            ["defense", "ui.matDefense"],
+            ["mind", "ui.matMind"],
+            ["evade", "ui.matEvade"],
+            ["luck", "ui.matLuck"],
+            ["unused", "ui.matUnused"]
+        ].forEach(function (entry) {
+            var value = Number(plan[entry[0]] || 0);
+            if (!value && entry[0] !== "unused") return;
+            var item = el("div", "cb_material" + (entry[0] === "unused" ? " is-unused" : ""));
+            item.appendChild(label("span", null, entry[1]));
+            item.appendChild(el("strong", null, String(value)));
+            list.appendChild(item);
+        });
+        box.appendChild(list);
+
+        var used = Math.max(0, Number(plan.cap || 0) - Number(plan.unused || 0));
+        var total = el("p", "cb_material_total");
+        total.appendChild(label("span", null, "ui.matTotal"));
+        total.appendChild(document.createTextNode(" " + used + " / " + plan.cap));
+        box.appendChild(total);
+        if (plan.noteKey) box.appendChild(prose("p", "cb_material_note", UI[plan.noteKey], plan.noteKey));
+        return box;
+    }
+
+    /* ----------------------------------------------------------------------
+       100 / 150 / 180 / 200 성장 동선
+       ---------------------------------------------------------------------- */
+    function routeMeta(dl, labelKey, value) {
+        if (!value) return;
+        dl.appendChild(label("dt", null, labelKey));
+        dl.appendChild(el("dd", null, value));
+    }
+
+    function routeCard(routeId, compact, priority) {
+        var item = (LEVEL.routes || {})[routeId];
+        if (!item) return null;
+
+        var card = item.exactItem
+            ? itemTrigger(el("a", "cb_route_card"), item)
+            : el("article", "cb_route_card");
+        if (item.exactItem) card.dataset.item = (item.name || "").toLowerCase();
+
+        var top = el("div", "cb_route_top");
+        if (priority) top.appendChild(el("span", "cb_route_priority", String(priority)));
+        top.appendChild(el("strong", null, item.name));
+        top.appendChild(prose("span", "cb_route_role", UI[item.roleKey], item.roleKey));
+        card.appendChild(top);
+
+        if (item.effect) {
+            var effect = el("p", "cb_route_effect");
+            if (item.effectKey) { effect.appendChild(label("span",null,item.effectKey)); effect.appendChild(document.createTextNode(": ")); }
+            effect.appendChild(document.createTextNode(item.effect)); card.appendChild(effect);
+        }
+        if (item.required) card.appendChild(el("p", "cb_route_effect", item.required));
+        if (compact) {
+            card.classList.add("is-compact");
+            return card;
+        }
+        if (item.rare) card.appendChild(label("p", "cb_route_tip", "b2.rare"));
+
+        var dl = el("dl", "cb_route_meta");
+        routeMeta(dl, "ui.levelDifficulty", item.difficulty);
+        routeMeta(dl, "ui.levelEpisode", item.episode);
+        routeMeta(dl, "ui.levelSection", item.section);
+        routeMeta(dl, "ui.levelArea", item.area);
+        routeMeta(dl, "ui.levelQuest", item.quest);
+        routeMeta(dl, "ui.levelEnemy", item.enemy);
+        routeMeta(dl, "ui.levelRate", item.rate || item.cost);
+        if (dl.childNodes.length) card.appendChild(dl);
+
+        if (item.tipKey) card.appendChild(prose("p", "cb_route_tip", UI[item.tipKey], item.tipKey));
+        if (item.exactItem) {
+            var open = label("span", "cb_route_open", "ui.levelItemDetails");
+            open.setAttribute("aria-hidden", "true");
+            card.appendChild(open);
+        }
+        return card;
+    }
+
+    function routeGroup(titleKey, ids, compact) {
+        var group = el("section", "cb_route_group");
+        group.appendChild(label("h4", null, titleKey));
+        var list = el("div", "cb_route_list");
+        (ids || []).forEach(function (id, index) {
+            var card = routeCard(id, compact, compact ? null : index + 1);
+            if (card) list.appendChild(card);
+        });
+        group.appendChild(list);
+        return group;
+    }
+
+    function levelingRoadmap(cls) {
+        var stages = (LEVEL.families || {})[cls.family] || [];
+        if (!stages.length) return null;
+        var selected = stages.filter(function (stage) { return stage.level === state.level; })[0] || stages[0];
+        state.level = selected.level;
+
+        var box = el("section", "cb_leveling");
+        box.dataset.usageId = "class-roadmap";
+        var head = el("div", "cb_leveling_head");
+        head.appendChild(label("h3", null, "ui.levelTitle"));
+        head.appendChild(label("p", null, "b2.lead"));
+        box.appendChild(head);
+
+        var tabs = el("div", "cb_level_tabs");
+        tabs.setAttribute("role", "group");
+        tabs.setAttribute("aria-label", t("ui.levelSelect"));
+        tabs.dataset.i18nAriaLabel = "ui.levelSelect";
+        stages.forEach(function (stage) {
+            var button = el("button", "cb_level_tab" + (stage.level === selected.level ? " is-active" : ""));
+            button.type = "button";
+            button.textContent = "LV " + stage.level;
+            button.setAttribute("aria-pressed", String(stage.level === selected.level));
+            button.addEventListener("click", function () {
+                state.level = stage.level;
+                window.DestinyAnalytics && window.DestinyAnalytics.track("level_select", cls.id + ":" + stage.level);
+                render();
+                nodes.class.querySelector(".cb_level_tab.is-active").focus({preventScroll:true});
+            });
+            tabs.appendChild(button);
+        });
+        box.appendChild(tabs);
+
+        var focus = el("div", "cb_level_focus");
+        focus.appendChild(label("strong", null, "ui.levelFocus"));
+        var focusKey = (LEVEL.focus || {})[cls.id];
+        focus.appendChild(prose("p", null, UI[focusKey], focusKey));
+        box.appendChild(focus);
+
+        box.appendChild(prose("p", "cb_level_summary", UI[selected.summaryKey], selected.summaryKey));
+        var unitPlan = el("aside", "cb_unit_plan");
+        unitPlan.appendChild(label("h4", null, "b2.slotsTitle"));
+        unitPlan.appendChild(prose("p", null, UI[selected.units], selected.units));
+        unitPlan.appendChild(label("small", null, "b2.slotRule"));
+        box.appendChild(unitPlan);
+        var columns = el("div", "cb_route_columns");
+        columns.appendChild(routeGroup("b2.keep", selected.equip, true));
+        columns.appendChild(routeGroup("b2.next", selected.farm));
+        box.appendChild(columns);
+
+        if (selected.level >= 150) {
+            var basics = el("details", "cb_optional");
+            basics.appendChild(label("summary", null, "b2.missingCore"));
+            var basicsList = el("div", "cb_route_list");
+            var core = cls.family === "FO" ? ["v801","cureUnits"] : cls.family === "HU" ? ["heavenlyArms","v101","vjaya","heavenlyBattle"] : ["heavenlyArms","v101","heavenlyBattle"];
+            core.forEach(function (id) { basicsList.appendChild(routeCard(id)); });
+            basics.appendChild(basicsList); box.appendChild(basics);
+        }
+
+        var extras = (LEVEL.classExtras || {})[cls.id];
+        if (extras && selected.level >= 150) {
+            var more = el("details", "cb_optional");
+            more.appendChild(label("summary", null, cls.family === "FO" ? "b2.battleOptional" : "b2.supportOptional"));
+            var list = el("div", "cb_route_list");
+            extras.forEach(function (id) { list.appendChild(routeCard(id)); });
+            more.appendChild(list);
+            box.appendChild(more);
+        }
+
+        var pbLink = label("a", "cb_pb_link", "b2.pbLink");
+        pbLink.href = "./pb_guide.html";
+        box.appendChild(pbLink);
+
+        if (selected.endgame) box.appendChild(label("p", "cb_level_endgame", "ui.levelEndgame"));
+        box.appendChild(label("p", "cb_level_source", "b2.source"));
+        return box;
+    }
+
+    /* ----------------------------------------------------------------------
        2층 - 원문 이후 추가된 후보
        ---------------------------------------------------------------------- */
     function newLayer(classId) {
@@ -278,6 +465,7 @@
        ---------------------------------------------------------------------- */
     function buildBody(cls, v) {
         var wrap = el("div", "cb_build");
+        wrap.dataset.usageId = "class-endgame";
 
         var flags = el("div", "cb_flags");
         if (!v.verified) flags.appendChild(label("span", "cb_flag is-warn", "ui.theory"));
@@ -299,6 +487,9 @@
             }
             wrap.appendChild(plan);
         }
+
+        var mats = materialPlan(cls, v);
+        if (mats) wrap.appendChild(mats);
 
         if (v.summary) wrap.appendChild(prose("p", "cb_summary", v.summary, v.summaryKey));
         if (v.warn) wrap.appendChild(prose("p", "cb_credit", v.warn, v.warnKey));
@@ -346,7 +537,7 @@
     /* ----------------------------------------------------------------------
        상태
        ---------------------------------------------------------------------- */
-    var state = { cls: DATA.classes[0].id, vi: 0, q: "" };
+    var state = { cls: DATA.classes[0].id, vi: 0, level: 100, q: "" };
     var nodes = {};
 
     function classById(id) {
@@ -363,10 +554,13 @@
         state.cls = c.id;
         var n = parseInt(h[1], 10);
         state.vi = n > 0 && n <= c.variants.length ? n - 1 : 0;
+        var level = parseInt(String(h[2] || "").replace(/^l/i, ""), 10);
+        state.level = [100, 150, 180, 200].indexOf(level) >= 0 ? level : 100;
     }
 
     function writeHash() {
         var h = "#" + state.cls + (state.vi ? "/" + (state.vi + 1) : "");
+        if (state.level !== 100) h += (state.vi ? "" : "/1") + "/l" + state.level;
         if (location.hash !== h) history.replaceState(null, "", h);
     }
 
@@ -417,6 +611,7 @@
             b.addEventListener("click", function () {
                 state.cls = id;
                 state.vi = 0;
+                window.DestinyAnalytics && window.DestinyAnalytics.track("class_select", id);
                 render();
                 nodes.classes.scrollIntoView({ block: "start", behavior: "smooth" });
             });
@@ -469,6 +664,9 @@
             });
             host.appendChild(tabs);
         }
+
+        var leveling = levelingRoadmap(cls);
+        if (leveling) host.appendChild(leveling);
 
         host.appendChild(buildBody(cls, v));
 
@@ -573,6 +771,7 @@
                 b.addEventListener("click", function () {
                     state.cls = c.id;
                     state.vi = 0;
+                    window.DestinyAnalytics && window.DestinyAnalytics.track("class_select", c.id);
                     render();
                 });
                 nodes.clsBtn[c.id] = b;
@@ -665,6 +864,7 @@
     build();
     render();
     window.DestinyI18n && window.DestinyI18n.hydrate(root);
+    /* Count explicit selections only, not the default HUmar/LV100. */
     document.addEventListener("destiny-lang-change", function () {
         /* {n} 자리표시자는 쓰지 않으므로 i18n.js 가 전부 처리한다. 다만 동적으로 그린
            검색 결과 버튼의 클래스 이름은 게임 데이터라 그대로 둔다. */

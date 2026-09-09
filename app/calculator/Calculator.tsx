@@ -215,7 +215,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
         </p>
       </section>
 
-      <main className={styles.grid}>
+      <main data-usage-id="damage-calculator" className={styles.grid}>
         <div className={styles.panel}>
           <h3>{t("calc.character", "Character")}</h3>
           <div className={styles.fieldRow}>

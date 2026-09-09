@@ -58,3 +58,17 @@ CREATE TABLE attempts (
 );
 
 CREATE INDEX attempts_lookup ON attempts (ip, kind, at DESC);
+
+-- 개인정보를 남기지 않는 일별 이용 집계. IP, 쿠키, User-Agent는 저장하지 않는다.
+-- page_view는 path만, class_select와 level_select는 target까지 합산한다.
+CREATE TABLE IF NOT EXISTS analytics_daily (
+  day     TEXT    NOT NULL,
+  event   TEXT    NOT NULL,
+  path    TEXT    NOT NULL,
+  target  TEXT    NOT NULL DEFAULT '',
+  count   INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (day, event, path, target)
+) WITHOUT ROWID;
+
+CREATE INDEX IF NOT EXISTS analytics_daily_lookup
+  ON analytics_daily (event, day, count DESC);

@@ -11,12 +11,12 @@
  * 무엇을 찾는가
  * ─────────────────────────────────────────────────────────────────────────
  *   - 사이트 안의 페이지 (가이드/레이드/데이터)
- *   - 아이템 1000여 개. Destiny 전용 아이템은 item_page.html 의 상세창으로,
- *     나머지는 /database/ 의 상세로 보낸다.
+ *   - 아이템 이름, 설명, 효과, 장착 클래스와 별칭
+ *   - 드랍 아이템, 몬스터, 섹션 ID, 난이도와 에피소드
+ *     결과에서 DB 상세 또는 해당 조건을 채운 드랍 표로 바로 이동한다.
  * 인덱스는 scripts/build-search-index.mjs 가 만든 data/search-index.json 하나다.
  *
- * 검색어를 못 받아도 페이지는 그대로 동작해야 한다. 인덱스 요청이 실패하면
- * 페이지 목록만으로 계속 쓸 수 있게 두고, 조용히 넘어간다.
+ * 인덱스 요청이 실패하면 검색 결과가 없다는 메시지 대신 재시도 안내를 표시한다.
  *
  * React 라우트(/database, /drop-tables, /redeem)에는 같은 UI 가
  * app/components/SiteSearch.tsx 로 한 번 더 있다. 헤더 자체가 그렇게 이원화되어
@@ -30,8 +30,10 @@
   var INDEX_URL = "./data/search-index.json";
   var RECENT_KEY = "destiny-guide-recent-search";
   var RECENT_LIMIT = 5;
-  var MAX_PAGE_RESULTS = 5;
-  var MAX_ITEM_RESULTS = 24;
+  var PAGE_SIZE = 24;
+  var engine = null;
+  var SCOPES = ["all","items","drops","pages"];
+  var SCOPE_LABELS = {all:"All",items:"Items / DB",drops:"Drop routes",pages:"Guides / pages"};
 
   /**
    * 검색어가 없고 최근 기록도 없을 때 보여줄 목록.
@@ -73,16 +75,6 @@
     );
   }
 
-  /** 인덱스를 만들 때 쓴 normalize 와 같아야 점수가 맞는다. */
-  function normalize(value) {
-    return String(value == null ? "" : value)
-      .normalize("NFKD")
-      .toLowerCase()
-      .replace(/[’']/g, "")
-      .replace(/[^a-z0-9]+/g, " ")
-      .trim();
-  }
-
   function escapeHtml(value) {
     return String(value)
       .replace(/&/g, "&amp;")
@@ -106,39 +98,6 @@
       "</mark>" +
       escapeHtml(name.slice(at + query.length))
     );
-  }
-
-  /**
-   * 점수 규칙. 위에서부터 강한 일치다.
-   *   정확히 같음 > 앞에서부터 일치 > 단어 첫머리 일치 > 어딘가 포함 > 낱말 전부 포함
-   * 마지막 단계 덕분에 "charge dagger" 처럼 이름에 없는 조합도 찾힌다.
-   * 짧은 이름을 조금 우대해서 DARK FLOW 가 DARK FLOW REPLICA 보다 위로 온다.
-   */
-  function score(name, searchText, aliases, query, tokens) {
-    if (!query) return 0;
-    if (name === query) return 1000;
-
-    // 약칭이 검색어와 통째로 같으면 이름을 그대로 친 것이나 다름없다.
-    // PSOBB 는 줄여 부르는 장비가 많다("df" = DARK FLOW). 이름 앞부분이 우연히
-    // 겹치는 DF FIELD 보다 이쪽이 위로 와야 찾는 물건이 먼저 보인다.
-    if (aliases && (" " + aliases + " ").indexOf(" " + query + " ") >= 0) {
-      return 950 - Math.min(name.length, 60) * 0.5;
-    }
-
-    var found = 0;
-    if (name.indexOf(query) === 0) found = 700;
-    else if ((" " + name).indexOf(" " + query) >= 0) found = 520;
-    else if (name.indexOf(query) > 0) found = 340;
-    else if (searchText.indexOf(query) >= 0) found = 220;
-
-    if (!found) {
-      for (var i = 0; i < tokens.length; i += 1) {
-        if (searchText.indexOf(tokens[i]) < 0) return 0;
-      }
-      found = 120;
-    }
-
-    return found - Math.min(name.length, 60) * 0.5;
   }
 
   function readRecent() {
@@ -178,6 +137,9 @@
     var loadFailed = false;
     var activeIndex = 0;
     var results = [];
+    var totalResults = 0;
+    var scope = "all";
+    var limit = PAGE_SIZE;
     var lastFocus = null;
 
     var overlay = document.createElement("div");
@@ -194,7 +156,10 @@
       ' role="combobox" aria-expanded="true" aria-controls="ds-search-results" aria-autocomplete="list">' +
       '<button type="button" class="ds_search_dismiss" data-search-dismiss>Esc</button>' +
       "</div>" +
+      '<div class="ds_search_scopes" role="group"></div>' +
+      '<p class="ds_search_info" hidden></p>' +
       '<div class="ds_search_results" id="ds-search-results" role="listbox"></div>' +
+      '<button type="button" class="ds_search_more" hidden></button>' +
       '<div class="ds_search_foot">' +
       '<span><kbd>↑</kbd><kbd>↓</kbd> <span class="ds_search_foot_label"></span></span>' +
       '<span><kbd>Enter</kbd> <span class="ds_search_foot_open"></span></span>' +
@@ -207,9 +172,25 @@
     var list = overlay.querySelector(".ds_search_results");
     var count = overlay.querySelector(".ds_search_count");
     var panel = overlay.querySelector(".ds_search_panel");
+    var scopes = overlay.querySelector(".ds_search_scopes");
+    var more = overlay.querySelector(".ds_search_more");
+    var note = overlay.querySelector(".ds_search_info");
+    SCOPES.forEach(function (name) {
+      var button=document.createElement("button"); button.type="button"; button.dataset.scope=name;
+      button.addEventListener("click",function () { scope=name; limit=PAGE_SIZE; applyStrings(); render(); });
+      scopes.appendChild(button);
+    });
 
     function applyStrings() {
-      input.placeholder = t("search.placeholder", "Search items, guides, raids…");
+      input.placeholder = t("search.placeholder", "Search items, effects, monsters, Section IDs…");
+      input.setAttribute("aria-label",t("search.dialog.label","Search the site"));
+      scopes.setAttribute("aria-label",t("search.scope.label","Search category"));
+      scopes.querySelectorAll("button").forEach(function (button) {
+        button.textContent=t("search.scope."+button.dataset.scope,SCOPE_LABELS[button.dataset.scope]);
+        button.setAttribute("aria-pressed",String(button.dataset.scope===scope));
+      });
+      more.textContent=t("search.more","Show more results");
+      note.textContent=t("search.dropNote","Drops show the saved table\'s base rates. Open a route to check the difficulty and rate modifiers.");
       panel.setAttribute("aria-label", t("search.dialog.label", "Search the site"));
       overlay.querySelector(".ds_search_foot_label").textContent = t("search.hint.move", "to move");
       overlay.querySelector(".ds_search_foot_open").textContent = t("search.hint.open", "to open");
@@ -222,19 +203,23 @@
 
     function loadIndex() {
       if (index || loading) return loading || Promise.resolve(index);
-      loading = fetch(indexUrl, { cache: "force-cache" })
+      loadFailed = false;
+      loading = Promise.all([import("./search-engine.mjs"),fetch(indexUrl, { cache: "no-cache" })
         .then(function (response) {
           if (!response.ok) throw new Error("search index " + response.status);
           return response.json();
-        })
-        .then(function (payload) {
+        })])
+        .then(function (loaded) {
+          var payload=loaded[1];
+          if (payload.schemaVersion !== 3 || !Array.isArray(payload.drops)) throw new Error("Outdated search index");
+          engine=loaded[0];
           index = payload;
           loading = null;
           if (!overlay.hidden) render();
           return payload;
         })
         .catch(function (error) {
-          console.warn("[search] 인덱스를 불러오지 못했습니다. 페이지 검색만 동작합니다.", error);
+          console.warn("[search] Search data could not be loaded.", error);
           loadFailed = true;
           loading = null;
           if (!overlay.hidden) render();
@@ -249,59 +234,9 @@
     }
 
     function search(rawQuery) {
-      var query = normalize(rawQuery);
-      var tokens = query.split(" ").filter(Boolean);
-      var pages = (index && index.pages) || [];
-      var items = (index && index.items) || [];
-      var out = [];
-
-      for (var p = 0; p < pages.length; p += 1) {
-        var page = pages[p];
-        var title = pageTitle(page);
-        var haystack = normalize(title + " " + page.t + " " + page.d + " " + page.g);
-        var pageScore = score(normalize(title), haystack, "", query, tokens);
-        if (pageScore > 0) {
-          out.push({
-            kind: "page",
-            name: title,
-            // page.d 는 화면에 쓰지 않고 검색어로만 쓴다. 아이템 쪽 meta 는 게임
-            // 데이터라 번역 대상이 아니지만, 페이지 설명은 번역이 필요한 문장이다.
-            // 19줄을 5개 언어로 늘리는 대신 제목과 분류 뱃지만 보여준다.
-            meta: "",
-            badge: t(GROUP_LABELS[page.g][0], GROUP_LABELS[page.g][1]),
-            url: page.u,
-            score: pageScore + 60,
-            exclusive: false
-          });
-        }
-      }
-
-      out.sort(function (a, b) {
-        return b.score - a.score;
-      });
-      var pageResults = out.slice(0, MAX_PAGE_RESULTS);
-
-      var itemResults = [];
-      for (var i = 0; i < items.length; i += 1) {
-        var row = items[i];
-        var itemScore = score(normalize(row[0]), row[4], row[6], query, tokens);
-        if (itemScore <= 0) continue;
-        itemResults.push({
-          kind: "item",
-          name: row[0],
-          meta: row[3],
-          badge: row[2],
-          url: row[1],
-          // Destiny 전용 아이템은 이 서버에서 찾는 빈도가 훨씬 높아 위로 올린다.
-          score: itemScore + (row[5] ? 90 : 0),
-          exclusive: Boolean(row[5])
-        });
-      }
-      itemResults.sort(function (a, b) {
-        return b.score - a.score;
-      });
-
-      return pageResults.concat(itemResults.slice(0, MAX_ITEM_RESULTS));
+      var found = engine ? engine.searchIndex(index,rawQuery,t,scope) : [];
+      totalResults=found.length;
+      return found.slice(0,limit);
     }
 
     /** 검색어가 없을 때 보여줄 것: 최근에 연 항목, 없으면 주요 페이지. */
@@ -342,8 +277,15 @@
       var query = input.value.trim();
       var showingDefault = query.length === 0;
       results = showingDefault ? defaultResults() : search(query);
+      more.hidden = showingDefault || results.length >= totalResults;
+      note.hidden = showingDefault || !results.some(function (result) { return result.kind === "drop"; });
+      input.removeAttribute("aria-activedescendant");
       activeIndex = 0;
 
+      if (!index && loadFailed) {
+        list.innerHTML = '<p class="ds_search_note">' + escapeHtml(t("search.error","Search data could not be loaded. Close and reopen to retry.")) + "</p>";
+        count.textContent=""; more.hidden=true; return;
+      }
       if (!index && !loadFailed) {
         list.innerHTML = '<p class="ds_search_note">' + escapeHtml(t("search.loading", "Loading…")) + "</p>";
         count.textContent = "";
@@ -353,7 +295,7 @@
       if (!results.length) {
         list.innerHTML =
           '<p class="ds_search_note">' +
-          escapeHtml(t("search.empty", "Nothing matched. Try an item name, a class, or a special.")) +
+          escapeHtml(t("search.empty", "No matches. Try an item, effect, monster or Section ID, or change the search category.")) +
           "</p>";
         count.textContent = "";
         return;
@@ -386,7 +328,7 @@
       list.innerHTML = html;
       count.textContent = showingDefault
         ? ""
-        : results.length + (results.length >= MAX_ITEM_RESULTS ? "+" : "");
+        : t("search.count","{shown} of {total} results").replace("{shown}",String(results.length)).replace("{total}",String(totalResults));
       input.setAttribute("aria-activedescendant", "ds-result-0");
       list.scrollTop = 0;
     }
@@ -419,6 +361,7 @@
       overlay.hidden = false;
       document.documentElement.classList.add("ds_search_open");
       input.value = "";
+      scope="all"; limit=PAGE_SIZE; applyStrings();
       loadIndex();
       render();
       input.focus();
@@ -431,7 +374,8 @@
       if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
     }
 
-    input.addEventListener("input", render);
+    input.addEventListener("input", function () { limit=PAGE_SIZE; render(); });
+    more.addEventListener("click",function () { var scroll=list.scrollTop; limit+=PAGE_SIZE; render(); list.scrollTop=scroll; });
 
     input.addEventListener("keydown", function (event) {
       if (event.key === "ArrowDown") {
@@ -465,6 +409,15 @@
       if (!link) return;
       var next = Number(link.dataset.result);
       if (next !== activeIndex) setActive(next);
+    });
+
+    panel.addEventListener("keydown",function (event) {
+      if(event.key==="Escape") { event.preventDefault(); close(); }
+      if(event.key!=="Tab") return;
+      var focusable=Array.from(panel.querySelectorAll("input,button,a[href]")).filter(function (node) { return !node.hidden && node.getClientRects().length; });
+      var first=focusable[0],last=focusable[focusable.length-1];
+      if(event.shiftKey && document.activeElement===first) { event.preventDefault(); last.focus(); }
+      else if(!event.shiftKey && document.activeElement===last) { event.preventDefault(); first.focus(); }
     });
 
     overlay.addEventListener("click", function (event) {

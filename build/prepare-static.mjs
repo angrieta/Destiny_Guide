@@ -32,13 +32,54 @@ const excludedHtml = new Set(["test.html"]);
 // 검색 인덱스는 database-*.json 과 destiny_catalog.js 에서 파생된다.
 // 손으로 갱신하는 걸 잊으면 검색 결과가 조용히 낡으므로 매 빌드마다 다시 만든다.
 const searchIndex = await buildSearchIndex();
-console.log(`search index: ${searchIndex.items} items, ${searchIndex.pages} pages`);
+console.log(`search index: ${searchIndex.items} items, ${searchIndex.dropRoutes} drop routes (${searchIndex.dropSourceRows} source cells), ${searchIndex.pages} pages`);
 
 const farmData = await buildFarmData();
 console.log(`farm data: recipes ${farmData.recipes}, section buckets ${farmData.sectionBuckets}`);
 
 await rm(outputDir, { recursive: true, force: true });
 await mkdir(outputDir, { recursive: true });
+await mkdir(resolve(outputDir, "data"), {recursive:true});
+const searchPayload = JSON.parse(await readFile(resolve(projectRoot, "data/search-index.json"), "utf8"));
+const normalizeContentPath = (url) => "/" + url.split("#")[0].replace(/index\.html$/, "").replace(/\.html$/, "").replace(/\/$/, "");
+const contentPages = searchPayload.pages.filter((page) => !page.u.includes("#"))
+  .map((page) => ({path:normalizeContentPath(page.u), href:page.u, title:page.t, titleKey:page.k || ""}));
+// Include new standalone guides even before they are added to the search menu.
+for (const entry of await readdir(projectRoot, {withFileTypes:true})) {
+  if (!entry.isFile() || !entry.name.endsWith(".html") || excludedHtml.has(entry.name) || entry.name === "analytics_page.html") continue;
+  const html = await readFile(resolve(projectRoot,entry.name),"utf8");
+  if (!/<html\b/i.test(html)) continue; // Header/carousel fragments are not pages.
+  const path = normalizeContentPath(entry.name);
+  if (contentPages.some(page => page.path === path)) continue;
+  const title = html.match(/<title[^>]*>([^<]+)<\/title>/i)?.[1] || entry.name;
+  const titleKey = html.match(/<title[^>]*data-i18n="([^"]+)"/i)?.[1] || "";
+  contentPages.push({path,href:entry.name,title,titleKey});
+}
+for (const [path, href, title, titleKey] of [
+  ["/calculator","calculator/","Damage Calculator","header.link.calculator"],
+  ["/mods_page","mods_page.html","Mods and Skins","header.nav.mods"],
+  ["/roster_page","roster_page.html","Name Directory","header.nav.roster"],
+  ["/suggest_page","suggest_page.html","Suggestions","header.nav.suggest"]
+]) {
+  const existing = contentPages.find((page) => page.path === path);
+  if (existing) Object.assign(existing,{href,title,titleKey});
+  else contentPages.push({path,href,title,titleKey});
+}
+const contentSections = [
+  ["/class_builds","class-roadmap","b2.next"], ["/class_builds","class-endgame","usage.endgame"],
+  ["/player_tools","monster-counter","lab.t006"], ["/player_tools","happy-schedule","lab.t007"],
+  ["/pb_guide","pb-basics","pb.basics"], ["/pb_guide","pb-cycle","pb.cycle"],
+  ["/pb_guide","pb-spend","pb.spend"], ["/pb_guide","pb-troubleshoot","pb.troubleshoot"],
+  ["/drop-tables","drop-explorer","header.link.dropTables"],
+  ["/database","item-explorer","header.link.database"],
+  ["/calculator","damage-calculator","header.link.calculator"]
+].map(([path,id,titleKey]) => ({path,id,titleKey,title:({
+  "class-roadmap":"Beginner farming roadmap","class-endgame":"Endgame builds",
+  "monster-counter":"Monster count search","happy-schedule":"Happy Hour schedule",
+  "pb-basics":"Before you start","pb-cycle":"PB cycle","pb-spend":"Lower PB","pb-troubleshoot":"PB troubleshooting",
+  "drop-explorer":"Drop explorer","item-explorer":"Item explorer","damage-calculator":"Damage calculator"
+})[id]}));
+await writeFile(resolve(outputDir,"data/content-catalog.json"), JSON.stringify({pages:contentPages,sections:contentSections}),"utf8");
 
 for (const directory of directories) {
   await cp(resolve(projectRoot, directory), resolve(outputDir, directory), {
@@ -46,6 +87,30 @@ for (const directory of directories) {
     filter: (source) =>
       !source.toLowerCase().endsWith(".gif") || source.toLowerCase().includes("sb-video-"),
   });
+}
+
+// 정적 헤더가 가져오는 공통 검색 엔진도 내용 변경 시 캐시를 갱신한다.
+{
+  const engineHash = createHash("sha1").update(await readFile(resolve(outputDir,"scripts/search-engine.mjs"))).digest("hex").slice(0,8);
+  const path=resolve(outputDir,"scripts/site_search.js");
+  const source=await readFile(path,"utf8");
+  await writeFile(path,source.replace('import("./search-engine.mjs")',`import("./search-engine.mjs?v=${engineHash}")`),"utf8");
+}
+// 이 개편의 5개 언어 문구는 한 소스에서 관리하고 기존 사전과 병합한다.
+const revisionCopy = JSON.parse(await readFile(resolve(projectRoot, "i18n/revision.json"), "utf8"));
+const revisionEnglish = {};
+for (const [key, translations] of Object.entries(revisionCopy)) revisionEnglish[key] = translations[0];
+await writeFile(resolve(outputDir, "scripts/guide_revision_copy.js"),
+  "window.DESTINY_REVISION_COPY = " + JSON.stringify(revisionEnglish) + ";\n", "utf8");
+for (const [index, lang] of ["en", "ko", "ja", "es", "fr"].entries()) {
+  if (lang === "en") continue;
+  const dictPath = resolve(outputDir, "i18n", lang + ".json");
+  const dict = JSON.parse(await readFile(dictPath, "utf8"));
+  for (const [key, translations] of Object.entries(revisionCopy)) {
+    if (typeof translations[index] !== "string") throw new Error("Missing translation: " + key + "/" + lang);
+    dict[key] = translations[index];
+  }
+  await writeFile(dictPath, JSON.stringify(dict, null, 2) + "\n", "utf8");
 }
 
 for (const file of publicFiles) {
@@ -103,7 +168,12 @@ let stampedRefs = 0;
 for (const entry of await readdir(projectRoot, { withFileTypes: true })) {
   if (!entry.isFile() || !entry.name.endsWith(".html") || excludedHtml.has(entry.name)) continue;
 
-  const html = await readFile(resolve(projectRoot, entry.name), "utf8");
+  let html = await readFile(resolve(projectRoot, entry.name), "utf8");
+  // 정적 페이지 전체에 같은 익명 집계를 붙인다. 소스 HTML마다 태그를 복사하면
+  // 새 페이지에서 빠지기 쉬워 빌드 단계에서 한 번만 주입한다.
+  if (!html.includes("scripts/analytics.js")) {
+    html = html.replace("</head>", '    <script src="./scripts/analytics.js" defer></script>\n</head>');
+  }
   const versions = new Map();
   for (const [, , assetPath] of html.matchAll(ASSET_REFERENCE)) {
     versions.set(assetPath, await assetVersion(assetPath));

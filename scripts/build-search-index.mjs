@@ -4,15 +4,15 @@
  * 왜 미리 만들어 두는가
  * ─────────────────────────────────────────────────────────────────────────
  * 검색창은 모든 페이지의 헤더에 있으므로 열자마자 결과가 나와야 한다.
- * database-*.json 다섯 개(약 360KB)를 매번 받아 파싱하면 첫 타이핑이 늦다.
- * 검색에 필요한 필드만 뽑아 하나로 합치면 90KB 정도로 줄고, 파싱도 한 번이면 끝난다.
+ * DB 설명, 아이템 카탈로그, 드랍 표와 다국어 키워드를 하나의 색인으로 만든다.
+ * 브라우저에서는 검색을 열 때 한 번만 받아 공통 검색 엔진으로 조회한다.
  *
- * 두 곳에서 아이템을 모은다
+ * 세 곳에서 검색 데이터를 모은다
  * ─────────────────────────────────────────────────────────────────────────
  *   1. data/database-*.json  — PlayPSO 미러. 원작 PSOBB 아이템 전부.
- *   2. scripts/destiny_catalog.js — 이 서버 전용 아이템. PlayPSO 에는 없다.
- * 플레이어가 실제로 찾는 건 2번 쪽이 많아서(ASTRAL SABER 등) 같은 이름이 겹치면
- * 2번을 남기고, 점수도 조금 올려 위에 뜨게 한다.
+ *   2. scripts/destiny_catalog.js — 서버 전용 아이템 안내.
+ *   3. data/drop-tables-*.json — 난이도/에피소드/몬스터/섹션/기본 드랍률.
+ * 같은 이름이어도 DB 상세와 전용 가이드는 둘 다 보존한다.
  *
  * id 는 반드시 app/database/data.ts 와 같아야 한다
  * ─────────────────────────────────────────────────────────────────────────
@@ -24,6 +24,8 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { runInNewContext } from "node:vm";
+import { expandSearchText } from "./search-engine.mjs";
 
 const projectRoot = process.cwd();
 const OUTPUT = resolve(projectRoot, "data/search-index.json");
@@ -67,6 +69,8 @@ function buildAliases(name) {
     .map((word) => word[0])
     .join("");
   if (initials.length >= 2) matched.push(initials.toLowerCase());
+  const cleanInitials = normalize(name).split(/\s+/).map(word=>word[0]).join("");
+  if (cleanInitials.length >= 2) matched.push(cleanInitials);
   return matched.join(" ");
 }
 
@@ -89,7 +93,9 @@ function itemMeta(categoryName, row) {
   }
 
   if (categoryName === "Units") {
-    return joinMeta(joinMeta(row["Stat Type"], row["Stat Amount"]).replace(" · ", " "), variant);
+    const stat = row["Stat Type"] !== "N/A" ? joinMeta(row["Stat Type"], row["Stat Amount"]).replace(" · ", " ") : "";
+    const effect = row.Boosts && row.Boosts !== "None" ? row.Boosts : row.Notes || "";
+    return joinMeta(stat,effect,variant).slice(0,170);
   }
 
   if (categoryName === "Mags") {
@@ -113,6 +119,7 @@ const PAGES = [
   { u: "beginner_page.html", g: "guide", t: "Beginner", k: "header.nav.beginner", d: "Levelling route and first steps for new players" },
   { u: "item_page.html", g: "guide", t: "Destiny Items", k: "header.nav.items", d: "Destiny-only item catalog with filters" },
   { u: "class_builds.html", g: "guide", t: "Class Builds", k: "header.nav.builds", d: "Gear and unit setups for every class" },
+  { u: "pb_guide.html", g: "guide", t: "PB Management", k: "header.nav.pb", d: "PB Flow MAG invincibility juggling 97 99 Berdysh Dragon Sword TJS weapon swap" },
   { u: "event_page.html", g: "guide", t: "Events", k: "header.nav.events", d: "Seasonal event archive: periods, new items, event quests, drop rates, shop trades, anniversary easter valentine halloween xmas summer" },
   { u: "updates_page.html", g: "guide", t: "Latest Updates", d: "Current patch 0.944 September roadmap Soul Eraser Miracle Chain Aegis of Isolation Madam's Bracelet Lightning Garment" },
   { u: "endgame_page.html", g: "guide", t: "Quest Difficulty", k: "header.nav.endgame", d: "Quest difficulty list star rating raid VR test episode event, endgame contents" },
@@ -138,46 +145,56 @@ const PAGES = [
 /**
  * destiny_catalog.js 안의 아이템을 읽는다.
  *
- * 파일이 IIFE 라서 불러다 실행할 수 없다(즉시 DOM 을 건드린다). 대신 배열 리터럴
- * 구간만 잘라 id/name/type/category 를 훑는다. 항목 모양이 일정해서 이걸로 충분하다.
- * 형태가 바뀌어 개수가 뚝 떨어지면 실행부에서 경고를 낸다.
+ * DOM 코드 직전의 데이터와 헬퍼 함수만 분리하여 제한된 컨텍스트에서 평가한다.
+ * 배열 경계나 필수 필드가 달라지면 누락된 색인을 만들지 않고 빌드를 중단한다.
  */
 async function readDestinyCatalog() {
   const source = await readFile(resolve(projectRoot, CATALOG_FILE), "utf8");
-  const start = source.indexOf("const catalogItems = [");
   const end = source.indexOf("const normalizeName");
-  if (start < 0 || end < 0 || end <= start) return [];
-
-  const region = source.slice(start, end);
-  const idPattern = /id:\s*"([^"]+)"/g;
-  const entries = [];
-  let match;
-
-  while ((match = idPattern.exec(region))) {
-    // 한 항목이 stats/combat/obtain 까지 포함해 길어서 넉넉히 잘라 읽는다.
-    const block = region.slice(match.index, match.index + 1400);
-    const name = block.match(/\n\s*name:\s*"([^"]*)"/)?.[1];
-    if (!name) continue;
-    entries.push({
-      id: match[1],
-      name,
-      type: block.match(/\n\s*type:\s*"([^"]*)"/)?.[1] ?? "",
-      category: block.match(/\n\s*category:\s*"([^"]*)"/)?.[1] ?? "",
-    });
+  if (end < 0) throw new Error("Cannot locate catalog data boundary");
+  // Evaluate only the data/helper prefix, never the DOM-dependent catalog application.
+  const entries = runInNewContext(source.slice(0,end) + "\nreturn catalogItems;\n})();", {}, {timeout:1000});
+  if (!Array.isArray(entries) || entries.length < 50 || entries.some(entry=>!entry.id || !entry.name)) {
+    throw new Error("Invalid Destiny search catalog");
   }
-
   return entries;
+}
+
+async function readDropIndex() {
+  const drops = [];
+  let sourceRows = 0;
+  for (const difficulty of [0,1,2,3]) {
+    const table = JSON.parse(await readFile(resolve(projectRoot, "data/drop-tables-"+difficulty+".json"),"utf8"));
+    for (const episode of table.episodes) for (const [enemy, dar, cells] of episode.rows) {
+      const groups = new Map();
+      for (const [section, item, rate] of cells) {
+        if (!item || item.toLowerCase() === "no item") continue;
+        sourceRows++;
+        const key = JSON.stringify([item,rate]);
+        if (!groups.has(key)) groups.set(key,{item,rate,sections:[]});
+        groups.get(key).sections.push(section);
+      }
+      for (const {item,rate,sections} of groups.values()) {
+        const params = new URLSearchParams({item,enemy,difficulty:table.name,episode:String(episode.episode)});
+        if (sections.length===1) params.set("section",sections[0]);
+        const aliases = buildAliases(item);
+        const meta = table.name+" · EP"+episode.episode+" · "+enemy+" · "+sections.join(" / ")+" · "+(rate || "—");
+        drops.push([item,"drop-tables/?"+params.toString(),"Drops",meta,
+          expandSearchText(item+" "+aliases+" "+meta+" drops monster section id dar "+dar+" "+(difficulty===2?"vh":"")+" episode "+episode.episode),
+          0,aliases,sections]);
+      }
+    }
+  }
+  return {drops,sourceRows};
 }
 
 export async function buildSearchIndex() {
   const items = [];
-  /** 이름이 겹칠 때 Destiny 전용 항목을 남기려고 이미 담은 이름을 기억한다. */
-  const takenNames = new Set();
+  const guideNotes = JSON.parse(await readFile(resolve(projectRoot,"data/item-notes.json"),"utf8")).notes || {};
 
-  // 1) Destiny 전용 아이템 먼저. 겹치는 이름은 이쪽이 이긴다.
+  // 1) Destiny 전용 아이템 안내. 같은 이름의 DB 항목도 아래에서 보존한다.
   const catalog = await readDestinyCatalog();
   for (const entry of catalog) {
-    takenNames.add(normalize(entry.name));
     const aliases = buildAliases(entry.name);
     const badge = entry.category || "Destiny";
     items.push([
@@ -186,9 +203,8 @@ export async function buildSearchIndex() {
       badge,
       // 방어구·실드는 category 와 type 이 같은 말이다("Shield · Shield"). 한 번만 보인다.
       entry.type === badge ? "" : joinMeta(entry.type),
-      (normalize(entry.name) + " " + aliases + " " + normalize(entry.type) + " " + normalize(entry.category) + " destiny")
-        .replace(/\s+/g, " ")
-        .trim(),
+      expandSearchText([entry.name,aliases,entry.type,entry.category,"destiny",
+        entry.summary,...(entry.stats || []).flat(),...(entry.combat || []),...(entry.obtain || []),...(entry.required || [])].join(" ")),
       1,
       aliases,
     ]);
@@ -202,20 +218,12 @@ export async function buildSearchIndex() {
     for (const row of category.rows) {
       const name = (row.Name ?? "").trim();
 
-      // 중복 번호는 건너뛴 항목까지 포함해 세야 data.ts 와 어긋나지 않는다.
-      // 그래서 이 계산은 takenNames 검사보다 먼저 한다.
+      // 중복 번호는 모든 행을 같은 순서로 세야 data.ts 와 일치한다.
       const baseSlug = slugify(name) || "item-" + category.type;
       const occurrence = (seen.get(baseSlug) ?? 0) + 1;
       seen.set(baseSlug, occurrence);
       const id = occurrence === 1 ? baseSlug : baseSlug + "-" + occurrence;
 
-      if (takenNames.has(normalize(name))) continue;
-
-      // 같은 이름이 색만 다른 기념 장비가 있다. 결과 줄에서 구분되도록
-      // 설명 끝의 "<name> version." 을 꼬리표로 남긴다. data.ts 의 variant 와 같은 규칙.
-      const variant = (row.Description ?? "").match(/([A-Za-z0-9'! -]+?)\s+version\.?\s*$/)?.[1]?.trim() ?? "";
-      const special = row.Special && row.Special !== "None" && row.Special !== "-" ? row.Special : "";
-      const type = row.Type ?? row["Stat Type"] ?? "";
       const aliases = buildAliases(name);
 
       items.push([
@@ -224,26 +232,32 @@ export async function buildSearchIndex() {
         category.name,
         itemMeta(category.name, row),
         // 이름 외에 타입/스페셜/약칭까지 넣어 "charge dagger" 같은 질문도 걸리게 한다.
-        (normalize(name) + " " + aliases + " " + normalize(type) + " " + normalize(special) + " " + normalize(variant))
-          .replace(/\s+/g, " ")
-          .trim(),
+        expandSearchText([name,aliases,category.name,"database db",...Object.keys(row),...Object.values(row),
+          ...Object.values(guideNotes[category.name+":"+name] || {})].join(" ")),
         0,
         aliases,
       ]);
     }
   }
 
+  const {drops,sourceRows} = await readDropIndex();
+  const revision = JSON.parse(await readFile(resolve(projectRoot,"i18n/revision.json"),"utf8"));
+  const dictionaries = await Promise.all(["ko","ja","es","fr"].map(async lang => JSON.parse(await readFile(resolve(projectRoot,"i18n",lang+".json"),"utf8"))));
+  const pages = PAGES.map(page=>({...page,s:expandSearchText([page.t,page.d,
+    ...dictionaries.map(dict=>dict[page.k] || ""),...(revision[page.k] || [])].join(" "))}));
   const payload = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     // 원본이 갱신되면 같이 다시 만들어야 한다. build/prepare-static.mjs 가 매
     // 빌드마다 호출하므로 손으로 챙길 일은 없다.
     generatedAt: new Date().toISOString(),
-    pages: PAGES,
+    pages,
     items,
+    drops,
+    dropSourceRows:sourceRows,
   };
 
   await writeFile(OUTPUT, JSON.stringify(payload), "utf8");
-  return { pages: PAGES.length, items: items.length, destinyItems: catalog.length };
+  return { pages: PAGES.length, items: items.length, destinyItems: catalog.length, dropRoutes:drops.length, dropSourceRows:sourceRows };
 }
 
 if (process.argv[1]?.endsWith("build-search-index.mjs")) {

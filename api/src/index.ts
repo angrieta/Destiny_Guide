@@ -23,6 +23,9 @@
  *   POST /api/suggestions/:id/vote                공감 (비밀번호 없음)
  *   POST /api/suggestions/:id/status              처리 상태 — 운영자만
  *
+ *   POST /api/analytics/view                      익명 집계 1회 추가
+ *   GET  /api/analytics/summary?days=30           페이지·클래스·레벨 인기 집계
+ *
  * 수정·삭제까지 POST 인 이유는 비밀번호를 본문에 담아야 하기 때문이다. 주소에 실으면
  * 브라우저 기록과 서버 로그에 그대로 남고, DELETE 의 본문은 떼어 버리는 중간 장비가 있다.
  */
@@ -74,6 +77,10 @@ const PAGE_SIZE = 50;
  * 그래서 이 값이 여기서 쓸 수 있는 최대치다.
  */
 const PBKDF2_ROUNDS = 100000;
+
+const ANALYTICS_EVENTS = ["page_view", "engaged_view", "content_view", "content_use", "class_select", "level_select", "measurement"] as const;
+const ANALYTICS_MAX_PATH = 96;
+const ANALYTICS_MAX_TARGET = 48;
 
 /* ── 응답 도우미 ─────────────────────────────────────────────────────────── */
 
@@ -773,6 +780,90 @@ async function toggleVote(request: Request, env: Env, id: number) {
   return ok({ votes: after?.votes ?? 0, voted: !already }, request, env);
 }
 
+/* ── 익명 이용 집계 ─────────────────────────────────────────────────────── */
+
+const ANALYTICS_SECTIONS: Record<string, string[]> = {
+  "/class_builds": ["class-roadmap", "class-endgame"],
+  "/player_tools": ["monster-counter", "happy-schedule"],
+  "/pb_guide": ["pb-basics", "pb-cycle", "pb-spend", "pb-troubleshoot"],
+  "/drop-tables": ["drop-explorer"], "/database": ["item-explorer"], "/calculator": ["damage-calculator"],
+};
+const ANALYTICS_CLASSES = ["humar","hunewearl","hucast","hucaseal","ramar","ramarl","racast","racaseal","fomar","fomarl","fonewm","fonewearl"];
+function cleanAnalyticsPath(value: unknown): string {
+  if (typeof value !== "string") return "";
+  const path = value.trim().replace(/^\/Destiny_Guide(?=\/|$)/i, "")
+    .replace(/\/index\.html$/i, "/").replace(/\.html$/i, "").replace(/\/$/, "") || "/";
+  return path.length <= ANALYTICS_MAX_PATH && /^\/[a-z0-9_\/-]*$/i.test(path) ? path : "";
+}
+function analyticsDay(date = new Date()): string { return date.toISOString().slice(0, 10); }
+
+async function recordAnalytics(request: Request, env: Env, body: Record<string, unknown>) {
+  const origin = request.headers.get("Origin");
+  if (origin && !env.ALLOWED_ORIGINS.split(",").map(v => v.trim()).includes(origin)) {
+    return fail(403, "origin_not_allowed", request, env);
+  }
+  const event = body.event;
+  if (typeof event !== "string" || !ANALYTICS_EVENTS.includes(event as typeof ANALYTICS_EVENTS[number])) {
+    return fail(400, "bad_analytics_event", request, env);
+  }
+  const path = cleanAnalyticsPath(body.path);
+  if (!path) return fail(400, "bad_analytics_path", request, env);
+  const target = typeof body.target === "string" ? body.target : "";
+  const parts = target.split(":");
+  const validTarget =
+    ((event === "page_view" || event === "engaged_view") && target === "") ||
+    (event === "measurement" && target === "v2") ||
+    (event === "class_select" && path === "/class_builds" && ANALYTICS_CLASSES.includes(target)) ||
+    (event === "level_select" && path === "/class_builds" && parts.length === 2 &&
+      ANALYTICS_CLASSES.includes(parts[0]) && ["100","150","180","200"].includes(parts[1])) ||
+    ((event === "content_view" || event === "content_use") &&
+      ((ANALYTICS_SECTIONS[path] || []).includes(target) || (event === "content_use" && target === "page")));
+  if (!validTarget || target.length > ANALYTICS_MAX_TARGET) return fail(400, "bad_analytics_target", request, env);
+  try {
+    await env.DB.prepare(
+      `INSERT INTO analytics_daily (day, event, path, target, count) VALUES (?, ?, ?, ?, 1)
+       ON CONFLICT(day, event, path, target) DO UPDATE SET count = count + 1`,
+    ).bind(analyticsDay(), event, path, target).run();
+    return ok({ recorded: true }, request, env);
+  } catch { return fail(503, "analytics_unavailable", request, env); }
+}
+
+type AnalyticsRow = { path: string; event: string; target: string; count: number; previousCount: number; activeDays: number; lastSeen: string | null };
+async function analyticsSummary(request: Request, env: Env) {
+  const requestedDays = Number.parseInt(new URL(request.url).searchParams.get("days") ?? "30", 10);
+  const days = Math.min(365, Math.max(1, Number.isFinite(requestedDays) ? requestedDays : 30));
+  const today = new Date(), since = new Date(today), previous = new Date(today);
+  since.setUTCDate(today.getUTCDate() - days + 1);
+  previous.setUTCDate(today.getUTCDate() - days * 2 + 1);
+  const from = analyticsDay(since), until = analyticsDay(today), previousSince = analyticsDay(previous);
+  try {
+    const [result, coverage] = await Promise.all([
+      env.DB.prepare(
+        `SELECT path, event, target,
+          SUM(CASE WHEN day >= ? THEN count ELSE 0 END) AS count,
+          SUM(CASE WHEN day < ? THEN count ELSE 0 END) AS previousCount,
+          COUNT(DISTINCT CASE WHEN day >= ? THEN day END) AS activeDays,
+          MAX(CASE WHEN day >= ? THEN day END) AS lastSeen
+         FROM analytics_daily WHERE day >= ? AND day <= ?
+         GROUP BY path, event, target ORDER BY count DESC, path, event, target`
+      ).bind(from, from, from, from, previousSince, until).all<AnalyticsRow>(),
+      env.DB.prepare(
+        `SELECT MIN(day) AS coverageStart, MIN(CASE WHEN event = 'measurement' AND target = 'v2' THEN day END) AS signalsStart
+         FROM analytics_daily`
+      ).first<{coverageStart: string | null; signalsStart: string | null}>(),
+    ]);
+    const rows = result.results ?? [];
+    const pages = rows.filter(row => row.event === "page_view" && row.count > 0);
+    return ok({ version: 2, days, since: from, until, previousSince,
+      coverageStart: coverage?.coverageStart ?? null, signalsStart: coverage?.signalsStart ?? null,
+      totalViews: pages.reduce((sum, row) => sum + Number(row.count || 0), 0),
+      rows, pages,
+      classes: rows.filter(row => row.event === "class_select" && row.count > 0),
+      levels: rows.filter(row => row.event === "level_select" && row.count > 0),
+    }, request, env);
+  } catch { return fail(503, "analytics_unavailable", request, env); }
+}
+
 /* ── 라우팅 ──────────────────────────────────────────────────────────────── */
 
 export default {
@@ -786,6 +877,7 @@ export default {
 
     if (path === "/api/entries" && request.method === "GET") return listEntries(request, env);
     if (path === "/api/suggestions" && request.method === "GET") return listSuggestions(request, env);
+    if (path === "/api/analytics/summary" && request.method === "GET") return analyticsSummary(request, env);
 
     if (request.method === "POST") {
       const body = (await request.json().catch(() => null)) as Record<string, unknown> | null;
@@ -793,6 +885,7 @@ export default {
 
       if (path === "/api/entries") return createEntry(request, env, body);
       if (path === "/api/suggestions") return createSuggestion(request, env, body);
+      if (path === "/api/analytics/view") return recordAnalytics(request, env, body);
 
       const sugg = path.match(/^\/api\/suggestions\/(\d+)\/(verify|update|delete|status|vote)$/);
       if (sugg) {

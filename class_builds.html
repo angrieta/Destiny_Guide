@@ -10,17 +10,20 @@
     <link rel="stylesheet" href="./styles/guide.css">
     <link rel="stylesheet" href="./styles/class_builds.css">
     <script src="./scripts/i18n.js"></script>
-    <script src="./scripts/index.js" defer></script>
     <script src="./scripts/item_info.js" defer></script>
     <!-- 데이터가 먼저 실행되어야 렌더러가 window.DESTINY_BUILDS 를 찾을 수 있다 -->
     <script src="./scripts/class_builds.js" defer></script>
+    <!-- 레벨별 성장 동선과 클래스별 마테리얼 배분. 엔드게임 원문과 분리해 관리한다. -->
+    <script src="./scripts/class_builds_progression.js" defer></script>
+    <script src="./scripts/guide_revision_copy.js" defer></script>
+    <script src="./scripts/class_builds_beginner.js" defer></script>
     <!-- 등급 배지의 근거. destiny_catalog.js 도 상세창 배지에 같은 자료를 쓴다. -->
     <script src="./scripts/item_priority_data.js" defer></script>
     <script src="./scripts/destiny_catalog.js" defer></script>
     <script src="./scripts/guide_item_cards.js" defer></script>
     <script src="./scripts/class_builds_items.js" defer></script>
     <script src="./scripts/class_builds_ui.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

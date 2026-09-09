@@ -1418,6 +1418,11 @@ html[data-theme="dark"] .download_btn {
         font-size: 0.75rem;
     }
 
+    /* Long FR/ES labels must still fit on 344px devices. */
+    .site_header_actions { gap: 4px; }
+    .site_header_actions .theme_toggle,
+    .site_header_actions .lang_switch_button { padding-inline: 6px; }
+
     .title_num,
     .g_sec > h3 .g_sec_num {
         min-width: 28px;
