@@ -1493,19 +1493,8 @@
         "Fragments of Orb [Red]: Delbiter in Christmas Fiasco EP2, 1/393 on Redria and Pinkal.",
         "Fragments of Orb [Blue]: Dark Bringer in Christmas Fiasco EP1, 1/393 on Skyly and Bluefull."
       ],
-      required: [
-        "Infernal Stone x1",
-        "Fragments of Orb [Red] x2",
-        "Fragments of Orb [Blue] x2",
-        "Reflex Gear x2",
-        "ETHEREAL ARMOR x1",
-        "Shadow Cloak x1",
-        "Proof of Sonic Team x1",
-        "Rare Tool x2",
-        "Rare Unit x2",
-        "Rare item x3",
-        "Weapon Crystal Badge x20"
-      ]
+      // Quantities and verification state come from verified-content.json.
+      required: []
     },
     {
       id: "chaos-engine",
@@ -1602,6 +1591,12 @@
     .toUpperCase()
     .replace(/[^A-Z0-9]+/g, " ")
     .trim();
+
+  (window.DestinyVerifiedContent?.items || []).forEach((patch) => {
+    const item = catalogItems.find((entry) => entry.id === patch.id);
+    if (item) Object.assign(item, patch);
+    else catalogItems.push(patch);
+  });
 
   const operatorData = window.DestinyItemPriorityData || {
     updatedAt: "",
@@ -2095,15 +2090,18 @@
     const missingImageElement = modal.querySelector(".destiny_detail_missing_image");
     const mediaElement = modal.querySelector(".destiny_detail_media");
     let previousFocus = null;
+    let openedItem = null;
 
     const closeModal = () => {
+      openedItem = null;
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("destiny-detail-open");
       if (previousFocus) previousFocus.focus();
     };
 
-    const openModal = (item, trigger) => {
+    const openModal = (item, trigger, refresh = false) => {
+      openedItem = item;
       previousFocus = trigger;
       const operatorMeta = getOperatorMeta(item.name);
       const operatorOverall = bestOverall(operatorMeta);
@@ -2118,13 +2116,19 @@
           (operatorMeta.tradeOnly ? "★ " : "") + escapeHTML(t("catalog.operator.badge.endgame", "End-game")) + "</span>" : "");
       statsElement.innerHTML = renderDefinitionList(item.stats || []);
       sectionsElement.innerHTML =
+        (item.status ? '<section class="destiny_detail_section verified_note" data-status="' + escapeHTML(item.status) + '"><h3>' +
+          escapeHTML(t('verified.' + item.status, item.status === 'planned' ? 'Announced · not yet available' : item.status === 'issue' ? 'Known issue' : 'Available')) + '</h3>' +
+          (item.recipeComplete === false ? '<p>' + escapeHTML(t('verified.partial', 'Partial material list. Confirm the missing materials with the NPC before farming.')) + '</p>' : '') +
+          '<a href="' + escapeHTML(item.source) + '" target="_blank" rel="noreferrer">' + escapeHTML(t('verified.source', 'Official source')) + '</a> · ' + escapeHTML(item.checkedAt) + '</section>' : '') +
         renderOperatorSection(operatorMeta) +
         renderSection(t("catalog.detail.combat", "Special, targets & bonuses"), proseList(item, "combat")) +
         renderSection(t("catalog.detail.obtain", "How to obtain"), proseList(item, "obtain")) +
         renderSection(t("catalog.detail.required", "Required items"), item.required || []) +
-        renderSection(t("catalog.detail.notes", "Additional notes"), proseList(item, "notes"));
+        renderSection(t("catalog.detail.notes", "Additional notes"), proseList(item, "notes")) +
+        ((item.required || []).length ? '<p><a class="guide_action" href="./recipe_page.html?target=' + encodeURIComponent(item.id) + '#planner">' + escapeHTML(t('planner.open', 'Plan materials & farming')) + ' →</a></p>' : '');
 
       if (hasAuthenticImage(item)) {
+        mediaElement.classList.remove("is-placeholder");
         imageElement.src = item.image;
         imageElement.alt = item.name + " " + t("catalog.detail.imageAlt", "source image");
         imageElement.style.objectPosition = item.imagePosition || "center top";
@@ -2134,25 +2138,36 @@
         imageLink.href = item.image;
         imageLink.hidden = false;
         imageHint.hidden = false;
+        imageHint.dataset.i18n = "item.t154";
+        imageHint.dataset.i18nOriginal = "Click the image to view the supplied source at full size.";
+        imageHint.textContent = t("item.t154", imageHint.dataset.i18nOriginal);
         missingImageElement.hidden = true;
       } else {
+        mediaElement.classList.add("is-placeholder");
         imageElement.src = FALLBACK_IMAGE;
         imageElement.alt = "Rare item box placeholder";
         imageElement.style.objectPosition = "center center";
         imageElement.style.objectFit = "cover";
         imageElement.style.filter = "none";
         mediaElement.classList.remove("is-missing");
-        imageLink.href = FALLBACK_IMAGE;
+        imageLink.removeAttribute("href");
         imageLink.hidden = false;
-        imageHint.hidden = true;
+        imageHint.hidden = false;
+        imageHint.dataset.i18n = "catalog.image.missing";
+        imageHint.dataset.i18nOriginal = "Image coming soon";
+        imageHint.textContent = t("catalog.image.missing", "Image coming soon");
         missingImageElement.hidden = true;
       }
 
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("destiny-detail-open");
-      closeButton.focus();
+      if (!refresh) closeButton.focus();
     };
+
+    document.addEventListener("destiny-lang-change", () => {
+      if (openedItem && modal.classList.contains("is-open")) openModal(openedItem, previousFocus, true);
+    });
 
     document.querySelectorAll(".destiny_item_slide .item_section_aria").forEach((card) => {
       card.setAttribute("aria-haspopup", "dialog");
@@ -2189,6 +2204,13 @@
       }
 
       if (event.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      if (event.key === "Tab" && modal.classList.contains("is-open")) {
+        const controls = Array.from(modal.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), [tabindex="0"]'))
+          .filter((element) => element.getClientRects().length > 0);
+        const first = controls[0], last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
     });
 
     modal.querySelectorAll("[data-destiny-detail-close]").forEach((element) => {

@@ -7,6 +7,8 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "typecheck": "wrangler types api/worker-configuration.d.ts --config api/wrangler.toml && tsc --noEmit",
+    "test:guide": "node tests/audit-improvements.mjs",
     "prepare:static": "node build/prepare-static.mjs",
     "update:happy-hour": "node scripts/update-happy-hour.mjs",
     "sync:drops": "node scripts/sync-drop-tables.mjs",

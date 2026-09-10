@@ -2,7 +2,7 @@
 <html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="up.meta.title">DestinyGuide - Patch Notes</title>
     <meta name="description" content="Current version, the next update, new items and a farming checklist for Destiny PSOBB, compiled from the server's own Discord announcements.">
     <link rel="stylesheet" href="./styles/reset.css">
@@ -26,7 +26,7 @@
             <div class="up_hero_copy">
                 <div class="up_kicker"><span class="up_live_dot"></span> LIVE · VER 0.945</div>
                 <h2><span data-i18n="up.01">What is live now, and</span><br><span data-i18n="up.02">what lands next</span></h2>
-                <p data-i18n="up.03">Checked against the patch notes, announcements and quest/item channels of the Destiny Discord as of 2026-09-04. Confirmed changes are kept apart from previews, so you can tell at a glance what to farm now and what to hold for later.</p>
+                <p data-i18n="up.03">Patch, announcement and item sources checked September 10, 2026. Released content, known issues and future plans are labelled separately.</p>
                 <div class="up_hero_actions">
                     <a class="up_primary" href="#v0945" data-i18n="up.04">Read the Ver.0.945 notes</a>
                     <a class="up_secondary" href="./item_page.html" data-i18n="up.05">Open the item catalog</a>
@@ -178,7 +178,7 @@
                         <li><strong>Lost RIOT RAYGUN [EP2]</strong> <span data-i18n="up.v0945.33">— time limit removed. Gol Dragon drops</span> <strong>Fragments of Orb [Yellow]</strong> <span data-i18n="up.v0945.34">(Yellow · White, 1/20).</span></li>
                         <li><strong>Lost Devil's SCEPTER [EP2]</strong> <span data-i18n="up.v0945.35">— time limit removed. Gal Gryphon drops</span> <strong>Fragments of Orb [Green]</strong> <span data-i18n="up.v0945.36">(Viridia · Greenill, 1/16).</span></li>
                         <li><strong>The Phantastic Bazaar [EP2]</strong> <span data-i18n="up.v0945.37">— MIRACLE CHAIN added to Another Shop, and a guide NPC is placed there.</span></li>
-                        <li class="up_prior"><strong>Lost Soul Ripper [Extreme]</strong> <span data-i18n="up.v0945.38">— returning for two weeks from September 1.</span> <em data-i18n="up.v0945.39">This came from an earlier announcement rather than the 0.945 note, so the note does not mention it again.</em></li>
+                        <li class="up_prior"><strong>Lost Soul Ripper [Extreme]</strong> <span data-i18n="up.v0945.38">— returned for two weeks from September 1.</span> <em data-i18n="up.v0945.39">This came from an earlier announcement rather than the 0.945 note, so the note does not mention it again.</em></li>
                     </ul>
                 </article>
             </div>
@@ -208,7 +208,8 @@
             </div>
         </section>
 
-        <section class="g_sec up_ver" id="v0944" data-ver="0944" role="tabpanel" aria-labelledby="tab-0944" hidden>
+        <aside class="verified_note" data-status="issue"><p data-i18n="cat.lightning-garment.notes.0">Known issue, September 7: the technique boost is not working. A fix is planned with the next client update. Do not count the Grants bonus until a fix is confirmed.</p><a href="./item_page.html?item=lightning-garment">LIGHTNING GARMENT →</a></aside>
+<section class="g_sec up_ver" id="v0944" data-ver="0944" role="tabpanel" aria-labelledby="tab-0944" hidden>
             <div class="up_section_head">
                 <div>
                     <span class="up_badge is-live" data-i18n="up.v0944.01">Live now</span>
@@ -332,7 +333,8 @@
                         <li data-i18n="up.anniversary.05">Shield · Class ALL · requires level 150.</li>
                         <li data-i18n="up.anniversary.06">DFP 120–170 · EVP 180–230 · Resists 32-32-32-24-24 · ATP +60.</li>
                         <li data-i18n="up.anniversary.07">Healing from other party members is blocked. The wearer can still heal other players and can be revived.</li>
-                        <li data-i18n="up.anniversary.08">Monomate and Dimate heal as much as a Trimate.</li>
+                        <li data-i18n="cat.aegis-of-isolation.combat.1">Disables android natural HP regeneration. Monomate and Dimate work like Trimate.</li>
+<li data-i18n="up.anniversary.08">Monomate and Dimate heal as much as a Trimate.</li>
                         <li data-i18n="up.anniversary.10">After the event it is planned to enter normal quests too, but at a lower drop rate.</li>
                     </ul>
                     <p class="up_note" data-i18n="up.anniversary.09">The full stats were confirmed on September 3. When another player tries to heal the wearer, a red “+0” is displayed.</p>
@@ -346,7 +348,7 @@
                     <span class="up_badge is-preview" data-i18n="up.futurecrafts.01">Preview</span>
                     <h3 data-i18n="up.futurecrafts.02">Upcoming Millennium Shop crafts</h3>
                 </div>
-                <span data-i18n="up.futurecrafts.03">Targeted for late September to October</span>
+                <span data-i18n="up.futurecrafts.03">Planned after the 9th Anniversary</span>
             </div>
             <div class="up_grid up_grid_two">
                 <article class="up_card">
@@ -356,7 +358,7 @@
                     <dl class="up_stats">
                         <div><dt data-i18n="up.futurecrafts.06">Result type</dt><dd>Slicer</dd></div>
                         <div><dt data-i18n="up.futurecrafts.07">Class</dt><dd>HU</dd></div>
-                        <div><dt data-i18n="up.futurecrafts.08">Known materials</dt><dd>Chaos Engine ×1 · Syncesta ×2 · Proof of Sword Saint ×1</dd></div>
+                        <div><dt data-i18n="up.futurecrafts.08">Known materials</dt><dd><a href="./recipe_page.html?target=phantasmal-ore-syncesta#planner">MPC ×20 · Infernal Stone ×1 · Chaos Engine ×1 · Weapon Crystal Badge ×30 · Syncesta ×2 · Dark Matter ×1 · Proof of Sword-Saint ×1 →</a></dd></div>
                     </dl>
                 </article>
                 <article class="up_card">
@@ -366,14 +368,15 @@
                     <dl class="up_stats">
                         <div><dt data-i18n="up.futurecrafts.11">Result type</dt><dd>Twin Sword</dd></div>
                         <div><dt data-i18n="up.futurecrafts.12">Class</dt><dd>FO</dd></div>
-                        <div><dt data-i18n="up.futurecrafts.13">Known materials</dt><dd>Magic Stone “Iritista” ×2 · Red Crystal ×1 · Luminous Field ×2</dd></div>
+                        <div><dt data-i18n="up.futurecrafts.13">Known materials</dt><dd><a href="./recipe_page.html?target=astral-ore-iritista#planner">MPC ×20 · Hallowed Jack-O-Lantern ×1 · Primal Photon Sphere ×1 · Weapon Crystal Badge ×30 · Iritista ×2 · Red Crystal ×1 · Luminous Field ×2 →</a></dd></div>
                     </dl>
                 </article>
             </div>
-            <p class="up_note" data-i18n="up.futurecrafts.14">Both recipes still hide the Millennium Photon Core count and some of the materials. Farm only what has been named, and it is safer not to spend any of it before the final announcement.</p>
+            <p class="up_note" data-i18n="up.futurecrafts.14">The full material lists were disclosed in the September 10 edit. Both ores remain planned for after the 9th Anniversary. Use the planner to count materials and keep the base weapon separate.</p>
         </section>
 
-        <section class="g_sec" id="eternal-dimension">
+        <section class="g_sec"><h3>Limited quest C · Announced · not yet available</h3><p data-i18n="up.miniC">Limited quest C is planned after Halloween 2026: Phantasmal World #2 [Extreme], difficulty ★7, with SLICER OF HERETIC. No exact release date or final drop rate has been announced.</p><a href="https://discord.com/channels/363947585154580480/441859383958437888/1547499553429921813">Discord · 2026-09-10</a></section>
+<section class="g_sec" id="eternal-dimension">
             <div class="up_section_head">
                 <div>
                     <span class="up_badge is-preview" data-i18n="up.eternal.01">In development</span>
@@ -420,7 +423,7 @@
                     </thead>
                     <tbody>
                         <tr><td class="g_num">S</td><td class="g_name">Madam's Bracelet</td><td>New MSB · Olga Flow · 1/64</td><td data-i18n="up.farmingplan.07">An all-class support shield that is already live. It extends Resta/Anti range and strengthens Rabarta.</td></tr>
-                        <tr><td class="g_num">S</td><td class="g_name">Secret Ticket ×99</td><td>Simulator 2.0 / Random Attack Xrd Stage secret clear</td><td data-i18n="up.farmingplan.08">Trade for a Lightning Garment right away.</td></tr>
+                        <tr><td class="g_num">S</td><td class="g_name">Secret Ticket ×99</td><td>Simulator 2.0 / Random Attack Xrd Stage secret clear</td><td data-i18n="up.farmingplan.08">Check the known technique-boost issue before exchanging.</td></tr>
                         <tr><td class="g_num">A</td><td class="g_name" data-i18n="up.farmingplan.09">Get ready for World of Illusion</td><td>EP2 · Special</td><td data-i18n="up.farmingplan.10">Soul Eraser now drops there, and the death rule has been relaxed since September 1.</td></tr>
                         <tr><td class="g_num">A</td><td class="g_name">Red / Blue Fragments</td><td>Christmas Fiasco EP2 Delbiter / EP1 Dark Bringer</td><td data-i18n="up.farmingplan.11">Currently a MATRIX SCOPE material, and the Yellow/Green Fragment line is set to expand.</td></tr>
                         <tr><td class="g_num">A</td><td class="g_name">Chaos Engine / Syncesta</td><td data-i18n="up.farmingplan.12">Distorted Nightmare · Silent Nightmare / normal drops</td><td data-i18n="up.farmingplan.13">A named material in the announced Alternative Cannon recipe.</td></tr>

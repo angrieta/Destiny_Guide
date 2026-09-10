@@ -1,0 +1,188 @@
+[
+  {
+    "id": "start",
+    "label": "Start here",
+    "links": [
+      {
+        "href": "start_here.html",
+        "label": "First 30 minutes",
+        "key": "nav.page.start_here"
+      },
+      {
+        "href": "beginner_page.html",
+        "label": "Beginner route",
+        "key": "nav.page.beginner_page"
+      },
+      {
+        "href": "system_page.html",
+        "label": "Server systems",
+        "key": "nav.page.system_page"
+      }
+    ]
+  },
+  {
+    "id": "gear",
+    "label": "Gear & farming",
+    "links": [
+      {
+        "href": "item_page.html",
+        "label": "Destiny items",
+        "key": "nav.page.item_page"
+      },
+      {
+        "href": "database/",
+        "label": "Item database",
+        "key": "nav.page.database"
+      },
+      {
+        "href": "drop-tables/",
+        "label": "Drop tables",
+        "key": "nav.page.drop-tables"
+      },
+      {
+        "href": "recipe_page.html",
+        "label": "Materials & combinations",
+        "key": "nav.page.recipe_page"
+      },
+      {
+        "href": "sectionid_page.html",
+        "label": "Section ID",
+        "key": "nav.page.sectionid_page"
+      },
+      {
+        "href": "economy_page.html",
+        "label": "Shops & currencies",
+        "key": "nav.page.economy_page"
+      },
+      {
+        "href": "player_tools.html",
+        "label": "Farming tools",
+        "key": "nav.page.player_tools"
+      }
+    ]
+  },
+  {
+    "id": "build",
+    "label": "Build & combat",
+    "links": [
+      {
+        "href": "class_builds.html",
+        "label": "Class builds",
+        "key": "nav.page.class_builds"
+      },
+      {
+        "href": "calculator/",
+        "label": "Stat calculator",
+        "key": "nav.page.calculator"
+      },
+      {
+        "href": "enhance_page.html",
+        "label": "Enhancement",
+        "key": "nav.page.enhance_page"
+      },
+      {
+        "href": "pb_guide.html",
+        "label": "PB management",
+        "key": "nav.page.pb_guide"
+      },
+      {
+        "href": "dmc_page.html",
+        "label": "Damage cancel",
+        "key": "nav.page.dmc_page"
+      }
+    ]
+  },
+  {
+    "id": "quest",
+    "label": "Quests & raids",
+    "links": [
+      {
+        "href": "endgame_page.html",
+        "label": "Quest difficulty",
+        "key": "nav.page.endgame_page"
+      },
+      {
+        "href": "quest_data_page.html",
+        "label": "Quest data",
+        "key": "nav.page.quest_data_page"
+      },
+      {
+        "href": "starlight_raid.html",
+        "label": "The Starlight Tower",
+        "key": "nav.page.starlight_raid"
+      },
+      {
+        "href": "dn.html",
+        "label": "Distorted Nightmare",
+        "key": "nav.page.dn"
+      },
+      {
+        "href": "discontrolled_tower_raid.html",
+        "label": "The Discontrolled Tower",
+        "key": "nav.page.discontrolled_tower_raid"
+      },
+      {
+        "href": "predator_raid.html",
+        "label": "The Ravenous Predator",
+        "key": "nav.page.predator_raid"
+      },
+      {
+        "href": "tpd_page.html",
+        "label": "The Phantasmal Dimension",
+        "key": "nav.page.tpd_page"
+      }
+    ]
+  },
+  {
+    "id": "now",
+    "label": "What’s new",
+    "links": [
+      {
+        "href": "updates_page.html",
+        "label": "Latest updates",
+        "key": "nav.page.updates_page"
+      },
+      {
+        "href": "event_page.html",
+        "label": "Events",
+        "key": "nav.page.event_page"
+      }
+    ]
+  },
+  {
+    "id": "help",
+    "label": "Help & community",
+    "links": [
+      {
+        "href": "help_page.html",
+        "label": "Commands & FAQ",
+        "key": "nav.page.help_page"
+      },
+      {
+        "href": "Psobb_tool.html",
+        "label": "Tools",
+        "key": "nav.page.Psobb_tool"
+      },
+      {
+        "href": "mods_page.html",
+        "label": "Mods & skins",
+        "key": "nav.page.mods_page"
+      },
+      {
+        "href": "roster_page.html",
+        "label": "Player directory",
+        "key": "nav.page.roster_page"
+      },
+      {
+        "href": "suggest_page.html",
+        "label": "Suggestions",
+        "key": "nav.page.suggest_page"
+      },
+      {
+        "href": "redeem/",
+        "label": "Token redeem",
+        "key": "nav.page.redeem"
+      }
+    ]
+  }
+]

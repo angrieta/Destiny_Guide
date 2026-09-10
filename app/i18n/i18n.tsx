@@ -85,8 +85,8 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     let cancelled = false;
     fetch(dictUrl(lang), { cache: "no-cache" })
       .then((res) => (res.ok ? res.json() : Promise.reject(new Error(String(res.status)))))
-      .then((data: Dict) => {
-        if (!cancelled) setDict(data);
+      .then((data) => {
+        if (!cancelled && data && typeof data === "object") setDict(data as Dict);
       })
       .catch((error) => {
         // 영어로 남는 편이 빈 화면보다 낫다.

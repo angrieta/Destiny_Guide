@@ -1,7 +1,7 @@
 {
   "chr.t001": "Good for both solo and party",
   "chr.t002": "Weak techniques",
-  "chr.t004": "250 materials available, 57 free.",
+  "chr.t004": "250 material slots; 57 remain after this plan.",
   "chr.t018": "Level 20 tech, strong solo.",
   "chr.t019": "Lowest",
   "chr.t020": "among Hunter classe.",
@@ -16,7 +16,7 @@
   "chr.t060": "highest ATA / ATP, solo or multiplayer",
   "chr.t061": "(tech 15LV), lowest HP",
   "chr.t062": "250 materials available, 35 free.",
-  "chr.t074": "highest ATA, Level 20 tech",
+  "chr.t074": "High ATA, level 20 techniques",
   "chr.t075": "lowest ATP, HP",
   "chr.t083": "High ATP and HP, can use traps.",
   "chr.t084": "ATA is a bit lacking",

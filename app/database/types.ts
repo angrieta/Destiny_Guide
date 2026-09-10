@@ -61,5 +61,6 @@ export type DatabasePayload = {
   unitStatTypes: string[];
   classes: string[];
   syncStatus: SyncStatus;
+  verifiedAt: string;
   sourceUrl: string;
 };

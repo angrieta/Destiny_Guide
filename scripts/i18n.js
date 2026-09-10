@@ -122,6 +122,9 @@
 
     scope.querySelectorAll("[data-i18n]").forEach(function (el) {
       var translated = lookup(dict, el.dataset.i18n);
+      // Translate leaf nodes only. Replacing a parent would remove nested lists,
+      // links and their translation nodes. Compound copy belongs in leaf spans.
+      if (el.children.length || /^(BR|IMG|INPUT|HR)$/.test(el.tagName)) return;
       el.textContent = translated !== undefined ? translated : (el.dataset.i18nOriginal || el.textContent);
     });
 
@@ -147,6 +150,7 @@
     if (persist) storeLang(lang);
 
     return loadDict(lang).then(function (dict) {
+      if (current !== lang) return current;
       rememberOriginals(document);
       applyDict(dict);
       updateSwitcher();

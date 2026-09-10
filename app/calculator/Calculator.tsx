@@ -47,6 +47,8 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
   const [level, setLevel] = useState(200);
   const [base, setBase] = useState<BaseStats>({});
   const [picked, setPicked] = useState<Partial<Record<SlotKey, string>>>({});
+  const [queries, setQueries] = useState<Partial<Record<SlotKey, string>>>({});
+  const [baseIncludesTraining, setBaseIncludesTraining] = useState(false);
   const [grind, setGrind] = useState<number | null>(null);
   const [mag, setMag] = useState<MagStats>(payload.classes[0].mag);
   /** Left alone once the player edits the plan, so changing class does not wipe it. */
@@ -116,6 +118,8 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
       if (value && byId.has(value)) nextPicked[slot] = value;
     }
     setPicked(nextPicked);
+    setQueries(Object.fromEntries(Object.entries(nextPicked).map(([slot, id]) => [slot, byId.get(id!)?.name ?? ""])));
+    setBaseIncludesTraining(params.get("baseMode") === "complete");
 
     const nextBase: BaseStats = {};
     for (const stat of STAT_KEYS) {
@@ -129,6 +133,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
   useEffect(() => {
     if (!hydrated) return;
     const params = new URLSearchParams();
+    if (baseIncludesTraining) params.set("baseMode", "complete");
     if (playerClass !== "humar") params.set("class", playerClass);
     if (level !== 200) params.set("lv", String(level));
     if (grind !== null) params.set("g", String(grind));
@@ -147,10 +152,12 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     }
     const search = params.toString();
     window.history.replaceState(null, "", search ? `?${search}` : window.location.pathname);
-  }, [hydrated, playerClass, level, grind, picked, base, mag, magTouched, buffs, materials]);
+  }, [hydrated, playerClass, level, grind, picked, base, mag, magTouched, buffs, materials, baseIncludesTraining]);
 
   const changeClass = (next: string) => {
     setPlayerClass(next);
+    setBase({});
+    setBaseIncludesTraining(false);
     if (!magTouched) {
       setMag(payload.classes.find((entry) => entry.id === next)?.mag ?? payload.classes[0].mag);
     }
@@ -170,10 +177,14 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
     [picked, byId, grind],
   );
 
-  const totals = useMemo(() => computeTotals(base, loadout, playerClass, level, mag, buffs, materials), [base, loadout, playerClass, level, mag, buffs, materials]);
+  const totals = useMemo(() => computeTotals(base, loadout, playerClass, level,
+    baseIncludesTraining ? undefined : mag, buffs, baseIncludesTraining ? undefined : materials),
+    [base, loadout, playerClass, level, mag, buffs, materials, baseIncludesTraining]);
 
   const reset = useCallback(() => {
     setPicked({});
+    setQueries({});
+    setBaseIncludesTraining(false);
     setBase({});
     setGrind(null);
     setLevel(200);
@@ -187,7 +198,8 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
   const currentClass = payload.classes.find((entry) => entry.id === playerClass) ?? payload.classes[0];
   const materialTotal = MATERIAL_KEYS.reduce((sum, key) => sum + materials[key], 0);
   const hasSelection =
-    Object.values(picked).some(Boolean) || Object.values(base).some(Boolean) || materialTotal > 0;
+    Object.values(queries).some(Boolean) || Object.values(base).some(Boolean) || materialTotal > 0 ||
+    magTouched || buffs.shifta > 0 || buffs.deband > 0 || playerClass !== "humar" || level !== 200 || baseIncludesTraining;
 
   const equipped = [
     { key: "weapon" as SlotKey, label: t("calc.slot.weapon", "Weapon"), pool: bySlot.weapon },
@@ -208,9 +220,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
         <p className={styles.eyebrow}>{t("calc.eyebrow", "STAT CALCULATOR")}</p>
         <h2>{t("calc.title", "Build a loadout, see the numbers.")}</h2>
         <p className={styles.heroCopy}>
-          {t(
-            "calc.lead",
-            "Pick equipment and this adds up what it gives you, including the boost effects written on each item. Enter your character stats to see absolute totals, or leave them blank to compare gear on its own.",
+          {t("calc.lead", "Choose equipment to calculate its stat contribution. Add character stats, MAG and Materials for a full total. Completed stats already include MAG and Materials.",
           )}
         </p>
       </section>
@@ -241,11 +251,10 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
             </label>
           </div>
 
-          <h3 className={styles.subhead}>{t("calc.mag", "Mag")}</h3>
+          <h3 className={styles.subhead}>{t("calc.mag", "MAG")}</h3>
+          {baseIncludesTraining && <p className={styles.modeNote}>{t("calc.trainingIncluded", "MAG and Materials are already included in the stats below. These saved inputs are not added again.")}</p>}
           <p className={styles.hint}>
-            {t(
-              "calc.magHint",
-              "Pre-filled with the plan the class build guide recommends. If your mag is raised differently, change it here.",
+            {t("calc.magHint", "Starts with the class build guide’s MAG plan. Change it to match your MAG.",
             )}
           </p>
           <div className={styles.magInputs}>
@@ -256,6 +265,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
                   type="number"
                   min={0}
                   max={200}
+                  disabled={baseIncludesTraining}
                   value={mag[key]}
                   onChange={(event) => {
                     const value = Math.max(0, Number(event.target.value) || 0);
@@ -269,12 +279,12 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
           <p className={styles.magNote}>
             {t("calc.magTotal", "Total")} {MAG_KEYS.reduce((sum, key) => sum + mag[key], 0)} / 200
             {" · "}
-            {t("calc.magRates", "DEF 1 DFP, POW 2 ATP, DEX 0.5 ATA, MIND 2 MST per level")}
+            {t("calc.magRates", "Per level: DEF +1 DFP · POW +2 ATP · DEX +0.5 ATA · MIND +2 MST")}
           </p>
 
           <h3 className={styles.subhead}>{t("calc.materials", "Materials")}</h3>
           <p className={styles.hint}>
-            {t("calc.materialHint", "Each one adds 2 to its stat.")} {t("calc.materialCap", "This class may use")}{" "}
+            {t("calc.materialHint", "Each one adds 2 to its stat.")} {t("calc.materialCap", "Class limit")}{" "}
             {currentClass.materialCap}.
           </p>
           <div className={styles.magInputs}>
@@ -285,6 +295,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
                   type="number"
                   min={0}
                   max={currentClass.materialCap}
+                  disabled={baseIncludesTraining}
                   value={materials[key]}
                   onChange={(event) => {
                     const value = Math.max(0, Number(event.target.value) || 0);
@@ -301,9 +312,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
 
           <h3 className={styles.subhead}>{t("calc.buffs", "Shifta / Deband")}</h3>
           <p className={styles.hint}>
-            {t(
-              "calc.buffHint",
-              "Each level gives 10 + 1.3 x (level - 1) percent. Androids cast Lv3 on their own and Lv21 from a Photon Blast, HUmar Lv15, Forces Lv30, and PARAGON FRAME raises the cap to 35.",
+            {t("calc.buffHint", "The model uses 10 + 1.3 × (level − 1) percent. Enter the buff actually available to your setup. Weapon ATP range scaling still needs in-game verification.",
             )}
           </p>
           <div className={styles.fieldRow}>
@@ -329,19 +338,21 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
 
           <h3 className={styles.subhead}>{t("calc.baseStats", "Your stats, unequipped")}</h3>
           <p className={styles.hint}>
-            {t(
-              "calc.baseHint",
-              "Level 200 with no materials and no mag, since both are counted above. Load the class figures, or type your own.",
+            {t("calc.baseHint", "Load level 200 class values or enter your own. Select whether these numbers already include MAG and Materials.",
             )}
           </p>
           <div className={styles.actions}>
-            <button type="button" onClick={() => setBase({ ...currentClass.base })}>
+            <button type="button" onClick={() => { setBase({ ...currentClass.base }); setBaseIncludesTraining(false); }}>
               {t("calc.fillBase", "Class base")}
             </button>
-            <button type="button" onClick={() => setBase({ ...currentClass.max })}>
+            <button type="button" onClick={() => { setBase({ ...currentClass.max }); setBaseIncludesTraining(true); }}>
               {t("calc.fillMax", "Class max (incl. mats + mag)")}
             </button>
           </div>
+          <label className={styles.modeChoice}>
+            <input type="checkbox" checked={baseIncludesTraining} onChange={(event) => setBaseIncludesTraining(event.target.checked)} />
+            <span>{t("calc.includesTraining", "The stats below already include MAG and Materials")}</span>
+          </label>
           <div className={styles.statInputs}>
             {STAT_KEYS.map((stat) => (
               <label key={stat}>
@@ -367,9 +378,10 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
               <span>{label}</span>
               <input
                 list={`pool-${key}`}
-                value={picked[key] ? (byId.get(picked[key] as string)?.name ?? "") : ""}
-                placeholder={t("calc.pickPlaceholder", "Type to search...")}
+                value={queries[key] ?? ""}
+                placeholder={t("calc.pickPlaceholder", "Type to search…")}
                 onChange={(event) => {
+                  setQueries((current) => ({ ...current, [key]: event.target.value }));
                   const typed = event.target.value.trim().toLowerCase();
                   const match = pool.find((item) => item.name.toLowerCase() === typed);
                   setPicked((current) => {
@@ -396,7 +408,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
                 type="number"
                 min={0}
                 max={loadout.weapon.maxGrind}
-                value={grind}
+                value={grind ?? loadout.weapon.maxGrind}
                 onChange={(event) => setGrind(Math.max(0, Number(event.target.value) || 0))}
               />
             </label>
@@ -446,9 +458,9 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
               </dl>
               {totals.buffed.atpWeapon > 0 && (
                 <p className={styles.magNote}>
-                  {t("calc.shiftaSkipsWeapon", "Shifta scales the character's")} {totals.buffed.atpCharacter} ATP,{" "}
-                  {t("calc.shiftaSkipsWeaponTail", "not the weapon's")} {totals.buffed.atpWeapon}.{" "}
-                  {t("calc.debandWhole", "Deband scales the whole DFP.")}
+                  {t("calc.shiftaSkipsWeapon", "Shifta scales character ATP")} {totals.buffed.atpCharacter} ATP,{" "}
+                  {t("calc.shiftaSkipsWeaponTail", "weapon base ATP is separate")} {totals.buffed.atpWeapon}.{" "}
+                  {t("calc.debandWhole", "Deband scales total DFP.")}
                 </p>
               )}
             </>
@@ -547,17 +559,15 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
 
           {totals.uncounted.length > 0 && (
             <div className={styles.notice}>
-              <strong>{t("calc.notCounted", "Not included in the numbers above")}</strong>
+              <strong>{t("calc.notCounted", "Not included in the totals")}</strong>
               <p>
-                {t(
-                  "calc.notCountedHint",
-                  "These effects are written as descriptions, so they cannot be turned into a stat.",
+                {t("calc.notCountedHint", "These conditional or descriptive effects are shown separately.",
                 )}
               </p>
               <ul>
                 {totals.uncounted.map((entry, index) => (
                   <li key={index}>
-                    <strong>{entry.item}</strong> - {entry.effect}
+                    <strong>{entry.item}</strong> - {entry.item === "LIGHTNING GARMENT" ? t("cat.lightning-garment.notes.0", entry.effect) : entry.effect}
                   </li>
                 ))}
               </ul>
@@ -565,9 +575,7 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
           )}
 
           <p className={styles.disclaimer}>
-            {t(
-              "calc.disclaimer",
-              "Shifta, Deband and Zalure are left out on purpose: their scaling is set by the server and is not published, so including a guess would make these totals look more precise than they are.",
+            {t("calc.disclaimer", "Shifta and Deband appear separately when enabled. These are stat totals, not damage against enemies. Weapon effects, HP conditions and Zalure may need an in-game check.",
             )}
           </p>
         </div>

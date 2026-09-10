@@ -11,7 +11,7 @@
     <script src="./scripts/i18n.js"></script>
     <script src="./scripts/index.js" defer></script>
     <script src="./scripts/item_info.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -37,7 +37,7 @@
             font-size: 30px;
             font-weight: 700; margin:30px 0 20px 0;
         }
-        main .dmc_title p{font-size: 18px; line-height: 1.3;}
+        main .dmc_title p{font-size: 18px; line-height: 1.7;}
         main .dmc_title ul{ font-size: 22px; line-height: 1.5; font-weight: 600;}
         main .dmc_title li{ font-size: 22px; line-height: 1.5;}
         @media screen and (max-width: 983px) {
@@ -71,46 +71,42 @@
 <body>
 <main class="site_content">
         <div class="dmc_title">
-            <h2 data-i18n="dmc.t002">1. What is Damage Cancel (DMC)?</h2>
-            <div class="dmc_gif"><img src="./images/index/DMC.webp" alt=""></div>
-            <P data-i18n="dmc.t003">Damage Cancel (DMC) is a phenomenon where, when multiple players attack the same monster at the same time, one player’s damage overwrites another player’s damage, causing it to effectively disappear.</P>
-            <h3 data-i18n="dmc.t004">2. Why does this happen?</h3>
-            <p style="padding-bottom: 20px;" data-i18n="dmc.t005">In PSO, damage is handled in a very specific way.<br><br data-i18n="dmc.t006">
-                When a player attacks a monster, the client sends data to the server based on the monster's max HP minus its current HP, not the actual damage dealt.<br data-i18n="dmc.t007">
-                regardless of the actual damage dealt.<br data-i18n="dmc.t008">
-                This includes 0 damage hits and status effects such as Jellen and Zalure.<br><br data-i18n="dmc.t009">
-                The server then forwards this information to the other players.
-            </p>
-            <ul style="color: #c442cf;" data-i18n="dmc.t010">This happens even if:
-                <li data-i18n="dmc.t011">The attack deals 0 damage</li>
-                <li data-i18n="dmc.t012">The attack only applies status effects such as Jellen or Zalure</li>
-            </ul>
-            <h3 data-i18n="dmc.t013">3. How the server processes damage</h3>
-            <p data-i18n="dmc.t014">The server forwards this damage data to all other players. <br><br data-i18n="dmc.t015">
-                However, the server has a critical flaw:<br data-i18n="dmc.t016">
-                it always applies the most recently received damage data, no matter what.<br><br data-i18n="dmc.t017">
-                It does not compare values or check which damage was higher or lower.
-            </p>
-            <h3 data-i18n="dmc.t018">4. What happens as a result</h3>
-            <p data-i18n="dmc.t019">If two or more players attack a monster at nearly the same time,<br data-i18n="dmc.t020">
-                one player’s damage can overwrite another player’s damage.<br><br data-i18n="dmc.t021">
-                Because of this, the monster may appear to take far less damage than expected,<br data-i18n="dmc.t022">
-                even while being heavily attacked by multiple players.
-            </p>
-            <h3 data-i18n="dmc.t023">5. When DMC becomes especially problematic</h3>
-            <p data-i18n="dmc.t024">DMC is most noticeable when using rapid-fire weapons that deal repeated 0 damage, for example weapons like Last Swan.<br><br data-i18n="dmc.t025">
-                If 0-damage packets are constantly sent, they can repeatedly overwrite real damage,<br data-i18n="dmc.t026">
-                making other players' attacks effectively useless and the monster appear almost invincible.<br>
-            </p>
-            <h3 data-i18n="dmc.t027">6. Important notes</h3>
-            <ul style="color: #c442cf;">
-                <li data-i18n="dmc.t028">Attacks that miss due to ATA do not send damage data</li>
-                <li data-i18n="dmc.t029">However, when a special attack fails to activate, a damage packet is sentand can still trigger DMC</li>
-            </ul>
-            <h3 data-i18n="dmc.t030">7. One-line summary</h3>
-            <p style="padding-bottom: 60px;" data-i18n="dmc.t031">Damage Cancel (DMC) is a PSO server-side issue where simultaneous attacks can overwrite each other,<br data-i18n="dmc.t032">
-                especially due to frequent or 0-damage hits, causing monsters to take far less damage than expected.
-            </p>
+<h2 data-i18n="dmc.t002">1. What is Damage Cancel (DMC)?</h2>
+<div class="dmc_gif"><img src="./images/index/DMC.webp" alt="Damage Cancel example" loading="lazy"></div>
+<p data-i18n="dmc.t003">Damage Cancel (DMC) is a phenomenon where, when multiple players attack the same monster at the same time, one player’s damage overwrites another player’s damage, causing it to effectively disappear.</p>
+<h3 data-i18n="dmc.t004">2. Why does this happen?</h3>
+<p data-i18n="dmc.t005">In PSO, damage is handled in a very specific way.</p>
+<p data-i18n="dmc.t006">When a player attacks a monster, the client sends data to the server based on the monster's max HP minus its current HP, not the actual damage dealt.</p>
+<p data-i18n="dmc.t007">regardless of the actual damage dealt.</p>
+<p data-i18n="dmc.t008">This includes 0 damage hits and status effects such as Jellen and Zalure.</p>
+<p data-i18n="dmc.t009">The server then forwards this information to the other players.</p>
+<p data-i18n="dmc.t010">This happens even if:</p>
+<ul>
+<li data-i18n="dmc.t011">The attack deals 0 damage</li>
+<li data-i18n="dmc.t012">The attack only applies status effects such as Jellen or Zalure</li>
+</ul>
+<h3 data-i18n="dmc.t013">3. How the server processes damage</h3>
+<p data-i18n="dmc.t014">The server forwards this damage data to all other players.</p>
+<p data-i18n="dmc.t015">However, the server has a critical flaw:</p>
+<p data-i18n="dmc.t016">it always applies the most recently received damage data, no matter what.</p>
+<p data-i18n="dmc.t017">It does not compare values or check which damage was higher or lower.</p>
+<h3 data-i18n="dmc.t018">4. What happens as a result</h3>
+<p data-i18n="dmc.t019">If two or more players attack a monster at nearly the same time,</p>
+<p data-i18n="dmc.t020">one player’s damage can overwrite another player’s damage.</p>
+<p data-i18n="dmc.t021">Because of this, the monster may appear to take far less damage than expected,</p>
+<p data-i18n="dmc.t022">even while being heavily attacked by multiple players.</p>
+<h3 data-i18n="dmc.t023">5. When DMC becomes especially problematic</h3>
+<p data-i18n="dmc.t024">DMC is most noticeable when using rapid-fire weapons that deal repeated 0 damage, for example weapons like Last Swan.</p>
+<p data-i18n="dmc.t025">If 0-damage packets are constantly sent, they can repeatedly overwrite real damage,</p>
+<p data-i18n="dmc.t026">making other players' attacks effectively useless and the monster appear almost invincible.</p>
+<h3 data-i18n="dmc.t027">6. Important notes</h3>
+<ul>
+<li data-i18n="dmc.t028">Attacks that miss due to ATA do not send damage data</li>
+<li data-i18n="dmc.t029">However, when a special attack fails to activate, a damage packet is sentand can still trigger DMC</li>
+</ul>
+<h3 data-i18n="dmc.t030">7. One-line summary</h3>
+<p data-i18n="dmc.t031">Damage Cancel (DMC) is a PSO server-side issue where simultaneous attacks can overwrite each other,</p>
+<p data-i18n="dmc.t032">especially due to frequent or 0-damage hits, causing monsters to take far less damage than expected.</p>
         </div>
     </main>
 </body>

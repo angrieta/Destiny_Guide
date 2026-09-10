@@ -8,14 +8,14 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="PSOBB Destiny Guide">
     <meta property="og:description" content="Beginner routes, character stats, Destiny items, raids, and tools for Destiny PSOBB.">
-    <meta property="og:image" content="https://angrieta.github.io/images/og.png?v=20260821-2">
+    <meta property="og:image" content="https://angrieta.github.io/Destiny_Guide/images/og.png?v=20260821-2">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="PSOBB Destiny Guide - in-game guide for beginner routes, items, and raids">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PSOBB Destiny Guide">
     <meta name="twitter:description" content="Beginner routes, character stats, Destiny items, raids, and tools for Destiny PSOBB.">
-    <meta name="twitter:image" content="https://angrieta.github.io/images/og.png?v=20260821-2">
+    <meta name="twitter:image" content="https://angrieta.github.io/Destiny_Guide/images/og.png?v=20260821-2">
     <meta name="twitter:image:alt" content="PSOBB Destiny Guide - in-game guide for beginner routes, items, and raids">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/index.css">
@@ -24,13 +24,14 @@
     <script src="./scripts/i18n.js"></script>
     <script src="./scripts/index.js" defer></script>
     <script src="./scripts/item_info.js" defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="./styles/design-system.css">
+    <link rel="stylesheet" href="./styles/home.css">
 </head>
 <body>
     <!-- 헤더시작 -->
@@ -39,6 +40,31 @@
     <script src="./scripts/site_search.js"></script>
     <!-- 헤더종료 -->
     <main>
+
+<section class="home_intro" aria-labelledby="home-title">
+  <div class="home_intro_grid">
+    <div><p class="home_eyebrow">PSOBB · DESTINY GUIDE</p>
+      <h2 id="home-title" data-i18n="home.title">Your next step in Destiny.</h2>
+      <p class="home_lead" data-i18n="home.lead">Start a character, plan your equipment, or prepare for your next raid. Find the guide for what you want to do now.</p>
+      <button class="home_search" type="button" data-home-search><span data-i18n="home.search">Search items, quests, materials…</span><kbd>Ctrl K</kbd></button>
+    </div>
+    <a class="home_feature" href="./dn.html">
+      <img src="./images/index/dn_007.jpg" width="637" height="478" alt="Distorted Nightmare — Super Explosion">
+      <p class="home_eyebrow" data-i18n="home.feature">Raid guide</p><h3>DN · Distorted Nightmare →</h3>
+      <p data-i18n="home.featureDetail">DN: preparation, boss patterns and movement strategies.</p>
+    </a>
+  </div>
+  <div class="home_routes">
+    <a class="home_route" href="./start_here.html"><strong data-i18n="home.new">New to Destiny</strong><span data-i18n="home.newDetail">Installation → first 30 minutes → class route</span><b aria-hidden="true">→</b></a>
+    <a class="home_route" href="./updates_page.html"><strong data-i18n="home.return">Returning player</strong><span data-i18n="home.returnDetail">Patch 0.945 and what changed</span><b aria-hidden="true">→</b></a>
+    <a class="home_route" href="./recipe_page.html#planner"><strong data-i18n="home.farm">Working on equipment</strong><span data-i18n="home.farmDetail">Choose a goal → count materials → find drops</span><b aria-hidden="true">→</b></a>
+  </div>
+  <div class="home_updates"><div><h3 data-i18n="home.now">Before you farm</h3><small><span data-i18n="home.checked">Content checked</span> · 2026-09-10</small></div>
+    <ul><li><a href="./updates_page.html#v0945" data-i18n="home.live">0.945 is live · Miracle Chain &amp; Soul Eraser</a></li>
+    <li><a href="./item_page.html?item=lightning-garment" data-i18n="home.issue">Lightning Garment · technique boost issue</a></li>
+    <li><a href="./recipe_page.html?target=phantasmal-ore-syncesta#planner" data-i18n="home.planned">Anniversary ores · materials announced, release planned</a></li></ul>
+  </div>
+</section>
         <div class="content_area">
             <!-- bazaar라인 시작 -->
             <div class="bazaar_inner">

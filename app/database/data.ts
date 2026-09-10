@@ -5,6 +5,9 @@ import units from "@/data/database-4.json";
 import mags from "@/data/database-5.json";
 import syncStatus from "@/data/database-sync-status.json";
 import itemNotes from "@/data/item-notes.json";
+import verified from "@/data/verified-content.json";
+import improvements from "@/i18n/improvements.json";
+import { withVerifiedRows } from "../../scripts/lib/verified-database.mjs";
 
 const guideNotes = (itemNotes as { notes: Record<string, Record<string, string>> }).notes;
 import type { CategoryMeta, DatabaseItem, DatabasePayload, ItemCategory, StatEntry } from "./types";
@@ -19,7 +22,7 @@ type SourceCategory = {
   syncedAt: string;
 };
 
-const sources = [weapons, armor, shields, units, mags] as SourceCategory[];
+const sources = ([weapons, armor, shields, units, mags] as SourceCategory[]).map(source => withVerifiedRows(source, verified));
 
 /** Columns rendered by dedicated UI, so the generic stat list must not repeat them. */
 const HANDLED_FIELDS = new Set(["Name", "Description", "Notes", "Class", "Boosts"]);
@@ -135,7 +138,7 @@ function buildItem(row: Record<string, string>, category: SourceCategory, seen: 
     classes,
     description: cleanDescription(row.Description ?? ""),
     notes: row.Notes ?? "",
-    guideNote: guideNotes[`${categoryName}:${name}`] ?? null,
+    guideNote: name === "LIGHTNING GARMENT" ? Object.fromEntries(["en","ko","ja","es","fr"].map((lang,i) => [lang, improvements["cat.lightning-garment.notes.0"][i]])) : guideNotes[`${categoryName}:${name}`] ?? null,
     boosts: row.Boosts && row.Boosts !== "None" ? row.Boosts : "",
     atp: toNumber(row["Total ATP"] ?? row.ATP),
     ata: toNumber(row.ATA),
@@ -180,6 +183,7 @@ export function getDatabasePayload(): DatabasePayload {
     unitStatTypes: sortUnique(items.filter((item) => item.category === "Units").map((item) => item.statType)),
     classes: sortUnique(items.flatMap((item) => item.classes)),
     syncStatus: syncStatus,
+    verifiedAt: verified.checkedAt,
     sourceUrl: "https://playpso.net/database",
   };
 }

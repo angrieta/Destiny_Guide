@@ -9,6 +9,7 @@ const outputDir = resolve(projectRoot, ".sites-static");
 // i18n: 번역 사전. 빠지면 런타임에 404 가 나고 영어로만 표시된다.
 const directories = ["images", "scripts", "styles", "i18n"];
 const publicFiles = [
+  "data/verified-content.json",
   "data/happy-hour.json",
   // 헤더 검색 인덱스. 아래에서 매번 다시 만든 뒤 복사한다.
   "data/search-index.json",
@@ -97,7 +98,12 @@ for (const directory of directories) {
   await writeFile(path,source.replace('import("./search-engine.mjs")',`import("./search-engine.mjs?v=${engineHash}")`),"utf8");
 }
 // 이 개편의 5개 언어 문구는 한 소스에서 관리하고 기존 사전과 병합한다.
-const revisionCopy = JSON.parse(await readFile(resolve(projectRoot, "i18n/revision.json"), "utf8"));
+const revisionCopy = {
+  ...JSON.parse(await readFile(resolve(projectRoot, "i18n/revision.json"), "utf8")),
+  ...JSON.parse(await readFile(resolve(projectRoot, "i18n/improvements.json"), "utf8")),
+};
+await writeFile(resolve(outputDir, 'scripts/verified-content.js'),
+  'window.DestinyVerifiedContent = ' + await readFile(resolve(projectRoot, 'data/verified-content.json'), 'utf8') + ';\n');
 const revisionEnglish = {};
 for (const [key, translations] of Object.entries(revisionCopy)) revisionEnglish[key] = translations[0];
 await writeFile(resolve(outputDir, "scripts/guide_revision_copy.js"),
@@ -169,6 +175,11 @@ for (const entry of await readdir(projectRoot, { withFileTypes: true })) {
   if (!entry.isFile() || !entry.name.endsWith(".html") || excludedHtml.has(entry.name)) continue;
 
   let html = await readFile(resolve(projectRoot, entry.name), "utf8");
+  if (html.includes('scripts/destiny_catalog.js')) {
+    html = html.replace(/<script\s+src="\.\/scripts\/destiny_catalog\.js/, '<script src="./scripts/verified-content.js"></script>\n<script src="./scripts/destiny_catalog.js');
+  } else if (html.includes('scripts/item_info.js')) {
+    html = html.replace(/<script\s+src="\.\/scripts\/item_info\.js/, '<script src="./scripts/verified-content.js"></script>\n<script src="./scripts/item_info.js');
+  }
   // 정적 페이지 전체에 같은 익명 집계를 붙인다. 소스 HTML마다 태그를 복사하면
   // 새 페이지에서 빠지기 쉬워 빌드 단계에서 한 번만 주입한다.
   if (!html.includes("scripts/analytics.js")) {

@@ -503,3 +503,6 @@ if (bestSlideArea) {
       console.error("Unable to load character cards.", error)
     })
 }
+
+// The home entry point opens the same search as the header.
+document.addEventListener("click", function (event) { if (event.target.closest("[data-home-search]")) document.querySelector("[data-search-trigger]")?.click(); });

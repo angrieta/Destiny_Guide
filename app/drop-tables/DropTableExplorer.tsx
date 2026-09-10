@@ -100,7 +100,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   const controlsAnchorRef = useRef<HTMLDivElement>(null);
   const matrixScrollRefs = useRef<Record<number, HTMLDivElement | null>>({});
   const sectionHeaderRefs = useRef<Record<number, HTMLDivElement | null>>({});
-  const mobileCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mobileCloseTimerRef = useRef<number | null>(null);
   const mobileQuickButtonRef = useRef<HTMLButtonElement>(null);
   const mobileDrawerCloseRef = useRef<HTMLButtonElement>(null);
   const [urlReady,setUrlReady] = useState(false);

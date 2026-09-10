@@ -137,8 +137,8 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
   const resultsRef = useRef<HTMLDivElement>(null);
   const filterToggleRef = useRef<HTMLButtonElement>(null);
   const filterCloseRef = useRef<HTMLButtonElement>(null);
-  const filtersCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const detailCloseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const filtersCloseTimerRef = useRef<number | null>(null);
+  const detailCloseTimerRef = useRef<number | null>(null);
 
   const openFilters = useCallback(() => {
     if (filtersCloseTimerRef.current) window.clearTimeout(filtersCloseTimerRef.current);
@@ -259,7 +259,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
     fetch(STATUS_URL, { cache: "no-store" })
       .then((response) => (response.ok ? response.json() : null))
       .then((data) => {
-        if (!cancelled && data?.lastCheckedAt) setLiveCheckedAt(data.lastCheckedAt);
+        if (!cancelled && data && typeof data === "object" && "lastCheckedAt" in data && typeof data.lastCheckedAt === "string") setLiveCheckedAt(data.lastCheckedAt);
       })
       .catch(() => {
         // Offline or rate limited: the build-time stamp below stays visible.
@@ -714,6 +714,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
               <> · {t("db.footer.lastChange", "last content change:")} {formatTimestamp(payload.syncStatus.lastChangedAt)}</>
             )}
           </p>
+          <p>{t("db.footer.verified", "Official item corrections checked on {date}; the full database still uses the dated snapshot above.").replace("{date}", payload.verifiedAt)}</p>
         </footer>
       </main>
 

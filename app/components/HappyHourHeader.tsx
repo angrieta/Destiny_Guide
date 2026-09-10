@@ -59,7 +59,7 @@ export function HappyHourHeader() {
       : t("header.hh.unavailable", "Open Happy Hour schedule");
 
   return (
-    <a className="happy_hour_header" href="../player_tools.html#happy-schedule" data-state={state?.active ? "active" : state ? "upcoming" : "unavailable"} aria-label={ariaLabel}>
+    <a className="happy_hour_header" href="../player_tools.html#happy-schedule" data-state={state?.active ? "active" : state ? "upcoming" : "unavailable"} aria-label={ariaLabel} title={t("header.hh.estimate", "Estimated schedule; confirm in game with /hh.")}>
       <span className="happy_hour_header_dot" aria-hidden="true" />
       <span className="happy_hour_header_label">{state?.active ? "HH" : state ? "NEXT HH" : "HH"}</span>
       <strong className="happy_hour_header_time">{state ? formatClock(state.target - now) : "--:--:--"}</strong>

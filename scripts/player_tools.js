@@ -276,7 +276,7 @@
         remaining.textContent = t("lab.t064", "{minutes} min").replace("{minutes}", Number(hhData.remainingMinutes).toLocaleString());
         source.textContent = hhData.source;
         status.dataset.state = "ready";
-        status.textContent = t("lab.t063", "Synchronized from the Discord announcement");
+        status.textContent = t("lab.t063", "Estimate from the last Discord observation");
     }
 
     function renderSchedule() {

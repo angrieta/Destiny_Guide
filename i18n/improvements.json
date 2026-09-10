@@ -1,0 +1,1528 @@
+{
+  "nav.group.start": [
+    "Start here",
+    "시작하기",
+    "はじめに",
+    "Primeros pasos",
+    "Bien débuter"
+  ],
+  "nav.group.gear": [
+    "Gear & farming",
+    "장비·파밍",
+    "装備・周回",
+    "Equipo y farmeo",
+    "Équipement et farm"
+  ],
+  "nav.group.build": [
+    "Build & combat",
+    "빌드·전투",
+    "ビルド・戦闘",
+    "Builds y combate",
+    "Builds et combat"
+  ],
+  "nav.group.quest": [
+    "Quests & raids",
+    "퀘스트·레이드",
+    "クエスト・レイド",
+    "Misiones y raids",
+    "Quêtes et raids"
+  ],
+  "nav.group.now": [
+    "What’s new",
+    "새 소식",
+    "最新情報",
+    "Novedades",
+    "Actualités"
+  ],
+  "nav.group.help": [
+    "Help & community",
+    "도움말·커뮤니티",
+    "ヘルプ・交流",
+    "Ayuda y comunidad",
+    "Aide et communauté"
+  ],
+  "verified.live": [
+    "Available",
+    "적용됨",
+    "実装済み",
+    "Disponible",
+    "Disponible"
+  ],
+  "verified.issue": [
+    "Known issue",
+    "알려진 문제",
+    "既知の問題",
+    "Problema conocido",
+    "Problème connu"
+  ],
+  "verified.planned": [
+    "Announced · not yet available",
+    "공개 예고 · 아직 이용 불가",
+    "予告・まだ利用不可",
+    "Anunciado · aún no disponible",
+    "Annoncé · pas encore disponible"
+  ],
+  "verified.plannedShort": [
+    "Planned",
+    "예정",
+    "予定",
+    "Previsto",
+    "Prévu"
+  ],
+  "verified.partialShort": [
+    "Partial list",
+    "불완전한 목록",
+    "一部のみ",
+    "Lista parcial",
+    "Liste partielle"
+  ],
+  "verified.partial": [
+    "Partial material list. Confirm the missing materials with the NPC before farming.",
+    "일부 재료만 확인된 목록입니다. 파밍 전 공식 공지와 교환 NPC에서 나머지 재료를 확인하세요.",
+    "材料リストは一部のみです。周回前に公式告知とNPCで残りの材料を確認してください。",
+    "Lista parcial. Confirma los materiales restantes con el NPC antes de farmear.",
+    "Liste partielle. Vérifiez les matériaux restants auprès du PNJ avant de farmer."
+  ],
+  "verified.source": [
+    "Official source",
+    "공식 원문",
+    "公式情報",
+    "Fuente oficial",
+    "Source officielle"
+  ],
+  "planner.open": [
+    "Plan materials & farming",
+    "재료·파밍 계획 세우기",
+    "素材・周回プラン",
+    "Planificar materiales",
+    "Planifier les matériaux"
+  ],
+  "planner.target": [
+    "Target item",
+    "목표 아이템",
+    "目標アイテム",
+    "Objeto objetivo",
+    "Objet cible"
+  ],
+  "planner.material": [
+    "Material",
+    "재료",
+    "素材",
+    "Material",
+    "Matériau"
+  ],
+  "planner.need": [
+    "Required",
+    "필요",
+    "必要",
+    "Necesario",
+    "Requis"
+  ],
+  "planner.owned": [
+    "Owned",
+    "보유",
+    "所持",
+    "En posesión",
+    "Possédé"
+  ],
+  "planner.missing": [
+    "Missing",
+    "부족",
+    "不足",
+    "Faltante",
+    "Manquant"
+  ],
+  "planner.find": [
+    "Find",
+    "획득처 찾기",
+    "入手先",
+    "Buscar",
+    "Trouver"
+  ],
+  "planner.remaining": [
+    "Materials still needed",
+    "추가로 필요한 재료 수",
+    "不足している素材数",
+    "Materiales pendientes",
+    "Matériaux manquants"
+  ],
+  "planner.saved": [
+    "Saved in this browser. Shared links contain the target, not your inventory.",
+    "보유량은 이 브라우저에 저장됩니다. 공유 링크에는 목표 아이템만 포함됩니다.",
+    "所持数はこのブラウザーに保存されます。共有リンクには目標のみを含みます。",
+    "Las cantidades se guardan en este navegador. El enlace solo comparte el objetivo.",
+    "Les quantités sont enregistrées dans ce navigateur. Le lien partage uniquement la cible."
+  ],
+  "planner.unsaved": [
+    "Browser storage is unavailable. Counts will last only while this page stays open.",
+    "브라우저 저장소를 사용할 수 없습니다. 이 페이지가 열려 있는 동안만 수량이 유지됩니다.",
+    "保存機能を利用できません。このページを開いている間だけ数量を保持します。",
+    "No se puede guardar. Las cantidades duran mientras esta página esté abierta.",
+    "Stockage indisponible. Les quantités sont conservées tant que cette page reste ouverte."
+  ],
+  "planner.secondStep": [
+    "After crafting the ore, combine it with the base weapon:",
+    "광석 제작 후 아래 원본 무기와 추가로 조합합니다:",
+    "鉱石を作成後、次のベース武器と組み合わせます：",
+    "Tras crear el mineral, combínalo con el arma base:",
+    "Après avoir créé le minerai, combinez-le avec l’arme de base :"
+  ],
+  "planner.dropNote": [
+    "The drop table covers normal drops. Check the recipe source for quest rewards and NPC exchanges.",
+    "드롭표는 일반 드롭 기준입니다. 퀘스트 전용 보상·NPC 교환은 레시피의 공식 원문도 확인하세요.",
+    "ドロップ表は通常ドロップです。クエスト報酬・NPC交換は公式レシピも確認してください。",
+    "La tabla cubre drops normales. Consulta la receta oficial para recompensas y canjes.",
+    "La table couvre les drops normaux. Consultez la recette officielle pour les récompenses et échanges."
+  ],
+  "planner.share": [
+    "Copy target link",
+    "목표 링크 복사",
+    "目標リンクをコピー",
+    "Copiar enlace",
+    "Copier le lien"
+  ],
+  "planner.copied": [
+    "Target link copied.",
+    "목표 링크를 복사했습니다.",
+    "目標リンクをコピーしました。",
+    "Enlace copiado.",
+    "Lien copié."
+  ],
+  "planner.schedule": [
+    "Release schedule",
+    "적용 일정 원문",
+    "実装予定",
+    "Calendario",
+    "Calendrier"
+  ],
+  "home.title": [
+    "Your next step in Destiny.",
+    "Destiny, 다음 목표를 찾아보세요.",
+    "Destinyで、次の目標へ。",
+    "Tu próximo paso en Destiny.",
+    "Votre prochaine étape sur Destiny."
+  ],
+  "home.lead": [
+    "Start a character, plan your equipment, or prepare for your next raid. Find the guide for what you want to do now.",
+    "첫 캐릭터부터 장비 파밍, 다음 레이드까지. 지금 필요한 가이드를 찾아보세요.",
+    "キャラクター作成から装備集め、次のレイドまで。今の目的に合ったガイドを探しましょう。",
+    "Crea un personaje, prepara tu equipo o tu próxima raid. Encuentra la guía que necesitas ahora.",
+    "Créez un personnage, préparez votre équipement ou votre prochain raid. Trouvez le guide adapté."
+  ],
+  "home.search": [
+    "Search items, quests, materials…",
+    "아이템·퀘스트·재료 검색…",
+    "アイテム・クエスト・素材を検索…",
+    "Buscar objetos, misiones, materiales…",
+    "Chercher objets, quêtes, matériaux…"
+  ],
+  "home.new": [
+    "New to Destiny",
+    "처음 시작해요",
+    "初めての方",
+    "Soy principiante",
+    "Je débute"
+  ],
+  "home.newDetail": [
+    "Installation → first 30 minutes → class route",
+    "설치 → 첫 30분 → 클래스별 성장",
+    "インストール → 最初の30分 → 育成",
+    "Instalación → 30 minutos → progreso",
+    "Installation → 30 minutes → progression"
+  ],
+  "home.return": [
+    "Returning player",
+    "복귀했어요",
+    "復帰した方",
+    "Vuelvo al juego",
+    "Je reprends"
+  ],
+  "home.returnDetail": [
+    "Patch 0.945 and what changed",
+    "0.945 변경점과 현재 적용 상태",
+    "0.945の変更と実装状況",
+    "Cambios y estado del parche 0.945",
+    "Changements du patch 0.945"
+  ],
+  "home.farm": [
+    "Working on equipment",
+    "장비를 맞추고 있어요",
+    "装備を集めたい方",
+    "Busco equipo",
+    "Je prépare mon équipement"
+  ],
+  "home.farmDetail": [
+    "Choose a goal → count materials → find drops",
+    "목표 선택 → 부족 재료 확인 → 획득처",
+    "目標選択 → 不足素材 → 入手先",
+    "Objetivo → materiales → drops",
+    "Objectif → matériaux → drops"
+  ],
+  "home.feature": [
+    "Raid guide",
+    "레이드 공략",
+    "レイド攻略",
+    "Guía de raid",
+    "Guide de raid"
+  ],
+  "home.featureDetail": [
+    "DN: preparation, boss patterns and movement strategies.",
+    "DN의 필수 준비·보스 패턴·회피 동선을 확인하세요.",
+    "DNの事前準備・ボスの攻撃パターン・回避ルートを確認しましょう。",
+    "DN: preparación, patrones del jefe y rutas para esquivar.",
+    "DN : préparatifs, attaques du boss et déplacements pour les éviter."
+  ],
+  "home.checked": [
+    "Content checked",
+    "정보 확인일",
+    "情報確認日",
+    "Revisado",
+    "Vérifié"
+  ],
+  "home.now": [
+    "Before you farm",
+    "파밍 전에 확인하세요",
+    "周回の前に",
+    "Antes de farmear",
+    "Avant de farmer"
+  ],
+  "home.live": [
+    "0.945 is live · Miracle Chain & Soul Eraser",
+    "0.945 적용 · Miracle Chain·Soul Eraser",
+    "0.945実装 · Miracle Chain・Soul Eraser",
+    "0.945 disponible · Miracle Chain y Soul Eraser",
+    "0.945 disponible · Miracle Chain et Soul Eraser"
+  ],
+  "home.issue": [
+    "Lightning Garment · technique boost issue",
+    "Lightning Garment · 테크닉 보정 미작동",
+    "Lightning Garment · テクニック補正の不具合",
+    "Lightning Garment · fallo de bonificación técnica",
+    "Lightning Garment · bonus technique défaillant"
+  ],
+  "home.planned": [
+    "Anniversary ores · materials announced, release planned",
+    "신규 광석 · 재료 공개, 적용은 예정",
+    "新鉱石 · 素材公開、実装は予定",
+    "Nuevos minerales · materiales anunciados, lanzamiento previsto",
+    "Nouveaux minerais · matériaux annoncés, sortie prévue"
+  ],
+  "usage.notEnabled": [
+    "Statistics are not enabled on the server yet. The guide remains available.",
+    "서버에서 통계 기능이 아직 활성화되지 않았습니다. 가이드는 정상적으로 이용할 수 있습니다.",
+    "サーバーの統計機能はまだ有効になっていません。ガイドは利用できます。",
+    "Las estadísticas aún no están activadas. Las guías siguen disponibles.",
+    "Les statistiques ne sont pas encore activées. Les guides restent disponibles."
+  ],
+  "fm.s.how.party": [
+    "Patch 0.945 sets party DAR to 100 / 90 / 85 / 80% for 1 / 2 / 3 / 4 players. This modifies the chance to drop an item; it is not the final rare-item probability. RDR and quest-specific rewards are separate.",
+    "0.945 기준 1·2·3·4인 파티의 DAR 보정은 100·90·85·80%입니다. 아이템 드롭 발생률의 보정이며, 희귀 아이템의 최종 획득 확률을 뜻하지 않습니다. RDR과 퀘스트 전용 보상은 별도입니다.",
+    "0.945では1・2・3・4人のDAR補正は100・90・85・80%です。アイテムのドロップ発生率であり、レアの最終確率ではありません。RDRやクエスト固有報酬は別です。",
+    "En 0.945 el DAR para 1/2/3/4 jugadores es 100/90/85/80%. Modifica la posibilidad de soltar un objeto, no la probabilidad final de un raro. RDR y recompensas de misión son independientes.",
+    "En 0.945, le DAR pour 1/2/3/4 joueurs est de 100/90/85/80 %. Il modifie la chance de lâcher un objet, pas la probabilité finale d’un rare. RDR et récompenses de quête sont distincts."
+  ],
+  "lab.t063": [
+    "Estimate from the last Discord observation",
+    "마지막 Discord 공지 기준 예상",
+    "最後のDiscord告知に基づく予測",
+    "Estimación del último aviso de Discord",
+    "Estimation du dernier avis Discord"
+  ],
+  "fm.r.lead": [
+    "Choose an item, enter the materials you own, and check what is still missing. Weapon combinations require max grind; follow each recipe’s own conditions for NPC trades and other items.",
+    "목표 아이템과 보유 재료를 입력해 부족한 수량을 확인하세요. 무기 조합은 최대 그라인드가 필요하며, NPC 교환 등은 각 레시피의 조건을 따릅니다.",
+    "目標と所持素材を入力し、不足数を確認できます。武器の合成は最大グラインドが必要です。NPC交換などは各レシピの条件に従ってください。",
+    "Elige un objeto e introduce tus materiales para ver lo que falta. Las combinaciones de armas requieren grind máximo; los canjes siguen sus propias condiciones.",
+    "Choisissez un objet et saisissez vos matériaux pour voir ce qui manque. Les combinaisons d’armes exigent le grind maximal ; les échanges suivent leurs propres conditions."
+  ],
+  "calc.slot.weapon": [
+    "Weapon",
+    "무기",
+    "武器",
+    "Arma",
+    "Arme"
+  ],
+  "calc.slot.armor": [
+    "Armor",
+    "갑옷",
+    "鎧",
+    "Armadura",
+    "Armure"
+  ],
+  "calc.slot.shield": [
+    "Shield",
+    "방패",
+    "盾",
+    "Escudo",
+    "Bouclier"
+  ],
+  "calc.slot.unit": [
+    "Unit",
+    "유닛",
+    "ユニット",
+    "Unidad",
+    "Unité"
+  ],
+  "calc.eyebrow": [
+    "STAT CALCULATOR",
+    "스탯 계산기",
+    "ステータス計算",
+    "CALCULADORA",
+    "CALCULATEUR"
+  ],
+  "calc.title": [
+    "Build a loadout, see the numbers.",
+    "장비를 골라 스탯을 확인하세요.",
+    "装備を選び、数値を確認。",
+    "Elige equipo y compara cifras.",
+    "Choisissez votre équipement, comparez les chiffres."
+  ],
+  "calc.lead": [
+    "Choose equipment to calculate its stat contribution. Add character stats, MAG and Materials for a full total. Completed stats already include MAG and Materials.",
+    "장비의 스탯 기여량을 계산합니다. 캐릭터·MAG·Material을 입력하면 합산되며, 완성 스탯 모드에서는 MAG와 Material을 다시 더하지 않습니다.",
+    "装備の能力値を計算します。キャラクター・MAG・Materialを入力すると合計します。完成済みステータスではMAGとMaterialを重複加算しません。",
+    "Calcula las aportaciones del equipo. Añade estadísticas, MAG y Materials para el total. El modo completo evita sumarlos dos veces.",
+    "Calcule les apports de l’équipement. Ajoutez statistiques, MAG et Materials. Le mode complet évite de les compter deux fois."
+  ],
+  "calc.character": [
+    "Character",
+    "캐릭터",
+    "キャラクター",
+    "Personaje",
+    "Personnage"
+  ],
+  "calc.class": [
+    "Class",
+    "클래스",
+    "クラス",
+    "Clase",
+    "Classe"
+  ],
+  "calc.level": [
+    "Level",
+    "레벨",
+    "レベル",
+    "Nivel",
+    "Niveau"
+  ],
+  "calc.mag": [
+    "MAG",
+    "MAG",
+    "MAG",
+    "MAG",
+    "MAG"
+  ],
+  "calc.trainingIncluded": [
+    "MAG and Materials are already included in the stats below. These saved inputs are not added again.",
+    "아래 스탯에 MAG와 Material이 이미 포함돼 있어 저장된 수치를 다시 더하지 않습니다.",
+    "以下のステータスにはMAGとMaterialが含まれています。保存値は再加算しません。",
+    "Las estadísticas ya incluyen MAG y Materials; no se vuelven a sumar.",
+    "Les statistiques incluent déjà MAG et Materials ; ils ne sont pas ajoutés à nouveau."
+  ],
+  "calc.magHint": [
+    "Starts with the class build guide’s MAG plan. Change it to match your MAG.",
+    "클래스 빌드 가이드의 MAG 계획을 기본값으로 사용합니다. 자신의 MAG에 맞게 수정하세요.",
+    "クラスガイドのMAG配分が初期値です。自分のMAGに合わせて変更してください。",
+    "Comienza con el MAG de la guía de clase. Ajústalo al tuyo.",
+    "Le MAG initial suit le guide de classe. Adaptez-le au vôtre."
+  ],
+  "calc.magTotal": [
+    "Total",
+    "합계",
+    "合計",
+    "Total",
+    "Total"
+  ],
+  "calc.magRates": [
+    "Per level: DEF +1 DFP · POW +2 ATP · DEX +0.5 ATA · MIND +2 MST",
+    "레벨당 DEF +1 DFP · POW +2 ATP · DEX +0.5 ATA · MIND +2 MST",
+    "1レベル：DEF +1 DFP・POW +2 ATP・DEX +0.5 ATA・MIND +2 MST",
+    "Por nivel: DEF +1 DFP · POW +2 ATP · DEX +0.5 ATA · MIND +2 MST",
+    "Par niveau : DEF +1 DFP · POW +2 ATP · DEX +0,5 ATA · MIND +2 MST"
+  ],
+  "calc.materials": [
+    "Materials",
+    "Material 사용량",
+    "Material使用数",
+    "Materials usados",
+    "Materials utilisés"
+  ],
+  "calc.materialHint": [
+    "Each one adds 2 to its stat.",
+    "1개당 해당 스탯이 2 증가합니다.",
+    "1個につき対応ステータスが2増えます。",
+    "Cada uno añade 2 a su estadística.",
+    "Chacun ajoute 2 à sa statistique."
+  ],
+  "calc.materialCap": [
+    "Class limit",
+    "클래스 한도",
+    "クラス上限",
+    "Límite de clase",
+    "Limite de classe"
+  ],
+  "calc.overCap": [
+    "over the class limit",
+    "클래스 한도 초과",
+    "クラス上限超過",
+    "supera el límite",
+    "limite dépassée"
+  ],
+  "calc.buffs": [
+    "Shifta / Deband",
+    "Shifta / Deband",
+    "Shifta / Deband",
+    "Shifta / Deband",
+    "Shifta / Deband"
+  ],
+  "calc.buffHint": [
+    "The model uses 10 + 1.3 × (level − 1) percent. Enter the buff actually available to your setup. Weapon ATP range scaling still needs in-game verification.",
+    "10 + 1.3 × (레벨 − 1)% 모델을 사용합니다. 실제 세팅에서 받을 수 있는 버프 레벨을 입력하세요. 무기 ATP 변동폭의 보정은 게임 내 추가 검증이 필요합니다.",
+    "10 + 1.3 ×（レベル − 1）%モデルを使用します。実際に使えるバフレベルを入力してください。武器ATP幅の補正はゲーム内検証が必要です。",
+    "El modelo usa 10 + 1,3 × (nivel − 1) %. Introduce el buff disponible. El escalado del rango ATP del arma requiere verificación en juego.",
+    "Le modèle utilise 10 + 1,3 × (niveau − 1) %. Saisissez le buff disponible. L’échelle de la plage ATP de l’arme reste à vérifier en jeu."
+  ],
+  "calc.shifta": [
+    "Shifta Lv",
+    "Shifta 레벨",
+    "Shifta Lv",
+    "Nivel Shifta",
+    "Niveau Shifta"
+  ],
+  "calc.deband": [
+    "Deband Lv",
+    "Deband 레벨",
+    "Deband Lv",
+    "Nivel Deband",
+    "Niveau Deband"
+  ],
+  "calc.baseStats": [
+    "Your stats, unequipped",
+    "장비를 제외한 캐릭터 스탯",
+    "装備なしのステータス",
+    "Estadísticas sin equipo",
+    "Statistiques sans équipement"
+  ],
+  "calc.baseHint": [
+    "Load level 200 class values or enter your own. Select whether these numbers already include MAG and Materials.",
+    "레벨 200 클래스 수치를 불러오거나 직접 입력하세요. 입력값에 MAG와 Material이 이미 포함됐는지 선택하세요.",
+    "Lv200のクラス値を読み込むか直接入力します。MAGとMaterialが含まれているか選択してください。",
+    "Carga valores de nivel 200 o introduce los tuyos. Indica si ya incluyen MAG y Materials.",
+    "Chargez les valeurs de niveau 200 ou saisissez les vôtres. Indiquez si elles incluent MAG et Materials."
+  ],
+  "calc.fillBase": [
+    "Class base",
+    "클래스 기본값",
+    "クラス基本値",
+    "Base de clase",
+    "Base de classe"
+  ],
+  "calc.fillMax": [
+    "Class max (incl. mats + mag)",
+    "클래스 최대값 (MAG·Material 포함)",
+    "クラス最大値（MAG・Material込み）",
+    "Máximo (incluye MAG y Materials)",
+    "Maximum (MAG et Materials inclus)"
+  ],
+  "calc.includesTraining": [
+    "The stats below already include MAG and Materials",
+    "아래 스탯에 MAG와 Material이 이미 포함됨",
+    "以下の値にMAGとMaterialを含む",
+    "Estos valores ya incluyen MAG y Materials",
+    "Ces valeurs incluent déjà MAG et Materials"
+  ],
+  "calc.equipment": [
+    "Equipment",
+    "장비",
+    "装備",
+    "Equipo",
+    "Équipement"
+  ],
+  "calc.pickPlaceholder": [
+    "Type to search…",
+    "장비 이름으로 검색…",
+    "装備名で検索…",
+    "Buscar por nombre…",
+    "Rechercher par nom…"
+  ],
+  "calc.grind": [
+    "Extra grind",
+    "그라인드",
+    "グラインド",
+    "Grind adicional",
+    "Grind supplémentaire"
+  ],
+  "calc.reset": [
+    "Reset",
+    "초기화",
+    "リセット",
+    "Reiniciar",
+    "Réinitialiser"
+  ],
+  "calc.totals": [
+    "Totals",
+    "합산 결과",
+    "合計結果",
+    "Totales",
+    "Totaux"
+  ],
+  "calc.withBuffs": [
+    "With Shifta",
+    "Shifta 적용",
+    "Shifta適用",
+    "Con Shifta",
+    "Avec Shifta"
+  ],
+  "calc.debandShort": [
+    "Deband",
+    "Deband",
+    "Deband",
+    "Deband",
+    "Deband"
+  ],
+  "calc.shiftaSkipsWeapon": [
+    "Shifta scales character ATP",
+    "Shifta 보정 대상 ATP",
+    "Shifta補正対象ATP",
+    "ATP escalado por Shifta",
+    "ATP modifié par Shifta"
+  ],
+  "calc.shiftaSkipsWeaponTail": [
+    "weapon base ATP is separate",
+    "무기 기본 ATP는 별도",
+    "武器基本ATPは別",
+    "ATP base del arma por separado",
+    "ATP de base de l’arme séparé"
+  ],
+  "calc.debandWhole": [
+    "Deband scales total DFP.",
+    "Deband는 전체 DFP를 보정합니다.",
+    "Debandは合計DFPに適用します。",
+    "Deband escala el DFP total.",
+    "Deband modifie le DFP total."
+  ],
+  "calc.resists": [
+    "Resistances",
+    "내성",
+    "耐性",
+    "Resistencias",
+    "Résistances"
+  ],
+  "calc.weaponFacts": [
+    "Weapon",
+    "무기 정보",
+    "武器情報",
+    "Arma",
+    "Arme"
+  ],
+  "calc.atpRange": [
+    "ATP range",
+    "ATP 범위",
+    "ATP範囲",
+    "Rango ATP",
+    "Plage ATP"
+  ],
+  "calc.targets": [
+    "Targets",
+    "타깃 수",
+    "対象数",
+    "Objetivos",
+    "Cibles"
+  ],
+  "calc.range": [
+    "Range",
+    "사거리",
+    "射程",
+    "Alcance",
+    "Portée"
+  ],
+  "calc.special": [
+    "Special",
+    "스페셜",
+    "スペシャル",
+    "Especial",
+    "Spécial"
+  ],
+  "calc.otherEffects": [
+    "Other effects",
+    "추가 효과",
+    "追加効果",
+    "Otros efectos",
+    "Autres effets"
+  ],
+  "calc.techLevel": [
+    "Technique level",
+    "테크닉 레벨",
+    "テクニックレベル",
+    "Nivel de técnica",
+    "Niveau de technique"
+  ],
+  "calc.attackSpeed": [
+    "Attack speed",
+    "공격 속도",
+    "攻撃速度",
+    "Velocidad de ataque",
+    "Vitesse d’attaque"
+  ],
+  "calc.castSpeed": [
+    "Cast speed",
+    "시전 속도",
+    "詠唱速度",
+    "Velocidad de lanzamiento",
+    "Vitesse d’incantation"
+  ],
+  "calc.tpCost": [
+    "TP cost",
+    "TP 소모",
+    "TP消費",
+    "Coste TP",
+    "Coût TP"
+  ],
+  "calc.regen": [
+    "regen",
+    "회복",
+    "回復",
+    "regeneración",
+    "régénération"
+  ],
+  "calc.cannotEquip": [
+    "Equip problems",
+    "착용 조건 확인",
+    "装備条件の確認",
+    "Problemas de equipo",
+    "Conditions d’équipement"
+  ],
+  "calc.notCounted": [
+    "Not included in the totals",
+    "합계에 포함되지 않는 효과",
+    "合計に含まない効果",
+    "No incluido en el total",
+    "Non inclus dans le total"
+  ],
+  "calc.notCountedHint": [
+    "These conditional or descriptive effects are shown separately.",
+    "조건부 효과나 설명형 효과는 수치 합계와 별도로 표시합니다.",
+    "条件付き・説明形式の効果は数値とは別に表示します。",
+    "Estos efectos condicionales se muestran por separado.",
+    "Ces effets conditionnels sont affichés séparément."
+  ],
+  "calc.disclaimer": [
+    "Shifta and Deband appear separately when enabled. These are stat totals, not damage against enemies. Weapon effects, HP conditions and Zalure may need an in-game check.",
+    "Shifta·Deband 적용값은 별도 표시됩니다. 결과는 적에게 주는 대미지가 아닌 스탯 합계입니다. 무기 고유 효과·HP 조건·Zalure는 게임 내 확인이 필요할 수 있습니다.",
+    "Shifta・Debandは別表示です。敵へのダメージではなくステータス合計です。武器効果・HP条件・Zalureはゲーム内確認が必要な場合があります。",
+    "Shifta y Deband se muestran aparte. Son estadísticas, no daño a enemigos. Efectos de armas, HP y Zalure pueden requerir comprobación en juego.",
+    "Shifta et Deband sont affichés séparément. Ce sont des statistiques, pas des dégâts ennemis. Effets d’armes, HP et Zalure peuvent nécessiter une vérification en jeu."
+  ],
+  "start.title": [
+    "Your first 30 minutes",
+    "처음 시작하는 30분",
+    "最初の30分",
+    "Tus primeros 30 minutos",
+    "Vos 30 premières minutes"
+  ],
+  "start.lead": [
+    "A practical route from installation to your first character plan. Returning players can jump to the current patch notes.",
+    "설치부터 첫 캐릭터의 성장 계획까지 순서대로 따라가세요. 복귀 유저는 최신 변경점부터 확인하면 됩니다.",
+    "インストールから最初の育成計画まで。復帰した方は最新の更新情報から確認できます。",
+    "Desde la instalación hasta el primer plan de personaje. Si vuelves, consulta primero los cambios actuales.",
+    "De l’installation au premier plan de personnage. Pour une reprise, commencez par les dernières nouveautés."
+  ],
+  "start.setup": [
+    "01 · Install and connect",
+    "01 · 설치하고 접속하기",
+    "01 · インストールと接続",
+    "01 · Instalar y conectar",
+    "01 · Installer et se connecter"
+  ],
+  "start.setupBody": [
+    "Download the client from the official Destiny site, register a game account, and run the Launcher to apply updates before playing. Follow the official installation instructions if the client will not launch.",
+    "Destiny 공식 사이트에서 클라이언트를 내려받고 게임 계정을 등록하세요. Launcher로 업데이트를 적용한 뒤 실행하세요. 실행이 안 되면 공식 설치 안내의 지원 경로를 확인하세요.",
+    "公式サイトからクライアントを入手し、ゲームアカウントを登録します。Launcherで更新してから起動してください。起動できない場合は公式のインストール案内を確認します。",
+    "Descarga el cliente oficial, registra una cuenta y actualiza con el Launcher. Si no abre, consulta la instalación oficial.",
+    "Téléchargez le client officiel, créez un compte et mettez à jour avec le Launcher. En cas d’échec, consultez les instructions officielles."
+  ],
+  "start.settings": [
+    "02 · Set up your screen",
+    "02 · 화면 설정 확인하기",
+    "02 · 画面設定",
+    "02 · Configurar la pantalla",
+    "02 · Configurer l’affichage"
+  ],
+  "start.settingsBody": [
+    "Use the widescreen client when preparing for The Starlight Tower: its official guide requires psobbw.exe and does not support 4:3. Set message speed to the fastest option so raid messages arrive promptly.",
+    "Starlight Tower를 준비한다면 와이드 클라이언트 psobbw.exe를 사용하세요. 공식 공략은 4:3 화면을 지원하지 않는다고 안내합니다. 메시지 속도도 가장 빠르게 설정해 공략 메시지를 즉시 확인하세요.",
+    "Starlight Towerの準備にはワイド版psobbw.exeを使用してください。公式案内では4:3非対応です。メッセージ速度も最速に設定します。",
+    "Starlight Tower requiere el cliente panorámico psobbw.exe; 4:3 no es compatible. Pon los mensajes a velocidad máxima.",
+    "Starlight Tower exige le client large psobbw.exe ; le 4:3 n’est pas pris en charge. Réglez les messages à la vitesse maximale."
+  ],
+  "start.route": [
+    "03 · Choose a class route",
+    "03 · 클래스 성장 루트 정하기",
+    "03 · クラス育成ルート",
+    "03 · Elegir una ruta de clase",
+    "03 · Choisir une progression"
+  ],
+  "start.routeBody": [
+    "Open the HU, RA or FO beginner route for your class. Use the class build page to plan MAG and Materials before spending them. Item names stay in English so they match the game and trading channels.",
+    "자신의 클래스에 맞는 HU·RA·FO 초보자 루트를 확인하세요. Material을 사용하기 전에 클래스 빌드의 MAG·Material 계획을 먼저 보세요. 아이템 이름은 게임·거래 채널과 대조하기 쉽게 영문을 유지합니다.",
+    "自分のHU・RA・FO入門ルートを確認します。Materialを使う前にクラス別MAG・Material計画を見ましょう。アイテム名はゲームと照合できるよう英語表記です。",
+    "Consulta la ruta HU, RA o FO. Planifica MAG y Materials antes de gastarlos. Los nombres siguen en inglés para coincidir con el juego.",
+    "Consultez la progression HU, RA ou FO. Planifiez MAG et Materials avant de les utiliser. Les objets gardent leur nom anglais du jeu."
+  ],
+  "start.goal": [
+    "04 · Set one equipment goal",
+    "04 · 목표 장비 하나 정하기",
+    "04 · 装備目標を一つ決める",
+    "04 · Elegir un objetivo de equipo",
+    "04 · Choisir un objectif d’équipement"
+  ],
+  "start.goalBody": [
+    "Check the item’s class, level, acquisition method and release status. Open the material planner if it uses a recipe. Search by material to see whether another planned item also needs it.",
+    "아이템의 착용 클래스·레벨·획득처·적용 상태를 확인하세요. 조합 장비는 재료 계획표에 보유량을 입력하세요. 재료로 역검색하면 다른 목표 장비와 재료가 겹치는지도 알 수 있습니다.",
+    "装備可能クラス・レベル・入手先・実装状況を確認します。レシピ品は素材計画に所持数を入力しましょう。素材で検索すると他の用途も確認できます。",
+    "Comprueba clase, nivel, obtención y disponibilidad. Usa el planificador y busca materiales para ver otros usos.",
+    "Vérifiez classe, niveau, obtention et disponibilité. Utilisez le planificateur et recherchez les matériaux pour connaître leurs autres usages."
+  ],
+  "start.party": [
+    "05 · Before your first party",
+    "05 · 첫 파티에 들어가기 전",
+    "05 · 初めてのパーティー前に",
+    "05 · Antes del primer grupo",
+    "05 · Avant votre premier groupe"
+  ],
+  "start.partyBody": [
+    "Read PB management and Damage Cancel before difficult group quests. Tell the group you are learning and confirm your role and corner before starting a raid. Check the quest difficulty guide before committing materials or time.",
+    "어려운 파티 퀘스트 전에 PB 관리와 DMC를 읽어보세요. 처음 도전한다는 점을 알리고 레이드 시작 전에 역할·담당 코너를 확인하세요. 입장 전 퀘스트 난이도와 준비 조건도 살펴보세요.",
+    "難しいパーティークエスト前にPB管理とDMCを確認しましょう。初挑戦であることを伝え、役割と担当コーナーを決めます。クエスト難易度も確認してください。",
+    "Lee las guías de PB y DMC. Avisa si estás aprendiendo y acuerda tu rol y esquina antes de la raid. Consulta la dificultad.",
+    "Lisez les guides PB et DMC. Signalez que vous débutez et confirmez rôle et coin avant le raid. Vérifiez la difficulté."
+  ],
+  "start.check": [
+    "Ready checklist",
+    "준비 체크리스트",
+    "準備チェック",
+    "Lista de preparación",
+    "Liste de préparation"
+  ],
+  "start.c1": [
+    "Launcher updated and game account ready",
+    "런처 업데이트·게임 계정 준비 완료",
+    "Launcher更新・アカウント準備完了",
+    "Launcher actualizado y cuenta lista",
+    "Launcher à jour et compte prêt"
+  ],
+  "start.c2": [
+    "Class MAG / Material plan checked",
+    "클래스 MAG·Material 계획 확인",
+    "クラスのMAG・Material計画確認",
+    "Plan de MAG y Materials revisado",
+    "Plan MAG et Materials vérifié"
+  ],
+  "start.c3": [
+    "One equipment goal and its source chosen",
+    "목표 장비·획득처 한 가지 선택",
+    "装備目標と入手先を選択",
+    "Equipo objetivo y fuente elegidos",
+    "Équipement cible et source choisis"
+  ],
+  "start.c4": [
+    "PB / DMC basics read before party play",
+    "파티 플레이 전 PB·DMC 기초 확인",
+    "パーティー前にPB・DMCを確認",
+    "Bases de PB y DMC revisadas",
+    "Bases PB et DMC consultées"
+  ],
+  "start.saved": [
+    "Checklist is saved in this browser.",
+    "체크리스트는 이 브라우저에 저장됩니다.",
+    "チェック状態はこのブラウザーに保存します。",
+    "La lista se guarda en este navegador.",
+    "La liste est enregistrée dans ce navigateur."
+  ],
+  "starlight.title": [
+    "The Starlight Tower",
+    "Starlight Tower 공략",
+    "Starlight Towerガイド",
+    "Guía de Starlight Tower",
+    "Guide Starlight Tower"
+  ],
+  "starlight.lead": [
+    "Required setup, reward links and a practical Administrator briefing. Official facts and player observations are separated below.",
+    "필수 설정·보상·Administrator 대응 요령을 모았습니다. 공식 확인 내용과 플레이어 관찰 내용을 구분해 안내합니다.",
+    "必須設定・報酬・Administratorの対応をまとめました。公式情報とプレイヤー観察を区別しています。",
+    "Configuración, recompensas y notas de Administrator. Separamos hechos oficiales y observaciones de jugadores.",
+    "Configuration, récompenses et conseils Administrator. Les faits officiels sont distingués des observations de joueurs."
+  ],
+  "starlight.setup": [
+    "Required before entering",
+    "입장 전 필수 설정",
+    "入場前の必須設定",
+    "Requisitos de entrada",
+    "Prérequis avant l’entrée"
+  ],
+  "starlight.setupBody": [
+    "Official raid instructions require psobbw.exe (widescreen); 4:3 is unsupported. Use the fastest message speed. Confirm your party’s calls and assigned corners before entering.",
+    "공식 안내는 와이드 클라이언트 psobbw.exe를 요구하며 4:3 화면을 지원하지 않습니다. 메시지 속도를 가장 빠르게 설정하고, 입장 전에 파티 콜·담당 코너를 확인하세요.",
+    "公式案内ではワイド版psobbw.exeが必須で、4:3非対応です。メッセージ速度を最速にし、入場前にコールと担当コーナーを確認します。",
+    "Se requiere psobbw.exe panorámico; 4:3 no es compatible. Usa mensajes rápidos y acuerda llamadas y esquinas.",
+    "psobbw.exe large est requis ; le 4:3 n’est pas compatible. Accélérez les messages et confirmez les appels et coins."
+  ],
+  "starlight.rewards": [
+    "Rewards and material planning",
+    "보상과 재료 계획",
+    "報酬と素材計画",
+    "Recompensas y materiales",
+    "Récompenses et matériaux"
+  ],
+  "starlight.rewardBody": [
+    "DIVINE BLADE and DIVINE FIELD are the main linked rewards. DIVINE FIELD requires level 200; check its recipe before treating it as a direct drop. The two items together change DIVINE BLADE’s targets and speed.",
+    "DIVINE BLADE·DIVINE FIELD의 상세와 제작 재료를 아래에서 확인하세요. DIVINE FIELD는 레벨 200이 필요하며 단순 드롭 장비로 생각하지 말고 레시피를 확인하세요. 두 장비를 함께 쓰면 DIVINE BLADE의 타깃 수와 속도가 달라집니다.",
+    "DIVINE BLADE・DIVINE FIELDの詳細と素材を確認できます。DIVINE FIELDはLv200が必要です。直接ドロップと考えずレシピを確認してください。セットで武器の対象数と速度が変わります。",
+    "Consulta DIVINE BLADE y DIVINE FIELD. Este último exige nivel 200 y una receta; no es un simple drop. El conjunto cambia blancos y velocidad del arma.",
+    "Consultez DIVINE BLADE et DIVINE FIELD. Ce dernier exige le niveau 200 et une recette. L’ensemble modifie les cibles et la vitesse de l’arme."
+  ],
+  "starlight.observed": [
+    "Administrator · player observations",
+    "Administrator · 플레이어 관찰 기반",
+    "Administrator · プレイヤー観察",
+    "Administrator · observaciones",
+    "Administrator · observations"
+  ],
+  "starlight.observedBody": [
+    "The following notes summarize the community strategy thread checked September 10. They are a briefing, not a complete or officially verified timing script. Watch the raid’s tells and follow your party leader’s calls.",
+    "아래는 9월 10일 확인한 커뮤니티 공략 스레드의 요약입니다. 모든 분기와 타이밍이 검증된 공식 공략은 아닙니다. 실제 전조와 파티장의 콜을 함께 확인하세요.",
+    "9月10日に確認したコミュニティ攻略の要約です。全分岐や時間を検証した公式手順ではありません。実際の予兆とリーダーのコールを確認してください。",
+    "Resumen del hilo comunitario revisado el 10 de septiembre, no una secuencia oficial completa. Observa las señales y sigue al líder.",
+    "Résumé du fil communautaire vérifié le 10 septembre, sans prétendre à une séquence officielle complète. Observez les signes et suivez le chef."
+  ],
+  "starlight.thunder": [
+    "Thunder Labyrinth Sigma",
+    "Thunder Labyrinth Sigma",
+    "Thunder Labyrinth Sigma",
+    "Thunder Labyrinth Sigma",
+    "Thunder Labyrinth Sigma"
+  ],
+  "starlight.thunderBody": [
+    "The thread groups six variants into the calls “Middle Safe” and “Middle First”. Read the floor’s 1/3/5 versus 2/4 pattern, wait for the lightning, then move with your assigned corner. Do not assume every variant shares one fixed safe tile.",
+    "커뮤니티는 6개 변형을 Middle Safe·Middle First 두 콜로 묶어 설명합니다. 바닥의 1·3·5 / 2·4 패턴을 확인하고 번개 판정 후 담당 코너에 맞춰 이동하세요. 모든 변형에 공통인 고정 안전 칸이 있다고 가정하지 마세요.",
+    "6種類をMiddle Safe・Middle Firstのコールで整理しています。床の1・3・5／2・4を確認し、雷の後に担当コーナーへ動きます。全種類共通の固定安全マスと考えないでください。",
+    "Se agrupan seis variantes en Middle Safe y Middle First. Lee el patrón 1/3/5 o 2/4 y muévete tras el rayo según tu esquina. No asumas una casilla segura fija.",
+    "Six variantes sont regroupées sous Middle Safe et Middle First. Lisez le motif 1/3/5 ou 2/4 et bougez après l’éclair selon votre coin. Aucune case sûre universelle n’est garantie."
+  ],
+  "starlight.cyclone": [
+    "Cyclonic Wave",
+    "Cyclonic Wave",
+    "Cyclonic Wave",
+    "Cyclonic Wave",
+    "Cyclonic Wave"
+  ],
+  "starlight.cycloneBody": [
+    "The shared strategy moves right along the outer square after the center and corner explosions. Confirm the direction with the group before pulling; moving early or cutting through the center is a different route.",
+    "공유된 대응은 중앙·코너 폭발 이후 바깥 사각형을 따라 오른쪽으로 이동하는 방식입니다. 시작 전에 파티와 진행 방향을 맞추세요. 미리 움직이거나 중앙을 가로지르는 동선과 혼동하지 마세요.",
+    "共有された方法は中央・角の爆発後、外周の四角に沿って右へ動くものです。事前に方向を合わせ、早移動や中央横断と混同しないでください。",
+    "La estrategia compartida avanza a la derecha por el cuadrado exterior tras las explosiones centrales y de esquina. Acuerda la dirección; no adelantes el movimiento ni cruces el centro.",
+    "La stratégie avance à droite le long du carré extérieur après les explosions centrales et des coins. Confirmez le sens et évitez de partir tôt ou de traverser le centre."
+  ],
+  "starlight.reckoning": [
+    "Divine Reckoning",
+    "Divine Reckoning",
+    "Divine Reckoning",
+    "Divine Reckoning",
+    "Divine Reckoning"
+  ],
+  "starlight.reckoningBody": [
+    "The thread calls for repeated Resta while the orb rises, then a response to the central lightning. Maintain full HP and agree who handles healing. HP-draining gear can complicate patterns that expect full HP.",
+    "스레드는 구체가 올라가는 동안 Resta를 반복하고, 이어지는 중앙 번개에 대응하도록 안내합니다. 만피를 유지하고 회복 담당을 미리 정하세요. HP가 감소하는 장비는 만피 조건 패턴에서 문제가 될 수 있습니다.",
+    "球が上がる間はRestaを繰り返し、その後の中央の雷に対応するとされています。HPを満タンに保ち、回復担当を決めましょう。HP減少装備は満タン条件の妨げになる場合があります。",
+    "El hilo pide Resta repetida mientras sube el orbe y reaccionar al rayo central. Mantén HP completo y asigna sanador. El equipo que drena HP puede interferir.",
+    "Le fil recommande Resta pendant la montée de l’orbe, puis de réagir à l’éclair central. Gardez les HP au maximum et désignez un soigneur. Le drainage de HP peut gêner."
+  ],
+  "starlight.unknown": [
+    "Patterns still needing a verified walkthrough",
+    "추가 검증이 필요한 패턴",
+    "詳細検証が必要なパターン",
+    "Patrones pendientes de verificar",
+    "Mécaniques à vérifier"
+  ],
+  "starlight.unknownBody": [
+    "Creation Queen, Rollback, Divine Cross, Fatal Sequence, Lightning Storm and Venom Bloom still need complete phase-by-phase documentation here. Use the original thread and party practice; these names alone are not sufficient instructions.",
+    "Creation Queen·Rollback·Divine Cross·Fatal Sequence·Lightning Storm·Venom Bloom은 단계별 검증이 더 필요합니다. 원문과 파티 연습을 함께 참고하세요. 이름 목록만으로 대응법이 완성된 것은 아닙니다.",
+    "Creation Queen・Rollback・Divine Cross・Fatal Sequence・Lightning Storm・Venom Bloomは段階別の検証が必要です。原文と練習を参考にしてください。名前だけでは攻略手順になりません。",
+    "Estas mecánicas aún requieren documentación por fases: Creation Queen, Rollback, Divine Cross, Fatal Sequence, Lightning Storm y Venom Bloom. Consulta el hilo y practica.",
+    "Creation Queen, Rollback, Divine Cross, Fatal Sequence, Lightning Storm et Venom Bloom nécessitent encore une documentation détaillée. Consultez le fil et entraînez-vous."
+  ],
+  "help.title": [
+    "Commands, terms & common problems",
+    "명령어·용어·자주 막히는 문제",
+    "コマンド・用語・よくある問題",
+    "Comandos y preguntas frecuentes",
+    "Commandes et questions fréquentes"
+  ],
+  "help.lead": [
+    "Quick answers for recurring questions. Read the current patch notes when an older Discord message describes a different rule.",
+    "반복되는 질문을 빠르게 확인하세요. 오래된 Discord 안내와 내용이 다르면 최신 패치 노트의 적용 상태를 먼저 보세요.",
+    "よくある質問をすぐ確認できます。古いDiscord案内と異なる場合は最新パッチを確認してください。",
+    "Respuestas rápidas. Si un mensaje antiguo contradice una regla, consulta el parche actual.",
+    "Réponses rapides. Si un ancien message contredit une règle, consultez le patch actuel."
+  ],
+  "help.commands": [
+    "Useful in-game commands",
+    "자주 쓰는 게임 명령어",
+    "便利なゲーム内コマンド",
+    "Comandos útiles",
+    "Commandes utiles"
+  ],
+  "help.commandsBody": [
+    "/bank: bank access · /roominfo: room information · /hh: check Happy Hour · /daily: daily status. Command availability can depend on location and state. Since 0.945, /lobby also works outside quests and HP Material reset is supported; confirm reset options in the game before using them.",
+    "/bank: 창고 · /roominfo: 방 정보 · /hh: Happy Hour 확인 · /daily: 일일 상태 확인. 위치·상태에 따라 사용 조건이 다를 수 있습니다. 0.945부터 /lobby는 퀘스트 밖에서도 작동하며 HP Material 초기화도 지원합니다. 초기화 세부 옵션은 게임에서 확인한 뒤 사용하세요.",
+    "/bank：倉庫・/roominfo：部屋情報・/hh：Happy Hour・/daily：日次状況。場所や状態で制限される場合があります。0.945から/lobbyはクエスト外でも使用でき、HP Materialのリセットも対応。オプションはゲーム内で確認してください。",
+    "/bank: banco · /roominfo: sala · /hh: Happy Hour · /daily: estado diario. Pueden existir restricciones. Desde 0.945, /lobby funciona fuera de misiones y se admite reiniciar HP Materials; confirma las opciones en juego.",
+    "/bank : banque · /roominfo : salle · /hh : Happy Hour · /daily : état quotidien. Des restrictions peuvent s’appliquer. Depuis 0.945, /lobby fonctionne hors quête et les HP Materials peuvent être réinitialisés ; vérifiez les options en jeu."
+  ],
+  "help.hitQ": [
+    "Why can’t I add Hit to my Excalibur or TJS?",
+    "Excalibur·TJS에 Hit를 추가할 수 없는 이유는?",
+    "Excalibur・TJSにHitを追加できないのは？",
+    "¿Por qué no puedo añadir Hit a Excalibur o TJS?",
+    "Pourquoi ne puis-je pas ajouter Hit à Excalibur ou TJS ?"
+  ],
+  "help.hitA": [
+    "A September 8 support answer explains that kill-count data occupies an attribute slot. A Lame d’Argent unsealed with two existing attributes can leave Excalibur unable to take another Hit attribute. Check the original weapon’s attributes before unsealing; Sealed J-Sword has a related constraint. Ask support to inspect your item rather than assuming a reset or refund.",
+    "9월 8일 지원 답변은 킬 카운트가 속성 슬롯 하나를 사용한다고 설명합니다. 속성 2개가 있는 Lame d’Argent를 해방하면 Excalibur에 Hit 속성을 추가할 수 없는 경우가 생깁니다. 해방 전 원본 속성을 확인하세요. Sealed J-Sword에도 관련 제약이 있습니다. 초기화·환불을 가정하지 말고 지원 채널에 장비 상태를 확인받으세요.",
+    "9月8日の回答では討伐数が属性枠を一つ使用します。属性2つのLame d’Argentを解放するとExcaliburにHitを追加できない場合があります。解放前に確認してください。Sealed J-Swordにも関連制約があります。返金などを前提にせずサポートに確認しましょう。",
+    "Según soporte del 8 de septiembre, el contador de bajas ocupa una ranura. Desellar Lame d’Argent con dos atributos puede impedir añadir Hit. Sealed J-Sword tiene una limitación relacionada. Consulta soporte antes de asumir un reinicio o reembolso.",
+    "Selon l’assistance du 8 septembre, le compteur de victimes occupe un emplacement. Désceller Lame d’Argent avec deux attributs peut empêcher l’ajout de Hit. Sealed J-Sword présente une contrainte liée. Demandez une vérification au support."
+  ],
+  "help.magQ": [
+    "Why does my MAG sometimes fail to trigger at 100 PB?",
+    "PB 100인데 MAG가 발동하지 않는 이유는?",
+    "PB100でMAGが発動しないことがあるのは？",
+    "¿Por qué mi MAG no se activa con 100 PB?",
+    "Pourquoi mon MAG ne s’active-t-il pas à 100 PB ?"
+  ],
+  "help.magA": [
+    "When 100 PB and low HP occur together, the low-HP trigger can take priority. Its activation chance may differ from the PB trigger. Do not assume that reaching 100 PB guarantees invincibility; check the MAG’s conditions and the PB guide.",
+    "PB 100과 저체력 조건이 동시에 발생하면 저체력 트리거가 우선할 수 있습니다. 발동 확률도 PB 트리거와 다를 수 있습니다. PB 100 도달이 무적을 보장한다고 생각하지 말고 MAG의 조건과 PB 가이드를 확인하세요.",
+    "PB100と低HPが同時に発生すると低HP側が優先される場合があります。発動率も異なる場合があります。PB100で必ず無敵になると考えず、MAG条件とPBガイドを確認してください。",
+    "Si coinciden 100 PB y HP bajo, el disparador de HP puede tener prioridad y otra probabilidad. 100 PB no garantiza invulnerabilidad; consulta las condiciones del MAG.",
+    "Si 100 PB et HP bas coïncident, le déclencheur HP peut être prioritaire avec une probabilité différente. 100 PB ne garantit pas l’invincibilité ; vérifiez votre MAG."
+  ],
+  "help.dropsQ": [
+    "Why can’t I find a quest reward in the drop table?",
+    "퀘스트 보상이 드롭표에 없는 이유는?",
+    "クエスト報酬がドロップ表にないのは？",
+    "¿Por qué falta una recompensa en la tabla?",
+    "Pourquoi une récompense manque-t-elle dans la table ?"
+  ],
+  "help.dropsA": [
+    "The regular drop table and quest-specific reward rules are separate. For example, Soul Eraser’s World of Illusion Olga Flow reward is 1/73 on all IDs. Use the item guide’s acquisition section and its official source for special quest rewards.",
+    "일반 드롭표와 퀘스트 전용 보상은 별도입니다. 예를 들어 Soul Eraser는 World of Illusion의 Olga Flow에서 전 ID 1/73로 안내됩니다. 특수 보상은 아이템 상세의 획득처와 공식 원문을 확인하세요.",
+    "通常ドロップとクエスト固有報酬は別です。Soul EraserはWorld of IllusionのOlga Flowから全IDで1/73です。特殊報酬はアイテム詳細と公式情報を確認します。",
+    "La tabla normal y las recompensas de misión son distintas. Soul Eraser sale de Olga Flow en World of Illusion a 1/73 para todos los IDs. Consulta la guía del objeto.",
+    "Drops normaux et récompenses de quête sont distincts. Soul Eraser tombe sur Olga Flow dans World of Illusion à 1/73 pour tous les ID. Consultez le guide de l’objet."
+  ],
+  "help.terms": [
+    "Terms you will see often",
+    "자주 나오는 용어",
+    "よく見る用語",
+    "Términos frecuentes",
+    "Termes fréquents"
+  ],
+  "help.termsBody": [
+    "DAR: chance an enemy drops an item. RDR: rare-drop roll. HH: Happy Hour. PB: Photon Blast. DMC: Damage Cancel. MPC: Millennium Photon Core. A published recipe does not by itself mean the item has been released.",
+    "DAR: 아이템 드롭 발생률. RDR: 희귀 드롭 판정. HH: Happy Hour. PB: Photon Blast. DMC: Damage Cancel. MPC: Millennium Photon Core. 레시피가 공개됐다는 사실만으로 해당 아이템이 출시된 것은 아닙니다.",
+    "DAR：アイテムドロップ発生率。RDR：レアドロップ判定。HH：Happy Hour。PB：Photon Blast。DMC：Damage Cancel。MPC：Millennium Photon Core。レシピ公開だけでは実装済みとは限りません。",
+    "DAR: posibilidad de soltar un objeto. RDR: tirada rara. HH: Happy Hour. PB: Photon Blast. DMC: Damage Cancel. MPC: Millennium Photon Core. Una receta publicada no implica que el objeto esté disponible.",
+    "DAR : chance de lâcher un objet. RDR : tirage rare. HH : Happy Hour. PB : Photon Blast. DMC : Damage Cancel. MPC : Millennium Photon Core. Une recette publiée ne signifie pas que l’objet est disponible."
+  ],
+  "cat.matrix-scope.obtain.0": [
+    "The July 4 correction replaces Weapon Crystal Badge x20 with Photon Booster x1. The list below is partial: unidentified material groups still need verification. Check the official source and NPC before farming.",
+    "7월 4일 정정으로 Weapon Crystal Badge 20개가 Photon Booster 1개로 바뀌었습니다. 아래는 일부 재료만 확인된 목록입니다. 미확인 재료가 있으므로 공식 원문·교환 NPC에서 전체 목록을 확인하세요.",
+    "7月4日の訂正でWeapon Crystal Badge×20がPhoton Booster×1に変更されました。以下は一部のみです。不明な材料は公式情報とNPCで確認してください。",
+    "La corrección del 4 de julio cambia 20 Weapon Crystal Badge por 1 Photon Booster. La lista es parcial; confirma los materiales restantes con la fuente oficial y el NPC.",
+    "La correction du 4 juillet remplace 20 Weapon Crystal Badge par 1 Photon Booster. Liste partielle : confirmez le reste dans la source officielle et auprès du PNJ."
+  ],
+  "cat.lightning-garment.notes.0": [
+    "Known issue, September 7: the technique boost is not working. A fix is planned with the next client update. Do not count the Grants bonus until a fix is confirmed.",
+    "9월 7일 공지: 테크닉 보정이 작동하지 않습니다. 다음 클라이언트 업데이트와 함께 수정 예정이며, 수정 확인 전까지 Grants 보정을 전제로 세팅하지 마세요.",
+    "9月7日の既知の問題：テクニック補正が動作しません。次回クライアント更新で修正予定です。修正確認まではGrants補正を計算に含めないでください。",
+    "Problema del 7 de septiembre: la bonificación técnica no funciona. Se prevé corregirla con el próximo cliente. No cuentes el bonus de Grants hasta confirmarse.",
+    "Problème du 7 septembre : le bonus technique ne fonctionne pas. Correction prévue avec le prochain client. Ne comptez pas le bonus Grants avant confirmation."
+  ],
+  "cat.miracle-chain.summary": [
+    "A female-only support cane introduced in 0.945. Its special casts level 6 Shifta and Deband.",
+    "0.945에 추가된 여성 전용 지원 Cane입니다. 스페셜로 레벨 6 Shifta·Deband를 사용합니다.",
+    "0.945で追加された女性専用の支援Cane。スペシャルでLv6のShifta・Debandを使用します。",
+    "Cane de apoyo femenino de 0.945. Su especial lanza Shifta y Deband de nivel 6.",
+    "Cane de soutien féminin de 0.945. Son spécial lance Shifta et Deband de niveau 6."
+  ],
+  "cat.miracle-chain.combat.0": [
+    "Special: level 6 Shifta and Deband.",
+    "스페셜: 레벨 6 Shifta·Deband.",
+    "スペシャル：Lv6 Shifta・Deband。",
+    "Especial: Shifta y Deband nivel 6.",
+    "Spécial : Shifta et Deband niveau 6."
+  ],
+  "cat.miracle-chain.combat.1": [
+    "Resta, Shifta and Deband range +100%.",
+    "Resta·Shifta·Deband 범위 +100%.",
+    "Resta・Shifta・Deband範囲+100%。",
+    "Alcance de Resta, Shifta y Deband +100%.",
+    "Portée de Resta, Shifta et Deband +100 %."
+  ],
+  "cat.miracle-chain.obtain.0": [
+    "Trade with the RAcaseal in Another Shop, inside Phantastic Bazaar.",
+    "Phantastic Bazaar의 Another Shop에 있는 RAcaseal에게 교환합니다.",
+    "Phantastic Bazaar内のAnother ShopにいるRAcasealで交換します。",
+    "Canjea con la RAcaseal de Another Shop en Phantastic Bazaar.",
+    "Échangez auprès de la RAcaseal d’Another Shop dans Phantastic Bazaar."
+  ],
+  "cat.soul-eraser.summary": [
+    "A seven-target Hell slicer for humans and newmans, introduced in 0.945.",
+    "0.945에 추가된 인간·뉴먼 전용 Hell Slicer로 7개 타깃을 공격합니다.",
+    "0.945で追加された人間・ニューマン用の7対象Hell Slicer。",
+    "Slicer Hell de siete objetivos para humanos y newmans, de 0.945.",
+    "Slicer Hell à sept cibles pour humains et newmans, ajouté en 0.945."
+  ],
+  "cat.soul-eraser.combat.0": [
+    "Androids cannot equip it.",
+    "안드로이드는 착용할 수 없습니다.",
+    "アンドロイドは装備できません。",
+    "Los androides no pueden equiparlo.",
+    "Les androïdes ne peuvent pas l’équiper."
+  ],
+  "cat.soul-eraser.obtain.0": [
+    "World of Illusion: Olga Flow, all Section IDs, 1/73. This quest reward is separate from the ordinary drop table.",
+    "World of Illusion의 Olga Flow에서 전 Section ID 1/73. 일반 드롭표와 별도인 퀘스트 전용 보상입니다.",
+    "World of IllusionのOlga Flow、全Section IDで1/73。通常ドロップ表とは別の固有報酬です。",
+    "Olga Flow en World of Illusion: todos los IDs, 1/73. Es una recompensa de misión separada de los drops normales.",
+    "Olga Flow dans World of Illusion : tous les ID, 1/73. Récompense de quête distincte des drops normaux."
+  ],
+  "cat.aegis-of-isolation.summary": [
+    "Announced for the anniversary starting September 18. Blocks healing from others and changes recovery items.",
+    "9월 18일 시작하는 기념 이벤트용 예고 아이템입니다. 타인의 회복을 차단하고 회복약 효과를 바꿉니다.",
+    "9月18日開始の記念イベント向け予告品。他者からの回復を防ぎ、回復アイテムの効果を変えます。",
+    "Anunciado para el aniversario del 18 de septiembre. Bloquea curación ajena y cambia los objetos de recuperación.",
+    "Annoncé pour l’anniversaire du 18 septembre. Bloque les soins externes et modifie les objets de récupération."
+  ],
+  "cat.aegis-of-isolation.combat.0": [
+    "Blocks Resta and Star Atomizer healing from others. You can still heal others and be revived.",
+    "다른 유저의 Resta·Star Atomizer 회복을 차단합니다. 다른 유저를 회복하거나 부활을 받는 것은 가능합니다.",
+    "他者のResta・Star Atomizer回復を防ぎます。他者の回復や自分の蘇生は可能です。",
+    "Bloquea Resta y Star Atomizer de otros. Puedes curar a otros y ser revivido.",
+    "Bloque Resta et Star Atomizer des autres. Vous pouvez soigner autrui et être ressuscité."
+  ],
+  "cat.aegis-of-isolation.combat.1": [
+    "Disables android natural HP regeneration. Monomate and Dimate work like Trimate.",
+    "안드로이드의 자연 HP 회복을 비활성화합니다. Monomate·Dimate는 Trimate처럼 작동합니다.",
+    "アンドロイドの自然HP回復を無効化。Monomate・DimateはTrimate相当になります。",
+    "Desactiva la regeneración natural de androides. Monomate y Dimate actúan como Trimate.",
+    "Désactive la régénération naturelle des androïdes. Monomate et Dimate agissent comme Trimate."
+  ],
+  "cat.aegis-of-isolation.obtain.0": [
+    "Planned for the September 18 anniversary. A lower-rate normal quest source is planned after the event; it is not available yet.",
+    "9월 18일 기념 이벤트에 추가될 예정입니다. 이벤트 종료 후 일반 퀘스트에도 낮은 확률로 추가할 계획이며, 아직 획득 가능한 상태가 아닙니다.",
+    "9月18日の記念イベントで実装予定。その後は通常クエストへ低確率で追加予定。まだ入手できません。",
+    "Previsto para el aniversario del 18 de septiembre. Después se planea una fuente normal menos frecuente; aún no está disponible.",
+    "Prévu pour l’anniversaire du 18 septembre, puis en quête normale à taux réduit. Pas encore disponible."
+  ],
+  "cat.phantasmal-ore-syncesta.obtain.0": [
+    "Planned after the 9th Anniversary. Craft the ore first, then combine it with Double Cannon to make Alternative Cannon. The base weapon is separate.",
+    "9주년 종료 후 적용 예정입니다. 아래 재료로 광석을 먼저 만들고, 별도로 준비한 Double Cannon과 조합해 Alternative Cannon을 만듭니다.",
+    "9周年終了後に実装予定。まず素材から鉱石を作り、別途用意したDouble Cannonと組み合わせてAlternative Cannonにします。",
+    "Previsto tras el 9.º aniversario. Crea el mineral y combínalo con Double Cannon para Alternative Cannon. El arma se requiere aparte.",
+    "Prévu après le 9e anniversaire. Créez le minerai puis combinez-le avec Double Cannon pour Alternative Cannon. L’arme est requise séparément."
+  ],
+  "cat.astral-ore-iritista.obtain.0": [
+    "Planned after the 9th Anniversary. Craft the ore first, then combine it with Last Emperor to make Astral Blade. The base weapon is separate.",
+    "9주년 종료 후 적용 예정입니다. 아래 재료로 광석을 먼저 만들고, 별도로 준비한 Last Emperor와 조합해 Astral Blade를 만듭니다.",
+    "9周年終了後に実装予定。まず素材から鉱石を作り、別途用意したLast Emperorと組み合わせてAstral Bladeにします。",
+    "Previsto tras el 9.º aniversario. Crea el mineral y combínalo con Last Emperor para Astral Blade. El arma se requiere aparte.",
+    "Prévu après le 9e anniversaire. Créez le minerai puis combinez-le avec Last Emperor pour Astral Blade. L’arme est requise séparément."
+  ],
+  "up.03": [
+    "Patch, announcement and item sources checked September 10, 2026. Released content, known issues and future plans are labelled separately.",
+    "2026년 9월 10일 기준 패치·공지·아이템 출처를 확인했습니다. 현재 적용된 내용, 알려진 문제, 향후 계획을 구분해 표시합니다.",
+    "2026年9月10日にパッチ・告知・アイテム情報を確認。実装済み・既知の問題・今後の予定を区別しています。",
+    "Fuentes revisadas el 10 de septiembre de 2026. Se distinguen contenido disponible, problemas y planes.",
+    "Sources vérifiées le 10 septembre 2026. Contenu disponible, problèmes et projets sont distingués."
+  ],
+  "up.futurecrafts.03": [
+    "Planned after the 9th Anniversary",
+    "9주년 종료 후 적용 예정",
+    "9周年終了後に実装予定",
+    "Previsto tras el 9.º aniversario",
+    "Prévu après le 9e anniversaire"
+  ],
+  "up.futurecrafts.14": [
+    "The full material lists were disclosed in the September 10 edit. Both ores remain planned for after the 9th Anniversary. Use the planner to count materials and keep the base weapon separate.",
+    "9월 10일 수정된 공지에 전체 재료가 공개됐습니다. 두 광석 모두 9주년 종료 후 적용 예정입니다. 재료 계획표로 수량을 계산하고 원본 무기는 별도로 준비하세요.",
+    "9月10日の編集で全素材が公開されました。両鉱石は9周年終了後の実装予定です。素材計画で数量を確認し、ベース武器は別途用意します。",
+    "Las listas completas se publicaron en la edición del 10 de septiembre. Ambos minerales siguen previstos tras el aniversario. Usa el planificador y reserva el arma base aparte.",
+    "Les listes complètes ont été publiées le 10 septembre. Les minerais restent prévus après l’anniversaire. Utilisez le planificateur et réservez l’arme de base séparément."
+  ],
+  "up.v0945.38": [
+    "— returned for two weeks from September 1.",
+    "— 9월 1일부터 2주간 복각 적용.",
+    "—9月1日から2週間復刻。",
+    "— regresó durante dos semanas desde el 1 de septiembre.",
+    "— revenu pour deux semaines à partir du 1er septembre."
+  ],
+  "up.farmingplan.08": [
+    "Check the known technique-boost issue before exchanging.",
+    "교환 전 테크닉 보정 미작동 공지를 확인하세요.",
+    "交換前にテクニック補正の不具合を確認してください。",
+    "Revisa el fallo de bonificación antes de canjear.",
+    "Vérifiez le problème du bonus technique avant l’échange."
+  ],
+  "up.miniC": [
+    "Limited quest C is planned after Halloween 2026: Phantasmal World #2 [Extreme], difficulty ★7, with SLICER OF HERETIC. No exact release date or final drop rate has been announced.",
+    "한정 퀘스트 C는 2026 할로윈 종료 후 예정입니다. Phantasmal World #2 [Extreme], 난이도 ★7, SLICER OF HERETIC이 예고됐으며 정확한 날짜·최종 드롭률은 미공개입니다.",
+    "限定クエストCは2026年ハロウィン終了後の予定。Phantasmal World #2 [Extreme]、★7、SLICER OF HERETICを予告。正確な日付と最終ドロップ率は未発表です。",
+    "La misión limitada C se prevé tras Halloween 2026: Phantasmal World #2 [Extreme], ★7, con SLICER OF HERETIC. Sin fecha exacta ni tasa final.",
+    "La quête limitée C est prévue après Halloween 2026 : Phantasmal World #2 [Extreme], ★7, avec SLICER OF HERETIC. Date exacte et taux final non annoncés."
+  ],
+  "nav.page.start_here": [
+    "First 30 minutes",
+    "처음 시작하는 30분",
+    "最初の30分",
+    "Tus primeros 30 minutos",
+    "Vos 30 premières minutes"
+  ],
+  "nav.page.beginner_page": [
+    "Beginner route",
+    "초보자 가이드",
+    "初心者ガイド",
+    "Guía inicial",
+    "Guide débutant"
+  ],
+  "nav.page.system_page": [
+    "Server systems",
+    "서버 시스템",
+    "サーバー仕様",
+    "Sistemas",
+    "Systèmes"
+  ],
+  "nav.page.item_page": [
+    "Destiny items",
+    "아이템 도감",
+    "アイテム図鑑",
+    "Objetos",
+    "Objets"
+  ],
+  "nav.page.database": [
+    "Item database",
+    "아이템 DB",
+    "アイテムDB",
+    "Base de objetos",
+    "Base d’objets"
+  ],
+  "nav.page.drop-tables": [
+    "Drop tables",
+    "드랍 테이블",
+    "ドロップ表",
+    "Tablas de drop",
+    "Tables de drop"
+  ],
+  "nav.page.recipe_page": [
+    "Materials & combinations",
+    "아이템 조합",
+    "アイテム合成",
+    "Combinaciones",
+    "Combinaisons"
+  ],
+  "nav.page.sectionid_page": [
+    "Section ID",
+    "Section ID 파밍",
+    "Section ID 堀り",
+    "Section ID",
+    "Section ID"
+  ],
+  "nav.page.economy_page": [
+    "Shops & currencies",
+    "상점·화폐",
+    "ショップ",
+    "Tiendas",
+    "Boutiques"
+  ],
+  "nav.page.player_tools": [
+    "Farming tools",
+    "파밍 도구",
+    "周回ツール",
+    "Herramientas de farmeo",
+    "Outils de farm"
+  ],
+  "nav.page.class_builds": [
+    "Class builds",
+    "클래스 빌드",
+    "クラスビルド",
+    "Builds de clase",
+    "Builds de classe"
+  ],
+  "nav.page.calculator": [
+    "Stat calculator",
+    "스탯 계산기",
+    "ステータス計算",
+    "Calculadora de estadísticas",
+    "Calculateur de statistiques"
+  ],
+  "nav.page.enhance_page": [
+    "Enhancement",
+    "무기 강화",
+    "武器強化",
+    "Mejoras",
+    "Améliorations"
+  ],
+  "nav.page.pb_guide": [
+    "PB management",
+    "PB management",
+    "PB management",
+    "PB management",
+    "PB management"
+  ],
+  "nav.page.dmc_page": [
+    "Damage cancel",
+    "DMC 가이드",
+    "DMC ガイド",
+    "Guía DMC",
+    "Guide DMC"
+  ],
+  "nav.page.endgame_page": [
+    "Quest difficulty",
+    "퀘스트 난이도",
+    "クエスト難易度",
+    "Dificultad",
+    "Difficulté"
+  ],
+  "nav.page.quest_data_page": [
+    "Quest data",
+    "퀘스트 자료",
+    "クエスト情報",
+    "Quests",
+    "Quêtes"
+  ],
+  "nav.page.starlight_raid": [
+    "The Starlight Tower",
+    "Starlight Tower 공략",
+    "Starlight Towerガイド",
+    "Guía de Starlight Tower",
+    "Guide Starlight Tower"
+  ],
+  "nav.page.dn": [
+    "Distorted Nightmare",
+    "Distorted Nightmare [RAID]",
+    "Distorted Nightmare [RAID]",
+    "Distorted Nightmare [RAID]",
+    "Distorted Nightmare [RAID]"
+  ],
+  "nav.page.discontrolled_tower_raid": [
+    "The Discontrolled Tower",
+    "The Discontrolled Tower [RAID]",
+    "The Discontrolled Tower [RAID]",
+    "The Discontrolled Tower [RAID]",
+    "The Discontrolled Tower [RAID]"
+  ],
+  "nav.page.predator_raid": [
+    "The Ravenous Predator",
+    "The Ravenous Predator [RAID]",
+    "The Ravenous Predator [RAID]",
+    "The Ravenous Predator [RAID]",
+    "The Ravenous Predator [RAID]"
+  ],
+  "nav.page.tpd_page": [
+    "The Phantasmal Dimension",
+    "The Phantasmal Dimension",
+    "The Phantasmal Dimension",
+    "The Phantasmal Dimension",
+    "The Phantasmal Dimension"
+  ],
+  "nav.page.updates_page": [
+    "Latest updates",
+    "최신 업데이트",
+    "最新アップデート",
+    "Últimas novedades",
+    "Dernières mises à jour"
+  ],
+  "nav.page.event_page": [
+    "Events",
+    "이벤트",
+    "イベント",
+    "Eventos",
+    "Événements"
+  ],
+  "nav.page.help_page": [
+    "Commands & FAQ",
+    "명령어·용어·자주 막히는 문제",
+    "コマンド・用語・よくある問題",
+    "Comandos y preguntas frecuentes",
+    "Commandes et questions fréquentes"
+  ],
+  "nav.page.Psobb_tool": [
+    "Tools",
+    "도구",
+    "ツール",
+    "Herramientas",
+    "Outils"
+  ],
+  "nav.page.mods_page": [
+    "Mods & skins",
+    "모드 · 스킨",
+    "モッド・スキン",
+    "Mods y skins",
+    "Mods et skins"
+  ],
+  "nav.page.roster_page": [
+    "Player directory",
+    "닉네임 명부",
+    "名前一覧",
+    "Directorio de nombres",
+    "Annuaire des noms"
+  ],
+  "nav.page.suggest_page": [
+    "Suggestions",
+    "건의사항",
+    "ご意見",
+    "Sugerencias",
+    "Suggestions"
+  ],
+  "nav.page.redeem": [
+    "Token redeem",
+    "토큰 교환",
+    "トークン交換",
+    "Canje de tokens",
+    "Échange de jetons"
+  ],
+  "chr.t004": [
+    "250 material slots; 57 remain after this plan.",
+    "Material 한도 250개 중 이 계획을 적용하면 57개가 남습니다.",
+    "Material上限250個、この配分後は57個分残ります。",
+    "Límite de 250 Materials; quedan 57 con este plan.",
+    "Limite de 250 Materials ; 57 restent après ce plan."
+  ],
+  "chr.t074": [
+    "High ATA, level 20 techniques",
+    "높은 ATA · 레벨 20 테크닉",
+    "高いATA・Lv20テクニック",
+    "ATA alto, técnicas de nivel 20",
+    "ATA élevé, techniques de niveau 20"
+  ],
+  "chr.t021": [
+    "150 material slots; 34 remain after this plan.",
+    "Material 한도 150개 중 이 계획을 적용하면 34개가 남습니다.",
+    "Material上限150個、この配分後は34個分残ります。",
+    "Límite de 150 Materials; quedan 34 con este plan.",
+    "Limite de 150 Materials ; 34 restent après ce plan."
+  ],
+  "chr.t034": [
+    "150 material slots; 0 remain after this plan.",
+    "Material 한도 150개 중 이 계획을 적용하면 0개가 남습니다.",
+    "Material上限150個、この配分後は0個分残ります。",
+    "Límite de 150 Materials; quedan 0 con este plan.",
+    "Limite de 150 Materials ; 0 restent après ce plan."
+  ],
+  "chr.t051": [
+    "150 material slots; 38 remain after this plan.",
+    "Material 한도 150개 중 이 계획을 적용하면 38개가 남습니다.",
+    "Material上限150個、この配分後は38個分残ります。",
+    "Límite de 150 Materials; quedan 38 con este plan.",
+    "Limite de 150 Materials ; 38 restent après ce plan."
+  ],
+  "chr.t062": [
+    "250 material slots; 35 remain after this plan.",
+    "Material 한도 250개 중 이 계획을 적용하면 35개가 남습니다.",
+    "Material上限250個、この配分後は35個分残ります。",
+    "Límite de 250 Materials; quedan 35 con este plan.",
+    "Limite de 250 Materials ; 35 restent après ce plan."
+  ],
+  "chr.t085": [
+    "150 material slots; 4 remain after this plan.",
+    "Material 한도 150개 중 이 계획을 적용하면 4개가 남습니다.",
+    "Material上限150個、この配分後は4個分残ります。",
+    "Límite de 150 Materials; quedan 4 con este plan.",
+    "Limite de 150 Materials ; 4 restent après ce plan."
+  ],
+  "chr.t095": [
+    "150 material slots; 6 remain after this plan.",
+    "Material 한도 150개 중 이 계획을 적용하면 6개가 남습니다.",
+    "Material上限150個、この配分後は6個分残ります。",
+    "Límite de 150 Materials; quedan 6 con este plan.",
+    "Limite de 150 Materials ; 6 restent après ce plan."
+  ],
+  "chr.t113": [
+    "250 material slots; 0 remain after this plan.",
+    "Material 한도 250개 중 이 계획을 적용하면 0개가 남습니다.",
+    "Material上限250個、この配分後は0個分残ります。",
+    "Límite de 250 Materials; quedan 0 con este plan.",
+    "Limite de 250 Materials ; 0 restent après ce plan."
+  ],
+  "cat.lightning-garment.obtain.0": [
+    "Trade with the RAcaseal NPC in The Phantastic Bazaar, EP2 Shop.",
+    "EP2 Shop의 The Phantastic Bazaar에서 RAcaseal NPC와 교환합니다.",
+    "EP2 ShopのThe Phantastic BazaarでRAcaseal NPCと交換します。",
+    "Canjea con la RAcaseal de The Phantastic Bazaar, EP2 Shop.",
+    "Échangez avec la RAcaseal de The Phantastic Bazaar, EP2 Shop."
+  ],
+  "cat.lightning-garment.obtain.1": [
+    "Secret Tickets come from secret-area clears in Simulator 2.0 [EP1] and Random Attack Xrd Stage [EP2].",
+    "Secret Ticket은 Simulator 2.0 [EP1]·Random Attack Xrd Stage [EP2]의 비밀 구역 클리어로 얻습니다.",
+    "Secret TicketはSimulator 2.0 [EP1]・Random Attack Xrd Stage [EP2]の隠しエリアクリアで入手します。",
+    "Los Secret Tickets se obtienen al superar las zonas secretas de Simulator 2.0 [EP1] y Random Attack Xrd Stage [EP2].",
+    "Les Secret Tickets proviennent des zones secrètes de Simulator 2.0 [EP1] et Random Attack Xrd Stage [EP2]."
+  ],
+  "cat.ignis-engine.obtain.0": [
+    "Trade at the Millennium Shop in The Phantastic Bazaar, EP2 Shop.",
+    "EP2 Shop의 The Phantastic Bazaar 내 Millennium Shop에서 교환합니다.",
+    "EP2 ShopのThe Phantastic Bazaar内Millennium Shopで交換します。",
+    "Canjea en Millennium Shop, The Phantastic Bazaar, EP2 Shop.",
+    "Échangez au Millennium Shop dans The Phantastic Bazaar, EP2 Shop."
+  ],
+  "cat.ignis-engine.obtain.1": [
+    "The original announcement image cuts off the material list. Further requirements need confirmation.",
+    "원본 공지 이미지의 재료 목록이 잘려 있습니다. 추가 재료가 있는지 확인해야 합니다.",
+    "元の告知画像では素材一覧が切れています。追加の必要素材を確認してください。",
+    "La imagen original corta la lista de materiales. Hay que confirmar requisitos adicionales.",
+    "L’image d’origine tronque la liste. Les matériaux supplémentaires restent à confirmer."
+  ],
+  "cat.divine-field.obtain.1": [
+    "Also added to the Millennium Shop during Easter 2026.",
+    "2026 Easter 이벤트 중 Millennium Shop에도 추가됐습니다.",
+    "2026年Easterイベント中にMillennium Shopにも追加されました。",
+    "También se añadió a Millennium Shop durante Easter 2026.",
+    "Également ajouté au Millennium Shop pendant Easter 2026."
+  ],
+  "cat.jointparts.obtain.0": [
+    "Trade with the FOmar NPC in the Bazaar.",
+    "Bazaar의 FOmar NPC와 교환합니다.",
+    "BazaarのFOmar NPCと交換します。",
+    "Canjea con el FOmar del Bazaar.",
+    "Échangez auprès du FOmar du Bazaar."
+  ],
+  "cat.jointparts.obtain.1": [
+    "Materials drop in The Discontrolled Tower [Raid], EP2 Special.",
+    "재료는 EP2 Special의 The Discontrolled Tower [Raid]에서 드롭됩니다.",
+    "素材はEP2 SpecialのThe Discontrolled Tower [Raid]でドロップします。",
+    "Los materiales salen en The Discontrolled Tower [Raid], EP2 Special.",
+    "Les matériaux tombent dans The Discontrolled Tower [Raid], EP2 Special."
+  ],
+  "cat.millennium-hp.obtain.0": [
+    "Trade at the Millennium Shop in The Phantastic Bazaar, EP2 Shop.",
+    "EP2 Shop의 The Phantastic Bazaar 내 Millennium Shop에서 교환합니다.",
+    "EP2 ShopのThe Phantastic Bazaar内Millennium Shopで交換します。",
+    "Canjea en Millennium Shop, The Phantastic Bazaar, EP2 Shop.",
+    "Échangez au Millennium Shop dans The Phantastic Bazaar, EP2 Shop."
+  ],
+  "db.footer.verified": [
+    "Official item corrections checked on {date}; the full database still uses the dated snapshot above.",
+    "공식 아이템 정정 확인일: {date}. 전체 DB는 위 날짜의 저장본을 사용하며 모든 수치가 재동기화된 것은 아닙니다.",
+    "公式アイテム訂正の確認日：{date}。全DBは上記日付の保存データで、全数値を再同期したものではありません。",
+    "Correcciones oficiales verificadas el {date}; la base completa sigue usando la instantánea fechada arriba.",
+    "Corrections officielles vérifiées le {date} ; la base complète utilise toujours l’instantané daté ci-dessus."
+  ],
+  "header.hh.estimate": [
+    "Estimated schedule; confirm in game with /hh.",
+    "예상 일정입니다. 게임에서 /hh로 확인하세요.",
+    "予測時刻です。ゲーム内の/hhで確認してください。",
+    "Horario estimado; confirma con /hh en el juego.",
+    "Horaire estimé ; confirmez avec /hh en jeu."
+  ]
+}

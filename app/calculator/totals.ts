@@ -258,8 +258,8 @@ export function computeTotals(
       targets: weapon.targets,
       range: weapon.range,
       special: weapon.special,
-      atpMin: weapon.atpMin === null ? null : weapon.atpMin + loadout.grind,
-      atpMax: weapon.atpMax === null ? null : weapon.atpMax + loadout.grind,
+      atpMin: weapon.atpMin === null ? null : weapon.atpMin + grindBonus,
+      atpMax: weapon.atpMax === null ? null : weapon.atpMax + grindBonus,
     };
   }
 

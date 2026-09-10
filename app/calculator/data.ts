@@ -4,6 +4,8 @@ import shields from "@/data/database-3.json";
 import units from "@/data/database-4.json";
 import modifierFile from "@/data/item-modifiers.json";
 import classStats from "@/data/class-stats.json";
+import verified from "@/data/verified-content.json";
+import { withVerifiedRows } from "../../scripts/lib/verified-database.mjs";
 import type { CalculatorPayload, Equipment, Modifiers, ResistKey, Slot, StatKey } from "./types";
 import { RESIST_KEYS } from "./types";
 
@@ -12,8 +14,8 @@ type Source = { name: string; rows: Row[]; syncedAt: string };
 
 /** Mags are excluded: their contribution comes from the level a player raised, not the type. */
 const SOURCES: Array<{ source: Source; slot: Slot }> = [
-  { source: weapons as Source, slot: "weapon" },
-  { source: armor as Source, slot: "armor" },
+  { source: withVerifiedRows(weapons as Source, verified), slot: "weapon" },
+  { source: withVerifiedRows(armor as Source, verified), slot: "armor" },
   { source: shields as Source, slot: "shield" },
   { source: units as Source, slot: "unit" },
 ];
@@ -160,7 +162,12 @@ function buildEquipment(row: Row, slot: Slot, categoryName: string, seen: Map<st
     kind: slot === "weapon" ? (row.Type ?? null) : slot === "unit" ? (row["Stat Type"] ?? null) : null,
     base,
     resist,
-    modifiers: modifiers[`${categoryName}:${name}`]?.modifiers ?? EMPTY_MODIFIERS,
+    modifiers: name.toUpperCase() === "LIGHTNING GARMENT"
+      ? { ...(modifiers[`${categoryName}:${name}`]?.modifiers ?? EMPTY_MODIFIERS), flat: { ATA: 20 }, tech: {}, flags: ["Known issue (2026-09-07): technique boost is not working; fix not confirmed. See the item guide."] }
+      : modifiers[`${categoryName}:${name}`]?.modifiers ?? {
+          ...EMPTY_MODIFIERS,
+          flags: [row.Notes, row.Boosts].filter((value): value is string => Boolean(value && value !== "None")),
+        },
     classes: (row.Class ?? "")
       .split(",")
       .map((entry) => entry.trim())

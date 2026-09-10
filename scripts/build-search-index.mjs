@@ -24,7 +24,8 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import { runInNewContext } from "node:vm";
+import { readDestinyCatalog } from "./lib/catalog-data.mjs";
+import { withVerifiedRows } from "./lib/verified-database.mjs";
 import { expandSearchText } from "./search-engine.mjs";
 
 const projectRoot = process.cwd();
@@ -115,6 +116,11 @@ function itemMeta(categoryName, row) {
  * 내비에도 링크가 없는 비공개 페이지다. 검색으로 들어가는 길도 만들지 않는다.
  */
 const PAGES = [
+  { u: "start_here.html", g: "guide", t: "First 30 minutes", k: "start.title", d: "install launcher beginner first steps returning new player 설치 시작 복귀" },
+  { u: "starlight_raid.html", g: "guide", t: "The Starlight Tower", k: "starlight.title", d: "Administrator raid Divine Field Divine Blade Thunder Labyrinth Sigma Cyclonic Wave Divine Reckoning starlight 타워 관리자 레이드" },
+  { u: "help_page.html", g: "guide", t: "Commands & FAQ", k: "help.title", d: "commands help Excalibur Hit TJS Lame unseal MAG invincibility bank roominfo daily hh lobby HP material reset 명령어 해방 강화 실패" },
+  { u: "recipe_page.html?target=phantasmal-ore-syncesta#planner", g: "guide", t: "Phantasmal Ore Syncesta → Alternative Cannon", d: "planned recipe Millennium Photon Core chaos engine Syncesta Double Cannon materials 광석 조합 예정" },
+  { u: "recipe_page.html?target=astral-ore-iritista#planner", g: "guide", t: "Astral Ore Iritista → Astral Blade", d: "planned recipe Millennium Photon Core Iritista Last Emperor materials 광석 조합 예정" },
   { u: "index.html", g: "guide", t: "Home", k: "search.page.home", d: "End-game items, beginner route, character cards" },
   { u: "beginner_page.html", g: "guide", t: "Beginner", k: "header.nav.beginner", d: "Levelling route and first steps for new players" },
   { u: "item_page.html", g: "guide", t: "Destiny Items", k: "header.nav.items", d: "Destiny-only item catalog with filters" },
@@ -148,18 +154,6 @@ const PAGES = [
  * DOM 코드 직전의 데이터와 헬퍼 함수만 분리하여 제한된 컨텍스트에서 평가한다.
  * 배열 경계나 필수 필드가 달라지면 누락된 색인을 만들지 않고 빌드를 중단한다.
  */
-async function readDestinyCatalog() {
-  const source = await readFile(resolve(projectRoot, CATALOG_FILE), "utf8");
-  const end = source.indexOf("const normalizeName");
-  if (end < 0) throw new Error("Cannot locate catalog data boundary");
-  // Evaluate only the data/helper prefix, never the DOM-dependent catalog application.
-  const entries = runInNewContext(source.slice(0,end) + "\nreturn catalogItems;\n})();", {}, {timeout:1000});
-  if (!Array.isArray(entries) || entries.length < 50 || entries.some(entry=>!entry.id || !entry.name)) {
-    throw new Error("Invalid Destiny search catalog");
-  }
-  return entries;
-}
-
 async function readDropIndex() {
   const drops = [];
   let sourceRows = 0;
@@ -190,12 +184,13 @@ async function readDropIndex() {
 
 export async function buildSearchIndex() {
   const items = [];
+  const verified = JSON.parse(await readFile(resolve(projectRoot, 'data/verified-content.json'), 'utf8'));
   const guideNotes = JSON.parse(await readFile(resolve(projectRoot,"data/item-notes.json"),"utf8")).notes || {};
 
   // 1) Destiny 전용 아이템 안내. 같은 이름의 DB 항목도 아래에서 보존한다.
   const catalog = await readDestinyCatalog();
   for (const entry of catalog) {
-    const aliases = buildAliases(entry.name);
+    const aliases = [buildAliases(entry.name), ...(entry.aliases || [])].join(" ");
     const badge = entry.category || "Destiny";
     items.push([
       entry.name,
@@ -213,7 +208,7 @@ export async function buildSearchIndex() {
   // 2) PlayPSO 미러. id 규칙은 app/database/data.ts 와 동일해야 한다.
   const seen = new Map();
   for (const file of DATABASE_FILES) {
-    const category = JSON.parse(await readFile(resolve(projectRoot, file), "utf8"));
+    const category = withVerifiedRows(JSON.parse(await readFile(resolve(projectRoot, file), "utf8")), verified);
 
     for (const row of category.rows) {
       const name = (row.Name ?? "").trim();
@@ -224,7 +219,8 @@ export async function buildSearchIndex() {
       seen.set(baseSlug, occurrence);
       const id = occurrence === 1 ? baseSlug : baseSlug + "-" + occurrence;
 
-      const aliases = buildAliases(name);
+      const patch = verified.items.find(item => item.database?.row.Name === name);
+      const aliases = [buildAliases(name), ...(patch?.aliases || [])].join(" ");
 
       items.push([
         name,
@@ -241,7 +237,7 @@ export async function buildSearchIndex() {
   }
 
   const {drops,sourceRows} = await readDropIndex();
-  const revision = JSON.parse(await readFile(resolve(projectRoot,"i18n/revision.json"),"utf8"));
+  const revision = { ...JSON.parse(await readFile(resolve(projectRoot,"i18n/revision.json"),"utf8")), ...JSON.parse(await readFile(resolve(projectRoot,"i18n/improvements.json"),"utf8")) };
   const dictionaries = await Promise.all(["ko","ja","es","fr"].map(async lang => JSON.parse(await readFile(resolve(projectRoot,"i18n",lang+".json"),"utf8"))));
   const pages = PAGES.map(page=>({...page,s:expandSearchText([page.t,page.d,
     ...dictionaries.map(dict=>dict[page.k] || ""),...(revision[page.k] || [])].join(" "))}));

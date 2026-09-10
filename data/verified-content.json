@@ -1,0 +1,295 @@
+{
+  "checkedAt": "2026-09-10",
+  "items": [
+    {
+      "id": "matrix-scope",
+      "status": "live",
+      "recipeComplete": false,
+      "source": "https://discord.com/channels/363947585154580480/1522857137632444568/1522898403359592469",
+      "checkedAt": "2026-09-10",
+      "required": [
+        "Infernal Stone x1",
+        "Fragments of Orb [Red] x2",
+        "Fragments of Orb [Blue] x2",
+        "Reflex Gear x2",
+        "ETHEREAL ARMOR x1",
+        "Shadow Cloak x1",
+        "Proof of Sonic Team x1",
+        "Photon Booster x1"
+      ],
+      "obtain": [
+        "The July 4 correction replaces Weapon Crystal Badge x20 with Photon Booster x1. This is a partial material list: three unidentified material groups in the older source still need verification. Check the official announcement and the NPC before farming the full recipe."
+      ]
+    },
+    {
+      "id": "lightning-garment",
+      "status": "issue",
+      "source": "https://discord.com/channels/363947585154580480/1536700622357667860/1546492799073914983",
+      "checkedAt": "2026-09-10",
+      "notes": [
+        "Known issue, announced September 7: the technique boost is not working. A fix is planned for the next update with a client update. Do not count the listed Grants bonus until a fix is confirmed."
+      ],
+      "database": {
+        "category": "Armor",
+        "row": {
+          "Name": "LIGHTNING GARMENT",
+          "min-DFP": "210",
+          "max-DFP": "210",
+          "min-EVP": "170",
+          "max-EVP": "170",
+          "Req Lv": "150",
+          "EFR": "15",
+          "ETH": "15",
+          "EIC": "15",
+          "EDK": "60",
+          "ELT": "60",
+          "Boosts": "ATA +20",
+          "Class": "humar, hunewearl, hucast, hucaseal, ramar, ramarl, racast, racaseal, fomar, fomarl, fonewm, fonewearl",
+          "Description": "Trade Secret Ticket x99 in Phantastic Bazaar. 0.944 armor.",
+          "Notes": "Known issue (2026-09-07): the announced Grants +50% boost is not working. Fix not yet confirmed."
+        }
+      }
+    },
+    {
+      "id": "miracle-chain",
+      "name": "MIRACLE CHAIN",
+      "section": "common",
+      "category": "Common",
+      "type": "Cane",
+      "image": "",
+      "imageFallback": true,
+      "status": "live",
+      "recipeComplete": true,
+      "checkedAt": "2026-09-10",
+      "source": "https://discord.com/channels/363947585154580480/1543750986777108573/1543751150141055146",
+      "summary": "A female-only support cane introduced in 0.945. Its special casts level 6 Shifta and Deband.",
+      "stats": [
+        [
+          "Class",
+          "Female"
+        ],
+        [
+          "ATP",
+          "700–750"
+        ],
+        [
+          "ATA",
+          "45"
+        ],
+        [
+          "Range",
+          "14.0"
+        ],
+        [
+          "Targets",
+          "1"
+        ]
+      ],
+      "combat": [
+        "Special: level 6 Shifta and Deband.",
+        "Resta, Shifta and Deband range +100%."
+      ],
+      "obtain": [
+        "Trade with the RAcaseal in Another Shop, inside Phantastic Bazaar."
+      ],
+      "required": [
+        "Fragments of Orb [Yellow] x1",
+        "Fragments of Orb [Green] x1",
+        "Weapon Crystal Badge x10"
+      ],
+      "database": {
+        "category": "Weapons",
+        "row": {
+          "Name": "MIRACLE CHAIN",
+          "Type": "Cane",
+          "ATP": "700 - 750",
+          "ATA": "45",
+          "Class": "hunewearl, hucaseal, ramarl, racaseal, fomarl, fonewearl",
+          "Special": "Shifta / Deband Lv 6",
+          "Targets": "1",
+          "Range": "14.0",
+          "Description": "0.945 support cane. Trade in Phantastic Bazaar / Another Shop.",
+          "Boosts": "Resta, Shifta and Deband range +100%",
+          "Notes": "Grind and equip requirement not verified in this snapshot."
+        }
+      },
+      "aliases": [
+        "미라클 체인",
+        "미라클체인"
+      ]
+    },
+    {
+      "id": "soul-eraser",
+      "name": "SOUL ERASER",
+      "section": "common",
+      "category": "Common",
+      "type": "Slicer",
+      "image": "./images/discord/2026-08/v0945-soul-eraser.jpg",
+      "imageFallback": false,
+      "status": "live",
+      "checkedAt": "2026-09-10",
+      "source": "https://discord.com/channels/363947585154580480/1543750986777108573/1543751150141055146",
+      "summary": "A seven-target Hell slicer for humans and newmans, introduced in 0.945.",
+      "stats": [
+        [
+          "Class",
+          "Human / Newman"
+        ],
+        [
+          "ATP",
+          "550–700"
+        ],
+        [
+          "ATA",
+          "45"
+        ],
+        [
+          "Special",
+          "Hell"
+        ],
+        [
+          "Range",
+          "130.0"
+        ],
+        [
+          "Targets",
+          "7"
+        ]
+      ],
+      "combat": [
+        "Androids cannot equip it."
+      ],
+      "obtain": [
+        "World of Illusion: Olga Flow, all Section IDs, 1/73. This quest-specific reward is separate from the ordinary drop table."
+      ],
+      "required": [],
+      "database": {
+        "category": "Weapons",
+        "row": {
+          "Name": "SOUL ERASER",
+          "Type": "Slicer",
+          "ATP": "550 - 700",
+          "ATA": "45",
+          "Class": "humar, hunewearl, ramar, ramarl, fomar, fomarl, fonewm, fonewearl",
+          "Special": "Hell",
+          "Targets": "7",
+          "Range": "130.0",
+          "Description": "0.945. World of Illusion: Olga Flow, all IDs, 1/73.",
+          "Notes": "Grind and equip requirement not verified in this snapshot."
+        }
+      },
+      "aliases": [
+        "소울 이레이저",
+        "소울이레이저"
+      ]
+    },
+    {
+      "id": "aegis-of-isolation",
+      "name": "AEGIS OF ISOLATION",
+      "section": "shield",
+      "category": "Shield",
+      "type": "Shield",
+      "image": "",
+      "imageFallback": true,
+      "status": "planned",
+      "checkedAt": "2026-09-10",
+      "source": "https://discord.com/channels/363947585154580480/441859383958437888/1545077196480188527",
+      "summary": "Announced for the anniversary event starting September 18. It blocks healing from other players and changes how mates work.",
+      "stats": [
+        [
+          "Class",
+          "All"
+        ],
+        [
+          "Level",
+          "150"
+        ],
+        [
+          "DFP",
+          "120–170"
+        ],
+        [
+          "EVP",
+          "180–230"
+        ],
+        [
+          "Resists",
+          "32 / 32 / 32 / 24 / 24"
+        ],
+        [
+          "Bonus",
+          "ATP +60"
+        ]
+      ],
+      "combat": [
+        "Blocks other players' Resta and Star Atomizer healing. You can still heal others and be revived.",
+        "Disables android natural HP regeneration. Monomate and Dimate work like Trimate."
+      ],
+      "obtain": [
+        "Anniversary acquisition is planned from September 18. A lower-rate normal quest source is planned after the event; do not treat it as available yet."
+      ],
+      "required": []
+    }
+  ],
+  "recipes": [
+    {
+      "id": "phantasmal-ore-syncesta",
+      "name": "Phantasmal Ore Syncesta",
+      "type": "Upgrade material",
+      "category": "Material",
+      "status": "planned",
+      "recipeComplete": true,
+      "checkedAt": "2026-09-10",
+      "source": "https://discord.com/channels/363947585154580480/441859383958437888/1538284098009964645",
+      "scheduleSource": "https://discord.com/channels/363947585154580480/441859383958437888/1547497207731585054",
+      "baseItem": "Double Cannon",
+      "resultItem": "Alternative Cannon",
+      "required": [
+        "Millennium Photon Core x20",
+        "Infernal Stone x1",
+        "Chaos Engine x1",
+        "Weapon Crystal Badge x30",
+        "Syncesta x2",
+        "Dark Matter x1",
+        "Proof of Sword-Saint x1"
+      ],
+      "obtain": [
+        "Planned after the 9th Anniversary. First obtain the ore using these materials, then combine the ore with Double Cannon to make Alternative Cannon. The base weapon is a separate requirement."
+      ]
+    },
+    {
+      "id": "astral-ore-iritista",
+      "name": "Astral Ore Iritista",
+      "type": "Upgrade material",
+      "category": "Material",
+      "status": "planned",
+      "recipeComplete": true,
+      "checkedAt": "2026-09-10",
+      "source": "https://discord.com/channels/363947585154580480/441859383958437888/1538284098009964645",
+      "scheduleSource": "https://discord.com/channels/363947585154580480/441859383958437888/1547497207731585054",
+      "baseItem": "Last Emperor",
+      "resultItem": "Astral Blade",
+      "required": [
+        "Millennium Photon Core x20",
+        "Hallowed Jack-O-Lantern x1",
+        "Primal Photon Sphere x1",
+        "Weapon Crystal Badge x30",
+        "Iritista x2",
+        "Red Crystal x1",
+        "Luminous Field x2"
+      ],
+      "obtain": [
+        "Planned after the 9th Anniversary. First obtain the ore using these materials, then combine the ore with Last Emperor to make Astral Blade. The base weapon is a separate requirement."
+      ]
+    }
+  ],
+  "materialRoutes": {
+    "millennium photon core": "economy_page.html#currency",
+    "weapon crystal badge": "economy_page.html#currency",
+    "secret ticket": "economy_page.html#currency",
+    "cladding of administrator": "starlight_raid.html#rewards",
+    "chaos engine": "item_page.html?item=chaos-engine",
+    "darkness photon sphere": "economy_page.html#currency",
+    "primal photon sphere": "economy_page.html#currency"
+  }
+}

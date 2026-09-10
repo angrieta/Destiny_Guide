@@ -6,6 +6,10 @@ export function normalizeSearch(value) {
 }
 
 const TERM_GROUPS = [
+    ["miracle chain", "miraclechain", "미라클 체인"],
+    ["soul eraser", "souleraser", "소울 이레이저"],
+    ["phantasmal ore syncesta", "신세스타 광석"],
+    ["astral ore iritista", "이리티스타 광석"],
     ["드랍","드롭","드랍테이블","드롭테이블","드랍표","드롭표","drop","drops","ドロップ","botin","butin"],
     ["데이터베이스","데이타베이스","아이템디비","디비","database","db","データベース"],
     ["아이템","장비","item","items","アイテム","装備","objet","objeto"],
@@ -100,7 +104,7 @@ export function searchIndex(index, rawQuery, translate=(key,fallback)=>fallback,
             results.push({
                 kind:drop?"drop":"item",name:row[0],meta:row[3],
                 badge:drop?translate("search.group.drops","Drops"):(row[5]?"Destiny":translate("search.group.database","Item DB"))+" · "+row[2],
-                url,exclusive:Boolean(row[5]),score:value+(drop?-15:row[5]?10:20)
+                url,exclusive:Boolean(row[5]),score:value+(drop?-15:row[5]?25:20)
             });
         }
     }

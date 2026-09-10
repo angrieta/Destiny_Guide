@@ -202,3 +202,14 @@ New surrounding surfaces may use global neutral tokens, but the stat bars, label
 ```
 
 Before adding CSS, check whether the shared tokens and components already cover the need. If a new pattern is genuinely reusable, add it to `styles/design-system.css` and document it here in the same change.
+
+
+## 2026-09-10 guide additions
+
+- The home page is a practical guide index. Retain game screenshots and semantic class colors; give search and new/returning/farming paths priority.
+- New home sections use `styles/home.css`; shared guide, status and planner components use `styles/design-system.css`.
+- Navigation groups are described in `data/navigation.json`. Keep static `header.html` and React navigation equivalent; the regression check validates links.
+- Compact navigation starts at 1439px in both CSS and JavaScript. Its interactive controls are at least 44px high and summaries use border-box sizing.
+- Recipe planners become vertically arranged material rows below 600px, with separate required/owned/missing labels. Do not force whole-page horizontal scrolling.
+- Use explicit text for available, planned, partial and known-issue states. Color supplements the text.
+- Motion remains limited to existing short control transitions. New guide sections do not animate on entry; shared reduced-motion behavior still applies.

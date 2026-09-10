@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { LanguageSwitcher, useI18n } from "../i18n/i18n";
 import { HappyHourHeader } from "./HappyHourHeader";
 import { SiteSearch } from "./SiteSearch";
+import navigation from "@/data/navigation.json";
 
 /**
  * 사이트 헤더 — React 라우트용.
@@ -32,7 +33,7 @@ export function SiteHeader({ active, theme, onThemeToggle }: SiteHeaderProps) {
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 1160px)");
+    const media = window.matchMedia("(max-width: 1439px)");
     const sync = () => {
       setCompactNavigation(media.matches);
       setMenuOpen(false);
@@ -73,11 +74,6 @@ export function SiteHeader({ active, theme, onThemeToggle }: SiteHeaderProps) {
   const current = (key: NonNullable<SiteHeaderProps["active"]>) =>
     (active === key ? "page" : undefined);
 
-  // include.js 는 현재 페이지를 담은 details 에 data-current 를 붙인다. 같게 맞춘다.
-  const guidesCurrent = active === "redeem" ? "true" : undefined;
-  const dataCurrent =
-    active === "drop-tables" || active === "database" || active === "calculator" ? "true" : undefined;
-
   return (
     <header
       ref={headerRef}
@@ -100,67 +96,17 @@ export function SiteHeader({ active, theme, onThemeToggle }: SiteHeaderProps) {
           inert={compactNavigation && !menuOpen}
           onClick={() => setMenuOpen(false)}
         >
-          <a href="../beginner_page.html" className="site_nav_link">{t("header.nav.beginner", "Beginner")}</a>
-          <a href="../item_page.html" className="site_nav_link">{t("header.nav.items", "Destiny Items")}</a>
-          <a href="../class_builds.html" className="site_nav_link">{t("header.nav.builds", "Class Builds")}</a>
-          <a href="../event_page.html" className="site_nav_link">{t("header.nav.events", "Events")}</a>
-          {/* header.html 과 같이 번역 키를 두지 않는다. 어느 언어에서도 Updates 로 쓴다. */}
-          <a href="../updates_page.html" className="site_nav_link">Updates</a>
-          <a href="../endgame_page.html" className="site_nav_link">{t("header.nav.endgame", "Endgame")}</a>
-
-          <details
-            className="site_nav_group"
-            data-current={guidesCurrent}
-            onClick={(event) => event.stopPropagation()}
-            onToggle={closeSiblingGroups}
-          >
-            <summary>{t("header.nav.guides", "Guides")}</summary>
-            <div className="site_nav_menu" onClick={() => setMenuOpen(false)}>
-              <a href="../quest_data_page.html">{t("header.nav.questData", "Quest Data")}</a>
-              <a href="../enhance_page.html">{t("header.nav.enhance", "Enhancement")}</a>
-              <a href="../recipe_page.html">{t("header.nav.recipes", "Item Combinations")}</a>
-              <a href="../sectionid_page.html">{t("header.nav.sectionid", "Section ID Hunting")}</a>
-              <a href="../economy_page.html">{t("header.nav.economy", "Shops")}</a>
-              <a href="../system_page.html">{t("header.nav.systems", "Systems")}</a>
-              <a href="../pb_guide.html">{t("header.nav.pb", "PB Management")}</a>
-              <a href="../dmc_page.html">{t("header.nav.dmc", "DMC Guide")}</a>
-              <a href="../Psobb_tool.html">{t("header.nav.tools", "Tools")}</a>
-              <a href="../player_tools.html">{t("lab.t092", "Farming tools")}</a>
-              <a href="../mods_page.html">{t("header.nav.mods", "Mods and Skins")}</a>
-              <a href="../roster_page.html">{t("header.nav.roster", "Name Directory")}</a>
-              <a href="../suggest_page.html">{t("header.nav.suggest", "Suggestions")}</a>
-              <a href="../redeem/" aria-current={current("redeem")}>{t("header.nav.redeem", "Token Redeem")}</a>
-            </div>
-          </details>
-
-          <details
-            className="site_nav_group"
-            onClick={(event) => event.stopPropagation()}
-            onToggle={closeSiblingGroups}
-          >
-            <summary>{t("header.nav.raids", "Raids")}</summary>
-            <div className="site_nav_menu" onClick={() => setMenuOpen(false)}>
-              <a href="../dn.html">{t("header.nav.dn", "Distorted Nightmare [RAID]")}</a>
-              <a href="../discontrolled_tower_raid.html">{t("header.nav.tower", "The Discontrolled Tower [RAID]")}</a>
-              <a href="../predator_raid.html">{t("header.nav.predator", "The Ravenous Predator [RAID]")}</a>
-              <a href="../tpd_page.html">{t("header.nav.tpd", "The Phantasmal Dimension")}</a>
-            </div>
-          </details>
-
-          <details
-            className="site_nav_group"
-            data-current={dataCurrent}
-            onClick={(event) => event.stopPropagation()}
-            onToggle={closeSiblingGroups}
-          >
-            <summary>{t("header.nav.data", "Data")}</summary>
-            <div className="site_nav_menu" onClick={() => setMenuOpen(false)}>
-              <a href="../drop-tables/" aria-current={current("drop-tables")}>{t("header.link.dropTables", "Drop Tables")}</a>
-              <a href="../database/" aria-current={current("database")}>{t("header.link.database", "Database")}</a>
-              <a href="../calculator/" aria-current={current("calculator")}>{t("header.link.calculator", "Damage Calculator")}</a>
-              <a href="../analytics_page.html">{t("header.link.analytics", "Usage")}</a>
-            </div>
-          </details>
+          {navigation.map(group => (
+            <details key={group.id} className="site_nav_group"
+              data-current={group.links.some(link => link.href === active + "/") ? "true" : undefined}
+              onClick={event => event.stopPropagation()} onToggle={closeSiblingGroups}>
+              <summary>{t("nav.group." + group.id, group.label)}</summary>
+              <div className="site_nav_menu" onClick={() => setMenuOpen(false)}>
+                {group.links.map(link => <a key={link.href} href={"../" + link.href}
+                  aria-current={link.href === active + "/" ? "page" : undefined}>{t(link.key, link.label)}</a>)}
+              </div>
+            </details>
+          ))}
 
           <div className="site_header_mobile_links">
             <a href="../redeem/" className="site_nav_link" aria-current={current("redeem")}>{t("header.nav.redeem", "Token Redeem")}</a>

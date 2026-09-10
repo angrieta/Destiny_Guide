@@ -369,19 +369,8 @@ const ITEM_DETAIL = {
     sections: [
         { title: '<p class="item_important"><span class="star_text">NEW</span><span class="important_text" data-i18n="bz.pop.importance">Item Importance</span></p>', body: [''] },
         { title: '<img class="rare_img" src="./images/common/redbox.png" alt="red box">Item Material', body: [
-            '<div class="Material_title">Infernal Stone x1</div>',
-            '<p class="Material_info">VR Test OMEGA: Oblivion</p>',
-            '<div class="Material_title">Fragments of Orb [Red] x2</div>',
-            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Redria_icon.png" alt="Redria"><img class="item_section" src="./images/common/section/32px-Pinkal_icon.png" alt="Pinkal"> Christmas Fiasco EP2 · Delbiter · 1/393</p>',
-            '<div class="Material_title">Fragments of Orb [Blue] x2</div>',
-            '<p class="Material_info"><img class="item_section" src="./images/common/section/32px-Skyly_icon.png" alt="Skyly"><img class="item_section" src="./images/common/section/32px-Bluefull_icon.png" alt="Bluefull"> Christmas Fiasco EP1 · Dark Bringer · 1/393</p>',
-            '<div class="Material_title">Reflex Gear x2</div>',
-            '<div class="Material_title">Ethereal Armor x1</div>',
-            '<div class="Material_title">Shadow Cloak x1</div>',
-            '<div class="Material_title">Proof of Sonic Team x1</div>',
-            '<div class="Material_title">Photon Booster x3</div>',
-            '<div class="Material_title">ADEPT x2</div>',
-            '<div class="Material_title">Syncesta x3</div>',
+            '<p data-i18n="verified.partial">Partial material list. Confirm the missing materials with the NPC before farming.</p>',
+            '<a class="guide_action" href="./recipe_page.html?target=matrix-scope#planner" data-i18n="planner.open">Plan materials &amp; farming</a>',
         ] },
     ]
     },
@@ -437,3 +426,10 @@ const ITEM_DETAIL = {
         ]
     },
 };
+
+// This home popup shares its quantities with the catalog and planner.
+{
+  const matrix = window.DestinyVerifiedContent?.items.find(item => item.id === "matrix-scope");
+  if (matrix) ITEM_DETAIL.MATRIX_SCOPE.sections[1].body.unshift(...matrix.required.map(value =>
+    '<div class="Material_title">' + value.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</div>'));
+}

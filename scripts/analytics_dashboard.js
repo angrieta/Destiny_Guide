@@ -99,6 +99,8 @@
                 fetch(API_BASE + "/api/analytics/summary?days=" + days,{cache:"no-store",mode:"cors",credentials:"omit"}),
                 catalog ? Promise.resolve(null) : fetch("./data/content-catalog.json",{cache:"no-cache"})
             ]);
+            if (id !== requestId) return;
+            if (responses[0].status === 404) { showStatus("usage.notEnabled"); return; }
             if (!responses[0].ok) throw new Error("api");
             var next = await responses[0].json();
             var nextCatalog = responses[1] ? await responses[1].json() : catalog;

@@ -11,6 +11,8 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
+import { readDestinyCatalog } from "./lib/catalog-data.mjs";
+
 import { FORUM_COMBO_GROUPS } from "./forum-combos.data.mjs";
 
 const projectRoot = process.cwd();
@@ -25,26 +27,6 @@ const normalize = (value) =>
 
 /* ── 1. 조합 레시피 ───────────────────────────────────────────────────── */
 
-/** `key: [ ... ]` 의 대괄호 안쪽을 통째로 잘라낸다. 중첩 대괄호도 센다. */
-function bracketBody(text, key) {
-  const at = text.indexOf(key);
-  if (at < 0) return "";
-  const tail = text.slice(at);
-  const open = tail.indexOf("[");
-  if (open < 0) return "";
-  let depth = 0;
-  for (let i = open; i < tail.length; i += 1) {
-    if (tail[i] === "[") depth += 1;
-    else if (tail[i] === "]") {
-      depth -= 1;
-      if (depth === 0) return tail.slice(open + 1, i);
-    }
-  }
-  return "";
-}
-
-const STRINGS = /"([^"]*)"/g;
-
 /** "Millennium Photon Core x25" -> { item, qty } */
 function parseIngredient(raw) {
   const text = raw.replace(/\\u2014/g, "—").trim();
@@ -54,29 +36,17 @@ function parseIngredient(raw) {
 }
 
 async function buildRecipes() {
-  const source = await readFile(resolve(projectRoot, "scripts/destiny_catalog.js"), "utf8");
-  const region = source.slice(source.indexOf("const catalogItems = ["), source.indexOf("const normalizeName"));
-  const idPattern = /id:\s*"([^"]+)"/g;
-
+  const catalog = await readDestinyCatalog();
+  const verified = JSON.parse(await readFile(resolve(projectRoot, "data/verified-content.json"), "utf8"));
   const recipes = [];
   const obtainNotes = [];
-  let match;
-
-  while ((match = idPattern.exec(region))) {
-    // 항목 하나가 stats/combat/obtain/required 까지 포함해 길다. 넉넉히 잘라 읽는다.
-    const block = region.slice(match.index, match.index + 2600);
-    const name = block.match(/\n\s*name:\s*"([^"]*)"/)?.[1];
-    if (!name) continue;
-
-    const id = match[1];
-    const category = block.match(/\n\s*category:\s*"([^"]*)"/)?.[1] ?? "";
-    const type = block.match(/\n\s*type:\s*"([^"]*)"/)?.[1] ?? "";
-    const required = [...bracketBody(block, "required:").matchAll(STRINGS)].map((x) => x[1]);
-    const obtain = [...bracketBody(block, "obtain:").matchAll(STRINGS)].map((x) => x[1].replace(/\\u2014/g, "—"));
-
+  const combinationNames = new Set(FORUM_COMBO_GROUPS.flatMap(group => group.combos.map(combo => normalize(combo.result))));
+  for (const item of [...catalog, ...verified.recipes]) {
+    const { id, name, category, type, obtain = [], required = [], notes = [], status, source, scheduleSource, checkedAt, recipeComplete, baseItem, resultItem } = item;
     if (required.length) {
-      recipes.push({ id, name, category, type, ingredients: required.map(parseIngredient), obtain });
-    } else if (obtain.some((line) => /combin|trade|exchange|blueprint|craft|redeem/i.test(line))) {
+      recipes.push({ id, name, category, type, ingredients: required.map(parseIngredient), obtain,
+        notes, status, source, scheduleSource, checkedAt, recipeComplete: recipeComplete !== false && !required.some(value => /^Rare (?:Tool|Unit|item)/i.test(value)) && !obtain.some(value => /cut off|further requirements/i.test(value)), baseItem, resultItem });
+    } else if (!combinationNames.has(normalize(name)) && obtain.some(line => /trade|exchange|NPC|shop|redeem/i.test(line))) {
       obtainNotes.push({ id, name, category, type, obtain });
     }
   }
@@ -88,6 +58,7 @@ async function buildRecipes() {
     for (const ingredient of recipe.ingredients) {
       const key = normalize(ingredient.item);
       (usedIn[key] = usedIn[key] || { label: ingredient.item, results: [] }).results.push({
+        id: recipe.id,
         name: recipe.name,
         qty: ingredient.qty,
       });
@@ -115,7 +86,8 @@ async function buildRecipes() {
   }
 
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
+    materialRoutes: verified.materialRoutes || {},
     note:
       "서버 자체 아이템은 scripts/destiny_catalog.js 의 required / obtain 필드에서 뽑았다. 원본이 " +
       "서버 공지 이미지라 재료 목록이 잘려 있는 항목이 있다(IGNIS ENGINE 등). 원작 PSOBB 와 서버 " +

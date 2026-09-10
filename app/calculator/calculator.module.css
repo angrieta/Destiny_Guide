@@ -109,6 +109,10 @@
 .results h4 { margin: 22px 0 10px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
 .subhead { margin-top: 24px !important; }
 .hint { margin: 0 0 12px; color: var(--muted); font-size: 12.5px; line-height: 1.6; }
+.modeNote { padding: 12px; margin-bottom: 12px; border-left: 3px solid var(--accent); background: var(--dg-surface-raised); font-size: 14px; line-height: 1.6; }
+.modeChoice { display: flex !important; align-items: center; gap: 10px; margin: 12px 0; font-size: 14px; line-height: 1.5; }
+.modeChoice input { appearance: auto; width: 20px !important; min-height: 20px !important; height: 20px; flex: 0 0 20px; accent-color: var(--accent); }
+.panel input:disabled { opacity: .55; cursor: not-allowed; }
 
 /* ---------- Inputs ---------- */
 

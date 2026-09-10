@@ -190,6 +190,22 @@
     function render() {
       if (!data) return;
       renderForum();
+        var notes = document.querySelector("[data-obtain-mount]");
+        if (notes && data.obtainNotes.length) {
+          notes.innerHTML =
+            '<div class="fm_reverse">' +
+            data.obtainNotes
+              .map(function (entry) {
+                return (
+                  '<div class="fm_rev_item">' +
+                  '<h4 class="fm_rev_name">' + escapeHtml(entry.name) + "</h4>" +
+                  '<p class="fm_rev_uses">' + escapeHtml((entry.obtain || []).map(function (line, i) { return t("cat." + entry.id + ".obtain." + i, line); }).join(" ")) + "</p></div>"
+                );
+              })
+              .join("") +
+            "</div>";
+        }
+
       var query = normalize(searchEl ? searchEl.value : "");
 
       // 검색어는 결과물 이름과 재료 이름 양쪽에 걸린다.
@@ -240,16 +256,19 @@
                 .join("");
 
               var obtain = (recipe.obtain || []).length
-                ? '<p class="fm_obtain">' + escapeHtml(recipe.obtain.join(" ")) + "</p>"
+                ? '<p class="fm_obtain">' + escapeHtml(recipe.obtain.map(function (line, i) { return t("cat." + recipe.id + ".obtain." + i, line); }).join(" ")) + "</p>"
                 : "";
 
               return (
                 '<article class="fm_card">' +
                 '<div class="fm_card_head">' +
-                '<h3 class="fm_card_name">' + escapeHtml(recipe.name) + "</h3>" +
+                '<h3 class="fm_card_name">' + '<a href="./recipe_page.html?target=' + encodeURIComponent(recipe.id) + '#planner">' + escapeHtml(recipe.name) + "</a></h3>" +
                 (recipe.type ? '<span class="fm_badge">' + escapeHtml(recipe.type) + "</span>" : "") +
                 '<span class="fm_badge">' + recipe.ingredients.length + " " + escapeHtml(t("fm.parts", "parts")) + "</span>" +
                 "</div>" +
+                (recipe.status === "planned" ? '<p class="verified_note">' + escapeHtml(t("verified.planned", "Announced · not yet available")) + "</p>" : "") +
+                (recipe.status === "issue" ? '<p class="verified_note" data-status="issue">' + escapeHtml(t("verified.issue", "Known issue") + ': ' + (recipe.notes || []).map(function (line, i) { return t('cat.' + recipe.id + '.notes.' + i, line); }).join(' ')) + "</p>" : "") +
+                (recipe.recipeComplete === false ? '<p class="verified_note">' + escapeHtml(t("verified.partial", "Partial material list. Confirm the missing materials with the NPC before farming.")) + "</p>" : "") +
                 rows +
                 obtain +
                 "</article>"
@@ -287,7 +306,7 @@
                 '<p class="fm_rev_uses">' +
                 entry.results
                   .map(function (use) {
-                    return "<strong>" + escapeHtml(use.name) + "</strong> ×" + use.qty;
+                    return '<a href="./recipe_page.html?target=' + encodeURIComponent(use.id) + '#planner">' + escapeHtml(use.name) + "</a> ×" + use.qty;
                   })
                   .join("<br>") +
                 "</p></div>"
@@ -307,27 +326,15 @@
       })
       .then(function (payload) {
         data = payload;
-        var notes = document.querySelector("[data-obtain-mount]");
-        if (notes && payload.obtainNotes.length) {
-          notes.innerHTML =
-            '<div class="fm_reverse">' +
-            payload.obtainNotes
-              .map(function (entry) {
-                return (
-                  '<div class="fm_rev_item">' +
-                  '<h4 class="fm_rev_name">' + escapeHtml(entry.name) + "</h4>" +
-                  '<p class="fm_rev_uses">' + escapeHtml((entry.obtain || []).join(" ")) + "</p></div>"
-                );
-              })
-              .join("") +
-            "</div>";
-        }
+        document.dispatchEvent(new CustomEvent("destiny-recipes-ready", { detail: payload }));
         render();
         document.addEventListener("destiny-lang-change", render);
       })
       .catch(function (error) {
         console.warn("[farm] 레시피를 불러오지 못했습니다.", error);
         failed(mount, "fm.loadFail", "The data could not be loaded.");
+        var planner = document.querySelector('[data-planner]');
+        if (planner) failed(planner, "fm.loadFail", "The data could not be loaded.");
       });
   }
 
@@ -478,6 +485,7 @@
       })
       .then(function (payload) {
         data = payload;
+        document.dispatchEvent(new CustomEvent("destiny-recipes-ready", { detail: payload }));
         render();
         document.addEventListener("destiny-lang-change", render);
       })

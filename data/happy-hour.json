@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
-  "source": "Destiny Discord app",
+  "source": "Discord announcement observation; future windows are estimates",
   "announcement": "Scheduled Happy Hours active! 179 minutes remaining.",
-  "observedAt": "2026-08-21T06:00:00.000Z",
+  "observedAt": "2026-09-10T06:30:00.000Z",
   "remainingMinutes": 179,
-  "windowStart": "2026-08-21T05:59:00.000Z",
-  "windowEnd": "2026-08-21T08:59:00.000Z",
+  "windowStart": "2026-09-10T06:30:00.000Z",
+  "windowEnd": "2026-09-10T09:30:00.000Z",
   "cycleMinutes": 930,
   "durationMinutes": 180,
-  "updatedAt": "2026-08-21T06:00:00.000Z"
+  "updatedAt": "2026-09-10T06:30:00.000Z",
+  "sourceUrl": "https://discord.com/channels/363947585154580480/368276495136718848"
 }

@@ -83,6 +83,8 @@ assert.equal(classRow.count,3); assert.equal(classRow.previousCount,4); assert.e
 assert.equal(summary.signalsStart,day(0));
 console.log("PASS: Worker validation, origin rejection, SQLite totals, comparison and >50 paths");
 
+if (process.argv.includes("--data-only")) process.exit(0);
+
 const browser=await chromium.launch({headless:true});
 try {
     const context=await browser.newContext({viewport:{width:1440,height:1000}});

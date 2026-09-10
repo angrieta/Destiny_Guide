@@ -87,6 +87,7 @@ function setupHappyHourHeader(mount) {
         }
 
         widget.dataset.state = state.active ? "active" : "upcoming";
+        widget.title = translate("header.hh.estimate", "Estimated schedule; confirm in game with /hh.");
         label.textContent = state.active ? "HH" : "NEXT HH";
         time.textContent = formatHappyHourClock(state.target - Date.now());
         widget.setAttribute("aria-label", state.active
@@ -123,7 +124,7 @@ function setupSiteNavigation(mount) {
     const toggle = mount.querySelector(".site_nav_toggle");
     const navigation = mount.querySelector(".site_nav_panel");
     if (!header || !toggle || !navigation) return;
-    const compactNavigation = window.matchMedia("(max-width: 1160px)");
+    const compactNavigation = window.matchMedia("(max-width: 1439px)");
 
     const setMenuOpen = (open) => {
         header.dataset.menuOpen = String(open);

@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="./styles/guide.css">
     <link rel="stylesheet" href="./styles/farm.css">
     <script src="./scripts/i18n.js"></script>
-    <script src="./scripts/farm.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="./scripts/farm.js" defer></script>
+    <script src="./scripts/material-planner.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <link rel="icon" href="./images/common/favicon.jpg" type="image/x-icon">
     <link rel="stylesheet" href="./styles/design-system.css">
@@ -28,12 +29,17 @@
 <main class="g_page">
     <div class="g_head">
         <h2><span data-i18n="fm.r.heading">Item Combinations</span></h2>
-        <p class="g_lead" data-i18n="fm.r.lead">The item database lists what a combined item does, but not what it costs. These are the recipes with their full material lists, plus the reverse question: you are holding a material, so what is it for? Every item has to be at max grind before it can be combined.</p>
+        <p class="g_lead" data-i18n="fm.r.lead">Choose an item, enter the materials you own, and check what is still missing. Weapon combinations require max grind; follow each recipe’s own conditions for NPC trades and other items.</p>
         <p class="g_source" data-i18n="fm.r.source">Source: the material lists published with each item announcement. A few were posted as images with the list cut off, and those are marked in the card.</p>
     </div>
 
+    <section class="g_sec" id="planner">
+        <h3 data-i18n="planner.open">Plan materials &amp; farming</h3>
+        <div class="material_planner" data-planner><p data-i18n="fm.loading">Loading…</p></div>
+    </section>
+    <label class="sr_only" for="recipe-search" data-i18n="fm.r.search">Search a result or a material…</label>
     <div class="fm_controls">
-        <input type="text" class="fm_search" data-recipe-search
+        <input type="text" class="fm_search" id="recipe-search" data-recipe-search
                placeholder="Search a result or a material…" data-i18n-placeholder="fm.r.search">
         <span class="fm_count" data-recipe-count>—</span>
     </div>
