@@ -50,8 +50,10 @@ export const BLOCK_TOKENS = 10;
 /** Waived when the same weapon also gains percentage, per the donation list. */
 export const SWAP_TOKENS = 5;
 export const MAX_ATTRIBUTE = 100;
-/** Crates roll higher, but redeeming tops out here. */
+/** How far redeeming can raise hit. A drop or a crate can already be higher. */
 export const MAX_HIT = 80;
+/** Hit a weapon can carry at all, whatever it came from. */
+export const HIT_HARD_CAP = 100;
 /** A weapon carries three percentages, whichever types they happen to be. */
 export const MAX_SLOTS = 3;
 
@@ -211,7 +213,12 @@ export function planOrder(rows: OrderRow[]): OrderPlan {
     if (ATTR_KEYS.some((key) => row.after[key] > MAX_ATTRIBUTE)) {
       issues.push({ level: "error", message: "attributeCap" });
     }
-    if (row.after.hit > MAX_HIT) {
+    // Redeeming stops at 80, but a weapon that already dropped above it keeps what
+    // it has: the order only has to leave that hit where it was, not buy it.
+    const hitCeiling = Math.min(Math.max(MAX_HIT, row.before.hit), HIT_HARD_CAP);
+    if (row.before.hit > HIT_HARD_CAP || row.after.hit > HIT_HARD_CAP) {
+      issues.push({ level: "error", message: "hitHardCap" });
+    } else if (row.after.hit > hitCeiling) {
       issues.push({ level: "error", message: "hitCap" });
     }
     // The two conversions the guide rules out outright.
@@ -303,8 +310,10 @@ export function planOrder(rows: OrderRow[]): OrderPlan {
 }
 
 /**
- * The order text in the format staff ask for. The total line is only added for
- * three weapons or more, which is where the guide says it becomes required.
+ * The order text in the format staff ask for. Any order touching more than one
+ * weapon gets the total line: staff read the per-weapon costs against a total,
+ * and adding two 40DT rows by hand is exactly the arithmetic they asked the tool
+ * to do. Hit is only written when the order buys some, the same way a row is.
  */
 export function buildMessage(plan: OrderPlan, guildCard: string) {
   const lines = plan.changedRows.map((row) => {
@@ -313,14 +322,17 @@ export function buildMessage(plan: OrderPlan, guildCard: string) {
     return `${row.display} ${formatPercents(row.row.before)} --> ${formatPercents(row.row.after)}${note}${cost}`;
   });
 
-  if (plan.changedRows.length >= 3) {
-    lines.push(
-      `Total Attribute:+${plan.attributeAdded}% | Total Hit:+${plan.hitAdded}% | Total DTs:${plan.tokens}`,
-    );
-  }
-
   const card = guildCard.trim();
-  if (card) lines.push(`GC:${card}`);
+
+  if (plan.changedRows.length >= 2) {
+    const parts = [`Total Attribute:+${plan.attributeAdded}%`];
+    if (plan.hitAdded > 0) parts.push(`Total Hit:+${plan.hitAdded}%`);
+    parts.push(`Total DTs:${plan.tokens}`);
+    const total = parts.join(" | ");
+    lines.push(card ? `${total} GC:${card}` : total);
+  } else if (card) {
+    lines.push(`GC:${card}`);
+  }
 
   return ["```diff", lines.join("\n\n"), "```"].join("\n");
 }

@@ -21,10 +21,11 @@ export const MAX_BUFF_LEVEL = 35;
  *               DFP  877 -> 1352   ( 877 * 1.542 = 1352.3)
  *
  * Deband scales the whole DFP including armour and shield. Shifta reaches the
- * character's ATP and the weapon's ATP range, but not the weapon's floor and not
- * the grind - the measured weapon was Celestial Fusion +30, a fixed 320-320, so
- * its range was 0 and it read as if untouched. That part is still unconfirmed on
- * this server; a variable-ATP weapon such as AGITO 200-500 would settle it.
+ * character's ATP - base, materials, mag and units - and the weapon's ATP range,
+ * but not the weapon's floor, not the grind, and not the ATP an armour or shield
+ * carries. Staff confirmed the frame and shield part on the suggestion board, and
+ * confirmed the weapon-range scaling at the same time; the units are what push a
+ * character's ATP past the class maximum, so they stay inside the scaled part.
  */
 export function buffPercent(level: number) {
   if (level <= 0) return 0;
@@ -100,9 +101,11 @@ export type Totals = {
     debandPercent: number;
     ATP: number;
     DFP: number;
-    /** The part of ATP Shifta acts on, i.e. everything but the weapon. */
+    /** The part of ATP Shifta acts on: base, materials, mag and units. */
     atpCharacter: number;
     atpWeapon: number;
+    /** ATP from the armour and shield, which Shifta leaves alone. */
+    atpDefenseGear: number;
     /** The scaled slice of the weapon: max minus min. */
     atpWeaponRange: number;
     grindBonus: number;
@@ -175,6 +178,8 @@ export function computeTotals(
     buffed: null,
   };
   let atpFromWeapon = 0;
+  /** ATP carried by the armour and shield. Shifta does not reach it. */
+  let atpFromDefenseGear = 0;
   /** max - min of the weapon's ATP. Shifta scales this part, unlike the rest of the weapon. */
   let weaponRange = 0;
   let grindBonus = 0;
@@ -217,6 +222,8 @@ export function computeTotals(
     }
     for (const [stat, value] of Object.entries(item.resist)) totals.resists[stat as ResistKey] += value;
     addModifiers(totals, item.modifiers, item.name, stats);
+    // Read after the modifiers so a frame that only says "Boosts ATP" counts too.
+    if (slotLabel === "armor" || slotLabel === "shield") atpFromDefenseGear += stats.ATP ?? 0;
     totals.contributions.push({ label: item.name, slot: slotLabel, stats });
     collectWarnings(totals, item, playerClass, level);
   }
@@ -266,10 +273,11 @@ export function computeTotals(
   if (buffs && (buffs.shifta > 0 || buffs.deband > 0)) {
     const shiftaPercent = buffPercent(buffs.shifta);
     const debandPercent = buffPercent(buffs.deband);
-    const atpCharacter = totals.stats.ATP - atpFromWeapon;
-    // Shifta reaches the character's ATP and the weapon's ATP range, but not the
-    // weapon's floor and not the grind. With a fixed-ATP weapon the range is 0,
-    // which is why Celestial Fusion +30 measured as if the weapon were untouched.
+    const atpCharacter = totals.stats.ATP - atpFromWeapon - atpFromDefenseGear;
+    // Shifta reaches the character's ATP - units included - and the weapon's ATP
+    // range, but not the weapon's floor, not the grind, and not the ATP on an
+    // armour or shield. With a fixed-ATP weapon the range is 0, which is why
+    // Celestial Fusion +30 measured as if the weapon were untouched.
     const weaponFloor = atpFromWeapon - weaponRange;
     totals.buffed = {
       shifta: buffs.shifta,
@@ -278,10 +286,14 @@ export function computeTotals(
       debandPercent,
       atpCharacter,
       atpWeapon: atpFromWeapon,
+      atpDefenseGear: atpFromDefenseGear,
       atpWeaponRange: weaponRange,
       grindBonus,
       ATP:
-        applyBuff(atpCharacter, shiftaPercent) + weaponFloor + applyBuff(weaponRange, shiftaPercent),
+        applyBuff(atpCharacter, shiftaPercent) +
+        atpFromDefenseGear +
+        weaponFloor +
+        applyBuff(weaponRange, shiftaPercent),
       DFP: applyBuff(totals.stats.DFP, debandPercent),
     };
   }

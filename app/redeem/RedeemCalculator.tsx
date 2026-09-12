@@ -9,6 +9,7 @@ import {
   ATTRIBUTE_BLOCK,
   BLOCK_TOKENS,
   HIT_BLOCK,
+  HIT_HARD_CAP,
   MAX_ATTRIBUTE,
   MAX_HIT,
   MAX_SLOTS,
@@ -125,8 +126,12 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
       level: "error",
       text: t(
         "redeem.issue.hitCap",
-        `Redeeming adds hit up to ${MAX_HIT}%. Higher hit only comes from a drop or a crate.`,
+        `Redeeming adds hit up to ${MAX_HIT}%. A weapon that already carries more keeps what it has, but the order cannot raise it further.`,
       ),
+    },
+    hitHardCap: {
+      level: "error",
+      text: t("redeem.issue.hitHardCap", `Hit cannot go past ${HIT_HARD_CAP}%.`),
     },
     hitToAttribute: {
       level: "error",
@@ -183,7 +188,7 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
             <input
               type="number"
               min={0}
-              max={key === "hit" ? MAX_HIT : MAX_ATTRIBUTE}
+              max={key === "hit" ? HIT_HARD_CAP : MAX_ATTRIBUTE}
               step={5}
               value={row[side][key]}
               onFocus={(event) => event.currentTarget.select()}
@@ -340,7 +345,7 @@ export default function RedeemCalculator({ weaponNames }: { weaponNames: string[
             <li>
               {t(
                 "redeem.rule.caps",
-                `Redeeming reaches ${MAX_ATTRIBUTE}% on an attribute and ${MAX_HIT}% on hit.`,
+                `Redeeming reaches ${MAX_ATTRIBUTE}% on an attribute and ${MAX_HIT}% on hit. Hit already above ${MAX_HIT}% stays as it is.`,
               )}
             </li>
           </ul>

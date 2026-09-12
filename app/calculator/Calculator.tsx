@@ -196,6 +196,10 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
   }, [payload.classes]);
 
   const currentClass = payload.classes.find((entry) => entry.id === playerClass) ?? payload.classes[0];
+  /** ATP the equipment contributes, which sits on top of the class maximum. */
+  const gearAtp = totals.contributions
+    .filter((entry) => entry.slot !== "base" && entry.slot !== "mag" && entry.slot !== "materials")
+    .reduce((sum, entry) => sum + (entry.stats.ATP ?? 0), 0);
   const materialTotal = MATERIAL_KEYS.reduce((sum, key) => sum + materials[key], 0);
   const hasSelection =
     Object.values(queries).some(Boolean) || Object.values(base).some(Boolean) || materialTotal > 0 ||
@@ -434,6 +438,16 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
             ))}
           </dl>
 
+          {/* Units such as V503 or Immortal/Power take ATP past the class maximum,
+              which is correct rather than an error - say so before it reads as one. */}
+          {gearAtp > 0 && (currentClass.max.ATP ?? 0) > 0 && (
+            <p className={styles.magNote}>
+              {t("calc.gearOverMax", "Class max ATP is {max}. Equipment adds {gear} on top of it, so units like V503 or Immortal/Power can take the total past that maximum.")
+                .replace("{max}", (currentClass.max.ATP ?? 0).toLocaleString("en-US"))
+                .replace("{gear}", gearAtp.toLocaleString("en-US"))}
+            </p>
+          )}
+
           {totals.buffed && (
             <>
               <h4>
@@ -456,10 +470,19 @@ export default function Calculator({ payload }: { payload: CalculatorPayload }) 
                   </dd>
                 </div>
               </dl>
-              {totals.buffed.atpWeapon > 0 && (
+              {(totals.buffed.atpWeapon > 0 || totals.buffed.atpDefenseGear > 0) && (
                 <p className={styles.magNote}>
-                  {t("calc.shiftaSkipsWeapon", "Shifta scales character ATP")} {totals.buffed.atpCharacter} ATP,{" "}
-                  {t("calc.shiftaSkipsWeaponTail", "weapon base ATP is separate")} {totals.buffed.atpWeapon}.{" "}
+                  {t("calc.shiftaScales", "Shifta scales character ATP - base, materials, MAG and units -")}{" "}
+                  {totals.buffed.atpCharacter.toLocaleString("en-US")}
+                  {totals.buffed.atpWeaponRange > 0 &&
+                    `, ${t("calc.shiftaWeaponRange", "and the weapon's ATP range")} ${totals.buffed.atpWeaponRange}`}
+                  .{" "}
+                  {totals.buffed.atpDefenseGear > 0 &&
+                    `${t("calc.shiftaSkipsGear", "Armor and shield ATP is left alone:")} ${totals.buffed.atpDefenseGear}. `}
+                  {totals.buffed.atpWeapon > 0 &&
+                    `${t("calc.shiftaSkipsWeaponFloor", "Weapon base ATP is left alone:")} ${(
+                      totals.buffed.atpWeapon - totals.buffed.atpWeaponRange
+                    ).toLocaleString("en-US")}. `}
                   {t("calc.debandWhole", "Deband scales total DFP.")}
                 </p>
               )}

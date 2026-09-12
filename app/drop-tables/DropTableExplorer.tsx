@@ -416,7 +416,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
       <section className={styles.matrixHero}>
         <p className={styles.eyebrow}>{t("dt.hero.eyebrow", "DESTINY PSOBB DATABASE")}</p>
         <h1>{t("dt.hero.title", "Drop Tables")}</h1>
-        <p>{t("dt.hero.lead", "Choose a difficulty, then read each monster across the ten Section IDs. Search results are highlighted and summarized above the original table layout.")}</p>
+        <p>{t("dt.hero.lead", "Choose a difficulty, then read each monster across the ten Section IDs. A search filters the table first, and the full item summary follows underneath it.")}</p>
       </section>
 
       <section data-usage-id="drop-explorer" className={`${styles.explorer} ${showQuickControls ? styles.explorerQuickOpen : ""}`}>
@@ -459,50 +459,14 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
           </div>
         </div>
 
-        {(itemNeedle || enemyNeedle) && (
-          <section className={styles.searchResults} aria-labelledby="drop-search-results">
-            <header>
-              <div><span>{t("dt.results.scope", "All difficulties")}</span><h2 id="drop-search-results">{t("dt.results.title", "Related item information")}</h2></div>
-              <strong>{t("dt.results.count", "{n} drops").replace("{n}", searchResults.length.toLocaleString())}</strong>
-            </header>
-            {resultGroups.length > 0 ? (
-              <div className={styles.resultItemGrid}>
-                {resultGroups.map((group) => (
-                  <article className={styles.resultItemCard} key={normalize(group.item)}>
-                    <div className={styles.resultItemTitle}>
-                      <span className={`${styles.typeIcon} ${styles[`type${group.itemType}`]}`}>{group.itemType.slice(0, 1)}</span>
-                      <div><h3>{group.item}</h3><p>{group.itemType} · {(group.records.length === 1 ? t("dt.card.location", "{n} location") : t("dt.card.locations", "{n} locations")).replace("{n}", String(group.records.length))}</p></div>
-                    </div>
-                    <div className={styles.resultLocations}>
-                      {group.records.map((record) => {
-                        const multiplier = combinedDropMultiplier(record.difficulty);
-                        const adjustedDenominator = getAdjustedDenominator(record.denominator, multiplier);
-                        const plannedAttempts = farmTargetsPerRun * farmRuns;
-                        return (
-                          <div key={record.id}>
-                            <span className={`${styles.sectionDot} ${styles[`section${record.sectionId}`]}`} />
-                            <strong>{record.difficulty} · {record.sectionId}</strong>
-                            <span>{record.enemy} · EP {record.episode} {record.area} · DAR {formatDar(record.dar * partyDarMultiplier)}% · x{serverDropMultiplier(record.difficulty)}</span>
-                            <b>
-                              {formatRate(record.rate, record.denominator, multiplier) ?? t("dt.rate.special", "Special")}
-                              <small>{formatChance(adjustedDenominator)}</small>
-                              {adjustedDenominator && <em>{t("dt.plan.chance", "{runs} runs: {chance}").replace("{runs}", farmRuns.toLocaleString()).replace("{chance}", formatCumulativeChance(adjustedDenominator, plannedAttempts))}</em>}
-                            </b>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </article>
-                ))}
-              </div>
-            ) : (
-              <div className={styles.empty}><span>⌕</span><h2>{t("dt.empty.title", "No drops found")}</h2><p>{t("dt.empty.note", "Try a broader item or monster name.")}</p><button type="button" onClick={resetFilters}>{t("dt.empty.reset", "Reset all filters")}</button></div>
-            )}
-          </section>
-        )}
-
         <div className={styles.matrixSummary}>
           <span dangerouslySetInnerHTML={{ __html: t("dt.summary.rows", "<strong>{n}</strong> monster rows").replace("{n}", String(visibleRows.length)) }} />
+          {(itemNeedle || enemyNeedle) && (
+            // The table comes first now, so the results below need a way up to them.
+            <a href="#drop-search-results">
+              {t("dt.summary.jump", "Related item information ({n}) ↓").replace("{n}", searchResults.length.toLocaleString())}
+            </a>
+          )}
         </div>
 
         {EPISODES.filter((value) => selectedEpisode === null || value === selectedEpisode).map((episodeNumber) => {
@@ -567,6 +531,48 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
             </section>
           );
         })}
+
+        {(itemNeedle || enemyNeedle) && (
+          <section className={styles.searchResults} aria-labelledby="drop-search-results">
+            <header>
+              <div><span>{t("dt.results.scope", "All difficulties")}</span><h2 id="drop-search-results">{t("dt.results.title", "Related item information")}</h2></div>
+              <strong>{t("dt.results.count", "{n} drops").replace("{n}", searchResults.length.toLocaleString())}</strong>
+            </header>
+            {resultGroups.length > 0 ? (
+              <div className={styles.resultItemGrid}>
+                {resultGroups.map((group) => (
+                  <article className={styles.resultItemCard} key={normalize(group.item)}>
+                    <div className={styles.resultItemTitle}>
+                      <span className={`${styles.typeIcon} ${styles[`type${group.itemType}`]}`}>{group.itemType.slice(0, 1)}</span>
+                      <div><h3>{group.item}</h3><p>{group.itemType} · {(group.records.length === 1 ? t("dt.card.location", "{n} location") : t("dt.card.locations", "{n} locations")).replace("{n}", String(group.records.length))}</p></div>
+                    </div>
+                    <div className={styles.resultLocations}>
+                      {group.records.map((record) => {
+                        const multiplier = combinedDropMultiplier(record.difficulty);
+                        const adjustedDenominator = getAdjustedDenominator(record.denominator, multiplier);
+                        const plannedAttempts = farmTargetsPerRun * farmRuns;
+                        return (
+                          <div key={record.id}>
+                            <span className={`${styles.sectionDot} ${styles[`section${record.sectionId}`]}`} />
+                            <strong>{record.difficulty} · {record.sectionId}</strong>
+                            <span>{record.enemy} · EP {record.episode} {record.area} · DAR {formatDar(record.dar * partyDarMultiplier)}% · x{serverDropMultiplier(record.difficulty)}</span>
+                            <b>
+                              {formatRate(record.rate, record.denominator, multiplier) ?? t("dt.rate.special", "Special")}
+                              <small>{formatChance(adjustedDenominator)}</small>
+                              {adjustedDenominator && <em>{t("dt.plan.chance", "{runs} runs: {chance}").replace("{runs}", farmRuns.toLocaleString()).replace("{chance}", formatCumulativeChance(adjustedDenominator, plannedAttempts))}</em>}
+                            </b>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <div className={styles.empty}><span>⌕</span><h2>{t("dt.empty.title", "No drops found")}</h2><p>{t("dt.empty.note", "Try a broader item or monster name.")}</p><button type="button" onClick={resetFilters}>{t("dt.empty.reset", "Reset all filters")}</button></div>
+            )}
+          </section>
+        )}
       </section>
 
       {showQuickControls && (
