@@ -476,8 +476,9 @@ function initCharacterPopup() {
   const closeCharacterPopup = characterHistory ? () => characterHistory.close() : hideCharacterPopup
   area.addEventListener("click", event => {
     const card = event.target.closest(".swiper-slide > a")
-    if (!card || !area.contains(card) || !bestSwiperInstance.allowClick) return
+    if (!card || !area.contains(card)) return
     event.preventDefault()
+    if (event.detail > 0 && bestSwiperInstance && !bestSwiperInstance.allowClick) return
     if (characterHistory) characterHistory.open(card)
     else showCharacterPopup(card)
   })
@@ -500,11 +501,10 @@ if (bestSlideArea) {
     })
     .then(html => {
       bestSlideArea.innerHTML = html
-      // 조각을 넣은 뒤 번역을 적용한다. 이걸 빼면 카드가 영어로 남는다.
-      // hydrate 가 끝난 뒤에 초기화해야 팝업 라벨까지 번역된 상태로 잡힌다.
+      // 번역을 기다리는 동안에도 보이는 카드는 바로 열 수 있어야 한다.
+      initCharacterPopup()
       Promise.resolve(window.DestinyI18n?.hydrate(bestSlideArea)).then(() => {
         initBestSwiper()
-        initCharacterPopup()
       })
     })
     .catch(error => {
