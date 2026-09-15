@@ -323,107 +323,20 @@ function initBestSwiper() {
   if (bestSwiperInstance) bestSwiperInstance.destroy(true, true)
 
   bestSwiperInstance = new Swiper(".best_slide", {
-    scrollbar: {
-        el: ".best_slide .event-scrollbar",
-    },
-    breakpoints: { 
-        1920: {
-            slidesPerView: 5.2,
-            spaceBetween: 0,
-        },
-        1869: {
-            slidesPerView: 5,
-            spaceBetween: 0,
-        },
-        1800: {
-            slidesPerView: 5.1,
-            spaceBetween: 0,
-        },
-        1680: {
-            slidesPerView: 4.7,
-            spaceBetween: 0,
-        },
-        1570: {
-            slidesPerView: 4.7,
-            spaceBetween: 0,
-        },
-        1450: {
-            slidesPerView: 3.9,
-            spaceBetween: 30,
-        },
-        1400: {
-            slidesPerView: 3.8,
-            spaceBetween: 0,
-        },
-        1320: {
-            slidesPerView: 3.8,
-            spaceBetween: 0,
-        },
-        1285: {
-            slidesPerView: 3.5,
-            spaceBetween: 0,
-        },
-        1200: {
-            slidesPerView: 3.2,
-            spaceBetween: 0,
-        },
-        1170: {
-            slidesPerView: 3.1,
-            spaceBetween: 0,
-        },
-        983: {
-            spaceBetween: 20,
-            slidesPerView: 3,  //1024이하 일때
-        },
-        780: {
-            spaceBetween: 15,
-            slidesPerView: 2.8,  //1024이하 일때
-        },
-        630: {
-            spaceBetween: 0,
-            slidesPerView: 1.8,  //1024이하 일때
-        },
-        500: {
-            spaceBetween: 0,
-            slidesPerView: 1.6,  //1024이하 일때
-        },
-        400: {
-            spaceBetween: 0,
-            slidesPerView: 1.4,  //1024이하 일때
-        },
-        350: {
-            spaceBetween: 0,
-            slidesPerView: 1.2,  //1024이하 일때
-        },
-        300: {
-            spaceBetween: 0,
-            slidesPerView: 1.1,  //1024이하 일때
-        }
-    },
-    loop:true, //무한 반복 설정
-    slidesPerView:4.5,  //한번에 표시되는 슬라이드 개수
-    //(위)표시 슬라이드 개수보다 실제 슬라이드 개수가 많아야함 !!
-    slidesPerGroup:1,
-    centeredSlides: false,   // ← 이거 반드시 꺼야 함
-    initialSlide: 2,         // ← 첫번째 슬라이드부터            // ← 루프 켜면 다시 중앙정렬됨
+    // Keep cards readable; CSS sets their width instead of squeezing in a count.
+    slidesPerView: "auto",
+    spaceBetween: 20,
+    loop: true,
+    initialSlide: 0,
+    centeredSlides: false,
     watchOverflow: true,
-    centeredSlides:true,
     simulateTouch: true,
-    passiveListeners: false,           // iOS/안드로이드에서 터치 대응 개선되는 경우 있음
-
-    threshold: 8,                      // 살짝 드래그 했을 때만 슬라이드로 인식(클릭 오작동 감소)
+    passiveListeners: false,
+    threshold: 8,
     resistanceRatio: 0.85,
-
     watchSlidesProgress: true,
-    keyboard: {
-      enabled: true,
-      onlyInViewport: true,
-    },
-    // 슬라이드 클릭 요소가 많으면 이것도 도움됨
-    navigation: {
-        nextEl: ".bazaar_inner .swiper-button-next",
-        prevEl: ".bazaar_inner .swiper-button-prev",
-    },
+    keyboard: { enabled: true, onlyInViewport: true },
+    scrollbar: { el: ".best_slide .event-scrollbar", draggable: true },
   })
 }
 
