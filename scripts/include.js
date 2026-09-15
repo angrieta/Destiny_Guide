@@ -175,7 +175,6 @@ function setupSiteNavigation(mount) {
 function setupImageDialogs() {
     const configs = [
         { dialog: ".img_popup", openClass: "active", triggers: ".photo_aria img, .tool_img img" },
-        { dialog: ".g_popup", openClass: "active", triggers: ".g_fig img" },
     ];
 
     configs.forEach(({ dialog: selector, openClass, triggers: triggerSelector }) => {
@@ -197,12 +196,6 @@ function setupImageDialogs() {
                 }
             };
 
-            const close = () => {
-                if (!dialog.classList.contains(openClass)) return;
-                dialog.classList.remove(openClass);
-                document.body.style.overflow = "";
-            };
-
             const observer = new MutationObserver(syncState);
             observer.observe(dialog, { attributes: true, attributeFilter: ["class"] });
 
@@ -220,13 +213,7 @@ function setupImageDialogs() {
                 });
             });
 
-            closeButton?.addEventListener("click", close);
-            dialog.addEventListener("keydown", (event) => {
-                if (event.key === "Escape") close();
-            });
-            document.addEventListener("keydown", (event) => {
-                if (event.key === "Escape") close();
-            });
+
         });
     });
 }

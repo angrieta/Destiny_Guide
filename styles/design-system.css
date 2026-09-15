@@ -1522,3 +1522,7 @@ html[data-theme="dark"] .download_btn {
   .site_header_actions { gap: 4px; }
   .site_nav_toggle { max-width: 74px; }
 }
+
+/* Keep the page still until the last stacked dialog closes. */
+html.destiny-dialog-open,
+html.destiny-dialog-open body { overflow: hidden; }

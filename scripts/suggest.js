@@ -322,9 +322,16 @@
       document.body.classList.remove("rs_ask_open");
     }
 
+    if (window.DestinyModalHistory) {
+      const historyDialog = window.DestinyModalHistory.bind('suggestion-confirm', openAsk, closeAsk, ask);
+      openAsk = historyDialog.open;
+      closeAsk = historyDialog.close;
+    }
+
     askForm.addEventListener("submit", function (event) {
       event.preventDefault();
       if (!pending) return;
+      var submitted = pending;
       var password = askPassword.value;
       if (!password.trim()) { say(askMessage, explain("wrong_password"), "bad"); return; }
 
@@ -339,6 +346,7 @@
       }
 
       api(path, payload).then(function (data) {
+        if (pending !== submitted) return;
         if (action === "edit") {
           var item = data.suggestion;
           editing = { id: item.id, password: password };
@@ -363,7 +371,7 @@
           : t("sug.saved", "Saved."), "good");
         return load(true);
       }).catch(function (error) {
-        say(askMessage, explain(error.code), "bad");
+        if (pending === submitted) say(askMessage, explain(error.code), "bad");
       }).then(function () {
         askGo.disabled = false;
       });

@@ -470,18 +470,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = popup.querySelector(".popup_close");
     const dim = popup.querySelector(".popup_dim");
 
-    document.querySelectorAll(".photo_aria img").forEach(img => {
-    img.addEventListener("click", () => {
+    function showPopup(img) {
         popupImg.src = img.src;
         popup.classList.add("active");
         document.body.style.overflow = "hidden";
-    });
-    });
-
-    function closePopup(){
-    popup.classList.remove("active");
-    document.body.style.overflow = "";
     }
+    function hidePopup() {
+        popup.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+    const historyDialog = window.DestinyModalHistory?.bind('guide-image', showPopup, hidePopup, popup);
+    const closePopup = historyDialog ? () => historyDialog.close() : hidePopup;
+    document.querySelectorAll(".photo_aria img").forEach(img => {
+        img.addEventListener("click", () => historyDialog ? historyDialog.open(img) : showPopup(img));
+    });
 
     closeBtn.addEventListener("click", closePopup);
     dim.addEventListener("click", closePopup);

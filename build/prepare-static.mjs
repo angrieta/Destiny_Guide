@@ -180,6 +180,9 @@ for (const entry of await readdir(projectRoot, { withFileTypes: true })) {
   } else if (html.includes('scripts/item_info.js')) {
     html = html.replace(/<script\s+src="\.\/scripts\/item_info\.js/, '<script src="./scripts/verified-content.js"></script>\n<script src="./scripts/item_info.js');
   }
+  if (html.includes("</head>")) {
+    html = html.replace("</head>", '    <script src="./scripts/modal-history.js"></script>\n</head>');
+  }
   // 정적 페이지 전체에 같은 익명 집계를 붙인다. 소스 HTML마다 태그를 복사하면
   // 새 페이지에서 빠지기 쉬워 빌드 단계에서 한 번만 주입한다.
   if (!html.includes("scripts/analytics.js")) {

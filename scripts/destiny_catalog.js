@@ -2092,7 +2092,7 @@
     let previousFocus = null;
     let openedItem = null;
 
-    const closeModal = () => {
+    const hideModal = () => {
       openedItem = null;
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
@@ -2100,7 +2100,7 @@
       if (previousFocus) previousFocus.focus();
     };
 
-    const openModal = (item, trigger, refresh = false) => {
+    const showModal = (item, trigger, refresh = false) => {
       openedItem = item;
       previousFocus = trigger;
       const operatorMeta = getOperatorMeta(item.name);
@@ -2165,8 +2165,12 @@
       if (!refresh) closeButton.focus();
     };
 
+    const historyDialog = window.DestinyModalHistory?.bind('catalog-item', showModal, hideModal, modal);
+    const openModal = historyDialog ? (...args) => historyDialog.open(...args) : showModal;
+    const closeModal = historyDialog ? () => historyDialog.close() : hideModal;
+
     document.addEventListener("destiny-lang-change", () => {
-      if (openedItem && modal.classList.contains("is-open")) openModal(openedItem, previousFocus, true);
+      if (openedItem && modal.classList.contains("is-open")) showModal(openedItem, previousFocus, true);
     });
 
     document.querySelectorAll(".destiny_item_slide .item_section_aria").forEach((card) => {

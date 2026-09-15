@@ -355,7 +355,7 @@
       pushRecent({ kind: result.kind, n: result.name, m: result.meta, b: result.badge, u: result.url, x: result.exclusive ? 1 : 0 });
     }
 
-    function open() {
+    function showSearch() {
       if (!overlay.hidden) return;
       lastFocus = document.activeElement;
       overlay.hidden = false;
@@ -367,12 +367,16 @@
       input.focus();
     }
 
-    function close() {
+    function hideSearch() {
       if (overlay.hidden) return;
       overlay.hidden = true;
       document.documentElement.classList.remove("ds_search_open");
       if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
     }
+
+    var historyDialog = window.DestinyModalHistory?.bind('site-search', showSearch, hideSearch, overlay);
+    var open = historyDialog ? (...args) => historyDialog.open(...args) : showSearch;
+    var close = historyDialog ? () => historyDialog.close() : hideSearch;
 
     input.addEventListener("input", function () { limit=PAGE_SIZE; render(); });
     more.addEventListener("click",function () { var scroll=list.scrollTop; limit+=PAGE_SIZE; render(); list.scrollTop=scroll; });
@@ -389,7 +393,8 @@
         if (!current) return;
         event.preventDefault();
         remember(current);
-        window.location.href = base + current.url;
+        if (window.DestinyModalHistory) window.DestinyModalHistory.navigate(base + current.url);
+        else window.location.href = base + current.url;
       } else if (event.key === "Escape") {
         event.preventDefault();
         close();
@@ -401,7 +406,7 @@
       if (!link) return;
       var result = results[Number(link.dataset.result)];
       if (result) remember(result);
-      close();
+      if (!historyDialog) close();
     });
 
     list.addEventListener("pointermove", function (event) {

@@ -1,5 +1,7 @@
 "use client";
 
+import { useDialogHistory } from "../components/useDialogHistory";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { DatabaseItem, DatabasePayload, ItemCategory } from "./types";
 import styles from "./database.module.css";
@@ -201,6 +203,9 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
     document.documentElement.style.colorScheme = next;
   };
 
+  useDialogHistory("database-item", selectedId, closeDetail, () => setSelectedId(selectedId), "item");
+  useDialogHistory("database-filters", filtersOpen, closeFilters, () => setFiltersOpen(true));
+
   const restoreFromUrl = useCallback(() => {
     const params = new URLSearchParams(window.location.search);
     const readCategory = canonicalOption(params.get("cat"), CATEGORIES) as "All" | ItemCategory | null;
@@ -280,7 +285,7 @@ export default function ItemDatabase({ payload }: { payload: DatabasePayload }) 
 
   // Mirror state into the URL so any view can be shared verbatim.
   useEffect(() => {
-    if (!hydrated) return;
+    if (!hydrated || window.DestinyModalHistory?.pending) return;
     const params = new URLSearchParams();
     if (query !== DEFAULTS.q) params.set("q", query);
     if (category !== DEFAULTS.cat) params.set("cat", category);

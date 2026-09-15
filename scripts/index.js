@@ -219,18 +219,21 @@ const elSymbols  = popup.querySelector('.popup_symbols');
 const elInfos = popup.querySelector('.popup_infos');
 const elSections = popup.querySelector('.popup_sections');
 
-function openPopup(){
+function showItemPopup(){
   popup.classList.add('open');
   document.body.classList.add('overflow-hidden');
   popup.setAttribute('aria-hidden', 'false');
 }
 
-function closePopup(){
+function hideItemPopup(){
   popup.classList.remove('open');
   document.body.classList.remove('overflow-hidden');
   popup.setAttribute('aria-hidden', 'true');
 }
 
+const itemHistory = window.DestinyModalHistory?.bind('home-item', showItemPopup, hideItemPopup, popup);
+const openPopup = itemHistory ? (...args) => itemHistory.open(...args) : showItemPopup;
+const closePopup = itemHistory ? () => itemHistory.close() : hideItemPopup;
 btnClose.addEventListener('click', closePopup);
 dim.addEventListener('click', closePopup);
 document.addEventListener('keydown', e => {
@@ -434,11 +437,11 @@ function initCharacterPopup() {
   const dimmer = modal.querySelector(".character_popup_dim")
   let previousFocus = null
 
-  const closeCharacterPopup = () => {
+  const hideCharacterPopup = () => {
     modal.classList.remove("open")
     modal.setAttribute("aria-hidden", "true")
     document.body.classList.remove("overflow-hidden")
-    previousFocus?.focus()
+    previousFocus?.focus({ preventScroll: true })
   }
 
   // 사전이 늦게 도착할 수 있고 언어도 바뀔 수 있으니, 라벨 설정을 함수로 빼서 다시 부른다.
@@ -453,11 +456,7 @@ function initCharacterPopup() {
   applyCardLabels()
   document.addEventListener("destiny-lang-change", applyCardLabels)
 
-  area.addEventListener("click", event => {
-    const card = event.target.closest(".swiper-slide > a")
-    if (!card || !area.contains(card)) return
-
-    event.preventDefault()
+  const showCharacterPopup = card => {
     previousFocus = card
     content.innerHTML = ""
 
@@ -471,7 +470,16 @@ function initCharacterPopup() {
     modal.classList.add("open")
     modal.setAttribute("aria-hidden", "false")
     document.body.classList.add("overflow-hidden")
-    closeButton.focus()
+    closeButton.focus({ preventScroll: true })
+  }
+  const characterHistory = window.DestinyModalHistory?.bind('home-character', showCharacterPopup, hideCharacterPopup, modal)
+  const closeCharacterPopup = characterHistory ? () => characterHistory.close() : hideCharacterPopup
+  area.addEventListener("click", event => {
+    const card = event.target.closest(".swiper-slide > a")
+    if (!card || !area.contains(card) || !bestSwiperInstance.allowClick) return
+    event.preventDefault()
+    if (characterHistory) characterHistory.open(card)
+    else showCharacterPopup(card)
   })
 
   closeButton.addEventListener("click", closeCharacterPopup)

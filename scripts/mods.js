@@ -268,6 +268,12 @@
         lastFocus = null;
       }
 
+      if (window.DestinyModalHistory) {
+        const historyDialog = window.DestinyModalHistory.bind('mod-preview', open, close, box);
+        open = historyDialog.open;
+        close = historyDialog.close;
+      }
+
       document.addEventListener("click", function (event) {
         var trigger = event.target.closest && event.target.closest(".md_shot_btn");
         if (trigger) { open(trigger); return; }
@@ -326,6 +332,12 @@
         document.body.classList.remove("md_lb_open");
         if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
         lastFocus = null;
+      }
+
+      if (window.DestinyModalHistory) {
+        const historyDialog = window.DestinyModalHistory.bind('mod-details', open, close, box);
+        open = historyDialog.open;
+        close = historyDialog.close;
       }
 
       document.addEventListener("click", function (event) {

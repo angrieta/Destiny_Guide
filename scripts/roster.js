@@ -612,9 +612,16 @@
       document.body.classList.remove("rs_ask_open");
     }
 
+    if (window.DestinyModalHistory) {
+      const historyDialog = window.DestinyModalHistory.bind('roster-confirm', openAsk, closeAsk, ask);
+      openAsk = historyDialog.open;
+      closeAsk = historyDialog.close;
+    }
+
     askForm.addEventListener("submit", function (event) {
       event.preventDefault();
       if (!pending) return;
+      var submitted = pending;
 
       var password = askPassword.value;
       if (!password.trim()) { say(askMessage, explain("wrong_password"), "bad"); return; }
@@ -623,6 +630,7 @@
       var action = pending.action === "delete" ? "delete" : "verify";
 
       api("/api/entries/" + pending.id + "/" + action, { password: password }).then(function (data) {
+        if (pending !== submitted) return;
         if (pending.action === "delete") {
           closeAsk();
           say(formMessage, t("rst.deleted", "Deleted."), "good");
@@ -649,7 +657,7 @@
         form.scrollIntoView({ block: "center", behavior: "smooth" });
         charsBox.querySelector("input").focus();
       }).catch(function (error) {
-        say(askMessage, explain(error.code), "bad");
+        if (pending === submitted) say(askMessage, explain(error.code), "bad");
       }).then(function () {
         askGo.disabled = false;
       });

@@ -1,5 +1,7 @@
 "use client";
 
+import { useDialogHistory } from "./useDialogHistory";
+
 /**
  * 헤더 검색 (React 라우트용)
  *
@@ -196,6 +198,8 @@ export function SiteSearch() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [openSearch]);
 
+  useDialogHistory("react-search", open, closeSearch, () => setOpen(true));
+
   // 뒤 페이지가 같이 스크롤되지 않게 막는다.
   useEffect(() => {
     if (!open) return;
@@ -248,7 +252,8 @@ export function SiteSearch() {
 
   const go = (result: Result) => {
     pushRecent(result);
-    window.location.href = siteHref(result.url);
+    if (window.DestinyModalHistory) window.DestinyModalHistory.navigate(siteHref(result.url));
+    else window.location.href = siteHref(result.url);
   };
 
   const onInputKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -331,7 +336,11 @@ export function SiteSearch() {
                   data-result={position}
                   href={siteHref(result.url)}
                   onPointerMove={() => position !== active && setActive(position)}
-                  onClick={() => pushRecent(result)}
+                  onClick={(event) => {
+                    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) { pushRecent(result); return; }
+                    event.preventDefault();
+                    go(result);
+                  }}
                 >
                   <span className="ds_search_result_main">
                     <span className="ds_search_result_name">

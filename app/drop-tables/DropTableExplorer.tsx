@@ -1,5 +1,7 @@
 "use client";
 
+import { useDialogHistory } from "../components/useDialogHistory";
+
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { DropRecord, DropTablePayload, ItemType, MatrixDrop } from "./types";
 import styles from "./drop-tables.module.css";
@@ -133,7 +135,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
   },[payload.matrixRows]);
 
   useEffect(()=>{
-    if(!urlReady) return;
+    if(!urlReady || window.DestinyModalHistory?.pending) return;
     const url=new URL(window.location.href);
     const values:Record<string,string>={
       difficulty:difficulty==="Normal"?"":difficulty, section:sectionId==="All"?"":sectionId,
@@ -144,7 +146,7 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
     for(const [key,value] of Object.entries(values)) {
       if(value) url.searchParams.set(key,value);else url.searchParams.delete(key);
     }
-    if(url.href!==window.location.href) window.history.replaceState(null,"",url);
+    if(url.href!==window.location.href) window.history.replaceState(window.history.state,"",url);
   },[urlReady,difficulty,sectionId,episode,area,itemType,itemQuery,enemyQuery,partySize,dropRateMultiplier]);
 
   const openMobileControls = useCallback(() => {
@@ -166,6 +168,8 @@ export default function DropTableExplorer({ payload }: { payload: DropTablePaylo
       mobileCloseTimerRef.current = null;
     }, 180);
   }, [mobileControlsClosing, mobileControlsOpen]);
+
+  useDialogHistory("drop-filters", mobileControlsOpen, closeMobileControls, () => setMobileControlsOpen(true));
 
   useEffect(() => {
     const saved = window.localStorage.getItem(THEME_KEY);

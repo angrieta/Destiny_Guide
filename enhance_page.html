@@ -555,30 +555,6 @@
         </div>
     </div>
 
-    <script>
-    // 도해는 작게 보면 읽을 수 없다. 눌러서 크게 본다.
-    document.addEventListener("DOMContentLoaded", function () {
-        var popup = document.getElementById("gPopup");
-        if (!popup) return;
-        var img = popup.querySelector("img");
-
-        function close() {
-            popup.classList.remove("active");
-            document.body.style.overflow = "";
-        }
-        document.querySelectorAll(".g_fig img").forEach(function (el) {
-            el.addEventListener("click", function () {
-                img.src = el.currentSrc || el.src;
-                popup.classList.add("active");
-                document.body.style.overflow = "hidden";
-            });
-        });
-        popup.querySelector(".g_popup_close").addEventListener("click", close);
-        popup.querySelector(".g_popup_dim").addEventListener("click", close);
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") close();
-        });
-    });
-    </script>
+    <script src="./scripts/guide.js" defer></script>
 </body>
 </html>
