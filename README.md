@@ -84,6 +84,16 @@ pnpm start    # 빌드 결과 실행
 
 ## PlayPSO 데이터 동기화
 
+아이템 카드의 획득 방법은 `scripts/build-item-acquisition.mjs`가 드랍표 4개,
+조합 목록, 검증된 카탈로그 레시피와 `data/item-acquisition-extra.json`의
+이벤트·교환 출처를 합쳐 만듭니다. `prepare:static`에서 자동 갱신하며,
+결과인 `data/item-acquisition.json`을 팝업에서 읽습니다. 재료 경로도 같은
+색인을 사용합니다. 기존 카드의 오타·별칭은 `scripts/acquisition-core.mjs`에서
+명시적으로 연결하고, 일부 재료만 확인된 레시피와 미출시 레시피는 구분합니다.
+
+검증: `node tests/item-acquisition.mjs` 및 정적 파일 준비 후
+`node tests/item-acquisition-browser.mjs` (Playwright Chromium 필요).
+
 PlayPSO가 자동화 브라우저를 차단하므로 서버에서는 수집할 수 없습니다.
 데이터는 직접 연 브라우저에서 수집한 뒤 명령줄로 반영합니다.
 

@@ -931,3 +931,14 @@ html[data-theme="dark"] .ig_dblink a {
         font-size: 13px;
     }
 }
+/* Acquisition lists remain readable inside the narrow/mobile item dialog. */
+.destiny_detail_section [data-item-acquisition] { overflow-wrap: anywhere; }
+[data-item-acquisition] h4 { margin: 1rem 0 .5rem; font-weight: 700; }
+[data-item-acquisition] a { text-decoration: underline; text-underline-offset: 3px; }
+[data-item-acquisition] details { margin: .65rem 0; }
+[data-item-acquisition] summary { cursor: pointer; padding: .4rem 0; }
+[data-item-acquisition] details details { margin-left: .65rem; padding-left: .65rem; border-left: 1px solid #80808055; }
+[data-item-acquisition] .acquisition_recipe { margin: .75rem 0; padding-bottom: .75rem; border-bottom: 1px solid #80808055; }
+[data-item-acquisition] .acquisition_drops li { margin-bottom: .8rem; }
+[data-item-acquisition] .acquisition_meta { font-size: .8rem; opacity: .75; margin-top: .8rem; }
+[data-item-acquisition] .acquisition_notice { font-weight: 600; }

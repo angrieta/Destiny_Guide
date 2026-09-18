@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { dirname, resolve } from "node:path";
 import { buildSearchIndex } from "../scripts/build-search-index.mjs";
 import { buildFarmData } from "../scripts/build-farm-data.mjs";
+import { buildItemAcquisition } from "../scripts/build-item-acquisition.mjs";
 
 const projectRoot = process.cwd();
 const outputDir = resolve(projectRoot, ".sites-static");
@@ -19,6 +20,9 @@ const publicFiles = [
   "data/quest-videos.json",
   // 조합 레시피 / Section ID 추천. 아래에서 매번 다시 만든다.
   "data/item-recipes.json",
+  "data/item-acquisition.json",
+  "data/analytics-items.json",
+  "data/analytics-elements.json",
   "data/section-id.json",
   // 모드·스킨 목록. mods_page.html 이 런타임에 받아 그린다.
   "data/mods.json",
@@ -37,6 +41,8 @@ console.log(`search index: ${searchIndex.items} items, ${searchIndex.dropRoutes}
 
 const farmData = await buildFarmData();
 console.log(`farm data: recipes ${farmData.recipes}, section buckets ${farmData.sectionBuckets}`);
+const acquisition = await buildItemAcquisition();
+console.log(`item acquisition: ${acquisition.covered}/${acquisition.items} cards with routes or source notes`);
 
 await rm(outputDir, { recursive: true, force: true });
 await mkdir(outputDir, { recursive: true });
@@ -80,7 +86,9 @@ const contentSections = [
   "pb-basics":"Before you start","pb-cycle":"PB cycle","pb-spend":"Lower PB","pb-troubleshoot":"PB troubleshooting",
   "drop-explorer":"Drop explorer","item-explorer":"Item explorer","damage-calculator":"Damage calculator"
 })[id]}));
-await writeFile(resolve(outputDir,"data/content-catalog.json"), JSON.stringify({pages:contentPages,sections:contentSections}),"utf8");
+// 버튼·카드 목록은 마크업(data-click-id)·워커 검증과 같은 파일에서 읽어 대시보드 라벨로 쓴다.
+const contentElements = JSON.parse(await readFile(resolve(projectRoot,"data/analytics-elements.json"),"utf8"));
+await writeFile(resolve(outputDir,"data/content-catalog.json"), JSON.stringify({pages:contentPages,sections:contentSections,elements:contentElements}),"utf8");
 
 for (const directory of directories) {
   await cp(resolve(projectRoot, directory), resolve(outputDir, directory), {
@@ -96,6 +104,17 @@ for (const directory of directories) {
   const path=resolve(outputDir,"scripts/site_search.js");
   const source=await readFile(path,"utf8");
   await writeFile(path,source.replace('import("./search-engine.mjs")',`import("./search-engine.mjs?v=${engineHash}")`),"utf8");
+}
+// The modal loads acquisition code lazily; version its module dependencies too.
+{
+  const core = await readFile(resolve(outputDir, 'scripts/acquisition-core.mjs'), 'utf8');
+  const coreHash = createHash('sha1').update(core).digest('hex').slice(0,8);
+  const modulePath = resolve(outputDir, 'scripts/item-acquisition.mjs');
+  const moduleCode = (await readFile(modulePath, 'utf8')).replace('./acquisition-core.mjs', `./acquisition-core.mjs?v=${coreHash}`);
+  await writeFile(modulePath, moduleCode);
+  const moduleHash = createHash('sha1').update(moduleCode).digest('hex').slice(0,8);
+  const catalogPath = resolve(outputDir, 'scripts/destiny_catalog.js');
+  await writeFile(catalogPath, (await readFile(catalogPath, 'utf8')).replace("import('./item-acquisition.mjs')", `import('./item-acquisition.mjs?v=${moduleHash}')`));
 }
 // 이 개편의 5개 언어 문구는 한 소스에서 관리하고 기존 사전과 병합한다.
 const revisionCopy = {

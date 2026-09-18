@@ -62,6 +62,54 @@
                     </table>
                 </div>
             </section>
+            <section class="usage_panel" id="item-usage">
+                <h2 data-i18n="usage.items.title">Item card usage</h2>
+                <p class="usage_meta" data-i18n="usage.items.lead">See which item details people open and which acquisition routes they follow. Counts are deduplicated per item, action and browser tab session.</p>
+                <p id="usage-items-start" class="usage_meta"></p>
+                <div class="usage_controls">
+                    <label><span data-i18n="usage.items.search">Find an item</span><input id="usage-item-search" type="search" autocomplete="off"></label>
+                    <label><span data-i18n="usage.sort">Sort by</span><select id="usage-item-sort">
+                        <option value="item_open" data-i18n="usage.items.opens">Card opens</option>
+                        <option value="item_drop_click" data-i18n="usage.items.drops">Drop table clicks</option>
+                        <option value="item_recipe_click" data-i18n="usage.items.recipes">Recipe / planner clicks</option>
+                        <option value="item_material_open" data-i18n="usage.items.materials">Material paths expanded</option>
+                        <option value="item_source_click" data-i18n="usage.items.sources">Source clicks</option>
+                    </select></label>
+                    <button type="button" id="usage-item-export" class="usage_button" data-i18n="usage.items.csv">Download item CSV</button>
+                </div>
+                <div class="usage_table_wrap" tabindex="0" role="region" aria-label="Item usage" data-i18n-aria-label="usage.items.title">
+                    <table class="usage_table"><thead><tr>
+                        <th data-i18n="usage.items.item">Item</th><th data-i18n="usage.items.opens">Card opens</th>
+                        <th data-i18n="usage.items.drops">Drop table clicks</th><th data-i18n="usage.items.recipes">Recipe / planner clicks</th>
+                        <th data-i18n="usage.items.materials">Material paths expanded</th><th data-i18n="usage.items.sources">Source clicks</th>
+                    </tr></thead><tbody id="usage-items-body"></tbody></table>
+                </div>
+            </section>
+            <section class="usage_panel" id="element-usage">
+                <h2 data-i18n="usage.elements.title">Button and card clicks</h2>
+                <p class="usage_meta" data-i18n="usage.elements.lead">Raw click counts for the buttons and cards that were tagged for measurement. Unlike everything else on this page, these are not deduplicated per session, so one visitor clicking five times counts five.</p>
+                <p id="usage-elements-start" class="usage_meta"></p>
+                <div class="usage_controls">
+                    <label><span data-i18n="usage.elements.search">Find a button or card</span><input id="usage-element-search" type="search" autocomplete="off"></label>
+                    <label><span data-i18n="usage.sort">Sort by</span><select id="usage-element-sort">
+                        <option value="desc" data-i18n="usage.elements.most">Most clicks first</option>
+                        <option value="asc" data-i18n="usage.elements.least">Fewest clicks first</option>
+                        <option value="path" data-i18n="usage.elements.byPage">Group by page</option>
+                    </select></label>
+                    <button type="button" id="usage-element-export" class="usage_button" data-i18n="usage.elements.csv">Download click CSV</button>
+                </div>
+                <p id="usage-element-count" class="usage_meta" aria-live="polite"></p>
+                <div class="usage_table_wrap" tabindex="0" role="region" aria-label="Button and card clicks" data-i18n-aria-label="usage.elements.title">
+                    <table class="usage_table"><thead><tr>
+                        <th data-i18n="usage.elements.element">Button / card</th>
+                        <th data-i18n="usage.elements.page">Page</th>
+                        <th data-i18n="usage.elements.clicks">Clicks</th>
+                        <th data-i18n="usage.activeDays">Active days</th>
+                        <th data-i18n="usage.elements.last">Last click (UTC)</th>
+                        <th data-i18n="usage.change">vs. prior period</th>
+                    </tr></thead><tbody id="usage-elements-body"></tbody></table>
+                </div>
+            </section>
             <details class="usage_panel usage_details">
                 <summary  data-i18n="usage.classDetails">Class / level selections</summary>
                 <div class="usage_secondary">

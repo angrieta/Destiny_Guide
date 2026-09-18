@@ -30,6 +30,15 @@
  * 브라우저 기록과 서버 로그에 그대로 남고, DELETE 의 본문은 떼어 버리는 중간 장비가 있다.
  */
 
+import analyticsItems from '../../data/analytics-items.json';
+const ANALYTICS_ITEMS = new Set(analyticsItems.map(item => item.key));
+// 버튼·카드 클릭. 페이지별로 허용된 id 만 받는다. 목록은 마크업의 data-click-id 와 같은 파일에서 온다.
+import analyticsElements from '../../data/analytics-elements.json';
+const ANALYTICS_ELEMENTS = analyticsElements.reduce((map, element) => {
+  (map[element.path] ??= new Set<string>()).add(element.key);
+  return map;
+}, {} as Record<string, Set<string>>);
+
 export interface Env {
   DB: D1Database;
   AI: { run: (model: string, input: unknown) => Promise<unknown> };
@@ -78,9 +87,9 @@ const PAGE_SIZE = 50;
  */
 const PBKDF2_ROUNDS = 100000;
 
-const ANALYTICS_EVENTS = ["page_view", "engaged_view", "content_view", "content_use", "class_select", "level_select", "measurement"] as const;
+const ANALYTICS_EVENTS = ["page_view", "engaged_view", "content_view", "content_use", "class_select", "level_select", "measurement", "item_open", "item_drop_click", "item_recipe_click", "item_material_open", "item_source_click", "element_click"] as const;
 const ANALYTICS_MAX_PATH = 96;
-const ANALYTICS_MAX_TARGET = 48;
+const ANALYTICS_MAX_TARGET = 80;
 
 /* ── 응답 도우미 ─────────────────────────────────────────────────────────── */
 
@@ -812,10 +821,13 @@ async function recordAnalytics(request: Request, env: Env, body: Record<string, 
   const parts = target.split(":");
   const validTarget =
     ((event === "page_view" || event === "engaged_view") && target === "") ||
-    (event === "measurement" && target === "v2") ||
+    (event === "measurement" && (target === "v2" || (path === "/item_page" && target === "items-v1"))) ||
+    (["item_open", "item_drop_click", "item_recipe_click", "item_material_open", "item_source_click"].includes(event) &&
+      path === "/item_page" && ANALYTICS_ITEMS.has(target)) ||
     (event === "class_select" && path === "/class_builds" && ANALYTICS_CLASSES.includes(target)) ||
     (event === "level_select" && path === "/class_builds" && parts.length === 2 &&
       ANALYTICS_CLASSES.includes(parts[0]) && ["100","150","180","200"].includes(parts[1])) ||
+    (event === "element_click" && (ANALYTICS_ELEMENTS[path]?.has(target) ?? false)) ||
     ((event === "content_view" || event === "content_use") &&
       ((ANALYTICS_SECTIONS[path] || []).includes(target) || (event === "content_use" && target === "page")));
   if (!validTarget || target.length > ANALYTICS_MAX_TARGET) return fail(400, "bad_analytics_target", request, env);
@@ -848,14 +860,16 @@ async function analyticsSummary(request: Request, env: Env) {
          GROUP BY path, event, target ORDER BY count DESC, path, event, target`
       ).bind(from, from, from, from, previousSince, until).all<AnalyticsRow>(),
       env.DB.prepare(
-        `SELECT MIN(day) AS coverageStart, MIN(CASE WHEN event = 'measurement' AND target = 'v2' THEN day END) AS signalsStart
+        `SELECT MIN(day) AS coverageStart, MIN(CASE WHEN event = 'measurement' AND target = 'v2' THEN day END) AS signalsStart,
+          MIN(CASE WHEN event = 'measurement' AND target = 'items-v1' THEN day END) AS itemsStart
          FROM analytics_daily`
-      ).first<{coverageStart: string | null; signalsStart: string | null}>(),
+      ).first<{coverageStart: string | null; signalsStart: string | null; itemsStart: string | null}>(),
     ]);
     const rows = result.results ?? [];
     const pages = rows.filter(row => row.event === "page_view" && row.count > 0);
     return ok({ version: 2, days, since: from, until, previousSince,
       coverageStart: coverage?.coverageStart ?? null, signalsStart: coverage?.signalsStart ?? null,
+      itemsStart: coverage?.itemsStart ?? null,
       totalViews: pages.reduce((sum, row) => sum + Number(row.count || 0), 0),
       rows, pages,
       classes: rows.filter(row => row.event === "class_select" && row.count > 0),

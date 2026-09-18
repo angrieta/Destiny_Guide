@@ -1,0 +1,6996 @@
+{
+  "schemaVersion": 1,
+  "items": {
+    "3rdanniversaryblade": {
+      "name": "3RD ANNIVERSARY BLADE",
+      "drops": [],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Historical Triple Threat event (December 2020): Crimson from Ultimate Epsilon (Redria / Whitill); Galaxy from Ultimate Olga Flow (Skyly / Purplenum). The announcement says the blades were event-only and would not return. These are archived routes, not active drops.",
+          "ko": "과거 Triple Threat 이벤트(2020년 12월): Crimson은 Ultimate Epsilon(Redria / Whitill), Galaxy는 Ultimate Olga Flow(Skyly / Purplenum)에게서 드랍됐습니다. 공지에서 이벤트 한정이며 재등장하지 않는다고 안내했습니다. 현재 드랍처가 아닌 과거 기록입니다.",
+          "source": "https://playpso.net/forums/topic/1009-triple-threat-event/"
+        }
+      ]
+    },
+    "antidarkring": {
+      "name": "ANTI-DARK RING",
+      "drops": [
+        {
+          "name": "ANTI-DARK RING",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Crimson Assassin",
+          "dar": 55,
+          "rate": "1/531.95",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "antilightring": {
+      "name": "ANTI-LIGHT RING",
+      "drops": [
+        {
+          "name": "ANTI-LIGHT RING",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Gulgus",
+          "dar": 30,
+          "rate": "1/525.13",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "archfiendarmor": {
+      "name": "ARCHFIEND ARMOR",
+      "drops": [
+        {
+          "name": "ARCHFIEND ARMOR",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Bringer",
+          "dar": 88,
+          "rate": "1/581.82",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "ARCHFIEND ARMOR",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Gran Sorcerer",
+          "dar": 35,
+          "rate": "1/585.14",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "ARCHFIEND ARMOR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gulgus-gue",
+          "dar": 30,
+          "rate": "1/1241.22",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "arcticfaust": {
+      "name": "Arctic Faust",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Arctic Faust",
+          "parts": [
+            "Iron Faust",
+            "Cryo Warhead"
+          ],
+          "level": 200,
+          "ingredients": [
+            {
+              "item": "Iron Faust",
+              "qty": 1
+            },
+            {
+              "item": "Cryo Warhead",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "armageddon": {
+      "name": "ARMAGEDDON",
+      "drops": [
+        {
+          "name": "ARMAGEDDON",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/51.2",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "ARMAGEDDON",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Mericarol",
+          "dar": 80,
+          "rate": "1/787.69",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "ARMAGEDDON",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Baranz",
+          "dar": 85,
+          "rate": "1/1070.85",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "ARMAGEDDON",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sinow Red",
+          "dar": 55,
+          "rate": "1/1654.94",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "arrestneedle": {
+      "name": "Arrest Needle",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Arrest Needle",
+          "parts": [
+            "Spread Needle",
+            "Proof of Sonic Team"
+          ],
+          "ingredients": [
+            {
+              "item": "Spread Needle",
+              "qty": 1
+            },
+            {
+              "item": "Proof of Sonic Team",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "astralclaw": {
+      "name": "ASTRAL CLAW",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "astral-claw",
+          "name": "ASTRAL CLAW",
+          "category": "Force",
+          "type": "Claw",
+          "ingredients": [
+            {
+              "item": "Millennium Photon Core",
+              "qty": 10
+            },
+            {
+              "item": "Primal Photon Sphere",
+              "qty": 1
+            },
+            {
+              "item": "Darkness Photon Sphere",
+              "qty": 1
+            },
+            {
+              "item": "HP/FLOW",
+              "qty": 1
+            },
+            {
+              "item": "TP/FLOW",
+              "qty": 1
+            },
+            {
+              "item": "PB/FLOW",
+              "qty": 1
+            },
+            {
+              "item": "Proof of Sonic Team",
+              "qty": 1
+            },
+            {
+              "item": "ANTI-DARK RING",
+              "qty": 1
+            },
+            {
+              "item": "ANTI-LIGHT RING",
+              "qty": 1
+            }
+          ],
+          "obtain": [
+            "Create the item with the recipe shown in the supplied update source."
+          ],
+          "notes": [],
+          "recipeComplete": true,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "astralcloak": {
+      "name": "ASTRAL CLOAK",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "astral-cloak-armor",
+          "name": "ASTRAL CLOAK",
+          "category": "Armor",
+          "type": "Armor",
+          "ingredients": [
+            {
+              "item": "Primal Photon Sphere",
+              "qty": 1
+            },
+            {
+              "item": "Millennium Photon Core",
+              "qty": 8
+            },
+            {
+              "item": "KROE'S SWEATER",
+              "qty": 1
+            },
+            {
+              "item": "X-PARTS ver3.10",
+              "qty": 1
+            },
+            {
+              "item": "Archfiend Armor",
+              "qty": 1
+            },
+            {
+              "item": "Dynasty Armor",
+              "qty": 1
+            },
+            {
+              "item": "RING OF FIRE",
+              "qty": 1
+            },
+            {
+              "item": "Ninja Suit",
+              "qty": 1
+            },
+            {
+              "item": "Mother Garb+",
+              "qty": 2
+            }
+          ],
+          "obtain": [
+            "Create through the Millennium Shop using the recipe shown in the main item guide."
+          ],
+          "notes": [],
+          "recipeComplete": true,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "astraldragon": {
+      "name": "Astral Dragon",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Astral Dragon",
+          "parts": [
+            "Blueprint: Astral Dragon",
+            "Final Egg Blaster"
+          ],
+          "ingredients": [
+            {
+              "item": "Blueprint: Astral Dragon",
+              "qty": 1
+            },
+            {
+              "item": "Final Egg Blaster",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "astralessence": {
+      "name": "ASTRAL ESSENCE",
+      "drops": [],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Halloween event: Grim Reaper in EP2 > Halloween > Hallowed World [Extreme], all IDs. The archived adjusted rate is 1/1400.",
+          "ko": "할로윈 이벤트: EP2 > Halloween > Hallowed World [Extreme]의 Grim Reaper, 전 Section ID. 이벤트 기록의 조정 후 드랍률은 1/1400입니다.",
+          "source": "./event_page.html#halloween-revival"
+        }
+      ]
+    },
+    "astralhalo": {
+      "name": "Astral Halo",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Astral Halo",
+          "parts": [
+            "Orb of Illusions",
+            "Astral Wings"
+          ],
+          "ingredients": [
+            {
+              "item": "Orb of Illusions",
+              "qty": 1
+            },
+            {
+              "item": "Astral Wings",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "astraloreiritista": {
+      "name": "Astral Ore Iritista",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "astral-ore-iritista",
+          "name": "Astral Ore Iritista",
+          "category": "Material",
+          "type": "Upgrade material",
+          "ingredients": [
+            {
+              "item": "Millennium Photon Core",
+              "qty": 20
+            },
+            {
+              "item": "Hallowed Jack-O-Lantern",
+              "qty": 1
+            },
+            {
+              "item": "Primal Photon Sphere",
+              "qty": 1
+            },
+            {
+              "item": "Weapon Crystal Badge",
+              "qty": 30
+            },
+            {
+              "item": "Iritista",
+              "qty": 2
+            },
+            {
+              "item": "Red Crystal",
+              "qty": 1
+            },
+            {
+              "item": "Luminous Field",
+              "qty": 2
+            }
+          ],
+          "obtain": [
+            "Planned after the 9th Anniversary. First obtain the ore using these materials, then combine the ore with Last Emperor to make Astral Blade. The base weapon is a separate requirement."
+          ],
+          "notes": [],
+          "status": "planned",
+          "source": "https://discord.com/channels/363947585154580480/441859383958437888/1538284098009964645",
+          "scheduleSource": "https://discord.com/channels/363947585154580480/441859383958437888/1547497207731585054",
+          "checkedAt": "2026-09-10",
+          "recipeComplete": true,
+          "baseItem": "Last Emperor",
+          "resultItem": "Astral Blade",
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "astralsaber": {
+      "name": "ASTRAL SABER",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "astral-saber",
+          "name": "ASTRAL SABER",
+          "category": "Force",
+          "type": "Double Saber",
+          "ingredients": [
+            {
+              "item": "BLAST GARMENT",
+              "qty": 1
+            },
+            {
+              "item": "Cladding of Manipulator III",
+              "qty": 2
+            },
+            {
+              "item": "Millennium Photon Core",
+              "qty": 15
+            },
+            {
+              "item": "Red Crystal",
+              "qty": 1
+            },
+            {
+              "item": "Blue Crystal",
+              "qty": 2
+            },
+            {
+              "item": "Yellow Crystal",
+              "qty": 2
+            },
+            {
+              "item": "Green Crystal",
+              "qty": 2
+            },
+            {
+              "item": "IZMAELA",
+              "qty": 1
+            },
+            {
+              "item": "Dark Matter",
+              "qty": 1
+            }
+          ],
+          "obtain": [
+            "Create the item with the recipe shown in the supplied update source.",
+            "Red Crystal: Meri Noir in VR Test Destiny: Sandstorm [EP1], 1/204 on all IDs.",
+            "Blue Crystal: Bar Dalus in VR Test EXTRA: Singularity [EP1], 1/24.",
+            "Yellow Crystal: Epsilon in The Eternal Age [EP2], 1/102.",
+            "Green Crystal: Girtablulu in Christmas Fiasco EP4, 1/393."
+          ],
+          "notes": [],
+          "recipeComplete": true,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "astralwings": {
+      "name": "ASTRAL WINGS",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "astral-wings",
+          "name": "ASTRAL WINGS",
+          "category": "Shield",
+          "type": "Shield",
+          "ingredients": [
+            {
+              "item": "Bat Wing",
+              "qty": 3
+            },
+            {
+              "item": "Astral Essence",
+              "qty": 1
+            },
+            {
+              "item": "Gratia",
+              "qty": 1
+            },
+            {
+              "item": "Magic Stone Iritista",
+              "qty": 2
+            },
+            {
+              "item": "Magic Rock Heart Key",
+              "qty": 1
+            }
+          ],
+          "obtain": [
+            "Halloween event trade with Paganini in Pioneer 2."
+          ],
+          "notes": [],
+          "recipeComplete": true,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "batwing": {
+      "name": "BAT WING",
+      "drops": [],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Halloween event: Headless Horseman in EP1 > Halloween > Path to Salvation or Harmony of Despair II, all IDs. The archived adjusted rate is 1/730.",
+          "ko": "할로윈 이벤트: EP1 > Halloween > Path to Salvation 또는 Harmony of Despair II의 Headless Horseman, 전 Section ID. 이벤트 기록의 조정 후 드랍률은 1/730입니다.",
+          "source": "./event_page.html#halloween-revival"
+        }
+      ]
+    },
+    "behemotharmor": {
+      "name": "BEHEMOTH ARMOR",
+      "drops": [
+        {
+          "name": "BEHEMOTH ARMOR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/28.44",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "BEHEMOTH ARMOR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Deldepth",
+          "dar": 40,
+          "rate": "1/2559.97",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [
+        {
+          "result": "Behemoth Armor",
+          "parts": [
+            "Spirit Garment",
+            "Dark Matter"
+          ],
+          "ingredients": [
+            {
+              "item": "Spirit Garment",
+              "qty": 1
+            },
+            {
+              "item": "Dark Matter",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "berserkneedle": {
+      "name": "BERSERK NEEDLE",
+      "drops": [
+        {
+          "name": "BERSERK NEEDLE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Bar Dalus",
+          "dar": 100,
+          "rate": "1/93",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Easter 2026: Gal Gryphon (Stronger) in Gal Da Val’s Darkness [Easter], all IDs, 1/55. The Easter Shop also traded a 0% attribute copy for Easter Egg ×60.",
+          "ko": "2026 부활절: Gal Da Val’s Darkness [Easter]의 Gal Gryphon (Stronger), 전 Section ID, 1/55. Easter Shop에서 Easter Egg ×60으로 속성 0% 무기도 교환했습니다.",
+          "source": "./event_page.html#easter-2026"
+        }
+      ]
+    },
+    "blastgarment": {
+      "name": "BLAST GARMENT",
+      "drops": [
+        {
+          "name": "BLAST GARMENT",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "The Prophet",
+          "dar": 100,
+          "rate": "1/45",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "bluecrystal": {
+      "name": "Blue Crystal",
+      "drops": [
+        {
+          "name": "Blue Crystal",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Bar Dalus",
+          "dar": 100,
+          "rate": "1/24",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "bluephantomfield": {
+      "name": "BLUE PHANTOM FIELD",
+      "drops": [
+        {
+          "name": "BLUE PHANTOM FIELD",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Del Rappy",
+          "dar": 100,
+          "rate": "1/36.57",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "BLUE PHANTOM FIELD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Delbiter",
+          "dar": 80,
+          "rate": "1/640",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "BLUE PHANTOM FIELD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Zol Gibbon",
+          "dar": 35,
+          "rate": "1/2127.8",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "blueprintastraldragon": {
+      "name": "BLUEPRINT: ASTRAL DRAGON",
+      "drops": [],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Summer event: Dorphon Divine in Summer Vacation Tragedy, 1/1170, all Section IDs since the 2025 event.",
+          "ko": "여름 이벤트 Summer Vacation Tragedy의 Dorphon Divine, 1/1170. 2025 이벤트부터 전 Section ID에서 획득 가능합니다.",
+          "source": "./event_page.html#summer-2026"
+        }
+      ]
+    },
+    "bookofhitogata": {
+      "name": "Book of HITOGATA",
+      "drops": [
+        {
+          "name": "Book of HITOGATA",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Delsaber",
+          "dar": 25,
+          "rate": "1/2048.01",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Book of HITOGATA",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Gran Sorcerer",
+          "dar": 35,
+          "rate": "1/2127.8",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Book of HITOGATA",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Del Lily",
+          "dar": 35,
+          "rate": "1/2127.8",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "bringersrifle": {
+      "name": "BRINGER'S RIFLE",
+      "drops": [
+        {
+          "name": "BRINGER'S RIFLE",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Bringer",
+          "dar": 88,
+          "rate": "1/358.04",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "businessjacket": {
+      "name": "BUSINESS JACKET",
+      "drops": [
+        {
+          "name": "BUSINESS JACKET",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Bringer",
+          "dar": 88,
+          "rate": "1/517.17",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "BUSINESS JACKET",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Hildelt",
+          "dar": 85,
+          "rate": "1/688.4",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "cannonrouge": {
+      "name": "CANNON ROUGE",
+      "drops": [
+        {
+          "name": "CANNON ROUGE",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Dorphon Eclair",
+          "dar": 100,
+          "rate": "1/3.2",
+          "sections": [
+            "Greenill",
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "CANNON ROUGE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Morfos",
+          "dar": 40,
+          "rate": "1/365.71",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "cataclysmshield": {
+      "name": "CATACLYSM SHIELD",
+      "drops": [
+        {
+          "name": "CATACLYSM SHIELD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Epsilon",
+          "dar": 30,
+          "rate": "1/341.33",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "CATACLYSM SHIELD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Morfos",
+          "dar": 40,
+          "rate": "1/853.33",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "CATACLYSM SHIELD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Zoa",
+          "dar": 30,
+          "rate": "1/1137.77",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "celestialfusion": {
+      "name": "Celestial Fusion",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Celestial Fusion",
+          "parts": [
+            "Taste of Affection",
+            "Passion Haze"
+          ],
+          "note": "Either order works.",
+          "ingredients": [
+            {
+              "item": "Taste of Affection",
+              "qty": 1
+            },
+            {
+              "item": "Passion Haze",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "chaosengine": {
+      "name": "Chaos Engine",
+      "drops": [
+        {
+          "name": "Chaos Engine",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Nightmare Chaser XII",
+          "dar": 100,
+          "rate": "1/73",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "chaoshalo": {
+      "name": "CHAOS HALO",
+      "drops": [
+        {
+          "name": "CHAOS HALO",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Deos Behemoth (TPD)",
+          "dar": 100,
+          "rate": "1/51",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "christmasspirit": {
+      "name": "CHRISTMAS SPIRIT",
+      "drops": [],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "XMAS 2025 event: Dark Falz in EP1 > Xmas > Toward The Future, 1/64. Event route; not a year-round drop.",
+          "ko": "2025 크리스마스 이벤트: EP1 > Xmas > Toward The Future의 Dark Falz, 1/64. 이벤트 기간 한정 경로입니다.",
+          "source": "./event_page.html#xmas-2025"
+        }
+      ]
+    },
+    "claddingofepsilon": {
+      "name": "Cladding of Epsilon",
+      "drops": [
+        {
+          "name": "Cladding of Epsilon",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Epsilon",
+          "dar": 30,
+          "rate": "1/487.62",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "claddingofmanipulatoriii": {
+      "name": "Cladding of Manipulator III",
+      "drops": [
+        {
+          "name": "Cladding of Manipulator III",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Manipulator III",
+          "dar": 30,
+          "rate": "1/10",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "clawofelements": {
+      "name": "CLAW OF ELEMENTS",
+      "drops": [
+        {
+          "name": "CLAW OF ELEMENTS",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Bringer",
+          "dar": 88,
+          "rate": "1/465.45",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "combustioncannon": {
+      "name": "COMBUSTION CANNON",
+      "drops": [
+        {
+          "name": "COMBUSTION CANNON",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/51.2",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "COMBUSTION CANNON",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/787.69",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "COMBUSTION CANNON",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Indi Belra",
+          "dar": 45,
+          "rate": "1/910.22",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "crystallizedwings": {
+      "name": "CRYSTALLIZED WINGS",
+      "drops": [
+        {
+          "name": "CRYSTALLIZED WINGS",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Eclipse Dragon (TPD)",
+          "dar": 100,
+          "rate": "1/51",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "darkbridge": {
+      "name": "Dark Bridge",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Dark Bridge",
+          "parts": [
+            "Rod series",
+            "Parasitic Gene \"Flow\""
+          ],
+          "level": 130,
+          "note": "Supports every RA technique and Grants; the special casts Grants Lv22 three times.",
+          "ingredients": [
+            {
+              "item": "Rod series",
+              "qty": 1
+            },
+            {
+              "item": "Parasitic Gene \"Flow\"",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "darkflow": {
+      "name": "Dark Flow",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Dark Flow",
+          "parts": [
+            "Sword series",
+            "Parasitic Gene \"Flow\""
+          ],
+          "level": 140,
+          "note": "Combo unlocked, buffed ATP, and the special attack keeps its swing damage.",
+          "ingredients": [
+            {
+              "item": "Sword series",
+              "qty": 1
+            },
+            {
+              "item": "Parasitic Gene \"Flow\"",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "darkmatter": {
+      "name": "Dark Matter",
+      "drops": [
+        {
+          "name": "Dark Matter",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Falz",
+          "dar": 100,
+          "rate": "1/102.4",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Dark Matter",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Shambertin",
+          "dar": 100,
+          "rate": "1/102.4",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Dark Matter",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Ill Gill",
+          "dar": 40,
+          "rate": "1/1575.37",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "darkmeteor": {
+      "name": "Dark Meteor",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Dark Meteor",
+          "parts": [
+            "Shot series",
+            "Parasitic Gene \"Flow\""
+          ],
+          "level": 140,
+          "note": "Combo unlocked, buffed ATP, and Normal and Heavy fire 7 bullets instead of 5.",
+          "ingredients": [
+            {
+              "item": "Shot series",
+              "qty": 1
+            },
+            {
+              "item": "Parasitic Gene \"Flow\"",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "darknessphotonsphere": {
+      "name": "Darkness Photon Sphere",
+      "drops": [
+        {
+          "name": "Darkness Photon Sphere",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Deos Behemoth",
+          "dar": 100,
+          "rate": "1/45",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Darkness Photon Sphere",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Eclipse Dragon",
+          "dar": 100,
+          "rate": "1/45",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "daylightscar": {
+      "name": "DAYLIGHT SCAR",
+      "drops": [
+        {
+          "name": "DAYLIGHT SCAR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Goran",
+          "dar": 30,
+          "rate": "1/487.62",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DAYLIGHT SCAR",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Melqueek",
+          "dar": 15,
+          "rate": "1/525.13",
+          "sections": [
+            "Purplenum",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DAYLIGHT SCAR",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/16",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DAYLIGHT SCAR",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Merissa AA",
+          "dar": 100,
+          "rate": "1/16",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DAYLIGHT SCAR",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Epsilon",
+          "dar": 30,
+          "rate": "1/379.26",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DAYLIGHT SCAR",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Ba Boota",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "dealwithit": {
+      "name": "DEAL WITH IT",
+      "drops": [],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Summer 2025: a possible reward from Summer Presents, which drop randomly from monsters during the event. The shield reward chance was not published.",
+          "ko": "2025 여름 이벤트에서 몬스터가 무작위로 드랍하는 Summer Present의 개봉 보상 중 하나입니다. 실드가 나올 개별 확률은 공개되지 않았습니다.",
+          "source": "https://playpso.net/forums/topic/1495-summer-event-2025/"
+        }
+      ]
+    },
+    "derolleshield": {
+      "name": "DE ROL LE SHIELD",
+      "drops": [],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Summer 2025: a possible reward from Summer Presents, which drop randomly from monsters during the event. The shield reward chance was not published.",
+          "ko": "2025 여름 이벤트에서 몬스터가 무작위로 드랍하는 Summer Present의 개봉 보상 중 하나입니다. 실드가 나올 개별 확률은 공개되지 않았습니다.",
+          "source": "https://playpso.net/forums/topic/1495-summer-event-2025/"
+        }
+      ]
+    },
+    "dffield": {
+      "name": "DF FIELD",
+      "drops": [
+        {
+          "name": "DF FIELD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Merlan",
+          "dar": 35,
+          "rate": "1/1462.87",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DF FIELD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Bulclaw",
+          "dar": 45,
+          "rate": "1/2275.57",
+          "sections": [
+            "Purplenum",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DF FIELD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Del-D",
+          "dar": 35,
+          "rate": "1/2925.69",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "divineblade": {
+      "name": "DIVINE BLADE",
+      "drops": [
+        {
+          "name": "DIVINE BLADE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Administrator",
+          "dar": 30,
+          "rate": "1/28",
+          "sections": [
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "divinefield": {
+      "name": "DIVINE FIELD",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "divine-field",
+          "name": "DIVINE FIELD",
+          "category": "Armor",
+          "type": "Armor",
+          "ingredients": [
+            {
+              "item": "Cladding of Administrator",
+              "qty": 2
+            },
+            {
+              "item": "Millennium Photon Core",
+              "qty": 15
+            },
+            {
+              "item": "Proof of Sonic Team",
+              "qty": 2
+            },
+            {
+              "item": "Primal Nexus",
+              "qty": 1
+            },
+            {
+              "item": "Ethereal Armor",
+              "qty": 1
+            },
+            {
+              "item": "D-Virus Armor",
+              "qty": 1
+            }
+          ],
+          "obtain": [
+            "Traded with materials from The Starlight Tower [Raid] — EP2 Special.",
+            "Also added to the Millennium Shop during the Easter 2026 event."
+          ],
+          "notes": [],
+          "recipeComplete": true,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "doublecannon": {
+      "name": "Double Cannon",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Double Cannon",
+          "parts": [
+            "Lavis Blade",
+            "Syncesta"
+          ],
+          "level": 100,
+          "ingredients": [
+            {
+              "item": "Lavis Blade",
+              "qty": 1
+            },
+            {
+              "item": "Syncesta",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "doublefury": {
+      "name": "Double Fury",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Double Fury",
+          "parts": [
+            "Orb of Illusions",
+            "Ultimate Double Cannon"
+          ],
+          "only": "HUcast / HUcaseal",
+          "ingredients": [
+            {
+              "item": "Orb of Illusions",
+              "qty": 1
+            },
+            {
+              "item": "Ultimate Double Cannon",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "dphotoncore": {
+      "name": "D-Photon Core",
+      "drops": [
+        {
+          "name": "D-Photon Core",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Olga Flow",
+          "dar": 100,
+          "rate": "1/32",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "drrobotniksplanb": {
+      "name": "Dr. Robotnik's Plan B",
+      "drops": [
+        {
+          "name": "Dr. Robotnik's Plan B",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gibbles",
+          "dar": 80,
+          "rate": "1/1861.82",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Dr. Robotnik's Plan B",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Morfos",
+          "dar": 40,
+          "rate": "1/3150.8",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "dualbird": {
+      "name": "Dual Bird",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Dual Bird",
+          "parts": [
+            "Master Raven",
+            "Last Swan"
+          ],
+          "ingredients": [
+            {
+              "item": "Master Raven",
+              "qty": 1
+            },
+            {
+              "item": "Last Swan",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "dvirusarmor": {
+      "name": "D-VIRUS ARMOR",
+      "drops": [
+        {
+          "name": "D-VIRUS ARMOR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/46.55",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "D-VIRUS ARMOR",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Baranz",
+          "dar": 85,
+          "rate": "1/3855.05",
+          "sections": [
+            "Pinkal",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "D-VIRUS ARMOR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Baranz",
+          "dar": 50,
+          "rate": "1/4096.01",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Easter Shop in Phantastic Bazaar: Easter Egg ×30 during the event.",
+          "ko": "부활절 이벤트 기간 Phantastic Bazaar의 Easter Shop에서 Easter Egg ×30으로 교환합니다.",
+          "source": "./economy_page.html#event-shop"
+        }
+      ]
+    },
+    "dviruslauncher": {
+      "name": "D-VIRUS LAUNCHER",
+      "drops": [
+        {
+          "name": "D-VIRUS LAUNCHER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Baranz",
+          "dar": 50,
+          "rate": "1/3640.87",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "D-VIRUS LAUNCHER",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Baranz",
+          "dar": 85,
+          "rate": "1/3855.05",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Easter Shop in Phantastic Bazaar: Easter Egg ×30 for a 0% attribute copy during the event.",
+          "ko": "부활절 이벤트 기간 Phantastic Bazaar의 Easter Shop에서 Easter Egg ×30으로 속성 0% 무기를 교환합니다.",
+          "source": "./economy_page.html#event-shop"
+        }
+      ]
+    },
+    "dynastyarmor": {
+      "name": "DYNASTY ARMOR",
+      "drops": [
+        {
+          "name": "DYNASTY ARMOR",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dal Ral Lie",
+          "dar": 100,
+          "rate": "1/73.14",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DYNASTY ARMOR",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Vol Opt ver. 2",
+          "dar": 100,
+          "rate": "1/73.14",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DYNASTY ARMOR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Del Lily",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DYNASTY ARMOR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Yowie",
+          "dar": 45,
+          "rate": "1/1820.43",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "DYNASTY ARMOR",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/16",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "eggblaster": {
+      "name": "Egg Blaster",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Egg Blaster",
+          "parts": [
+            "Handgun series",
+            "Parts of Egg Blaster"
+          ],
+          "level": 90,
+          "ingredients": [
+            {
+              "item": "Handgun series",
+              "qty": 1
+            },
+            {
+              "item": "Parts of Egg Blaster",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "elementalshield": {
+      "name": "ELEMENTAL SHIELD",
+      "drops": [
+        {
+          "name": "ELEMENTAL SHIELD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gal Gryphon",
+          "dar": 100,
+          "rate": "1/85.33",
+          "sections": [
+            "Skyly",
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "eternalnight": {
+      "name": "ETERNAL NIGHT",
+      "drops": [
+        {
+          "name": "ETERNAL NIGHT",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Falz",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "etherealarmor": {
+      "name": "ETHEREAL ARMOR",
+      "drops": [
+        {
+          "name": "ETHEREAL ARMOR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gal Gryphon",
+          "dar": 100,
+          "rate": "1/157.54",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "ETHEREAL ARMOR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Mericus",
+          "dar": 80,
+          "rate": "1/1280",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "ETHEREAL ARMOR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Ill Gill",
+          "dar": 40,
+          "rate": "1/2559.97",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "evilaura": {
+      "name": "EVIL AURA",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Evil Aura",
+          "parts": [
+            "Orb of Illusions",
+            "Behemoth Armor"
+          ],
+          "ingredients": [
+            {
+              "item": "Orb of Illusions",
+              "qty": 1
+            },
+            {
+              "item": "Behemoth Armor",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "excalibur": {
+      "name": "EXCALIBUR",
+      "drops": [
+        {
+          "name": "EXCALIBUR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "finaleggblaster": {
+      "name": "Final Egg Blaster",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Final Egg Blaster",
+          "parts": [
+            "Egg Blaster",
+            "Dr. Robotnik's Plan B"
+          ],
+          "ingredients": [
+            {
+              "item": "Egg Blaster",
+              "qty": 1
+            },
+            {
+              "item": "Dr. Robotnik's Plan B",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "forbiddengrimoire": {
+      "name": "FORBIDDEN GRIMOIRE",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "forbidden-grimoire",
+          "name": "FORBIDDEN GRIMOIRE",
+          "category": "Unit",
+          "type": "Unit",
+          "ingredients": [
+            {
+              "item": "Hallowed Jack-O-Lantern",
+              "qty": 1
+            },
+            {
+              "item": "Millennium Photon Core",
+              "qty": 10
+            },
+            {
+              "item": "Cladding of Epsilon",
+              "qty": 1
+            },
+            {
+              "item": "Proof of Sonic Team",
+              "qty": 1
+            },
+            {
+              "item": "Sorcerer's Right Arm",
+              "qty": 1
+            },
+            {
+              "item": "Magic Stone 'Iritista'",
+              "qty": 2
+            },
+            {
+              "item": "Book of Hitogata",
+              "qty": 1
+            }
+          ],
+          "obtain": [
+            "Trade with the NPC Paganini in Pioneer 2 while in Hallowed World [Master]."
+          ],
+          "notes": [],
+          "recipeComplete": true,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "frostbite": {
+      "name": "FROSTBITE",
+      "drops": [
+        {
+          "name": "FROSTBITE",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Merissa AA",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "FROSTBITE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gol Dragon",
+          "dar": 100,
+          "rate": "1/93.09",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "FROSTBITE",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Del-D",
+          "dar": 35,
+          "rate": "1/1950.46",
+          "sections": [
+            "Bluefull",
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "frozenshooter": {
+      "name": "FROZEN SHOOTER",
+      "drops": [
+        {
+          "name": "FROZEN SHOOTER",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Hildetorr",
+          "dar": 100,
+          "rate": "1/2",
+          "sections": [
+            "Greenill",
+            "Purplenum",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "genesisarmor": {
+      "name": "GENESIS ARMOR",
+      "drops": [
+        {
+          "name": "GENESIS ARMOR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Shambertin",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GENESIS ARMOR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Epsilon",
+          "dar": 30,
+          "rate": "1/310.3",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GENESIS ARMOR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Del Lily",
+          "dar": 35,
+          "rate": "1/1170.29",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GENESIS ARMOR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Ba Boota",
+          "dar": 35,
+          "rate": "1/1950.46",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "glidedivine": {
+      "name": "GLIDE DIVINE",
+      "drops": [
+        {
+          "name": "GLIDE DIVINE",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Tollaw",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GLIDE DIVINE",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Sand Rappy",
+          "dar": 100,
+          "rate": "1/1489.45",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "glidedivines": {
+      "name": "GLIDE DIVINE S",
+      "drops": [
+        {
+          "name": "GLIDE DIVINE S",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Vol Opt ver. 2",
+          "dar": 100,
+          "rate": "1/73.14",
+          "sections": [
+            "Skyly",
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "glidedivinex": {
+      "name": "GLIDE DIVINE X",
+      "drops": [
+        {
+          "name": "GLIDE DIVINE X",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Gran Sorcerer",
+          "dar": 35,
+          "rate": "1/650.16",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GLIDE DIVINE X",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Delsaber",
+          "dar": 45,
+          "rate": "1/758.52",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GLIDE DIVINE X",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/46.55",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GLIDE DIVINE X",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Pyro Goran",
+          "dar": 35,
+          "rate": "1/2127.8",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "goldenhalo": {
+      "name": "GOLDEN HALO",
+      "drops": [
+        {
+          "name": "GOLDEN HALO",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Manipulator III Ver.2",
+          "dar": 30,
+          "rate": "1/39",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "gratia": {
+      "name": "GRATIA",
+      "drops": [
+        {
+          "name": "GRATIA",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GRATIA",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sinow Blue",
+          "dar": 60,
+          "rate": "1/853.33",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GRATIA",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Skyly",
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "gravedigger": {
+      "name": "GRAVE DIGGER",
+      "drops": [
+        {
+          "name": "GRAVE DIGGER",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/32",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GRAVE DIGGER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Deldepth",
+          "dar": 40,
+          "rate": "1/1706.66",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "GRAVE DIGGER",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Goran Detonator",
+          "dar": 35,
+          "rate": "1/1800.44",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "guldmilla": {
+      "name": "Guld Milla",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Guld Milla",
+          "parts": [
+            "Handgun: Guld",
+            "Handgun: Milla"
+          ],
+          "level": 100,
+          "ingredients": [
+            {
+              "item": "Handgun: Guld",
+              "qty": 1
+            },
+            {
+              "item": "Handgun: Milla",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "hallowedjackolantern": {
+      "name": "Hallowed Jack-O-Lantern",
+      "drops": [
+        {
+          "name": "Hallowed Jack-O-Lantern",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Hallowed Reaper (HW[Mas])",
+          "dar": 40,
+          "rate": "1/1170",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "handgunguld": {
+      "name": "HANDGUN:GULD",
+      "drops": [
+        {
+          "name": "HANDGUN:GULD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Gran Sorcerer",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "HANDGUN:GULD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Delsaber",
+          "dar": 25,
+          "rate": "1/1024",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "handgunmilla": {
+      "name": "HANDGUN:MILLA",
+      "drops": [
+        {
+          "name": "HANDGUN:MILLA",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Tollaw",
+          "dar": 35,
+          "rate": "1/1063.9",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "heavenlyresist": {
+      "name": "Heavenly/Resist",
+      "drops": [
+        {
+          "name": "Heavenly/Resist",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Bar Dalus",
+          "dar": 100,
+          "rate": "1/36",
+          "sections": [
+            "Pinkal",
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "heavenpunisher": {
+      "name": "HEAVEN PUNISHER",
+      "drops": [
+        {
+          "name": "HEAVEN PUNISHER",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Hildetorr",
+          "dar": 100,
+          "rate": "1/19.69",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "HEAVEN PUNISHER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Hildetorr",
+          "dar": 100,
+          "rate": "1/19.69",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "heavenstriker": {
+      "name": "HEAVEN STRIKER",
+      "drops": [
+        {
+          "name": "HEAVEN STRIKER",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Pyro Goran",
+          "dar": 35,
+          "rate": "1/1462.87",
+          "sections": [
+            "Greenill",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "HEAVEN STRIKER",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Del-D",
+          "dar": 35,
+          "rate": "1/1950.46",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "HEAVEN STRIKER",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/16",
+          "sections": [
+            "Greenill",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "HEAVEN STRIKER",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Pyro Goran",
+          "dar": 35,
+          "rate": "1/2127.8",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "hellfireshield": {
+      "name": "Hellfire Shield",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Hellfire Shield",
+          "parts": [
+            "Orb of Illusions",
+            "Cataclysm Shield"
+          ],
+          "ingredients": [
+            {
+              "item": "Orb of Illusions",
+              "qty": 1
+            },
+            {
+              "item": "Cataclysm Shield",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "hellneedle": {
+      "name": "Hell Needle",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Hell Needle",
+          "parts": [
+            "Spread Needle",
+            "Dark Matter"
+          ],
+          "ingredients": [
+            {
+              "item": "Spread Needle",
+              "qty": 1
+            },
+            {
+              "item": "Dark Matter",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "hellstriker": {
+      "name": "HELL STRIKER",
+      "drops": [
+        {
+          "name": "HELL STRIKER",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Goran Detonator",
+          "dar": 35,
+          "rate": "1/417.96",
+          "sections": [
+            "Viridia",
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "HELL STRIKER",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/16",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "holyray": {
+      "name": "HOLY RAY",
+      "drops": [
+        {
+          "name": "HOLY RAY",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dal Ral Lie",
+          "dar": 100,
+          "rate": "1/36.57",
+          "sections": [
+            "Greenill",
+            "Pinkal",
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "HOLY RAY",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sil Dragon",
+          "dar": 100,
+          "rate": "1/36.57",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "HOLY RAY",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Chaos Sorcerer",
+          "dar": 35,
+          "rate": "1/1170.29",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "hpflow": {
+      "name": "HP/Flow",
+      "drops": [
+        {
+          "name": "HP/Flow",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Del Rappy",
+          "dar": 100,
+          "rate": "1/19.69",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "HP/Flow",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Migium",
+          "dar": 45,
+          "rate": "1/325.08",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "ignisengine": {
+      "name": "IGNIS ENGINE",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "ignis-engine",
+          "name": "IGNIS ENGINE",
+          "category": "Unit",
+          "type": "Unit",
+          "ingredients": [
+            {
+              "item": "Millennium Photon Core",
+              "qty": 25
+            },
+            {
+              "item": "Darkness Photon Sphere",
+              "qty": 1
+            },
+            {
+              "item": "Blast Garment",
+              "qty": 1
+            },
+            {
+              "item": "Behemoth Armor",
+              "qty": 1
+            },
+            {
+              "item": "Proof of Sonic Team",
+              "qty": 1
+            }
+          ],
+          "obtain": [
+            "Traded in the Millennium Shop — The Phantastic Bazaar, EP2 Shop.",
+            "The material list in the original announcement was cut off, so there may be further requirements."
+          ],
+          "notes": [],
+          "recipeComplete": false,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "illgillreaper": {
+      "name": "ILL GILL REAPER",
+      "drops": [
+        {
+          "name": "ILL GILL REAPER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Ill Gill",
+          "dar": 40,
+          "rate": "1/2559.97",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "immortalbattle": {
+      "name": "Immortal/Battle",
+      "drops": [
+        {
+          "name": "Immortal/Battle",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/28.44",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Immortal/Battle",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/73.14",
+          "sections": [
+            "Bluefull",
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Immortal/Battle",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Falz",
+          "dar": 100,
+          "rate": "1/102.4",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Immortal/Battle",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Epsilon",
+          "dar": 30,
+          "rate": "1/525.13",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "immortalhp": {
+      "name": "Immortal/HP",
+      "drops": [
+        {
+          "name": "Immortal/HP",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/28.44",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Immortal/HP",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sinow Red",
+          "dar": 55,
+          "rate": "1/677.03",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "infernalstone": {
+      "name": "Infernal Stone",
+      "drops": [
+        {
+          "name": "Infernal Stone",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Tormentark (VR:OMEGA)",
+          "dar": 80,
+          "rate": "1/930",
+          "sections": [
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "ironfaust": {
+      "name": "IRON FAUST",
+      "drops": [
+        {
+          "name": "IRON FAUST",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Baranz",
+          "dar": 85,
+          "rate": "1/1376.8",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [
+        {
+          "result": "Iron Faust",
+          "parts": [
+            "Panzer Faust",
+            "Photon Booster"
+          ],
+          "note": "Combo unlocked and every RA class can equip it.",
+          "ingredients": [
+            {
+              "item": "Panzer Faust",
+              "qty": 1
+            },
+            {
+              "item": "Photon Booster",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "izmaela": {
+      "name": "IZMAELA",
+      "drops": [
+        {
+          "name": "IZMAELA",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Pouilly Slime",
+          "dar": 100,
+          "rate": "1/32",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "judgementblade": {
+      "name": "JUDGEMENT BLADE",
+      "drops": [
+        {
+          "name": "JUDGEMENT BLADE",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Shambertin",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "JUDGEMENT BLADE",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Delsaber",
+          "dar": 45,
+          "rate": "1/827.47",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "kitetsu": {
+      "name": "KITETSU",
+      "drops": [
+        {
+          "name": "KITETSU",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Hildetorr",
+          "dar": 100,
+          "rate": "1/16",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "KITETSU",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Astark",
+          "dar": 85,
+          "rate": "1/535.42",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "KITETSU",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Gran Sorcerer",
+          "dar": 35,
+          "rate": "1/731.43",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "KITETSU",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Indi Belra",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "KITETSU",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Del-D",
+          "dar": 35,
+          "rate": "1/975.24",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "kroessweater": {
+      "name": "KROE'S SWEATER",
+      "drops": [
+        {
+          "name": "KROE'S SWEATER",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Vol Opt ver. 2",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Greenill",
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "KROE'S SWEATER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gran Sorcerer",
+          "dar": 25,
+          "rate": "1/2048.01",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "KROE'S SWEATER",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Ba Boota",
+          "dar": 35,
+          "rate": "1/2925.69",
+          "sections": [
+            "Oran",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "kunai": {
+      "name": "KUNAI",
+      "drops": [
+        {
+          "name": "KUNAI",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Zele",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "lastemperor": {
+      "name": "LAST EMPEROR",
+      "drops": [
+        {
+          "name": "LAST EMPEROR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAST EMPEROR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/1137.77",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAST EMPEROR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Ill Gill",
+          "dar": 40,
+          "rate": "1/1706.66",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "lastswan": {
+      "name": "LAST SWAN",
+      "drops": [
+        {
+          "name": "LAST SWAN",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Del-D",
+          "dar": 35,
+          "rate": "1/731.43",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAST SWAN",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Merlan",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAST SWAN",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Sinow Gold",
+          "dar": 55,
+          "rate": "1/677.03",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAST SWAN",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Sinow Beat",
+          "dar": 60,
+          "rate": "1/758.52",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "lavisblade": {
+      "name": "Lavis Blade",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Lavis Blade",
+          "parts": [
+            "Lavis Cannon",
+            "Syncesta"
+          ],
+          "level": 100,
+          "ingredients": [
+            {
+              "item": "Lavis Cannon",
+              "qty": 1
+            },
+            {
+              "item": "Syncesta",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "laviscannon": {
+      "name": "LAVIS CANNON",
+      "drops": [
+        {
+          "name": "LAVIS CANNON",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Pouilly Slime",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAVIS CANNON",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Merissa AA",
+          "dar": 100,
+          "rate": "1/36.57",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAVIS CANNON",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gibbles",
+          "dar": 80,
+          "rate": "1/1280",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAVIS CANNON",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sinow Red",
+          "dar": 55,
+          "rate": "1/2978.94",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAVIS CANNON",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Tollaw",
+          "dar": 35,
+          "rate": "1/28810.14",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LAVIS CANNON",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Poifuilly Slime",
+          "dar": 27,
+          "rate": "1/37341.3",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [
+        {
+          "result": "Lavis Cannon",
+          "parts": [
+            "Double Cannon",
+            "Syncesta"
+          ],
+          "level": 100,
+          "ingredients": [
+            {
+              "item": "Double Cannon",
+              "qty": 1
+            },
+            {
+              "item": "Syncesta",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "lavisstorm": {
+      "name": "Lavis Storm",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Lavis Storm",
+          "parts": [
+            "Orb of Illusions",
+            "Ultimate Double Cannon"
+          ],
+          "only": "HUmar / HUnewearl",
+          "ingredients": [
+            {
+              "item": "Orb of Illusions",
+              "qty": 1
+            },
+            {
+              "item": "Ultimate Double Cannon",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "lightninggarment": {
+      "name": "LIGHTNING GARMENT",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "lightning-garment",
+          "name": "LIGHTNING GARMENT",
+          "category": "Armor",
+          "type": "Armor",
+          "ingredients": [
+            {
+              "item": "Secret Ticket",
+              "qty": 99
+            }
+          ],
+          "obtain": [
+            "Traded from the RAcaseal NPC in The Phantastic Bazaar — EP2 Shop.",
+            "Secret Tickets come from Simulator 2.0 [EP1] and Random Attack Xrd Stage [EP2] on clearing the secret area."
+          ],
+          "notes": [
+            "Known issue, announced September 7: the technique boost is not working. A fix is planned for the next update with a client update. Do not count the listed Grants bonus until a fix is confirmed."
+          ],
+          "status": "issue",
+          "source": "https://discord.com/channels/363947585154580480/1536700622357667860/1546492799073914983",
+          "checkedAt": "2026-09-10",
+          "recipeComplete": true,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "luminousfield": {
+      "name": "LUMINOUS FIELD",
+      "drops": [
+        {
+          "name": "LUMINOUS FIELD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Hildelt",
+          "dar": 85,
+          "rate": "1/1204.7",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LUMINOUS FIELD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dubchich",
+          "dar": 30,
+          "rate": "1/1706.66",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LUMINOUS FIELD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sinow Blue",
+          "dar": 60,
+          "rate": "1/1706.66",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LUMINOUS FIELD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Gunner",
+          "dar": 45,
+          "rate": "1/2275.57",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "LUMINOUS FIELD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Tollaw",
+          "dar": 35,
+          "rate": "1/2925.69",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "ma85fury": {
+      "name": "M&A85 FURY",
+      "drops": [
+        {
+          "name": "M&A85 FURY",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/51.2",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "magicstoneiritista": {
+      "name": "Magic Stone \"Iritista\"",
+      "drops": [
+        {
+          "name": "Magic Stone \"Iritista\"",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Hildetorr",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Magic Stone \"Iritista\"",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Hildetorr",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "masterraven": {
+      "name": "MASTER RAVEN",
+      "drops": [
+        {
+          "name": "MASTER RAVEN",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Crimson Assassin",
+          "dar": 40,
+          "rate": "1/393.85",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MASTER RAVEN",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Delsaber",
+          "dar": 45,
+          "rate": "1/505.68",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MASTER RAVEN",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Crimson Assassin",
+          "dar": 55,
+          "rate": "1/620.61",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MASTER RAVEN",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Sinow Gold",
+          "dar": 55,
+          "rate": "1/677.03",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MASTER RAVEN",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Sinow Beat",
+          "dar": 60,
+          "rate": "1/758.52",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "matrixscope": {
+      "name": "MATRIX SCOPE",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "matrix-scope",
+          "name": "MATRIX SCOPE",
+          "category": "Unit",
+          "type": "Unit",
+          "ingredients": [
+            {
+              "item": "Infernal Stone",
+              "qty": 1
+            },
+            {
+              "item": "Fragments of Orb [Red]",
+              "qty": 2
+            },
+            {
+              "item": "Fragments of Orb [Blue]",
+              "qty": 2
+            },
+            {
+              "item": "Reflex Gear",
+              "qty": 2
+            },
+            {
+              "item": "ETHEREAL ARMOR",
+              "qty": 1
+            },
+            {
+              "item": "Shadow Cloak",
+              "qty": 1
+            },
+            {
+              "item": "Proof of Sonic Team",
+              "qty": 1
+            },
+            {
+              "item": "Photon Booster",
+              "qty": 1
+            }
+          ],
+          "obtain": [
+            "The July 4 correction replaces Weapon Crystal Badge x20 with Photon Booster x1. This is a partial material list: three unidentified material groups in the older source still need verification. Check the official announcement and the NPC before farming the full recipe."
+          ],
+          "notes": [],
+          "status": "live",
+          "source": "https://discord.com/channels/363947585154580480/1522857137632444568/1522898403359592469",
+          "checkedAt": "2026-09-10",
+          "recipeComplete": false,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "millemarteaux": {
+      "name": "Mille Marteaux",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Mille Marteaux",
+          "parts": [
+            "Heaven Punisher",
+            "Ophelie Seize"
+          ],
+          "level": 100,
+          "ingredients": [
+            {
+              "item": "Heaven Punisher",
+              "qty": 1
+            },
+            {
+              "item": "Ophelie Seize",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "millenniumhp": {
+      "name": "MILLENNIUM/HP",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "millennium-hp",
+          "name": "MILLENNIUM/HP",
+          "category": "Unit",
+          "type": "Unit",
+          "ingredients": [
+            {
+              "item": "Millennium Photon Core",
+              "qty": 5
+            },
+            {
+              "item": "Immortal/HP",
+              "qty": 2
+            },
+            {
+              "item": "Cataclysm Shield",
+              "qty": 1
+            },
+            {
+              "item": "MOLTEN RING",
+              "qty": 1
+            },
+            {
+              "item": "Weapon Crystal Badge",
+              "qty": 10
+            }
+          ],
+          "obtain": [
+            "Traded in the Millennium Shop — The Phantastic Bazaar, EP2 Shop."
+          ],
+          "notes": [],
+          "recipeComplete": true,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "miraclechain": {
+      "name": "MIRACLE CHAIN",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "miracle-chain",
+          "name": "MIRACLE CHAIN",
+          "category": "Common",
+          "type": "Cane",
+          "ingredients": [
+            {
+              "item": "Fragments of Orb [Yellow]",
+              "qty": 1
+            },
+            {
+              "item": "Fragments of Orb [Green]",
+              "qty": 1
+            },
+            {
+              "item": "Weapon Crystal Badge",
+              "qty": 10
+            }
+          ],
+          "obtain": [
+            "Trade with the RAcaseal in Another Shop, inside Phantastic Bazaar."
+          ],
+          "notes": [],
+          "status": "live",
+          "source": "https://discord.com/channels/363947585154580480/1543750986777108573/1543751150141055146",
+          "checkedAt": "2026-09-10",
+          "recipeComplete": true,
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "moltenring": {
+      "name": "MOLTEN RING",
+      "drops": [
+        {
+          "name": "MOLTEN RING",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gi Gue",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MOLTEN RING",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Gran Sorcerer",
+          "dar": 35,
+          "rate": "1/585.14",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MOLTEN RING",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Dorphon",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "mothergarb": {
+      "name": "MOTHER GARB+",
+      "drops": [
+        {
+          "name": "MOTHER GARB+",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Dorphon",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MOTHER GARB+",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Bluefull",
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MOTHER GARB+",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Ill Gill",
+          "dar": 40,
+          "rate": "1/256",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MOTHER GARB+",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Dorphon",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Bluefull",
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MOTHER GARB+",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Pinkal",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "MOTHER GARB",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Chaos Sorcerer",
+          "dar": 35,
+          "rate": "1/585.14",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "neisclaw": {
+      "name": "NEI'S CLAW",
+      "drops": [
+        {
+          "name": "NEI'S CLAW",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/204.8",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "NEI'S CLAW",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Ill Gill",
+          "dar": 40,
+          "rate": "1/10239.61",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "nightmare": {
+      "name": "Nightmare",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Nightmare",
+          "parts": [
+            "Yamigarisu",
+            "Dark Matter"
+          ],
+          "ingredients": [
+            {
+              "item": "Yamigarisu",
+              "qty": 1
+            },
+            {
+              "item": "Dark Matter",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "ninjasuit": {
+      "name": "NINJA SUIT",
+      "drops": [
+        {
+          "name": "NINJA SUIT",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gal Gryphon",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "NINJA SUIT",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dal Ral Lie",
+          "dar": 100,
+          "rate": "1/73.14",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "NINJA SUIT",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Bulclaw",
+          "dar": 45,
+          "rate": "1/758.52",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "ophelieseize": {
+      "name": "OPHELIE SEIZE",
+      "drops": [
+        {
+          "name": "OPHELIE SEIZE",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Pazuzu",
+          "dar": 100,
+          "rate": "1/3.2",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "OPHELIE SEIZE",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/256",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "OPHELIE SEIZE",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Pazuzu",
+          "dar": 100,
+          "rate": "1/3.2",
+          "sections": [
+            "Viridia",
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "OPHELIE SEIZE",
+          "difficulty": 1,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=1",
+          "syncedAt": "2026-08-19T15:22:00.484Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "orbofillusions": {
+      "name": "Orb of Illusions",
+      "drops": [
+        {
+          "name": "Orb of Illusions",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/2559.97",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Orb of Illusions",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Mericarol",
+          "dar": 80,
+          "rate": "1/3150.8",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Orb of Illusions",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Mericus",
+          "dar": 80,
+          "rate": "1/3150.8",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Orb of Illusions",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Merikle",
+          "dar": 80,
+          "rate": "1/3150.8",
+          "sections": [
+            "Greenill",
+            "Bluefull",
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "orotiagito": {
+      "name": "OROTIAGITO",
+      "drops": [
+        {
+          "name": "OROTIAGITO",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Pal Rappy",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "OROTIAGITO",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Mericus",
+          "dar": 80,
+          "rate": "1/1706.66",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "OROTIAGITO",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Nano Dragon",
+          "dar": 55,
+          "rate": "1/2482.44",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "OROTIAGITO",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Delsaber",
+          "dar": 45,
+          "rate": "1/3034.07",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "OROTIAGITO",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Tollaw",
+          "dar": 35,
+          "rate": "1/3900.92",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "panzerfaust": {
+      "name": "PANZER FAUST",
+      "drops": [
+        {
+          "name": "PANZER FAUST",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Baranz",
+          "dar": 50,
+          "rate": "1/630.16",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Purplenum",
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "paragonframe": {
+      "name": "PARAGON FRAME",
+      "drops": [
+        {
+          "name": "PARAGON FRAME",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Olga Flow",
+          "dar": 100,
+          "rate": "1/146.29",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "PARAGON FRAME",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Deldepth",
+          "dar": 40,
+          "rate": "1/2559.97",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "PARAGON FRAME",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Dorphon",
+          "dar": 80,
+          "rate": "1/2559.97",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "parasitewearderol": {
+      "name": "Parasite Wear: De Rol",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Parasite Wear: De Rol",
+          "parts": [
+            "Stink Frame",
+            "Parasitic Cell Type D"
+          ],
+          "level": 54,
+          "only": "no casts",
+          "ingredients": [
+            {
+              "item": "Stink Frame",
+              "qty": 1
+            },
+            {
+              "item": "Parasitic Cell Type D",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "parasitewearnelgal": {
+      "name": "Parasite Wear: Nelgal",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Parasite Wear: Nelgal",
+          "parts": [
+            "Parasite Wear: De Rol",
+            "Parasitic Cell Type D"
+          ],
+          "level": 66,
+          "only": "no casts",
+          "ingredients": [
+            {
+              "item": "Parasite Wear: De Rol",
+              "qty": 1
+            },
+            {
+              "item": "Parasitic Cell Type D",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "parasitewearvajulla": {
+      "name": "Parasite Wear: Vajulla",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Parasite Wear: Vajulla",
+          "parts": [
+            "Parasite Wear: Nelgal",
+            "Parasitic Cell Type D"
+          ],
+          "level": 89,
+          "only": "no casts",
+          "ingredients": [
+            {
+              "item": "Parasite Wear: Nelgal",
+              "qty": 1
+            },
+            {
+              "item": "Parasitic Cell Type D",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "parasiticarmorpredator": {
+      "name": "Parasitic Armor 'Predator'",
+      "drops": [
+        {
+          "name": "Parasitic Armor 'Predator'",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Soul Butcher",
+          "dar": 100,
+          "rate": "1/36",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "parasiticgeneflow": {
+      "name": "Parasitic gene \"Flow\"",
+      "drops": [
+        {
+          "name": "Parasitic gene \"Flow\"",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Olga Flow",
+          "dar": 100,
+          "rate": "1/204.8",
+          "sections": [
+            "Viridia",
+            "Skyly",
+            "Purplenum",
+            "Redria",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "partsofeggblaster": {
+      "name": "Parts of EGG BLASTER",
+      "drops": [
+        {
+          "name": "Parts of EGG BLASTER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Baranz",
+          "dar": 50,
+          "rate": "1/128",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Parts of EGG BLASTER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "El Rappy",
+          "dar": 100,
+          "rate": "1/315.08",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Parts of EGG BLASTER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Baranz",
+          "dar": 50,
+          "rate": "1/630.16",
+          "sections": [
+            "Pinkal",
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Parts of EGG BLASTER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Pan Arms",
+          "dar": 50,
+          "rate": "1/630.16",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "passionhaze": {
+      "name": "PASSION HAZE",
+      "drops": [
+        {
+          "name": "PASSION HAZE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Epsilon",
+          "dar": 30,
+          "rate": "1/310.3",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "PASSION HAZE",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Goran Detonator",
+          "dar": 35,
+          "rate": "1/731.43",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "pbflow": {
+      "name": "PB/Flow",
+      "drops": [
+        {
+          "name": "PB/Flow",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Vol Opt ver. 2",
+          "dar": 100,
+          "rate": "1/102.4",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "PB/Flow",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gal Gryphon",
+          "dar": 100,
+          "rate": "1/102.4",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "PB/Flow",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Shambertin",
+          "dar": 100,
+          "rate": "1/102.4",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "phantasmalfield": {
+      "name": "PHANTASMAL FIELD",
+      "drops": [],
+      "recipes": [
+        {
+          "kind": "trade",
+          "ingredients": [
+            {
+              "item": "Darkness Photon Sphere",
+              "qty": 1
+            },
+            {
+              "item": "Millennium Photon Core",
+              "qty": 25
+            },
+            {
+              "item": "Cladding of Manipulator III",
+              "qty": 1
+            },
+            {
+              "item": "DF Field",
+              "qty": 1
+            },
+            {
+              "item": "Genesis Armor",
+              "qty": 2
+            },
+            {
+              "item": "LUMINOUS FIELD",
+              "qty": 1
+            },
+            {
+              "item": "Virus Armor: Lafuteria",
+              "qty": 1
+            }
+          ],
+          "recipeComplete": false,
+          "source": "./index.html",
+          "obtain": [
+            "Millennium Shop — The Phantastic Bazaar (EP2 > Shop)"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    "phantasmaloresyncesta": {
+      "name": "Phantasmal Ore Syncesta",
+      "drops": [],
+      "recipes": [
+        {
+          "id": "phantasmal-ore-syncesta",
+          "name": "Phantasmal Ore Syncesta",
+          "category": "Material",
+          "type": "Upgrade material",
+          "ingredients": [
+            {
+              "item": "Millennium Photon Core",
+              "qty": 20
+            },
+            {
+              "item": "Infernal Stone",
+              "qty": 1
+            },
+            {
+              "item": "Chaos Engine",
+              "qty": 1
+            },
+            {
+              "item": "Weapon Crystal Badge",
+              "qty": 30
+            },
+            {
+              "item": "Syncesta",
+              "qty": 2
+            },
+            {
+              "item": "Dark Matter",
+              "qty": 1
+            },
+            {
+              "item": "Proof of Sword-Saint",
+              "qty": 1
+            }
+          ],
+          "obtain": [
+            "Planned after the 9th Anniversary. First obtain the ore using these materials, then combine the ore with Double Cannon to make Alternative Cannon. The base weapon is a separate requirement."
+          ],
+          "notes": [],
+          "status": "planned",
+          "source": "https://discord.com/channels/363947585154580480/441859383958437888/1538284098009964645",
+          "scheduleSource": "https://discord.com/channels/363947585154580480/441859383958437888/1547497207731585054",
+          "checkedAt": "2026-09-10",
+          "recipeComplete": true,
+          "baseItem": "Double Cannon",
+          "resultItem": "Alternative Cannon",
+          "kind": "trade"
+        }
+      ],
+      "notes": []
+    },
+    "phoenixwings": {
+      "name": "PHOENIX WINGS",
+      "drops": [
+        {
+          "name": "PHOENIX WINGS",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Bar Dalus (TPD)",
+          "dar": 100,
+          "rate": "1/51",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "photonbooster": {
+      "name": "Photon Booster",
+      "drops": [
+        {
+          "name": "Photon Booster",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Canune",
+          "dar": 35,
+          "rate": "1/2600.64",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "planeteater": {
+      "name": "PLANET EATER",
+      "drops": [
+        {
+          "name": "PLANET EATER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Olga Flow",
+          "dar": 100,
+          "rate": "1/73.14",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "primalnexus": {
+      "name": "PRIMAL NEXUS",
+      "drops": [
+        {
+          "name": "PRIMAL NEXUS",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Deldepth",
+          "dar": 40,
+          "rate": "1/2559.97",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "PRIMAL NEXUS",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Baranz",
+          "dar": 85,
+          "rate": "1/2965.42",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "PRIMAL NEXUS",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sinow Blue",
+          "dar": 60,
+          "rate": "1/3900.92",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "primalphotonsphere": {
+      "name": "Primal Photon Sphere",
+      "drops": [
+        {
+          "name": "Primal Photon Sphere",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Nightmare Dominator VI",
+          "dar": 100,
+          "rate": "1/45",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "profounddarkness": {
+      "name": "Profound Darkness",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Profound Darkness",
+          "parts": [
+            "Orb of Illusions",
+            "Three Seals"
+          ],
+          "ingredients": [
+            {
+              "item": "Orb of Illusions",
+              "qty": 1
+            },
+            {
+              "item": "Three Seals",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "proofofsonicteam": {
+      "name": "Proof of Sonic Team",
+      "drops": [
+        {
+          "name": "Proof of Sonic Team",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gal Gryphon",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "radiantring": {
+      "name": "RADIANT RING",
+      "drops": [
+        {
+          "name": "RADIANT RING",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Bar Dalus",
+          "dar": 100,
+          "rate": "1/102",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Anniversary Shop in Phantastic Bazaar: Anniversary Crate ×60 during the event.",
+          "ko": "기념일 이벤트 기간 Phantastic Bazaar의 Anniversary Shop에서 Anniversary Crate ×60으로 교환합니다.",
+          "source": "./economy_page.html#event-shop"
+        }
+      ]
+    },
+    "rainbowshield": {
+      "name": "RAINBOW SHIELD",
+      "drops": [
+        {
+          "name": "RAINBOW SHIELD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Delbiter",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "RAINBOW SHIELD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Nano Dragon",
+          "dar": 55,
+          "rate": "1/572.87",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "RAINBOW SHIELD",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "rangerwall": {
+      "name": "RANGER WALL",
+      "drops": [],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Gallon's Shop: obtain points from the minigame and exchange them for Ranger Wall. See the Destiny beginner guide for this route.",
+          "ko": "Gallon's Shop의 미니게임에서 포인트를 모아 Ranger Wall을 교환합니다. Destiny 초보자 가이드에 안내된 경로입니다.",
+          "source": "https://playpso.net/forums/topic/839-beginners-friendly-guide/"
+        }
+      ]
+    },
+    "rasterscope": {
+      "name": "RASTER SCOPE",
+      "drops": [
+        {
+          "name": "RASTER SCOPE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Epsilon",
+          "dar": 30,
+          "rate": "1/2100.53",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "rathalosgreatsword": {
+      "name": "RATHALOS GREATSWORD",
+      "drops": [
+        {
+          "name": "RATHALOS GREATSWORD",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Rathalos",
+          "dar": 100,
+          "rate": "1/103",
+          "sections": [
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "redcrystal": {
+      "name": "Red Crystal",
+      "drops": [
+        {
+          "name": "Red Crystal",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Meri Noir (VR:Sandstorm)",
+          "dar": 100,
+          "rate": "1/204",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "redphantomfield": {
+      "name": "RED PHANTOM FIELD",
+      "drops": [
+        {
+          "name": "RED PHANTOM FIELD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Delbiter",
+          "dar": 80,
+          "rate": "1/320",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "RED PHANTOM FIELD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Zoa",
+          "dar": 30,
+          "rate": "1/379.26",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "redring": {
+      "name": "RED RING",
+      "drops": [
+        {
+          "name": "RED RING",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Falz",
+          "dar": 100,
+          "rate": "1/51.2",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "RED RING",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Falz",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Viridia",
+            "Skyly",
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "reflexgear": {
+      "name": "REFLEX GEAR",
+      "drops": [
+        {
+          "name": "REFLEX GEAR",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Shambertin",
+          "dar": 100,
+          "rate": "1/56.89",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "REFLEX GEAR",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Merikle",
+          "dar": 80,
+          "rate": "1/853.33",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "ringoffire": {
+      "name": "RING OF FIRE",
+      "drops": [
+        {
+          "name": "RING OF FIRE",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Vol Opt ver. 2",
+          "dar": 100,
+          "rate": "1/73.14",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "RING OF FIRE",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Dorphon",
+          "dar": 80,
+          "rate": "1/787.69",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "RING OF FIRE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Del Lily",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "RING OF FIRE",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "sealedjsword": {
+      "name": "SEALED J-SWORD",
+      "drops": [
+        {
+          "name": "SEALED J-SWORD",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gi Gue",
+          "dar": 80,
+          "rate": "1/7447.13",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "shadowcloak": {
+      "name": "SHADOW CLOAK",
+      "drops": [
+        {
+          "name": "SHADOW CLOAK",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/19.69",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SHADOW CLOAK",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gol Dragon",
+          "dar": 100,
+          "rate": "1/128",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SHADOW CLOAK",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Delbiter",
+          "dar": 80,
+          "rate": "1/930.91",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SHADOW CLOAK",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Spigell",
+          "dar": 45,
+          "rate": "1/2275.57",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "skyfall": {
+      "name": "SKYFALL",
+      "drops": [
+        {
+          "name": "SKYFALL",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Falz",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "sliceroffanatic": {
+      "name": "SLICER OF FANATIC",
+      "drops": [
+        {
+          "name": "SLICER OF FANATIC",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Goran Detonator",
+          "dar": 35,
+          "rate": "1/182.86",
+          "sections": [
+            "Greenill",
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SLICER OF FANATIC",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SLICER OF FANATIC",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Ill Gill",
+          "dar": 40,
+          "rate": "1/365.71",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SLICER OF FANATIC",
+          "difficulty": 2,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Bluefull",
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SLICER OF FANATIC",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Chaos Bringer",
+          "dar": 88,
+          "rate": "1/846.28",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "snowqueen": {
+      "name": "Snow Queen",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Snow Queen",
+          "parts": [
+            "Frozen Shooter",
+            "Photon Booster"
+          ],
+          "ingredients": [
+            {
+              "item": "Frozen Shooter",
+              "qty": 1
+            },
+            {
+              "item": "Photon Booster",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "sorcerersrightarm": {
+      "name": "Sorcerer's Right Arm",
+      "drops": [
+        {
+          "name": "Sorcerer's Right Arm",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Gran Sorcerer",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "souldevourer": {
+      "name": "SOUL DEVOURER",
+      "drops": [
+        {
+          "name": "SOUL DEVOURER",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/64",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SOUL DEVOURER",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Epsilon",
+          "dar": 30,
+          "rate": "1/620.61",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "spiritgarment": {
+      "name": "SPIRIT GARMENT",
+      "drops": [
+        {
+          "name": "SPIRIT GARMENT",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Zol Gibbon",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SPIRIT GARMENT",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Del-D",
+          "dar": 30,
+          "rate": "1/1050.25",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SPIRIT GARMENT",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Dolmolm",
+          "dar": 30,
+          "rate": "1/1050.25",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SPIRIT GARMENT",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Gibbles",
+          "dar": 80,
+          "rate": "1/45.71",
+          "sections": [
+            "Redria",
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SPIRIT GARMENT",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Deldepth",
+          "dar": 40,
+          "rate": "1/160",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SPIRIT GARMENT",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Morfos",
+          "dar": 40,
+          "rate": "1/160",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SPIRIT GARMENT",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Del Lily",
+          "dar": 35,
+          "rate": "1/182.86",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SPIRIT GARMENT",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "So Dimenian",
+          "dar": 30,
+          "rate": "1/426.67",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "spreadneedle": {
+      "name": "SPREAD NEEDLE",
+      "drops": [
+        {
+          "name": "SPREAD NEEDLE",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Bringer",
+          "dar": 88,
+          "rate": "1/358.04",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SPREAD NEEDLE",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Astark",
+          "dar": 85,
+          "rate": "1/370.68",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "SPREAD NEEDLE",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Merlan",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Greenill",
+            "Purplenum",
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "stareulogy": {
+      "name": "Star Eulogy",
+      "drops": [
+        {
+          "name": "Star Eulogy",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Tormentark (VR:OMEGA)",
+          "dar": 80,
+          "rate": "1/1559",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "statemaintenance": {
+      "name": "State/Maintenance",
+      "drops": [
+        {
+          "name": "State/Maintenance",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gal Gryphon",
+          "dar": 100,
+          "rate": "1/102.4",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "State/Maintenance",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Shambertin",
+          "dar": 100,
+          "rate": "1/102.4",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "State/Maintenance",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Zele",
+          "dar": 35,
+          "rate": "1/3343.7",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "stinkframe": {
+      "name": "STINK FRAME",
+      "drops": [
+        {
+          "name": "STINK FRAME",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Morfos",
+          "dar": 40,
+          "rate": "1/787.69",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STINK FRAME",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Dolmdarl",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STINK FRAME",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Crimson Assassin",
+          "dar": 40,
+          "rate": "1/1280",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STINK FRAME",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Merillia",
+          "dar": 30,
+          "rate": "1/1706.66",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STINK FRAME",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Gi Gue",
+          "dar": 80,
+          "rate": "1/45.71",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STINK FRAME",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Rag Rappy",
+          "dar": 100,
+          "rate": "1/128",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STINK FRAME",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Morfos",
+          "dar": 40,
+          "rate": "1/160",
+          "sections": [
+            "Purplenum",
+            "Redria",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STINK FRAME",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Gigobooma",
+          "dar": 35,
+          "rate": "1/182.86",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STINK FRAME",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Dark Gunner",
+          "dar": 45,
+          "rate": "1/284.44",
+          "sections": [
+            "Skyly",
+            "Purplenum",
+            "Oran",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STINK FRAME",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Dolmdarl",
+          "dar": 35,
+          "rate": "1/365.71",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "stormrender": {
+      "name": "STORMRENDER",
+      "drops": [
+        {
+          "name": "STORMRENDER",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/51.2",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "STORMRENDER",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Bringer",
+          "dar": 88,
+          "rate": "1/1329.88",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "subzero": {
+      "name": "SUBZERO",
+      "drops": [
+        {
+          "name": "SUBZERO",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Delsaber",
+          "dar": 45,
+          "rate": "1/455.11",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "syncesta": {
+      "name": "Syncesta",
+      "drops": [
+        {
+          "name": "Syncesta",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Hildetorr",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Syncesta",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Hildetorr",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Syncesta",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sinow Red",
+          "dar": 55,
+          "rate": "1/2127.8",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Syncesta",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Baranz",
+          "dar": 85,
+          "rate": "1/2141.69",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "Syncesta",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Crimson Assassin",
+          "dar": 55,
+          "rate": "1/2482.44",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "tasteofaffection": {
+      "name": "TASTE OF AFFECTION",
+      "drops": [
+        {
+          "name": "TASTE OF AFFECTION",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Epsilon",
+          "dar": 30,
+          "rate": "1/310.3",
+          "sections": [
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "threeseals": {
+      "name": "THREE SEALS",
+      "drops": [
+        {
+          "name": "THREE SEALS",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Melqueek",
+          "dar": 15,
+          "rate": "1/620.61",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "tpflow": {
+      "name": "TP/Flow",
+      "drops": [
+        {
+          "name": "TP/Flow",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Del Rappy",
+          "dar": 100,
+          "rate": "1/19.69",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "TP/Flow",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Mericus",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "tsumikirijsword": {
+      "name": "TSUMIKIRI J-SWORD",
+      "drops": [],
+      "recipes": [
+        {
+          "kind": "unseal",
+          "ingredients": [
+            {
+              "item": "Sealed J-Sword",
+              "qty": 1
+            }
+          ],
+          "recipeComplete": true,
+          "source": "./help_page.html#hit"
+        }
+      ],
+      "notes": [
+        {
+          "en": "Obtain by unsealing Sealed J-Sword. Check the base weapon's attributes before unsealing; its kill-count slot affects adding Hit later.",
+          "ko": "Sealed J-Sword의 봉인을 해제해 획득합니다. 봉인 해제 전 원본 무기의 속성을 확인하세요. 킬 카운트 슬롯 때문에 이후 Hit 추가에 제약이 생길 수 있습니다.",
+          "source": "./help_page.html#hit"
+        }
+      ]
+    },
+    "twinblaze": {
+      "name": "TWIN BLAZE",
+      "drops": [
+        {
+          "name": "TWIN BLAZE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Merikle",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Redria",
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "TWIN BLAZE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Morfos",
+          "dar": 40,
+          "rate": "1/787.69",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "TWIN BLAZE",
+          "difficulty": 2,
+          "episode": 2,
+          "enemy": "Mericus",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "twincyclone": {
+      "name": "TWIN CYCLONE",
+      "drops": [
+        {
+          "name": "TWIN CYCLONE",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Saint Million",
+          "dar": 100,
+          "rate": "1/51.2",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "twinrikasclaw": {
+      "name": "TWIN RIKA'S CLAW",
+      "drops": [
+        {
+          "name": "TWIN RIKA'S CLAW",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Delbiter",
+          "dar": 80,
+          "rate": "1/3723.7",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "TWIN RIKA'S CLAW",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gi Gue",
+          "dar": 80,
+          "rate": "1/3723.7",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "ultimatedoublecannon": {
+      "name": "Ultimate Double Cannon",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Ultimate Double Cannon",
+          "parts": [
+            "Double Cannon",
+            "Dark Matter"
+          ],
+          "ingredients": [
+            {
+              "item": "Double Cannon",
+              "qty": 1
+            },
+            {
+              "item": "Dark Matter",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "v503": {
+      "name": "V503",
+      "drops": [
+        {
+          "name": "V503",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/19.69",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "V503",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Goran Detonator",
+          "dar": 35,
+          "rate": "1/975.24",
+          "sections": [
+            "Pinkal",
+            "Redria"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "V503",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Berill",
+          "dar": 40,
+          "rate": "1/2048.01",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "v802": {
+      "name": "V802",
+      "drops": [
+        {
+          "name": "V802",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sinow Blue",
+          "dar": 60,
+          "rate": "1/975.24",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "V802",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gran Sorcerer",
+          "dar": 25,
+          "rate": "1/1365.34",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "v803": {
+      "name": "V803",
+      "drops": [],
+      "recipes": [
+        {
+          "kind": "trade",
+          "ingredients": [
+            {
+              "item": "Darkness Photon Sphere",
+              "qty": 1
+            },
+            {
+              "item": "Millennium Photon Core",
+              "qty": 20
+            },
+            {
+              "item": "V802",
+              "qty": 2
+            },
+            {
+              "item": "V503",
+              "qty": 1
+            },
+            {
+              "item": "Magic Stone Iritista",
+              "qty": 2
+            },
+            {
+              "item": "D-Photon Core",
+              "qty": 1
+            },
+            {
+              "item": "Book of Hitogata",
+              "qty": 1
+            }
+          ],
+          "recipeComplete": false,
+          "source": "./index.html",
+          "obtain": [
+            "Millennium Shop — The Phantastic Bazaar (EP2 > Shop)"
+          ]
+        }
+      ],
+      "notes": []
+    },
+    "vectorscope": {
+      "name": "VECTOR SCOPE",
+      "drops": [
+        {
+          "name": "VECTOR SCOPE",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Olga Flow",
+          "dar": 100,
+          "rate": "1/128",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "venusbow": {
+      "name": "VENUS BOW",
+      "drops": [
+        {
+          "name": "VENUS BOW",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Bar Dalus",
+          "dar": 100,
+          "rate": "1/77",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "virusarmorlafuteria": {
+      "name": "Virus Armor: Lafuteria",
+      "drops": [],
+      "recipes": [
+        {
+          "result": "Virus Armor: Lafuteria",
+          "parts": [
+            "Parasite Wear: Vajulla",
+            "Parasitic Cell Type D"
+          ],
+          "level": 156,
+          "only": "no casts",
+          "ingredients": [
+            {
+              "item": "Parasite Wear: Vajulla",
+              "qty": 1
+            },
+            {
+              "item": "Parasitic Cell Type D",
+              "qty": 1
+            }
+          ],
+          "kind": "combination",
+          "recipeComplete": true,
+          "source": "https://discord.com/channels/363947585154580480/1545231887004606494",
+          "checkedAt": "2026-09-04"
+        }
+      ],
+      "notes": []
+    },
+    "wingsoflife": {
+      "name": "WINGS OF LIFE",
+      "drops": [],
+      "recipes": [],
+      "notes": [
+        {
+          "en": "Phantastic Bazaar (EP2 > Shop): exchange Flower Bouquet ×150. The NPC introduced during Valentine 2026 remains available year-round.",
+          "ko": "Phantastic Bazaar(EP2 > Shop)에서 Flower Bouquet ×150으로 교환합니다. 2026 발렌타인에 추가된 해당 NPC는 연중 이용 가능합니다.",
+          "source": "./event_page.html#valentine-2026"
+        }
+      ]
+    },
+    "xpartsver310": {
+      "name": "X-PARTS ver3.10",
+      "drops": [
+        {
+          "name": "X-PARTS ver3.10",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Spigell",
+          "dar": 45,
+          "rate": "1/700.17",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "X-PARTS ver3.10",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Morfos",
+          "dar": 40,
+          "rate": "1/731.43",
+          "sections": [
+            "Oran"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "X-PARTS ver3.10",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Gulgus-gue",
+          "dar": 30,
+          "rate": "1/1241.22",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "yamigarasu": {
+      "name": "YAMIGARASU",
+      "drops": [
+        {
+          "name": "YAMIGARASU",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Merissa AA",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YAMIGARASU",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Deldepth",
+          "dar": 40,
+          "rate": "1/787.69",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YAMIGARASU",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Ill Gill",
+          "dar": 40,
+          "rate": "1/787.69",
+          "sections": [
+            "Skyly",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YAMIGARASU",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Dark Bringer",
+          "dar": 88,
+          "rate": "1/1163.63",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "yasminkov2000h": {
+      "name": "YASMINKOV 2000H",
+      "drops": [
+        {
+          "name": "YASMINKOV 2000H",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Baranz",
+          "dar": 85,
+          "rate": "1/370.68",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 2000H",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Hidoom",
+          "dar": 45,
+          "rate": "1/700.17",
+          "sections": [
+            "Purplenum",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 2000H",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Zele",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Viridia"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 2000H",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Pyro Goran",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 2000H",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Del-D",
+          "dar": 30,
+          "rate": "1/1050.25",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "yasminkov3000r": {
+      "name": "YASMINKOV 3000R",
+      "drops": [
+        {
+          "name": "YASMINKOV 3000R",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Zu",
+          "dar": 80,
+          "rate": "1/568.89",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 3000R",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Spigell",
+          "dar": 45,
+          "rate": "1/700.17",
+          "sections": [
+            "Greenill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "yasminkov7000v": {
+      "name": "YASMINKOV 7000V",
+      "drops": [
+        {
+          "name": "YASMINKOV 7000V",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Mericus",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Skyly"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 7000V",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Merissa A",
+          "dar": 27,
+          "rate": "1/758.52",
+          "sections": [
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 7000V",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Morfos",
+          "dar": 40,
+          "rate": "1/787.69",
+          "sections": [
+            "Yellowboze"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 7000V",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Sinow Zele",
+          "dar": 35,
+          "rate": "1/900.22",
+          "sections": [
+            "Greenill",
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "yasminkov9000m": {
+      "name": "YASMINKOV 9000M",
+      "drops": [
+        {
+          "name": "YASMINKOV 9000M",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Girtablulu",
+          "dar": 80,
+          "rate": "1/393.85",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 9000M",
+          "difficulty": 3,
+          "episode": 2,
+          "enemy": "Crimson Assassin",
+          "dar": 40,
+          "rate": "1/787.69",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YASMINKOV 9000M",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Sinow Blue",
+          "dar": 60,
+          "rate": "1/1137.77",
+          "sections": [
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "yunchang": {
+      "name": "YUNCHANG",
+      "drops": [
+        {
+          "name": "YUNCHANG",
+          "difficulty": 3,
+          "episode": 1,
+          "enemy": "Delsaber",
+          "dar": 45,
+          "rate": "1/650.16",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YUNCHANG",
+          "difficulty": 2,
+          "episode": 1,
+          "enemy": "Chaos Bringer",
+          "dar": 88,
+          "rate": "1/517.17",
+          "sections": [
+            "Bluefull"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=2",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "YUNCHANG",
+          "difficulty": 1,
+          "episode": 4,
+          "enemy": "Za Boota",
+          "dar": 32,
+          "rate": "1/1600",
+          "sections": [
+            "Viridia",
+            "Greenill",
+            "Skyly",
+            "Bluefull",
+            "Purplenum",
+            "Pinkal",
+            "Redria",
+            "Oran",
+            "Yellowboze",
+            "Whitill"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=1",
+          "syncedAt": "2026-08-19T15:22:00.484Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    },
+    "zuspunishment": {
+      "name": "ZU'S PUNISHMENT",
+      "drops": [
+        {
+          "name": "ZU'S PUNISHMENT",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Kondrieu",
+          "dar": 100,
+          "rate": "1/21.33",
+          "sections": [
+            "Pinkal"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        },
+        {
+          "name": "ZU'S PUNISHMENT",
+          "difficulty": 3,
+          "episode": 4,
+          "enemy": "Zu",
+          "dar": 80,
+          "rate": "1/1861.82",
+          "sections": [
+            "Bluefull",
+            "Purplenum"
+          ],
+          "source": "https://playpso.net/drop-tables?diff=3",
+          "syncedAt": "2026-08-19T15:22:00.485Z"
+        }
+      ],
+      "recipes": [],
+      "notes": []
+    }
+  }
+}

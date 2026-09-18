@@ -19,7 +19,7 @@ binding = "AI"
 
 [vars]
 # 이 페이지를 띄울 수 있는 출처. 여기 없는 곳에서 부르면 브라우저가 막는다.
-ALLOWED_ORIGINS = "https://angrieta.github.io,http://localhost:5173"
+ALLOWED_ORIGINS = "https://angrieta.github.io,http://localhost:5173,http://localhost:5188"
 
 # ADMIN_PASSWORD 는 여기 적지 말 것. 이 파일은 저장소에 올라간다.
 #   npx.cmd wrangler secret put ADMIN_PASSWORD

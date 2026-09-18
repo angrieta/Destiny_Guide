@@ -1,0 +1,153 @@
+[
+  {
+    "name": "3RD ANNIVERSARY BLADE",
+    "notes": [{
+      "en": "Historical Triple Threat event (December 2020): Crimson from Ultimate Epsilon (Redria / Whitill); Galaxy from Ultimate Olga Flow (Skyly / Purplenum). The announcement says the blades were event-only and would not return. These are archived routes, not active drops.",
+      "ko": "과거 Triple Threat 이벤트(2020년 12월): Crimson은 Ultimate Epsilon(Redria / Whitill), Galaxy는 Ultimate Olga Flow(Skyly / Purplenum)에게서 드랍됐습니다. 공지에서 이벤트 한정이며 재등장하지 않는다고 안내했습니다. 현재 드랍처가 아닌 과거 기록입니다.",
+      "source": "https://playpso.net/forums/topic/1009-triple-threat-event/"
+    }]
+  },
+  {
+    "name": "DE ROL LE SHIELD",
+    "notes": [
+      {
+        "en": "Summer 2025: a possible reward from Summer Presents, which drop randomly from monsters during the event. The shield reward chance was not published.",
+        "ko": "2025 여름 이벤트에서 몬스터가 무작위로 드랍하는 Summer Present의 개봉 보상 중 하나입니다. 실드가 나올 개별 확률은 공개되지 않았습니다.",
+        "source": "https://playpso.net/forums/topic/1495-summer-event-2025/"
+      }
+    ]
+  },
+  {
+    "name": "DEAL WITH IT",
+    "notes": [
+      {
+        "en": "Summer 2025: a possible reward from Summer Presents, which drop randomly from monsters during the event. The shield reward chance was not published.",
+        "ko": "2025 여름 이벤트에서 몬스터가 무작위로 드랍하는 Summer Present의 개봉 보상 중 하나입니다. 실드가 나올 개별 확률은 공개되지 않았습니다.",
+        "source": "https://playpso.net/forums/topic/1495-summer-event-2025/"
+      }
+    ]
+  },
+  {
+    "name": "TSUMIKIRI J-SWORD",
+    "notes": [
+      {
+        "en": "Obtain by unsealing Sealed J-Sword. Check the base weapon's attributes before unsealing; its kill-count slot affects adding Hit later.",
+        "ko": "Sealed J-Sword의 봉인을 해제해 획득합니다. 봉인 해제 전 원본 무기의 속성을 확인하세요. 킬 카운트 슬롯 때문에 이후 Hit 추가에 제약이 생길 수 있습니다.",
+        "source": "./help_page.html#hit"
+      }
+    ],
+    "recipes": [
+      {
+        "kind": "unseal",
+        "ingredients": [
+          {
+            "item": "Sealed J-Sword",
+            "qty": 1
+          }
+        ],
+        "recipeComplete": true,
+        "source": "./help_page.html#hit"
+      }
+    ]
+  },
+  {
+    "name": "CHRISTMAS SPIRIT",
+    "notes": [
+      {
+        "en": "XMAS 2025 event: Dark Falz in EP1 > Xmas > Toward The Future, 1/64. Event route; not a year-round drop.",
+        "ko": "2025 크리스마스 이벤트: EP1 > Xmas > Toward The Future의 Dark Falz, 1/64. 이벤트 기간 한정 경로입니다.",
+        "source": "./event_page.html#xmas-2025"
+      }
+    ]
+  },
+  {
+    "name": "BAT WING",
+    "notes": [
+      {
+        "en": "Halloween event: Headless Horseman in EP1 > Halloween > Path to Salvation or Harmony of Despair II, all IDs. The archived adjusted rate is 1/730.",
+        "ko": "할로윈 이벤트: EP1 > Halloween > Path to Salvation 또는 Harmony of Despair II의 Headless Horseman, 전 Section ID. 이벤트 기록의 조정 후 드랍률은 1/730입니다.",
+        "source": "./event_page.html#halloween-revival"
+      }
+    ]
+  },
+  {
+    "name": "ASTRAL ESSENCE",
+    "notes": [
+      {
+        "en": "Halloween event: Grim Reaper in EP2 > Halloween > Hallowed World [Extreme], all IDs. The archived adjusted rate is 1/1400.",
+        "ko": "할로윈 이벤트: EP2 > Halloween > Hallowed World [Extreme]의 Grim Reaper, 전 Section ID. 이벤트 기록의 조정 후 드랍률은 1/1400입니다.",
+        "source": "./event_page.html#halloween-revival"
+      }
+    ]
+  },
+  {
+    "name": "WINGS OF LIFE",
+    "notes": [
+      {
+        "en": "Phantastic Bazaar (EP2 > Shop): exchange Flower Bouquet ×150. The NPC introduced during Valentine 2026 remains available year-round.",
+        "ko": "Phantastic Bazaar(EP2 > Shop)에서 Flower Bouquet ×150으로 교환합니다. 2026 발렌타인에 추가된 해당 NPC는 연중 이용 가능합니다.",
+        "source": "./event_page.html#valentine-2026"
+      }
+    ]
+  },
+  {
+    "name": "BLUEPRINT: ASTRAL DRAGON",
+    "notes": [
+      {
+        "en": "Summer event: Dorphon Divine in Summer Vacation Tragedy, 1/1170, all Section IDs since the 2025 event.",
+        "ko": "여름 이벤트 Summer Vacation Tragedy의 Dorphon Divine, 1/1170. 2025 이벤트부터 전 Section ID에서 획득 가능합니다.",
+        "source": "./event_page.html#summer-2026"
+      }
+    ]
+  },
+  {
+    "name": "BERSERK NEEDLE",
+    "notes": [
+      {
+        "en": "Easter 2026: Gal Gryphon (Stronger) in Gal Da Val’s Darkness [Easter], all IDs, 1/55. The Easter Shop also traded a 0% attribute copy for Easter Egg ×60.",
+        "ko": "2026 부활절: Gal Da Val’s Darkness [Easter]의 Gal Gryphon (Stronger), 전 Section ID, 1/55. Easter Shop에서 Easter Egg ×60으로 속성 0% 무기도 교환했습니다.",
+        "source": "./event_page.html#easter-2026"
+      }
+    ]
+  },
+  {
+    "name": "D-VIRUS ARMOR",
+    "notes": [
+      {
+        "en": "Easter Shop in Phantastic Bazaar: Easter Egg ×30 during the event.",
+        "ko": "부활절 이벤트 기간 Phantastic Bazaar의 Easter Shop에서 Easter Egg ×30으로 교환합니다.",
+        "source": "./economy_page.html#event-shop"
+      }
+    ]
+  },
+  {
+    "name": "D-VIRUS LAUNCHER",
+    "notes": [
+      {
+        "en": "Easter Shop in Phantastic Bazaar: Easter Egg ×30 for a 0% attribute copy during the event.",
+        "ko": "부활절 이벤트 기간 Phantastic Bazaar의 Easter Shop에서 Easter Egg ×30으로 속성 0% 무기를 교환합니다.",
+        "source": "./economy_page.html#event-shop"
+      }
+    ]
+  },
+  {
+    "name": "RADIANT RING",
+    "notes": [
+      {
+        "en": "Anniversary Shop in Phantastic Bazaar: Anniversary Crate ×60 during the event.",
+        "ko": "기념일 이벤트 기간 Phantastic Bazaar의 Anniversary Shop에서 Anniversary Crate ×60으로 교환합니다.",
+        "source": "./economy_page.html#event-shop"
+      }
+    ]
+  },
+  {
+    "name": "RANGER WALL",
+    "notes": [
+      {
+        "en": "Gallon's Shop: obtain points from the minigame and exchange them for Ranger Wall. See the Destiny beginner guide for this route.",
+        "ko": "Gallon's Shop의 미니게임에서 포인트를 모아 Ranger Wall을 교환합니다. Destiny 초보자 가이드에 안내된 경로입니다.",
+        "source": "https://playpso.net/forums/topic/839-beginners-friendly-guide/"
+      }
+    ]
+  }
+]

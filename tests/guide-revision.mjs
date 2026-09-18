@@ -49,7 +49,8 @@ const env={ALLOWED_ORIGINS:"https://angrieta.github.io",DB:{prepare(sql){
     const stmt=db.prepare(sql); let args=[];
     return {bind(...values){args=values;return this;},async run(){return stmt.run(...args);},async all(){return {results:stmt.all(...args)};},async first(){return stmt.get(...args)||null;}};
 }}};
-const workerCode=ts.transpileModule(fs.readFileSync("api/src/index.ts","utf8"),{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const workerSource=fs.readFileSync("api/src/index.ts","utf8").replace("import analyticsItems from '../../data/analytics-items.json';",'const analyticsItems = '+fs.readFileSync('data/analytics-items.json','utf8')+';').replace("import analyticsElements from '../../data/analytics-elements.json';",'const analyticsElements = '+fs.readFileSync('data/analytics-elements.json','utf8')+';');
+const workerCode=ts.transpileModule(workerSource,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
 const worker=(await import("data:text/javascript;base64,"+Buffer.from(workerCode).toString("base64"))).default;
 const post=body=>worker.fetch(new Request("https://unit.test/api/analytics/view",{method:"POST",headers:{"Content-Type":"application/json",Origin:"https://angrieta.github.io"},body:JSON.stringify(body)}),env);
 for (const body of [

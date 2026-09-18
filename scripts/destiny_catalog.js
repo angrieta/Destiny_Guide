@@ -2019,10 +2019,7 @@
       stats: info.map((line) => ["Info", line]),
       requirements: [],
       combat: details,
-      obtain: [
-        "A specific drop or crafting route is not listed on the current card."
-      ],
-      obtainKeys: ["catalog.existing.obtain"],
+      obtain: [],
       required: []
     };
   }
@@ -2091,9 +2088,11 @@
     const mediaElement = modal.querySelector(".destiny_detail_media");
     let previousFocus = null;
     let openedItem = null;
+    let acquisitionRequest = 0;
 
     const hideModal = () => {
       openedItem = null;
+      acquisitionRequest += 1;
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("destiny-detail-open");
@@ -2122,10 +2121,31 @@
           '<a href="' + escapeHTML(item.source) + '" target="_blank" rel="noreferrer">' + escapeHTML(t('verified.source', 'Official source')) + '</a> · ' + escapeHTML(item.checkedAt) + '</section>' : '') +
         renderOperatorSection(operatorMeta) +
         renderSection(t("catalog.detail.combat", "Special, targets & bonuses"), proseList(item, "combat")) +
-        renderSection(t("catalog.detail.obtain", "How to obtain"), proseList(item, "obtain")) +
+        '<section class="destiny_detail_section"><h3>' + escapeHTML(t("catalog.detail.obtain", "How to obtain")) + '</h3><div data-item-acquisition aria-live="polite" aria-busy="true">…</div></section>' +
         renderSection(t("catalog.detail.required", "Required items"), item.required || []) +
         renderSection(t("catalog.detail.notes", "Additional notes"), proseList(item, "notes")) +
         ((item.required || []).length ? '<p><a class="guide_action" href="./recipe_page.html?target=' + encodeURIComponent(item.id) + '#planner">' + escapeHTML(t('planner.open', 'Plan materials & farming')) + ' →</a></p>' : '');
+
+      const request = ++acquisitionRequest;
+      const acquisitionElement = sectionsElement.querySelector('[data-item-acquisition]');
+      import('./item-acquisition.mjs').then(async api => {
+        if (request !== acquisitionRequest) return;
+        acquisitionElement.textContent = api.acquisitionText('loading');
+        try {
+          const data = await api.loadAcquisition();
+          if (request !== acquisitionRequest) return;
+          acquisitionElement.innerHTML = api.renderAcquisition(data, item, proseList(item, 'obtain'));
+        } catch (_) {
+          if (request !== acquisitionRequest) return;
+          acquisitionElement.textContent = api.acquisitionText('failed');
+        }
+        acquisitionElement.setAttribute('aria-busy', 'false');
+      }).catch(() => {
+        if (request !== acquisitionRequest) return;
+        acquisitionElement.innerHTML = renderSection(t('catalog.detail.obtain', 'How to obtain'), proseList(item, 'obtain')) +
+          '<a href="./drop-tables/?item=' + encodeURIComponent(item.name) + '">' + escapeHTML(t('header.link.dropTables', 'Drop Tables')) + ' →</a>';
+        acquisitionElement.setAttribute('aria-busy', 'false');
+      });
 
       if (hasAuthenticImage(item)) {
         mediaElement.classList.remove("is-placeholder");
@@ -2160,6 +2180,8 @@
       }
 
       modal.classList.add("is-open");
+      modal.dataset.analyticsItemName = item.name;
+      if (!refresh) document.dispatchEvent(new CustomEvent('destiny-item-open', {detail:{name:item.name}}));
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("destiny-detail-open");
       if (!refresh) closeButton.focus();
@@ -2265,5 +2287,14 @@
     );
     if (card) card.scrollIntoView({ block: "center" });
     detailModal.open(requestedItem, card);
+  }
+  // Usage reports can link to legacy HTML cards that have no catalog id.
+  const requestedName = new URLSearchParams(window.location.search).get('name');
+  if (!requestedItem && requestedName && detailModal) {
+    const card = Array.from(document.querySelectorAll('.destiny_item_slide .item_section_aria')).find(card => {
+      const name = card.querySelector('.item_title .item_name')?.textContent.trim();
+      return name && normalizeName(name) === normalizeName(requestedName);
+    });
+    if (card) detailModal.open(card.dataset.catalogId ? catalogById.get(card.dataset.catalogId) : readExistingCard(card), card);
   }
 })();

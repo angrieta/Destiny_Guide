@@ -1566,5 +1566,173 @@
     "イベント終了後は通常コンテンツにも低確率で追加予定ですが、その入手経路はまだ開いていません。",
     "Después del evento se planea una fuente normal con menos probabilidad; todavía no está disponible.",
     "Une source en contenu normal, à taux réduit, est prévue après l’événement ; elle n’est pas encore disponible."
+  ],
+  "usage.items.title": [
+    "Item card usage",
+    "아이템 카드 이용 통계",
+    "アイテムカード利用状況",
+    "Uso de tarjetas de objetos",
+    "Utilisation des fiches objets"
+  ],
+  "usage.items.lead": [
+    "See which item details people open and which acquisition routes they follow. Counts are deduplicated per item, action and browser tab session.",
+    "어떤 아이템을 열어보고 획득 경로를 확인하는지 보여줍니다. 같은 탭 세션에서 아이템별·행동별로 한 번만 집계합니다.",
+    "どのアイテムや入手経路が参照されたかを表示します。アイテム・操作・タブセッションごとに1回集計します。",
+    "Consulta qué objetos y fuentes se abren. Se cuenta una vez por objeto, acción y sesión de pestaña.",
+    "Consultez les objets et sources ouverts. Une fois par objet, action et session d’onglet."
+  ],
+  "usage.items.search": [
+    "Find an item",
+    "아이템 검색",
+    "アイテム検索",
+    "Buscar objeto",
+    "Chercher un objet"
+  ],
+  "usage.items.item": [
+    "Item",
+    "아이템",
+    "アイテム",
+    "Objeto",
+    "Objet"
+  ],
+  "usage.items.opens": [
+    "Card opens",
+    "팝업 열기",
+    "詳細を開く",
+    "Detalles abiertos",
+    "Fiches ouvertes"
+  ],
+  "usage.items.drops": [
+    "Drop table clicks",
+    "드랍표 클릭",
+    "ドロップ表クリック",
+    "Clics en drops",
+    "Clics sur les drops"
+  ],
+  "usage.items.recipes": [
+    "Recipe / planner clicks",
+    "조합·계획표 클릭",
+    "レシピ・計画表クリック",
+    "Clics en recetas",
+    "Clics sur les recettes"
+  ],
+  "usage.items.materials": [
+    "Material paths expanded",
+    "재료 경로 펼치기",
+    "素材経路を展開",
+    "Rutas de materiales",
+    "Sources des matériaux"
+  ],
+  "usage.items.sources": [
+    "Source clicks",
+    "출처 클릭",
+    "出典クリック",
+    "Clics en fuentes",
+    "Clics sur les sources"
+  ],
+  "usage.items.csv": [
+    "Download item CSV",
+    "아이템 통계 CSV 다운로드",
+    "アイテム統計 CSV",
+    "Descargar CSV de objetos",
+    "Télécharger le CSV des objets"
+  ],
+  "usage.items.start": [
+    "Item collection started",
+    "아이템 통계 수집 시작",
+    "アイテム統計の収集開始",
+    "Inicio del registro de objetos",
+    "Début du suivi des objets"
+  ],
+  "usage.items.noData": [
+    "Item tracking has not recorded its first observation yet. A dash means unavailable, not zero.",
+    "아직 아이템 통계의 첫 수집 기록이 없습니다. —는 0이 아니라 수집 전을 뜻합니다.",
+    "まだ収集記録がありません。— は 0 ではなく未収集です。",
+    "Aún no hay registros. — indica datos no disponibles, no cero.",
+    "Pas encore de suivi. — signifie indisponible, pas zéro."
+  ],
+  "usage.elements.title": [
+    "Button and card clicks",
+    "버튼·카드 클릭",
+    "ボタン・カードのクリック",
+    "Clics en botones y tarjetas",
+    "Clics sur boutons et cartes"
+  ],
+  "usage.elements.lead": [
+    "Raw click counts for the buttons and cards that were tagged for measurement. Unlike everything else on this page, these are not deduplicated per session, so one visitor clicking five times counts five.",
+    "측정 대상으로 지정한 버튼·카드의 클릭 횟수입니다. 이 페이지의 다른 수치와 달리 세션당 중복 제거를 하지 않으므로, 한 사람이 다섯 번 누르면 5로 셉니다.",
+    "計測対象に指定したボタン・カードのクリック回数です。このページの他の数値と違い、セッションごとの重複排除をしないため、1人が5回押せば5になります。",
+    "Recuento bruto de clics en los botones y tarjetas marcados para medición. A diferencia del resto de la página, no se deduplica por sesión: si alguien hace cinco clics, cuentan cinco.",
+    "Nombre brut de clics sur les boutons et cartes marqués pour la mesure. Contrairement au reste de la page, il n’y a pas de déduplication par session : cinq clics d’une personne comptent cinq."
+  ],
+  "usage.elements.search": [
+    "Find a button or card",
+    "버튼·카드 찾기",
+    "ボタン・カードを探す",
+    "Buscar botón o tarjeta",
+    "Chercher un bouton ou une carte"
+  ],
+  "usage.elements.most": [
+    "Most clicks first",
+    "클릭 많은 순",
+    "クリックの多い順",
+    "Más clics primero",
+    "Plus de clics d’abord"
+  ],
+  "usage.elements.least": [
+    "Fewest clicks first",
+    "클릭 적은 순",
+    "クリックの少ない順",
+    "Menos clics primero",
+    "Moins de clics d’abord"
+  ],
+  "usage.elements.byPage": [
+    "Group by page",
+    "페이지별로 묶기",
+    "ページごとにまとめる",
+    "Agrupar por página",
+    "Grouper par page"
+  ],
+  "usage.elements.csv": [
+    "Download click CSV",
+    "클릭 CSV 내려받기",
+    "クリック CSV をダウンロード",
+    "Descargar CSV de clics",
+    "Télécharger le CSV des clics"
+  ],
+  "usage.elements.element": [
+    "Button / card",
+    "버튼·카드",
+    "ボタン・カード",
+    "Botón / tarjeta",
+    "Bouton / carte"
+  ],
+  "usage.elements.page": [
+    "Page",
+    "페이지",
+    "ページ",
+    "Página",
+    "Page"
+  ],
+  "usage.elements.clicks": [
+    "Clicks",
+    "클릭",
+    "クリック",
+    "Clics",
+    "Clics"
+  ],
+  "usage.elements.last": [
+    "Last click (UTC)",
+    "마지막 클릭 (UTC)",
+    "最後のクリック (UTC)",
+    "Último clic (UTC)",
+    "Dernier clic (UTC)"
+  ],
+  "usage.elements.none": [
+    "No buttons or cards are tagged for measurement yet.",
+    "아직 측정 대상으로 지정된 버튼·카드가 없습니다.",
+    "計測対象に指定されたボタン・カードはまだありません。",
+    "Todavía no hay botones ni tarjetas marcados para medición.",
+    "Aucun bouton ni carte n’est encore marqué pour la mesure."
   ]
 }
