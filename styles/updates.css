@@ -611,3 +611,10 @@
 }
 
 .up_clips .up_clip { margin-top: 18px; }
+
+/* up_card 는 보통 up_grid 안에서 gap 으로 간격을 얻는다. 표나 그리드 바로 뒤에 단독으로
+   놓이면 맞닿아 버리므로, 그 자리에서만 그리드와 같은 간격을 준다. */
+.g_scroll + .up_card,
+.up_grid + .up_card {
+    margin-top: 16px;
+}
