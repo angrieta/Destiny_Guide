@@ -304,3 +304,25 @@ html[data-theme="dark"] .ev_tab[aria-selected="true"] {
     font-size: var(--text-sm);
     line-height: 1.6;
 }
+
+/* 배너. 아이템 썸네일(.ev_item_media)과 달리 블록 폭을 그대로 채운다.
+   9주년 Radiant Destiny! 처럼 공지에 한 장짜리 키 비주얼이 붙는 회차에 쓴다. */
+.ev_media {
+    margin: 0 0 var(--space-4);
+    overflow: hidden;
+    border-radius: var(--radius-media);
+    background: var(--dg-surface-muted);
+}
+
+.ev_media img {
+    display: block;
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.ev_media figcaption {
+    padding: var(--space-2) var(--space-3);
+    color: var(--dg-text-soft);
+    font-size: var(--text-sm);
+}

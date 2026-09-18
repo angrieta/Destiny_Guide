@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-09-10",
+  "checkedAt": "2026-09-18",
   "items": [
     {
       "id": "matrix-scope",
@@ -191,10 +191,10 @@
       "type": "Shield",
       "image": "",
       "imageFallback": true,
-      "status": "planned",
-      "checkedAt": "2026-09-10",
-      "source": "https://discord.com/channels/363947585154580480/441859383958437888/1545077196480188527",
-      "summary": "Announced for the anniversary event starting September 18. It blocks healing from other players and changes how mates work.",
+      "status": "live",
+      "checkedAt": "2026-09-18",
+      "source": "https://playpso.net/forums/topic/1891-destiny-9th-anniversary-event/",
+      "summary": "Added with the 9th Anniversary event on September 18, 2026. It blocks healing from other players and changes how mates work.",
       "stats": [
         [
           "Class",
@@ -226,7 +226,9 @@
         "Disables android natural HP regeneration. Monomate and Dimate work like Trimate."
       ],
       "obtain": [
-        "Anniversary acquisition is planned from September 18. A lower-rate normal quest source is planned after the event; do not treat it as available yet."
+        "Radiant Destiny! (EP2 > Anniversary), all Section IDs: Olga Flow 1/51, Gol Dragon 1/64, Gal Gryphon 1/64, Tormentorr 1/264.",
+        "Bought from the RAcast in the Phantastic Bazaar for Anniversary Crate x60, while the 9th Anniversary event runs.",
+        "A lower-rate normal content source is planned after the event; do not treat it as available yet."
       ],
       "required": []
     }

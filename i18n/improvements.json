@@ -293,6 +293,13 @@
     "0.945 disponible · Miracle Chain y Soul Eraser",
     "0.945 disponible · Miracle Chain et Soul Eraser"
   ],
+  "home.anniv9": [
+    "9th Anniversary is live · Aegis of Isolation, crates and ×10 XP",
+    "9주년 진행 중 · Aegis of Isolation·크레이트·×10 XP",
+    "9周年開催中 · Aegis of Isolation・クレート・×10 XP",
+    "9.º aniversario en curso · Aegis of Isolation, crates y ×10 XP",
+    "9e anniversaire en cours · Aegis of Isolation, crates et ×10 XP"
+  ],
   "home.issue": [
     "Lightning Garment · technique boost issue",
     "Lightning Garment · 테크닉 보정 미작동",
@@ -1085,11 +1092,11 @@
     "Olga Flow dans World of Illusion : tous les ID, 1/73. Récompense de quête distincte des drops normaux."
   ],
   "cat.aegis-of-isolation.summary": [
-    "Announced for the anniversary starting September 18. Blocks healing from others and changes recovery items.",
-    "9월 18일 시작하는 기념 이벤트용 예고 아이템입니다. 타인의 회복을 차단하고 회복약 효과를 바꿉니다.",
-    "9月18日開始の記念イベント向け予告品。他者からの回復を防ぎ、回復アイテムの効果を変えます。",
-    "Anunciado para el aniversario del 18 de septiembre. Bloquea curación ajena y cambia los objetos de recuperación.",
-    "Annoncé pour l’anniversaire du 18 septembre. Bloque les soins externes et modifie les objets de récupération."
+    "Added with the 9th Anniversary event on September 18, 2026. It blocks healing from other players and changes how mates work.",
+    "2026년 9월 18일 시작한 9주년 이벤트와 함께 추가됐습니다. 다른 유저의 회복을 차단하고 회복약 효과를 바꿉니다.",
+    "2026年9月18日開始の9周年イベントで実装。他者からの回復を防ぎ、回復アイテムの効果を変えます。",
+    "Añadido con el evento del 9.º aniversario el 18 de septiembre de 2026. Bloquea la curación ajena y cambia los objetos de recuperación.",
+    "Ajouté avec l’événement du 9e anniversaire le 18 septembre 2026. Bloque les soins externes et modifie les objets de récupération."
   ],
   "cat.aegis-of-isolation.combat.0": [
     "Blocks Resta and Star Atomizer healing from others. You can still heal others and be revived.",
@@ -1106,11 +1113,11 @@
     "Désactive la régénération naturelle des androïdes. Monomate et Dimate agissent comme Trimate."
   ],
   "cat.aegis-of-isolation.obtain.0": [
-    "Planned for the September 18 anniversary. A lower-rate normal quest source is planned after the event; it is not available yet.",
-    "9월 18일 기념 이벤트에 추가될 예정입니다. 이벤트 종료 후 일반 퀘스트에도 낮은 확률로 추가할 계획이며, 아직 획득 가능한 상태가 아닙니다.",
-    "9月18日の記念イベントで実装予定。その後は通常クエストへ低確率で追加予定。まだ入手できません。",
-    "Previsto para el aniversario del 18 de septiembre. Después se planea una fuente normal menos frecuente; aún no está disponible.",
-    "Prévu pour l’anniversaire du 18 septembre, puis en quête normale à taux réduit. Pas encore disponible."
+    "Radiant Destiny! (EP2 > Anniversary), all Section IDs: Olga Flow 1/51, Gol Dragon 1/64, Gal Gryphon 1/64, Tormentorr 1/264.",
+    "Radiant Destiny! (EP2 > Anniversary), 모든 Section ID — Olga Flow 1/51, Gol Dragon 1/64, Gal Gryphon 1/64, Tormentorr 1/264.",
+    "Radiant Destiny!（EP2 > Anniversary）、全 Section ID — Olga Flow 1/51、Gol Dragon 1/64、Gal Gryphon 1/64、Tormentorr 1/264。",
+    "Radiant Destiny! (EP2 > Anniversary), todos los Section ID: Olga Flow 1/51, Gol Dragon 1/64, Gal Gryphon 1/64, Tormentorr 1/264.",
+    "Radiant Destiny! (EP2 > Anniversary), tous les Section ID : Olga Flow 1/51, Gol Dragon 1/64, Gal Gryphon 1/64, Tormentorr 1/264."
   ],
   "cat.phantasmal-ore-syncesta.obtain.0": [
     "Planned after the 9th Anniversary. Craft the ore first, then combine it with Double Cannon to make Alternative Cannon. The base weapon is separate.",
@@ -1127,11 +1134,11 @@
     "Prévu après le 9e anniversaire. Créez le minerai puis combinez-le avec Last Emperor pour Astral Blade. L’arme est requise séparément."
   ],
   "up.03": [
-    "Patch, announcement and item sources checked September 10, 2026. Released content, known issues and future plans are labelled separately.",
-    "2026년 9월 10일 기준 패치·공지·아이템 출처를 확인했습니다. 현재 적용된 내용, 알려진 문제, 향후 계획을 구분해 표시합니다.",
-    "2026年9月10日にパッチ・告知・アイテム情報を確認。実装済み・既知の問題・今後の予定を区別しています。",
-    "Fuentes revisadas el 10 de septiembre de 2026. Se distinguen contenido disponible, problemas y planes.",
-    "Sources vérifiées le 10 septembre 2026. Contenu disponible, problèmes et projets sont distingués."
+    "Patch, announcement and item sources checked September 18, 2026. Released content, known issues and future plans are labelled separately.",
+    "2026년 9월 18일 기준 패치·공지·아이템 출처를 확인했습니다. 현재 적용된 내용, 알려진 문제, 향후 계획을 구분해 표시합니다.",
+    "2026年9月18日にパッチ・告知・アイテム情報を確認。実装済み・既知の問題・今後の予定を区別しています。",
+    "Fuentes revisadas el 18 de septiembre de 2026. Se distinguen contenido disponible, problemas y planes.",
+    "Sources vérifiées le 18 septembre 2026. Contenu disponible, problèmes et projets sont distingués."
   ],
   "up.futurecrafts.03": [
     "Planned after the 9th Anniversary",
@@ -1545,5 +1552,19 @@
     "クラス最大ATPは {max} です。装備が {gear} を加えるため、V503 や Immortal/Power などのユニットで合計が最大値を超えることがあります。",
     "El ATP máximo de la clase es {max}. El equipo suma {gear} por encima, así que unidades como V503 o Immortal/Power pueden superar ese máximo.",
     "L’ATP maximal de la classe est {max}. L’équipement ajoute {gear} par-dessus, donc des unités comme V503 ou Immortal/Power peuvent dépasser ce maximum."
+  ],
+  "cat.aegis-of-isolation.obtain.1": [
+    "Bought from the RAcast in the Phantastic Bazaar for Anniversary Crate x60, while the 9th Anniversary event runs.",
+    "9주년 이벤트 기간에 한해 Phantastic Bazaar의 RAcast에게 Anniversary Crate ×60개로 교환합니다.",
+    "9周年イベント期間中のみ、Phantastic Bazaar の RAcast から Anniversary Crate ×60 で交換できます。",
+    "Se compra al RAcast del Phantastic Bazaar por Anniversary Crate ×60 mientras dure el evento del 9.º aniversario.",
+    "S’achète au RAcast du Phantastic Bazaar contre 60 Anniversary Crates, pendant l’événement du 9e anniversaire."
+  ],
+  "cat.aegis-of-isolation.obtain.2": [
+    "A lower-rate normal content source is planned after the event; do not treat it as available yet.",
+    "이벤트 종료 후 일반 콘텐츠에도 낮은 확률로 추가할 계획이지만, 아직 그 경로는 열리지 않았습니다.",
+    "イベント終了後は通常コンテンツにも低確率で追加予定ですが、その入手経路はまだ開いていません。",
+    "Después del evento se planea una fuente normal con menos probabilidad; todavía no está disponible.",
+    "Une source en contenu normal, à taux réduit, est prévue après l’événement ; elle n’est pas encore disponible."
   ]
 }

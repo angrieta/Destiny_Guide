@@ -14,6 +14,17 @@
 
 `announcements-roadmap-preview.png`와 `v0944-madams-bracelet-model.png`는 SHA-256이 같은 동일 원본이다. 출처 맥락을 보존하기 위해 파일명은 둘 다 유지한다.
 
+## 9주년 이벤트 (`2026-09/`)
+
+2026-09-18 9주년 이벤트 공지에서 내려받았다. Discord CDN 링크는 서명이 붙어 만료되므로 원본을 보관한다.
+
+| 파일 | 크기 | 페이지 용도 |
+| --- | ---: | --- |
+| `anniv9-radiant-destiny-banner.png` | 773x750 | Radiant Destiny! 퀘스트 공지 배너 |
+| `anniv9-aegis-of-isolation-model.png` | 557x987 | Aegis of Isolation 착용 모습 |
+| `announcements-planned-mag-clip-1.mp4` | 784x444 / 6.5s | 예정 레어 마그 시연 (announcements 09:42) |
+| `announcements-planned-mag-clip-2.mp4` | 736x416 / 8.3s | 예정 레어 마그 시연 (announcements 09:46) |
+
 ## 레이드 (`archive/raids/`)
 
 | 파일 | 크기 | 페이지 용도 |

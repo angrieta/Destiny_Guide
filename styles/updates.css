@@ -580,3 +580,34 @@
 
 /* 지난 버전은 "적용 중"과 같은 초록을 쓰면 안 된다. 지금 켜져 있는 버전은 하나뿐이다. */
 .up_badge.is-past { background: var(--dg-surface-muted); color: var(--text-muted); }
+
+/* 공지에 올라온 짧은 영상 클립. 사이트에서 <video> 를 쓰는 곳은 여기가 처음이라
+   재생 컨트롤만 남기고 폭에 맞춘다. 자동재생은 하지 않는다. */
+.up_clip {
+    margin: 18px 0 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #070a0f;
+}
+
+.up_clip video {
+    display: block;
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+}
+
+.up_clip figcaption {
+    padding: 10px 14px;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+}
+
+/* 영상이 둘 이상이면 가로로 나란히. 좁은 화면에서는 한 줄씩 쌓인다. */
+.up_clips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 14px;
+}
+
+.up_clips .up_clip { margin-top: 18px; }

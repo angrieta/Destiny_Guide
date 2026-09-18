@@ -41,8 +41,8 @@
             <li><strong>02</strong> Valentine</li>
             <li><strong>03</strong> White Day</li>
             <li><strong>04</strong> Easter</li>
-            <li><strong>05</strong> Anniversary</li>
             <li><strong>07</strong> Summer</li>
+            <li><strong>09</strong> Anniversary</li>
             <li><strong>10</strong> Halloween</li>
         </ul>
     </section>
@@ -50,7 +50,10 @@
     <!-- 탭 시작 -->
     <div class="ev_tabs">
         <div class="ev_tablist" role="tablist" data-event-tablist aria-label="Event list" data-i18n-aria-label="ev.tablist">
-            <button type="button" class="ev_tab" role="tab" data-event-tab="summer-2026" aria-selected="true" aria-controls="panel-summer-2026" id="tab-summer-2026">
+            <button type="button" class="ev_tab" role="tab" data-event-tab="anniv-9th" aria-selected="true" aria-controls="panel-anniv-9th" id="tab-anniv-9th">
+                9th Anniversary <span class="ev_tab_year">2026</span>
+            </button>
+            <button type="button" class="ev_tab" role="tab" data-event-tab="summer-2026" aria-selected="false" aria-controls="panel-summer-2026" id="tab-summer-2026" tabindex="-1">
                 Summer <span class="ev_tab_year">2026</span>
             </button>
             <button type="button" class="ev_tab" role="tab" data-event-tab="anniv-8th" aria-selected="false" aria-controls="panel-anniv-8th" id="tab-anniv-8th" tabindex="-1">
@@ -73,7 +76,183 @@
     <!-- 탭 종료 -->
 
     <!-- ========== Summer 2026 ========== -->
-    <section class="ev_panel" role="tabpanel" data-event-panel="summer-2026" id="panel-summer-2026" aria-labelledby="tab-summer-2026" tabindex="0">
+        <!-- ========== 9th Anniversary (진행 중) ========== -->
+    <section class="ev_panel" role="tabpanel" data-event-panel="anniv-9th" id="panel-anniv-9th" aria-labelledby="tab-anniv-9th" tabindex="0">
+        <div class="ev_head">
+            <h3>Destiny 9th Anniversary Event</h3>
+            <div class="ev_meta">
+                <span class="ev_period">2026.09.18 09:00 ~ 2026.10.02 23:59 KST</span>
+                <span class="ev_status" data-state="live" data-i18n="ev.status.live">Live</span>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.summary">Summary</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.anniv9.a1">Two weeks, from 09:00 on 18 September 2026 to 23:59 on 2 October 2026 (KST). A server restart went in just before the start.</li>
+                <li data-i18n="ev.anniv9.a2">Three things run at once: Anniversary Crates from every monster, the anniversary quest Radiant Destiny!, and Photon Drop rewards in World of Illusion.</li>
+                <li><strong>AEGIS OF ISOLATION</strong> <span data-i18n="ev.anniv9.a3">is the new shield, obtained either from the quest or from the crate shop.</span></li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.boost">Server-wide boosts</h4>
+            <ul class="ev_list">
+                <li><strong>×10 XP</strong> <span data-i18n="ev.anniv9.b1">and free Section ID changes, for the entire event.</span></li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.newItem">New item</h4>
+            <div class="ev_item">
+                <div class="ev_item_media">
+                    <img src="./images/discord/2026-09/anniv9-aegis-of-isolation-model.png" alt="AEGIS OF ISOLATION equipped" data-i18n-alt="ev.anniv9.alt.shield">
+                </div>
+                <div>
+                    <h5 class="ev_item_name">AEGIS OF ISOLATION</h5>
+                    <span class="ev_item_type">Shield</span>
+                    <dl class="ev_stats">
+                        <div><dt data-i18n="ev.stat.class">Class</dt><dd>All</dd></div>
+                        <div><dt data-i18n="ev.stat.level">Req. Lv</dt><dd>150</dd></div>
+                        <div><dt>DFP</dt><dd>120-170</dd></div>
+                        <div><dt>EVP</dt><dd>180-230</dd></div>
+                        <div><dt data-i18n="ev.stat.resists">Resists</dt><dd>32-32-32-24-24</dd></div>
+                        <div><dt data-i18n="ev.stat.bonus">Bonus</dt><dd>ATP +60</dd></div>
+                    </dl>
+                    <ul class="ev_list">
+                        <li data-i18n="ev.anniv9.i1">Blocks Resta and Star Atomizer healing from other party members. You can still heal other players, and you can still be revived.</li>
+                        <li data-i18n="ev.anniv9.i2">Disables the natural HP regeneration of androids.</li>
+                        <li data-i18n="ev.anniv9.i3">Monomate and Dimate heal as much as a Trimate for the wearer.</li>
+                    </ul>
+                    <p class="ev_flavor">“A cursed rare shield. Disables healing of allies, but maximizes the effect of all potions used by the bearer.”</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.quest">Event quest — Radiant Destiny!</h4>
+            <figure class="ev_media">
+                <img src="./images/discord/2026-09/anniv9-radiant-destiny-banner.png" alt="Radiant Destiny! announcement banner" data-i18n-alt="ev.anniv9.alt.banner" loading="lazy" decoding="async">
+                <figcaption data-i18n="ev.anniv9.banner">Announcement banner for the anniversary quest.</figcaption>
+            </figure>
+            <ul class="ev_list">
+                <li><strong>EP2 &gt; Anniversary &gt; Radiant Destiny!</strong> <span data-i18n="ev.anniv9.q1">— the anniversary version. Every other quest keeps its normal Hildetorrs.</span></li>
+                <li data-i18n="ev.anniv9.q2">Tormentorrs return, and this time they spawn in the Control Tower. They are stronger than normal Hildetorrs, cast different techniques, move faster, and are twice the size.</li>
+                <li data-i18n="ev.anniv9.q3">The quest is built on “Defend the main room”, with anniversary extras added on top.</li>
+            </ul>
+            <p class="ev_flavor" data-i18n="ev.anniv9.q4">“Something evil escaped from below... Again!”</p>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.anniv9.specials.title">What was added to the quest</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.anniv9.s1">Three secret routes.</li>
+                <li data-i18n="ev.anniv9.s2">Mixed enemy rosters.</li>
+                <li data-i18n="ev.anniv9.s3">An extra floor.</li>
+                <li data-i18n="ev.anniv9.s4">A team rank, from E up to SS.</li>
+                <li><strong>Phantasmal Aura</strong> <span data-i18n="ev.anniv9.s5">— a quest board item that makes you invincible for 10 seconds, on a 240 second recast. HUmar and RAcaseal get a longer invincibility and a shorter recast.</span></li>
+                <li data-i18n="ev.anniv9.s6">The announcement says there is more to find than this list.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.anniv9.party.title">Group and gear</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.anniv9.p1">Two or more level 200 players.</li>
+                <li data-i18n="ev.anniv9.p2">A support Force is required, ideally with Paragon Frame for the S/D/Resta range boosts.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.drops">Drop table — Radiant Destiny!</h4>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.enemy">Enemy</th>
+                            <th data-i18n="ev.th.item">Item</th>
+                            <th data-i18n="ev.th.rate">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Olga Flow</td><td>AEGIS OF ISOLATION</td><td>1/51</td></tr>
+                        <tr><td>Gol Dragon</td><td>AEGIS OF ISOLATION</td><td>1/64</td></tr>
+                        <tr><td>Gal Gryphon</td><td>AEGIS OF ISOLATION</td><td>1/64</td></tr>
+                        <tr><td>Tormentorr</td><td>AEGIS OF ISOLATION</td><td>1/264</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="ev_list">
+                <li data-i18n="ev.anniv9.d1">All Section IDs, inside Radiant Destiny! only.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.anniv9.crate.title">Anniversary Crates</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.anniv9.c1">Drop from any monster in the game for the whole event, and go to a random player.</li>
+                <li data-i18n="ev.anniv9.c2">Like the daily crates, they can contain items with up to 100% attributes or hit — at a very rare chance.</li>
+                <li data-i18n="ev.anniv9.c3">No daily limit. Farming crates with several accounts at the same time is not allowed.</li>
+                <li data-i18n="ev.anniv9.c4">Happy Hour does not change the crate drop rate.</li>
+            </ul>
+            <div class="g_scroll">
+                <table class="g_table g_mid">
+                    <thead>
+                        <tr>
+                            <th data-i18n="ev.th.difficulty">Difficulty</th>
+                            <th>1P</th>
+                            <th>2P</th>
+                            <th>3P</th>
+                            <th>4P</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Normal</td><td>1/2000</td><td>1/1200</td><td>1/932</td><td>1/800</td></tr>
+                        <tr><td>Hard</td><td>1/1600</td><td>1/960</td><td>1/720</td><td>1/600</td></tr>
+                        <tr><td>Very Hard</td><td>1/1000</td><td>1/700</td><td>1/500</td><td>1/400</td></tr>
+                        <tr><td>Ultimate</td><td>1/500</td><td>1/350</td><td>1/250</td><td>1/200</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="ev_list">
+                <li data-i18n="ev.anniv9.c5">These are rates for the game, not for you — the rate is divided by the number of players in the party.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.anniv9.woi.title">Photon Drops in World of Illusion</h4>
+            <ul class="ev_list">
+                <li><strong>EP2 &gt; Anniversary &gt; World of Illusion</strong> <span data-i18n="ev.anniv9.w1">— start it from here. The regular World of Illusion under EP2 &gt; Destiny still awards materials only.</span></li>
+                <li data-i18n="ev.anniv9.w2">The quest normally gives a random material after each of its 7 floors. In the Anniversary version, floors 3 to 7 award a Photon Drop instead.</li>
+                <li data-i18n="ev.anniv9.w3">Dying is still game over in this quest.</li>
+                <li data-i18n="ev.anniv9.w4">From this year, Olga Flow also drops SOUL ERASER here.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.note">Note</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.anniv9.issue">Known issue reported on the first day: the Anniversary quest folder under EP1 shows up empty. The quests are under EP2.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.trade">Trades and shop</h4>
+            <ul class="ev_list">
+                <li><strong>RAcast · Phantastic Bazaar</strong> — AEGIS OF ISOLATION <span data-i18n="ev.anniv9.t1">for Anniversary Crate ×60.</span></li>
+                <li data-i18n="ev.anniv9.t2">The NPC only stays until the 9th Anniversary event ends.</li>
+            </ul>
+        </div>
+
+        <div class="ev_block">
+            <h4 data-i18n="ev.block.after">After the event</h4>
+            <ul class="ev_list">
+                <li data-i18n="ev.anniv9.after">AEGIS OF ISOLATION is planned to become obtainable in regular content later, but it will be harder to get than it is now.</li>
+            </ul>
+        </div>
+    </section>
+
+<section class="ev_panel" role="tabpanel" data-event-panel="summer-2026" id="panel-summer-2026" aria-labelledby="tab-summer-2026" tabindex="0" hidden>
         <div class="ev_head">
             <h3>Summer Event 2026</h3>
             <div class="ev_meta">
