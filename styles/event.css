@@ -326,3 +326,10 @@ html[data-theme="dark"] .ev_tab[aria-selected="true"] {
     color: var(--dg-text-soft);
     font-size: var(--text-sm);
 }
+
+/* ev_list 와 ev_flavor 는 margin 이 0 이라, 블록 안에서 표나 목록 뒤에 바로 오면
+   맞닿는다. 그 자리에서만 간격을 준다. */
+.ev_block > .g_scroll + .ev_list,
+.ev_block > .ev_list + .ev_flavor {
+    margin-top: var(--space-4);
+}
