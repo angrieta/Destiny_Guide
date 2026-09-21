@@ -65,8 +65,7 @@ for (const entry of await readdir(projectRoot, {withFileTypes:true})) {
 for (const [path, href, title, titleKey] of [
   ["/calculator","calculator/","Damage Calculator","header.link.calculator"],
   ["/mods_page","mods_page.html","Mods and Skins","header.nav.mods"],
-  ["/roster_page","roster_page.html","Name Directory","header.nav.roster"],
-  ["/suggest_page","suggest_page.html","Suggestions","header.nav.suggest"]
+  ["/roster_page","roster_page.html","Name Directory","header.nav.roster"]
 ]) {
   const existing = contentPages.find((page) => page.path === path);
   if (existing) Object.assign(existing,{href,title,titleKey});

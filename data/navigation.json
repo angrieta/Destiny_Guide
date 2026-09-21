@@ -174,11 +174,6 @@
         "key": "nav.page.roster_page"
       },
       {
-        "href": "suggest_page.html",
-        "label": "Suggestions",
-        "key": "nav.page.suggest_page"
-      },
-      {
         "href": "redeem/",
         "label": "Token redeem",
         "key": "nav.page.redeem"
